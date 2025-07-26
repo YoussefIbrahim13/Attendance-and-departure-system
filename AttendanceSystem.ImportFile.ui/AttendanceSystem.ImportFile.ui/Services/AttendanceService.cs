@@ -87,19 +87,37 @@ namespace AttendanceSystem.ImportFile.ui.Services
             }
         }
 
-        // Get all employees
-        public async Task<List<Employee>> GetEmployeesAsync()
+        // Get all employees (for Employees.razor)
+        public async Task<List<EmployeeDto>> GetAllEmployeesAsync()
         {
             try
             {
-                var response = await _http.GetFromJsonAsync<List<Employee>>("Attendance/employees");
-                return response ?? new List<Employee>();
+                var response = await _http.GetFromJsonAsync<List<EmployeeDto>>("Attendance/employees");
+                return response ?? new List<EmployeeDto>();
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error fetching employees: {ex.Message}");
-                return new List<Employee>();
+                return new List<EmployeeDto>();
             }
+        }
+
+        // Add new employee
+        public async Task AddEmployeeAsync(EmployeeDto employee)
+        {
+            await _http.PostAsJsonAsync("Attendance/add-employee", employee);
+        }
+
+        // Delete employee
+        public async Task DeleteEmployeeAsync(string id)
+        {
+            await _http.DeleteAsync($"Attendance/delete-employee/{id}");
+        }
+
+        // Update employee
+        public async Task UpdateEmployeeAsync(EmployeeDto employee)
+        {
+            await _http.PutAsJsonAsync("Attendance/update-employee", employee);
         }
 
         // Legacy method - kept for backward compatibility
@@ -131,6 +149,14 @@ namespace AttendanceSystem.ImportFile.ui.Services
             await Task.CompletedTask;
         }
 
+    }
+
+    public class EmployeeDto
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Department { get; set; }
+        public string Position { get; set; }
     }
 
    

@@ -1,0 +1,180 @@
+@page "/Employees"
+@inject AttendanceSystem.ImportFile.ui.Services.AttendanceService AttendanceService
+
+<h3>Employees Management</h3>
+
+<!-- Add Employee Form -->
+<div class="card mb-4">
+    <div class="card-header">Add New Employee</div>
+    <div class="card-body">
+        <div class="row g-2">
+            <div class="col-md-3">
+                <input class="form-control" placeholder="ID" @bind="newEmployee.Id" />
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" placeholder="Name" @bind="newEmployee.Name" />
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" placeholder="Department" @bind="newEmployee.Department" />
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" placeholder="Position" @bind="newEmployee.Position" />
+            </div>
+        </div>
+        <button class="btn btn-success mt-3" @onclick="AddEmployee">Add Employee</button>
+    </div>
+</div>
+
+<!-- Employees Table -->
+<div class="card">
+    <div class="card-header">All Employees</div>
+    <div class="card-body p-0">
+        <table class="table table-hover mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Department</th>
+                    <th>Position</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var emp in employees)
+                {
+                    <tr>
+                        <td>@emp.Id</td>
+                        <td>@emp.Name</td>
+                        <td>@emp.Department</td>
+                        <td>@emp.Position</td>
+                        <td>
+                            <button class="btn btn-primary btn-sm me-2" @onclick="() => EditEmployee(emp)">Edit</button>
+                            <button class="btn btn-danger btn-sm" @onclick="() => DeleteEmployee(emp.Id)">Delete</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@if (showEditForm && editEmployee != null)
+{
+    <div class="modal show d-block" tabindex="-1" style="background:rgba(0,0,0,0.2);">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Employee</h5>
+                    <button type="button" class="btn-close" @onclick="CancelEdit"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-2">
+                        <label>ID</label>
+                        <input class="form-control" @bind="editEmployee.Id" disabled />
+                    </div>
+                    <div class="mb-2">
+                        <label>Name</label>
+                        <input class="form-control" @bind="editEmployee.Name" />
+                    </div>
+                    <div class="mb-2">
+                        <label>Department</label>
+                        <input class="form-control" @bind="editEmployee.Department" />
+                    </div>
+                    <div class="mb-2">
+                        <label>Position</label>
+                        <input class="form-control" @bind="editEmployee.Position" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" @onclick="CancelEdit">Cancel</button>
+                    <button class="btn btn-success" @onclick="SaveEditEmployee">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private List<AttendanceSystem.ImportFile.ui.Services.EmployeeDto> employees = new();
+    private AttendanceSystem.ImportFile.ui.Services.EmployeeDto newEmployee = new AttendanceSystem.ImportFile.ui.Services.EmployeeDto();
+    private AttendanceSystem.ImportFile.ui.Services.EmployeeDto? editEmployee;
+    private bool showEditForm = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadEmployees();
+    }
+
+    private async Task LoadEmployees()
+    {
+        employees = await AttendanceService.GetAllEmployeesAsync();
+    }
+
+    private async Task AddEmployee()
+    {
+        if (!string.IsNullOrWhiteSpace(newEmployee.Id) && !string.IsNullOrWhiteSpace(newEmployee.Name))
+        {
+            await AttendanceService.AddEmployeeAsync(newEmployee);
+            newEmployee = new AttendanceSystem.ImportFile.ui.Services.EmployeeDto();
+            await LoadEmployees();
+        }
+    }
+
+    private async Task DeleteEmployee(string id)
+    {
+        await AttendanceService.DeleteEmployeeAsync(id);
+        await LoadEmployees();
+    }
+
+    // إزالة تعريف EmployeeDto المحلي واستخدام النوع من AttendanceService فقط
+
+    private void EditEmployee(AttendanceSystem.ImportFile.ui.Services.EmployeeDto emp)
+    {
+        editEmployee = new AttendanceSystem.ImportFile.ui.Services.EmployeeDto
+        {
+            Id = emp.Id,
+            Name = emp.Name,
+            Department = emp.Department,
+            Position = emp.Position
+        };
+        showEditForm = true;
+    }
+
+    private void CancelEdit()
+    {
+        showEditForm = false;
+        editEmployee = null;
+    }
+
+    private string? editMessage;
+    private async Task SaveEditEmployee()
+    {
+        if (editEmployee != null && !string.IsNullOrWhiteSpace(editEmployee.Id) && !string.IsNullOrWhiteSpace(editEmployee.Name))
+        {
+            try
+            {
+                await AttendanceService.UpdateEmployeeAsync(editEmployee);
+                // تحديث الموظف في القائمة المحلية
+                var idx = employees.FindIndex(e => e.Id == editEmployee.Id);
+                if (idx >= 0)
+                {
+                    employees[idx] = new AttendanceSystem.ImportFile.ui.Services.EmployeeDto
+                    {
+                        Id = editEmployee.Id,
+                        Name = editEmployee.Name,
+                        Department = editEmployee.Department,
+                        Position = editEmployee.Position
+                    };
+                }
+                editMessage = "تم تعديل الموظف بنجاح";
+            }
+            catch
+            {
+                editMessage = "فشل تعديل الموظف";
+            }
+            showEditForm = false;
+            editEmployee = null;
+            await LoadEmployees();
+        }
+    }
+}

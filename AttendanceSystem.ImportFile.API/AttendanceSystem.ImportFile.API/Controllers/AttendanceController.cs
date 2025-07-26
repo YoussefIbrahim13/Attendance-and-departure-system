@@ -297,6 +297,57 @@ namespace AttendanceSystem.ImportFile.API.Controllers
             return Ok(employees);
         }
 
+        // Delete employee
+        [HttpDelete("delete-employee/{id}")]
+        public async Task<IActionResult> DeleteEmployee([FromServices] AttendanceDbContext db, string id)
+        {
+            if (string.IsNullOrWhiteSpace(id))
+                return BadRequest("Employee ID is required.");
+
+            var employee = await db.Employees.FirstOrDefaultAsync(e => e.Id == id);
+            if (employee == null)
+                return NotFound("Employee not found.");
+
+            db.Employees.Remove(employee);
+            await db.SaveChangesAsync();
+            return Ok("Employee deleted successfully.");
+        }
+
+        // Add new employee
+        [HttpPost("add-employee")]
+        public async Task<IActionResult> AddEmployee([FromServices] AttendanceDbContext db, [FromBody] AttendanceSystem.ImportFile.API.Shared.Employee employeeDto)
+        {
+            if (employeeDto == null || string.IsNullOrWhiteSpace(employeeDto.Id) || string.IsNullOrWhiteSpace(employeeDto.Name))
+                return BadRequest("Employee data is required.");
+
+            var exists = await db.Employees.AnyAsync(e => e.Id == employeeDto.Id);
+            if (exists)
+                return BadRequest("Employee with this ID already exists.");
+
+            db.Employees.Add(employeeDto);
+            await db.SaveChangesAsync();
+            return Ok("Employee added successfully.");
+        }
+
+        // Update employee
+        [HttpPut("update-employee")]
+        public async Task<IActionResult> UpdateEmployee([FromServices] AttendanceDbContext db, [FromBody] AttendanceSystem.ImportFile.API.Shared.Employee employeeDto)
+        {
+            if (employeeDto == null || string.IsNullOrWhiteSpace(employeeDto.Id))
+                return BadRequest("Employee data is required.");
+
+            var employee = await db.Employees.FirstOrDefaultAsync(e => e.Id == employeeDto.Id);
+            if (employee == null)
+                return NotFound("Employee not found.");
+
+            employee.Name = employeeDto.Name;
+            employee.Department = employeeDto.Department;
+            employee.Position = employeeDto.Position;
+
+            await db.SaveChangesAsync();
+            return Ok("Employee updated successfully.");
+        }
+
         // Helper method to determine attendance status
         private AttendanceStatus DetermineAttendanceStatus(string checkIn, string checkOut)
         {

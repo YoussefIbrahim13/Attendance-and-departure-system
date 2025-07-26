@@ -109,10 +109,6 @@
                                     </td>
                                     <td>@(string.IsNullOrEmpty(emp.CheckIn) ? "--" : $"<span class='time-badge'>{emp.CheckIn}</span>")</td>
                                     <td>@(string.IsNullOrEmpty(emp.CheckOut) ? "--" : $"<span class='time-badge'>{emp.CheckOut}</span>")</td>
-                                    <td>@(string.IsNullOrEmpty(emp.CheckIn) || string.IsNullOrEmpty(emp.CheckOut)
-                                          ? "--"
-                                          : CalculateWorkingHours(emp.CheckIn, emp.CheckOut))</td>
-                                    <td>@(string.IsNullOrEmpty(emp.Note) ? "--" : emp.Note)</td>
                                 </tr>
                             }
                         </tbody>

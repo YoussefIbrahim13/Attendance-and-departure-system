@@ -1,0 +1,12 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "Run API",
+			"command": "dotnet run --project AttendanceSystem.ImportFile.API/AttendanceSystem.ImportFile.API/AttendanceSystem.ImportFile.API.csproj",
+			"group": "build",
+			"isBackground": true
+		}
+	]
+}

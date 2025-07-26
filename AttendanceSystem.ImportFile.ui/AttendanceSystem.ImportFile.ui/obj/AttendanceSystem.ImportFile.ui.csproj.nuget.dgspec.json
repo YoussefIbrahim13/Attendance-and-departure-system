@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj": {}
+    "Y:\\project\\Attendance-and-departure-system-full\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj": {}
   },
   "projects": {
-    "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj": {
+    "Y:\\project\\Attendance-and-departure-system-full\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj",
+        "projectUniqueName": "Y:\\project\\Attendance-and-departure-system-full\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj",
         "projectName": "AttendanceSystem.ImportFile.ui",
-        "projectPath": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj",
-        "packagesPath": "C:\\Users\\ehabm\\.nuget\\packages\\",
-        "outputPath": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\obj\\",
+        "projectPath": "Y:\\project\\Attendance-and-departure-system-full\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj",
+        "packagesPath": "C:\\Users\\Youssef\\.nuget\\packages\\",
+        "outputPath": "Y:\\project\\Attendance-and-departure-system-full\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ehabm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Youssef\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -62,13 +62,13 @@
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.17, )",
+              "version": "[8.0.18, )",
               "autoReferenced": true
             },
             "Microsoft.NET.Sdk.WebAssembly.Pack": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.6, )",
+              "version": "[9.0.7, )",
               "autoReferenced": true
             }
           },
@@ -86,7 +86,7 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
-              "version": "[8.0.17, 8.0.17]"
+              "version": "[8.0.18, 8.0.18]"
             }
           ],
           "frameworkReferences": {
@@ -94,7 +94,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {

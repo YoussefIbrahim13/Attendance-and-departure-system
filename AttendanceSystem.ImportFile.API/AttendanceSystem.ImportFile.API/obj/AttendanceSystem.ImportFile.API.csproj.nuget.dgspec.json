@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj": {}
+    "Y:\\project\\Attendance-and-departure-system-full\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj": {}
   },
   "projects": {
-    "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj": {
+    "Y:\\project\\Attendance-and-departure-system-full\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj",
+        "projectUniqueName": "Y:\\project\\Attendance-and-departure-system-full\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj",
         "projectName": "AttendanceSystem.ImportFile.API",
-        "projectPath": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj",
-        "packagesPath": "C:\\Users\\ehabm\\.nuget\\packages\\",
-        "outputPath": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API\\obj\\",
+        "projectPath": "Y:\\project\\Attendance-and-departure-system-full\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj",
+        "packagesPath": "C:\\Users\\Youssef\\.nuget\\packages\\",
+        "outputPath": "Y:\\project\\Attendance-and-departure-system-full\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ehabm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Youssef\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -94,7 +94,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
