@@ -1,7 +1,9 @@
-@page "/"
+@page "/ImportAttendance"
 @inject AttendanceSystem.ImportFile.ui.Services.AttendanceService AttendanceService
 @using AttendanceSystem.ImportFile.ui.Services
+@using AttendanceSystem.ImportFile.ui.Shared
 @using Microsoft.AspNetCore.Components.Forms
+
 <div class="container mt-4">
     <div class="row mb-3">
         <div class="col-md-10 mx-auto">
@@ -36,6 +38,7 @@
                                 <th>Date</th>
                                 <th>Check In</th>
                                 <th>Check Out</th>
+                                <th>Status</th>
                                 <th>Note</th>
                                 <th>Edit</th>
                             </tr>
@@ -47,7 +50,7 @@
                                     <td>@rec.EmployeeId</td>
                                     <td>
                                         @{
-                                            string? dateStr = rec.Date?.ToString();
+                                            string? dateStr = rec.Date.ToString();
                                             if (!string.IsNullOrEmpty(dateStr) && DateTime.TryParse(dateStr, out var dt))
                                             {
                                                 @dt.ToString("yyyy-MM-dd")
@@ -80,6 +83,21 @@
                                         else
                                         {
                                             @rec.CheckOut
+                                        }
+                                    </td>
+                                    <td>
+                                        @if (editRow == rec)
+                                        {
+                                            <select @bind="editStatus" class="form-select form-select-sm">
+                                                @foreach (var status in Enum.GetValues<AttendanceStatus>())
+                                                {
+                                                    <option value="@status">@status</option>
+                                                }
+                                            </select>
+                                        }
+                                        else
+                                        {
+                                            @rec.Status
                                         }
                                     </td>
                                     <td>
@@ -124,6 +142,7 @@
     AttendanceRecord? editRow;
     string? editCheckIn;
     string? editCheckOut;
+    AttendanceStatus? editStatus;
     string? editNote;
     string? message;
 
@@ -148,6 +167,7 @@
         editRow = rec;
         editCheckIn = rec.CheckIn;
         editCheckOut = rec.CheckOut;
+        editStatus = rec.Status;  
         editNote = rec.Note;
     }
 
@@ -165,6 +185,7 @@
             Date = rec.Date,
             CheckIn = editCheckIn ?? "",
             CheckOut = editCheckOut ?? "",
+            Status = editStatus ?? rec.Status,
             Note = editNote
         };
         var ok = await AttendanceService.EditPendingAttendanceAsync(dto);
@@ -173,6 +194,7 @@
             rec.CheckIn = editCheckIn ?? "";
             rec.CheckOut = editCheckOut ?? "";
             rec.Note = editNote;
+            rec.Status = editStatus ?? rec.Status;
             editRow = null;
         }
         else

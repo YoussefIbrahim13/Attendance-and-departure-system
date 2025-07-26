@@ -1,0 +1,359 @@
+﻿ @page "/calendar/month"
+@page "/calendar/month/{Year:int}/{Month:int}"
+@inject AttendanceSystem.ImportFile.ui.Services.AttendanceService AttendanceService
+@inject NavigationManager Navigation
+@using AttendanceSystem.ImportFile.ui.Services
+@using AttendanceSystem.ImportFile.ui.Shared
+
+<div class="container-fluid mt-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 class="mb-0 fw-bold">@GetMonthYearTitle()</h2>
+                <div class="btn-group">
+                    <button class="btn btn-outline-primary" @onclick="PreviousMonth">
+                        <i class="bi bi-chevron-left"></i> Previous
+                    </button>
+                    <button class="btn btn-outline-primary" @onclick="NextMonth">
+                        Next <i class="bi bi-chevron-right"></i>
+                    </button>
+                    <button class="btn btn-primary ms-2" @onclick="GoToYearView">
+                        <i class="bi bi-calendar3"></i> Year View
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if (isLoading)
+    {
+        <div class="text-center">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    }
+    else if (monthData != null)
+    {
+        <div class="calendar-grid">
+            <!-- Calendar Header -->
+            <div class="calendar-header">
+                <div class="calendar-day-header">Sunday</div>
+                <div class="calendar-day-header">Monday</div>
+                <div class="calendar-day-header">Tuesday</div>
+                <div class="calendar-day-header">Wednesday</div>
+                <div class="calendar-day-header">Thursday</div>
+                <div class="calendar-day-header">Friday</div>
+                <div class="calendar-day-header">Saturday</div>
+            </div>
+
+            <!-- Calendar Body -->
+            <div class="calendar-body">
+                @{
+                    var firstDayOfMonth = new DateTime(currentYear, currentMonth, 1);
+                    int diff = ((int)firstDayOfMonth.DayOfWeek + 7) % 7; // ensures Sunday = 0
+                    var startDate = firstDayOfMonth.AddDays(-diff);
+                    var endDate = startDate.AddDays(41); // 6 weeks
+                }
+
+                @for (var date = startDate; date <= endDate; date = date.AddDays(1))
+                {
+                    var currentDate = date; // Create a local copy to avoid closure issues
+                    var dayData = monthData.Days.FirstOrDefault(d => d.Date.Date == currentDate.Date);
+                    var isCurrentMonth = currentDate.Month == currentMonth;
+                    var isToday = currentDate.Date == DateTime.Today;
+
+                    <div class="calendar-day @(isCurrentMonth ? "current-month" : "other-month") @(isToday ? "today" : "")"
+                         @ondblclick="() => { if (isCurrentMonth) GoToDayView(currentDate); }">
+
+                        <div class="day-number">@currentDate.Day</div>
+
+                        @if (dayData != null && isCurrentMonth)
+                        {
+                            <div class="day-content">
+                                <div class="attendance-summary">
+                                    <small class="text-success">Present: @dayData.PresentCount</small>
+                                    <small class="text-danger">Absent: @dayData.AbsentCount</small>
+                                </div>
+
+                                <div class="employee-preview">
+                                    @foreach (var emp in dayData.TopEmployees.Take(3))
+                                    {
+                                        <div class="employee-item @GetStatusClass(emp.Status)">
+                                            <span class="employee-name">@emp.EmployeeName</span>
+                                            <span class="status-indicator"></span>
+                                        </div>
+                                    }
+                                    @if (dayData.TotalEmployees > 3)
+                                    {
+                                        <div class="more-employees">
+                                            +@(dayData.TotalEmployees - 3) more
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    .calendar-grid {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        overflow: hidden;
+    }
+
+    .calendar-header {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        background: #f8f9fa;
+        border-bottom: 2px solid #dee2e6;
+    }
+
+    .calendar-day-header {
+        padding: 15px 10px;
+        text-align: center;
+        font-weight: bold;
+        color: #495057;
+        border-right: 1px solid #dee2e6;
+    }
+
+        .calendar-day-header:last-child {
+            border-right: none;
+        }
+
+    .calendar-body {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        grid-template-rows: repeat(6, 120px);
+    }
+
+    .calendar-day {
+        border: 1px solid #dee2e6;
+        padding: 8px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .calendar-day:hover {
+            background-color: #f8f9fa;
+        }
+
+        .calendar-day.current-month {
+            background-color: white;
+        }
+
+        .calendar-day.other-month {
+            background-color: #f8f9fa;
+            color: #6c757d;
+        }
+
+        .calendar-day.today {
+            background-color: #e3f2fd;
+            border: 2px solid #2196f3;
+        }
+
+    .day-number {
+        font-weight: bold;
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+
+    .day-content {
+        font-size: 11px;
+    }
+
+    .attendance-summary {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+    }
+
+    .employee-preview {
+        max-height: 70px;
+        overflow: hidden;
+    }
+
+    .employee-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2px 4px;
+        margin-bottom: 2px;
+        border-radius: 3px;
+        font-size: 10px;
+    }
+
+        .employee-item.present {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .employee-item.absent {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .employee-item.vacation {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .employee-item.work-from-home {
+            background-color: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .employee-item.late {
+            background-color: #ffeaa7;
+            color: #6c5ce7;
+        }
+
+    .employee-name {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        flex: 1;
+    }
+
+    .status-indicator {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        margin-left: 4px;
+    }
+
+    .employee-item.present .status-indicator {
+        background-color: #28a745;
+    }
+
+    .employee-item.absent .status-indicator {
+        background-color: #dc3545;
+    }
+
+    .employee-item.vacation .status-indicator {
+        background-color: #ffc107;
+    }
+
+    .employee-item.work-from-home .status-indicator {
+        background-color: #17a2b8;
+    }
+
+    .employee-item.late .status-indicator {
+        background-color: #fd79a8;
+    }
+
+    .more-employees {
+        text-align: center;
+        color: #6c757d;
+        font-style: italic;
+        margin-top: 3px;
+    }
+</style>
+
+@code {
+    [Parameter] public int Year { get; set; }
+    [Parameter] public int Month { get; set; }
+
+    private MonthViewDto? monthData;
+    private bool isLoading = true;
+    private int currentYear;
+    private int currentMonth;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var today = DateTime.Today;
+        currentYear = Year > 0 ? Year : today.Year;
+        currentMonth = Month > 0 ? Month : today.Month;
+
+        await LoadMonthData();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (Year > 0) currentYear = Year;
+        if (Month > 0) currentMonth = Month;
+        await LoadMonthData();
+    }
+
+    private async Task LoadMonthData()
+    {
+        isLoading = true;
+        try
+        {
+            monthData = await AttendanceService.GetMonthViewAsync(currentYear, currentMonth);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading month data: {ex.Message}");
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private string GetMonthYearTitle()
+    {
+        return new DateTime(currentYear, currentMonth, 1).ToString("MMMM yyyy");
+    }
+
+    private void PreviousMonth()
+    {
+        if (currentMonth == 1)
+        {
+            currentMonth = 12;
+            currentYear--;
+        }
+        else
+        {
+            currentMonth--;
+        }
+        Navigation.NavigateTo($"/calendar/month/{currentYear}/{currentMonth}");
+    }
+
+    private void NextMonth()
+    {
+        if (currentMonth == 12)
+        {
+            currentMonth = 1;
+            currentYear++;
+        }
+        else
+        {
+            currentMonth++;
+        }
+        Navigation.NavigateTo($"/calendar/month/{currentYear}/{currentMonth}");
+    }
+
+    private void GoToYearView()
+    {
+        Navigation.NavigateTo($"/calendar/year/{currentYear}");
+    }
+
+    private void GoToDayView(DateTime date)
+    {
+        Navigation.NavigateTo($"/calendar/day/{date:yyyy-MM-dd}");
+    }
+
+    private string GetStatusClass(AttendanceStatus status)
+    {
+        return status switch
+        {
+            AttendanceStatus.Present => "present",
+            AttendanceStatus.Absent => "absent",
+            AttendanceStatus.Vacation => "vacation",
+            AttendanceStatus.WorkFromHome => "work-from-home",
+           // AttendanceStatus.Late => "late",
+            _ => "absent"
+        };
+    }
+}
+

@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Globalization;
+using AttendanceSystem.ImportFile.API.Shared;
+
 using System.Text;
 
 namespace AttendanceSystem.ImportFile.API.Controllers
@@ -64,7 +67,9 @@ namespace AttendanceSystem.ImportFile.API.Controllers
                             EmployeeId = empId,
                             Date = date,
                             CheckIn = checkIn,
-                            CheckOut = checkOut
+                            CheckOut = checkOut,
+                            Status = DetermineAttendanceStatus(checkIn, checkOut)
+
                         });
                     }
                 }
@@ -78,21 +83,25 @@ namespace AttendanceSystem.ImportFile.API.Controllers
         [HttpPut("edit-pending")]
         public IActionResult EditPendingAttendance([FromBody] EditAttendanceDto dto)
         {
-            if (string.IsNullOrWhiteSpace(dto.EmployeeId) || string.IsNullOrWhiteSpace(dto.Date))
-                return BadRequest("EmployeeId and Date are required.");
+            if (string.IsNullOrWhiteSpace(dto.EmployeeId))
+                return BadRequest("EmployeeId is required.");
 
-            if (!DateTime.TryParse(dto.Date, out var date))
-                return BadRequest("Invalid date format.");
+            // ✅ dto.Date is already DateTime, so no parsing needed
+            var record = _pendingAttendance
+                .FirstOrDefault(x => x.EmployeeId == dto.EmployeeId && x.Date.Date == dto.Date.Date);
 
-            var record = _pendingAttendance.FirstOrDefault(x => x.EmployeeId == dto.EmployeeId && x.Date == date);
             if (record == null)
                 return NotFound("Attendance record not found in pending data.");
 
+            // ✅ Update fields
             record.CheckIn = dto.CheckIn;
             record.CheckOut = dto.CheckOut;
+            record.Status = dto.Status;
             record.Note = dto.Note;
+
             return Ok("Pending attendance record updated successfully.");
         }
+
 
         // حفظ البيانات المؤقتة في الداتا بيز بعد موافقة HR
         [HttpPost("save")]
@@ -108,6 +117,7 @@ namespace AttendanceSystem.ImportFile.API.Controllers
                 {
                     existing.CheckIn = rec.CheckIn;
                     existing.CheckOut = rec.CheckOut;
+                    existing.Status = rec.Status;
                     existing.Note = rec.Note; // Ensure Note is updated as well
                 }
                 else
@@ -119,15 +129,214 @@ namespace AttendanceSystem.ImportFile.API.Controllers
             _pendingAttendance.Clear();
             return Ok("Attendance data saved successfully.");
         }
+        // Get month view data
+        [HttpGet("month-view")]
+        public async Task<IActionResult> GetMonthView([FromServices] AttendanceDbContext db, int year, int month)
+        {
+            // 1️⃣ Determine the date range for the month
+            var startDate = new DateTime(year, month, 1);
+            var endDate = startDate.AddMonths(1).AddDays(-1);
+
+            Console.WriteLine($"📅 Fetching records for {month}/{year} → from {startDate} to {endDate}");
+
+            // 2️⃣ Get attendance records for that month from DB
+            var attendanceData = await db.AttendanceRecords
+                .Where(ar => ar.Date >= startDate && ar.Date <= endDate)
+                .ToListAsync();
+
+            Console.WriteLine($"✅ Retrieved {attendanceData.Count} attendance records for {month}/{year}");
+
+            // 3️⃣ Debugging: print some sample records
+            foreach (var r in attendanceData.Take(5)) // show only first 5
+            {
+                Console.WriteLine($"DB record → EmpID={r.EmployeeId}, Date={r.Date:yyyy-MM-dd}, Status={r.Status}");
+            }
+
+            // 4️⃣ Get all employees
+            var employees = await db.Employees.ToListAsync();
+            Console.WriteLine($"✅ Total Employees: {employees.Count}");
+
+            // 5️⃣ Prepare DTO for UI
+            var monthViewDto = new MonthViewDto
+            {
+                Year = year,
+                Month = month,
+                Days = new List<CalendarDayDto>()
+            };
+
+            // 6️⃣ Loop through each day of the month
+            for (var date = startDate; date <= endDate; date = date.AddDays(1))
+            {
+                // ✅ Filter attendance for the current date
+                var dayAttendance = attendanceData
+                    .Where(ar => ar.Date.Date == date.Date)
+                    .ToList();
+
+                // ✅ Create a list of employee statuses for this day
+                var employeeStatuses = employees.Select(emp =>
+                {
+                    var attendance = dayAttendance.FirstOrDefault(ar => ar.EmployeeId == emp.Id);
+                    return new EmployeeDayStatus
+                    {
+                        EmployeeId = emp.Id,
+                        EmployeeName = emp.Name,
+                        Status = attendance?.Status ?? AttendanceStatus.Absent,
+                        Note = attendance?.Note
+                    };
+                }).ToList();
+
+                // ✅ Count present/absent employees
+                var presentCount = employeeStatuses.Count(es => es.Status == AttendanceStatus.Present);
+                var absentCount = employeeStatuses.Count(es => es.Status == AttendanceStatus.Absent);
+
+                Console.WriteLine($"{date:yyyy-MM-dd} → Present: {presentCount}, Absent: {absentCount}");
+
+                // ✅ Add data for this day to the DTO
+                monthViewDto.Days.Add(new CalendarDayDto
+                {
+                    Date = date,
+                    TopEmployees = employeeStatuses.Take(4).ToList(), // Only top 4 for display in calendar
+                    TotalEmployees = employees.Count,
+                    PresentCount = presentCount,
+                    AbsentCount = absentCount
+                });
+            }
+
+            // ✅ Return to UI
+            return Ok(monthViewDto);
+        }
+
+
+
+        // Get day view data
+        [HttpGet("day-view")]
+        public async Task<IActionResult> GetDayView([FromServices] AttendanceDbContext db, DateTime date)
+        {
+            // ✅ Normalize date (ignore time part for safety)
+            var day = date.Date;
+
+            // ✅ Load all employees and attendance records for the given day
+            var employees = await db.Employees.ToListAsync();
+            var attendanceData = await db.AttendanceRecords
+                .Where(ar => ar.Date.Date == day)
+                .ToListAsync();
+
+            // ✅ Map to DTO
+            var dailyAttendance = employees.Select(emp =>
+            {
+                var attendance = attendanceData.FirstOrDefault(ar => ar.EmployeeId == emp.Id);
+
+                return new DailyAttendanceDto
+                {
+                    EmployeeId = emp.Id,
+                    EmployeeName = emp.Name,
+                    Department = emp.Department,
+                    Date = day,
+                    CheckIn = attendance?.CheckIn ?? string.Empty,
+                    CheckOut = attendance?.CheckOut ?? string.Empty,
+                    Status = attendance?.Status ?? AttendanceStatus.Absent,
+                    Note = attendance?.Note ?? string.Empty
+                };
+            }).ToList();
+
+            return Ok(dailyAttendance);
+        }
+
+        // Get year view data
+        [HttpGet("year-view/{year}")]
+        public async Task<IActionResult> GetYearView([FromServices] AttendanceDbContext db, int year)
+        {
+            var yearViewDto = new YearViewDto
+            {
+                Year = year,
+                Months = new List<MonthSummaryDto>()
+            };
+
+            // ✅ Load all employees ONCE
+            var totalEmployees = await db.Employees.CountAsync();
+
+            for (int month = 1; month <= 12; month++)
+            {
+                var startDate = new DateTime(year, month, 1);
+                var endDate = startDate.AddMonths(1).AddDays(-1);
+
+                // ✅ Fetch attendance for the month
+                var attendanceData = await db.AttendanceRecords
+                    .Where(ar => ar.Date >= startDate && ar.Date <= endDate)
+                    .ToListAsync();
+
+                // ✅ Calculate working days (weekends excluded if needed)
+                int workingDays = GetWorkingDaysInMonth(year, month);
+
+                // ✅ Calculate metrics
+                int totalPossibleAttendance = totalEmployees * workingDays;
+                int actualAttendance = attendanceData.Count(ar => ar.Status == AttendanceStatus.Present);
+
+                double averageAttendance = totalPossibleAttendance > 0
+                    ? (double)actualAttendance / totalPossibleAttendance * 100
+                    : 0;
+
+                // ✅ Add month summary
+                yearViewDto.Months.Add(new MonthSummaryDto
+                {
+                    Month = month,
+                    MonthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month),
+                    TotalWorkingDays = workingDays,
+                    AverageAttendance = Math.Round(averageAttendance, 2)
+                });
+            }
+
+            return Ok(yearViewDto);
+        }
+
+        // Get all employees
+        [HttpGet("employees")]
+        public async Task<IActionResult> GetEmployees([FromServices] AttendanceDbContext db)
+        {
+            var employees = await db.Employees.ToListAsync();
+            return Ok(employees);
+        }
+
+        // Helper method to determine attendance status
+        private AttendanceStatus DetermineAttendanceStatus(string checkIn, string checkOut)
+        {
+            if (string.IsNullOrEmpty(checkIn) && string.IsNullOrEmpty(checkOut))
+                return AttendanceStatus.Absent;
+
+            if (!string.IsNullOrEmpty(checkIn))
+            {
+              
+                return AttendanceStatus.Present;
+            }
+
+            return AttendanceStatus.Present;
+        }
+
+        // Helper method to get working days in a month (excluding weekends)
+        private int GetWorkingDaysInMonth(int year, int month)
+        {
+            var startDate = new DateTime(year, month, 1);
+            var endDate = startDate.AddMonths(1).AddDays(-1);
+            int workingDays = 0;
+
+            for (var date = startDate; date <= endDate; date = date.AddDays(1))
+            {
+                if (date.DayOfWeek != DayOfWeek.Friday && date.DayOfWeek != DayOfWeek.Saturday)
+                    workingDays++;
+            }
+
+            return workingDays;
+        }
     }
 
     // DTO للتعديل
     public class EditAttendanceDto
     {
         public string EmployeeId { get; set; }
-        public string Date { get; set; } // yyyy-MM-dd
+        public DateTime Date { get; set; } // yyyy-MM-dd
         public string CheckIn { get; set; }
         public string CheckOut { get; set; }
+        public AttendanceStatus Status { get; set; }
         public string? Note { get; set; }
     }
 }

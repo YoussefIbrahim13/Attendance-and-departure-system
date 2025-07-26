@@ -1,0 +1,414 @@
+﻿ @page "/calendar/day"
+ @page "/calendar/day/{DateString}"
+@inject AttendanceSystem.ImportFile.ui.Services.AttendanceService AttendanceService
+@inject NavigationManager Navigation
+@using AttendanceSystem.ImportFile.ui.Services
+@using AttendanceSystem.ImportFile.ui.Shared
+
+
+<div class="container-fluid mt-4">
+    <!-- ✅ HEADER -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h2 class="mb-0 fw-bold">@GetDateTitle()</h2>
+                    <p class="text-muted mb-0">@GetDayOfWeek()</p>
+                </div>
+                <div class="btn-group">
+                    <button class="btn btn-outline-primary" @onclick="PreviousDay">
+                        <i class="bi bi-chevron-left"></i> Previous Day
+                    </button>
+                    <button class="btn btn-outline-primary" @onclick="NextDay">
+                        Next Day <i class="bi bi-chevron-right"></i>
+                    </button>
+                    <button class="btn btn-primary ms-2" @onclick="GoToMonthView">
+                        <i class="bi bi-calendar3"></i> Month View
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ✅ LOADING -->
+    @if (isLoading)
+    {
+        <div class="text-center">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    }
+    else if (dayData.Any())
+    {
+        <!-- ✅ SUMMARY CARDS -->
+        <div class="row mb-4">
+            @SummaryCard("Present", AttendanceStatus.Present, "bi bi-check-circle-fill", "present")
+            @SummaryCard("Absent", AttendanceStatus.Absent, "bi bi-x-circle-fill", "absent")
+            @SummaryCard("Vacation", AttendanceStatus.Vacation, "bi bi-calendar-x-fill", "vacation")
+            @SummaryCard("Work From Home", AttendanceStatus.WorkFromHome, "bi bi-house-fill", "wfh")
+        </div>
+
+        <!-- ✅ FILTERS -->
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-search"></i></span>
+                    <input type="text" class="form-control" placeholder="Search employees..."
+                           @bind="searchTerm" @bind:event="oninput" @bind:after="FilterEmployees">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <select class="form-select" @bind="selectedStatus" @bind:after="FilterEmployees">
+                    <option value="">All Statuses</option>
+                    <option value="Present">Present</option>
+                    <option value="Absent">Absent</option>
+                    <option value="Vacation">Vacation</option>
+                    <option value="WorkFromHome">Work From Home</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- ✅ EMPLOYEE TABLE -->
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Employee Attendance Details (@filteredEmployees.Count employees)</h5>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Employee</th>
+                                <th>Department</th>
+                                <th>Status</th>
+                                <th>Check In</th>
+                                <th>Check Out</th>
+                                <th>Working Hours</th>
+                                <th>Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var emp in filteredEmployees)
+                            {
+                                <tr class="employee-row @GetStatusClass(emp.Status)">
+                                    <td>
+                                        <div class="employee-info">
+                                            <div class="employee-avatar">@GetInitials(emp.EmployeeName)</div>
+                                            <div>
+                                                <div class="employee-name">@emp.EmployeeName</div>
+                                                <small class="text-muted">ID: @emp.EmployeeId</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>@emp.Department</td>
+                                    <td>
+                                        <span class="status-badge @GetStatusClass(emp.Status)">
+                                            @GetStatusIcon(emp.Status) @emp.Status
+                                        </span>
+                                    </td>
+                                    <td>@(string.IsNullOrEmpty(emp.CheckIn) ? "--" : $"<span class='time-badge'>{emp.CheckIn}</span>")</td>
+                                    <td>@(string.IsNullOrEmpty(emp.CheckOut) ? "--" : $"<span class='time-badge'>{emp.CheckOut}</span>")</td>
+                                    <td>@(string.IsNullOrEmpty(emp.CheckIn) || string.IsNullOrEmpty(emp.CheckOut)
+                                          ? "--"
+                                          : CalculateWorkingHours(emp.CheckIn, emp.CheckOut))</td>
+                                    <td>@(string.IsNullOrEmpty(emp.Note) ? "--" : emp.Note)</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    .summary-card {
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        border-left: 4px solid;
+    }
+
+    .summary-card.present {
+        border-left-color: #28a745;
+    }
+
+    .summary-card.absent {
+        border-left-color: #dc3545;
+    }
+
+    .summary-card.vacation {
+        border-left-color: #ffc107;
+    }
+
+    .summary-card.wfh {
+        border-left-color: #17a2b8;
+    }
+
+    .summary-icon {
+        font-size: 2.5rem;
+        margin-right: 15px;
+    }
+
+    .summary-card.present .summary-icon {
+        color: #28a745;
+    }
+
+    .summary-card.absent .summary-icon {
+        color: #dc3545;
+    }
+
+    .summary-card.vacation .summary-icon {
+        color: #ffc107;
+    }
+
+    .summary-card.wfh .summary-icon {
+        color: #17a2b8;
+    }
+
+    .summary-number {
+        font-size: 2rem;
+        font-weight: bold;
+        line-height: 1;
+    }
+
+    .summary-label {
+        color: #6c757d;
+        font-size: 0.9rem;
+        margin-top: 5px;
+    }
+
+    .employee-info {
+        display: flex;
+        align-items: center;
+    }
+
+    .employee-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #007bff;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        margin-right: 10px;
+        font-size: 14px;
+    }
+
+    .employee-name {
+        font-weight: 600;
+        color: #333;
+    }
+
+    .status-badge {
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .status-badge.present {
+        background: #d4edda;
+        color: #155724;
+    }
+
+    .status-badge.absent {
+        background: #f8d7da;
+        color: #721c24;
+    }
+
+    .status-badge.vacation {
+        background: #fff3cd;
+        color: #856404;
+    }
+
+    .status-badge.work-from-home {
+        background: #d1ecf1;
+        color: #0c5460;
+    }
+
+    .status-badge.late {
+        background: #ffeaa7;
+        color: #6c5ce7;
+    }
+
+    .status-badge.sick {
+        background: #f5c6cb;
+        color: #721c24;
+    }
+
+    .time-badge {
+        background: #f8f9fa;
+        padding: 4px 8px;
+        border-radius: 6px;
+        font-family: monospace;
+        font-size: 13px;
+    }
+
+    .working-hours {
+        font-weight: 600;
+        color: #28a745;
+    }
+
+    .note-text {
+        max-width: 200px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+    }
+
+    .employee-row.present {
+        background-color: rgba(40, 167, 69, 0.05);
+    }
+
+    .employee-row.absent {
+        background-color: rgba(220, 53, 69, 0.05);
+    }
+
+    .employee-row.vacation {
+        background-color: rgba(255, 193, 7, 0.05);
+    }
+
+    .employee-row.work-from-home {
+        background-color: rgba(23, 162, 184, 0.05);
+    }
+</style>
+
+@code {
+    [Parameter] public string DateString { get; set; } = string.Empty;
+
+    private List<DailyAttendanceDto> dayData = new();
+    private List<DailyAttendanceDto> filteredEmployees = new();
+    private bool isLoading = true;
+    private DateTime selectedDate;
+    private string searchTerm = string.Empty;
+    private string selectedStatus = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (!DateTime.TryParse(DateString, out selectedDate))
+            selectedDate = DateTime.Today;
+
+        await LoadDayData();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (DateTime.TryParse(DateString, out selectedDate))
+            await LoadDayData();
+    }
+
+    private async Task LoadDayData()
+    {
+        isLoading = true;
+        try
+        {
+            dayData = await AttendanceService.GetDayViewAsync(selectedDate);
+            filteredEmployees = new List<DailyAttendanceDto>(dayData);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"❌ Error loading day data: {ex.Message}");
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private void FilterEmployees()
+    {
+        filteredEmployees = dayData.Where(emp =>
+        {
+            bool matchesSearch = string.IsNullOrEmpty(searchTerm) ||
+                emp.EmployeeName.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                emp.Department.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                emp.EmployeeId.Contains(searchTerm, StringComparison.OrdinalIgnoreCase);
+
+            bool matchesStatus = string.IsNullOrEmpty(selectedStatus) ||
+                emp.Status.ToString() == selectedStatus;
+
+            return matchesSearch && matchesStatus;
+        }).ToList();
+    }
+
+    // ✅ Navigation Helpers
+    private void PreviousDay() => Navigation.NavigateTo($"/calendar/day/{selectedDate.AddDays(-1):yyyy-MM-dd}");
+    private void NextDay() => Navigation.NavigateTo($"/calendar/day/{selectedDate.AddDays(1):yyyy-MM-dd}");
+    private void GoToMonthView() => Navigation.NavigateTo($"/calendar/month/{selectedDate.Year}/{selectedDate.Month}");
+
+    // ✅ UI Helpers
+    private string GetDateTitle() => selectedDate.ToString("dddd, MMMM dd, yyyy");
+    private string GetDayOfWeek() => selectedDate.ToString("dddd");
+
+    private string GetStatusClass(AttendanceStatus status) => status switch
+    {
+        AttendanceStatus.Present => "present",
+        AttendanceStatus.Absent => "absent",
+        AttendanceStatus.Vacation => "vacation",
+        AttendanceStatus.WorkFromHome => "work-from-home",
+        _ => "absent"
+    };
+
+    private string GetStatusIcon(AttendanceStatus status) => status switch
+    {
+        AttendanceStatus.Present => "✓",
+        AttendanceStatus.Absent => "✗",
+        AttendanceStatus.Vacation => "🏖️",
+        AttendanceStatus.WorkFromHome => "🏠",
+        _ => "?"
+    };
+
+    private string GetInitials(string name)
+    {
+        if (string.IsNullOrEmpty(name)) return "??";
+        var parts = name.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+        return parts.Length >= 2
+            ? $"{parts[0][0]}{parts[1][0]}".ToUpper()
+            : parts[0].Substring(0, Math.Min(2, parts[0].Length)).ToUpper();
+    }
+
+    private string CalculateWorkingHours(string checkIn, string checkOut)
+    {
+        if (TimeSpan.TryParse(checkIn, out var inTime) && TimeSpan.TryParse(checkOut, out var outTime))
+        {
+            var workingTime = outTime - inTime;
+            return workingTime.TotalMinutes > 0
+                ? $"{workingTime.Hours}h {workingTime.Minutes}m"
+                : "--";
+        }
+        return "--";
+    }
+
+    private int GetStatusCount(AttendanceStatus status) => dayData.Count(emp => emp.Status == status);
+
+    // ✅ Summary Card Helper
+    RenderFragment SummaryCard(string label, AttendanceStatus status, string icon, string cssClass) => __builder =>
+    {
+        __builder.OpenElement(0, "div");
+        __builder.AddAttribute(1, "class", "col-md-3");
+        __builder.AddMarkupContent(2, $@"
+            <div class='summary-card {cssClass}'>
+                <div class='summary-icon'>
+                    <i class='{icon}'></i>
+                </div>
+                <div class='summary-content'>
+                    <div class='summary-number'>{GetStatusCount(status)}</div>
+                    <div class='summary-label'>{label}</div>
+                </div>
+            </div>");
+        __builder.CloseElement();
+    };
+}

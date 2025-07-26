@@ -1,12 +1,121 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "Y:\\project\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.API\\",
-  "Documents": [],
+  "WorkspaceRootPath": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.API\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6A9D7EA5-32AD-4030-9B54-7CF9AFA21D79}|AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj|a:\\manuscalendar\\attendance-and-departure-system\\attendancesystem.importfile.api\\attendancesystem.importfile.api\\controllers\\attendancecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6A9D7EA5-32AD-4030-9B54-7CF9AFA21D79}|AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj|solutionrelative:attendancesystem.importfile.api\\controllers\\attendancecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6A9D7EA5-32AD-4030-9B54-7CF9AFA21D79}|AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj|a:\\manuscalendar\\attendance-and-departure-system\\attendancesystem.importfile.api\\attendancesystem.importfile.api\\shared\\calendarmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6A9D7EA5-32AD-4030-9B54-7CF9AFA21D79}|AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj|solutionrelative:attendancesystem.importfile.api\\shared\\calendarmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6A9D7EA5-32AD-4030-9B54-7CF9AFA21D79}|AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj|a:\\manuscalendar\\attendance-and-departure-system\\attendancesystem.importfile.api\\attendancesystem.importfile.api\\attendancedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6A9D7EA5-32AD-4030-9B54-7CF9AFA21D79}|AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj|solutionrelative:attendancesystem.importfile.api\\attendancedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6A9D7EA5-32AD-4030-9B54-7CF9AFA21D79}|AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj|a:\\manuscalendar\\attendance-and-departure-system\\attendancesystem.importfile.api\\attendancesystem.importfile.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6A9D7EA5-32AD-4030-9B54-7CF9AFA21D79}|AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj|solutionrelative:attendancesystem.importfile.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6A9D7EA5-32AD-4030-9B54-7CF9AFA21D79}|AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj|a:\\manuscalendar\\attendance-and-departure-system\\attendancesystem.importfile.api\\attendancesystem.importfile.api\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6A9D7EA5-32AD-4030-9B54-7CF9AFA21D79}|AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj|solutionrelative:attendancesystem.importfile.api\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API\\Program.cs",
+              "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.API\\Program.cs",
+              "ToolTip": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API\\Program.cs",
+              "RelativeToolTip": "AttendanceSystem.ImportFile.API\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-26T00:37:04.935Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "WeatherForecast.cs",
+              "DocumentMoniker": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API\\WeatherForecast.cs",
+              "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.API\\WeatherForecast.cs",
+              "ToolTip": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API\\WeatherForecast.cs",
+              "RelativeToolTip": "AttendanceSystem.ImportFile.API\\WeatherForecast.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-26T00:37:04.287Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AttendanceDbContext.cs",
+              "DocumentMoniker": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API\\AttendanceDbContext.cs",
+              "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.API\\AttendanceDbContext.cs",
+              "ToolTip": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API\\AttendanceDbContext.cs",
+              "RelativeToolTip": "AttendanceSystem.ImportFile.API\\AttendanceDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-26T00:36:56.375Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CalendarModels.cs",
+              "DocumentMoniker": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API\\Shared\\CalendarModels.cs",
+              "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.API\\Shared\\CalendarModels.cs",
+              "ToolTip": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API\\Shared\\CalendarModels.cs",
+              "RelativeToolTip": "AttendanceSystem.ImportFile.API\\Shared\\CalendarModels.cs",
+              "ViewState": "AgIAAFkAAAAAAAAAAAAIwGQAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-25T22:28:35.333Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AttendanceController.cs",
+              "DocumentMoniker": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API\\Controllers\\AttendanceController.cs",
+              "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.API\\Controllers\\AttendanceController.cs",
+              "ToolTip": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API\\Controllers\\AttendanceController.cs",
+              "RelativeToolTip": "AttendanceSystem.ImportFile.API\\Controllers\\AttendanceController.cs",
+              "ViewState": "AgIAAGsAAAAAAAAAAAAQwPIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-25T21:22:17.883Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

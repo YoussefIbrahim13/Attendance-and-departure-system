@@ -1,3 +1,5 @@
+using AttendanceSystem.ImportFile.API.Shared;
+
 namespace AttendanceSystem.ImportFile.API
 {
     public class AttendanceRecord
@@ -7,6 +9,7 @@ namespace AttendanceSystem.ImportFile.API
         public DateTime Date { get; set; }
         public string CheckIn { get; set; }
         public string CheckOut { get; set; }
+        public AttendanceStatus Status { get; set; } 
         public string? Note { get; set; } // ملاحظة HR
     }
 }

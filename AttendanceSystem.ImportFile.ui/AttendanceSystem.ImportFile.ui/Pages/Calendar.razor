@@ -1,0 +1,255 @@
+﻿@page "/"
+@page "/calendar"
+@inject NavigationManager Navigation
+
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="text-center mb-5">
+                <h1 class="display-4 fw-bold text-primary mb-3">Employee Attendance Calendar</h1>
+                <p class="lead text-muted">Manage and view employee attendance across different time periods</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="row g-4">
+                <!-- Month View Card -->
+                <div class="col-md-4">
+                    <div class="calendar-option-card" @onclick="GoToMonthView">
+                        <div class="card-icon">
+                            <i class="bi bi-calendar3"></i>
+                        </div>
+                        <h3 class="card-title">Month View</h3>
+                        <p class="card-description">
+                            View daily attendance in a monthly calendar grid. See employee status at a glance and double-click any day for detailed view.
+                        </p>
+                        <div class="card-features">
+                            <div class="feature-item">
+                                <i class="bi bi-check-circle text-success"></i>
+                                <span>Daily attendance overview</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="bi bi-check-circle text-success"></i>
+                                <span>Employee status indicators</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="bi bi-check-circle text-success"></i>
+                                <span>Quick navigation</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline-primary btn-lg w-100 mt-3">
+                            Open Month View
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Year View Card -->
+                <div class="col-md-4">
+                    <div class="calendar-option-card" @onclick="GoToYearView">
+                        <div class="card-icon">
+                            <i class="bi bi-calendar-range"></i>
+                        </div>
+                        <h3 class="card-title">Year View</h3>
+                        <p class="card-description">
+                            Browse through months in a year. Click on any month to jump directly to that month's detailed view.
+                        </p>
+                        <div class="card-features">
+                            <div class="feature-item">
+                                <i class="bi bi-check-circle text-success"></i>
+                                <span>Monthly summaries</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="bi bi-check-circle text-success"></i>
+                                <span>Attendance statistics</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="bi bi-check-circle text-success"></i>
+                                <span>Year-over-year comparison</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline-primary btn-lg w-100 mt-3">
+                            Open Year View
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Day View Card -->
+                <div class="col-md-4">
+                    <div class="calendar-option-card" @onclick="GoToTodayView">
+                        <div class="card-icon">
+                            <i class="bi bi-calendar-day"></i>
+                        </div>
+                        <h3 class="card-title">Day View</h3>
+                        <p class="card-description">
+                            Detailed view of all employees' attendance for a specific day. See check-in/out times, working hours, and notes.
+                        </p>
+                        <div class="card-features">
+                            <div class="feature-item">
+                                <i class="bi bi-check-circle text-success"></i>
+                                <span>Complete employee list</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="bi bi-check-circle text-success"></i>
+                                <span>Time tracking details</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="bi bi-check-circle text-success"></i>
+                                <span>Search and filter options</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline-primary btn-lg w-100 mt-3">
+                            View Today
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="quick-actions-card">
+                <h4 class="mb-3">Quick Actions</h4>
+                <div class="d-flex flex-wrap gap-3 justify-content-center">
+                    <button class="btn btn-outline-secondary" @onclick="GoToCurrentMonth">
+                        <i class="bi bi-calendar-month me-2"></i>Current Month
+                    </button>
+                    <button class="btn btn-outline-secondary" @onclick="GoToCurrentYear">
+                        <i class="bi bi-calendar-range me-2"></i>Current Year
+                    </button>
+                    <button class="btn btn-outline-secondary" @onclick="GoToToday">
+                        <i class="bi bi-calendar-day me-2"></i>Today
+                    </button>
+                    <button class="btn btn-outline-secondary" @onclick="GoToImport">
+                        <i class="bi bi-upload me-2"></i>Import Attendance
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .calendar-option-card {
+        background: white;
+        border-radius: 16px;
+        padding: 30px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+        .calendar-option-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            border-color: #007bff;
+        }
+
+    .card-icon {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+        .card-icon i {
+            font-size: 4rem;
+            color: #007bff;
+        }
+
+    .card-title {
+        text-align: center;
+        color: #333;
+        margin-bottom: 15px;
+        font-weight: 600;
+    }
+
+    .card-description {
+        text-align: center;
+        color: #6c757d;
+        margin-bottom: 20px;
+        line-height: 1.6;
+        flex-grow: 1;
+    }
+
+    .card-features {
+        margin-bottom: 20px;
+    }
+
+    .feature-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 8px;
+        font-size: 14px;
+        color: #495057;
+    }
+
+        .feature-item i {
+            margin-right: 8px;
+            font-size: 16px;
+        }
+
+    .quick-actions-card {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        border-radius: 16px;
+        padding: 30px;
+        text-align: center;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+        .quick-actions-card h4 {
+            color: #333;
+            font-weight: 600;
+        }
+
+   
+</style>
+
+@code {
+    private void GoToMonthView()
+    {
+        var today = DateTime.Today;
+        Navigation.NavigateTo($"/calendar/month/{today.Year}/{today.Month}");
+    }
+
+    private void GoToYearView()
+    {
+        var today = DateTime.Today;
+        Navigation.NavigateTo($"/calendar/year/{today.Year}");
+    }
+
+    private void GoToTodayView()
+    {
+        var today = DateTime.Today;
+        Navigation.NavigateTo($"/calendar/day/{today:yyyy-MM-dd}");
+    }
+
+    private void GoToCurrentMonth()
+    {
+        var today = DateTime.Today;
+        Navigation.NavigateTo($"/calendar/month/{today.Year}/{today.Month}");
+    }
+
+    private void GoToCurrentYear()
+    {
+        var today = DateTime.Today;
+        Navigation.NavigateTo($"/calendar/year/{today.Year}");
+    }
+
+    private void GoToToday()
+    {
+        var today = DateTime.Today;
+        Navigation.NavigateTo($"/calendar/day/{today:yyyy-MM-dd}");
+    }
+
+    private void GoToImport()
+    {
+        Navigation.NavigateTo("/AddAttendancePage");
+    }
+}
+
