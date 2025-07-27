@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "32ApuIIdsnI=",
+  "dgSpecHash": "wb9QH2xQ36Q=",
   "success": true,
-  "projectFilePath": "A:\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj",
+  "projectFilePath": "A:\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ehabm\\.nuget\\packages\\microsoft.aspnetcore.authorization\\8.0.18\\microsoft.aspnetcore.authorization.8.0.18.nupkg.sha512",
     "C:\\Users\\ehabm\\.nuget\\packages\\microsoft.aspnetcore.components\\8.0.18\\microsoft.aspnetcore.components.8.0.18.nupkg.sha512",
