@@ -1,0 +1,11 @@
+A:\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\Employees.Shared.deps.json
+A:\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\Employees.Shared.dll
+A:\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\Employees.Shared.pdb
+A:\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\Employees.Shared.GeneratedMSBuildEditorConfig.editorconfig
+A:\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\Employees.Shared.AssemblyInfoInputs.cache
+A:\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\Employees.Shared.AssemblyInfo.cs
+A:\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\Employees.Shared.csproj.CoreCompileInputs.cache
+A:\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\Employees.Shared.dll
+A:\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\refint\Employees.Shared.dll
+A:\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\Employees.Shared.pdb
+A:\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\ref\Employees.Shared.dll

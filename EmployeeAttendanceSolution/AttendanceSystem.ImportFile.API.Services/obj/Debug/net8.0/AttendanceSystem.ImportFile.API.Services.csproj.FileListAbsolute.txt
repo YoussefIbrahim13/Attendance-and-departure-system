@@ -1,0 +1,15 @@
+A:\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\bin\Debug\net8.0\AttendanceSystem.ImportFile.API.Services.deps.json
+A:\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\bin\Debug\net8.0\AttendanceSystem.ImportFile.API.Services.dll
+A:\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\bin\Debug\net8.0\AttendanceSystem.ImportFile.API.Services.pdb
+A:\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\bin\Debug\net8.0\EmployeesModels.Shared.dll
+A:\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\bin\Debug\net8.0\EmployeesModels.Shared.pdb
+A:\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.Services.csproj.AssemblyReference.cache
+A:\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.Services.GeneratedMSBuildEditorConfig.editorconfig
+A:\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.Services.AssemblyInfoInputs.cache
+A:\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.Services.AssemblyInfo.cs
+A:\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.Services.csproj.CoreCompileInputs.cache
+A:\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\obj\Debug\net8.0\Attendan.87D3AE48.Up2Date
+A:\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.Services.dll
+A:\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\obj\Debug\net8.0\refint\AttendanceSystem.ImportFile.API.Services.dll
+A:\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.Services.pdb
+A:\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\obj\Debug\net8.0\ref\AttendanceSystem.ImportFile.API.Services.dll
