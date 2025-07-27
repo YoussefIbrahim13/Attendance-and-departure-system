@@ -79,24 +79,19 @@
             public string Department { get; set; }
             public string Position { get; set; }
         }
-        public record AttendanceDayStatus(
-           string EmployeeId,
-           DateTime Date,
-           AttendanceStatus Status,
-           string? Note
-        );
+        
 
-        //public class AttendanceRecord
-        //{
-        //    public string EmployeeId { get; set; }
-        //    public DateTime Date { get; set; }
-        //    public string CheckIn { get; set; }
-        //    public string CheckOut { get; set; }
-        //    public AttendanceStatus Status { get; set; } // Using the enum here
-        //    public string? Note { get; set; }
-        //}
+        public class AttendanceRecord
+        {
+        public string EmployeeId { get; set; }
+        public DateTime Date { get; set; }
+        public string CheckIn { get; set; }
+        public string CheckOut { get; set; }
+        public AttendanceStatus Status { get; set; } // Using the enum here
+        public string? Note { get; set; }
+        }
 
-        public class EditAttendanceDto
+    public class EditAttendanceDto
         {
             public string EmployeeId { get; set; }
             public DateTime Date { get; set; }

@@ -1,58 +1,33 @@
 ﻿<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
-        <!-- 🏷️ Sidebar Title -->
-        <a class="navbar-brand" >📅 Attendance System</a>
+        <a class="navbar-brand">📅 Attendance System</a>
     </div>
 </div>
 
-<!-- ✅ Sidebar Toggler for mobile view -->
 <input type="checkbox" title="Navigation menu" class="navbar-toggler" />
 
-<!-- ✅ Sidebar Links -->
 <div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
     <nav class="flex-column">
+        @{
+            var navItems = new[]
+            {
+                new { Icon = "bi-calendar-event", Text = "Calendar", Href = "calendar", Match = NavLinkMatch.All },
+                new { Icon = "bi-calendar4-range", Text = "Year View", Href = "calendar/year", Match = NavLinkMatch.Prefix },
+                new { Icon = "bi-calendar3", Text = "Month View", Href = "calendar/month", Match = NavLinkMatch.Prefix },
+                new { Icon = "bi-calendar-week", Text = "Day View", Href = $"/calendar/day/{DateTime.Today:yyyy-MM-dd}", Match = NavLinkMatch.Prefix },
+                new { Icon = "bi-upload", Text = "Attendance Import", Href = "ImportAttendance", Match = NavLinkMatch.Prefix },
+                new { Icon = "bi-people", Text = "Employees", Href = "Employees", Match = NavLinkMatch.Prefix }
+                };
 
-        <!-- 🏠 Home (Calendar Main Page) -->
-        <div class="nav-item px-3">
-            <NavLink class="nav-link d-flex align-items-center" href="calendar" Match="NavLinkMatch.All">
-                <span class="bi bi-calendar-event" aria-hidden="true"></span> <span class="ms-2">Calendar</span>
-            </NavLink>
-        </div>
-
-        <!-- 📊 Year View -->
-        <div class="nav-item px-3">
-            <NavLink class="nav-link d-flex align-items-center" href="calendar/year">
-                <span class="bi bi-calendar4-range" aria-hidden="true"></span> <span class="ms-2">Year View</span>
-            </NavLink>
-        </div>
-
-        <!-- 📆 Month View -->
-        <div class="nav-item px-3">
-            <NavLink class="nav-link d-flex align-items-center" href="calendar/month">
-                <span class="bi bi-calendar3" aria-hidden="true"></span> <span class="ms-2">Month View</span>
-            </NavLink>
-        </div>
-
-        <!-- 📅 Day View -->
-        <div class="nav-item px-3">
-            <NavLink class="nav-link d-flex align-items-center" href="@($"/calendar/day/{DateTime.Today:yyyy-MM-dd}")">
-                <span class="bi bi-calendar-week" aria-hidden="true"></span> <span class="ms-2">Day View</span>
-            </NavLink>
-        </div>
-
-
-        <!-- 📥 Attendance Import -->
-        <div class="nav-item px-3">
-            <NavLink class="nav-link d-flex align-items-center" href="ImportAttendance">
-                <span class="bi bi-upload" aria-hidden="true"></span> <span class="ms-2">Attendance Import</span>
-            </NavLink>
-        </div>
-
-        <!-- 👥 Employees Management -->
-        <div class="nav-item px-3">
-            <NavLink class="nav-link d-flex align-items-center" href="Employees">
-                <span class="bi bi-people" aria-hidden="true"></span> <span class="ms-2">Employees</span>
-            </NavLink>
-        </div>
+            foreach (var item in navItems)
+            {
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link d-flex align-items-start" href="@item.Href" Match="@item.Match">
+                        <span class="@item.Icon" aria-hidden="true"></span>
+                        <span class="ms-1">@item.Text</span>
+                    </NavLink>
+                </div>
+            }
+        }
     </nav>
 </div>

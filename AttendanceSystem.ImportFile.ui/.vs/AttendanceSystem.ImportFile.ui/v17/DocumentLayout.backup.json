@@ -1,65 +1,65 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\",
+  "WorkspaceRootPath": "A:\\New folder\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\manuscalendar\\attendance-and-departure-system\\attendancesystem.importfile.ui\\attendancesystem.importfile.ui\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\new folder\\attendance-and-departure-system\\attendancesystem.importfile.ui\\attendancesystem.importfile.ui\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\manuscalendar\\attendance-and-departure-system\\attendancesystem.importfile.ui\\attendancesystem.importfile.ui\\pages\\calendar.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\pages\\calendar.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\manuscalendar\\attendance-and-departure-system\\attendancesystem.importfile.ui\\attendancesystem.importfile.ui\\pages\\dayview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\new folder\\attendance-and-departure-system\\attendancesystem.importfile.ui\\attendancesystem.importfile.ui\\pages\\dayview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\pages\\dayview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\manuscalendar\\attendance-and-departure-system\\attendancesystem.importfile.ui\\attendancesystem.importfile.ui\\wwwroot\\css\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\wwwroot\\css\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\manuscalendar\\attendance-and-departure-system\\attendancesystem.importfile.ui\\attendancesystem.importfile.ui\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\manuscalendar\\attendance-and-departure-system\\attendancesystem.importfile.ui\\attendancesystem.importfile.ui\\wwwroot\\css\\bootstrap\\bootstrap.min.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\wwwroot\\css\\bootstrap\\bootstrap.min.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\manuscalendar\\attendance-and-departure-system\\attendancesystem.importfile.ui\\attendancesystem.importfile.ui\\pages\\attendanceimport.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\pages\\attendanceimport.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\manuscalendar\\attendance-and-departure-system\\attendancesystem.importfile.ui\\attendancesystem.importfile.ui\\pages\\yearview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\pages\\yearview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\manuscalendar\\attendance-and-departure-system\\attendancesystem.importfile.ui\\attendancesystem.importfile.ui\\pages\\monthview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\pages\\monthview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\manuscalendar\\attendance-and-departure-system\\attendancesystem.importfile.ui\\attendancesystem.importfile.ui\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\manuscalendar\\attendance-and-departure-system\\attendancesystem.importfile.ui\\attendancesystem.importfile.ui\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\manuscalendar\\attendance-and-departure-system\\attendancesystem.importfile.ui\\attendancesystem.importfile.ui\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\manuscalendar\\attendance-and-departure-system\\attendancesystem.importfile.ui\\attendancesystem.importfile.ui\\services\\attendanceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\services\\attendanceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\manuscalendar\\attendance-and-departure-system\\attendancesystem.importfile.ui\\attendancesystem.importfile.ui\\shared\\calendarmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\new folder\\attendance-and-departure-system\\attendancesystem.importfile.ui\\attendancesystem.importfile.ui\\shared\\calendarmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\shared\\calendarmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\manuscalendar\\attendance-and-departure-system\\attendancesystem.importfile.ui\\attendancesystem.importfile.ui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\new folder\\attendance-and-departure-system\\attendancesystem.importfile.ui\\attendancesystem.importfile.ui\\pages\\calendar.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\pages\\calendar.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\new folder\\attendance-and-departure-system\\attendancesystem.importfile.ui\\attendancesystem.importfile.ui\\wwwroot\\css\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\wwwroot\\css\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\new folder\\attendance-and-departure-system\\attendancesystem.importfile.ui\\attendancesystem.importfile.ui\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\new folder\\attendance-and-departure-system\\attendancesystem.importfile.ui\\attendancesystem.importfile.ui\\wwwroot\\css\\bootstrap\\bootstrap.min.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\wwwroot\\css\\bootstrap\\bootstrap.min.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\new folder\\attendance-and-departure-system\\attendancesystem.importfile.ui\\attendancesystem.importfile.ui\\pages\\attendanceimport.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\pages\\attendanceimport.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\new folder\\attendance-and-departure-system\\attendancesystem.importfile.ui\\attendancesystem.importfile.ui\\pages\\yearview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\pages\\yearview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\new folder\\attendance-and-departure-system\\attendancesystem.importfile.ui\\attendancesystem.importfile.ui\\pages\\monthview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\pages\\monthview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\new folder\\attendance-and-departure-system\\attendancesystem.importfile.ui\\attendancesystem.importfile.ui\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\new folder\\attendance-and-departure-system\\attendancesystem.importfile.ui\\attendancesystem.importfile.ui\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\new folder\\attendance-and-departure-system\\attendancesystem.importfile.ui\\attendancesystem.importfile.ui\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\new folder\\attendance-and-departure-system\\attendancesystem.importfile.ui\\attendancesystem.importfile.ui\\services\\attendanceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\services\\attendanceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\new folder\\attendance-and-departure-system\\attendancesystem.importfile.ui\\attendancesystem.importfile.ui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5A0374BF-1333-4B05-9C1D-84B2B88002B1}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -90,11 +90,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "app.css",
-              "DocumentMoniker": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\wwwroot\\css\\app.css",
+              "DocumentMoniker": "A:\\New folder\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\wwwroot\\css\\app.css",
               "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\wwwroot\\css\\app.css",
-              "ToolTip": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\wwwroot\\css\\app.css",
+              "ToolTip": "A:\\New folder\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\wwwroot\\css\\app.css",
               "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\wwwroot\\css\\app.css",
               "ViewState": "AgIAAF4AAAAAAAAAAAAAAGcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
@@ -102,11 +102,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "index.html",
-              "DocumentMoniker": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\wwwroot\\index.html",
+              "DocumentMoniker": "A:\\New folder\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\wwwroot\\index.html",
               "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\wwwroot\\index.html",
-              "ToolTip": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\wwwroot\\index.html",
+              "ToolTip": "A:\\New folder\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\wwwroot\\index.html",
               "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\wwwroot\\index.html",
               "ViewState": "AgIAAAQAAAAAAAAAAAAmwAwAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
@@ -114,11 +114,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "bootstrap.min.css",
-              "DocumentMoniker": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+              "DocumentMoniker": "A:\\New folder\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
               "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
-              "ToolTip": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+              "ToolTip": "A:\\New folder\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
               "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
@@ -126,11 +126,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "_Imports.razor",
-              "DocumentMoniker": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\_Imports.razor",
+              "DocumentMoniker": "A:\\New folder\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\_Imports.razor",
               "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\_Imports.razor",
-              "ToolTip": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\_Imports.razor",
+              "ToolTip": "A:\\New folder\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\_Imports.razor",
               "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\_Imports.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -140,22 +140,22 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "NavMenu.razor",
-              "DocumentMoniker": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Layout\\NavMenu.razor",
+              "DocumentMoniker": "A:\\New folder\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Layout\\NavMenu.razor",
               "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\Layout\\NavMenu.razor",
-              "ToolTip": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Layout\\NavMenu.razor",
-              "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\Layout\\NavMenu.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAgAAAAAAAAAA==",
+              "ToolTip": "A:\\New folder\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Layout\\NavMenu.razor*",
+              "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\Layout\\NavMenu.razor*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-07-26T03:30:18.401Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "MainLayout.razor",
-              "DocumentMoniker": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Layout\\MainLayout.razor",
+              "DocumentMoniker": "A:\\New folder\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Layout\\MainLayout.razor",
               "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\Layout\\MainLayout.razor",
-              "ToolTip": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Layout\\MainLayout.razor",
+              "ToolTip": "A:\\New folder\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Layout\\MainLayout.razor",
               "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\Layout\\MainLayout.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwA8AAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -163,11 +163,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Calendar.razor",
-              "DocumentMoniker": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Pages\\Calendar.razor",
+              "DocumentMoniker": "A:\\New folder\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Pages\\Calendar.razor",
               "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\Pages\\Calendar.razor",
-              "ToolTip": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Pages\\Calendar.razor",
+              "ToolTip": "A:\\New folder\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Pages\\Calendar.razor",
               "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\Pages\\Calendar.razor",
               "ViewState": "AgIAACMAAAAAAAAAAAAvwCkAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -175,11 +175,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "App.razor",
-              "DocumentMoniker": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\App.razor",
+              "DocumentMoniker": "A:\\New folder\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\App.razor",
               "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\App.razor",
-              "ToolTip": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\App.razor",
+              "ToolTip": "A:\\New folder\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\App.razor",
               "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\App.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -187,23 +187,24 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "DayView.razor",
-              "DocumentMoniker": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Pages\\DayView.razor",
+              "DocumentMoniker": "A:\\New folder\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Pages\\DayView.razor",
               "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\Pages\\DayView.razor",
-              "ToolTip": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Pages\\DayView.razor",
+              "ToolTip": "A:\\New folder\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Pages\\DayView.razor",
               "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\Pages\\DayView.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAGAAAAAAAAAAAAAAAG4AAABmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-25T22:41:45.912Z"
+              "WhenOpened": "2025-07-25T22:41:45.912Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "AttendanceImport.razor",
-              "DocumentMoniker": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Pages\\AttendanceImport.razor",
+              "DocumentMoniker": "A:\\New folder\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Pages\\AttendanceImport.razor",
               "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\Pages\\AttendanceImport.razor",
-              "ToolTip": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Pages\\AttendanceImport.razor",
+              "ToolTip": "A:\\New folder\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Pages\\AttendanceImport.razor",
               "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\Pages\\AttendanceImport.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -211,11 +212,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "MonthView.razor",
-              "DocumentMoniker": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Pages\\MonthView.razor",
+              "DocumentMoniker": "A:\\New folder\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Pages\\MonthView.razor",
               "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\Pages\\MonthView.razor",
-              "ToolTip": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Pages\\MonthView.razor",
+              "ToolTip": "A:\\New folder\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Pages\\MonthView.razor",
               "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\Pages\\MonthView.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -223,23 +224,24 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 2,
               "Title": "CalendarModels.cs",
-              "DocumentMoniker": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Shared\\CalendarModels.cs",
+              "DocumentMoniker": "A:\\New folder\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Shared\\CalendarModels.cs",
               "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\Shared\\CalendarModels.cs",
-              "ToolTip": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Shared\\CalendarModels.cs",
+              "ToolTip": "A:\\New folder\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Shared\\CalendarModels.cs",
               "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\Shared\\CalendarModels.cs",
-              "ViewState": "AgIAAGEAAAAAAAAAAAAkwBMAAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAvwFgAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-25T22:25:00.124Z"
+              "WhenOpened": "2025-07-25T22:25:00.124Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 14,
               "Title": "Program.cs",
-              "DocumentMoniker": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Program.cs",
+              "DocumentMoniker": "A:\\New folder\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Program.cs",
               "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\Program.cs",
-              "ToolTip": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Program.cs",
+              "ToolTip": "A:\\New folder\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Program.cs",
               "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -247,11 +249,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "AttendanceService.cs",
-              "DocumentMoniker": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Services\\AttendanceService.cs",
+              "DocumentMoniker": "A:\\New folder\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Services\\AttendanceService.cs",
               "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\Services\\AttendanceService.cs",
-              "ToolTip": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Services\\AttendanceService.cs",
+              "ToolTip": "A:\\New folder\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Services\\AttendanceService.cs",
               "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\Services\\AttendanceService.cs",
               "ViewState": "AgIAADsAAAAAAAAAAAA9wEkAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -259,11 +261,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "YearView.razor",
-              "DocumentMoniker": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Pages\\YearView.razor",
+              "DocumentMoniker": "A:\\New folder\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Pages\\YearView.razor",
               "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\Pages\\YearView.razor",
-              "ToolTip": "A:\\ManusCalendar\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Pages\\YearView.razor",
+              "ToolTip": "A:\\New folder\\Attendance-and-departure-system\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui\\Pages\\YearView.razor",
               "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\Pages\\YearView.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",

@@ -107,8 +107,8 @@
                                             @GetStatusIcon(emp.Status) @emp.Status
                                         </span>
                                     </td>
-                                    <td>@(string.IsNullOrEmpty(emp.CheckIn) ? "--" : $"<span class='time-badge'>{emp.CheckIn}</span>")</td>
-                                    <td>@(string.IsNullOrEmpty(emp.CheckOut) ? "--" : $"<span class='time-badge'>{emp.CheckOut}</span>")</td>
+                                    <td>@(string.IsNullOrEmpty(emp.CheckIn) ? "--" : $"{emp.CheckIn}")</td>
+                                    <td>@(string.IsNullOrEmpty(emp.CheckOut) ? "--" : $"{emp.CheckOut}")</td>
                                 </tr>
                             }
                         </tbody>

@@ -380,14 +380,5 @@ namespace AttendanceSystem.ImportFile.API.Controllers
         }
     }
 
-    // DTO للتعديل
-    public class EditAttendanceDto
-    {
-        public string EmployeeId { get; set; }
-        public DateTime Date { get; set; } // yyyy-MM-dd
-        public string CheckIn { get; set; }
-        public string CheckOut { get; set; }
-        public AttendanceStatus Status { get; set; }
-        public string? Note { get; set; }
-    }
+   
 }

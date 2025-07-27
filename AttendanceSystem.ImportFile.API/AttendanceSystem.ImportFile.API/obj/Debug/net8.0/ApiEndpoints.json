@@ -1,6 +1,22 @@
 [
   {
     "ContainingType": "AttendanceSystem.ImportFile.API.Controllers.AttendanceController",
+    "Method": "AddEmployee",
+    "RelativePath": "Attendance/add-employee",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "employeeDto",
+        "Type": "AttendanceSystem.ImportFile.API.Shared.Employee",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AttendanceSystem.ImportFile.API.Controllers.AttendanceController",
     "Method": "GetDayView",
     "RelativePath": "Attendance/day-view",
     "HttpMethod": "GET",
@@ -17,6 +33,22 @@
   },
   {
     "ContainingType": "AttendanceSystem.ImportFile.API.Controllers.AttendanceController",
+    "Method": "DeleteEmployee",
+    "RelativePath": "Attendance/delete-employee/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AttendanceSystem.ImportFile.API.Controllers.AttendanceController",
     "Method": "EditPendingAttendance",
     "RelativePath": "Attendance/edit-pending",
     "HttpMethod": "PUT",
@@ -25,7 +57,7 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "AttendanceSystem.ImportFile.API.Controllers.EditAttendanceDto",
+        "Type": "AttendanceSystem.ImportFile.API.Shared.EditAttendanceDto",
         "IsRequired": true
       }
     ],
@@ -74,6 +106,22 @@
   },
   {
     "ContainingType": "AttendanceSystem.ImportFile.API.Controllers.AttendanceController",
+    "Method": "UpdateEmployee",
+    "RelativePath": "Attendance/update-employee",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "employeeDto",
+        "Type": "AttendanceSystem.ImportFile.API.Shared.Employee",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AttendanceSystem.ImportFile.API.Controllers.AttendanceController",
     "Method": "UploadCsv",
     "RelativePath": "Attendance/upload-csv",
     "HttpMethod": "POST",
@@ -103,26 +151,5 @@
       }
     ],
     "ReturnTypes": []
-  },
-  {
-    "ContainingType": "AttendanceSystem.ImportFile.API.Controllers.WeatherForecastController",
-    "Method": "Get",
-    "RelativePath": "WeatherForecast",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[AttendanceSystem.ImportFile.API.WeatherForecast, AttendanceSystem.ImportFile.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ],
-    "EndpointName": "GetWeatherForecast"
   }
 ]
