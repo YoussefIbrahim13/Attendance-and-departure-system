@@ -346,8 +346,41 @@ namespace AttendanceSystem.ImportFile.API.Controllers
             return Ok($"Attendance status updated successfully from {request.DateFrom:yyyy-MM-dd} to {request.DateTo:yyyy-MM-dd}");
         }
 
+        // update attendance status for a single date
+        [HttpPut("update-attendance-record")]
+        public async Task<IActionResult> UpdateAttendanceStatusForDate([FromServices] AttendanceDbContext db, AttendanceRecord employeeAttendance)
+        {
+            if (string.IsNullOrWhiteSpace(employeeAttendance.EmployeeId))
+                return BadRequest("Employee ID is required.");
+            // Check if the record exists
+            var record = await db.AttendanceRecords
+                .FirstOrDefaultAsync(ar => ar.EmployeeId == employeeAttendance.EmployeeId && ar.Date.Date == employeeAttendance.Date);
+            if (record == null)
+            {
+                // Create a new record if it doesn't exist
+                record = new AttendanceRecord
+                {
+                    EmployeeId = employeeAttendance.EmployeeId,
+                    Date = employeeAttendance.Date,
+                    Status = employeeAttendance.Status,
+                    Note = employeeAttendance.Note,
+                    CheckIn = employeeAttendance.CheckIn,
+                    CheckOut = employeeAttendance.CheckOut
+                };
+                db.AttendanceRecords.Add(record);
+            }
+            else
+            {
+                // Update existing record
+                record.Status = employeeAttendance.Status;
+                record.CheckOut = employeeAttendance.CheckOut;
+                record.CheckIn = employeeAttendance.CheckIn;
+                record.Note = employeeAttendance.Note;
+            }
+            await db.SaveChangesAsync();
+            return Ok($"Attendance updated for {employeeAttendance.EmployeeId} ");
+        }
+
 
     }
-
-
 }

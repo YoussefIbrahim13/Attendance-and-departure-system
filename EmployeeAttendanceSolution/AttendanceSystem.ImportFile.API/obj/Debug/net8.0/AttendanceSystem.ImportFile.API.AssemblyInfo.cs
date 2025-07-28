@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AttendanceSystem.ImportFile.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5af7d34938d2907908d03fefa43cf0b03c242d1d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f90f4ff57aa73c2bae73c72bdf963297bf12b57c")]
 [assembly: System.Reflection.AssemblyProductAttribute("AttendanceSystem.ImportFile.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AttendanceSystem.ImportFile.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

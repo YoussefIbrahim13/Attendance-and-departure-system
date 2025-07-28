@@ -106,6 +106,22 @@
   },
   {
     "ContainingType": "AttendanceSystem.ImportFile.API.Controllers.AttendanceController",
+    "Method": "UpdateAttendanceStatusForDate",
+    "RelativePath": "Attendance/update-attendance-record",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "employeeAttendance",
+        "Type": "EmployeesModels.Shared.AttendanceRecord",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AttendanceSystem.ImportFile.API.Controllers.AttendanceController",
     "Method": "UpdateAttendanceStatus",
     "RelativePath": "Attendance/update-attendance-status",
     "HttpMethod": "PUT",

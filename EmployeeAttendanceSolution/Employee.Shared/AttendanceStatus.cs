@@ -6,9 +6,7 @@
             Absent,
             Vacation,
             WorkFromHome,
-            //Sick,
-            //Late,
-            //EarlyLeave
+           
         }
 
 }

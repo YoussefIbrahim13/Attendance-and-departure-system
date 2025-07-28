@@ -167,6 +167,26 @@ namespace AttendanceSystem.ImportFile.ui.Services
                 return false;
             }
         }
+        public async Task<bool> UpdateEmployeeAttendanceRecordAsync(AttendanceRecord EmployeeAttedanceRecord)
+        {
+            try
+            {
+                var response = await _http.PutAsJsonAsync("Attendance/update-attendance-record", EmployeeAttedanceRecord);
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+                var errorContent = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"Error updating attendance record: {response.StatusCode} - {errorContent}");
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception updating attendance record: {ex.Message}");
+                return false;
+            }
+
+        }
 
     }
 
