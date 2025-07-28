@@ -1,0 +1,211 @@
+﻿@inject AttendanceSystem.ImportFile.ui.Services.AttendanceService AttendanceService
+@inject ISnackbar Snackbar
+@using MudBlazor
+@using EmployeesModels.Shared
+
+<MudDialog>
+    <DialogContent>
+        <MudContainer Style="max-width: 500px;">
+            <MudText Typo="Typo.h6" Class="mb-4">Update Employee Attendance Status</MudText>
+
+            <MudForm @ref="form" @bind-IsValid="@isFormValid">
+                <MudStack Spacing="3">
+                    <MudSelect T="string"
+                               @bind-Value="selectedEmployeeId"
+                               Label="Select Employee"
+                               Variant="Variant.Outlined"
+                               Required="true"
+                               RequiredError="Employee is required"
+                               Dense="true"
+                               Style="max-height: 300px; overflow-y: auto;"
+                               AnchorOrigin="Origin.BottomCenter"
+                               TransformOrigin="Origin.TopCenter">
+
+                        @if (employees != null)
+                        {
+                            @foreach (var emp in employees)
+                            {
+                                <MudSelectItem Value="@emp.Id">@emp.Name</MudSelectItem>
+                            }
+                        }
+                    </MudSelect>
+
+                    <MudDatePicker @bind-Date="dateFrom"
+                                   Label="Date From"
+                                   Variant="Variant.Outlined"
+                                   Required="true"
+                                   RequiredError="Date From is required"
+                                   Editable="true" />
+
+                    <MudDatePicker @bind-Date="dateTo"
+                                   Label="Date To"
+                                   Variant="Variant.Outlined"
+                                   Required="true"
+                                   RequiredError="Date To is required"
+                                   Editable="true" />
+
+                    <MudSelect @bind-Value="selectedStatus"
+                               Label="Status"
+                               Variant="Variant.Outlined"
+                               Required="true"
+                               RequiredError="Status is required">
+                        <MudSelectItem Value="@AttendanceStatus.Present">
+                            <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                                <div class="status-indicator present"></div>
+                                <MudText>Present</MudText>
+                            </MudStack>
+                        </MudSelectItem>
+                        <MudSelectItem Value="@AttendanceStatus.Absent">
+                            <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                                <div class="status-indicator absent"></div>
+                                <MudText>Absent</MudText>
+                            </MudStack>
+                        </MudSelectItem>
+                        <MudSelectItem Value="@AttendanceStatus.Vacation">
+                            <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                                <div class="status-indicator vacation"></div>
+                                <MudText>Vacation</MudText>
+                            </MudStack>
+                        </MudSelectItem>
+                        <MudSelectItem Value="@AttendanceStatus.WorkFromHome">
+                            <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                                <div class="status-indicator work-from-home"></div>
+                                <MudText>Work From Home</MudText>
+                            </MudStack>
+                        </MudSelectItem>
+                    </MudSelect>
+                </MudStack>
+            </MudForm>
+        </MudContainer>
+    </DialogContent>
+
+    <DialogActions>
+        <MudButton OnClick="Cancel" Variant="Variant.Text">Cancel</MudButton>
+        <MudButton Color="Color.Primary"
+                   Variant="Variant.Filled"
+                   OnClick="Submit"
+                   Disabled="@(!isFormValid || isProcessing)"
+                   Loading="@isProcessing">
+            Update Attendance
+        </MudButton>
+    </DialogActions>
+</MudDialog>
+
+<style>
+    .status-indicator {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        display: inline-block;
+    }
+
+        .status-indicator.present {
+            background-color: var(--mud-palette-success);
+        }
+
+        .status-indicator.absent {
+            background-color: var(--mud-palette-error);
+        }
+
+        .status-indicator.vacation {
+            background-color: var(--mud-palette-warning);
+        }
+
+        .status-indicator.work-from-home {
+            background-color: var(--mud-palette-info);
+        }
+</style>
+
+@code {
+
+    // Add these parameters at the top of your code block
+    [Parameter]
+    public DateTime InitialDate { get; set; }
+
+    [Parameter]
+    public DateTime? DefaultDateFrom { get; set; }
+
+    [Parameter]
+    public DateTime? DefaultDateTo { get; set; }
+
+    private string? selectedEmployeeId;
+    private List<AttendanceSystem.ImportFile.ui.Services.EmployeeDto> employees = new();
+    private bool isProcessing;
+
+    [CascadingParameter]
+    private IDialogReference DialogReference { get; set; } = default!;
+
+    private MudForm form = null!;
+    private bool isFormValid;
+    private DateTime? dateFrom;
+    private DateTime? dateTo;
+    private AttendanceStatus selectedStatus = AttendanceStatus.Present;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Set dates from parameters or fall back to InitialDate
+        dateFrom = DefaultDateFrom ?? InitialDate;
+        dateTo = DefaultDateTo ?? InitialDate;
+        await LoadEmployees();
+    }
+
+    private void Cancel()
+    {
+        DialogReference?.Close(DialogResult.Cancel()); 
+    }
+
+    private async Task LoadEmployees()
+    {
+        employees = await AttendanceService.GetAllEmployeesAsync();
+    }
+
+    private async Task Submit()
+    {
+        if (!form.IsValid || !dateFrom.HasValue || !dateTo.HasValue || string.IsNullOrEmpty(selectedEmployeeId))
+        {
+            return;
+        }
+
+        if (dateTo.Value < dateFrom.Value)
+        {
+            Snackbar.Add("Date To cannot be before Date From", Severity.Error);
+            return;
+        }
+
+        isProcessing = true;
+
+        try
+        {
+            var request = new EmployeeAttendanceRequest
+            {
+                EmployeeId = selectedEmployeeId,
+                DateFrom = dateFrom.Value,
+                DateTo = dateTo.Value,
+                Status = selectedStatus,
+               
+            };
+
+            var success = await AttendanceService.UpdateEmployeeAttendanceStatusAsync(request);
+
+            if (success)
+            {
+                Snackbar.Add("Attendance status updated successfully", Severity.Success);
+                DialogReference?.Close(DialogResult.Ok(true));
+
+            }
+            else
+            {
+                Snackbar.Add("Failed to update attendance status", Severity.Error);
+            }
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Error: {ex.Message}", Severity.Error);
+        }
+        finally
+        {
+            isProcessing = false;
+        }
+    }
+}
+

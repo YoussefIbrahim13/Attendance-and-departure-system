@@ -1,4 +1,55 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿@inject NavigationManager Navigation
+
+<MudNavMenu>
+    <MudNavLink Href="/" Match="NavLinkMatch.All">
+        📅 Attendance System
+    </MudNavLink>
+
+    <!-- ✅ MudNavGroup with TitleContent and ChildContent -->
+    <MudNavGroup Expanded="true" OnClick="@(() => Navigation.NavigateTo("/calendar"))">
+
+        <!-- ✅ Custom title section with icon -->
+        <TitleContent>
+            <MudIcon Icon="@Icons.Material.Filled.CalendarMonth" Class="me-2" />
+            Calendar Views
+        </TitleContent>
+
+        <!-- ✅ ChildContent wraps all submenu items -->
+        <ChildContent>
+            <MudNavLink Href="calendar/year" Match="NavLinkMatch.Prefix">
+                <MudIcon Icon="@Icons.Material.Filled.CalendarToday" Class="me-2" />
+                Year View
+            </MudNavLink>
+
+            <MudNavLink Href="calendar/month" Match="NavLinkMatch.Prefix">
+                <MudIcon Icon="@Icons.Material.Filled.CalendarMonth" Class="me-2" />
+                Month View
+            </MudNavLink>
+
+            <MudNavLink Href="@($"/calendar/day/{DateTime.Today:yyyy-MM-dd}")" Match="NavLinkMatch.Prefix">
+                <MudIcon Icon="@Icons.Material.Filled.Today" Class="me-2" />
+                Day View
+            </MudNavLink>
+        </ChildContent>
+
+    </MudNavGroup>
+
+    <!-- ✅ Attendance Import link -->
+    <MudNavLink Href="/about" Match="NavLinkMatch.Prefix">
+        <MudIcon Icon="@Icons.Material.Filled.FileUpload" Class="me-2" />
+        Attendance Import
+    </MudNavLink>
+
+    <!-- ✅ Employees link -->
+    <MudNavLink Href="/servers" Match="NavLinkMatch.Prefix">
+        <MudIcon Icon="@Icons.Material.Filled.PersonAdd" Class="me-2" />
+        Employees
+    </MudNavLink>
+</MudNavMenu>
+
+
+
+@* <div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand">📅 Attendance System</a>
     </div>
@@ -30,4 +81,4 @@
             }
         }
     </nav>
-</div>
+</div> *@

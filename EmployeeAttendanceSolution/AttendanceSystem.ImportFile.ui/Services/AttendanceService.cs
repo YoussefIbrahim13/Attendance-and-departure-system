@@ -146,6 +146,28 @@ namespace AttendanceSystem.ImportFile.ui.Services
             await Task.CompletedTask;
         }
 
+        public async Task<bool> UpdateEmployeeAttendanceStatusAsync(EmployeeAttendanceRequest employeeAttendance)
+        {
+            try
+            {
+                var response = await _http.PutAsJsonAsync("Attendance/update-attendance-status", employeeAttendance);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+
+                var errorContent = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"Error updating attendance: {response.StatusCode} - {errorContent}");
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception updating attendance: {ex.Message}");
+                return false;
+            }
+        }
+
     }
 
     public class EmployeeDto

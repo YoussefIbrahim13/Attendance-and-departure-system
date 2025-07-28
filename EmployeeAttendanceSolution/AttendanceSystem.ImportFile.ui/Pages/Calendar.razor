@@ -2,254 +2,165 @@
 @page "/calendar"
 @inject NavigationManager Navigation
 
-<div class="container-fluid mt-4">
-    <div class="row">
-        <div class="col-12">
-            <div class="text-center mb-5">
-                <h1 class="display-4 fw-bold text-primary mb-3">Employee Attendance Calendar</h1>
-                <p class="lead text-muted">Manage and view employee attendance across different time periods</p>
-            </div>
-        </div>
-    </div>
+<MudContainer MaxWidth="MaxWidth.False" Class="m-0 p-0" Style="min-height: calc(100vh - 64px);">
 
-    <div class="row justify-content-center">
-        <div class="col-lg-10">
-            <div class="row g-4">
-                <!-- Month View Card -->
-                <div class="col-md-4">
-                    <div class="calendar-option-card" @onclick="GoToMonthView">
-                        <div class="card-icon">
-                            <i class="bi bi-calendar3"></i>
-                        </div>
-                        <h3 class="card-title">Month View</h3>
-                        <p class="card-description">
-                            View daily attendance in a monthly calendar grid. See employee status at a glance and double-click any day for detailed view.
-                        </p>
-                        <div class="card-features">
-                            <div class="feature-item">
-                                <i class="bi bi-check-circle text-success"></i>
-                                <span>Daily attendance overview</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="bi bi-check-circle text-success"></i>
-                                <span>Employee status indicators</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="bi bi-check-circle text-success"></i>
-                                <span>Quick navigation</span>
-                            </div>
-                        </div>
-                        <button class="btn btn-outline-primary btn-lg w-100 mt-3">
-                            Open Month View
-                        </button>
-                    </div>
-                </div>
+    <MudGrid Justify="Justify.Center">
+        <MudItem xs="12" Class="text-center mb-5">
+            <MudText Typo="Typo.h3"  Class="fw-bold mb-2">
+                Employee Attendance Calendar
+            </MudText>
+            <MudText Typo="Typo.subtitle1" >
+                Manage and view employee attendance across different time periods
+            </MudText>
+        </MudItem>
+    </MudGrid>
 
-                <!-- Year View Card -->
-                <div class="col-md-4">
-                    <div class="calendar-option-card" @onclick="GoToYearView">
-                        <div class="card-icon">
-                            <i class="bi bi-calendar-range"></i>
-                        </div>
-                        <h3 class="card-title">Year View</h3>
-                        <p class="card-description">
-                            Browse through months in a year. Click on any month to jump directly to that month's detailed view.
-                        </p>
-                        <div class="card-features">
-                            <div class="feature-item">
-                                <i class="bi bi-check-circle text-success"></i>
-                                <span>Monthly summaries</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="bi bi-check-circle text-success"></i>
-                                <span>Attendance statistics</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="bi bi-check-circle text-success"></i>
-                                <span>Year-over-year comparison</span>
-                            </div>
-                        </div>
-                        <button class="btn btn-outline-primary btn-lg w-100 mt-3">
-                            Open Year View
-                        </button>
-                    </div>
-                </div>
+    <!-- Cards Section -->
+    <MudGrid Justify="Justify.Center" Spacing="3" >
+        <!-- Month View Card -->
+        <MudItem md="4" Class="h-100" Style="min-height: 400px;">
+            <MudCard Elevation="3" ElevationHover="5" Class="calendar-option-card h-100" Style="text-align:center; transition: all 0.3s ease;">
+                <MudCardContent>
+                    <MudIcon Icon="@Icons.Material.Filled.CalendarMonth" Color="Color.Primary" Size="Size.Large" Class="mb-2" />
+                    <MudText Typo="Typo.h5" Class="mb-1">Month View</MudText>
+                    <MudText Typo="Typo.body2" Color="Color.Primary">
+                        View daily attendance in a monthly calendar with employee status at a glance. Double-click a day for details.
+                    </MudText>
+                    <MudList T="string" Dense="true" Class="mt-3">
+                        <MudListItem>
+                            <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Success" Size="Size.Small" Class="me-1" />
+                            Daily attendance overview
+                        </MudListItem>
+                        <MudListItem>
+                            <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Success" Size="Size.Small" Class="me-1" />
+                            Employee status indicators
+                        </MudListItem>
+                        <MudListItem>
+                            <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Success" Size="Size.Small" Class="me-1" />
+                            Quick navigation
+                        </MudListItem>
+                    </MudList>
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButton Variant="Variant.Outlined" Color="Color.Primary" FullWidth="true" OnClick="GoToMonthView">
+                        Open Month View
+                    </MudButton>
+                </MudCardActions>
+            </MudCard>
+        </MudItem>
 
-                <!-- Day View Card -->
-                <div class="col-md-4">
-                    <div class="calendar-option-card" @onclick="GoToTodayView">
-                        <div class="card-icon">
-                            <i class="bi bi-calendar-day"></i>
-                        </div>
-                        <h3 class="card-title">Day View</h3>
-                        <p class="card-description">
-                            Detailed view of all employees' attendance for a specific day. See check-in/out times, working hours, and notes.
-                        </p>
-                        <div class="card-features">
-                            <div class="feature-item">
-                                <i class="bi bi-check-circle text-success"></i>
-                                <span>Complete employee list</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="bi bi-check-circle text-success"></i>
-                                <span>Time tracking details</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="bi bi-check-circle text-success"></i>
-                                <span>Search and filter options</span>
-                            </div>
-                        </div>
-                        <button class="btn btn-outline-primary btn-lg w-100 mt-3">
-                            View Today
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+        <!-- Year View Card -->
+        <MudItem md="4" Class="h-100">
+            <MudCard Elevation="3" ElevationHover="5" Class="calendar-option-card h-100" Style="text-align:center; transition: all 0.3s ease;">
+                <MudCardContent>
+                    <MudIcon Icon="@Icons.Material.Filled.DateRange" Color="Color.Primary" Size="Size.Large" Class="mb-2" />
+                    <MudText Typo="Typo.h5" Class="mb-1">Year View</MudText>
+                    <MudText Typo="Typo.body2" Color="Color.Primary">
+                        Browse through months in a year. Click on any month to jump directly to that month's detailed view.
+                    </MudText>
+                    <MudList T="string" Dense="true" Class="mt-3">
+                        <MudListItem>
+                            <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Success" Size="Size.Small" Class="me-1" />
+                            Daily attendance overview
+                        </MudListItem>
+                        <MudListItem>
+                            <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Success" Size="Size.Small" Class="me-1" />
+                            Employee status indicators
+                        </MudListItem>
+                        <MudListItem>
+                            <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Success" Size="Size.Small" Class="me-1" />
+                            Quick navigation
+                        </MudListItem>
+                    </MudList>
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButton Variant="Variant.Outlined" Color="Color.Primary" FullWidth="true" OnClick="GoToYearView">
+                        Open Year View
+                    </MudButton>
+                </MudCardActions>
+            </MudCard>
+        </MudItem>
+
+        <!-- Day View Card -->
+        <MudItem md="4" Class="h-100">
+            <MudCard Elevation="3" ElevationHover="5" Class="calendar-option-card h-100" Style="text-align:center; transition: all 0.3s ease;">
+                <MudCardContent>
+                    <MudIcon Icon="@Icons.Material.Filled.Today" Color="Color.Primary" Size="Size.Large" Class="mb-2" />
+                    <MudText Typo="Typo.h5" Class="mb-1">Day View</MudText>
+                    <MudText Typo="Typo.body2" Color="Color.Primary">
+                        Detailed view of all employees' attendance for a specific day. See check-in/out times, working hours, and notes.
+                    </MudText>
+                    <MudList T="string" Dense="true" Class="mt-3">
+                        <MudListItem>
+                            <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Success" Size="Size.Small" Class="me-1" />
+                            Daily attendance overview
+                        </MudListItem>
+                        <MudListItem>
+                            <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Success" Size="Size.Small" Class="me-1" />
+                            Employee status indicators
+                        </MudListItem>
+                        <MudListItem>
+                            <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Success" Size="Size.Small" Class="me-1" />
+                            Quick navigation
+                        </MudListItem>
+                    </MudList>
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButton Variant="Variant.Outlined" Color="Color.Primary" FullWidth="true" OnClick="GoToTodayView">
+                        View Today
+                    </MudButton>
+                </MudCardActions>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+
 
     <!-- Quick Actions -->
-    <div class="row mt-5">
-        <div class="col-12">
-            <div class="quick-actions-card">
-                <h4 class="mb-3">Quick Actions</h4>
-                <div class="d-flex flex-wrap gap-3 justify-content-center">
-                    <button class="btn btn-outline-secondary" @onclick="GoToCurrentMonth">
-                        <i class="bi bi-calendar-month me-2"></i>Current Month
-                    </button>
-                    <button class="btn btn-outline-secondary" @onclick="GoToCurrentYear">
-                        <i class="bi bi-calendar-range me-2"></i>Current Year
-                    </button>
-                    <button class="btn btn-outline-secondary" @onclick="GoToToday">
-                        <i class="bi bi-calendar-day me-2"></i>Today
-                    </button>
-                    <button class="btn btn-outline-secondary" @onclick="GoToImport">
-                        <i class="bi bi-upload me-2"></i>Import Attendance
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    <MudStack Row="true" Spacing="2" Justify="Justify.Center" AlignItems="AlignItems.Center" Wrap="Wrap.NoWrap">
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="rounded-pill px-4 py-2 d-flex align-items-center" Style="min-height:48px;" OnClick="GoToCurrentMonth">
+            <MudIcon Icon="@Icons.Material.Filled.CalendarMonth" Class="me-2" />
+            Current Month
+        </MudButton>
 
-<style>
-    .calendar-option-card {
-        background: white;
-        border-radius: 16px;
-        padding: 30px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        cursor: pointer;
-        transition: all 0.3s ease;
-        border: 2px solid transparent;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-    }
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="rounded-pill px-4 py-2 d-flex align-items-center" Style="min-height:48px;" OnClick="GoToCurrentYear">
+            <MudIcon Icon="@Icons.Material.Filled.DateRange" Class="me-2" />
+            Current Year
+        </MudButton>
 
-        .calendar-option-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-            border-color: #007bff;
-        }
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="rounded-pill px-4 py-2 d-flex align-items-center" Style="min-height:48px;" OnClick="GoToToday">
+            <MudIcon Icon="@Icons.Material.Filled.Today" Class="me-2" />
+            Today
+        </MudButton>
 
-    .card-icon {
-        text-align: center;
-        margin-bottom: 20px;
-    }
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="rounded-pill px-4 py-2 d-flex align-items-center" Style="min-height:48px;" OnClick="GoToImport">
+            <MudIcon Icon="@Icons.Material.Filled.Upload" Class="me-2" />
+            Import Attendance
+        </MudButton>
+    </MudStack>
 
-        .card-icon i {
-            font-size: 4rem;
-            color: #007bff;
-        }
+</MudContainer>
 
-    .card-title {
-        text-align: center;
-        color: #333;
-        margin-bottom: 15px;
-        font-weight: 600;
-    }
-
-    .card-description {
-        text-align: center;
-        color: #6c757d;
-        margin-bottom: 20px;
-        line-height: 1.6;
-        flex-grow: 1;
-    }
-
-    .card-features {
-        margin-bottom: 20px;
-    }
-
-    .feature-item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 8px;
-        font-size: 14px;
-        color: #495057;
-    }
-
-        .feature-item i {
-            margin-right: 8px;
-            font-size: 16px;
-        }
-
-    .quick-actions-card {
-        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-        border-radius: 16px;
-        padding: 30px;
-        text-align: center;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
-
-        .quick-actions-card h4 {
-            color: #333;
-            font-weight: 600;
-        }
-
-   
-</style>
 
 @code {
-    private void GoToMonthView()
-    {
-        var today = DateTime.Today;
-        Navigation.NavigateTo($"/calendar/month/{today.Year}/{today.Month}");
-    }
-
-    private void GoToYearView()
-    {
-        var today = DateTime.Today;
-        Navigation.NavigateTo($"/calendar/year/{today.Year}");
-    }
-
-    private void GoToTodayView()
-    {
-        var today = DateTime.Today;
-        Navigation.NavigateTo($"/calendar/day/{today:yyyy-MM-dd}");
-    }
-
-    private void GoToCurrentMonth()
-    {
-        var today = DateTime.Today;
-        Navigation.NavigateTo($"/calendar/month/{today.Year}/{today.Month}");
-    }
-
-    private void GoToCurrentYear()
-    {
-        var today = DateTime.Today;
-        Navigation.NavigateTo($"/calendar/year/{today.Year}");
-    }
-
-    private void GoToToday()
-    {
-        var today = DateTime.Today;
-        Navigation.NavigateTo($"/calendar/day/{today:yyyy-MM-dd}");
-    }
-
-    private void GoToImport()
-    {
-        Navigation.NavigateTo("/ImportAttendance");
-    }
+    private string hoverClass = "";
+    private void GoToMonthView() => Navigation.NavigateTo($"/calendar/month/{DateTime.Today.Year}/{DateTime.Today.Month}");
+    private void GoToYearView() => Navigation.NavigateTo($"/calendar/year/{DateTime.Today.Year}");
+    private void GoToTodayView() => Navigation.NavigateTo($"/calendar/day/{DateTime.Today:yyyy-MM-dd}");
+    private void GoToCurrentMonth() => Navigation.NavigateTo($"/calendar/month/{DateTime.Today.Year}/{DateTime.Today.Month}");
+    private void GoToCurrentYear() => Navigation.NavigateTo($"/calendar/year/{DateTime.Today.Year}");
+    private void GoToToday() => Navigation.NavigateTo($"/calendar/day/{DateTime.Today:yyyy-MM-dd}");
+    private void GoToImport() => Navigation.NavigateTo("/ImportAttendance");
+   
+   
 }
 
+<style>
+    .calendar-option-card:hover {
+        transform: translateY(-5px) !important;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+    }
+
+    .current-month {
+        background: linear-gradient(135deg, #f8fff9 0%, #ffffff 100%) !important;
+    }
+</style>

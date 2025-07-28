@@ -2,10 +2,484 @@
 @page "/calendar/month/{Year:int}/{Month:int}"
 @inject AttendanceSystem.ImportFile.ui.Services.AttendanceService AttendanceService
 @inject NavigationManager Navigation
+@inject IDialogService DialogService
+@inject ISnackbar Snackbar
 @using AttendanceSystem.ImportFile.ui.Services
 @using EmployeesModels.Shared
+@using MudBlazor
 
-<div class="container-fluid mt-4">
+
+
+<MudContainer MaxWidth="MaxWidth.ExtraExtraLarge" Class="mt-4">
+    <MudStack Row Justify="Justify.SpaceBetween" AlignItems="AlignItems.Center" Class="mb-4">
+        <MudText Typo="Typo.h4" Class="fw-bold">@GetMonthYearTitle()</MudText>
+        <MudStack Row Spacing="2">
+            <MudButtonGroup Variant="Variant.Outlined" Color="Color.Primary">
+                <MudButton StartIcon="@Icons.Material.Filled.ChevronLeft" OnClick="PreviousMonth">
+                    Previous
+                </MudButton>
+                <MudButton EndIcon="@Icons.Material.Filled.ChevronRight" OnClick="NextMonth">
+                    Next
+                </MudButton>
+            </MudButtonGroup>
+            <MudButton Variant="Variant.Filled" 
+                      Color="Color.Primary" 
+                      StartIcon="@Icons.Material.Filled.CalendarMonth" 
+                      OnClick="GoToYearView">
+                Year View
+            </MudButton>
+        </MudStack>
+    </MudStack>
+
+    @if (isLoading)
+    {
+        <MudStack AlignItems="AlignItems.Center" Class="mt-8">
+            <MudProgressCircular Color="Color.Primary" Indeterminate="true" />
+            <MudText Typo="Typo.body1">Loading...</MudText>
+        </MudStack>
+    }
+    else if (monthData != null)
+    {
+        <MudPaper Elevation="2" Class="calendar-container">
+            <!-- Calendar Header -->
+            <MudStack Row Class="calendar-header">
+                <MudPaper Class="calendar-day-header" Square="true" Elevation="0">
+                    <MudText Typo="Typo.subtitle1" Align="Align.Center" Class="fw-bold">Sunday</MudText>
+                </MudPaper>
+                <MudPaper Class="calendar-day-header" Square="true" Elevation="0">
+                    <MudText Typo="Typo.subtitle1" Align="Align.Center" Class="fw-bold">Monday</MudText>
+                </MudPaper>
+                <MudPaper Class="calendar-day-header" Square="true" Elevation="0">
+                    <MudText Typo="Typo.subtitle1" Align="Align.Center" Class="fw-bold">Tuesday</MudText>
+                </MudPaper>
+                <MudPaper Class="calendar-day-header" Square="true" Elevation="0">
+                    <MudText Typo="Typo.subtitle1" Align="Align.Center" Class="fw-bold">Wednesday</MudText>
+                </MudPaper>
+                <MudPaper Class="calendar-day-header" Square="true" Elevation="0">
+                    <MudText Typo="Typo.subtitle1" Align="Align.Center" Class="fw-bold">Thursday</MudText>
+                </MudPaper>
+                <MudPaper Class="calendar-day-header" Square="true" Elevation="0">
+                    <MudText Typo="Typo.subtitle1" Align="Align.Center" Class="fw-bold">Friday</MudText>
+                </MudPaper>
+                <MudPaper Class="calendar-day-header" Square="true" Elevation="0">
+                    <MudText Typo="Typo.subtitle1" Align="Align.Center" Class="fw-bold">Saturday</MudText>
+                </MudPaper>
+            </MudStack>
+
+            <!-- Calendar Body -->
+            <div class="calendar-body">
+                @{
+                    var firstDayOfMonth = new DateTime(currentYear, currentMonth, 1);
+                    int diff = ((int)firstDayOfMonth.DayOfWeek + 7) % 7; // ensures Sunday = 0
+                    var startDate = firstDayOfMonth.AddDays(-diff);
+                    var endDate = startDate.AddDays(41); // 6 weeks
+                }
+
+                @for (var date = startDate; date <= endDate; date = date.AddDays(1))
+                {
+                    var currentDate = date; // Create a local copy to avoid closure issues
+                    var dayData = monthData.Days.FirstOrDefault(d => d.Date.Date == currentDate.Date);
+                    var isCurrentMonth = currentDate.Month == currentMonth;
+                    var isToday = currentDate.Date == DateTime.Today;
+
+                    <MudPaper Class="@GetCalendarDayClass(isCurrentMonth, isToday)" 
+                             Square="true" 
+                             Elevation="@(isCurrentMonth ? 1 : 0)"
+                             @ondblclick="() => { if (isCurrentMonth) GoToDayView(currentDate); }">
+
+                        <MudStack Justify="Justify.SpaceBetween" Style="height: 100%; min-height: 120px;">
+                            <MudStack Row Justify="Justify.SpaceBetween" AlignItems="AlignItems.Center">
+                                <MudText Typo="Typo.subtitle2" Class="fw-bold">@currentDate.Day</MudText>
+                                @if (isCurrentMonth)
+                                {
+                                    <MudIconButton Icon="@Icons.Material.Filled.Add" 
+                                                  Size="Size.Small" 
+                                                  Color="Color.Primary" 
+                                                  Variant="Variant.Filled"
+                                                  Style="width: 24px; height: 24px;"
+                                                  OnClick="() => OpenAddEmployeeDialog(currentDate)" />
+                                }
+                            </MudStack>
+
+                            @if (dayData != null && isCurrentMonth)
+                            {
+                                <MudStack Spacing="1" Class="day-content">
+                                    <MudStack Row Justify="Justify.SpaceBetween" Class="attendance-summary">
+                                        <MudChip T="string" Size="Size.Small" Color="Color.Success" Variant="Variant.Text">
+                                            Present: @dayData.PresentCount
+                                        </MudChip>
+                                        <MudChip T="string" Size="Size.Small" Color="Color.Error" Variant="Variant.Text">
+                                            Absent: @dayData.AbsentCount
+                                        </MudChip>
+                                    </MudStack>
+
+                                    <MudStack Spacing="1" Class="employee-preview">
+                                        @foreach (var emp in dayData.TopEmployees.Take(3))
+                                        {
+                                            <MudPaper Class="@GetEmployeeStatusClass(emp.Status)" Square="true" Elevation="0">
+                                                <MudStack Row Justify="Justify.SpaceBetween" AlignItems="AlignItems.Center" Class="pa-1">
+                                                    <MudText Typo="Typo.caption" Class="employee-name">@emp.EmployeeName</MudText>
+                                                    <div class="status-indicator @GetStatusIndicatorClass(emp.Status)"></div>
+                                                </MudStack>
+                                            </MudPaper>
+                                        }
+                                        @if (dayData.TotalEmployees > 3)
+                                        {
+                                            <MudText Typo="Typo.caption" Align="Align.Center" Class="more-employees">
+                                                +@(dayData.TotalEmployees - 3) more
+                                            </MudText>
+                                        }
+                                    </MudStack>
+                                </MudStack>
+                            }
+                        </MudStack>
+                    </MudPaper>
+                }
+            </div>
+        </MudPaper>
+    }
+</MudContainer>
+
+<style>
+    .calendar-container {
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .calendar-header {
+        background: var(--mud-palette-surface);
+        border-bottom: 2px solid var(--mud-palette-divider);
+        margin: 0 -8px; /* Counteract container padding */
+        padding: 0 8px; /* Match container padding */
+    }
+
+    .calendar-day-header {
+        padding: 15px 10px;
+        flex: 1;
+        background: var(--mud-palette-surface);
+        border-right: 1px solid var(--mud-palette-divider);
+    }
+
+    .calendar-day-header:last-child {
+        border-right: none;
+    }
+
+    .calendar-body {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        grid-template-rows: repeat(6, 180px);
+
+    }
+
+    .calendar-day {
+        border: 1px solid var(--mud-palette-divider);
+        padding: 8px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .calendar-day:hover {
+        background-color: var(--mud-palette-action-hover);
+    }
+
+    .calendar-day.current-month {
+        background-color: var(--mud-palette-surface);
+    }
+
+    .calendar-day.other-month {
+        background-color: var(--mud-palette-background-grey);
+        color: var(--mud-palette-text-disabled);
+    }
+
+    .calendar-day.today {
+            background-color: #eceff1; /* Cool light blue-gray */
+            border: 1px solid #cfd8dc;
+    }
+
+    .day-content {
+        font-size: 11px;
+    }
+
+    .attendance-summary {
+        margin-bottom: 5px;
+    }
+
+    .employee-preview {
+        max-height: 90px;
+        overflow: hidden;
+    }
+
+    .employee-item {
+        background-color: white;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        padding: 0px 2px;
+        margin-bottom: 1px;
+        border-radius: 2px;
+        font-size: 9px;
+        line-height: 1.2; /* Tighter line spacing */
+        border: 1px solid transparent; /* Default transparent border */
+    }
+
+        .employee-item.present {
+            color: var(--mud-palette-success-darken);
+            border-color: var(--mud-palette-success-lighten);
+        }
+
+        .employee-item.absent {
+            color: var(--mud-palette-error-darken);
+            border-color: var(--mud-palette-error-lighten);
+        }
+
+        .employee-item.vacation {
+            color: var(--mud-palette-warning-darken);
+            border-color: var(--mud-palette-warning-lighten);
+        }
+
+        .employee-item.work-from-home {
+            color: var(--mud-palette-info-darken);
+            border-color: var(--mud-palette-info-lighten);
+        }
+
+        .employee-item.late {
+            color: var(--mud-palette-secondary-darken);
+            border-color: var(--mud-palette-secondary-lighten);
+        }
+
+    .employee-name {
+        white-space: nowrap;
+        font-size: 9px; /* Match the item font size */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        flex: 1;
+    }
+
+    .status-indicator {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        margin-left: 4px;
+    }
+
+    .status-indicator.present {
+        background-color: var(--mud-palette-success);
+    }
+
+    .status-indicator.absent {
+        background-color: var(--mud-palette-error);
+    }
+
+    .status-indicator.vacation {
+        background-color: var(--mud-palette-warning);
+    }
+
+    .status-indicator.work-from-home {
+        background-color: var(--mud-palette-info);
+    }
+
+    .status-indicator.late {
+        background-color: var(--mud-palette-secondary);
+    }
+
+    .more-employees {
+        color: var(--mud-palette-text-secondary);
+        font-style: italic;
+        margin-top: 3px;
+    }
+</style>
+
+@code {
+    [Parameter] public int Year { get; set; }
+    [Parameter] public int Month { get; set; }
+    [Parameter] public DateTime SelectedDate { get; set; }
+
+    private DateTime? dateFrom => SelectedDate;
+    private DateTime? dateTo => SelectedDate;
+
+
+    private MonthViewDto? monthData;
+    private bool isLoading = true;
+    private int currentYear;
+    private int currentMonth;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var today = DateTime.Today;
+        currentYear = Year > 0 ? Year : today.Year;
+        currentMonth = Month > 0 ? Month : today.Month;
+
+        await LoadMonthData();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (Year > 0) currentYear = Year;
+        if (Month > 0) currentMonth = Month;
+        await LoadMonthData();
+    }
+
+    private async Task LoadMonthData()
+    {
+        isLoading = true;
+        // StateHasChanged(); // Force UI update to show loading state
+
+        try
+        {
+            monthData = await AttendanceService.GetMonthViewAsync(currentYear, currentMonth);
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Error loading data: {ex.Message}", Severity.Error);
+        }
+        finally
+        {
+            isLoading = false;
+            // StateHasChanged(); // Force UI update to hide loading state
+        }
+    }
+
+    private string GetMonthYearTitle()
+    {
+        return new DateTime(currentYear, currentMonth, 1).ToString("MMMM yyyy");
+    }
+
+    private void PreviousMonth()
+    {
+        if (currentMonth == 1)
+        {
+            currentMonth = 12;
+            currentYear--;
+        }
+        else
+        {
+            currentMonth--;
+        }
+        Navigation.NavigateTo($"/calendar/month/{currentYear}/{currentMonth}");
+    }
+
+    private void NextMonth()
+    {
+        if (currentMonth == 12)
+        {
+            currentMonth = 1;
+            currentYear++;
+        }
+        else
+        {
+            currentMonth++;
+        }
+        Navigation.NavigateTo($"/calendar/month/{currentYear}/{currentMonth}");
+    }
+
+    private void GoToYearView()
+    {
+        Navigation.NavigateTo($"/calendar/year/{currentYear}");
+    }
+
+    private void GoToDayView(DateTime date)
+    {
+        Navigation.NavigateTo($"/calendar/day/{date:yyyy-MM-dd}");
+    }
+
+    private string GetCalendarDayClass(bool isCurrentMonth, bool isToday)
+    {
+        var classes = new List<string> { "calendar-day" };
+        
+        if (isCurrentMonth)
+            classes.Add("current-month");
+        else
+            classes.Add("other-month");
+            
+        if (isToday)
+            classes.Add("today");
+            
+        return string.Join(" ", classes);
+    }
+
+    private string GetEmployeeStatusClass(AttendanceStatus status)
+    {
+        return $"employee-item {GetStatusClass(status)}";
+    }
+
+    private string GetStatusClass(AttendanceStatus status)
+    {
+        return status switch
+        {
+            AttendanceStatus.Present => "present",
+            AttendanceStatus.Absent => "absent",
+            AttendanceStatus.Vacation => "vacation",
+            AttendanceStatus.WorkFromHome => "work-from-home",
+            // AttendanceStatus.Late => "late",
+            _ => "absent"
+        };
+    }
+
+    private string GetStatusIndicatorClass(AttendanceStatus status)
+    {
+        return GetStatusClass(status);
+    }
+
+    private async Task OpenAddEmployeeDialog(DateTime selectedDate)
+    {
+        var parameters = new DialogParameters<AddEmployeeDialog>
+    {
+        { x => x.InitialDate, selectedDate },
+        { x => x.DefaultDateFrom, selectedDate },
+        { x => x.DefaultDateTo, selectedDate }
+    };
+
+        var options = new DialogOptions
+        {
+            CloseButton = true,
+            CloseOnEscapeKey=true,
+            MaxWidth = MaxWidth.Small,
+            FullWidth = true
+        };
+
+        var dialog = await DialogService.ShowAsync<AddEmployeeDialog>("Update Attendance Status", parameters, options);
+        var result = await dialog.Result;
+
+        if (result.Canceled)
+        {
+            // Refresh the calendar data
+            await LoadMonthData();
+
+            // If you need to force a complete page reload (alternative approach)
+            // Navigation.NavigateTo(Navigation.Uri, forceLoad: true);
+        }
+    }
+
+    private async Task HandleEmployeeAttendanceRequest(EmployeeAttendanceRequest request)
+    {
+        try
+        {
+            // Call the correct service method for attendance updates
+            var success = await AttendanceService.UpdateEmployeeAttendanceStatusAsync(request);
+
+            if (success)
+            {
+                Snackbar.Add("Attendance status updated successfully", Severity.Success);
+                await LoadMonthData(); // Refresh calendar
+            }
+            else
+            {
+                Snackbar.Add("Failed to update attendance status", Severity.Error);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error updating attendance: {ex.Message}");
+            Snackbar.Add($"Error updating attendance: {ex.Message}", Severity.Error);
+        }
+    }
+}
+
+
+
+
+
+@* <div class="container-fluid mt-4">
     <div class="row mb-4">
         <div class="col-12">
             <div class="d-flex justify-content-between align-items-center">
@@ -357,3 +831,4 @@
     }
 }
 
+ *@

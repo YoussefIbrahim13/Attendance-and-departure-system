@@ -299,6 +299,53 @@ namespace AttendanceSystem.ImportFile.API.Controllers
             return Ok("Employee updated successfully.");
         }
 
+        // update attendance status for a range of dates
+        [HttpPut("update-attendance-status")]
+        public async Task<IActionResult> UpdateAttendanceStatus( [FromServices] AttendanceDbContext db,[FromBody] EmployeeAttendanceRequest request)
+        {
+            if (request == null || string.IsNullOrWhiteSpace(request.EmployeeId))
+                return BadRequest("Employee ID and dates are required.");
+
+            if (request.DateFrom > request.DateTo)
+                return BadRequest("From date cannot be after To date.");
+
+            // Get existing records for the date range
+            var existingRecords = await db.AttendanceRecords
+                .Where(ar => ar.EmployeeId == request.EmployeeId
+                            && ar.Date >= request.DateFrom
+                            && ar.Date <= request.DateTo)
+                .ToListAsync();
+
+            // Process each day in the date range
+            for (var date = request.DateFrom; date <= request.DateTo; date = date.AddDays(1))
+            {
+                var existingRecord = existingRecords.FirstOrDefault(er => er.Date == date);
+
+                if (existingRecord != null)
+                {
+                    // Update existing record
+                    existingRecord.Status = request.Status;
+                    
+                }
+                else
+                {
+                    // Create new record
+                    db.AttendanceRecords.Add(new AttendanceRecord
+                    {
+                        EmployeeId = request.EmployeeId,
+                        Date = date,
+                        Status = request.Status,
+                        Note = "",
+                        CheckIn = "",
+                        CheckOut = ""
+                    });
+                }
+            }
+
+            await db.SaveChangesAsync();
+            return Ok($"Attendance status updated successfully from {request.DateFrom:yyyy-MM-dd} to {request.DateTo:yyyy-MM-dd}");
+        }
+
 
     }
 
