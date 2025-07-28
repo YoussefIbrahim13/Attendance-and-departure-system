@@ -1679,7 +1679,8 @@
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "EmployeesModels.Shared": "1.0.0",
-          "Microsoft.AspNetCore.Http": "2.3.0"
+          "Microsoft.AspNetCore.Http": "2.3.0",
+          "Microsoft.EntityFrameworkCore": "8.0.0"
         },
         "compile": {
           "bin/placeholder/AttendanceSystem.ImportFile.API.Services.dll": {}
@@ -1691,6 +1692,9 @@
       "EmployeesModels.Shared/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "8.0.0"
+        },
         "compile": {
           "bin/placeholder/EmployeesModels.Shared.dll": {}
         },
@@ -4702,23 +4706,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ehabm\\.nuget\\packages\\": {},
+    "C:\\Users\\Youssef\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "A:\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj",
+      "projectUniqueName": "Y:\\project\\EmployeeAttendanceSolution\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj",
       "projectName": "AttendanceSystem.ImportFile.API",
-      "projectPath": "A:\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj",
-      "packagesPath": "C:\\Users\\ehabm\\.nuget\\packages\\",
-      "outputPath": "A:\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API\\obj\\",
+      "projectPath": "Y:\\project\\EmployeeAttendanceSolution\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj",
+      "packagesPath": "C:\\Users\\Youssef\\.nuget\\packages\\",
+      "outputPath": "Y:\\project\\EmployeeAttendanceSolution\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\ehabm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Youssef\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -4733,11 +4737,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "A:\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API.Services\\AttendanceSystem.ImportFile.API.Services.csproj": {
-              "projectPath": "A:\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API.Services\\AttendanceSystem.ImportFile.API.Services.csproj"
+            "Y:\\project\\EmployeeAttendanceSolution\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API.Services\\AttendanceSystem.ImportFile.API.Services.csproj": {
+              "projectPath": "Y:\\project\\EmployeeAttendanceSolution\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API.Services\\AttendanceSystem.ImportFile.API.Services.csproj"
             },
-            "A:\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj": {
-              "projectPath": "A:\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj"
+            "Y:\\project\\EmployeeAttendanceSolution\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj": {
+              "projectPath": "Y:\\project\\EmployeeAttendanceSolution\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj"
             }
           }
         }
@@ -4802,7 +4806,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

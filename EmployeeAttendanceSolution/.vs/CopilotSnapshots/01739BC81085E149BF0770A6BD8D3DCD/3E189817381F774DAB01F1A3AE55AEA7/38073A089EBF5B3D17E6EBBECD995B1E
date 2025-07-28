@@ -1,0 +1,98 @@
+﻿@page "/PlanAttendance"
+@inject AttendanceSystem.ImportFile.ui.Services.AttendanceService AttendanceService
+@using EmployeesModels.Shared
+@using AttendanceSystem.ImportFile.ui.Services
+
+<div class="container mt-4">
+    <h2 class="mb-4 text-center fw-bold">Attendance Planner</h2>
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label class="form-label">Select Employee</label>
+            <select class="form-select" @bind="selectedEmployeeId">
+                <option value="">-- Choose Employee --</option>
+                @foreach (var emp in employees)
+                {
+                    <option value="@emp.Id">@emp.Name (@emp.Id)</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Select Days</label>
+            <input type="date" class="form-control mb-2" @bind="singleDate" />
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="multiDay" @bind="multiDay" />
+                <label class="form-check-label" for="multiDay">Multiple Days</label>
+            </div>
+            @if (multiDay)
+            {
+                <label class="form-label mt-2">From</label>
+                <input type="date" class="form-control" @bind="rangeStart" />
+                <label class="form-label mt-2">To</label>
+                <input type="date" class="form-control" @bind="rangeEnd" />
+            }
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Attendance Status</label>
+            <select class="form-select" @bind="selectedStatus">
+                <option value="">-- Choose Status --</option>
+                @foreach (var status in Enum.GetValues<AttendanceStatus>())
+                {
+                    <option value="@status">@status</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-12 text-center">
+            <button class="btn btn-success px-5" @onclick="SavePlan" disabled="@(string.IsNullOrEmpty(selectedEmployeeId) || string.IsNullOrEmpty(selectedStatus) || (!multiDay && singleDate == null) || (multiDay && (rangeStart == null || rangeEnd == null)))">
+                Save Plan
+            </button>
+        </div>
+    </div>
+    @if (!string.IsNullOrEmpty(message))
+    {
+        <div class="alert alert-info text-center">@message</div>
+    }
+</div>
+
+@code {
+    private List<EmployeeDto> employees = new();
+    private string selectedEmployeeId = string.Empty;
+    private AttendanceStatus? selectedStatus;
+    private DateTime? singleDate;
+    private bool multiDay = false;
+    private DateTime? rangeStart;
+    private DateTime? rangeEnd;
+    private string? message;
+
+    protected override async Task OnInitializedAsync()
+    {
+        employees = await AttendanceService.GetAllEmployeesAsync();
+    }
+
+    private async Task SavePlan()
+    {
+        if (string.IsNullOrEmpty(selectedEmployeeId) || selectedStatus == null)
+        {
+            message = "Please select employee and status.";
+            return;
+        }
+        List<DateTime> days = new();
+        if (multiDay && rangeStart != null && rangeEnd != null)
+        {
+            for (var d = rangeStart.Value.Date; d <= rangeEnd.Value.Date; d = d.AddDays(1))
+                days.Add(d);
+        }
+        else if (singleDate != null)
+        {
+            days.Add(singleDate.Value.Date);
+        }
+        if (days.Count == 0)
+        {
+            message = "Please select at least one day.";
+            return;
+        }
+        var ok = await AttendanceService.PlanAttendanceAsync(selectedEmployeeId, days, selectedStatus.Value);
+        message = ok ? "Attendance plan saved successfully." : "Failed to save plan.";
+    }
+}

@@ -16,8 +16,9 @@
                 new { Icon = "bi-calendar3", Text = "Month View", Href = "calendar/month", Match = NavLinkMatch.Prefix },
                 new { Icon = "bi-calendar-week", Text = "Day View", Href = $"/calendar/day/{DateTime.Today:yyyy-MM-dd}", Match = NavLinkMatch.Prefix },
                 new { Icon = "bi-upload", Text = "Attendance Import", Href = "ImportAttendance", Match = NavLinkMatch.Prefix },
-                new { Icon = "bi-people", Text = "Employees", Href = "Employees", Match = NavLinkMatch.Prefix }
-                };
+                new { Icon = "bi-people", Text = "Employees", Href = "Employees", Match = NavLinkMatch.Prefix },
+                new { Icon = "bi-journal-check", Text = "Attendance Plan", Href = "PlanAttendance", Match = NavLinkMatch.Prefix }
+            };
 
             foreach (var item in navItems)
             {
