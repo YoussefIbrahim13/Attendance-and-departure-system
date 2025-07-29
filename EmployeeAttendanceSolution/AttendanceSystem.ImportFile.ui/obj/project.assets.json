@@ -491,6 +491,25 @@
           "buildMultiTargeting/MudBlazor.props": {}
         }
       },
+      "MudBlazor.ThemeManager/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "8.0.12",
+          "MudBlazor": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/MudBlazor.ThemeManager.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/MudBlazor.ThemeManager.dll": {}
+        },
+        "build": {
+          "buildTransitive/MudBlazor.ThemeManager.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/MudBlazor.ThemeManager.props": {}
+        }
+      },
       "System.IO.Pipelines/8.0.0": {
         "type": "package",
         "compile": {
@@ -1006,6 +1025,25 @@
         },
         "buildMultiTargeting": {
           "buildMultiTargeting/MudBlazor.props": {}
+        }
+      },
+      "MudBlazor.ThemeManager/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "8.0.12",
+          "MudBlazor": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/MudBlazor.ThemeManager.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/MudBlazor.ThemeManager.dll": {}
+        },
+        "build": {
+          "buildTransitive/MudBlazor.ThemeManager.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/MudBlazor.ThemeManager.props": {}
         }
       },
       "System.IO.Pipelines/8.0.0": {
@@ -2005,6 +2043,27 @@
         "staticwebassets/MudBlazor.min.js"
       ]
     },
+    "MudBlazor.ThemeManager/3.0.0": {
+      "sha512": "Bu/pvCXPd+cW9Wgkyqo3OZEQa3G30LaQlo8Ul2rqgv/4MY77cS9PnLRTs1lXzLDsN+bN/K69+UNi1BrhlUDK3w==",
+      "type": "package",
+      "path": "mudblazor.thememanager/3.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Nuget.png",
+        "README.md",
+        "build/Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+        "build/Microsoft.AspNetCore.StaticWebAssets.props",
+        "build/MudBlazor.ThemeManager.props",
+        "buildMultiTargeting/MudBlazor.ThemeManager.props",
+        "buildTransitive/MudBlazor.ThemeManager.props",
+        "lib/net8.0/MudBlazor.ThemeManager.dll",
+        "lib/net9.0/MudBlazor.ThemeManager.dll",
+        "mudblazor.thememanager.3.0.0.nupkg.sha512",
+        "mudblazor.thememanager.nuspec",
+        "staticwebassets/MudBlazorThemeManager.css"
+      ]
+    },
     "System.IO.Pipelines/8.0.0": {
       "sha512": "FHNOatmUq0sqJOkTx+UF/9YK1f180cnW5FVqnQMvYUN0elp6wFzbtPSiqbo1/ru8ICp43JM1i7kKkk6GsNGHlA==",
       "type": "package",
@@ -2047,7 +2106,8 @@
       "Microsoft.AspNetCore.Components.WebAssembly.DevServer >= 8.0.18",
       "Microsoft.NET.ILLink.Tasks >= 8.0.17",
       "Microsoft.NET.Sdk.WebAssembly.Pack >= 9.0.6",
-      "MudBlazor >= 8.0.0"
+      "MudBlazor >= 8.0.0",
+      "MudBlazor.ThemeManager >= 3.0.0"
     ]
   },
   "packageFolders": {
@@ -2128,6 +2188,10 @@
           "MudBlazor": {
             "target": "Package",
             "version": "[8.0.0, )"
+          },
+          "MudBlazor.ThemeManager": {
+            "target": "Package",
+            "version": "[3.0.0, )"
           }
         },
         "imports": [
