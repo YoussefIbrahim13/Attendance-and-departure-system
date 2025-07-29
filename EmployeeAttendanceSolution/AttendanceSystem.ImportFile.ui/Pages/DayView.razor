@@ -2,6 +2,7 @@
 @page "/calendar/day/{DateString}"
 @inject AttendanceSystem.ImportFile.ui.Services.AttendanceService AttendanceService
 @inject NavigationManager Navigation
+@inject ISnackbar Snackbar
 @using AttendanceSystem.ImportFile.ui.Services
 @using EmployeesModels.Shared
 
@@ -144,34 +145,47 @@
                             </EditTemplate>
                         </PropertyColumn>
 
-                        <PropertyColumn Property="x => x.CheckIn" Title="Check In">
-                            <CellTemplate>
-                                @if (context.Item.CheckIn != default)
-                                {
+                            <PropertyColumn Property="x => x.CheckIn" Title="Check In">
+                                <CellTemplate>
+                                    @if (context.Item.CheckIn != default)
+                                    {
                                         <span>@FormatTimeSpan(context.Item.CheckIn)</span>
                                     }
-                                   
-                            </CellTemplate>
-                            <EditTemplate>
-                                <MudTextField @bind-Value="context.Item.CheckIn"
-                                                Placeholder="HH:mm"
-                                                Margin="Margin.Dense" />
-                            </EditTemplate>
-                        </PropertyColumn>
+                                </CellTemplate>
+                                <EditTemplate>
+                                    <MudTimePicker Label="Check-in"
+                                                   Time="context.Item.CheckIn"
+                                                   TimeChanged="(newTime) => context.Item.CheckIn = newTime ?? default"
+                                                   TimeFormat="HH:mm"
+                                                   Variant="Variant.Outlined"
+                                                   Margin="Margin.Dense"
+                                                   Editable="true"
+                                                   Tooltip="Select check-in time"
+                                                   AnchorOrigin="Origin.TopCenter"
+                                                   TransformOrigin="Origin.BottomCenter" />
+                                </EditTemplate>
+                            </PropertyColumn>
 
-                        <PropertyColumn Property="x => x.CheckOut" Title="Check Out">
-                            <CellTemplate>
-                                @if (context.Item.CheckOut != default)
-                                {
-                                    <span>@FormatTimeSpan(context.Item.CheckOut)</span>
-                                }
-                            </CellTemplate>
-                            <EditTemplate>
-                                <MudTextField @bind-Value="context.Item.CheckOut"
-                                                Placeholder="HH:mm"
-                                                Margin="Margin.Dense" />
-                            </EditTemplate>
-                        </PropertyColumn>
+                            <PropertyColumn Property="x => x.CheckOut" Title="Check Out">
+                                <CellTemplate>
+                                    @if (context.Item.CheckOut != default)
+                                    {
+                                        <span>@FormatTimeSpan(context.Item.CheckOut)</span>
+                                    }
+                                </CellTemplate>
+                                <EditTemplate>
+                                    <MudTimePicker Label="Check-out"
+                                                   Time="context.Item.CheckOut"
+                                                   TimeChanged="(newTime) => context.Item.CheckOut = newTime ?? default"
+                                                   TimeFormat="HH:mm"
+                                                   Variant="Variant.Outlined"
+                                                   Margin="Margin.Dense"
+                                                   Editable="true"
+                                                   Tooltip="Select check-out time"
+                                                   AnchorOrigin="Origin.TopCenter"
+                                                   TransformOrigin="Origin.BottomCenter" />
+                                </EditTemplate>
+                            </PropertyColumn>
 
                         <PropertyColumn Property="x => x.Note" Title="Notes">
                             <EditTemplate>
@@ -405,9 +419,11 @@
         {
             dayData = await AttendanceService.GetDayViewAsync(selectedDate);
             filteredEmployees = new List<DailyAttendanceDto>(dayData);
+            // Snackbar.Add("Attendance data loaded successfully", Severity.Success);
         }
         catch (Exception ex)
         {
+            Snackbar.Add($"Error loading day data: {ex.Message}", Severity.Error);
             Console.WriteLine($"❌ Error loading day data: {ex.Message}");
         }
         finally
@@ -471,6 +487,7 @@
         // Returns format like "5:30" (no leading zero, no seconds)
         return $"{(time.Hours == 0 ? "0" : time.Hours.ToString())}:{time.Minutes:00}";
     }
+
 
     private string GetInitials(string name)
     {
@@ -546,6 +563,11 @@
 
     private async void CommittedItemChanges(DailyAttendanceDto item)
     {
+        // if (item.CheckOut < item.CheckIn)
+        // {
+        //     Snackbar.Add("Check-out time must be after check-in time", Severity.Warning);
+        //     return;
+        // }
         try
         {
             // Call your update function here
@@ -561,16 +583,17 @@
             var result = await AttendanceService.UpdateEmployeeAttendanceRecordAsync(employeeAttendanceRequest);
             if (result)
             {
-                Console.WriteLine($"Successfully updated attendance for {item.EmployeeName}");
+                Snackbar.Add($"Successfully updated attendance", Severity.Success);
                 await LoadDayData(); // Refresh the data
             }
             else
             {
-                Console.WriteLine($"Failed to update attendance for {item.EmployeeName}");
+                Snackbar.Add($"Failed to update attendance for {item.EmployeeName}", Severity.Error);
             }
         }
         catch (Exception ex)
         {
+            Snackbar.Add($"Error updating attendance: {ex.Message}", Severity.Error);
             Console.WriteLine($"Error updating attendance: {ex.Message}");
         }
     }

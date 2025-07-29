@@ -1,6 +1,7 @@
 ﻿@inject AttendanceSystem.ImportFile.ui.Services.AttendanceService AttendanceService
 @inject ISnackbar Snackbar
 @inject NavigationManager Navigation
+@using AttendanceSystem.ImportFile.ui.Services
 @using MudBlazor
 @using EmployeesModels.Shared
 
@@ -12,25 +13,21 @@
 
             <MudForm @ref="form" @bind-IsValid="@isFormValid">
                 <MudStack Spacing="3">
-                    <MudSelect T="string"
-                               @bind-Value="selectedEmployeeId"
-                               Label="Select Employee"
-                               Variant="Variant.Outlined"
-                               Required="true"
-                               RequiredError="Employee is required"
-                               Dense="true"
-                               Style="max-height: 300px; overflow-y: auto;"
-                               AnchorOrigin="Origin.BottomCenter"
-                               TransformOrigin="Origin.TopCenter">
-
-                        @if (employees != null)
-                        {
-                            @foreach (var emp in employees)
-                            {
-                                <MudSelectItem Value="@emp.Id">@emp.Name</MudSelectItem>
-                            }
-                        }
-                    </MudSelect>
+                    <MudAutocomplete T="AttendanceSystem.ImportFile.ui.Services.EmployeeDto"
+                                     @bind-Value="selectedEmployee"
+                                     Label="Select Employee"
+                                     Variant="Variant.Outlined"
+                                     Required="true"
+                                     RequiredError="Employee is required"
+                                     Dense="true"
+                                     SearchFunc="@SearchEmployees"
+                                     ToStringFunc="@(e => e?.Name ?? string.Empty)"
+                                     ResetValueOnEmptyText="true">
+                        <ItemTemplate>
+                            <MudText>@context.Name</MudText>
+                            <MudText Typo="Typo.caption" Color="Color.Secondary">@context.Id</MudText>
+                        </ItemTemplate>
+                    </MudAutocomplete>
 
                     <MudDatePicker @bind-Date="dateFrom"
                                    Label="Date From"
@@ -133,7 +130,8 @@
     [CascadingParameter]
     IMudDialogInstance MudDialog { get; set; } = null!;
 
-    private string? selectedEmployeeId;
+    private EmployeeDto? selectedEmployee;
+
     private List<AttendanceSystem.ImportFile.ui.Services.EmployeeDto> employees = new();
     private bool isProcessing;
 
@@ -163,10 +161,19 @@
     {
         employees = await AttendanceService.GetAllEmployeesAsync();
     }
+    private Task<IEnumerable<EmployeeDto>> SearchEmployees(string value, CancellationToken cancellationToken)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+            return Task.FromResult(employees.AsEnumerable());
+
+        return Task.FromResult(employees.Where(x =>
+            x.Name.Contains(value, StringComparison.OrdinalIgnoreCase) ||
+            x.Id.Contains(value, StringComparison.OrdinalIgnoreCase)));
+    }
 
     private async Task Submit()
     {
-        if (!form.IsValid || !dateFrom.HasValue || !dateTo.HasValue || string.IsNullOrEmpty(selectedEmployeeId))
+        if (!form.IsValid || !dateFrom.HasValue || !dateTo.HasValue || selectedEmployee == null)
         {
             return;
         }
@@ -183,7 +190,7 @@
         {
             var request = new EmployeeAttendanceRequest
             {
-                EmployeeId = selectedEmployeeId,
+                EmployeeId = selectedEmployee.Id,
                 DateFrom = dateFrom.Value,
                 DateTo = dateTo.Value,
                 Status = selectedStatus,
