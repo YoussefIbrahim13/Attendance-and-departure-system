@@ -4,6 +4,7 @@
 @using MudBlazor
 @using EmployeesModels.Shared
 
+
 <MudDialog>
     <DialogContent>
         <MudContainer Style="max-width: 500px;">
@@ -129,6 +130,9 @@
     [Parameter]
     public DateTime? DefaultDateTo { get; set; }
 
+    [CascadingParameter]
+    IMudDialogInstance MudDialog { get; set; } = null!;
+
     private string? selectedEmployeeId;
     private List<AttendanceSystem.ImportFile.ui.Services.EmployeeDto> employees = new();
     private bool isProcessing;
@@ -152,8 +156,7 @@
 
     private void Cancel()
     {
-        // DialogReference?.Close(DialogResult.Cancel()); 
-        DialogReference.Close(DialogResult.Cancel());
+        MudDialog.Cancel();
     }
 
     private async Task LoadEmployees()
@@ -162,51 +165,50 @@
     }
 
     private async Task Submit()
-{
-    if (!form.IsValid || !dateFrom.HasValue || !dateTo.HasValue || string.IsNullOrEmpty(selectedEmployeeId))
     {
-        return;
-    }
-
-    if (dateTo.Value < dateFrom.Value)
-    {
-        Snackbar.Add("Date To cannot be before Date From", Severity.Error);
-        return;
-    }
-
-    isProcessing = true;
-
-    try
-    {
-        var request = new EmployeeAttendanceRequest
+        if (!form.IsValid || !dateFrom.HasValue || !dateTo.HasValue || string.IsNullOrEmpty(selectedEmployeeId))
         {
-            EmployeeId = selectedEmployeeId,
-            DateFrom = dateFrom.Value,
-            DateTo = dateTo.Value,
-            Status = selectedStatus,
-        };
-
-        var success = await AttendanceService.UpdateEmployeeAttendanceStatusAsync(request);
-
-        if (success)
-        {
-            Snackbar.Add("Attendance status updated successfully", Severity.Success);
-            // Close the dialog with a success result
-            DialogReference.Close(DialogResult.Ok(true));
+            return;
         }
-        else
+
+        if (dateTo.Value < dateFrom.Value)
         {
-            Snackbar.Add("Failed to update attendance status", Severity.Error);
+            Snackbar.Add("Date_To cannot be before Date_From", Severity.Error);
+            return;
+        }
+
+        isProcessing = true;
+
+        try
+        {
+            var request = new EmployeeAttendanceRequest
+            {
+                EmployeeId = selectedEmployeeId,
+                DateFrom = dateFrom.Value,
+                DateTo = dateTo.Value,
+                Status = selectedStatus,
+            };
+
+            var success = await AttendanceService.UpdateEmployeeAttendanceStatusAsync(request);
+
+            if (success)
+            {
+                Snackbar.Add("Attendance status updated successfully", Severity.Success);
+                MudDialog.Close(DialogResult.Ok(true));  // Proper way to close with success
+            }
+            else
+            {
+                Snackbar.Add("Failed to update attendance status", Severity.Error);
+            }
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Error: {ex.Message}", Severity.Error);
+        }
+        finally
+        {
+            isProcessing = false;
         }
     }
-    catch (Exception ex)
-    {
-        Snackbar.Add($"Error: {ex.Message}", Severity.Error);
-    }
-    finally
-    {
-        isProcessing = false;
-    }
-}
 }
 

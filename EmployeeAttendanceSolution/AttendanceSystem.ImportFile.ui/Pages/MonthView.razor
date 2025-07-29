@@ -423,32 +423,40 @@
 
     private async Task OpenAddEmployeeDialog(DateTime selectedDate)
     {
-        var parameters = new DialogParameters<AddEmployeeDialog>
-    {
-        { x => x.InitialDate, selectedDate },
-        { x => x.DefaultDateFrom, selectedDate },
-        { x => x.DefaultDateTo, selectedDate }
-    };
-
-        var options = new DialogOptions
+        try
         {
-            CloseButton = true,
-            CloseOnEscapeKey = true,
-            MaxWidth = MaxWidth.Small,
-            FullWidth = true
+            var parameters = new DialogParameters<AddEmployeeDialog>
+        {
+            { x => x.InitialDate, selectedDate },
+            { x => x.DefaultDateFrom, selectedDate },
+            { x => x.DefaultDateTo, selectedDate }
         };
 
-        var dialog = await DialogService.ShowAsync<AddEmployeeDialog>("Update Attendance Status", parameters, options);
-        var result = await dialog.Result;
-
-        if (!result.Canceled)
-        {
-            // Check if the result data indicates success (true)
-            if (result.Data is bool success && success)
+            var options = new DialogOptions
             {
-                Snackbar.Add("Attendance updated successfully", Severity.Success);
-                await LoadMonthData(); // Refresh the calendar
+                CloseButton = true,
+                CloseOnEscapeKey = true,
+                MaxWidth = MaxWidth.Small,
+                FullWidth = true
+                
+            };
+
+            var dialog = await DialogService.ShowAsync<AddEmployeeDialog>("Update Attendance Status", parameters, options);
+			var result = await dialog.Result;
+
+           // DialogResult result1 = await dialog.Result;
+            if (!result.Canceled && result.Data is bool success && success)
+            {
+                await LoadMonthData();
             }
+            else
+            {
+                await LoadMonthData();
+            }
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Error: {ex.Message}", Severity.Error);
         }
     }
 

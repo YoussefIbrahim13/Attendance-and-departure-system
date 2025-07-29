@@ -183,8 +183,8 @@ namespace AttendanceSystem.ImportFile.API.Controllers
                     EmployeeName = emp.Name,
                     Department = emp.Department,
                     Date = day,
-                    CheckIn = attendance?.CheckIn ?? string.Empty,
-                    CheckOut = attendance?.CheckOut ?? string.Empty,
+                    CheckIn = attendance?.CheckIn ?? TimeSpan.Zero,
+                    CheckOut = attendance?.CheckOut ?? TimeSpan.Zero,
                     Status = attendance?.Status ?? AttendanceStatus.Absent,
                     Note = attendance?.Note ?? string.Empty
                 };
@@ -336,8 +336,8 @@ namespace AttendanceSystem.ImportFile.API.Controllers
                         Date = date,
                         Status = request.Status,
                         Note = "",
-                        CheckIn = "",
-                        CheckOut = ""
+                        CheckIn = TimeSpan.Zero,
+                        CheckOut = TimeSpan.Zero
                     });
                 }
             }

@@ -140,8 +140,8 @@
     IBrowserFile? selectedFile;
     List<AttendanceRecord>? pendingAttendance;
     AttendanceRecord? editRow;
-    string? editCheckIn;
-    string? editCheckOut;
+    TimeSpan editCheckIn=TimeSpan.Zero;
+    TimeSpan editCheckOut = TimeSpan.Zero;
     AttendanceStatus? editStatus;
     string? editNote;
     string? message;
@@ -183,16 +183,16 @@
         {
             EmployeeId = rec.EmployeeId,
             Date = rec.Date,
-            CheckIn = editCheckIn ?? "",
-            CheckOut = editCheckOut ?? "",
+            CheckIn = editCheckIn ,
+            CheckOut = editCheckOut,
             Status = editStatus ?? rec.Status,
             Note = editNote
         };
         var ok = await AttendanceService.EditPendingAttendanceAsync(dto);
         if (ok)
         {
-            rec.CheckIn = editCheckIn ?? "";
-            rec.CheckOut = editCheckOut ?? "";
+            rec.CheckIn = editCheckIn;
+            rec.CheckOut = editCheckOut ;
             rec.Note = editNote;
             rec.Status = editStatus ?? rec.Status;
             editRow = null;

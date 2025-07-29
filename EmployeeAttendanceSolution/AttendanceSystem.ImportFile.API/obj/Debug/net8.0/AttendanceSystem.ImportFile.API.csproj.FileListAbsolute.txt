@@ -829,7 +829,6 @@ A:\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.I
 A:\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.AssemblyInfoInputs.cache
 A:\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.AssemblyInfo.cs
 A:\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.csproj.CoreCompileInputs.cache
-A:\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.MvcApplicationPartsAssemblyInfo.cs
 A:\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.MvcApplicationPartsAssemblyInfo.cache
 A:\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.sourcelink.json
 A:\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\obj\Debug\net8.0\rjimswa.dswa.cache.json
@@ -847,3 +846,4 @@ A:\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.I
 A:\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.pdb
 A:\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.genruntimeconfig.cache
 A:\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\obj\Debug\net8.0\ref\AttendanceSystem.ImportFile.API.dll
+A:\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.MvcApplicationPartsAssemblyInfo.cs

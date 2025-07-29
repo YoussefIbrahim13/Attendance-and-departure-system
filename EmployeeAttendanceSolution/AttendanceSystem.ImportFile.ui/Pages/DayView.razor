@@ -9,8 +9,6 @@
     <!-- ✅ HEADER -->
     <MudStack Row Justify="Justify.SpaceBetween" AlignItems="AlignItems.Center" Class="mb-4">
         <MudText Typo="Typo.h4" Class="fw-bold">@GetDateTitle()</MudText>
-        <MudText Color="Color.Secondary" Class="mb-0">@GetDayOfWeek()</MudText>
-
         <MudStack Row Spacing="2">
             <MudButtonGroup Variant="Variant.Outlined" Color="Color.Primary">
                 <MudButton Variant="Variant.Outlined" Color="Color.Primary" OnClick="PreviousDay" StartIcon="@Icons.Material.Filled.ChevronLeft">
@@ -43,26 +41,34 @@
         </MudGrid>
 
         <!-- ✅ FILTERS -->
-        <MudGrid Class="mb-3">
-            <MudItem xs="12" sm="6">
-                <MudTextField @bind-Value="searchTerm" Immediate="true" Variant="Variant.Outlined"
-                              Placeholder="Search employees..." Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" TextChanged="@(e => { searchTerm = e.ToString(); FilterEmployees(); })" />
+        <MudGrid Class="mb-4" Spacing="2" Style="align-items: center;">
+            <MudItem xs="12" sm="6" Style="height: 72px; display: flex; align-items: center;">
+                <MudTextField @bind-Value="searchTerm"
+                              Immediate="true"
+                              Variant="Variant.Outlined"
+                              Placeholder="Search employees..."
+                              Adornment="Adornment.Start"
+                              AdornmentIcon="@Icons.Material.Filled.Search"
+                              Style="width: 100%;"
+                              TextChanged="@(e => { searchTerm = e.ToString(); FilterEmployees(); })" />
             </MudItem>
-                   <MudSelect T="string"
-                   @bind-Value="selectedStatusString"
-                   Immediate="true"
-                   Variant="Variant.Outlined"
-                   Label="Filter by Status"
-                   Anchor="Anchor.End">
-            <MudSelectItem Value="string.Empty">All Statuses</MudSelectItem>
-            @foreach (var status in Enum.GetValues(typeof(AttendanceStatus)))
-            {
-                <MudSelectItem Value="@status.ToString()">@status.ToString()</MudSelectItem>
-            }
-        </MudSelect>
+            <MudItem xs="12" sm="6" Style="height: 72px;">
+                <MudSelect T="string"
+                           @bind-Value="selectedStatusString"
+                           Immediate="true"
+                           Variant="Variant.Outlined"
+                           Label="Filter by Status"
+                           Style="width: 100%;">
+                    <MudSelectItem Value="string.Empty">All Statuses</MudSelectItem>
+                    @foreach (var status in Enum.GetValues(typeof(AttendanceStatus)))
+                    {
+                        <MudSelectItem Value="@status.ToString()">@status.ToString()</MudSelectItem>
+                    }
+                </MudSelect>
+            </MudItem>
         </MudGrid>
 
-       <!-- ✅ EMPLOYEE TABLE (Editable) -->
+        <!-- ✅ EMPLOYEE TABLE (Editable) -->
         <MudCard>
             <MudCardHeader>
                 <MudText Typo="Typo.h5" Class="mb-0">Employee Attendance Details (@filteredEmployees.Count employees)</MudText>
@@ -80,7 +86,9 @@
                              EditTrigger="@(_editTriggerRowClick ? DataGridEditTrigger.OnRowClick : DataGridEditTrigger.Manual)">
 
                     <Columns>
+                        <div class="d-flex align-center" style="height:64px;"> <!-- Match Avatar column height -->
                         <PropertyColumn Property="x => x.EmployeeName" Title="Employee" Editable="false">
+                                
                             <CellTemplate>
                                 <MudStack Items="Items.Center" Gap="8">
                                     <MudAvatar Class="employee-avatar">@GetInitials(context.Item.EmployeeName)</MudAvatar>
@@ -89,6 +97,7 @@
                                         <MudText Color="Color.Secondary" Typo="Typo.caption">ID: @context.Item.EmployeeId</MudText>
                                     </MudStack>
                                 </MudStack>
+                                
                             </CellTemplate>
                         </PropertyColumn>
 
@@ -102,24 +111,65 @@
                                 </MudChip>
                             </CellTemplate>
                             <EditTemplate>
-                                <MudSelect T="AttendanceStatus" @bind-Value="context.Item.Status" Margin="Margin.Dense">
-                                    @foreach (var status in Enum.GetValues(typeof(AttendanceStatus)))
-                                    {
-                                        <MudSelectItem Value="@status">@status</MudSelectItem>
-                                    }
-                                </MudSelect>
+                                 <MudSelect @bind-Value="context.Item.Status"
+                                           Label="Status"
+                                           Variant="Variant.Outlined"
+                                           Required="true"
+                                           RequiredError="Status is required">
+                                    <MudSelectItem Value="@AttendanceStatus.Present">
+                                        <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                                            <div class="status-indicator present"></div>
+                                            <MudText>Present</MudText>
+                                        </MudStack>
+                                    </MudSelectItem>
+                                    <MudSelectItem Value="@AttendanceStatus.Absent">
+                                        <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                                            <div class="status-indicator absent"></div>
+                                            <MudText>Absent</MudText>
+                                        </MudStack>
+                                    </MudSelectItem>
+                                    <MudSelectItem Value="@AttendanceStatus.Vacation">
+                                        <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                                            <div class="status-indicator vacation"></div>
+                                            <MudText>Vacation</MudText>
+                                        </MudStack>
+                                    </MudSelectItem>
+                                    <MudSelectItem Value="@AttendanceStatus.WorkFromHome">
+                                        <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                                            <div class="status-indicator work-from-home"></div>
+                                            <MudText>Work From Home</MudText>
+                                        </MudStack>
+                                    </MudSelectItem>
+                                </MudSelect> 
                             </EditTemplate>
                         </PropertyColumn>
 
                         <PropertyColumn Property="x => x.CheckIn" Title="Check In">
+                            <CellTemplate>
+                                @if (context.Item.CheckIn != default)
+                                {
+                                        <span>@FormatTimeSpan(context.Item.CheckIn)</span>
+                                    }
+                                   
+                            </CellTemplate>
                             <EditTemplate>
-                                <MudTextField @bind-Value="context.Item.CheckIn" Placeholder="HH:mm" Margin="Margin.Dense" />
+                                <MudTextField @bind-Value="context.Item.CheckIn"
+                                                Placeholder="HH:mm"
+                                                Margin="Margin.Dense" />
                             </EditTemplate>
                         </PropertyColumn>
 
                         <PropertyColumn Property="x => x.CheckOut" Title="Check Out">
+                            <CellTemplate>
+                                @if (context.Item.CheckOut != default)
+                                {
+                                    <span>@FormatTimeSpan(context.Item.CheckOut)</span>
+                                }
+                            </CellTemplate>
                             <EditTemplate>
-                                <MudTextField @bind-Value="context.Item.CheckOut" Placeholder="HH:mm" Margin="Margin.Dense" />
+                                <MudTextField @bind-Value="context.Item.CheckOut"
+                                                Placeholder="HH:mm"
+                                                Margin="Margin.Dense" />
                             </EditTemplate>
                         </PropertyColumn>
 
@@ -134,6 +184,7 @@
                                 <MudIconButton Size="Size.Small" Icon="@Icons.Material.Outlined.Edit" OnClick="@context.Actions.StartEditingItemAsync" />
                             </CellTemplate>
                         </TemplateColumn>
+                        </div>
                     </Columns>
                 </MudDataGrid>
             </MudCardContent>
@@ -167,21 +218,21 @@
         border-left: 4px solid;
     }
 
-    .summary-card.present {
-        border-left-color: var(--mud-palette-success);
-    }
+        .summary-card.present {
+            border-left-color: var(--mud-palette-success);
+        }
 
-    .summary-card.absent {
-        border-left-color: var(--mud-palette-error);
-    }
+        .summary-card.absent {
+            border-left-color: var(--mud-palette-error);
+        }
 
-    .summary-card.vacation {
-        border-left-color: var(--mud-palette-warning);
-    }
+        .summary-card.vacation {
+            border-left-color: var(--mud-palette-warning);
+        }
 
-    .summary-card.wfh {
-        border-left-color: var(--mud-palette-info);
-    }
+        .summary-card.wfh {
+            border-left-color: var(--mud-palette-info);
+        }
 
     .summary-icon {
         font-size: 2.5rem;
@@ -301,6 +352,9 @@
     .employee-row.work-from-home {
         background-color: rgba(var(--mud-palette-info-rgb), 0.05);
     }
+
+
+
 </style>
 
 @code {
@@ -412,6 +466,12 @@
         _ => "?"
     };
 
+    private string FormatTimeSpan(TimeSpan time)
+    {
+        // Returns format like "5:30" (no leading zero, no seconds)
+        return $"{(time.Hours == 0 ? "0" : time.Hours.ToString())}:{time.Minutes:00}";
+    }
+
     private string GetInitials(string name)
     {
         if (string.IsNullOrEmpty(name)) return "??";
@@ -497,7 +557,7 @@
                 CheckIn = item.CheckIn,
                 CheckOut = item.CheckOut,
                 Note = item.Note
-			};
+            };
             var result = await AttendanceService.UpdateEmployeeAttendanceRecordAsync(employeeAttendanceRequest);
             if (result)
             {

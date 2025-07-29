@@ -7,24 +7,20 @@
       "RelativeMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\pages\\dayview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EA9BB0D7-BEF0-4C66-9E2A-B8DFB588F0E8}|Employee.Shared\\EmployeesModels.Shared.csproj|a:\\attendance-and-departure-system\\employeeattendancesolution\\employee.shared\\attendancestatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EA9BB0D7-BEF0-4C66-9E2A-B8DFB588F0E8}|Employee.Shared\\EmployeesModels.Shared.csproj|solutionrelative:employee.shared\\attendancestatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.importfile.ui\\pages\\employees.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\pages\\employees.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.importfile.ui\\pages\\attendanceimport.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\pages\\attendanceimport.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.importfile.ui\\pages\\monthview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\pages\\monthview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.importfile.ui\\pages\\yearview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\pages\\yearview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.importfile.ui\\pages\\addemployeedialog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\pages\\addemployeedialog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.importfile.ui\\pages\\calendar.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\pages\\calendar.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -54,41 +50,54 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Employees.razor",
               "DocumentMoniker": "A:\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Pages\\Employees.razor",
               "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\Pages\\Employees.razor",
               "ToolTip": "A:\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Pages\\Employees.razor",
               "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\Pages\\Employees.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAJcAAAAAAAAAAAAwwK8AAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-28T23:35:40.665Z",
+              "WhenOpened": "2025-07-29T03:51:55.908Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Calendar.razor",
+              "DocumentMoniker": "A:\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Pages\\Calendar.razor",
+              "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\Pages\\Calendar.razor",
+              "ToolTip": "A:\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Pages\\Calendar.razor",
+              "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\Pages\\Calendar.razor",
+              "ViewState": "AgIAAIEAAAAAAAAAAAAgwJAAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-29T03:51:53.772Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MonthView.razor",
+              "DocumentMoniker": "A:\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Pages\\MonthView.razor",
+              "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\Pages\\MonthView.razor",
+              "ToolTip": "A:\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Pages\\MonthView.razor",
+              "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\Pages\\MonthView.razor",
+              "ViewState": "AgIAAJ0BAAAAAAAAAAAwwLQBAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-29T03:50:28.752Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "AttendanceImport.razor",
-              "DocumentMoniker": "A:\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Pages\\AttendanceImport.razor",
-              "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\Pages\\AttendanceImport.razor",
-              "ToolTip": "A:\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Pages\\AttendanceImport.razor",
-              "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\Pages\\AttendanceImport.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAM8AAAA/AAAAAAAAAA==",
+              "Title": "AddEmployeeDialog.razor",
+              "DocumentMoniker": "A:\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Pages\\AddEmployeeDialog.razor",
+              "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\Pages\\AddEmployeeDialog.razor",
+              "ToolTip": "A:\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Pages\\AddEmployeeDialog.razor",
+              "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\Pages\\AddEmployeeDialog.razor",
+              "ViewState": "AgIAAL0AAAAAAAAAAAAAAK8AAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-28T23:31:51.928Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AttendanceStatus.cs",
-              "DocumentMoniker": "A:\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\AttendanceStatus.cs",
-              "RelativeDocumentMoniker": "Employee.Shared\\AttendanceStatus.cs",
-              "ToolTip": "A:\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\AttendanceStatus.cs",
-              "RelativeToolTip": "Employee.Shared\\AttendanceStatus.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-28T22:27:13.341Z",
+              "WhenOpened": "2025-07-29T01:04:35.884Z",
               "EditorCaption": ""
             },
             {
@@ -99,35 +108,9 @@
               "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\Pages\\DayView.razor",
               "ToolTip": "A:\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Pages\\DayView.razor*",
               "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\Pages\\DayView.razor*",
-              "ViewState": "AgIAAGoBAAAAAAAAAAAAAH0BAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAIYAAAAAAAAAAAAAAJoAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-28T21:11:50.975Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "MonthView.razor",
-              "DocumentMoniker": "A:\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Pages\\MonthView.razor",
-              "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\Pages\\MonthView.razor",
-              "ToolTip": "A:\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Pages\\MonthView.razor",
-              "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\Pages\\MonthView.razor",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAACgAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-28T21:11:48.376Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "YearView.razor",
-              "DocumentMoniker": "A:\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Pages\\YearView.razor",
-              "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\Pages\\YearView.razor",
-              "ToolTip": "A:\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Pages\\YearView.razor",
-              "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\Pages\\YearView.razor",
-              "ViewState": "AgIAAKgAAAAAAAAAAAAAALMAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-28T04:14:09.934Z",
+              "WhenOpened": "2025-07-29T00:52:08.999Z",
               "EditorCaption": ""
             }
           ]

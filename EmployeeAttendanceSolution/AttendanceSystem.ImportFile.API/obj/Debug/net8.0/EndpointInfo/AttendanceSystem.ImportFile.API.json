@@ -329,11 +329,11 @@
           },
           "checkIn": {
             "type": "string",
-            "nullable": true
+            "format": "date-span"
           },
           "checkOut": {
             "type": "string",
-            "nullable": true
+            "format": "date-span"
           },
           "status": {
             "$ref": "#/components/schemas/AttendanceStatus"
@@ -368,11 +368,11 @@
           },
           "checkIn": {
             "type": "string",
-            "nullable": true
+            "format": "date-span"
           },
           "checkOut": {
             "type": "string",
-            "nullable": true
+            "format": "date-span"
           },
           "status": {
             "$ref": "#/components/schemas/AttendanceStatus"

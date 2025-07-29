@@ -44,8 +44,15 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
                     for (int i = 1; i < parts.Length - 1 && empIndex < employeeIds.Count; i += 2, empIndex++)
                     {
                         // نظف أي رموز غريبة (مثل �) من القيم
-                        var checkIn = parts[i].Trim().Replace("�", string.Empty);
-                        var checkOut = parts[i + 1].Trim().Replace("�", string.Empty);
+                        var checkInStr = parts[i].Trim().Replace("�", string.Empty);
+                        var checkOutStr = parts[i + 1].Trim().Replace("�", string.Empty);
+
+                        TimeSpan checkIn = TimeSpan.Zero;
+                        TimeSpan checkOut = TimeSpan.Zero;
+
+                        // Try parse or leave default (TimeSpan.Zero)
+                        TimeSpan.TryParse(checkInStr, out checkIn);
+                        TimeSpan.TryParse(checkOutStr, out checkOut);
                         // Allow adding records even if both CheckIn and CheckOut are empty, to support HR excuses in Note
                         var empId = employeeIds[empIndex];
                         attendanceRecords.Add(new AttendanceRecord
@@ -65,16 +72,10 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
         }
 
         // Helper method to determine attendance status
-        private AttendanceStatus DetermineAttendanceStatus(string checkIn, string checkOut)
+        private AttendanceStatus DetermineAttendanceStatus(TimeSpan checkIn, TimeSpan checkOut)
         {
-            if (string.IsNullOrEmpty(checkIn) && string.IsNullOrEmpty(checkOut))
+            if (checkIn == TimeSpan.Zero && checkOut == TimeSpan.Zero)
                 return AttendanceStatus.Absent;
-
-            if (!string.IsNullOrEmpty(checkIn))
-            {
-
-                return AttendanceStatus.Present;
-            }
 
             return AttendanceStatus.Present;
         }
