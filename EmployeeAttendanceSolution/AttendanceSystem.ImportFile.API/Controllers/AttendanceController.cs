@@ -1,7 +1,8 @@
-using AttendanceSystem.ImportFile.API.Services.AttendanceServices;
+using EmployeesModels.Shared.Data;
 using EmployeesModels.Shared;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using AttendanceSystem.ImportFile.API.Services.AttendanceServices;
 using System.Globalization;
 using System.Text;
 
@@ -26,31 +27,22 @@ namespace AttendanceSystem.ImportFile.API.Controllers
                 return BadRequest("No file uploaded.");
             _pendingAttendance = await attendanceService.UploadCSVFileAsync(file);
 
-
             return Ok(_pendingAttendance);
         }
 
         // تعديل سجل في البيانات المؤقتة فقط
+
+
         [HttpPut("edit-pending")]
         public IActionResult EditPendingAttendance([FromBody] EditAttendanceDto dto)
         {
-            if (string.IsNullOrWhiteSpace(dto.EmployeeId))
-                return BadRequest("EmployeeId is required.");
-
-            // ✅ dto.Date is already DateTime, so no parsing needed
-            var record = _pendingAttendance
-                .FirstOrDefault(x => x.EmployeeId == dto.EmployeeId && x.Date.Date == dto.Date.Date);
-
-            if (record == null)
-                return NotFound("Attendance record not found in pending data.");
-
-            // ✅ Update fields
-            record.CheckIn = dto.CheckIn;
-            record.CheckOut = dto.CheckOut;
-            record.Status = dto.Status;
-            record.Note = dto.Note;
-
-            return Ok("Pending attendance record updated successfully.");
+            // تمرير الطلب إلى AttendanceService عبر الواجهة
+            var result = attendanceService.EditPendingAttendance(_pendingAttendance, dto);
+            if (result == "EmployeeId is required.")
+                return BadRequest(result);
+            if (result == "Attendance record not found in pending data.")
+                return NotFound(result);
+            return Ok(result);
         }
 
 
@@ -58,27 +50,12 @@ namespace AttendanceSystem.ImportFile.API.Controllers
         [HttpPost("save")]
         public async Task<IActionResult> SaveAttendance([FromServices] AttendanceDbContext db)
         {
-            if (_pendingAttendance.Count == 0)
-                return BadRequest("No pending attendance data to save.");
-
-            foreach (var rec in _pendingAttendance)
-            {
-                var existing = db.AttendanceRecords.FirstOrDefault(x => x.EmployeeId == rec.EmployeeId && x.Date == rec.Date);
-                if (existing != null)
-                {
-                    existing.CheckIn = rec.CheckIn;
-                    existing.CheckOut = rec.CheckOut;
-                    existing.Status = rec.Status;
-                    existing.Note = rec.Note; // Ensure Note is updated as well
-                }
-                else
-                {
-                    db.AttendanceRecords.Add(rec);
-                }
-            }
-            await db.SaveChangesAsync();
-            _pendingAttendance.Clear();
-            return Ok("Attendance data saved successfully.");
+            var result = await attendanceService.SavePendingAttendance(_pendingAttendance, db);
+            if (result == "No pending attendance data to save.")
+                return BadRequest(result);
+            if (result == "Invalid DbContext.")
+                return StatusCode(500, result);
+            return Ok(result);
         }
         // Get month view data
         [HttpGet("month-view")]
@@ -105,6 +82,7 @@ namespace AttendanceSystem.ImportFile.API.Controllers
 
             // 4️⃣ Get all employees
             var employees = await db.Employees.ToListAsync();
+        // SRP: تجهيز بيانات الشهر للواجهة فقط، وتعتمد على الخدمات عبر DI
             Console.WriteLine($"✅ Total Employees: {employees.Count}");
 
             // 5️⃣ Prepare DTO for UI
@@ -182,6 +160,7 @@ namespace AttendanceSystem.ImportFile.API.Controllers
                     EmployeeId = emp.Id,
                     EmployeeName = emp.Name,
                     Department = emp.Department,
+        // SRP: تجهيز بيانات يوم واحد للواجهة فقط
                     Date = day,
                     CheckIn = attendance?.CheckIn ?? TimeSpan.Zero,
                     CheckOut = attendance?.CheckOut ?? TimeSpan.Zero,
@@ -216,6 +195,7 @@ namespace AttendanceSystem.ImportFile.API.Controllers
                     .Where(ar => ar.Date >= startDate && ar.Date <= endDate)
                     .ToListAsync();
 
+        // SRP: تجهيز ملخص السنة فقط
                 // ✅ Calculate working days (weekends excluded if needed)
                 int workingDays = attendanceService.GetWorkingDaysInMonth(year, month);
 
@@ -263,6 +243,7 @@ namespace AttendanceSystem.ImportFile.API.Controllers
             await db.SaveChangesAsync();
             return Ok("Employee deleted successfully.");
         }
+        // SRP: جلب كل الموظفين فقط
 
         // Add new employee
         [HttpPost("add-employee")]
@@ -271,6 +252,7 @@ namespace AttendanceSystem.ImportFile.API.Controllers
             if (employeeDto == null || string.IsNullOrWhiteSpace(employeeDto.Id) || string.IsNullOrWhiteSpace(employeeDto.Name))
                 return BadRequest("Employee data is required.");
 
+        // SRP: حذف موظف فقط
             var exists = await db.Employees.AnyAsync(e => e.Id == employeeDto.Id);
             if (exists)
                 return BadRequest("Employee with this ID already exists.");
@@ -287,6 +269,7 @@ namespace AttendanceSystem.ImportFile.API.Controllers
             if (employeeDto == null || string.IsNullOrWhiteSpace(employeeDto.Id))
                 return BadRequest("Employee data is required.");
 
+        // SRP: إضافة موظف جديد فقط
             var employee = await db.Employees.FirstOrDefaultAsync(e => e.Id == employeeDto.Id);
             if (employee == null)
                 return NotFound("Employee not found.");
@@ -299,88 +282,17 @@ namespace AttendanceSystem.ImportFile.API.Controllers
             return Ok("Employee updated successfully.");
         }
 
-        // update attendance status for a range of dates
-        [HttpPut("update-attendance-status")]
-        public async Task<IActionResult> UpdateAttendanceStatus( [FromServices] AttendanceDbContext db,[FromBody] EmployeeAttendanceRequest request)
+        // إضافة خطة حضور لموظف لأيام محددة (API Endpoint)
+        [HttpPost("plan-attendance")]
+        public async Task<IActionResult> PlanAttendance([FromServices] AttendanceDbContext db, [FromBody] PlanAttendanceDto dto)
         {
-            if (request == null || string.IsNullOrWhiteSpace(request.EmployeeId))
-                return BadRequest("Employee ID and dates are required.");
-
-            if (request.DateFrom > request.DateTo)
-                return BadRequest("From date cannot be after To date.");
-
-            // Get existing records for the date range
-            var existingRecords = await db.AttendanceRecords
-                .Where(ar => ar.EmployeeId == request.EmployeeId
-                            && ar.Date >= request.DateFrom
-                            && ar.Date <= request.DateTo)
-                .ToListAsync();
-
-            // Process each day in the date range
-            for (var date = request.DateFrom; date <= request.DateTo; date = date.AddDays(1))
-            {
-                var existingRecord = existingRecords.FirstOrDefault(er => er.Date == date);
-
-                if (existingRecord != null)
-                {
-                    // Update existing record
-                    existingRecord.Status = request.Status;
-                    
-                }
-                else
-                {
-                    // Create new record
-                    db.AttendanceRecords.Add(new AttendanceRecord
-                    {
-                        EmployeeId = request.EmployeeId,
-                        Date = date,
-                        Status = request.Status,
-                        Note = "",
-                        CheckIn = TimeSpan.Zero,
-                        CheckOut = TimeSpan.Zero
-                    });
-                }
-            }
-
-            await db.SaveChangesAsync();
-            return Ok($"Attendance status updated successfully from {request.DateFrom:yyyy-MM-dd} to {request.DateTo:yyyy-MM-dd}");
+            var ok = await attendanceService.PlanAttendanceAsync(dto, db);
+            if (ok)
+                return Ok("Attendance plan saved successfully.");
+            return BadRequest("Failed to save attendance plan.");
         }
-
-        // update attendance status for a single date
-        [HttpPut("update-attendance-record")]
-        public async Task<IActionResult> UpdateAttendanceStatusForDate([FromServices] AttendanceDbContext db, AttendanceRecord employeeAttendance)
-        {
-            if (string.IsNullOrWhiteSpace(employeeAttendance.EmployeeId))
-                return BadRequest("Employee ID is required.");
-            // Check if the record exists
-            var record = await db.AttendanceRecords
-                .FirstOrDefaultAsync(ar => ar.EmployeeId == employeeAttendance.EmployeeId && ar.Date.Date == employeeAttendance.Date);
-            if (record == null)
-            {
-                // Create a new record if it doesn't exist
-                record = new AttendanceRecord
-                {
-                    EmployeeId = employeeAttendance.EmployeeId,
-                    Date = employeeAttendance.Date,
-                    Status = employeeAttendance.Status,
-                    Note = employeeAttendance.Note,
-                    CheckIn = employeeAttendance.CheckIn,
-                    CheckOut = employeeAttendance.CheckOut
-                };
-                db.AttendanceRecords.Add(record);
-            }
-            else
-            {
-                // Update existing record
-                record.Status = employeeAttendance.Status;
-                record.CheckOut = employeeAttendance.CheckOut;
-                record.CheckIn = employeeAttendance.CheckIn;
-                record.Note = employeeAttendance.Note;
-            }
-            await db.SaveChangesAsync();
-            return Ok($"Attendance updated for {employeeAttendance.EmployeeId} ");
-        }
-
-
     }
+
+
+        // SRP: تحديث بيانات موظف فقط
 }

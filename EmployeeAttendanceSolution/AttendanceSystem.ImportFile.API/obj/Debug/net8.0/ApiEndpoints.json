@@ -96,44 +96,28 @@
   },
   {
     "ContainingType": "AttendanceSystem.ImportFile.API.Controllers.AttendanceController",
+    "Method": "PlanAttendance",
+    "RelativePath": "Attendance/plan-attendance",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "EmployeesModels.Shared.PlanAttendanceDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AttendanceSystem.ImportFile.API.Controllers.AttendanceController",
     "Method": "SaveAttendance",
     "RelativePath": "Attendance/save",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "AttendanceSystem.ImportFile.API.Controllers.AttendanceController",
-    "Method": "UpdateAttendanceStatusForDate",
-    "RelativePath": "Attendance/update-attendance-record",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "employeeAttendance",
-        "Type": "EmployeesModels.Shared.AttendanceRecord",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "AttendanceSystem.ImportFile.API.Controllers.AttendanceController",
-    "Method": "UpdateAttendanceStatus",
-    "RelativePath": "Attendance/update-attendance-status",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "request",
-        "Type": "EmployeesModels.Shared.EmployeeAttendanceRequest",
-        "IsRequired": true
-      }
-    ],
     "ReturnTypes": []
   },
   {

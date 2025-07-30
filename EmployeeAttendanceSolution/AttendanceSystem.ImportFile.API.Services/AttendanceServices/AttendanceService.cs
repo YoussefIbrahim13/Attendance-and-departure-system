@@ -1,4 +1,8 @@
-﻿using EmployeesModels.Shared;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using System.Threading.Tasks;
+using EmployeesModels.Shared;
+using EmployeesModels.Shared.Data;
 using Microsoft.AspNetCore.Http;
 using System.Globalization;
 using System.Text;
@@ -7,6 +11,64 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
 {
     public class AttendanceService : IAttendanceService
     {
+        // حفظ البيانات المؤقتة في قاعدة البيانات
+        public async Task<string> SavePendingAttendance(List<AttendanceRecord> pendingAttendance, AttendanceDbContext db)
+        {
+            if (db == null)
+                return "Invalid DbContext.";
+
+            if (pendingAttendance.Count == 0)
+                return "No pending attendance data to save.";
+
+            var employeeIds = pendingAttendance.Select(x => x.EmployeeId).ToList();
+            var dates = pendingAttendance.Select(x => x.Date).ToList();
+
+            var existingRecords = await db.AttendanceRecords
+                .Where(x => employeeIds.Contains(x.EmployeeId) && dates.Contains(x.Date))
+                .ToListAsync();
+
+            foreach (var rec in pendingAttendance)
+            {
+                var existing = existingRecords
+                    .FirstOrDefault(x => x.EmployeeId == rec.EmployeeId && x.Date == rec.Date);
+
+                if (existing != null)
+                {
+                    existing.CheckIn = rec.CheckIn;
+                    existing.CheckOut = rec.CheckOut;
+                    existing.Status = rec.Status;
+                    existing.Note = rec.Note;
+                }
+                else
+                {
+                    db.AttendanceRecords.Add(rec);
+                }
+            }
+
+            await db.SaveChangesAsync();
+            pendingAttendance.Clear();
+            return "Attendance data saved successfully.";
+        }
+
+        // تعديل سجل في قائمة الحضور المؤقتة
+        public string EditPendingAttendance(List<AttendanceRecord> pendingAttendance, EditAttendanceDto dto)
+        {
+            if (string.IsNullOrWhiteSpace(dto.EmployeeId))
+                return "EmployeeId is required.";
+
+            var record = pendingAttendance
+                .FirstOrDefault(x => x.EmployeeId == dto.EmployeeId && x.Date.Date == dto.Date.Date);
+
+            if (record == null)
+                return "Attendance record not found in pending data.";
+
+            record.CheckIn = dto.CheckIn;
+            record.CheckOut = dto.CheckOut;
+            record.Status = dto.Status;
+            record.Note = dto.Note;
+
+            return "Pending attendance record updated successfully.";
+        }
         public async Task<List<AttendanceRecord>> UploadCSVFileAsync(IFormFile file)
         {
             var attendanceRecords = new List<AttendanceRecord>();
@@ -46,14 +108,10 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
                         // نظف أي رموز غريبة (مثل �) من القيم
                         var checkInStr = parts[i].Trim().Replace("�", string.Empty);
                         var checkOutStr = parts[i + 1].Trim().Replace("�", string.Empty);
-
                         TimeSpan checkIn = TimeSpan.Zero;
                         TimeSpan checkOut = TimeSpan.Zero;
-
-                        // Try parse or leave default (TimeSpan.Zero)
                         TimeSpan.TryParse(checkInStr, out checkIn);
                         TimeSpan.TryParse(checkOutStr, out checkOut);
-                        // Allow adding records even if both CheckIn and CheckOut are empty, to support HR excuses in Note
                         var empId = employeeIds[empIndex];
                         attendanceRecords.Add(new AttendanceRecord
                         {
@@ -61,8 +119,7 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
                             Date = date,
                             CheckIn = checkIn,
                             CheckOut = checkOut,
-                            Status = DetermineAttendanceStatus(checkIn, checkOut)
-
+                            Status = DetermineAttendanceStatus(checkInStr, checkOutStr)
                         });
                     }
                 }
@@ -72,10 +129,16 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
         }
 
         // Helper method to determine attendance status
-        private AttendanceStatus DetermineAttendanceStatus(TimeSpan checkIn, TimeSpan checkOut)
+        private AttendanceStatus DetermineAttendanceStatus(string checkIn, string checkOut)
         {
-            if (checkIn == TimeSpan.Zero && checkOut == TimeSpan.Zero)
+            if (string.IsNullOrEmpty(checkIn) && string.IsNullOrEmpty(checkOut))
                 return AttendanceStatus.Absent;
+
+            if (!string.IsNullOrEmpty(checkIn))
+            {
+
+                return AttendanceStatus.Present;
+            }
 
             return AttendanceStatus.Present;
         }
@@ -96,5 +159,32 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
             return workingDays;
         }
 
+        public async Task<bool> PlanAttendanceAsync(PlanAttendanceDto dto, AttendanceDbContext db)
+        {
+            if (dto == null || db == null || string.IsNullOrWhiteSpace(dto.EmployeeId) || dto.Dates == null || dto.Dates.Count == 0)
+                return false;
+
+            foreach (var date in dto.Dates)
+            {
+                var record = await db.AttendanceRecords.FirstOrDefaultAsync(x => x.EmployeeId == dto.EmployeeId && x.Date == date);
+                if (record != null)
+                {
+                    record.Status = dto.Status;
+                }
+                else
+                {
+                    db.AttendanceRecords.Add(new AttendanceRecord
+                    {
+                        EmployeeId = dto.EmployeeId,
+                        Date = date,
+                        Status = dto.Status,
+                        CheckIn = TimeSpan.Zero,
+                        CheckOut = TimeSpan.Zero
+                    });
+                }
+            }
+            await db.SaveChangesAsync();
+            return true;
+        }
     }
 }

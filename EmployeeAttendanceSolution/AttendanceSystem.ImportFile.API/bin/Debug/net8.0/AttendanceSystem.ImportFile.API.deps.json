@@ -950,7 +950,8 @@
       "AttendanceSystem.ImportFile.API.Services/1.0.0": {
         "dependencies": {
           "EmployeesModels.Shared": "1.0.0",
-          "Microsoft.AspNetCore.Http": "2.3.0"
+          "Microsoft.AspNetCore.Http": "2.3.0",
+          "Microsoft.EntityFrameworkCore": "8.0.0"
         },
         "runtime": {
           "AttendanceSystem.ImportFile.API.Services.dll": {
@@ -960,6 +961,9 @@
         }
       },
       "EmployeesModels.Shared/1.0.0": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "8.0.0"
+        },
         "runtime": {
           "EmployeesModels.Shared.dll": {
             "assemblyVersion": "1.0.0.0",

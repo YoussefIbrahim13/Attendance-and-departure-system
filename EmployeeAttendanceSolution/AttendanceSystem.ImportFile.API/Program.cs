@@ -1,16 +1,22 @@
-using AttendanceSystem.ImportFile.API.Services.AttendanceServices;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using AttendanceSystem.ImportFile.API.Services.AttendanceServices;
+using EmployeesModels.Shared.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<AttendanceSystem.ImportFile.API.AttendanceDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<AttendanceDbContext>(options =>
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        sqlOptions => sqlOptions.MigrationsAssembly("AttendanceSystem.ImportFile.API")
+    )
+);
 builder.Services.AddTransient<IAttendanceService, AttendanceService>();
 builder.Services.AddCors(options =>
 {

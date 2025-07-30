@@ -29,18 +29,11 @@
                         </ItemTemplate>
                     </MudAutocomplete>
 
-                    <MudDatePicker @bind-Date="dateFrom"
-                                   Label="Date From"
+                    <MudDatePicker @bind-Date="singleDate"
+                                   Label="Date"
                                    Variant="Variant.Outlined"
                                    Required="true"
-                                   RequiredError="Date From is required"
-                                   Editable="true" />
-
-                    <MudDatePicker @bind-Date="dateTo"
-                                   Label="Date To"
-                                   Variant="Variant.Outlined"
-                                   Required="true"
-                                   RequiredError="Date To is required"
+                                   RequiredError="Date is required"
                                    Editable="true" />
 
                     <MudSelect @bind-Value="selectedStatus"
@@ -140,15 +133,13 @@
 
     private MudForm form = null!;
     private bool isFormValid;
-    private DateTime? dateFrom;
-    private DateTime? dateTo;
+    private DateTime? singleDate;
     private AttendanceStatus selectedStatus = AttendanceStatus.Present;
 
     protected override async Task OnInitializedAsync()
     {
-        // Set dates from parameters or fall back to InitialDate
-        dateFrom = DefaultDateFrom ?? InitialDate;
-        dateTo = DefaultDateTo ?? InitialDate;
+        // Set date from parameters or fall back to InitialDate
+        singleDate = DefaultDateFrom ?? InitialDate;
         await LoadEmployees();
     }
 
@@ -173,14 +164,8 @@
 
     private async Task Submit()
     {
-        if (!form.IsValid || !dateFrom.HasValue || !dateTo.HasValue || selectedEmployee == null)
+        if (!form.IsValid || !singleDate.HasValue || selectedEmployee == null)
         {
-            return;
-        }
-
-        if (dateTo.Value < dateFrom.Value)
-        {
-            Snackbar.Add("Date_To cannot be before Date_From", Severity.Error);
             return;
         }
 
@@ -191,8 +176,8 @@
             var request = new EmployeeAttendanceRequest
             {
                 EmployeeId = selectedEmployee.Id,
-                DateFrom = dateFrom.Value,
-                DateTo = dateTo.Value,
+                DateFrom = singleDate.Value.Date,
+                DateTo = singleDate.Value.Date,
                 Status = selectedStatus,
             };
 
@@ -201,7 +186,7 @@
             if (success)
             {
                 Snackbar.Add("Attendance status updated successfully", Severity.Success);
-                MudDialog.Close(DialogResult.Ok(true));  // Proper way to close with success
+                MudDialog.Close(DialogResult.Ok(true));
             }
             else
             {

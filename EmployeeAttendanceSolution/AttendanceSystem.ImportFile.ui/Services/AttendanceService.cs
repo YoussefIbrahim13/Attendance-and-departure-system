@@ -4,7 +4,7 @@ using System.Net.Http.Json;
 namespace AttendanceSystem.ImportFile.ui.Services
 {
 
-    
+
 
     public class AttendanceService
     {
@@ -186,6 +186,19 @@ namespace AttendanceSystem.ImportFile.ui.Services
                 return false;
             }
 
+        }
+        
+        // جدولة حضور موظف لأيام محددة (Plan Attendance)
+        public async Task<bool> PlanAttendanceAsync(string employeeId, List<DateTime> days, AttendanceStatus status)
+        {
+            var dto = new PlanAttendanceDto
+            {
+                EmployeeId = employeeId,
+                Dates = days,
+                Status = status
+            };
+            var response = await _http.PostAsJsonAsync("Attendance/plan-attendance", dto);
+            return response.IsSuccessStatusCode;
         }
 
     }

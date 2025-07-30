@@ -1,0 +1,6 @@
+.custom-glass-card {
+    background: var(--mud-palette-surface, #fff);
+    box-shadow: 0 6px 24px 0 rgba(33, 150, 243, 0.08), 0 1.5px 8px 0 rgba(25, 118, 210, 0.10);
+    border: 1.5px solid var(--mud-palette-lines-default, #e3f2fd);
+    backdrop-filter: blur(12px) saturate(120%);
+}

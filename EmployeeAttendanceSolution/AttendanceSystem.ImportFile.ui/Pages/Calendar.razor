@@ -136,6 +136,16 @@
             <MudIcon Icon="@Icons.Material.Filled.Upload" Class="me-2" />
             Import Attendance
         </MudButton>
+
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="rounded-pill px-4 py-2 d-flex align-items-center" Style="min-height:48px;" OnClick="@(() => Navigation.NavigateTo("/planattendance"))">
+            <MudIcon Icon="@Icons.Material.Filled.EventNote" Class="me-2" />
+            Plan Attendance
+        </MudButton>
+
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="rounded-pill px-4 py-2 d-flex align-items-center" Style="min-height:48px;" OnClick="@(() => Navigation.NavigateTo("/employees"))">
+            <MudIcon Icon="@Icons.Material.Filled.Group" Class="me-2" />
+            Employees
+        </MudButton>
     </MudStack>
 
 </MudContainer>

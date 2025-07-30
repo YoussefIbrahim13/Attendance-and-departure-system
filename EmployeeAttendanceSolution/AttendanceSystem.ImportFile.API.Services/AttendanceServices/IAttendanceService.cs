@@ -1,4 +1,5 @@
-﻿using EmployeesModels.Shared;
+﻿using EmployeesModels.Shared.Data;
+using EmployeesModels.Shared;
 using Microsoft.AspNetCore.Http;
 
 namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
@@ -7,5 +8,8 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
     {
         Task<List<AttendanceRecord>> UploadCSVFileAsync(IFormFile file);
         int GetWorkingDaysInMonth(int year, int month);
+        string EditPendingAttendance(List<AttendanceRecord> pendingAttendance, EditAttendanceDto dto);
+        Task<string> SavePendingAttendance(List<AttendanceRecord> pendingAttendance, AttendanceDbContext db);
+        Task<bool> PlanAttendanceAsync(PlanAttendanceDto dto, AttendanceDbContext db);
     }
 }

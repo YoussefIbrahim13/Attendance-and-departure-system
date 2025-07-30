@@ -31,6 +31,28 @@
         </MudStack>
     </MudStack>
 
+    <!-- Quick Selection Buttons -->
+    <MudStack Row Justify="Justify.Center" Spacing="2" Class="mb-6">
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.CalendarMonth" OnClick="@(() => Navigation.NavigateTo($"/calendar/month/{DateTime.Today.Year}/{DateTime.Today.Month}"))">
+            CURRENT MONTH
+        </MudButton>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.DateRange" OnClick="@(() => Navigation.NavigateTo($"/calendar/year/{DateTime.Today.Year}"))">
+            CURRENT YEAR
+        </MudButton>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.Today" OnClick="@(() => Navigation.NavigateTo($"/calendar/day/{DateTime.Today:yyyy-MM-dd}"))">
+            TODAY
+        </MudButton>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.UploadFile" OnClick="@(() => Navigation.NavigateTo($"/attendanceimport"))">
+            IMPORT ATTENDANCE
+        </MudButton>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.EventNote" OnClick="@(() => Navigation.NavigateTo("/planattendance"))">
+            PLAN ATTENDANCE
+        </MudButton>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.Group" OnClick="@(() => Navigation.NavigateTo("/employees"))">
+            EMPLOYEES
+        </MudButton>
+    </MudStack>
+
     @if (isLoading)
     {
         <MudStack AlignItems="AlignItems.Center" Class="mt-8">
@@ -425,26 +447,17 @@
     {
         try
         {
-            var parameters = new DialogParameters<AddEmployeeDialog>
-        {
-            { x => x.InitialDate, selectedDate },
-            { x => x.DefaultDateFrom, selectedDate },
-            { x => x.DefaultDateTo, selectedDate }
-        };
-
             var options = new DialogOptions
             {
                 CloseButton = true,
                 CloseOnEscapeKey = true,
                 MaxWidth = MaxWidth.Small,
                 FullWidth = true
-                
             };
 
-            var dialog = await DialogService.ShowAsync<AddEmployeeDialog>("Update Attendance Status", parameters, options);
-			var result = await dialog.Result;
+            var dialog = await DialogService.ShowAsync<AddEmployeeDialog>("Update Attendance Status", options: options);
+            var result = await dialog.Result;
 
-           // DialogResult result1 = await dialog.Result;
             if (!result.Canceled && result.Data is bool success && success)
             {
                 await LoadMonthData();

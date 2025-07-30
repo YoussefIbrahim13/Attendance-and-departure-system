@@ -147,15 +147,12 @@
 
                             <PropertyColumn Property="x => x.CheckIn" Title="Check In">
                                 <CellTemplate>
-                                    @if (context.Item.CheckIn != default)
-                                    {
-                                        <span>@FormatTimeSpan(context.Item.CheckIn)</span>
-                                    }
+                                    <span>@FormatTimeSpan(context.Item.CheckIn)</span>
                                 </CellTemplate>
                                 <EditTemplate>
                                     <MudTimePicker Label="Check-in"
                                                    Time="context.Item.CheckIn"
-                                                   TimeChanged="(newTime) => context.Item.CheckIn = newTime ?? default"
+                                                   TimeChanged="newTime => OnCheckInChanged(newTime, context.Item)"
                                                    TimeFormat="HH:mm"
                                                    Variant="Variant.Outlined"
                                                    Margin="Margin.Dense"
@@ -168,15 +165,12 @@
 
                             <PropertyColumn Property="x => x.CheckOut" Title="Check Out">
                                 <CellTemplate>
-                                    @if (context.Item.CheckOut != default)
-                                    {
-                                        <span>@FormatTimeSpan(context.Item.CheckOut)</span>
-                                    }
+                                    <span>@FormatTimeSpan(context.Item.CheckOut)</span>
                                 </CellTemplate>
                                 <EditTemplate>
                                     <MudTimePicker Label="Check-out"
                                                    Time="context.Item.CheckOut"
-                                                   TimeChanged="(newTime) => context.Item.CheckOut = newTime ?? default"
+                                                   TimeChanged="newTime => OnCheckOutChanged(newTime, context.Item)"
                                                    TimeFormat="HH:mm"
                                                    Variant="Variant.Outlined"
                                                    Margin="Margin.Dense"
@@ -184,6 +178,16 @@
                                                    Tooltip="Select check-out time"
                                                    AnchorOrigin="Origin.TopCenter"
                                                    TransformOrigin="Origin.BottomCenter" />
+@code {
+    void OnCheckInChanged(TimeSpan? newTime, DailyAttendanceDto item)
+    {
+        item.CheckIn = newTime ?? TimeSpan.Zero;
+    }
+    void OnCheckOutChanged(TimeSpan? newTime, DailyAttendanceDto item)
+    {
+        item.CheckOut = newTime ?? TimeSpan.Zero;
+    }
+}
                                 </EditTemplate>
                             </PropertyColumn>
 
@@ -498,16 +502,13 @@
             : parts[0].Substring(0, Math.Min(2, parts[0].Length)).ToUpper();
     }
 
-    private string CalculateWorkingHours(string checkIn, string checkOut)
+    // حذف الدالة الزائدة، والإبقاء فقط على النسخة الصحيحة:
+    private string CalculateWorkingHours(TimeSpan checkIn, TimeSpan checkOut)
     {
-        if (TimeSpan.TryParse(checkIn, out var inTime) && TimeSpan.TryParse(checkOut, out var outTime))
-        {
-            var workingTime = outTime - inTime;
-            return workingTime.TotalMinutes > 0
-                ? $"{workingTime.Hours}h {workingTime.Minutes}m"
-                : "--";
-        }
-        return "--";
+        var workingTime = checkOut - checkIn;
+        return workingTime.TotalMinutes > 0
+            ? $"{workingTime.Hours}h {workingTime.Minutes}m"
+            : "--";
     }
 
     private int GetStatusCount(AttendanceStatus status) => dayData.Count(emp => emp.Status == status);

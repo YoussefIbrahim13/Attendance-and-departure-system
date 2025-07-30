@@ -1,104 +1,119 @@
+
 @page "/Employees"
+@using MudBlazor
+@using AttendanceSystem.ImportFile.ui.Services
 @inject AttendanceSystem.ImportFile.ui.Services.AttendanceService AttendanceService
 
-<h3>Employees Management</h3>
+<MudContainer MaxWidth="MaxWidth.Medium" Class="mt-10 d-flex justify-center align-center" Style="min-height:90vh;">
+    <MudPaper Class="pa-10 mb-8" Elevation="12" Style="border-radius:32px; min-width:440px; background: var(--mud-palette-surface); box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.13), 0 1.5px 8px 0 rgba(25, 118, 210, 0.10);">
+        <MudText Typo="Typo.h3" Align="Align.Center" Class="mb-6 fw-bold" Style="letter-spacing:2.5px; color:#1976d2; text-shadow:0 4px 16px #e3f2fd, 0 1px 0 #fff; font-family:'Segoe UI',Roboto,sans-serif;">
+            <MudIcon Icon="@Icons.Material.Filled.People" Size="Size.Large" Class="me-2" Style="vertical-align:middle; color:#90caf9; filter:drop-shadow(0 2px 8px #1976d2aa);" />
+            Employees Management
+        </MudText>
+        <MudPaper Class="pa-6 mb-6" Elevation="2" Style="border-radius:18px; background: var(--mud-palette-surface);">
+            <MudText Typo="Typo.h6" Class="mb-4">Add New Employee</MudText>
+            <MudStack Row Spacing="2" Class="mb-2">
+                <MudTextField T="string" Label="ID" @bind-Value="newEmployee.Id" Variant="Variant.Outlined" Style="width:140px;" />
+                <MudTextField T="string" Label="Name" @bind-Value="newEmployee.Name" Variant="Variant.Outlined" Style="width:180px;" />
+                <MudTextField T="string" Label="Department" @bind-Value="newEmployee.Department" Variant="Variant.Outlined" Style="width:180px;" />
+                <MudTextField T="string" Label="Position" @bind-Value="newEmployee.Position" Variant="Variant.Outlined" Style="width:180px;" />
+            </MudStack>
+            <MudButton Variant="Variant.Filled" Color="Color.Success" OnClick="AddEmployee" Class="mt-2" StartIcon="@Icons.Material.Filled.PersonAdd">Add Employee</MudButton>
+        </MudPaper>
 
-<!-- Add Employee Form -->
-<div class="card mb-4">
-    <div class="card-header">Add New Employee</div>
-    <div class="card-body">
-        <div class="row g-2">
-            <div class="col-md-3">
-                <input class="form-control" placeholder="ID" @bind="newEmployee.Id" />
-            </div>
-            <div class="col-md-3">
-                <input class="form-control" placeholder="Name" @bind="newEmployee.Name" />
-            </div>
-            <div class="col-md-3">
-                <input class="form-control" placeholder="Department" @bind="newEmployee.Department" />
-            </div>
-            <div class="col-md-3">
-                <input class="form-control" placeholder="Position" @bind="newEmployee.Position" />
-            </div>
-        </div>
-        <button class="btn btn-success mt-3" @onclick="AddEmployee">Add Employee</button>
-    </div>
-</div>
-
-<!-- Employees Table -->
-<div class="card">
-    <div class="card-header">All Employees</div>
-    <div class="card-body p-0">
-        <table class="table table-hover mb-0">
-            <thead class="table-light">
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Department</th>
-                    <th>Position</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var emp in employees)
-                {
-                    <tr>
-                        <td>@emp.Id</td>
-                        <td>@emp.Name</td>
-                        <td>@emp.Department</td>
-                        <td>@emp.Position</td>
-                        <td>
-                            <button class="btn btn-primary btn-sm me-2" @onclick="() => EditEmployee(emp)">Edit</button>
-                            <button class="btn btn-danger btn-sm" @onclick="() => DeleteEmployee(emp.Id)">Delete</button>
-                        </td>
+        <MudPaper Class="pa-6" Elevation="2" Style="border-radius:18px; background: var(--mud-palette-surface);">
+            <MudText Typo="Typo.h6" Class="mb-4">All Employees</MudText>
+            <MudStack Row Spacing="2" Class="mb-3">
+                <MudTextField @bind-Value="searchId" Label="Search by Employee ID" Variant="Variant.Outlined" Margin="Margin.Dense" Style="width:200px;" />
+                <MudSelect T="string" @bind-Value="selectedDepartment" Label="Department" Variant="Variant.Outlined" Margin="Margin.Dense" Style="width:200px;">
+                    <MudSelectItem Value="@((string?)null)">All Departments</MudSelectItem>
+                    @foreach (var dept in employees.Select(e => e.Department).Distinct().OrderBy(d => d))
+                    {
+                        <MudSelectItem Value="@dept">@dept</MudSelectItem>
+                    }
+                </MudSelect>
+            </MudStack>
+            <MudTable Items="@filteredEmployees" Hover="true" Bordered="true" Striped="true" Dense="true" GroupByField="Department">
+                <HeaderContent>
+                    <MudTh>ID</MudTh>
+                    <MudTh>Name</MudTh>
+                    <MudTh>Department</MudTh>
+                    <MudTh>Position</MudTh>
+                    <MudTh>Actions</MudTh>
+                </HeaderContent>
+                <GroupHeaderTemplate>
+                    <tr style="background:#e3f2fd;">
+                        <td colspan="5" style="font-weight:bold; font-size:1.08rem; color:#1976d2; border-top:2px solid #90caf9;">Department: @context.Key</td>
                     </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-</div>
+                </GroupHeaderTemplate>
+                <RowTemplate>
+                    <MudTd DataLabel="ID">@context.Id</MudTd>
+                    <MudTd DataLabel="Name">
+                        @if (editRow == context)
+                        {
+                            <MudTextField T="string" @bind-Value="editName" Dense="true" />
+                        }
+                        else
+                        {
+                            @context.Name
+                        }
+                    </MudTd>
+                    <MudTd DataLabel="Department">
+                        @if (editRow == context)
+                        {
+                            <MudTextField T="string" @bind-Value="editDepartment" Dense="true" />
+                        }
+                        else
+                        {
+                            @context.Department
+                        }
+                    </MudTd>
+                    <MudTd DataLabel="Position">
+                        @if (editRow == context)
+                        {
+                            <MudTextField T="string" @bind-Value="editPosition" Dense="true" />
+                        }
+                        else
+                        {
+                            @context.Position
+                        }
+                    </MudTd>
+                    <MudTd DataLabel="Actions">
+                        @if (editRow == context)
+                        {
+                            <MudStack Row Spacing="1">
+                                <MudButton Variant="Variant.Filled" Color="Color.Success" Size="Size.Small" OnClick="() => SaveEdit(context)">SAVE</MudButton>
+                                <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Size="Size.Small" OnClick="CancelEdit">CANCEL</MudButton>
+                            </MudStack>
+                        }
+                        else
+                        {
+                            <MudButton Variant="Variant.Outlined" Color="Color.Primary" Size="Size.Small" OnClick="() => StartEdit(context)" Class="me-2" StartIcon="@Icons.Material.Filled.Edit">Edit</MudButton>
+                            <MudButton Variant="Variant.Outlined" Color="Color.Error" Size="Size.Small" OnClick="() => DeleteEmployee(context.Id)" StartIcon="@Icons.Material.Filled.Delete">Delete</MudButton>
+                        }
+                    </MudTd>
+                </RowTemplate>
+            </MudTable>
+        </MudPaper>
 
-@if (showEditForm && editEmployee != null)
-{
-    <div class="modal show d-block" tabindex="-1" style="background:rgba(0,0,0,0.2);">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Edit Employee</h5>
-                    <button type="button" class="btn-close" @onclick="CancelEdit"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-2">
-                        <label>ID</label>
-                        <input class="form-control" @bind="editEmployee.Id" disabled />
-                    </div>
-                    <div class="mb-2">
-                        <label>Name</label>
-                        <input class="form-control" @bind="editEmployee.Name" />
-                    </div>
-                    <div class="mb-2">
-                        <label>Department</label>
-                        <input class="form-control" @bind="editEmployee.Department" />
-                    </div>
-                    <div class="mb-2">
-                        <label>Position</label>
-                        <input class="form-control" @bind="editEmployee.Position" />
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" @onclick="CancelEdit">Cancel</button>
-                    <button class="btn btn-success" @onclick="SaveEditEmployee">Save</button>
-                </div>
-            </div>
-        </div>
-    </div>
-}
+
+    </MudPaper>
+</MudContainer>
 
 @code {
-    private List<AttendanceSystem.ImportFile.ui.Services.EmployeeDto> employees = new();
-    private AttendanceSystem.ImportFile.ui.Services.EmployeeDto newEmployee = new AttendanceSystem.ImportFile.ui.Services.EmployeeDto();
-    private AttendanceSystem.ImportFile.ui.Services.EmployeeDto? editEmployee;
-    private bool showEditForm = false;
+    private List<EmployeeDto> employees = new();
+    private string? searchId;
+private string? selectedDepartment = null;
+    private IEnumerable<EmployeeDto> filteredEmployees =>
+        employees.Where(e =>
+            (string.IsNullOrEmpty(searchId) || e.Id == searchId)
+            && (string.IsNullOrEmpty(selectedDepartment) || e.Department == selectedDepartment)
+        );
+    private EmployeeDto newEmployee = new EmployeeDto();
+    private EmployeeDto? editRow;
+    private string editName = string.Empty;
+    private string editDepartment = string.Empty;
+    private string editPosition = string.Empty;
 
     protected override async Task OnInitializedAsync()
     {
@@ -115,7 +130,7 @@
         if (!string.IsNullOrWhiteSpace(newEmployee.Id) && !string.IsNullOrWhiteSpace(newEmployee.Name))
         {
             await AttendanceService.AddEmployeeAsync(newEmployee);
-            newEmployee = new AttendanceSystem.ImportFile.ui.Services.EmployeeDto();
+            newEmployee = new EmployeeDto();
             await LoadEmployees();
         }
     }
@@ -128,53 +143,41 @@
 
     // إزالة تعريف EmployeeDto المحلي واستخدام النوع من AttendanceService فقط
 
-    private void EditEmployee(AttendanceSystem.ImportFile.ui.Services.EmployeeDto emp)
+
+
+
+    private void StartEdit(EmployeeDto emp)
     {
-        editEmployee = new AttendanceSystem.ImportFile.ui.Services.EmployeeDto
-        {
-            Id = emp.Id,
-            Name = emp.Name,
-            Department = emp.Department,
-            Position = emp.Position
-        };
-        showEditForm = true;
+        editRow = emp;
+        editName = emp.Name;
+        editDepartment = emp.Department;
+        editPosition = emp.Position;
     }
 
     private void CancelEdit()
     {
-        showEditForm = false;
-        editEmployee = null;
+        editRow = null;
     }
 
-    private string? editMessage;
-    private async Task SaveEditEmployee()
+    private async Task SaveEdit(EmployeeDto emp)
     {
-        if (editEmployee != null && !string.IsNullOrWhiteSpace(editEmployee.Id) && !string.IsNullOrWhiteSpace(editEmployee.Name))
+        if (editRow == null) return;
+        emp.Name = editName;
+        emp.Department = editDepartment;
+        emp.Position = editPosition;
+        try
         {
-            try
-            {
-                await AttendanceService.UpdateEmployeeAsync(editEmployee);
-                // تحديث الموظف في القائمة المحلية
-                var idx = employees.FindIndex(e => e.Id == editEmployee.Id);
-                if (idx >= 0)
-                {
-                    employees[idx] = new AttendanceSystem.ImportFile.ui.Services.EmployeeDto
-                    {
-                        Id = editEmployee.Id,
-                        Name = editEmployee.Name,
-                        Department = editEmployee.Department,
-                        Position = editEmployee.Position
-                    };
-                }
-                editMessage = "Employee updated successfully";
-            }
-            catch
-            {
-                editMessage = "Failed to update employee";
-            }
-            showEditForm = false;
-            editEmployee = null;
+            await AttendanceService.UpdateEmployeeAsync(emp);
+            editRow = null;
             await LoadEmployees();
         }
+        catch
+        {
+            // يمكن إضافة رسالة خطأ هنا
+        }
     }
+
+
+
+
 }
