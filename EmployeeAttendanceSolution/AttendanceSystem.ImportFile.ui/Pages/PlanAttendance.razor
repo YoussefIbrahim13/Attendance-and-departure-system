@@ -3,6 +3,7 @@
 @using EmployeesModels.Shared
 @using AttendanceSystem.ImportFile.ui.Services
 @inject AttendanceSystem.ImportFile.ui.Services.AttendanceService AttendanceService
+@inject ISnackbar Snackbar
 
 <MudContainer MaxWidth="MaxWidth.Medium" Class="mt-10 d-flex justify-center align-center" Style="min-height:90vh; max-height:90vh; overflow-y:auto;">
     <MudPaper Class="pa-10" Elevation="12" Style="border-radius:32px; min-width:440px; background: var(--mud-palette-surface); box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.13), 0 1.5px 8px 0 rgba(25, 118, 210, 0.10);">
@@ -55,20 +56,7 @@
                 }
             </MudButton>
         </MudStack>
-        @if (!string.IsNullOrEmpty(message))
-        {
-            <MudAlert Severity="@(isSuccess == true ? Severity.Success : Severity.Error)" Elevation="2" Dense="false" Class="mb-5 text-center mt-4" Style="font-size:1.18rem; min-width:320px; max-width:520px; margin-left:auto; margin-right:auto; border-radius:12px;">
-                @if (isSuccess == true)
-                {
-                    <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Success" Size="Size.Medium" Class="me-2" />
-                }
-                else if (isSuccess == false)
-                {
-                    <MudIcon Icon="@Icons.Material.Filled.Error" Color="Color.Error" Size="Size.Medium" Class="me-2" />
-                }
-                @message
-            </MudAlert>
-        }
+        <!-- الرسائل ستظهر عبر Snackbar -->
     </MudPaper>
 </MudContainer>
 
@@ -106,7 +94,7 @@ private Task<IEnumerable<EmployeeDto>> SearchEmployee(string value, Cancellation
     {
         if (selectedEmployee == null || string.IsNullOrEmpty(selectedEmployee.Id) || selectedStatus == null)
         {
-            message = "Please select employee and status.";
+            Snackbar.Add("Please select employee and status.", Severity.Error);
             return;
         }
         var days = new List<DateTime>();
@@ -121,15 +109,21 @@ private Task<IEnumerable<EmployeeDto>> SearchEmployee(string value, Cancellation
         }
         if (days.Count == 0)
         {
-            message = "Please select a day or range.";
+            Snackbar.Add("Please select a day or range.", Severity.Error);
             return;
         }
         isLoading = true;
         StateHasChanged();
         var ok = await AttendanceService.PlanAttendanceAsync(selectedEmployee.Id, days, selectedStatus.Value);
         isLoading = false;
-        isSuccess = ok;
-        message = ok ? "Attendance plan saved successfully." : "Failed to save plan.";
+        if (ok)
+        {
+            Snackbar.Add("Attendance plan saved successfully.", Severity.Success);
+        }
+        else
+        {
+            Snackbar.Add("Failed to save plan.", Severity.Error);
+        }
     }
     private void ClearRange()
     {

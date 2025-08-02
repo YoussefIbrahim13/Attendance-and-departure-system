@@ -36,7 +36,9 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
                 {
                     existing.CheckIn = rec.CheckIn;
                     existing.CheckOut = rec.CheckOut;
-                    existing.Status = rec.Status;
+                    existing.ActualStatus = rec.ActualStatus;
+                    existing.PlannedStatus = rec.PlannedStatus;
+                    existing.ApprovalStatus = rec.ApprovalStatus;
                     existing.Note = rec.Note;
                 }
                 else
@@ -62,10 +64,12 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
             if (record == null)
                 return "Attendance record not found in pending data.";
 
-            record.CheckIn = dto.CheckIn;
-            record.CheckOut = dto.CheckOut;
-            record.Status = dto.Status;
-            record.Note = dto.Note;
+                 record.CheckIn = dto.CheckIn;
+                 record.CheckOut = dto.CheckOut;
+                 record.ActualStatus = dto.ActualStatus;
+                 record.Note = dto.Note;
+                 record.ApprovalStatus = dto.ApprovalStatus; 
+
 
             return "Pending attendance record updated successfully.";
         }
@@ -119,7 +123,8 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
                             Date = date,
                             CheckIn = checkIn,
                             CheckOut = checkOut,
-                            Status = DetermineAttendanceStatus(checkInStr, checkOutStr)
+                            ActualStatus = DetermineAttendanceStatus(checkInStr, checkOutStr),
+                            ApprovalStatus = ApprovalStatus.Pending
                         });
                     }
                 }
@@ -169,7 +174,12 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
                 var record = await db.AttendanceRecords.FirstOrDefaultAsync(x => x.EmployeeId == dto.EmployeeId && x.Date == date);
                 if (record != null)
                 {
-                    record.Status = dto.Status;
+                       // إذا لم يتم تعديل ActualStatus يدويًا (أي يساوي PlannedStatus القديم)، حدثه مع PlannedStatus الجديد
+                    if (record.ActualStatus == record.PlannedStatus)
+                    {
+                            record.ActualStatus = dto.PlannedStatus;
+                    }
+                    record.PlannedStatus = dto.PlannedStatus;
                 }
                 else
                 {
@@ -177,7 +187,9 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
                     {
                         EmployeeId = dto.EmployeeId,
                         Date = date,
-                        Status = dto.Status,
+                        PlannedStatus = dto.PlannedStatus,
+                        ActualStatus = dto.PlannedStatus, // تعيين الحالة الفعلية = المخطط لها عند الإضافة
+                        ApprovalStatus = ApprovalStatus.Pending,
                         CheckIn = TimeSpan.Zero,
                         CheckOut = TimeSpan.Zero
                     });

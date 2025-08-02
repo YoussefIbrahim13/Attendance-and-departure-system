@@ -1,6 +1,6 @@
 using EmployeesModels.Shared;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace EmployeesModels.Shared.Data
 {
     public class AttendanceDbContext : DbContext
@@ -14,6 +14,8 @@ namespace EmployeesModels.Shared.Data
         {
             modelBuilder.Entity<AttendanceRecord>()
                 .HasKey(ar => new { ar.EmployeeId, ar.Date });
+            
         }
     }
 }
+

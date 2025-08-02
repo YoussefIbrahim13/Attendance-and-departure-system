@@ -1,6 +1,7 @@
 
 @page "/ImportAttendance"
 @inject AttendanceSystem.ImportFile.ui.Services.AttendanceService AttendanceService
+@inject ISnackbar Snackbar
 @inject IJSRuntime JS
 @using AttendanceSystem.ImportFile.ui.Services
 @using MudBlazor
@@ -36,12 +37,7 @@
         await JS.InvokeVoidAsync("triggerFileInput", "file-upload-input");
     }
 }
-        @if (!string.IsNullOrEmpty(message))
-        {
-            <MudAlert Severity="@(message == "Saved successfully" ? Severity.Success : Severity.Error)" Elevation="2" Dense="false" Class="mb-5 text-center" Style="font-size:1.18rem; min-width:320px; max-width:520px; margin-left:auto; margin-right:auto; border-radius:12px;">
-                @message
-            </MudAlert>
-        }
+        <!-- الرسائل ستظهر عبر Snackbar -->
 
         @if (pendingAttendance != null)
         {
@@ -73,10 +69,11 @@
                 <MudTable Items="@filteredAttendance" Hover="true" Bordered="true" Striped="true" Dense="true">
                     <HeaderContent>
                         <MudTh>Employee ID</MudTh>
-                        <MudTh>Date</MudTh>
+                        <MudTh Style="min-width:120px;">Date</MudTh>
                         <MudTh>Check In</MudTh>
                         <MudTh>Check Out</MudTh>
-                        <MudTh>Status</MudTh>
+                        <MudTh>Actual Status</MudTh>
+                        <MudTh>Approval Status</MudTh>
                         <MudTh>Note</MudTh>
                         <MudTh>Edit</MudTh>
                     </HeaderContent>
@@ -147,7 +144,7 @@
                                 @context.CheckOut.ToString(@"hh\:mm")
                             }
                         </MudTd>
-                        <MudTd DataLabel="Status">
+                        <MudTd DataLabel="Actual Status">
                             @if (editRow == context)
                             {
                                 <MudSelect T="AttendanceStatus" @bind-Value="editStatusValue" Dense="true" Style="width:120px;">
@@ -159,7 +156,20 @@
                             }
                             else
                             {
-                                @context.Status
+                                @context.ActualStatus
+                            }
+                        </MudTd>
+                        <MudTd DataLabel="Approval Status">
+                            @if (editRow == context)
+                            {
+                                <MudSelect T="ApprovalStatus" @bind-Value="editApprovalStatus" Dense="true" Style="width:120px;">
+                                    <MudSelectItem Value="@ApprovalStatus.Pending">Pending</MudSelectItem>
+                                    <MudSelectItem Value="@ApprovalStatus.Approved">Approved</MudSelectItem>
+                                </MudSelect>
+                            }
+                            else
+                            {
+                                @context.ApprovalStatus
                             }
                         </MudTd>
                         <MudTd DataLabel="Note">
@@ -203,13 +213,14 @@
     AttendanceRecord? editRow;
     TimeSpan editCheckInTime = TimeSpan.Zero;
     TimeSpan editCheckOutTime = TimeSpan.Zero;
-    AttendanceStatus? editStatus;
+    AttendanceStatus? editActualStatus;
     AttendanceStatus editStatusValue
     {
-        get => editStatus ?? AttendanceStatus.Present;
-        set => editStatus = value;
+        get => editActualStatus ?? AttendanceStatus.Present;
+        set => editActualStatus = value;
     }
     string? editNote;
+    ApprovalStatus editApprovalStatus;
     string? message;
     bool isSavingAll = false;
 
@@ -267,7 +278,19 @@
         var stream = selectedFile.OpenReadStream(10 * 1024 * 1024); // 10MB max
         content.Add(new StreamContent(stream), "file", selectedFile.Name);
         pendingAttendance = await AttendanceService.UploadCsvAsync(content);
-        message = pendingAttendance == null ? "File upload failed" : null;
+        // Set ApprovalStatus to Pending for all imported records
+        if (pendingAttendance != null)
+        {
+            foreach (var rec in pendingAttendance)
+            {
+                rec.ApprovalStatus = ApprovalStatus.Pending;
+            }
+            Snackbar.Add("File uploaded successfully", Severity.Success);
+        }
+        else
+        {
+            Snackbar.Add("File upload failed", Severity.Error);
+        }
         StateHasChanged();
     }
 
@@ -276,7 +299,8 @@
         editRow = rec;
         editCheckInTime = rec.CheckIn;
         editCheckOutTime = rec.CheckOut;
-        editStatus = rec.Status;
+        editActualStatus = rec.ActualStatus;
+        editApprovalStatus = rec.ApprovalStatus;
         editNote = rec.Note;
     }
 
@@ -294,7 +318,8 @@
             Date = rec.Date,
             CheckIn = editCheckInTime,
             CheckOut = editCheckOutTime,
-            Status = editStatus ?? rec.Status,
+            ActualStatus = editActualStatus ?? rec.ActualStatus,
+            ApprovalStatus = editApprovalStatus,
             Note = editNote
         };
         var ok = await AttendanceService.EditPendingAttendanceAsync(dto);
@@ -303,12 +328,14 @@
             rec.CheckIn = editCheckInTime;
             rec.CheckOut = editCheckOutTime;
             rec.Note = editNote;
-            rec.Status = editStatus ?? rec.Status;
+            rec.ActualStatus = editActualStatus ?? rec.ActualStatus;
+            rec.ApprovalStatus = editApprovalStatus;
             editRow = null;
+            Snackbar.Add("Edit saved successfully", Severity.Success);
         }
         else
         {
-            message = "Edit failed";
+            Snackbar.Add("Edit failed", Severity.Error);
         }
     }
 
@@ -325,8 +352,15 @@
         {
             ok = false;
         }
-        message = ok ? "Saved successfully" : "Save failed";
-        if (ok) pendingAttendance = null;
+        if (ok)
+        {
+            Snackbar.Add("Saved successfully", Severity.Success);
+            pendingAttendance = null;
+        }
+        else
+        {
+            Snackbar.Add("Save failed", Severity.Error);
+        }
         isSavingAll = false;
         StateHasChanged();
     }

@@ -3,7 +3,9 @@
     public record AttendanceDayStatus(
        string EmployeeId,
        DateTime Date,
-       AttendanceStatus Status,
+       AttendanceStatus ActualStatus ,
+       AttendanceStatus? PlannedStatus,
+       ApprovalStatus? ApprovalStatus,
        string? Note
     );
 

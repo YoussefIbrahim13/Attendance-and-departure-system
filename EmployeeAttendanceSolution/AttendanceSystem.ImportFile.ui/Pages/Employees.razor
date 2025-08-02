@@ -3,6 +3,7 @@
 @using MudBlazor
 @using AttendanceSystem.ImportFile.ui.Services
 @inject AttendanceSystem.ImportFile.ui.Services.AttendanceService AttendanceService
+@inject ISnackbar Snackbar
 
 <MudContainer MaxWidth="MaxWidth.Medium" Class="mt-10 d-flex justify-center align-center" Style="min-height:90vh;">
     <MudPaper Class="pa-10 mb-8" Elevation="12" Style="border-radius:32px; min-width:440px; background: var(--mud-palette-surface); box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.13), 0 1.5px 8px 0 rgba(25, 118, 210, 0.10);">
@@ -129,16 +130,42 @@ private string? selectedDepartment = null;
     {
         if (!string.IsNullOrWhiteSpace(newEmployee.Id) && !string.IsNullOrWhiteSpace(newEmployee.Name))
         {
-            await AttendanceService.AddEmployeeAsync(newEmployee);
-            newEmployee = new EmployeeDto();
-            await LoadEmployees();
+            // تحقق من تكرار الـ ID
+            if (employees.Any(e => e.Id == newEmployee.Id))
+            {
+                Snackbar.Add("This ID already exists", Severity.Warning);
+                return;
+            }
+            try
+            {
+                await AttendanceService.AddEmployeeAsync(newEmployee);
+                Snackbar.Add("Employee added successfully", Severity.Success);
+                newEmployee = new EmployeeDto();
+                await LoadEmployees();
+            }
+            catch
+            {
+                Snackbar.Add("Failed to add employee", Severity.Error);
+            }
+        }
+        else
+        {
+            Snackbar.Add("Please enter both ID and Name", Severity.Warning);
         }
     }
 
     private async Task DeleteEmployee(string id)
     {
-        await AttendanceService.DeleteEmployeeAsync(id);
-        await LoadEmployees();
+        try
+        {
+            await AttendanceService.DeleteEmployeeAsync(id);
+            Snackbar.Add("Employee deleted", Severity.Success);
+            await LoadEmployees();
+        }
+        catch
+        {
+            Snackbar.Add("Failed to delete employee", Severity.Error);
+        }
     }
 
     // إزالة تعريف EmployeeDto المحلي واستخدام النوع من AttendanceService فقط
@@ -168,12 +195,13 @@ private string? selectedDepartment = null;
         try
         {
             await AttendanceService.UpdateEmployeeAsync(emp);
+            Snackbar.Add("Employee updated successfully", Severity.Success);
             editRow = null;
             await LoadEmployees();
         }
         catch
         {
-            // يمكن إضافة رسالة خطأ هنا
+            Snackbar.Add("Failed to update employee", Severity.Error);
         }
     }
 

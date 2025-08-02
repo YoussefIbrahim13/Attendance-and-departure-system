@@ -30,29 +30,6 @@
             </MudButton>
         </MudStack>
     </MudStack>
-
-    <!-- Quick Selection Buttons -->
-    <MudStack Row Justify="Justify.Center" Spacing="2" Class="mb-6">
-        <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.CalendarMonth" OnClick="@(() => Navigation.NavigateTo($"/calendar/month/{DateTime.Today.Year}/{DateTime.Today.Month}"))">
-            CURRENT MONTH
-        </MudButton>
-        <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.DateRange" OnClick="@(() => Navigation.NavigateTo($"/calendar/year/{DateTime.Today.Year}"))">
-            CURRENT YEAR
-        </MudButton>
-        <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.Today" OnClick="@(() => Navigation.NavigateTo($"/calendar/day/{DateTime.Today:yyyy-MM-dd}"))">
-            TODAY
-        </MudButton>
-        <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.UploadFile" OnClick="@(() => Navigation.NavigateTo($"/attendanceimport"))">
-            IMPORT ATTENDANCE
-        </MudButton>
-        <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.EventNote" OnClick="@(() => Navigation.NavigateTo("/planattendance"))">
-            PLAN ATTENDANCE
-        </MudButton>
-        <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.Group" OnClick="@(() => Navigation.NavigateTo("/employees"))">
-            EMPLOYEES
-        </MudButton>
-    </MudStack>
-
     @if (isLoading)
     {
         <MudStack AlignItems="AlignItems.Center" Class="mt-8">
@@ -138,10 +115,10 @@
                                     <MudStack Spacing="1" Class="employee-preview">
                                         @foreach (var emp in dayData.TopEmployees.Take(3))
                                         {
-                                            <MudPaper Class="@GetEmployeeStatusClass(emp.Status)" Square="true" Elevation="0">
+                                            <MudPaper Class="@GetEmployeeStatusClass(emp.ActualStatus)" Square="true" Elevation="0">
                                                 <MudStack Row Justify="Justify.SpaceBetween" AlignItems="AlignItems.Center" Class="pa-1">
                                                     <MudText Typo="Typo.caption" Class="employee-name">@emp.EmployeeName</MudText>
-                                                    <div class="status-indicator @GetStatusIndicatorClass(emp.Status)"></div>
+                                                    <div class="status-indicator @GetStatusIndicatorClass(emp.ActualStatus)"></div>
                                                 </MudStack>
                                             </MudPaper>
                                         }
@@ -447,6 +424,12 @@
     {
         try
         {
+            var parameters = new DialogParameters
+            {
+                [nameof(AddEmployeeDialog.InitialDate)] = selectedDate,
+                [nameof(AddEmployeeDialog.DefaultDateFrom)] = selectedDate,
+                [nameof(AddEmployeeDialog.DefaultDateTo)] = selectedDate
+            };
             var options = new DialogOptions
             {
                 CloseButton = true,
@@ -455,7 +438,7 @@
                 FullWidth = true
             };
 
-            var dialog = await DialogService.ShowAsync<AddEmployeeDialog>("Update Attendance Status", options: options);
+            var dialog = await DialogService.ShowAsync<AddEmployeeDialog>("Update Attendance Status", parameters, options);
             var result = await dialog.Result;
 
             if (!result.Canceled && result.Data is bool success && success)

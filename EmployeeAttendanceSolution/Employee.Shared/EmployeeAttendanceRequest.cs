@@ -11,6 +11,9 @@ namespace EmployeesModels.Shared
         public string EmployeeId { get; set; } = string.Empty;
         public DateTime DateFrom { get; set; }
         public DateTime DateTo { get; set; }
-        public AttendanceStatus Status { get; set; }
+        public AttendanceStatus ActualStatus { get; set; }
+         public AttendanceStatus PlannedStatus { get; set; }
+        public ApprovalStatus ApprovalStatus { get; set; }
+        public string? Note { get; set; }
     }
 }

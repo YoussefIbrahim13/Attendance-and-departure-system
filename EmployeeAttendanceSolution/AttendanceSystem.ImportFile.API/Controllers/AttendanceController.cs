@@ -77,7 +77,7 @@ namespace AttendanceSystem.ImportFile.API.Controllers
             // 3️⃣ Debugging: print some sample records
             foreach (var r in attendanceData.Take(5)) // show only first 5
             {
-                Console.WriteLine($"DB record → EmpID={r.EmployeeId}, Date={r.Date:yyyy-MM-dd}, Status={r.Status}");
+                Console.WriteLine($"DB record → EmpID={r.EmployeeId}, Date={r.Date:yyyy-MM-dd}, Status={r.ActualStatus}");
             }
 
             // 4️⃣ Get all employees
@@ -109,14 +109,14 @@ namespace AttendanceSystem.ImportFile.API.Controllers
                     {
                         EmployeeId = emp.Id,
                         EmployeeName = emp.Name,
-                        Status = attendance?.Status ?? AttendanceStatus.Absent,
+                        ActualStatus = attendance?.ActualStatus ?? AttendanceStatus.Absent,
                         Note = attendance?.Note
                     };
                 }).ToList();
 
                 // ✅ Count present/absent employees
-                var presentCount = employeeStatuses.Count(es => es.Status == AttendanceStatus.Present);
-                var absentCount = employeeStatuses.Count(es => es.Status == AttendanceStatus.Absent);
+                var presentCount = employeeStatuses.Count(es => es.ActualStatus == AttendanceStatus.Present);
+                var absentCount = employeeStatuses.Count(es => es.ActualStatus == AttendanceStatus.Absent);
 
                 Console.WriteLine($"{date:yyyy-MM-dd} → Present: {presentCount}, Absent: {absentCount}");
 
@@ -160,11 +160,13 @@ namespace AttendanceSystem.ImportFile.API.Controllers
                     EmployeeId = emp.Id,
                     EmployeeName = emp.Name,
                     Department = emp.Department,
-        // SRP: تجهيز بيانات يوم واحد للواجهة فقط
+                   // SRP: تجهيز بيانات يوم واحد للواجهة فقط
                     Date = day,
                     CheckIn = attendance?.CheckIn ?? TimeSpan.Zero,
                     CheckOut = attendance?.CheckOut ?? TimeSpan.Zero,
-                    Status = attendance?.Status ?? AttendanceStatus.Absent,
+                    ActualStatus = attendance?.ActualStatus ?? AttendanceStatus.Absent,
+                    PlannedStatus = attendance?.PlannedStatus ?? AttendanceStatus.Absent,
+                    ApprovalStatus = attendance?.ApprovalStatus ?? ApprovalStatus.Pending,
                     Note = attendance?.Note ?? string.Empty
                 };
             }).ToList();
@@ -201,7 +203,7 @@ namespace AttendanceSystem.ImportFile.API.Controllers
 
                 // ✅ Calculate metrics
                 int totalPossibleAttendance = totalEmployees * workingDays;
-                int actualAttendance = attendanceData.Count(ar => ar.Status == AttendanceStatus.Present);
+                int actualAttendance = attendanceData.Count(ar => ar.ActualStatus == AttendanceStatus.Present);
 
                 double averageAttendance = totalPossibleAttendance > 0
                     ? (double)actualAttendance / totalPossibleAttendance * 100
@@ -291,8 +293,41 @@ namespace AttendanceSystem.ImportFile.API.Controllers
                 return Ok("Attendance plan saved successfully.");
             return BadRequest("Failed to save attendance plan.");
         }
+        // تحديث سجل حضور موظف ليوم معين
+        [HttpPut("update-attendance-record")]
+        public async Task<IActionResult> UpdateAttendanceRecord([FromServices] AttendanceDbContext db, [FromBody] AttendanceRecord record)
+        {
+            if (record == null || string.IsNullOrWhiteSpace(record.EmployeeId))
+                return BadRequest("Attendance record data is required.");
+
+            var existing = await db.AttendanceRecords.FirstOrDefaultAsync(a => a.EmployeeId == record.EmployeeId && a.Date == record.Date);
+            if (existing == null)
+            {
+                // إذا لم يوجد سجل، أنشئ واحد جديد
+                db.AttendanceRecords.Add(new AttendanceRecord
+                {
+                    EmployeeId = record.EmployeeId,
+                    Date = record.Date,
+                    ActualStatus = record.ActualStatus,
+                    PlannedStatus = record.PlannedStatus,
+                    ApprovalStatus = record.ApprovalStatus,
+                    CheckIn = record.CheckIn,
+                    CheckOut = record.CheckOut,
+                    Note = record.Note
+                });
+            }
+            else
+            {
+                existing.ActualStatus = record.ActualStatus;
+                existing.PlannedStatus = record.PlannedStatus;
+                existing.ApprovalStatus = record.ApprovalStatus;
+                existing.CheckIn = record.CheckIn;
+                existing.CheckOut = record.CheckOut;
+                existing.Note = record.Note;
+            }
+
+            await db.SaveChangesAsync();
+            return Ok(true);
+        }
     }
-
-
-        // SRP: تحديث بيانات موظف فقط
 }

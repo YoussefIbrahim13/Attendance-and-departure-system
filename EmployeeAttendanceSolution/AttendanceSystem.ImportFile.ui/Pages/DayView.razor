@@ -42,23 +42,21 @@
         </MudGrid>
 
         <!-- ✅ FILTERS -->
-        <MudGrid Class="mb-4" Spacing="2" Style="align-items: center;">
-            <MudItem xs="12" sm="6" Style="height: 72px; display: flex; align-items: center;">
-                <MudTextField @bind-Value="searchTerm"
-                              Immediate="true"
-                              Variant="Variant.Outlined"
-                              Placeholder="Search employees..."
-                              Adornment="Adornment.Start"
-                              AdornmentIcon="@Icons.Material.Filled.Search"
-                              Style="width: 100%;"
-                              TextChanged="@(e => { searchTerm = e.ToString(); FilterEmployees(); })" />
-            </MudItem>
-            <MudItem xs="12" sm="6" Style="height: 72px;">
+        <MudStack Row Spacing="2" Class="mb-4" Style="align-items:center;">
+            <MudTextField @bind-Value="searchTerm"
+                          Immediate="true"
+                          Variant="Variant.Outlined"
+                          Placeholder="Search employees..."
+                          Adornment="Adornment.Start"
+                          AdornmentIcon="@Icons.Material.Filled.Search"
+                          Style="width: 320px; max-width:100%;" 
+                          TextChanged="@(e => { searchTerm = e.ToString(); FilterEmployees(); })" />
+            <MudStack Spacing="1" Style="width: 220px; margin-left:16px;">
+                <MudText Typo="Typo.caption" Class="mb-1" Style="font-weight:500; color:#1976d2;">Filter by Status</MudText>
                 <MudSelect T="string"
                            @bind-Value="selectedStatusString"
                            Immediate="true"
                            Variant="Variant.Outlined"
-                           Label="Filter by Status"
                            Style="width: 100%;">
                     <MudSelectItem Value="string.Empty">All Statuses</MudSelectItem>
                     @foreach (var status in Enum.GetValues(typeof(AttendanceStatus)))
@@ -66,8 +64,8 @@
                         <MudSelectItem Value="@status.ToString()">@status.ToString()</MudSelectItem>
                     }
                 </MudSelect>
-            </MudItem>
-        </MudGrid>
+            </MudStack>
+        </MudStack>
 
         <!-- ✅ EMPLOYEE TABLE (Editable) -->
         <MudCard>
@@ -87,9 +85,9 @@
                              EditTrigger="@(_editTriggerRowClick ? DataGridEditTrigger.OnRowClick : DataGridEditTrigger.Manual)">
 
                     <Columns>
+
                         <div class="d-flex align-center" style="height:64px;"> <!-- Match Avatar column height -->
                         <PropertyColumn Property="x => x.EmployeeName" Title="Employee" Editable="false">
-                                
                             <CellTemplate>
                                 <MudStack Items="Items.Center" Gap="8">
                                     <MudAvatar Class="employee-avatar">@GetInitials(context.Item.EmployeeName)</MudAvatar>
@@ -98,25 +96,24 @@
                                         <MudText Color="Color.Secondary" Typo="Typo.caption">ID: @context.Item.EmployeeId</MudText>
                                     </MudStack>
                                 </MudStack>
-                                
                             </CellTemplate>
                         </PropertyColumn>
 
                         <PropertyColumn Property="x => x.Department" Title="Department" Editable="false" />
 
-                        <PropertyColumn Property="x => x.Status" Title="Status">
+                        <PropertyColumn Property="x => x.ActualStatus" Title="Actual Status">
                             <CellTemplate>
-                                <MudChip T="string" Class="@($"status-badge {GetStatusClass(context.Item.Status)}")"
+                                <MudChip T="string" Class="@($"status-badge {GetStatusClass(context.Item.ActualStatus)}")"
                                          Variant="Variant.Filled" Size="Size.Small">
-                                    @GetStatusIcon(context.Item.Status) @context.Item.Status
+                                    @GetStatusIcon(context.Item.ActualStatus) @context.Item.ActualStatus
                                 </MudChip>
                             </CellTemplate>
                             <EditTemplate>
-                                 <MudSelect @bind-Value="context.Item.Status"
-                                           Label="Status"
+                                 <MudSelect @bind-Value="context.Item.ActualStatus"
+                                           Label="Actual Status"
                                            Variant="Variant.Outlined"
                                            Required="true"
-                                           RequiredError="Status is required">
+                                           RequiredError="Actual status is required">
                                     <MudSelectItem Value="@AttendanceStatus.Present">
                                         <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
                                             <div class="status-indicator present"></div>
@@ -142,6 +139,61 @@
                                         </MudStack>
                                     </MudSelectItem>
                                 </MudSelect> 
+                            </EditTemplate>
+                        </PropertyColumn>
+
+                        <PropertyColumn Property="x => x.PlannedStatus" Title="Planned Status">
+                            <CellTemplate>
+                                <MudChip T="string" Class="@($"status-badge {GetStatusClass(context.Item.PlannedStatus)}")"
+                                         Variant="Variant.Filled" Size="Size.Small">
+                                    @GetStatusIcon(context.Item.PlannedStatus) @context.Item.PlannedStatus
+                                </MudChip>
+                            </CellTemplate>
+                            <EditTemplate>
+                                 <MudSelect @bind-Value="context.Item.PlannedStatus"
+                                           Label="Planned Status"
+                                           Variant="Variant.Outlined"
+                                           Required="true"
+                                           RequiredError="Planned status is required">
+                                    <MudSelectItem Value="@AttendanceStatus.Present">
+                                        <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                                            <div class="status-indicator present"></div>
+                                            <MudText>Present</MudText>
+                                        </MudStack>
+                                    </MudSelectItem>
+                                    <MudSelectItem Value="@AttendanceStatus.Absent">
+                                        <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                                            <div class="status-indicator absent"></div>
+                                            <MudText>Absent</MudText>
+                                        </MudStack>
+                                    </MudSelectItem>
+                                    <MudSelectItem Value="@AttendanceStatus.Vacation">
+                                        <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                                            <div class="status-indicator vacation"></div>
+                                            <MudText>Vacation</MudText>
+                                        </MudStack>
+                                    </MudSelectItem>
+                                    <MudSelectItem Value="@AttendanceStatus.WorkFromHome">
+                                        <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                                            <div class="status-indicator work-from-home"></div>
+                                            <MudText>Work From Home</MudText>
+                                        </MudStack>
+                                    </MudSelectItem>
+                                </MudSelect> 
+                            </EditTemplate>
+                        </PropertyColumn>
+
+                        <PropertyColumn Property="x => x.ApprovalStatus" Title="Approval Status">
+                            <CellTemplate>
+                                <MudChip T="string" Color="@(context.Item.ApprovalStatus == ApprovalStatus.Approved ? Color.Success : Color.Warning)" Variant="Variant.Filled" Size="Size.Small">
+                                    @context.Item.ApprovalStatus
+                                </MudChip>
+                            </CellTemplate>
+                            <EditTemplate>
+                                <MudSelect @bind-Value="context.Item.ApprovalStatus" Label="Approval Status" Variant="Variant.Outlined" Required="true" RequiredError="Approval status is required">
+                                    <MudSelectItem Value="@ApprovalStatus.Pending">Pending</MudSelectItem>
+                                    <MudSelectItem Value="@ApprovalStatus.Approved">Approved</MudSelectItem>
+                                </MudSelect>
                             </EditTemplate>
                         </PropertyColumn>
 
@@ -193,7 +245,7 @@
 
                         <PropertyColumn Property="x => x.Note" Title="Notes">
                             <EditTemplate>
-                                <MudTextField @bind-Value="context.Item.Note" Margin="Margin.Dense" />
+                                <MudTextField @bind-Value="context.Item.Note" Margin="Margin.Dense" Label="Note" Placeholder="Enter note..." Variant="Variant.Outlined" />
                             </EditTemplate>
                         </PropertyColumn>
 
@@ -447,7 +499,7 @@
                 emp.EmployeeId.Contains(searchTerm, StringComparison.OrdinalIgnoreCase);
 
             bool matchesStatus = string.IsNullOrEmpty(selectedStatusString) ||
-                                emp.Status.ToString().Equals(selectedStatusString, StringComparison.OrdinalIgnoreCase);
+                emp.ActualStatus.ToString().Equals(selectedStatusString, StringComparison.OrdinalIgnoreCase);
 
             return matchesSearch && matchesStatus;
         }).ToList();
@@ -511,7 +563,7 @@
             : "--";
     }
 
-    private int GetStatusCount(AttendanceStatus status) => dayData.Count(emp => emp.Status == status);
+    private int GetStatusCount(AttendanceStatus status) => dayData.Count(emp => emp.ActualStatus == status);
 
     // ✅ Summary Card Helper
     RenderFragment SummaryCard(string label, AttendanceStatus status, string icon, string cssClass) => builder =>
@@ -571,12 +623,13 @@
         // }
         try
         {
-            // Call your update function here
             AttendanceRecord employeeAttendanceRequest = new AttendanceRecord
             {
                 EmployeeId = item.EmployeeId,
                 Date = selectedDate,
-                Status = item.Status,
+                ActualStatus = item.ActualStatus,
+                PlannedStatus = item.PlannedStatus,
+                ApprovalStatus = item.ApprovalStatus,
                 CheckIn = item.CheckIn,
                 CheckOut = item.CheckOut,
                 Note = item.Note

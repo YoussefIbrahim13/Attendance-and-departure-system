@@ -126,7 +126,9 @@ namespace AttendanceSystem.ImportFile.ui.Services
                 return dayData.Select(d => new AttendanceDayStatus(
                     d.EmployeeId,
                     d.Date,
-                    d.Status,
+                    d.ActualStatus,
+                    d.PlannedStatus, // Assuming PlannedStatus is part of DailyAttendanceDto
+                    d.ApprovalStatus, // Assuming ApprovalStatus is part of DailyAttendanceDto
                     d.Note
                 )).ToList();
             }
@@ -150,7 +152,7 @@ namespace AttendanceSystem.ImportFile.ui.Services
         {
             try
             {
-                var response = await _http.PutAsJsonAsync("Attendance/update-attendance-status", employeeAttendance);
+            var response = await _http.PutAsJsonAsync("Attendance/update-attendance-record", employeeAttendance);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -189,13 +191,13 @@ namespace AttendanceSystem.ImportFile.ui.Services
         }
         
         // جدولة حضور موظف لأيام محددة (Plan Attendance)
-        public async Task<bool> PlanAttendanceAsync(string employeeId, List<DateTime> days, AttendanceStatus status)
+        public async Task<bool> PlanAttendanceAsync(string employeeId, List<DateTime> days, AttendanceStatus plannedStatus)
         {
             var dto = new PlanAttendanceDto
             {
                 EmployeeId = employeeId,
                 Dates = days,
-                Status = status
+                PlannedStatus = plannedStatus
             };
             var response = await _http.PostAsJsonAsync("Attendance/plan-attendance", dto);
             return response.IsSuccessStatusCode;

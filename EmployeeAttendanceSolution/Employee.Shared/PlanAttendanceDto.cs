@@ -4,6 +4,8 @@ namespace EmployeesModels.Shared
     {
         public string EmployeeId { get; set; }
         public List<DateTime> Dates { get; set; } = new();
-        public AttendanceStatus Status { get; set; }
+       
+        public AttendanceStatus PlannedStatus { get; set; }
+       
     }
 }

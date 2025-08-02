@@ -1,4 +1,5 @@
-﻿@inject AttendanceSystem.ImportFile.ui.Services.AttendanceService AttendanceService
+﻿
+@inject AttendanceSystem.ImportFile.ui.Services.AttendanceService AttendanceService
 @inject ISnackbar Snackbar
 @inject NavigationManager Navigation
 @using AttendanceSystem.ImportFile.ui.Services
@@ -8,7 +9,7 @@
 
 <MudDialog>
     <DialogContent>
-        <MudContainer Style="max-width: 500px;">
+        <MudContainer Style="max-width: 500px; max-height: 60vh; overflow-y: auto; padding-bottom: 80px;">
             <MudText Typo="Typo.h6" Class="mb-4">Update Employee Attendance Status</MudText>
 
             <MudForm @ref="form" @bind-IsValid="@isFormValid">
@@ -29,18 +30,57 @@
                         </ItemTemplate>
                     </MudAutocomplete>
 
-                    <MudDatePicker @bind-Date="singleDate"
-                                   Label="Date"
+                    <MudDatePicker @bind-Date="dateFrom"
+                                   Label="Date From"
                                    Variant="Variant.Outlined"
                                    Required="true"
-                                   RequiredError="Date is required"
+                                   RequiredError="Date From is required"
                                    Editable="true" />
 
-                    <MudSelect @bind-Value="selectedStatus"
-                               Label="Status"
+                    <MudDatePicker @bind-Date="dateTo"
+                                   Label="Date To"
+                                   Variant="Variant.Outlined"
+                                   Required="true"
+                                   RequiredError="Date To is required"
+                                   Editable="true"
+                                   Direction="Direction.Top" />
+
+                    <MudSelect @bind-Value="actualStatus"
+                               Label="Actual Status"
                                Variant="Variant.Outlined"
                                Required="true"
-                               RequiredError="Status is required">
+                               RequiredError="Actual status is required">
+                        <MudSelectItem Value="@AttendanceStatus.Present">
+                            <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                                <div class="status-indicator present"></div>
+                                <MudText>Present</MudText>
+                            </MudStack>
+                        </MudSelectItem>
+                        <MudSelectItem Value="@AttendanceStatus.Absent">
+                            <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                                <div class="status-indicator absent"></div>
+                                <MudText>Absent</MudText>
+                            </MudStack>
+                        </MudSelectItem>
+                        <MudSelectItem Value="@AttendanceStatus.Vacation">
+                            <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                                <div class="status-indicator vacation"></div>
+                                <MudText>Vacation</MudText>
+                            </MudStack>
+                        </MudSelectItem>
+                        <MudSelectItem Value="@AttendanceStatus.WorkFromHome">
+                            <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                                <div class="status-indicator work-from-home"></div>
+                                <MudText>Work From Home</MudText>
+                            </MudStack>
+                        </MudSelectItem>
+                    </MudSelect>
+
+                    <MudSelect @bind-Value="plannedStatus"
+                               Label="Planned Status"
+                               Variant="Variant.Outlined"
+                               Required="true"
+                               RequiredError="Planned status is required">
                         <MudSelectItem Value="@AttendanceStatus.Present">
                             <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
                                 <div class="status-indicator present"></div>
@@ -133,13 +173,16 @@
 
     private MudForm form = null!;
     private bool isFormValid;
-    private DateTime? singleDate;
-    private AttendanceStatus selectedStatus = AttendanceStatus.Present;
+    private DateTime? dateFrom;
+    private DateTime? dateTo;
+    private AttendanceStatus actualStatus = AttendanceStatus.Present;
+    private AttendanceStatus plannedStatus = AttendanceStatus.Present;
 
     protected override async Task OnInitializedAsync()
     {
-        // Set date from parameters or fall back to InitialDate
-        singleDate = DefaultDateFrom ?? InitialDate;
+        // Set dates from parameters or fall back to InitialDate
+        dateFrom = DefaultDateFrom ?? InitialDate;
+        dateTo = DefaultDateTo ?? InitialDate;
         await LoadEmployees();
     }
 
@@ -164,8 +207,14 @@
 
     private async Task Submit()
     {
-        if (!form.IsValid || !singleDate.HasValue || selectedEmployee == null)
+        if (!form.IsValid || !dateFrom.HasValue || !dateTo.HasValue || selectedEmployee == null)
         {
+            return;
+        }
+
+        if (dateTo.Value < dateFrom.Value)
+        {
+            Snackbar.Add("Date_To cannot be before Date_From", Severity.Error);
             return;
         }
 
@@ -173,24 +222,32 @@
 
         try
         {
-            var request = new EmployeeAttendanceRequest
+            bool allSuccess = true;
+            for (var d = dateFrom.Value.Date; d <= dateTo.Value.Date; d = d.AddDays(1))
             {
-                EmployeeId = selectedEmployee.Id,
-                DateFrom = singleDate.Value.Date,
-                DateTo = singleDate.Value.Date,
-                Status = selectedStatus,
-            };
+                var record = new AttendanceRecord
+                {
+                    EmployeeId = selectedEmployee.Id,
+                    Date = d,
+                    ActualStatus = actualStatus,
+                    PlannedStatus = plannedStatus,
+                    // يمكن إضافة خصائص أخرى مثل ApprovalStatus, CheckIn, CheckOut, Note إذا أردت
+                };
+                var success = await AttendanceService.UpdateEmployeeAttendanceRecordAsync(record);
+                if (!success)
+                {
+                    allSuccess = false;
+                }
+            }
 
-            var success = await AttendanceService.UpdateEmployeeAttendanceStatusAsync(request);
-
-            if (success)
+            if (allSuccess)
             {
                 Snackbar.Add("Attendance status updated successfully", Severity.Success);
                 MudDialog.Close(DialogResult.Ok(true));
             }
             else
             {
-                Snackbar.Add("Failed to update attendance status", Severity.Error);
+                Snackbar.Add("Some days failed to update attendance status", Severity.Error);
             }
         }
         catch (Exception ex)
@@ -203,4 +260,3 @@
         }
     }
 }
-
