@@ -35,7 +35,9 @@
                                    Variant="Variant.Outlined"
                                    Required="true"
                                    RequiredError="Date From is required"
-                                   Editable="true" />
+                                   Editable="true"
+                                   AnchorOrigin="Origin.TopCenter"
+                                   TransformOrigin="Origin.TopCenter" />
 
                     <MudDatePicker @bind-Date="dateTo"
                                    Label="Date To"
@@ -43,7 +45,9 @@
                                    Required="true"
                                    RequiredError="Date To is required"
                                    Editable="true"
-                                   Direction="Direction.Top" />
+                                   Direction="Direction.Top"
+                                   AnchorOrigin="Origin.TopCenter"
+                                   TransformOrigin="Origin.TopCenter" />
 
                     <MudSelect @bind-Value="actualStatus"
                                Label="Actual Status"

@@ -198,5 +198,214 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
             await db.SaveChangesAsync();
             return true;
         }
+
+        public async Task<MonthViewDto> GetMonthViewAsync(int year, int month, AttendanceDbContext db)
+        {
+            var startDate = new DateTime(year, month, 1);
+            var endDate = startDate.AddMonths(1).AddDays(-1);
+
+            var attendanceData = await db.AttendanceRecords
+                .Where(ar => ar.Date >= startDate && ar.Date <= endDate)
+                .ToListAsync();
+
+            var employees = await db.Employees.ToListAsync();
+
+            var monthViewDto = new MonthViewDto
+            {
+                Year = year,
+                Month = month,
+                Days = new List<CalendarDayDto>()
+            };
+
+            for (var date = startDate; date <= endDate; date = date.AddDays(1))
+            {
+                var dayAttendance = attendanceData
+                    .Where(ar => ar.Date.Date == date.Date)
+                    .ToList();
+
+                var employeeStatuses = employees.Select(emp =>
+                {
+                    var attendance = dayAttendance.FirstOrDefault(ar => ar.EmployeeId == emp.Id);
+                    return new EmployeeDayStatus
+                    {
+                        EmployeeId = emp.Id,
+                        EmployeeName = emp.Name,
+                        ActualStatus = attendance?.ActualStatus ?? AttendanceStatus.Absent,
+                        Note = attendance?.Note
+                    };
+                }).ToList();
+
+                var presentCount = employeeStatuses.Count(es => es.ActualStatus == AttendanceStatus.Present);
+                var absentCount = employeeStatuses.Count(es => es.ActualStatus == AttendanceStatus.Absent);
+
+                monthViewDto.Days.Add(new CalendarDayDto
+                {
+                    Date = date,
+                    TopEmployees = employeeStatuses.Take(4).ToList(),
+                    TotalEmployees = employees.Count,
+                    PresentCount = presentCount,
+                    AbsentCount = absentCount
+                });
+            }
+
+            return monthViewDto;
+        }
+
+        public async Task<List<DailyAttendanceDto>> GetDayViewAsync(DateTime date, AttendanceDbContext db)
+        {
+            var day = date.Date;
+
+            var employees = await db.Employees.ToListAsync();
+            var attendanceData = await db.AttendanceRecords
+                .Where(ar => ar.Date.Date == day)
+                .ToListAsync();
+
+            var dailyAttendance = employees.Select(emp =>
+            {
+                var attendance = attendanceData.FirstOrDefault(ar => ar.EmployeeId == emp.Id);
+
+                return new DailyAttendanceDto
+                {
+                    EmployeeId = emp.Id,
+                    EmployeeName = emp.Name,
+                    Department = emp.Department,
+                    Date = day,
+                    CheckIn = attendance?.CheckIn ?? TimeSpan.Zero,
+                    CheckOut = attendance?.CheckOut ?? TimeSpan.Zero,
+                    ActualStatus = attendance?.ActualStatus ?? AttendanceStatus.Absent,
+                    PlannedStatus = attendance?.PlannedStatus ?? AttendanceStatus.Absent,
+                    ApprovalStatus = attendance?.ApprovalStatus ?? ApprovalStatus.Pending,
+                    Note = attendance?.Note ?? string.Empty
+                };
+            }).ToList();
+
+            return dailyAttendance;
+        }
+
+        public async Task<YearViewDto> GetYearViewAsync(int year, AttendanceDbContext db)
+        {
+            var yearViewDto = new YearViewDto
+            {
+                Year = year,
+                Months = new List<MonthSummaryDto>()
+            };
+
+            // Load all employees ONCE
+            var totalEmployees = await db.Employees.CountAsync();
+
+            for (int month = 1; month <= 12; month++)
+            {
+                var startDate = new DateTime(year, month, 1);
+                var endDate = startDate.AddMonths(1).AddDays(-1);
+
+                var attendanceData = await db.AttendanceRecords
+                    .Where(ar => ar.Date >= startDate && ar.Date <= endDate)
+                    .ToListAsync();
+
+                int workingDays = GetWorkingDaysInMonth(year, month);
+
+                int totalPossibleAttendance = totalEmployees * workingDays;
+                int actualAttendance = attendanceData.Count(ar => ar.ActualStatus == AttendanceStatus.Present);
+
+                double averageAttendance = totalPossibleAttendance > 0
+                    ? (double)actualAttendance / totalPossibleAttendance * 100
+                    : 0;
+
+                yearViewDto.Months.Add(new MonthSummaryDto
+                {
+                    Month = month,
+                    MonthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month),
+                    TotalWorkingDays = workingDays,
+                    AverageAttendance = Math.Round(averageAttendance, 2)
+                });
+            }
+
+            return yearViewDto;
+        }
+
+        public async Task<List<Employee>> GetEmployeesAsync(AttendanceDbContext db)
+        {
+            return await db.Employees.ToListAsync();
+        }
+        public async Task<(bool Success, string Message)> DeleteEmployeeAsync(string id, AttendanceDbContext db)
+        {
+            if (string.IsNullOrWhiteSpace(id))
+                return (false, "Employee ID is required.");
+
+            var employee = await db.Employees.FirstOrDefaultAsync(e => e.Id == id);
+            if (employee == null)
+                return (false, "Employee not found.");
+
+            db.Employees.Remove(employee);
+            await db.SaveChangesAsync();
+            return (true, "Employee deleted successfully.");
+        }
+        public async Task<(bool Success, string Message)> AddEmployeeAsync(Employee employeeDto, AttendanceDbContext db)
+        {
+            if (employeeDto == null || string.IsNullOrWhiteSpace(employeeDto.Id) || string.IsNullOrWhiteSpace(employeeDto.Name))
+                return (false, "Employee data is required.");
+
+            var exists = await db.Employees.AnyAsync(e => e.Id == employeeDto.Id);
+            if (exists)
+                return (false, "Employee with this ID already exists.");
+
+            db.Employees.Add(employeeDto);
+            await db.SaveChangesAsync();
+
+            return (true, "Employee added successfully.");
+        }
+        public async Task<(bool Success, string Message)> UpdateEmployeeAsync(Employee employeeDto, AttendanceDbContext db)
+        {
+            if (employeeDto == null || string.IsNullOrWhiteSpace(employeeDto.Id))
+                return (false, "Employee data is required.");
+
+            var employee = await db.Employees.FirstOrDefaultAsync(e => e.Id == employeeDto.Id);
+            if (employee == null)
+                return (false, "Employee not found.");
+
+            employee.Name = employeeDto.Name;
+            employee.Department = employeeDto.Department;
+            employee.Position = employeeDto.Position;
+
+            await db.SaveChangesAsync();
+            return (true, "Employee updated successfully.");
+        }
+        public async Task<bool> UpdateAttendanceRecordAsync(AttendanceRecord record, AttendanceDbContext db)
+        {
+            if (record == null || string.IsNullOrWhiteSpace(record.EmployeeId))
+                return false;
+
+            var existing = await db.AttendanceRecords.FirstOrDefaultAsync(a => a.EmployeeId == record.EmployeeId && a.Date == record.Date);
+
+            if (existing == null)
+            {
+                db.AttendanceRecords.Add(new AttendanceRecord
+                {
+                    EmployeeId = record.EmployeeId,
+                    Date = record.Date,
+                    ActualStatus = record.ActualStatus,
+                    PlannedStatus = record.PlannedStatus,
+                    ApprovalStatus = record.ApprovalStatus,
+                    CheckIn = record.CheckIn,
+                    CheckOut = record.CheckOut,
+                    Note = record.Note
+                });
+            }
+            else
+            {
+                existing.ActualStatus = record.ActualStatus;
+                existing.PlannedStatus = record.PlannedStatus;
+                existing.ApprovalStatus = record.ApprovalStatus;
+                existing.CheckIn = record.CheckIn;
+                existing.CheckOut = record.CheckOut;
+                existing.Note = record.Note;
+            }
+
+            await db.SaveChangesAsync();
+            return true;
+        }
+
+
+
     }
 }

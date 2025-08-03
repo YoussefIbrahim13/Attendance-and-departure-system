@@ -11,5 +11,15 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
         string EditPendingAttendance(List<AttendanceRecord> pendingAttendance, EditAttendanceDto dto);
         Task<string> SavePendingAttendance(List<AttendanceRecord> pendingAttendance, AttendanceDbContext db);
         Task<bool> PlanAttendanceAsync(PlanAttendanceDto dto, AttendanceDbContext db);
+        Task<MonthViewDto>GetMonthViewAsync(int year, int month, AttendanceDbContext db);
+        Task<List<DailyAttendanceDto>> GetDayViewAsync(DateTime date, AttendanceDbContext db);
+        Task<YearViewDto> GetYearViewAsync(int year, AttendanceDbContext db);
+        Task<List<Employee>> GetEmployeesAsync(AttendanceDbContext db);
+        Task<(bool Success, string Message)> DeleteEmployeeAsync(string id, AttendanceDbContext db);
+        Task<(bool Success, string Message)> AddEmployeeAsync(Employee employeeDto, AttendanceDbContext db);
+        Task<(bool Success, string Message)> UpdateEmployeeAsync(Employee employeeDto, AttendanceDbContext db);
+        Task<bool> UpdateAttendanceRecordAsync(AttendanceRecord record, AttendanceDbContext db);
+
+
     }
 }
