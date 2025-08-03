@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EmployeesModels.Shared")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5af7d34938d2907908d03fefa43cf0b03c242d1d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+370057c4ca571827aeb26db9e7cf8726aea7a057")]
 [assembly: System.Reflection.AssemblyProductAttribute("EmployeesModels.Shared")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EmployeesModels.Shared")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

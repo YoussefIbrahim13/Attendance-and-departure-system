@@ -19,8 +19,8 @@
       "RelativeMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\pages\\planattendance.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|y:\\project\\attendancesystem\\employeeattendancesolution\\attendancesystem.importfile.ui\\pages\\dayview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\pages\\dayview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|y:\\project\\attendancesystem\\employeeattendancesolution\\attendancesystem.importfile.ui\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|y:\\project\\attendancesystem\\employeeattendancesolution\\attendancesystem.importfile.ui\\pages\\monthview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -35,16 +35,16 @@
       "RelativeMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\pages\\calendar.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|y:\\project\\attendancesystem\\employeeattendancesolution\\attendancesystem.importfile.ui\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|y:\\project\\attendancesystem\\employeeattendancesolution\\attendancesystem.importfile.ui\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|y:\\project\\attendancesystem\\employeeattendancesolution\\attendancesystem.importfile.ui\\pages\\dayview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\pages\\dayview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|y:\\project\\attendancesystem\\employeeattendancesolution\\attendancesystem.importfile.ui\\pages\\yearview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\pages\\yearview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|y:\\project\\attendancesystem\\employeeattendancesolution\\attendancesystem.importfile.ui\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -54,60 +54,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 4,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AttendanceRecord.cs",
-              "DocumentMoniker": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Employee.Shared\\AttendanceRecord.cs",
-              "RelativeDocumentMoniker": "Employee.Shared\\AttendanceRecord.cs",
-              "ToolTip": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Employee.Shared\\AttendanceRecord.cs",
-              "RelativeToolTip": "Employee.Shared\\AttendanceRecord.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-30T02:00:58.463Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Employee.cs",
-              "DocumentMoniker": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Employee.Shared\\Employee.cs",
-              "RelativeDocumentMoniker": "Employee.Shared\\Employee.cs",
-              "ToolTip": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Employee.Shared\\Employee.cs",
-              "RelativeToolTip": "Employee.Shared\\Employee.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-30T02:00:48.99Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "20250725232807_AddStatusColumnToAttendanceRecords.cs",
-              "DocumentMoniker": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API\\Migrations\\20250725232807_AddStatusColumnToAttendanceRecords.cs",
-              "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.API\\Migrations\\20250725232807_AddStatusColumnToAttendanceRecords.cs",
-              "ToolTip": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API\\Migrations\\20250725232807_AddStatusColumnToAttendanceRecords.cs",
-              "RelativeToolTip": "AttendanceSystem.ImportFile.API\\Migrations\\20250725232807_AddStatusColumnToAttendanceRecords.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-30T02:00:13.697Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "PlanAttendance.razor",
-              "DocumentMoniker": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Pages\\PlanAttendance.razor",
-              "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\Pages\\PlanAttendance.razor",
-              "ToolTip": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Pages\\PlanAttendance.razor",
-              "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\Pages\\PlanAttendance.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAABpAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-30T01:56:55.093Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
@@ -126,7 +74,56 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 0,
+              "Title": "AttendanceRecord.cs",
+              "DocumentMoniker": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Employee.Shared\\AttendanceRecord.cs",
+              "RelativeDocumentMoniker": "Employee.Shared\\AttendanceRecord.cs",
+              "ToolTip": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Employee.Shared\\AttendanceRecord.cs",
+              "RelativeToolTip": "Employee.Shared\\AttendanceRecord.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T02:00:58.463Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Employee.cs",
+              "DocumentMoniker": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Employee.Shared\\Employee.cs",
+              "RelativeDocumentMoniker": "Employee.Shared\\Employee.cs",
+              "ToolTip": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Employee.Shared\\Employee.cs",
+              "RelativeToolTip": "Employee.Shared\\Employee.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T02:00:48.99Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "20250725232807_AddStatusColumnToAttendanceRecords.cs",
+              "DocumentMoniker": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API\\Migrations\\20250725232807_AddStatusColumnToAttendanceRecords.cs",
+              "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.API\\Migrations\\20250725232807_AddStatusColumnToAttendanceRecords.cs",
+              "ToolTip": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API\\Migrations\\20250725232807_AddStatusColumnToAttendanceRecords.cs",
+              "RelativeToolTip": "AttendanceSystem.ImportFile.API\\Migrations\\20250725232807_AddStatusColumnToAttendanceRecords.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T02:00:13.697Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PlanAttendance.razor",
+              "DocumentMoniker": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Pages\\PlanAttendance.razor",
+              "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\Pages\\PlanAttendance.razor",
+              "ToolTip": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Pages\\PlanAttendance.razor",
+              "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\Pages\\PlanAttendance.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAABpAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-30T01:56:55.093Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "MainLayout.razor",
               "DocumentMoniker": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Layout\\MainLayout.razor",
               "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\Layout\\MainLayout.razor",
@@ -174,7 +171,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "DayView.razor",
               "DocumentMoniker": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Pages\\DayView.razor",
               "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\Pages\\DayView.razor",
@@ -182,12 +179,11 @@
               "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\Pages\\DayView.razor",
               "ViewState": "AgIAACICAAAAAAAAAAAAACkCAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-29T00:52:08.999Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-29T00:52:08.999Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 9,
               "Title": "YearView.razor",
               "DocumentMoniker": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Pages\\YearView.razor",
               "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\Pages\\YearView.razor",
@@ -199,7 +195,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "NavMenu.razor",
               "DocumentMoniker": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Layout\\NavMenu.razor",
               "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\Layout\\NavMenu.razor",

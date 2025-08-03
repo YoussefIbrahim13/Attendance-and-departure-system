@@ -281,10 +281,84 @@
           }
         }
       }
+    },
+    "/Attendance/update-attendance-record": {
+      "put": {
+        "tags": [
+          "Attendance"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AttendanceRecord"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AttendanceRecord"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AttendanceRecord"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
+      "ApprovalStatus": {
+        "enum": [
+          0,
+          1
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "AttendanceRecord": {
+        "type": "object",
+        "properties": {
+          "employeeId": {
+            "type": "string",
+            "nullable": true
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "checkIn": {
+            "type": "string",
+            "format": "date-span"
+          },
+          "checkOut": {
+            "type": "string",
+            "format": "date-span"
+          },
+          "actualStatus": {
+            "$ref": "#/components/schemas/AttendanceStatus"
+          },
+          "plannedStatus": {
+            "$ref": "#/components/schemas/AttendanceStatus"
+          },
+          "approvalStatus": {
+            "$ref": "#/components/schemas/ApprovalStatus"
+          },
+          "note": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "AttendanceStatus": {
         "enum": [
           0,
@@ -314,8 +388,14 @@
             "type": "string",
             "format": "date-span"
           },
-          "status": {
+          "actualStatus": {
             "$ref": "#/components/schemas/AttendanceStatus"
+          },
+          "plannedStatus": {
+            "$ref": "#/components/schemas/AttendanceStatus"
+          },
+          "approvalStatus": {
+            "$ref": "#/components/schemas/ApprovalStatus"
           },
           "note": {
             "type": "string",
@@ -361,7 +441,7 @@
             },
             "nullable": true
           },
-          "status": {
+          "plannedStatus": {
             "$ref": "#/components/schemas/AttendanceStatus"
           }
         },
