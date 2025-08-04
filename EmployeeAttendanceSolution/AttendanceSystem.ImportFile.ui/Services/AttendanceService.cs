@@ -6,22 +6,24 @@ namespace AttendanceSystem.ImportFile.ui.Services
 
 
 
-    public class AttendanceService
+    public class AttendanceService: BaseHTTPService
     {
         private readonly HttpClient _http;
         private List<AttendanceRecord> _records = new();
-        public AttendanceService(HttpClient http)
+        public AttendanceService(HttpClient http):base(http)
         {
             _http = http;
         }
 
         // رفع ملف CSV
-        public async Task<List<AttendanceRecord>?> UploadCsvAsync(MultipartFormDataContent content)
+        public  async Task<List<AttendanceRecord>?> UploadCsvAsync(MultipartFormDataContent content)
         {
-            var response = await _http.PostAsync("Attendance/upload-csv", content);
-            if (response.IsSuccessStatusCode)
-                return await response.Content.ReadFromJsonAsync<List<AttendanceRecord>>();
-            return null;
+          var response= await  Post<Task<List<AttendanceRecord>?>, MultipartFormDataContent>(content);
+            //var response = await _http.PostAsync("Attendance/upload-csv", content);
+            //if (response.IsSuccessStatusCode)
+            //    return await response.Content.ReadFromJsonAsync<List<AttendanceRecord>>();
+            //return null;
+            return await response;
         }
 
         // تعديل سجل مؤقت
@@ -205,13 +207,13 @@ namespace AttendanceSystem.ImportFile.ui.Services
 
     }
 
-    public class EmployeeDto
-    {
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public string Department { get; set; }
-        public string Position { get; set; }
-    }
+    //public class EmployeeDto
+    //{
+    //    public string Id { get; set; }
+    //    public string Name { get; set; }
+    //    public string Department { get; set; }
+    //    public string Position { get; set; }
+    //}
 
    
 }
