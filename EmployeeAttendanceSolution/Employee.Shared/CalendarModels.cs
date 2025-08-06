@@ -1,7 +1,7 @@
 ﻿namespace EmployeesModels.Shared
 {
     public record AttendanceDayStatus(
-       string EmployeeId,
+       string Code,
        DateTime Date,
        AttendanceStatus ActualStatus ,
        AttendanceStatus? PlannedStatus,

@@ -126,7 +126,7 @@ namespace AttendanceSystem.ImportFile.ui.Services
             {
                 var dayData = await GetDayViewAsync(date);
                 return dayData.Select(d => new AttendanceDayStatus(
-                    d.EmployeeId,
+                    d.Code,
                     d.Date,
                     d.ActualStatus,
                     d.PlannedStatus, // Assuming PlannedStatus is part of DailyAttendanceDto
@@ -193,11 +193,11 @@ namespace AttendanceSystem.ImportFile.ui.Services
         }
         
         // جدولة حضور موظف لأيام محددة (Plan Attendance)
-        public async Task<bool> PlanAttendanceAsync(string employeeId, List<DateTime> days, AttendanceStatus plannedStatus)
+        public async Task<bool> PlanAttendanceAsync(string employeeCode, List<DateTime> days, AttendanceStatus plannedStatus)
         {
             var dto = new PlanAttendanceDto
             {
-                EmployeeId = employeeId,
+                Code= employeeCode,
                 Dates = days,
                 PlannedStatus = plannedStatus
             };
@@ -209,10 +209,10 @@ namespace AttendanceSystem.ImportFile.ui.Services
 
     public class EmployeeDto
     {
-        public string Id { get; set; }
+        public string Code { get; set; }
         public string Name { get; set; }
-        public string Department { get; set; }
-        public string Position { get; set; }
+        public DepartmentEnum Department { get; set; }
+        public PositionEnum Position { get; set; }
     }
 
    

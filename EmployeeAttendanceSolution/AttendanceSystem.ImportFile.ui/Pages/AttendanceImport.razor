@@ -68,7 +68,7 @@
                 </MudStack>
                 <MudTable Items="@filteredAttendance" Hover="true" Bordered="true" Striped="true" Dense="true">
                     <HeaderContent>
-                        <MudTh>Employee ID</MudTh>
+                        <MudTh>Employee Code</MudTh>
                         <MudTh Style="min-width:120px;">Date</MudTh>
                         <MudTh>Check In</MudTh>
                         <MudTh>Check Out</MudTh>
@@ -78,7 +78,7 @@
                         <MudTh>Edit</MudTh>
                     </HeaderContent>
                     <RowTemplate>
-                        <MudTd DataLabel="Employee ID">@context.EmployeeId</MudTd>
+                        <MudTd DataLabel="Employee ID">@context.Code</MudTd>
                         <MudTd DataLabel="Date">
                             @{
                                 string? dateStr = context.Date.ToString();
@@ -245,9 +245,9 @@
         get
         {
             var query = (pendingAttendance ?? Enumerable.Empty<AttendanceRecord>())
-                .Where(x => string.IsNullOrEmpty(searchId) || x.EmployeeId.ToString() == searchId);
+                .Where(x => string.IsNullOrEmpty(searchId) || x.Code.ToString() == searchId);
             if (appliedSortColumn == SortColumn.EmployeeId)
-                return appliedSortDirection == SortDirection.Ascending ? query.OrderBy(x => x.EmployeeId) : query.OrderByDescending(x => x.EmployeeId);
+                return appliedSortDirection == SortDirection.Ascending ? query.OrderBy(x => x.Code) : query.OrderByDescending(x => x.Code);
             else if (appliedSortColumn == SortColumn.Date)
                 return appliedSortDirection == SortDirection.Ascending ? query.OrderBy(x => x.Date) : query.OrderByDescending(x => x.Date);
             else
@@ -314,7 +314,7 @@
         if (editRow == null) return;
         var dto = new EditAttendanceDto
         {
-            EmployeeId = rec.EmployeeId,
+            Code = rec.Code,
             Date = rec.Date,
             CheckIn = editCheckInTime,
             CheckOut = editCheckOutTime,

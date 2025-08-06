@@ -327,7 +327,7 @@
       "AttendanceRecord": {
         "type": "object",
         "properties": {
-          "employeeId": {
+          "code": {
             "type": "string",
             "nullable": true
           },
@@ -369,10 +369,21 @@
         "type": "integer",
         "format": "int32"
       },
+      "DepartmentEnum": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
       "EditAttendanceDto": {
         "type": "object",
         "properties": {
-          "employeeId": {
+          "code": {
             "type": "string",
             "nullable": true
           },
@@ -409,6 +420,10 @@
         "properties": {
           "id": {
             "type": "string",
+            "format": "uuid"
+          },
+          "code": {
+            "type": "string",
             "nullable": true
           },
           "name": {
@@ -416,12 +431,10 @@
             "nullable": true
           },
           "department": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/DepartmentEnum"
           },
           "position": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/PositionEnum"
           }
         },
         "additionalProperties": false
@@ -429,7 +442,7 @@
       "PlanAttendanceDto": {
         "type": "object",
         "properties": {
-          "employeeId": {
+          "code": {
             "type": "string",
             "nullable": true
           },
@@ -446,6 +459,17 @@
           }
         },
         "additionalProperties": false
+      },
+      "PositionEnum": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "type": "integer",
+        "format": "int32"
       }
     }
   }

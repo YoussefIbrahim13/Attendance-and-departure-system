@@ -24,7 +24,7 @@ namespace AttendanceSystem.ImportFile.API.Migrations
 
             modelBuilder.Entity("EmployeesModels.Shared.AttendanceRecord", b =>
                 {
-                    b.Property<string>("EmployeeId")
+                    b.Property<string>("Code")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("Date")
@@ -48,14 +48,19 @@ namespace AttendanceSystem.ImportFile.API.Migrations
                     b.Property<int>("PlannedStatus")
                         .HasColumnType("int");
 
-                    b.HasKey("EmployeeId", "Date");
+                    b.HasKey("Code", "Date");
 
                     b.ToTable("AttendanceRecords");
                 });
 
             modelBuilder.Entity("EmployeesModels.Shared.Employee", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Department")
@@ -71,6 +76,9 @@ namespace AttendanceSystem.ImportFile.API.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Code")
+                        .IsUnique();
 
                     b.ToTable("Employees");
                 });

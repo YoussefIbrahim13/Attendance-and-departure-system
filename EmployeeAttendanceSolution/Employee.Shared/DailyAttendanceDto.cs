@@ -2,7 +2,7 @@
 {
     public class DailyAttendanceDto
         {
-            public string EmployeeId { get; set; } = string.Empty;
+            public string Code { get; set; } = string.Empty;
             public string EmployeeName { get; set; } = string.Empty;
             public string Department { get; set; } = string.Empty;
             public DateTime Date { get; set; }

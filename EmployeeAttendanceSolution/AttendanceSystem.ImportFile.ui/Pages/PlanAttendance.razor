@@ -17,7 +17,7 @@
                 <MudStack Spacing="2" Style="min-width:220px; max-width:260px;">
                     <MudText Typo="Typo.subtitle1" Class="mb-1" Style="color:var(--mud-palette-primary); font-weight:600;">Employee</MudText>
                     <MudAutocomplete T="EmployeeDto" @bind-Value="selectedEmployee" Label="Choose Employee" Variant="Variant.Filled" Dense="true" Style="background:var(--mud-palette-background-grey);"
-                        SearchFunc="@SearchEmployee" ToStringFunc="@((e) => e == null ? string.Empty : $"{e.Name} ({e.Id})")" Clearable="true" ResetValueOnEmptyText="true" CoerceText="true" />
+                        SearchFunc="@SearchEmployee" ToStringFunc="@((e) => e == null ? string.Empty : $"{e.Name}--{e.Code}")" Clearable="true" ResetValueOnEmptyText="true" CoerceText="true" />
                 </MudStack>
                 <MudStack Spacing="2" Style="min-width:260px; max-width:320px;">
                     <MudText Typo="Typo.subtitle1" Class="mb-1" Style="color:var(--mud-palette-primary); font-weight:600;">Select Day</MudText>
@@ -25,11 +25,26 @@
                         <MudDatePicker @bind-Date="singleDate" Label="Single Day" Variant="Variant.Outlined" Dense="true" PickerVariant="PickerVariant.Dialog" Style="flex:1;" />
                         <MudIconButton Icon="@Icons.Material.Filled.Clear" Color="Color.Default" Size="Size.Small" OnClick="@(() => singleDate = null)" ToolTip="Clear" />
                     </MudStack>
-                    <MudText Typo="Typo.subtitle2" Class="mb-1 mt-2" Style="color:var(--mud-palette-primary); font-weight:600;">Or Select Range</MudText>
-                    <MudStack Row Spacing="1" AlignItems="AlignItems.Center">
-                        <MudDateRangePicker @bind-DateRange="dateRange" Label="Date Range" Variant="Variant.Outlined" Dense="true" PickerVariant="PickerVariant.Dialog" Style="flex:1;" />
-                        <MudIconButton Icon="@Icons.Material.Filled.Clear" Color="Color.Default" Size="Size.Small" OnClick="@ClearRange" ToolTip="Clear" />
-                    </MudStack>
+<div style="display:flex; justify-content:flex-start;">
+    <MudButton Variant="Variant.Outlined" Color="Color.Primary" Size="Size.Small" Style="margin-top:6px; min-width:120px; max-width:140px; height:32px; border-radius:8px;" OnClick="@(() => showRangeOptions = !showRangeOptions)">
+         Multiple Days
+    </MudButton>
+</div>
+                    @if (showRangeOptions)
+                    {
+                        <MudText Typo="Typo.subtitle2" Class="mb-1 mt-2" Style="color:var(--mud-palette-primary); font-weight:600;">Or Select Range</MudText>
+                        <MudStack Row Spacing="1" AlignItems="AlignItems.Center">
+                            <MudDateRangePicker @bind-DateRange="dateRange" Label="Date Range" Variant="Variant.Outlined" Dense="true" PickerVariant="PickerVariant.Dialog" Style="flex:1;" />
+                            <MudIconButton Icon="@Icons.Material.Filled.Clear" Color="Color.Default" Size="Size.Small" OnClick="@ClearRange" ToolTip="Clear" />
+                        </MudStack>
+                        <MudText Typo="Typo.subtitle2" Class="mb-1 mt-2" Style="color:var(--mud-palette-primary); font-weight:600;">Choose Days of Week</MudText>
+                        <MudSelect T="DayOfWeek" Label="Days of Week" SelectedValues="selectedDays" SelectedValuesChanged="@(v => selectedDays = new HashSet<DayOfWeek>(v))" MultiSelection="true" Dense="true" Style="background:var(--mud-palette-background-grey);">
+                            @foreach (DayOfWeek day in Enum.GetValues(typeof(DayOfWeek)))
+                            {
+                                <MudSelectItem T="DayOfWeek" Value="day">@day</MudSelectItem>
+                            }
+                        </MudSelect>
+                    }
                 </MudStack>
                 <MudStack Spacing="2" Style="min-width:220px; max-width:260px;">
                     <MudText Typo="Typo.subtitle1" Class="mb-1" Style="color:var(--mud-palette-primary); font-weight:600;">Attendance Status</MudText>
@@ -44,7 +59,7 @@
             </MudStack>
         </MudPaper>
         <MudStack Row JustifyContent="Justify.Center" Class="mt-4">
-            <MudButton Variant="Variant.Filled" Color="Color.Success" Size="Size.Large" OnClick="SavePlan" Disabled="@(isLoading || selectedEmployee == null || string.IsNullOrEmpty(selectedEmployee?.Id) || selectedStatus == null || (singleDate == null && (dateRange.Start == null || dateRange.End == null)))">
+            <MudButton Variant="Variant.Filled" Color="Color.Success" Size="Size.Large" OnClick="SavePlan" Disabled="@(isLoading || selectedEmployee == null || string.IsNullOrEmpty(selectedEmployee?.Code) || selectedStatus == null || (singleDate == null && (dateRange.Start == null || dateRange.End == null)))">
                 @if (isLoading)
                 {
                     <MudProgressCircular Indeterminate="true" Size="Size.Medium" Class="me-2" />

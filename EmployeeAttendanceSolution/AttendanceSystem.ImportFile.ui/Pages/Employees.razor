@@ -2,6 +2,7 @@
 @page "/Employees"
 @using MudBlazor
 @using AttendanceSystem.ImportFile.ui.Services
+@using EmployeesModels.Shared
 @inject AttendanceSystem.ImportFile.ui.Services.AttendanceService AttendanceService
 @inject ISnackbar Snackbar
 
@@ -14,10 +15,20 @@
         <MudPaper Class="pa-6 mb-6" Elevation="2" Style="border-radius:18px; background: var(--mud-palette-surface);">
             <MudText Typo="Typo.h6" Class="mb-4">Add New Employee</MudText>
             <MudStack Row Spacing="2" Class="mb-2">
-                <MudTextField T="string" Label="ID" @bind-Value="newEmployee.Id" Variant="Variant.Outlined" Style="width:140px;" />
+                <MudTextField T="string" Label="Code" @bind-Value="newEmployee.Code" Variant="Variant.Outlined" Style="width:140px;" />
                 <MudTextField T="string" Label="Name" @bind-Value="newEmployee.Name" Variant="Variant.Outlined" Style="width:180px;" />
-                <MudTextField T="string" Label="Department" @bind-Value="newEmployee.Department" Variant="Variant.Outlined" Style="width:180px;" />
-                <MudTextField T="string" Label="Position" @bind-Value="newEmployee.Position" Variant="Variant.Outlined" Style="width:180px;" />
+                <MudSelect T="DepartmentEnum" Label="Department" @bind-Value="newEmployee.Department" Variant="Variant.Outlined" Style="width:180px;">
+                    @foreach (var dept in Enum.GetValues(typeof(DepartmentEnum)))
+                    {
+                        <MudSelectItem T="DepartmentEnum" Value="@((DepartmentEnum)dept)">@dept</MudSelectItem>
+                    }
+                </MudSelect>
+                <MudSelect T="PositionEnum" Label="Position" @bind-Value="newEmployee.Position" Variant="Variant.Outlined" Style="width:180px;">
+                    @foreach (var pos in Enum.GetValues(typeof(PositionEnum)))
+                    {
+                        <MudSelectItem T="PositionEnum" Value="@((PositionEnum)pos)">@pos</MudSelectItem>
+                    }
+                </MudSelect>
             </MudStack>
             <MudButton Variant="Variant.Filled" Color="Color.Success" OnClick="AddEmployee" Class="mt-2" StartIcon="@Icons.Material.Filled.PersonAdd">Add Employee</MudButton>
         </MudPaper>
@@ -25,18 +36,25 @@
         <MudPaper Class="pa-6" Elevation="2" Style="border-radius:18px; background: var(--mud-palette-surface);">
             <MudText Typo="Typo.h6" Class="mb-4">All Employees</MudText>
             <MudStack Row Spacing="2" Class="mb-3">
-                <MudTextField @bind-Value="searchId" Label="Search by Employee ID" Variant="Variant.Outlined" Margin="Margin.Dense" Style="width:200px;" />
-                <MudSelect T="string" @bind-Value="selectedDepartment" Label="Department" Variant="Variant.Outlined" Margin="Margin.Dense" Style="width:200px;">
-                    <MudSelectItem Value="@((string?)null)">All Departments</MudSelectItem>
-                    @foreach (var dept in employees.Select(e => e.Department).Distinct().OrderBy(d => d))
+                <MudTextField @bind-Value="searchcode" Label="Search by Employee Code" Variant="Variant.Outlined" Margin="Margin.Dense" Style="width:200px;" />
+                <MudSelect T="DepartmentEnum?" @bind-Value="selectedDepartment" Label="Department" Variant="Variant.Outlined" Margin="Margin.Dense" Style="width:200px;">
+                    <MudSelectItem T="DepartmentEnum?" Value="@((DepartmentEnum?)null)">All Departments</MudSelectItem>
+                    @foreach (var dept in Enum.GetValues(typeof(DepartmentEnum)))
                     {
-                        <MudSelectItem Value="@dept">@dept</MudSelectItem>
+                        <MudSelectItem T="DepartmentEnum?" Value="@((DepartmentEnum)dept)">@dept</MudSelectItem>
+                    }
+                </MudSelect>
+                <MudSelect T="PositionEnum?" @bind-Value="selectedPosition" Label="Position" Variant="Variant.Outlined" Margin="Margin.Dense" Style="width:200px;">
+                    <MudSelectItem T="PositionEnum?" Value="@((PositionEnum?)null)">All Positions</MudSelectItem>
+                    @foreach (var pos in Enum.GetValues(typeof(PositionEnum)))
+                    {
+                        <MudSelectItem T="PositionEnum?" Value="@((PositionEnum)pos)">@pos</MudSelectItem>
                     }
                 </MudSelect>
             </MudStack>
             <MudTable Items="@filteredEmployees" Hover="true" Bordered="true" Striped="true" Dense="true" GroupByField="Department">
                 <HeaderContent>
-                    <MudTh>ID</MudTh>
+                    <MudTh>Code</MudTh>
                     <MudTh>Name</MudTh>
                     <MudTh>Department</MudTh>
                     <MudTh>Position</MudTh>
@@ -48,7 +66,7 @@
                     </tr>
                 </GroupHeaderTemplate>
                 <RowTemplate>
-                    <MudTd DataLabel="ID">@context.Id</MudTd>
+                    <MudTd DataLabel="Code">@context.Code</MudTd>
                     <MudTd DataLabel="Name">
                         @if (editRow == context)
                         {
@@ -62,21 +80,31 @@
                     <MudTd DataLabel="Department">
                         @if (editRow == context)
                         {
-                            <MudTextField T="string" @bind-Value="editDepartment" Dense="true" />
+                            <MudSelect T="DepartmentEnum" @bind-Value="editDepartment" Dense="true">
+                                @foreach (var dept in Enum.GetValues(typeof(DepartmentEnum)))
+                                {
+                                    <MudSelectItem T="DepartmentEnum" Value="@((DepartmentEnum)dept)">@dept</MudSelectItem>
+                                }
+                            </MudSelect>
                         }
                         else
                         {
-                            @context.Department
+                            @context.Department.ToString()
                         }
                     </MudTd>
                     <MudTd DataLabel="Position">
                         @if (editRow == context)
                         {
-                            <MudTextField T="string" @bind-Value="editPosition" Dense="true" />
+                            <MudSelect T="PositionEnum" @bind-Value="editPosition" Dense="true">
+                                @foreach (var pos in Enum.GetValues(typeof(PositionEnum)))
+                                {
+                                    <MudSelectItem T="PositionEnum" Value="@((PositionEnum)pos)">@pos</MudSelectItem>
+                                }
+                            </MudSelect>
                         }
                         else
                         {
-                            @context.Position
+                            @context.Position.ToString()
                         }
                     </MudTd>
                     <MudTd DataLabel="Actions">
@@ -90,7 +118,7 @@
                         else
                         {
                             <MudButton Variant="Variant.Outlined" Color="Color.Primary" Size="Size.Small" OnClick="() => StartEdit(context)" Class="me-2" StartIcon="@Icons.Material.Filled.Edit">Edit</MudButton>
-                            <MudButton Variant="Variant.Outlined" Color="Color.Error" Size="Size.Small" OnClick="() => DeleteEmployee(context.Id)" StartIcon="@Icons.Material.Filled.Delete">Delete</MudButton>
+                            <MudButton Variant="Variant.Outlined" Color="Color.Error" Size="Size.Small" OnClick="() => DeleteEmployee(context.Code)" StartIcon="@Icons.Material.Filled.Delete">Delete</MudButton>
                         }
                     </MudTd>
                 </RowTemplate>
@@ -103,18 +131,20 @@
 
 @code {
     private List<EmployeeDto> employees = new();
-    private string? searchId;
-private string? selectedDepartment = null;
-    private IEnumerable<EmployeeDto> filteredEmployees =>
-        employees.Where(e =>
-            (string.IsNullOrEmpty(searchId) || e.Id == searchId)
-            && (string.IsNullOrEmpty(selectedDepartment) || e.Department == selectedDepartment)
-        );
-    private EmployeeDto newEmployee = new EmployeeDto();
-    private EmployeeDto? editRow;
-    private string editName = string.Empty;
-    private string editDepartment = string.Empty;
-    private string editPosition = string.Empty;
+    private string? searchcode;
+private DepartmentEnum? selectedDepartment = null;
+private PositionEnum? selectedPosition = null;
+private IEnumerable<EmployeeDto> filteredEmployees =>
+    employees.Where(e =>
+        (string.IsNullOrEmpty(searchcode) || e.Code == searchcode)
+        && (!selectedDepartment.HasValue || e.Department == selectedDepartment.Value)
+        && (!selectedPosition.HasValue || e.Position == selectedPosition.Value)
+    );
+private EmployeeDto newEmployee = new EmployeeDto();
+private EmployeeDto? editRow;
+private string editName = string.Empty;
+private DepartmentEnum editDepartment;
+private PositionEnum editPosition;
 
     protected override async Task OnInitializedAsync()
     {
@@ -128,12 +158,12 @@ private string? selectedDepartment = null;
 
     private async Task AddEmployee()
     {
-        if (!string.IsNullOrWhiteSpace(newEmployee.Id) && !string.IsNullOrWhiteSpace(newEmployee.Name))
+        if (!string.IsNullOrWhiteSpace(newEmployee.Code) && !string.IsNullOrWhiteSpace(newEmployee.Name))
         {
             // تحقق من تكرار الـ ID
-            if (employees.Any(e => e.Id == newEmployee.Id))
+            if (employees.Any(e => e.Code == newEmployee.Code))
             {
-                Snackbar.Add("This ID already exists", Severity.Warning);
+                Snackbar.Add("This Code already exists", Severity.Warning);
                 return;
             }
             try

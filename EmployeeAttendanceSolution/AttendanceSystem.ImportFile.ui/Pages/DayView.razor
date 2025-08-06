@@ -93,7 +93,7 @@
                                     <MudAvatar Class="employee-avatar">@GetInitials(context.Item.EmployeeName)</MudAvatar>
                                     <MudStack>
                                         <MudText Class="employee-name">@context.Item.EmployeeName</MudText>
-                                        <MudText Color="Color.Secondary" Typo="Typo.caption">ID: @context.Item.EmployeeId</MudText>
+                                        <MudText Color="Color.Secondary" Typo="Typo.caption"><code>Code</code>: @context.Item.Code</MudText>
                                     </MudStack>
                                 </MudStack>
                             </CellTemplate>
@@ -496,7 +496,7 @@
             bool matchesSearch = string.IsNullOrEmpty(searchTerm) ||
                 emp.EmployeeName.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
                 emp.Department.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
-                emp.EmployeeId.Contains(searchTerm, StringComparison.OrdinalIgnoreCase);
+                emp.Code.Contains(searchTerm, StringComparison.OrdinalIgnoreCase);
 
             bool matchesStatus = string.IsNullOrEmpty(selectedStatusString) ||
                 emp.ActualStatus.ToString().Equals(selectedStatusString, StringComparison.OrdinalIgnoreCase);
@@ -625,7 +625,7 @@
         {
             AttendanceRecord employeeAttendanceRequest = new AttendanceRecord
             {
-                EmployeeId = item.EmployeeId,
+                Code = item.Code,
                 Date = selectedDate,
                 ActualStatus = item.ActualStatus,
                 PlannedStatus = item.PlannedStatus,

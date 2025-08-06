@@ -26,7 +26,7 @@
                                      ResetValueOnEmptyText="true">
                         <ItemTemplate>
                             <MudText>@context.Name</MudText>
-                            <MudText Typo="Typo.caption" Color="Color.Secondary">@context.Id</MudText>
+                            <MudText Typo="Typo.caption" Color="Color.Secondary">@context.Code</MudText>
                         </ItemTemplate>
                     </MudAutocomplete>
 
@@ -206,7 +206,7 @@
 
         return Task.FromResult(employees.Where(x =>
             x.Name.Contains(value, StringComparison.OrdinalIgnoreCase) ||
-            x.Id.Contains(value, StringComparison.OrdinalIgnoreCase)));
+            x.Code.Contains(value, StringComparison.OrdinalIgnoreCase)));
     }
 
     private async Task Submit()
@@ -231,7 +231,7 @@
             {
                 var record = new AttendanceRecord
                 {
-                    EmployeeId = selectedEmployee.Id,
+                    Code = selectedEmployee.Code,
                     Date = d,
                     ActualStatus = actualStatus,
                     PlannedStatus = plannedStatus,

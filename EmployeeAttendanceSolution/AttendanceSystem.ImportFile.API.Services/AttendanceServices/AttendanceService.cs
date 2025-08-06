@@ -20,17 +20,17 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
             if (pendingAttendance.Count == 0)
                 return "No pending attendance data to save.";
 
-            var employeeIds = pendingAttendance.Select(x => x.EmployeeId).ToList();
+            var employeeIds = pendingAttendance.Select(x => x.Code).ToList();
             var dates = pendingAttendance.Select(x => x.Date).ToList();
 
             var existingRecords = await db.AttendanceRecords
-                .Where(x => employeeIds.Contains(x.EmployeeId) && dates.Contains(x.Date))
+                .Where(x => employeeIds.Contains(x.Code) && dates.Contains(x.Date))
                 .ToListAsync();
 
             foreach (var rec in pendingAttendance)
             {
                 var existing = existingRecords
-                    .FirstOrDefault(x => x.EmployeeId == rec.EmployeeId && x.Date == rec.Date);
+                    .FirstOrDefault(x => x.Code == rec.Code && x.Date == rec.Date);
 
                 if (existing != null)
                 {
@@ -55,11 +55,11 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
         // تعديل سجل في قائمة الحضور المؤقتة
         public string EditPendingAttendance(List<AttendanceRecord> pendingAttendance, EditAttendanceDto dto)
         {
-            if (string.IsNullOrWhiteSpace(dto.EmployeeId))
-                return "EmployeeId is required.";
+            if (string.IsNullOrWhiteSpace(dto.Code))
+                return "EmployeeCode is required.";
 
             var record = pendingAttendance
-                .FirstOrDefault(x => x.EmployeeId == dto.EmployeeId && x.Date.Date == dto.Date.Date);
+                .FirstOrDefault(x => x.Code == dto.Code && x.Date.Date == dto.Date.Date);
 
             if (record == null)
                 return "Attendance record not found in pending data.";
@@ -76,7 +76,7 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
         public async Task<List<AttendanceRecord>> UploadCSVFileAsync(IFormFile file)
         {
             var attendanceRecords = new List<AttendanceRecord>();
-            List<string> employeeIds = new();
+            List<string> employeeCodes = new();
 
             using (var stream = file.OpenReadStream())
             // استخدم UTF8 مع BOM لتفادي مشاكل الترميز
@@ -89,9 +89,9 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
 
                 for (int i = 1; i < empParts.Length; i += 2)
                 {
-                    var empId = empParts[i].Trim();
-                    if (!string.IsNullOrEmpty(empId) && int.TryParse(empId, out _))
-                        employeeIds.Add(empId);
+                    var empCode = empParts[i].Trim();
+                    if (!string.IsNullOrEmpty(empCode))
+                        employeeCodes.Add(empCode);
                 }
 
                 string? line;
@@ -107,7 +107,7 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
                         continue;
 
                     int empIndex = 0;
-                    for (int i = 1; i < parts.Length - 1 && empIndex < employeeIds.Count; i += 2, empIndex++)
+                    for (int i = 1; i < parts.Length - 1 && empIndex < employeeCodes.Count; i += 2, empIndex++)
                     {
                         // نظف أي رموز غريبة (مثل �) من القيم
                         var checkInStr = parts[i].Trim().Replace("�", string.Empty);
@@ -116,10 +116,10 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
                         TimeSpan checkOut = TimeSpan.Zero;
                         TimeSpan.TryParse(checkInStr, out checkIn);
                         TimeSpan.TryParse(checkOutStr, out checkOut);
-                        var empId = employeeIds[empIndex];
+                        var empCode = employeeCodes[empIndex];
                         attendanceRecords.Add(new AttendanceRecord
                         {
-                            EmployeeId = empId,
+                            Code = empCode,
                             Date = date,
                             CheckIn = checkIn,
                             CheckOut = checkOut,
@@ -166,12 +166,12 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
 
         public async Task<bool> PlanAttendanceAsync(PlanAttendanceDto dto, AttendanceDbContext db)
         {
-            if (dto == null || db == null || string.IsNullOrWhiteSpace(dto.EmployeeId) || dto.Dates == null || dto.Dates.Count == 0)
+            if (dto == null || db == null || string.IsNullOrWhiteSpace(dto.Code) || dto.Dates == null || dto.Dates.Count == 0)
                 return false;
 
             foreach (var date in dto.Dates)
             {
-                var record = await db.AttendanceRecords.FirstOrDefaultAsync(x => x.EmployeeId == dto.EmployeeId && x.Date == date);
+                var record = await db.AttendanceRecords.FirstOrDefaultAsync(x => x.Code == dto.Code && x.Date == date);
                 if (record != null)
                 {
                        // إذا لم يتم تعديل ActualStatus يدويًا (أي يساوي PlannedStatus القديم)، حدثه مع PlannedStatus الجديد
@@ -185,7 +185,7 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
                 {
                     db.AttendanceRecords.Add(new AttendanceRecord
                     {
-                        EmployeeId = dto.EmployeeId,
+                        Code = dto.Code,
                         Date = date,
                         PlannedStatus = dto.PlannedStatus,
                         ActualStatus = dto.PlannedStatus, // تعيين الحالة الفعلية = المخطط لها عند الإضافة
@@ -225,10 +225,10 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
 
                 var employeeStatuses = employees.Select(emp =>
                 {
-                    var attendance = dayAttendance.FirstOrDefault(ar => ar.EmployeeId == emp.Id);
+                    var attendance = dayAttendance.FirstOrDefault(ar => ar.Code == emp.Code);
                     return new EmployeeDayStatus
                     {
-                        EmployeeId = emp.Id,
+                        Code = emp.Code,
                         EmployeeName = emp.Name,
                         ActualStatus = attendance?.ActualStatus ?? AttendanceStatus.Absent,
                         Note = attendance?.Note
@@ -262,13 +262,13 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
 
             var dailyAttendance = employees.Select(emp =>
             {
-                var attendance = attendanceData.FirstOrDefault(ar => ar.EmployeeId == emp.Id);
+                var attendance = attendanceData.FirstOrDefault(ar => ar.Code == emp.Code);
 
                 return new DailyAttendanceDto
                 {
-                    EmployeeId = emp.Id,
+                    Code = emp.Code,
                     EmployeeName = emp.Name,
-                    Department = emp.Department,
+                    Department = emp.Department.ToString(),
                     Date = day,
                     CheckIn = attendance?.CheckIn ?? TimeSpan.Zero,
                     CheckOut = attendance?.CheckOut ?? TimeSpan.Zero,
@@ -327,12 +327,12 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
         {
             return await db.Employees.ToListAsync();
         }
-        public async Task<(bool Success, string Message)> DeleteEmployeeAsync(string id, AttendanceDbContext db)
+        public async Task<(bool Success, string Message)> DeleteEmployeeAsync(string code, AttendanceDbContext db)
         {
-            if (string.IsNullOrWhiteSpace(id))
-                return (false, "Employee ID is required.");
+            if (string.IsNullOrWhiteSpace(code))
+                return (false, "Employee Code is required.");
 
-            var employee = await db.Employees.FirstOrDefaultAsync(e => e.Id == id);
+            var employee = await db.Employees.FirstOrDefaultAsync(e => e.Code ==code);
             if (employee == null)
                 return (false, "Employee not found.");
 
@@ -342,12 +342,12 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
         }
         public async Task<(bool Success, string Message)> AddEmployeeAsync(Employee employeeDto, AttendanceDbContext db)
         {
-            if (employeeDto == null || string.IsNullOrWhiteSpace(employeeDto.Id) || string.IsNullOrWhiteSpace(employeeDto.Name))
+            if (employeeDto == null || string.IsNullOrWhiteSpace(employeeDto.Code) || string.IsNullOrWhiteSpace(employeeDto.Name))
                 return (false, "Employee data is required.");
 
-            var exists = await db.Employees.AnyAsync(e => e.Id == employeeDto.Id);
+            var exists = await db.Employees.AnyAsync(e => e.Code == employeeDto.Code);
             if (exists)
-                return (false, "Employee with this ID already exists.");
+                return (false, "Employee with this Code already exists.");
 
             db.Employees.Add(employeeDto);
             await db.SaveChangesAsync();
@@ -356,10 +356,10 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
         }
         public async Task<(bool Success, string Message)> UpdateEmployeeAsync(Employee employeeDto, AttendanceDbContext db)
         {
-            if (employeeDto == null || string.IsNullOrWhiteSpace(employeeDto.Id))
+            if (employeeDto == null || string.IsNullOrWhiteSpace(employeeDto.Code))
                 return (false, "Employee data is required.");
 
-            var employee = await db.Employees.FirstOrDefaultAsync(e => e.Id == employeeDto.Id);
+            var employee = await db.Employees.FirstOrDefaultAsync(e => e.Code == employeeDto.Code);
             if (employee == null)
                 return (false, "Employee not found.");
 
@@ -372,16 +372,16 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
         }
         public async Task<bool> UpdateAttendanceRecordAsync(AttendanceRecord record, AttendanceDbContext db)
         {
-            if (record == null || string.IsNullOrWhiteSpace(record.EmployeeId))
+            if (record == null || string.IsNullOrWhiteSpace(record.Code))
                 return false;
 
-            var existing = await db.AttendanceRecords.FirstOrDefaultAsync(a => a.EmployeeId == record.EmployeeId && a.Date == record.Date);
+            var existing = await db.AttendanceRecords.FirstOrDefaultAsync(a => a.Code == record.Code && a.Date == record.Date);
 
             if (existing == null)
             {
                 db.AttendanceRecords.Add(new AttendanceRecord
                 {
-                    EmployeeId = record.EmployeeId,
+                    Code = record.Code,
                     Date = record.Date,
                     ActualStatus = record.ActualStatus,
                     PlannedStatus = record.PlannedStatus,

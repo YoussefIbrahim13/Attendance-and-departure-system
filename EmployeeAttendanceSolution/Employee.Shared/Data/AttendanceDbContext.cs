@@ -13,8 +13,14 @@ namespace EmployeesModels.Shared.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<AttendanceRecord>()
-                .HasKey(ar => new { ar.EmployeeId, ar.Date });
-            
+                .HasKey(ar => new { ar.Code, ar.Date });
+
+            // Employee: Id as PK, Code as Unique
+            modelBuilder.Entity<Employee>()
+                .HasKey(e => e.Id);
+            modelBuilder.Entity<Employee>()
+                .HasIndex(e => e.Code)
+                .IsUnique();
         }
     }
 }

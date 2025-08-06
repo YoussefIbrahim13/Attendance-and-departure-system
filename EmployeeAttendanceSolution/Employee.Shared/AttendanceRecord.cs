@@ -2,7 +2,7 @@
 {
     public class AttendanceRecord
         {
-        public string EmployeeId { get; set; }
+        public string Code { get; set; }
         public DateTime Date { get; set; }
         public TimeSpan CheckIn { get; set; } = TimeSpan.Zero;
         public TimeSpan CheckOut { get; set; } = TimeSpan.Zero;

@@ -8,7 +8,7 @@ namespace EmployeesModels.Shared
 {
     public class EmployeeAttendanceRequest
     {
-        public string EmployeeId { get; set; } = string.Empty;
+        public string Code { get; set; } = string.Empty;
         public DateTime DateFrom { get; set; }
         public DateTime DateTo { get; set; }
         public AttendanceStatus ActualStatus { get; set; }
