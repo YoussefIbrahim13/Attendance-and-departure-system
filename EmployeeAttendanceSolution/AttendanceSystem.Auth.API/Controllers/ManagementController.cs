@@ -52,8 +52,8 @@ namespace AttendanceSystem.Auth.API.Controllers
         {
             var result = await _managementService.GetAllUsersAsync();
             return result.Success
-                ? Ok(result.Data)
-                : BadRequest(result.Errors ?? new[] { new IdentityError { Description = result.Message } });
+                ? Ok(result)  // Return the OperationResult directly
+                : BadRequest(result);
         }
 
         [HttpPost("AddApplicationUser")]

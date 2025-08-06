@@ -1147,8 +1147,8 @@ A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Attenda
 A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\compressed\4f153w32wg-ntkbwp35gh.gz
 A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\compressed\6jzwm3zur4-h3acr307ng.gz
 A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\compressed\aeq0bna53g-zuxhzx61st.gz
-A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\compressed\wj40u5s5pr-nqsx2swlb8.gz
-A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\compressed\mr8o2wqfym-klhpw28352.gz
-A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\compressed\4yvw3pwnb2-xrjno6bz3i.gz
-A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\compressed\2lbmy12kb4-3gadftqrm7.gz
-A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\compressed\lrbgnk7ewd-wnzrxfi8xx.gz
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\compressed\wj40u5s5pr-g19eg8iydb.gz
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\compressed\mr8o2wqfym-l8av6tgrjc.gz
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\compressed\4yvw3pwnb2-g534bbfpur.gz
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\compressed\2lbmy12kb4-jxbl6g501d.gz
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\compressed\lrbgnk7ewd-aixcb6vf53.gz

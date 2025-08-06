@@ -1,4 +1,5 @@
 ﻿@page "/admin/users"
+@using System.Text.Json
 @attribute [Authorize(Roles = "Admin")]
 
 @inject HttpClient Http
@@ -145,23 +146,39 @@ else
             request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
             var response = await Http.SendAsync(request);
+            var responseContent = await response.Content.ReadAsStringAsync();
 
             if (response.IsSuccessStatusCode)
             {
-                // Directly deserialize as List<UserResponseDto>
-                users = await response.Content.ReadFromJsonAsync<List<UserResponseDto>>()
-                       ?? new List<UserResponseDto>();
+                var result = JsonSerializer.Deserialize<OperationResult<List<UserResponseDto>>>(responseContent, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+
+                if (result?.Success == true)
+                {
+                    users = result.Data ?? new List<UserResponseDto>();
+                }
+                else
+                {
+                    errorMessage = result?.Message ?? "Failed to load users";
+                }
             }
             else
             {
-                errorMessage = await response.Content.ReadAsStringAsync();
+                errorMessage = $"Error: {response.StatusCode}";
             }
         }
         catch (Exception ex)
         {
             errorMessage = "Failed to load users: " + ex.Message;
         }
+        finally
+        {
+            StateHasChanged();
+        }
     }
+
 
     private void ShowAddUserModal()
     {
