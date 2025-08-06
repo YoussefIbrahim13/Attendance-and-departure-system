@@ -1,4 +1,5 @@
-﻿using AttendanceSystem.Auth.API.Models;
+﻿using AttendanceSystem.Auth.API.Services.Services.ManagmentServices;
+using EmployeesModels.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -11,221 +12,139 @@ namespace AttendanceSystem.Auth.API.Controllers
     //[Authorize(Roles = "Admin,Manager")]
     public class ManagementController : ControllerBase
     {
-            private readonly UserManager<ApplicationUser> _userManager;
-            private readonly RoleManager<ApplicationRole> _roleManager;
+        private readonly IManagmentServicesApi _managementService;
 
-        public ManagementController(
-            UserManager<ApplicationUser> userManager,
-            RoleManager<ApplicationRole> roleManager)
+        public ManagementController(IManagmentServicesApi managementService)
         {
-            _userManager = userManager;
-            _roleManager = roleManager;
+            _managementService = managementService;
         }
 
-
-        [HttpPost("roles")]
-        [Authorize(Roles = "Admin")] // Typically only Admins should create roles
+        [HttpPost("CreateRole")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateRole([FromBody] string roleName)
         {
-            // Validate input
-            if (string.IsNullOrWhiteSpace(roleName))
-                return BadRequest("Role name cannot be empty");
-
-            // Check if role already exists
-            if (await _roleManager.RoleExistsAsync(roleName))
-                return BadRequest($"Role '{roleName}' already exists");
-
-            // Try to parse the enum (optional - only if you want to restrict to enum values)
-            if (!Enum.TryParse<Roles>(roleName, true, out var roleType))
-                return BadRequest($"Invalid role. Valid roles are: {string.Join(", ", Enum.GetNames(typeof(Roles)))}");
-
-            var role = new ApplicationRole
-            {
-                Name = roleName,
-                NormalizedName = roleName.ToUpper(), // Important for case-insensitive lookups
-                RoleType = roleType
-            };
-
-            var result = await _roleManager.CreateAsync(role);
-
-            if (!result.Succeeded)
-                return BadRequest(result.Errors);
-
-            return CreatedAtAction(nameof(GetRole),
-                new { id = role.Id },
-                new
-                {
-                    role.Id,
-                    role.Name,
-                    role.RoleType
-                });
+            var result = await _managementService.CreateRoleAsync(roleName);
+            return result.Success
+                ? CreatedAtAction(nameof(GetRole), new { id = result.Id }, new { result.Id, result.Name, result.RoleType })
+                : BadRequest(result.Errors);
         }
 
-        [HttpGet("roles/{id}")]
+        [HttpGet("GetRole/{id}")]
         public async Task<IActionResult> GetRole(string id)
         {
-            var role = await _roleManager.FindByIdAsync(id);
-            if (role == null)
-                return NotFound();
-
-            return Ok(new { role.Id, role.Name, role.RoleType });
+            var result = await _managementService.GetRoleAsync(id);
+            return result.Success
+                ? Ok(new { result.Id, result.Name, result.RoleType })
+                : NotFound();
         }
 
-        [HttpGet("roles")]
+        [HttpGet("GetAllRoles")]
         [Authorize(Roles = "Admin,Manager")]
         public async Task<IActionResult> GetAllRoles()
         {
-            var roles = await _roleManager.Roles
-                .Select(r => r.Name)
-                .ToListAsync();
-
+            var roles = await _managementService.GetAllRolesAsync();
             return Ok(roles);
+        }
+
+        [HttpGet("GetAllUsers")]
+        [Authorize(Roles = "Admin,Manager")]
+        public async Task<IActionResult> GetAllUsers()
+        {
+            var result = await _managementService.GetAllUsersAsync();
+            return result.Success
+                ? Ok(result.Data)
+                : BadRequest(result.Errors ?? new[] { new IdentityError { Description = result.Message } });
         }
 
         [HttpPost("AddApplicationUser")]
         [Authorize(Roles = "Admin,Manager")]
         public async Task<IActionResult> AddApplicationUser(
-                        [FromBody] UserCreateDto dto,
-        [FromQuery] string roleName)
+            [FromBody] UserCreateDto dto,
+            [FromQuery] string roleName)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            var user = new ApplicationUser
-            {
-                UserName = dto.Email,
-                Email = dto.Email,
-                Name = dto.Name,
-                Department = dto.Department,
-                Position = dto.Position,
-                IsApproved = !User.IsInRole("Admin") // Admins bypass approval
-            };
-
-            var result = await _userManager.CreateAsync(user, dto.Password);
-            if (!result.Succeeded)
-                return BadRequest(result.Errors);
-
-            if (!await _roleManager.RoleExistsAsync(roleName))
-                return BadRequest("Role does not exist");
-
-            await _userManager.AddToRoleAsync(user, roleName);
-
-            return CreatedAtAction(nameof(GetUser), new { id = user.Id },
-                new UserResponseDto
+            var result = await _managementService.AddApplicationUserAsync(dto, roleName);
+            return result.Success
+                ? CreatedAtAction(nameof(GetApplicationUser), new { id = result.Id }, new UserResponseDto
                 {
-                    Id = user.Id,
-                    UserName = user.UserName,
-                    Email = user.Email,
-                    Name = user.Name,
-                    Department = user.Department,
-                    Position = user.Position,
-                    IsApproved = user.IsApproved,
-                    Roles = await _userManager.GetRolesAsync(user)
-                });
-        }
-
-        [HttpGet("users/{id}")]
-        public async Task<IActionResult> GetUser(string id)
-        {
-            var user = await _userManager.FindByIdAsync(id);
-            if (user == null)
-                return NotFound();
-
-            return Ok(new UserResponseDto
-            {
-                Id = user.Id,
-                UserName = user.UserName,
-                Email = user.Email,
-                Name = user.Name,
-                Department = user.Department,
-                Position = user.Position,
-                IsApproved = user.IsApproved,
-                Roles = await _userManager.GetRolesAsync(user)
-            });
-        }
-
-
-
-        [HttpPut("UpdateApplicationUser/{userId}")]
-        [Authorize(Roles = "Manager")]
-        public async Task<IActionResult> UpdateUser(string id, [FromBody] UserUpdateDto dto)
-        {
-            var user = await _userManager.FindByIdAsync(id);
-            if (user == null)
-                return NotFound();
-
-            if (!string.IsNullOrEmpty(dto.Email))
-                user.Email = user.UserName = dto.Email;
-
-            user.Name = dto.Name ?? user.Name;
-            user.Department = dto.Department ?? user.Department;
-            user.Position = dto.Position ?? user.Position;
-
-            var result = await _userManager.UpdateAsync(user);
-            return result.Succeeded
-                ? Ok(new UserResponseDto
-                {
-                    Id = user.Id,
-                    UserName = user.UserName,
-                    Email = user.Email,
-                    Name = user.Name,
-                    Department = user.Department,
-                    Position = user.Position,
-                    IsApproved = user.IsApproved
+                    Id = result.Id,
+                    UserName = result.UserName,
+                    Email = result.Email,
+                    Name = result.Name,
+                    Department = result.Department,
+                    Position = result.Position,
+                    IsApproved = result.IsApproved,
+                    Roles = result.Roles
                 })
                 : BadRequest(result.Errors);
         }
 
-
-        [HttpDelete("DeleteApplicationUser/{userId}")]
-        [Authorize(Roles = "Manager")]
-        public async Task<IActionResult> DeleteUser(string userId)
+        [HttpGet("GetApplicationUser/{id}")]
+        [Authorize(Roles = "Manager,Admin")]
+        public async Task<IActionResult> GetApplicationUser(string id)
         {
-            var user = await _userManager.FindByIdAsync(userId);
-            if (user == null) return NotFound(new { Error = $"User with ID {userId} not found" });
-            var result = await _userManager.DeleteAsync(user);
-            return result.Succeeded
-                ? Ok(new { Message = "Application User deleted successfully" })
+            var result = await _managementService.GetApplicationUserAsync(id);
+            return result.Success
+                ? Ok(new UserResponseDto
+                {
+                    Id = result.Id,
+                    UserName = result.UserName,
+                    Email = result.Email,
+                    Name = result.Name,
+                    Department = result.Department,
+                    Position = result.Position,
+                    IsApproved = result.IsApproved,
+                    Roles = result.Roles
+                })
+                : NotFound();
+        }
+
+        [HttpPut("UpdateApplicationUser/{id}")]
+        [Authorize(Roles = "Manager,Admin")]
+        public async Task<IActionResult> UpdateApplicationUser(string id, [FromBody] UserUpdateDto dto)
+        {
+            var result = await _managementService.UpdateApplicationUserAsync(id, dto);
+            return result.Success
+                ? Ok(new UserResponseDto
+                {
+                    Id = result.Id,
+                    UserName = result.UserName,
+                    Email = result.Email,
+                    Name = result.Name,
+                    Department = result.Department,
+                    Position = result.Position,
+                    IsApproved = result.IsApproved,
+                    Roles = result.Roles
+                })
                 : BadRequest(result.Errors);
         }
 
+        [HttpDelete("DeleteApplicationUser/{userId}")]
+        [Authorize(Roles = "Manager,Admin")]
+        public async Task<IActionResult> DeleteApplicationUser(string userId)
+        {
+            var result = await _managementService.DeleteApplicationUserAsync(userId);
+            return result.Success
+                ? Ok(new { result.Message })
+                : BadRequest(result.Errors ?? new[] { new IdentityError { Description = result.Message } });
+        }
 
         [HttpPost("approve/{userId}")]
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "Manager,Admin")]
         public async Task<IActionResult> ApproveUser(string userId)
         {
-            var user = await _userManager.FindByIdAsync(userId);
-            if (user == null) return NotFound(new { Error = $"User with ID {userId} not found" });
-
-            user.IsApproved = true;
-            var result = await _userManager.UpdateAsync(user);
-
-            return result.Succeeded
-                ? Ok(new { Message = "User approved successfully" })
-                : BadRequest(result.Errors);
+            var result = await _managementService.ApproveUserAsync(userId);
+            return result.Success
+                ? Ok(new { result.Message })
+                : BadRequest(result.Errors ?? new[] { new IdentityError { Description = result.Message } });
         }
 
         [HttpGet("pending")]
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "Manager,Admin")]
         public async Task<IActionResult> GetPendingUsers()
         {
-            var users = await _userManager.Users
-                .Where(u => !u.IsApproved)
-                .Select(u => new UserResponseDto
-                {
-                    Id = u.Id,
-                    UserName = u.UserName,
-                    Email = u.Email,
-                    Name = u.Name,
-                    Department = u.Department,
-                    Position = u.Position
-                })
-                .ToListAsync();
-
+            var users = await _managementService.GetPendingUsersAsync();
             return Ok(users);
         }
-
-
-
     }
+
 }

@@ -140,3 +140,8 @@ A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Attenda
 A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.pdb
 A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.genruntimeconfig.cache
 A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\ref\AttendanceSystem.Auth.API.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Blazored.LocalStorage.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\EmployeesModels.Shared.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\EmployeesModels.Shared.pdb
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\AttendanceSystem.Auth.Services.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\AttendanceSystem.Auth.Services.pdb

@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AttendanceSystem.Auth.API",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AttendanceSystem.Auth.ui", "AttendanceSystem.Auth.ui\AttendanceSystem.Auth.ui.csproj", "{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AttendanceSystem.Auth.Services", "AttendanceSystem.Auth.Services\AttendanceSystem.Auth.Services.csproj", "{675C7774-987F-47DA-83E0-F244A55E1EC9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{675C7774-987F-47DA-83E0-F244A55E1EC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{675C7774-987F-47DA-83E0-F244A55E1EC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{675C7774-987F-47DA-83E0-F244A55E1EC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{675C7774-987F-47DA-83E0-F244A55E1EC9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

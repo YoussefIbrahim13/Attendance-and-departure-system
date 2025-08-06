@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AttendanceSystem.ImportFile.ui")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+52cd58d685d44bd83f03b70db03b8596712410ec")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+89df8943dd678bda099a6ed991d83f8bfea25b2a")]
 [assembly: System.Reflection.AssemblyProductAttribute("AttendanceSystem.ImportFile.ui")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AttendanceSystem.ImportFile.ui")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -3,11 +3,11 @@
     "Name": "New Profile",
     "Projects": [
       {
-        "Path": "AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj",
+        "Path": "AttendanceSystem.Auth.API\\AttendanceSystem.Auth.API.csproj",
         "Action": "Start"
       },
       {
-        "Path": "AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj",
+        "Path": "AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj",
         "Action": "Start"
       }
     ]

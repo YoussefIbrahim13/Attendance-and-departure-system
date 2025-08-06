@@ -1,0 +1,242 @@
+﻿@page "/admin/users"
+@attribute [Authorize(Roles = "Admin")]
+
+@inject HttpClient Http
+@inject NavigationManager Navigation
+@inject ILocalStorageService LocalStorage
+
+<h3>User Management</h3>
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <div class="alert alert-danger">@errorMessage</div>
+}
+
+@if (users == null)
+{
+    <p>Loading users...</p>
+}
+else
+{
+    <div class="mb-3">
+        <button class="btn btn-primary" @onclick="ShowAddUserModal">Add New User</button>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Department</th>
+                <th>Position</th>
+                <th>Status</th>
+                <th>Roles</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in users)
+            {
+                <tr>
+                    <td>@user.Name</td>
+                    <td>@user.Email</td>
+                    <td>@user.Department</td>
+                    <td>@user.Position</td>
+                    <td>
+                        @if (user.IsApproved)
+                        {
+                            <span class="badge bg-success">Approved</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-warning">Pending</span>
+                        }
+                    </td>
+                    <td>@string.Join(", ", user.Roles)</td>
+                    <td>
+                        <button class="btn btn-sm btn-info" @onclick="() => EditUser(user.Id)">Edit</button>
+                        @if (!user.IsApproved)
+                        {
+                            <button class="btn btn-sm btn-success" @onclick="() => ApproveUser(user.Id)">Approve</button>
+                        }
+                        <button class="btn btn-sm btn-danger" @onclick="() => DeleteUser(user.Id)">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<!-- Add User Modal -->
+@if (showAddModal)
+{
+    <div class="modal show d-block" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New User</h5>
+                    <button type="button" class="btn-close" @onclick="CloseAddUserModal"></button>
+                </div>
+                <div class="modal-body">
+                    <EditForm Model="@newUser" OnValidSubmit="HandleAddUser">
+                        <DataAnnotationsValidator />
+                        <ValidationSummary />
+
+                        <div class="mb-3">
+                            <label class="form-label">Name</label>
+                            <InputText class="form-control" @bind-Value="newUser.Name" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <InputText class="form-control" @bind-Value="newUser.Email" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <InputText type="password" class="form-control" @bind-Value="newUser.Password" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Department</label>
+                            <InputText class="form-control" @bind-Value="newUser.Department" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Position</label>
+                            <InputText class="form-control" @bind-Value="newUser.Position" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Role</label>
+                            <select class="form-select" @bind="selectedRole">
+                                <option value="User">User</option>
+                                <option value="Manager">Manager</option>
+                                <option value="Admin">Admin</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn btn-secondary" @onclick="CloseAddUserModal">Cancel</button>
+                    </EditForm>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private List<UserResponseDto> users = new();
+    private bool showAddModal = false;
+    private UserCreateDto newUser = new();
+    private string selectedRole = "User";
+    private string errorMessage = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadUsers();
+    }
+
+    private async Task LoadUsers()
+    {
+        try
+        {
+            var token = await LocalStorage.GetItemAsync<string>("authToken");
+            var request = new HttpRequestMessage(HttpMethod.Get, "api/Management/GetAllUsers");
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            var response = await Http.SendAsync(request);
+
+            if (response.IsSuccessStatusCode)
+            {
+                // Directly deserialize as List<UserResponseDto>
+                users = await response.Content.ReadFromJsonAsync<List<UserResponseDto>>()
+                       ?? new List<UserResponseDto>();
+            }
+            else
+            {
+                errorMessage = await response.Content.ReadAsStringAsync();
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = "Failed to load users: " + ex.Message;
+        }
+    }
+
+    private void ShowAddUserModal()
+    {
+        newUser = new UserCreateDto();
+        showAddModal = true;
+    }
+
+    private void CloseAddUserModal()
+    {
+        showAddModal = false;
+    }
+
+    private async Task HandleAddUser()
+    {
+        try
+        {
+            var token = await LocalStorage.GetItemAsync<string>("authToken");
+            var response = await Http.PostAsJsonAsync($"api/Management/AddApplicationUser?roleName={selectedRole}", newUser);
+
+            if (response.IsSuccessStatusCode)
+            {
+                await LoadUsers();
+                showAddModal = false;
+            }
+            else
+            {
+                errorMessage = await response.Content.ReadAsStringAsync();
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = "Failed to add user: " + ex.Message;
+        }
+    }
+
+    private async Task ApproveUser(string userId)
+    {
+        try
+        {
+            var token = await LocalStorage.GetItemAsync<string>("authToken");
+            var request = new HttpRequestMessage(HttpMethod.Post, $"api/Management/approve/{userId}");
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            var response = await Http.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+
+            await LoadUsers();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = "Failed to approve user: " + ex.Message;
+        }
+    }
+
+    private async Task EditUser(string userId)
+    {
+        Navigation.NavigateTo($"/admin/edit-user/{userId}");
+    }
+
+    private async Task DeleteUser(string userId)
+    {
+        try
+        {
+            var token = await LocalStorage.GetItemAsync<string>("authToken");
+            var request = new HttpRequestMessage(HttpMethod.Delete, $"api/Management/DeleteApplicationUser/{userId}");
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            var response = await Http.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+
+            await LoadUsers();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = "Failed to delete user: " + ex.Message;
+        }
+    }
+}

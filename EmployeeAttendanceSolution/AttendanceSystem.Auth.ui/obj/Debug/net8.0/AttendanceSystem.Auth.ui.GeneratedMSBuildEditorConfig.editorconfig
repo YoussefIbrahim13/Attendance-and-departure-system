@@ -28,16 +28,24 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[A:/Micro-Tech/Attendance-and-departure-system/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/Pages/Counter.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
+[A:/Micro-Tech/Attendance-and-departure-system/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/Pages/AdminManagement.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5NYW5hZ2VtZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[A:/Micro-Tech/Attendance-and-departure-system/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/Pages/EditUser.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdFVzZXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [A:/Micro-Tech/Attendance-and-departure-system/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[A:/Micro-Tech/Attendance-and-departure-system/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/Pages/Weather.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2VhdGhlci5yYXpvcg==
+[A:/Micro-Tech/Attendance-and-departure-system/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/Pages/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[A:/Micro-Tech/Attendance-and-departure-system/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/Pages/SecurePage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VjdXJlUGFnZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [A:/Micro-Tech/Attendance-and-departure-system/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/_Imports.razor]

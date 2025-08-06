@@ -9,7 +9,7 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "AttendanceSystem.Auth.API.Models.LoginModel",
+        "Type": "EmployeesModels.Shared.LoginModel",
         "IsRequired": true
       }
     ],
@@ -35,11 +35,11 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "AttendanceSystem.Auth.API.Models.UserCreateDto",
+        "Type": "EmployeesModels.Shared.UserCreateDto",
         "IsRequired": true
       },
       {
-        "Name": "rolename",
+        "Name": "roleName",
         "Type": "System.String",
         "IsRequired": false
       }
@@ -64,7 +64,23 @@
   },
   {
     "ContainingType": "AttendanceSystem.Auth.API.Controllers.ManagementController",
-    "Method": "DeleteUser",
+    "Method": "CreateRole",
+    "RelativePath": "api/Management/CreateRole",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "roleName",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AttendanceSystem.Auth.API.Controllers.ManagementController",
+    "Method": "DeleteApplicationUser",
     "RelativePath": "api/Management/DeleteApplicationUser/{userId}",
     "HttpMethod": "DELETE",
     "IsController": true,
@@ -72,6 +88,58 @@
     "Parameters": [
       {
         "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AttendanceSystem.Auth.API.Controllers.ManagementController",
+    "Method": "GetAllRoles",
+    "RelativePath": "api/Management/GetAllRoles",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AttendanceSystem.Auth.API.Controllers.ManagementController",
+    "Method": "GetAllUsers",
+    "RelativePath": "api/Management/GetAllUsers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AttendanceSystem.Auth.API.Controllers.ManagementController",
+    "Method": "GetApplicationUser",
+    "RelativePath": "api/Management/GetApplicationUser/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AttendanceSystem.Auth.API.Controllers.ManagementController",
+    "Method": "GetRole",
+    "RelativePath": "api/Management/GetRole/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
         "Type": "System.String",
         "IsRequired": true
       }
@@ -90,35 +158,9 @@
   },
   {
     "ContainingType": "AttendanceSystem.Auth.API.Controllers.ManagementController",
-    "Method": "CreateRole",
-    "RelativePath": "api/Management/roles",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "roleName",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "AttendanceSystem.Auth.API.Controllers.ManagementController",
-    "Method": "GetAllRoles",
-    "RelativePath": "api/Management/roles",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "AttendanceSystem.Auth.API.Controllers.ManagementController",
-    "Method": "GetRole",
-    "RelativePath": "api/Management/roles/{id}",
-    "HttpMethod": "GET",
+    "Method": "UpdateApplicationUser",
+    "RelativePath": "api/Management/UpdateApplicationUser/{id}",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -126,26 +168,10 @@
         "Name": "id",
         "Type": "System.String",
         "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "AttendanceSystem.Auth.API.Controllers.ManagementController",
-    "Method": "UpdateUser",
-    "RelativePath": "api/Management/UpdateApplicationUser/{userId}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "userId",
-        "Type": "System.String",
-        "IsRequired": true
       },
       {
-        "Name": "updatedUser",
-        "Type": "AttendanceSystem.Auth.API.Models.ApplicationUser",
+        "Name": "dto",
+        "Type": "EmployeesModels.Shared.UserUpdateDto",
         "IsRequired": true
       }
     ],

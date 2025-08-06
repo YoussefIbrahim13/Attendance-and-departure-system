@@ -1,4 +1,9 @@
 ﻿@inherits LayoutComponentBase
+@using Blazored.LocalStorage
+@inject JwtAuthenticationStateProvider AuthStateProvider
+@inject NavigationManager Navigation
+@inject AuthService AuthService
+
 <div class="page">
     <div class="sidebar">
         <NavMenu />
@@ -6,7 +11,20 @@
 
     <main>
         <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+            <AuthorizeView>
+                <Authorized>
+                    <div class="user-info">
+                        <span class="username">Hello, @context.User.Identity.Name!</span>
+                        <button class="btn btn-sm btn-outline-secondary ml-2" @onclick="Logout">
+                            Logout
+                        </button>
+                    </div>
+                </Authorized>
+                <NotAuthorized>
+                    <a href="/login" class="btn btn-sm btn-primary">Login</a>
+                </NotAuthorized>
+            </AuthorizeView>
+            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank" class="ml-2">About</a>
         </div>
 
         <article class="content px-4">
@@ -14,3 +32,38 @@
         </article>
     </main>
 </div>
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        await AuthService.Initialize();
+    }
+
+    private async Task Logout()
+    {
+        await AuthService.Logout();
+        Navigation.NavigateTo("/");
+    }
+}
+
+<style>
+    .top-row {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        height: 3.5rem;
+    }
+
+    .user-info {
+        display: flex;
+        align-items: center;
+    }
+
+    .username {
+        margin-right: 10px;
+    }
+
+    .ml-2 {
+        margin-left: 0.5rem;
+    }
+</style>

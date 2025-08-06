@@ -1,0 +1,113 @@
+﻿@page "/admin/edit-user/{userId}"
+@attribute [Authorize(Roles = "Admin")]
+@inject HttpClient Http
+@inject NavigationManager Navigation
+@inject ILocalStorageService LocalStorage
+
+<h3>Edit User</h3>
+
+@if (user == null)
+{
+    <p>Loading user data...</p>
+}
+else
+{
+    <EditForm Model="user" OnValidSubmit="@(() => HandleSave())">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="mb-3">
+            <label class="form-label">Name</label>
+            <InputText class="form-control" @bind-Value="user.Name" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <InputText class="form-control" @bind-Value="user.Email" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Department</label>
+            <InputText class="form-control" @bind-Value="user.Department" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Position</label>
+            <InputText class="form-control" @bind-Value="user.Position" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Approved</label>
+            <InputCheckbox class="form-check-input" @bind-Value="user.IsApproved" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-secondary" @onclick="Cancel">Cancel</button>
+    </EditForm>
+}
+
+@code {
+    [Parameter]
+    public string UserId { get; set; }
+
+    private UserUpdateDto user = new();
+    private string errorMessage = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadUser();
+    }
+
+    private async Task LoadUser()
+    {
+        try
+        {
+            var token = await LocalStorage.GetItemAsync<string>("authToken");
+            var request = new HttpRequestMessage(HttpMethod.Get, $"api/Management/GetApplicationUser/{UserId}");
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            var response = await Http.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+
+            var result = await response.Content.ReadFromJsonAsync<UserResponseDto>();
+            user = new UserUpdateDto
+            {
+                Name = result.Name,
+                Email = result.Email,
+                Department = result.Department,
+                Position = result.Position,
+                IsApproved = result.IsApproved
+            };
+        }
+        catch (Exception ex)
+        {
+            errorMessage = "Failed to load user: " + ex.Message;
+        }
+    }
+
+    private async Task HandleSave()
+    {
+        try
+        {
+            var token = await LocalStorage.GetItemAsync<string>("authToken");
+            var request = new HttpRequestMessage(HttpMethod.Put, $"api/Management/UpdateApplicationUser/{UserId}");
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            request.Content = JsonContent.Create(user);
+
+            var response = await Http.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+
+            Navigation.NavigateTo("/admin/users");
+        }
+        catch (Exception ex)
+        {
+            errorMessage = "Failed to save user: " + ex.Message;
+        }
+    }
+
+    private void Cancel()
+    {
+        Navigation.NavigateTo("/admin/users");
+    }
+}
+

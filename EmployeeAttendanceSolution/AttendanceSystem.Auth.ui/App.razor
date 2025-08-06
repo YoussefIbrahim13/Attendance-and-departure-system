@@ -1,12 +1,54 @@
-﻿<Router AppAssembly="@typeof(App).Assembly">
-    <Found Context="routeData">
-        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
-        <FocusOnNavigate RouteData="@routeData" Selector="h1" />
-    </Found>
-    <NotFound>
-        <PageTitle>Not found</PageTitle>
-        <LayoutView Layout="@typeof(MainLayout)">
-            <p role="alert">Sorry, there's nothing at this address.</p>
-        </LayoutView>
-    </NotFound>
-</Router>
+﻿<CascadingAuthenticationState>
+    <Router AppAssembly="@typeof(App).Assembly">
+        <Found Context="routeData">
+            <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+        </Found>
+        <NotFound>
+            <LayoutView Layout="@typeof(MainLayout)">
+                <p>Sorry, there's nothing at this address.</p>
+            </LayoutView>
+        </NotFound>
+    </Router>
+</CascadingAuthenticationState>
+
+@* App.razor - Main application component with auth integration *@
+@* <CascadingAuthenticationState>
+    <Router AppAssembly="@typeof(App).Assembly" AdditionalAssemblies="new[] { typeof(YourComponentLibrary).Assembly }">
+        <Found Context="routeData">
+            <AuthorizeRouteView RouteData="@routeData" 
+                              DefaultLayout="@typeof(MainLayout)"
+                              NotAuthorized="@NotAuthorizedContent">
+                <Authorizing>
+                    <div class="auth-loading">
+                        <p>Checking authentication status...</p>
+                        <div class="spinner"></div>
+                    </div>
+                </Authorizing>
+            </AuthorizeRouteView>
+        </Found>
+        <NotFound>
+            <LayoutView Layout="@typeof(MainLayout)">
+                <div class="not-found">
+                    <h1>Page Not Found</h1>
+                    <p>Sorry, there's nothing at this address.</p>
+                    <NavLink href="/" class="btn btn-primary">Return Home</NavLink>
+                </div>
+            </LayoutView>
+        </NotFound>
+    </Router>
+</CascadingAuthenticationState> *@
+
+@* @code {
+    private RenderFragment NotAuthorizedContent(AuthorizationContext context) => @<div class="not-authorized">
+        <h1>Not Authorized</h1>
+        <p>You don't have permission to access this resource.</p>
+        @if (!context.User.Identity.IsAuthenticated)
+        {
+            <NavLink href="/login" class="btn btn-primary">Login</NavLink>
+        }
+        else
+        {
+            <NavLink href="/" class="btn btn-secondary">Return Home</NavLink>
+        }
+    </div>;
+} *@

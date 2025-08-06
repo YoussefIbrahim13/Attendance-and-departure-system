@@ -1,0 +1,1 @@
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API.Services\obj\Debug\net8.0\staticwebassets.build.json
