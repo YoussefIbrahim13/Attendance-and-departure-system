@@ -1,4 +1,4 @@
-﻿@page "/"
+﻿@page "/Login"
 @using Microsoft.AspNetCore.Components.Authorization
 @inject AuthService AuthService
 @inject NavigationManager Navigation
@@ -35,16 +35,18 @@
 
         try
         {
-            var isAuthenticated = await AuthService.Login(loginModel);
+            var loginResult = await AuthService.Login(loginModel);
 
-            if (isAuthenticated)
+            if (loginResult.Success)
             {
-                Navigation.NavigateTo("/admin/users");
-                //Console.Error.WriteLine("Login SUCESSSSSSSSSSSSSSSS");
+                var currentUser = await AuthService.GetCurrentUser();
+                Navigation.NavigateTo(currentUser?.IsAdmin == true
+                    ? "/admin/users"
+                    : "/");
             }
             else
             {
-                errorMessage = "Invalid login attempt";
+                errorMessage = loginResult.Error ?? "Invalid login attempt";
             }
         }
         catch (Exception ex)

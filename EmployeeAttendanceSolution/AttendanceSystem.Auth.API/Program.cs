@@ -186,6 +186,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System.Security.Claims;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -226,7 +227,26 @@ builder.Services.AddAuthentication(options =>
         ValidIssuer = jwtSettings["ValidIssuer"],
         ValidAudience = jwtSettings["ValidAudience"],
         IssuerSigningKey = new SymmetricSecurityKey(
-            Encoding.UTF8.GetBytes(jwtSettings["SecretKey"]))
+            Encoding.UTF8.GetBytes(jwtSettings["SecretKey"])),
+        // Add these for better error handling
+        ClockSkew = TimeSpan.Zero, // Remove default 5-minute leeway
+        NameClaimType = ClaimTypes.Name,
+        RoleClaimType = ClaimTypes.Role
+    };
+
+    // Add this for better debugging
+    options.Events = new JwtBearerEvents
+    {
+        OnAuthenticationFailed = context =>
+        {
+            Console.WriteLine($"Authentication failed: {context.Exception}");
+            return Task.CompletedTask;
+        },
+        OnTokenValidated = context =>
+        {
+            Console.WriteLine($"Token validated for: {context.Principal.Identity.Name}");
+            return Task.CompletedTask;
+        }
     };
 });
 
@@ -240,8 +260,16 @@ builder.Services.AddAuthorization(options =>
 
 // Database
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        sqlOptions =>
+        {
+            sqlOptions.EnableRetryOnFailure(
+                maxRetryCount: 5,
+                maxRetryDelay: TimeSpan.FromSeconds(30),
+                errorNumbersToAdd: null);
+            sqlOptions.CommandTimeout(60);
+        }));
 // Swagger with JWT support
 builder.Services.AddSwaggerGen(c =>
 {

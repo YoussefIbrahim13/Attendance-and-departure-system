@@ -44,5 +44,36 @@ namespace AttendanceSystem.Auth.API.Controllers
             return Ok(new { Message = "Logout successful" });
         }
 
+        [HttpGet("currentuser")]
+        [Authorize]
+        public async Task<IActionResult> GetCurrentUser()
+        {
+            try
+            {
+                var userInfo = await _authService.GetCurrentUser(User);
+
+                if (userInfo == null)
+                {
+                    return Unauthorized(new
+                    {
+                        Message = "User not found or not authorized",
+                        Solution = "Please ensure your account exists and is approved"
+                    });
+                }
+
+                return Ok(userInfo);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"API CurrentUser error: {ex}");
+                return StatusCode(500, new
+                {
+                    Message = "An error occurred while processing your request",
+                    Detail = ex.Message
+                });
+            }
+        }
+
+
     }
 }

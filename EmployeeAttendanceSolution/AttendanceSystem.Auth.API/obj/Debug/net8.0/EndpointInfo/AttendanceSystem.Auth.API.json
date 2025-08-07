@@ -48,6 +48,18 @@
         }
       }
     },
+    "/api/Auth/currentuser": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Management/CreateRole": {
       "post": {
         "tags": [

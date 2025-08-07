@@ -4,6 +4,7 @@
 @inject NavigationManager Navigation
 @inject AuthService AuthService
 
+
 <div class="page">
     <div class="sidebar">
         <NavMenu />
@@ -14,17 +15,17 @@
             <AuthorizeView>
                 <Authorized>
                     <div class="user-info">
-                        <span class="username">Hello, @context.User.Identity.Name!</span>
+                        <span class="username">Hello, @context.User.Identity.Name</span>
                         <button class="btn btn-sm btn-outline-secondary ml-2" @onclick="Logout">
                             Logout
                         </button>
                     </div>
                 </Authorized>
                 <NotAuthorized>
-                    <a href="/login" class="btn btn-sm btn-primary">Login</a>
+                    <a href="/Login" class="btn btn-sm btn-primary">Login</a>
                 </NotAuthorized>
             </AuthorizeView>
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank" class="ml-2">About</a>
+           @*  <a href="https://learn.microsoft.com/aspnet/core/" target="_blank" class="ml-2">About</a> *@
         </div>
 
         <article class="content px-4">
@@ -36,13 +37,13 @@
 @code {
     protected override async Task OnInitializedAsync()
     {
-        await AuthService.Initialize();
+        await AuthStateProvider.InitializeAsync();
     }
 
     private async Task Logout()
     {
         await AuthService.Logout();
-        Navigation.NavigateTo("/");
+        Navigation.NavigateTo("/", forceLoad: true);
     }
 }
 

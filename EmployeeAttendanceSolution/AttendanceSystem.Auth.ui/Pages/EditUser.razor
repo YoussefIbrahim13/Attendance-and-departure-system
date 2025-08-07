@@ -2,7 +2,7 @@
 @attribute [Authorize(Roles = "Admin")]
 @inject HttpClient Http
 @inject NavigationManager Navigation
-@inject ILocalStorageService LocalStorage
+@inject ISessionStorageService SessionStorage
 
 <h3>Edit User</h3>
 
@@ -62,7 +62,7 @@ else
     {
         try
         {
-            var token = await LocalStorage.GetItemAsync<string>("authToken");
+            var token = await SessionStorage.GetItemAsync<string>("authToken");
             var request = new HttpRequestMessage(HttpMethod.Get, $"api/Management/GetApplicationUser/{UserId}");
             request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
@@ -89,7 +89,7 @@ else
     {
         try
         {
-            var token = await LocalStorage.GetItemAsync<string>("authToken");
+            var token = await SessionStorage.GetItemAsync<string>("authToken");
             var request = new HttpRequestMessage(HttpMethod.Put, $"api/Management/UpdateApplicationUser/{UserId}");
             request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
             request.Content = JsonContent.Create(user);

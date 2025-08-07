@@ -9,6 +9,7 @@ namespace AttendanceSystem.Auth.API.Services.Services.AuthoServices
         Task<AuthResult> Login(LoginModel model);
         AuthResult Logout();
         JwtSecurityToken GenerateJwtToken(List<Claim> authClaims);
+        Task<UserInfo> GetCurrentUser(ClaimsPrincipal userPrincipal); 
 
     }
 }
