@@ -1,70 +1,81 @@
 ﻿@inherits LayoutComponentBase
-@using Blazored.LocalStorage
-@inject JwtAuthenticationStateProvider AuthStateProvider
-@inject NavigationManager Navigation
-@inject AuthService AuthService
+@using MudBlazor
 
+<MudThemeProvider />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+<MudThemeProvider @bind-IsDarkMode="_isDarkMode" Theme="MyCustomTheme" />
 
-<div class="page">
-    <div class="sidebar">
+<MudLayout>
+    <MudAppBar>
+        <MudIconButton Icon="@Icons.Material.Filled.Menu"
+                       Color="Color.Inherit"
+                       Edge="Edge.Start"
+                       OnClick="@(() => DrawerToggle())" />
+        <MudText Typo="Typo.h6" Class="ml-2">Attendance System</MudText>
+
+        <MudSpacer />
+
+        <MudToggleIconButton @bind-Toggled="_isDarkMode"
+                             Icon="@Icons.Material.Filled.DarkMode"
+                             ToggledIcon="@Icons.Material.Filled.WbSunny"
+                             Color="Color.Inherit"
+                             ToggledColor="Color.Warning"
+                             Class="mr-2" />
+    </MudAppBar>
+
+    <MudDrawer @bind-Open="_drawerOpen">
         <NavMenu />
-    </div>
+    </MudDrawer>
 
-    <main>
-        <div class="top-row px-4">
-            <AuthorizeView>
-                <Authorized>
-                    <div class="user-info">
-                        <span class="username">Hello, @context.User.Identity.Name</span>
-                        <button class="btn btn-sm btn-outline-secondary ml-2" @onclick="Logout">
-                            Logout
-                        </button>
-                    </div>
-                </Authorized>
-                <NotAuthorized>
-                    <a href="/Login" class="btn btn-sm btn-primary">Login</a>
-                </NotAuthorized>
-            </AuthorizeView>
-           @*  <a href="https://learn.microsoft.com/aspnet/core/" target="_blank" class="ml-2">About</a> *@
-        </div>
-
-        <article class="content px-4">
-            @Body
-        </article>
-    </main>
-</div>
+    <MudMainContent Class="m-0 p-0">
+        @Body
+    </MudMainContent>
+</MudLayout>
 
 @code {
-    protected override async Task OnInitializedAsync()
+    private bool _drawerOpen = true;
+    private bool _isDarkMode;
+
+    private void DrawerToggle()
     {
-        await AuthStateProvider.InitializeAsync();
+        _drawerOpen = !_drawerOpen;
     }
 
-    private async Task Logout()
+    MudTheme MyCustomTheme = new MudTheme()
     {
-        await AuthService.Logout();
-        Navigation.NavigateTo("/", forceLoad: true);
-    }
+        PaletteLight = new PaletteLight()
+        {
+            Dark = Colors.Gray.Lighten3,
+            Primary = "#1976d2",
+            Secondary = "#388e3c",
+            AppbarBackground = "#1565c0",
+            Background = Colors.Gray.Lighten5,
+            LinesDefault = Colors.Gray.Lighten2,
+            Surface = "#ffffff",
+            TextPrimary = "rgba(0,0,0,0.87)",
+            TextSecondary = "rgba(0,0,0,0.6)",
+            ActionDefault = Colors.Blue.Lighten4,
+            Divider = Colors.Gray.Lighten2,
+            DrawerBackground = "#ffffff",
+            OverlayLight = "rgba(255,255,255,0.5)"
+        },
+        PaletteDark = new PaletteDark()
+        {
+            Primary = Colors.Blue.Lighten1,
+            Secondary = Colors.Teal.Accent4,
+            AppbarBackground = "#0d47a1",
+            Background = "#121212",
+            Surface = "#1e1e1e",
+            DrawerBackground = "#1a1a1a",
+            TextPrimary = "rgba(255,255,255,0.87)",
+            TextSecondary = "rgba(255,255,255,0.6)",
+            ActionDefault = Colors.Gray.Darken3,
+            Divider = "rgba(255,255,255,0.12)",
+            OverlayDark = "rgba(0,0,0,0.7)",
+            HoverOpacity = 0.08,
+            GrayDefault = "#757575"
+        }
+    };
 }
-
-<style>
-    .top-row {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        height: 3.5rem;
-    }
-
-    .user-info {
-        display: flex;
-        align-items: center;
-    }
-
-    .username {
-        margin-right: 10px;
-    }
-
-    .ml-2 {
-        margin-left: 0.5rem;
-    }
-</style>

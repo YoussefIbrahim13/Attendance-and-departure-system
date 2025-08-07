@@ -153,6 +153,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using MudBlazor.Services;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -189,6 +190,9 @@ builder.Services.AddScoped<AuthenticationStateProvider>(sp =>
 // Application Services
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<SessionValidationService>();
+
+/////
+builder.Services.AddMudServices();
 
 // Authorization Policies
 builder.Services.AddAuthorizationCore(options =>

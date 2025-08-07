@@ -1,16 +1,14 @@
-﻿
-
-<CascadingAuthenticationState>
+﻿<CascadingAuthenticationState>
     <Router AppAssembly="@typeof(App).Assembly">
         <Found Context="routeData">
             <AuthorizeRouteView RouteData="@routeData"
                                 DefaultLayout="@typeof(MainLayout)"
                                 NotAuthorized="@NotAuthorized">
                 <Authorizing>
-                    <div class="auth-loading">
-                        <p>Checking authentication status...</p>
-                        <div class="spinner"></div>
-                    </div>
+                    <MudPaper Class="mx-auto mt-12 pa-6 text-center">
+                        <MudProgressCircular Indeterminate="true" Color="Color.Primary" />
+                        <MudText Typo="Typo.h6">Checking authentication status...</MudText>
+                    </MudPaper>
                 </Authorizing>
             </AuthorizeRouteView>
         </Found>
@@ -27,10 +25,8 @@
 </CascadingAuthenticationState>
 
 @code {
-    [Inject]
-    private ISessionStorageService _sessionStorage { get; set; } = null!;
-    [Inject]
-    private SessionValidationService SessionValidator { get; set; } = null!;
+    [Inject] private ISessionStorageService _sessionStorage { get; set; } = null!;
+    [Inject] private SessionValidationService SessionValidator { get; set; } = null!;
 
     protected override async Task OnInitializedAsync()
     {
@@ -50,22 +46,11 @@
         builder.AddContent(5, "You don't have permission to access this resource.");
         builder.CloseElement();
 
-        if (!context.User.Identity.IsAuthenticated)
-        {
-            builder.OpenComponent<NavLink>(6);
-            builder.AddAttribute(7, "href", "/login");
-            builder.AddAttribute(8, "class", "btn btn-primary");
-            builder.AddContent(9, "Login");
-            builder.CloseComponent();
-        }
-        else
-        {
-            builder.OpenComponent<NavLink>(10);
-            builder.AddAttribute(11, "href", "/");
-            builder.AddAttribute(12, "class", "btn btn-secondary");
-            builder.AddContent(13, "Return Home");
-            builder.CloseComponent();
-        }
+        builder.OpenComponent<NavLink>(6);
+        builder.AddAttribute(7, "href", context.User.Identity?.IsAuthenticated == true ? "/" : "/login");
+        builder.AddAttribute(8, "class", "btn btn-primary");
+        builder.AddContent(9, context.User.Identity?.IsAuthenticated == true ? "Return Home" : "Login");
+        builder.CloseComponent();
 
         builder.CloseElement();
     };

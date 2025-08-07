@@ -1,5 +1,5 @@
 ﻿@page "/admin/users"
-@using System.Text.Json
+
 @attribute [Authorize(Roles = "Admin")]
 
 @inject HttpClient Http
@@ -8,197 +8,209 @@
 @inject ILocalStorageService LocalStorage
 @inject AuthenticationStateProvider AuthStateProvider
 
-<h3>User Management</h3>
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-4">
+    <MudText Typo="Typo.h4" GutterBottom="true">User Management</MudText>
 
-@if (!string.IsNullOrEmpty(errorMessage))
-{
-    <div class="alert alert-danger">@errorMessage</div>
-}
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <MudAlert Severity="Severity.Error" Class="mb-4">@errorMessage</MudAlert>
+    }
 
-@if (isLoading)
-{
-    <div class="text-center my-4">
-        <div class="spinner-border text-primary" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-    </div>
-}
-else if (users == null || !users.Any())
-{
-    <div class="alert alert-info">No users found</div>
-}
-else
-{
-    <div class="mb-3 d-flex justify-content-between align-items-center">
-        <button class="btn btn-primary" @onclick="ShowAddUserModal" disabled="@isLoading">
-            <i class="bi bi-plus-circle"></i> Add New User
-        </button>
-        <div class="input-group" style="width: 300px;">
-            <input type="text" class="form-control" placeholder="Search users..." @bind="searchTerm" @bind:event="oninput" />
-            <button class="btn btn-outline-secondary" @onclick="SearchUsers" disabled="@isLoading">
-                <i class="bi bi-search"></i>
-            </button>
-        </div>
-    </div>
+    @if (isLoading)
+    {
+        <MudContainer Class="d-flex justify-center my-4">
+            <MudProgressCircular Color="Color.Primary" Indeterminate="true" />
+        </MudContainer>
+    }
+    else if (users == null || !users.Any())
+    {
+        <MudAlert Severity="Severity.Info">No users found</MudAlert>
+    }
+    else
+    {
+        <MudPaper Class="pa-4" Elevation="2">
+            <MudGrid AlignItems="Center" Class="mb-4">
+                <MudItem xs="12" sm="6">
+                    <MudButton Variant="Variant.Filled" 
+                             Color="Color.Primary" 
+                             StartIcon="@Icons.Material.Filled.Add" 
+                             OnClick="ShowAddUserModal" 
+                             Disabled="@isLoading">
+                        Add New User
+                    </MudButton>
+                </MudItem>
+                <MudItem xs="12" sm="6" Class="d-flex justify-end">
+                    <MudTextField @bind-Value="searchTerm" 
+                                Label="Search users..." 
+                                Variant="Variant.Outlined" 
+                                Adornment="Adornment.End" 
+                                AdornmentIcon="@Icons.Material.Filled.Search" 
+                                OnAdornmentClick="SearchUsers"
+                                OnKeyUp="@(async (e) => { if (e.Key == "Enter") await SearchUsers(); })"
+                                Style="max-width: 300px;" />
+                </MudItem>
+            </MudGrid>
 
-    <div class="table-responsive">
-        <table class="table table-striped table-hover">
-            <thead class="table-dark">
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Department</th>
-                    <th>Position</th>
-                    <th>Status</th>
-                    <th>Roles</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var user in filteredUsers)
-                {
-                    <tr>
-                        <td>@user.Name</td>
-                        <td>@user.Email</td>
-                        <td>@user.Department</td>
-                        <td>@user.Position</td>
-                        <td>
-                            @if (user.IsApproved)
+            <MudTable Items="@filteredUsers" Hover="true" Striped="true" Dense="true">
+                <HeaderContent>
+                    <MudTh>Name</MudTh>
+                    <MudTh>Email</MudTh>
+                    <MudTh>Department</MudTh>
+                    <MudTh>Position</MudTh>
+                    <MudTh>Status</MudTh>
+                    <MudTh>Roles</MudTh>
+                    <MudTh>Actions</MudTh>
+                </HeaderContent>
+                <RowTemplate>
+                    <MudTd DataLabel="Name">@context.Name</MudTd>
+                    <MudTd DataLabel="Email">@context.Email</MudTd>
+                    <MudTd DataLabel="Department">@context.Department</MudTd>
+                    <MudTd DataLabel="Position">@context.Position</MudTd>
+                    <MudTd DataLabel="Status">
+                        @if (context.IsApproved)
+                        {
+                            <MudChip T="string" Color="Color.Success" Size="Size.Small">Approved</MudChip>
+                        }
+                        else
+                        {
+                            <MudChipT="string" Color="Color.Warning" Size="Size.Small">Pending</MudChipT>
+                        }
+                    </MudTd>
+                    <MudTd DataLabel="Roles">@string.Join(", ", context.Roles)</MudTd>
+                    <MudTd DataLabel="Actions">
+                        <MudButtonGroup Variant="Variant.Outlined" Size="Size.Small">
+                            <MudIconButton Icon="@Icons.Material.Filled.Edit" 
+                                         Color="Color.Info" 
+                                         OnClick="() => EditUser(context.Id)" 
+                                         Title="Edit" 
+                                         Disabled="@isLoading" />
+                            @if (!context.IsApproved)
                             {
-                                <span class="badge bg-success">Approved</span>
+                                <MudIconButton Icon="@Icons.Material.Filled.CheckCircle" 
+                                             Color="Color.Success" 
+                                             OnClick="() => ApproveUser(context.Id)" 
+                                             Title="Approve" 
+                                             Disabled="@isLoading" />
                             }
-                            else
-                            {
-                                <span class="badge bg-warning">Pending</span>
-                            }
-                        </td>
-                        <td>@string.Join(", ", user.Roles)</td>
-                        <td>
-                            <div class="btn-group" role="group">
-                                <button class="btn btn-sm btn-info" @onclick="() => EditUser(user.Id)" title="Edit" disabled="@isLoading">
-                                    <i class="bi bi-pencil"></i>
-                                </button>
-                                @if (!user.IsApproved)
-                                {
-                                    <button class="btn btn-sm btn-success" @onclick="() => ApproveUser(user.Id)" title="Approve" disabled="@isLoading">
-                                        <i class="bi bi-check-circle"></i>
-                                    </button>
-                                }
-                                <button class="btn btn-sm btn-danger" @onclick="() => DeleteUser(user.Id)" title="Delete" disabled="@isLoading">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
+                            <MudIconButton Icon="@Icons.Material.Filled.Delete" 
+                                         Color="Color.Error" 
+                                         OnClick="() => DeleteUser(context.Id)" 
+                                         Title="Delete" 
+                                         Disabled="@isLoading" />
+                        </MudButtonGroup>
+                    </MudTd>
+                </RowTemplate>
+            </MudTable>
 
-    <div class="d-flex justify-content-between align-items-center">
-        <div>Showing @filteredUsers.Count of @users.Count users</div>
-        <nav aria-label="Page navigation">
-            <ul class="pagination">
-                <li class="page-item @(currentPage == 1 ? "disabled" : "")">
-                    <button class="page-link" @onclick="() => ChangePage(-1)">Previous</button>
-                </li>
-                <li class="page-item active">
-                    <span class="page-link">@currentPage</span>
-                </li>
-                <li class="page-item @(currentPage * pageSize >= users.Count ? "disabled" : "")">
-                    <button class="page-link" @onclick="() => ChangePage(1)">Next</button>
-                </li>
-            </ul>
-        </nav>
-    </div>
-}
+            <MudGrid AlignItems="Center" Class="mt-4">
+                <MudItem xs="12" sm="6">
+                    <MudText Typo="Typo.body2">Showing @filteredUsers.Count of @users.Count users</MudText>
+                </MudItem>
+                <MudItem xs="12" sm="6" Class="d-flex justify-end">
+                    <MudPagination Count="@((int)Math.Ceiling((double)users.Count / pageSize))"
+                                   @bind-Selected="currentPage" />
+                </MudItem>
+            </MudGrid>
+        </MudPaper>
+    }
+</MudContainer>
 
 <!-- Add User Modal -->
-@if (showAddModal)
-{
-    <div class="modal show d-block" tabindex="-1" style="background-color: rgba(0,0,0,0.5)">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title">Add New User</h5>
-                    <button type="button" class="btn-close btn-close-white" @onclick="CloseAddUserModal" disabled="@isLoading"></button>
-                </div>
-                <div class="modal-body">
-                    <EditForm Model="@newUser" OnValidSubmit="HandleAddUser">
-                        <DataAnnotationsValidator />
-                        <ValidationSummary />
+<MudDialog @bind-IsVisible="showAddModal" Options="@(new DialogOptions() { MaxWidth = MaxWidth.Medium, FullWidth = true })">
+    <TitleContent>
+        <MudText Typo="Typo.h6">
+            <MudIcon Icon="@Icons.Material.Filled.PersonAdd" Class="mr-3" />
+            Add New User
+        </MudText>
+    </TitleContent>
+    <DialogContent>
+        <EditForm Model="@newUser" OnValidSubmit="HandleAddUser">
+            <DataAnnotationsValidator />
+            <MudGrid>
+                <MudItem xs="12" sm="6">
+                    <MudTextField Label="Name" @bind-Value="newUser.Name" 
+                                Required="true" 
+                                RequiredError="Name is required"
+                                Variant="Variant.Outlined" />
+                    <ValidationMessage For="@(() => newUser.Name)" />
+                </MudItem>
 
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label">Name*</label>
-                                <InputText class="form-control" @bind-Value="newUser.Name" required />
-                                <ValidationMessage For="@(() => newUser.Name)" />
-                            </div>
+                <MudItem xs="12" sm="6">
+                    <MudTextField Label="Email" @bind-Value="newUser.Email" 
+                                Required="true" 
+                                RequiredError="Email is required"
+                                Variant="Variant.Outlined" />
+                    <ValidationMessage For="@(() => newUser.Email)" />
+                </MudItem>
 
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label">Email*</label>
-                                <InputText class="form-control" @bind-Value="newUser.Email" required />
-                                <ValidationMessage For="@(() => newUser.Email)" />
-                            </div>
-                        </div>
+                <MudItem xs="12" sm="6">
+                    <MudTextField Label="Password" @bind-Value="newUser.Password" 
+                                InputType="InputType.Password"
+                                Required="true" 
+                                RequiredError="Password is required"
+                                Variant="Variant.Outlined" />
+                    <ValidationMessage For="@(() => newUser.Password)" />
+                    <MudText Typo="Typo.caption" Class="mud-text-secondary">
+                        Minimum 8 characters with at least 1 uppercase, 1 lowercase, 1 number
+                    </MudText>
+                </MudItem>
 
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label">Password*</label>
-                                <InputText type="password" class="form-control" @bind-Value="newUser.Password" required />
-                                <ValidationMessage For="@(() => newUser.Password)" />
-                                <small class="text-muted">Minimum 8 characters with at least 1 uppercase, 1 lowercase, 1 number</small>
-                            </div>
+                <MudItem xs="12" sm="6">
+                    <MudTextField Label="Confirm Password" @bind-Value="confirmPassword" 
+                                InputType="InputType.Password"
+                                Required="true" 
+                                RequiredError="Confirm password is required"
+                                Variant="Variant.Outlined" />
+                    <ValidationMessage For="@(() => confirmPassword)" />
+                </MudItem>
 
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label">Confirm Password*</label>
-                                <InputText type="password" class="form-control" @bind-Value="confirmPassword" required />
-                                <ValidationMessage For="@(() => confirmPassword)" />
-                            </div>
-                        </div>
+                <MudItem xs="12" sm="6">
+                    <MudTextField Label="Department" @bind-Value="newUser.Department" 
+                                Variant="Variant.Outlined" />
+                </MudItem>
 
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label">Department</label>
-                                <InputText class="form-control" @bind-Value="newUser.Department" />
-                            </div>
+                <MudItem xs="12" sm="6">
+                    <MudTextField Label="Position" @bind-Value="newUser.Position" 
+                                Variant="Variant.Outlined" />
+                </MudItem>
 
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label">Position</label>
-                                <InputText class="form-control" @bind-Value="newUser.Position" />
-                            </div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Role*</label>
-                            <select class="form-select" @bind="selectedRole" required>
-                                <option value="">Select Role</option>
-                                @foreach (var role in availableRoles)
-                                {
-                                    <option value="@role">@role</option>
-                                }
-                            </select>
-                        </div>
-
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary" disabled="@isLoading">
-                                @if (isLoading)
-                                {
-                                    <span class="spinner-border spinner-border-sm me-1" role="status"></span>
-                                }
-                                Save User
-                            </button>
-                            <button type="button" class="btn btn-secondary" @onclick="CloseAddUserModal" disabled="@isLoading">
-                                Cancel
-                            </button>
-                        </div>
-                    </EditForm>
-                </div>
-            </div>
-        </div>
-    </div>
-}
-
+                <MudItem xs="12">
+                    <MudSelect T="string" @bind-Value="selectedRole" 
+                             Label="Role" 
+                             Required="true" 
+                             RequiredError="Role is required"
+                             Variant="Variant.Outlined">
+                        @foreach (var role in availableRoles)
+                        {
+                            <MudSelectItem Value="@role">@role</MudSelectItem>
+                        }
+                    </MudSelect>
+                </MudItem>
+            </MudGrid>
+        </EditForm>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="CloseAddUserModal" 
+                 Variant="Variant.Text" 
+                 Disabled="@isLoading">
+            Cancel
+        </MudButton>
+        <MudButton OnClick="HandleAddUser" 
+                 Variant="Variant.Filled" 
+                 Color="Color.Primary" 
+                 Disabled="@isLoading">
+            @if (isLoading)
+            {
+                <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
+                <MudText Class="ms-2">Saving...</MudText>
+            }
+            else
+            {
+                <MudText>Save User</MudText>
+            }
+        </MudButton>
+    </DialogActions>
+</MudDialog>
 
 @code {
     private List<UserResponseDto> users = new();
@@ -211,8 +223,18 @@ else
     private string errorMessage = string.Empty;
     private string searchTerm = string.Empty;
     private bool isLoading;
-    private int currentPage = 1;
+    // private int currentPage = 1;
     private int pageSize = 10;
+    private int currentPageBacking = 1;
+    private int currentPage
+    {
+        get => currentPageBacking;
+        set
+        {
+            currentPageBacking = value;
+            FilterUsers();
+        }
+    }
 
     protected override async Task OnInitializedAsync()
     {
@@ -292,10 +314,11 @@ else
         }
     }
 
-    private void SearchUsers()
+    private async Task SearchUsers()
     {
         currentPage = 1;
         FilterUsers();
+        StateHasChanged();
     }
 
     private void ChangePage(int direction)
@@ -374,7 +397,7 @@ else
         catch (Exception ex)
         {
             errorMessage = $"Failed to add user: {ex.Message}";
-            }
+        }
         finally
         {
             isLoading = false;
@@ -461,3 +484,4 @@ else
         }
     }
 }
+

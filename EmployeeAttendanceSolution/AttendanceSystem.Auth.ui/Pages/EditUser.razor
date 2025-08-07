@@ -8,76 +8,87 @@
 @inject ILocalStorageService LocalStorage
 @inject AuthenticationStateProvider AuthStateProvider
 
-<h3>Edit User</h3>
+<MudContainer MaxWidth="MaxWidth.Large" Class="mt-4">
+    <MudText Typo="Typo.h4" GutterBottom="true">Edit User</MudText>
 
-@if (!string.IsNullOrEmpty(errorMessage))
-{
-    <div class="alert alert-danger">@errorMessage</div>
-}
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <MudAlert Severity="Severity.Error" Class="mb-4">@errorMessage</MudAlert>
+    }
 
-@if (isLoading)
-{
-    <div class="text-center my-4">
-        <div class="spinner-border text-primary" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-    </div>
-}
-else if (user == null)
-{
-    <div class="alert alert-warning">Loading user data...</div>
-}
-else
-{
-    <EditForm Model="user" OnValidSubmit="HandleSave">
-        <DataAnnotationsValidator />
-        <ValidationSummary />
+    @if (isLoading)
+    {
+        <MudContainer Class="d-flex justify-center my-4">
+            <MudProgressCircular Color="Color.Primary" Indeterminate="true" />
+        </MudContainer>
+    }
+    else if (user == null)
+    {
+        <MudAlert Severity="Severity.Warning">Loading user data...</MudAlert>
+    }
+    else
+    {
+        <MudPaper Class="pa-4" Elevation="2">
+            <EditForm Model="user" OnValidSubmit="HandleSave">
+                <DataAnnotationsValidator />
+                <MudGrid>
+                    <MudItem xs="12" sm="6">
+                        <MudTextField Label="Name" @bind-Value="user.Name" 
+                                    Required="true" 
+                                    RequiredError="Name is required"
+                                    Variant="Variant.Outlined" />
+                        <ValidationMessage For="@(() => user.Name)" />
+                    </MudItem>
 
-        <div class="row">
-            <div class="col-md-6 mb-3">
-                <label class="form-label">Name*</label>
-                <InputText class="form-control" @bind-Value="user.Name" required />
-                <ValidationMessage For="@(() => user.Name)" />
-            </div>
+                    <MudItem xs="12" sm="6">
+                        <MudTextField Label="Email" @bind-Value="user.Email" 
+                                    Required="true" 
+                                    RequiredError="Email is required"
+                                    Variant="Variant.Outlined" />
+                        <ValidationMessage For="@(() => user.Email)" />
+                    </MudItem>
 
-            <div class="col-md-6 mb-3">
-                <label class="form-label">Email*</label>
-                <InputText class="form-control" @bind-Value="user.Email" required />
-                <ValidationMessage For="@(() => user.Email)" />
-            </div>
-        </div>
+                    <MudItem xs="12" sm="6">
+                        <MudTextField Label="Department" @bind-Value="user.Department" 
+                                    Variant="Variant.Outlined" />
+                    </MudItem>
 
-        <div class="row">
-            <div class="col-md-6 mb-3">
-                <label class="form-label">Department</label>
-                <InputText class="form-control" @bind-Value="user.Department" />
-            </div>
+                    <MudItem xs="12" sm="6">
+                        <MudTextField Label="Position" @bind-Value="user.Position" 
+                                    Variant="Variant.Outlined" />
+                    </MudItem>
 
-            <div class="col-md-6 mb-3">
-                <label class="form-label">Position</label>
-                <InputText class="form-control" @bind-Value="user.Position" />
-            </div>
-        </div>
+                    <MudItem xs="12">
+                        <MudCheckBox T="bool" @bind-Checked="user.IsApproved" Label="Approved" Color="Color.Primary" />
+                    </MudItem>
 
-        <div class="mb-3 form-check">
-            <InputCheckbox class="form-check-input" @bind-Value="user.IsApproved" />
-            <label class="form-check-label">Approved</label>
-        </div>
-
-        <div class="d-flex justify-content-end gap-2">
-            <button type="button" class="btn btn-outline-secondary" @onclick="Cancel" disabled="@isLoading">
-                Cancel
-            </button>
-            <button type="submit" class="btn btn-primary" disabled="@isLoading">
-                @if (isLoading)
-                {
-                    <span class="spinner-border spinner-border-sm me-1" role="status"></span>
-                }
-                Save Changes
-            </button>
-        </div>
-    </EditForm>
-}
+                    <MudItem xs="12" Class="d-flex justify-end gap-2">
+                        <MudButton Variant="Variant.Outlined" 
+                                 Color="Color.Default" 
+                                 OnClick="Cancel" 
+                                 Disabled="@isLoading">
+                            Cancel
+                        </MudButton>
+                        <MudButton ButtonType="ButtonType.Submit" 
+                                 Variant="Variant.Filled" 
+                                 Color="Color.Primary" 
+                                 Disabled="@isLoading">
+                            @if (isLoading)
+                            {
+                                <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
+                                <MudText Class="ms-2">Saving...</MudText>
+                            }
+                            else
+                            {
+                                <MudText>Save Changes</MudText>
+                            }
+                        </MudButton>
+                    </MudItem>
+                </MudGrid>
+            </EditForm>
+        </MudPaper>
+    }
+</MudContainer>
 
 @code {
     [Parameter]
@@ -226,3 +237,4 @@ else
         originalIsApproved = user?.IsApproved ?? false;
     }
 }
+
