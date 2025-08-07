@@ -4,6 +4,7 @@
 
 @inject HttpClient Http
 @inject NavigationManager Navigation
+@inject IJSRuntime JSRuntime
 @inject ILocalStorageService LocalStorage
 @inject AuthenticationStateProvider AuthStateProvider
 
@@ -22,67 +23,94 @@
         </div>
     </div>
 }
-else if (users == null)
+else if (users == null || !users.Any())
 {
-    <p>Loading users...</p>
+    <div class="alert alert-info">No users found</div>
 }
 else
 {
-    <div class="mb-3">
+    <div class="mb-3 d-flex justify-content-between align-items-center">
         <button class="btn btn-primary" @onclick="ShowAddUserModal" disabled="@isLoading">
-            Add New User
+            <i class="bi bi-plus-circle"></i> Add New User
         </button>
+        <div class="input-group" style="width: 300px;">
+            <input type="text" class="form-control" placeholder="Search users..." @bind="searchTerm" @bind:event="oninput" />
+            <button class="btn btn-outline-secondary" @onclick="SearchUsers" disabled="@isLoading">
+                <i class="bi bi-search"></i>
+            </button>
+        </div>
     </div>
 
-    <table class="table table-striped">
-        <thead class="table-dark">
-            <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Department</th>
-                <th>Position</th>
-                <th>Status</th>
-                <th>Roles</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var user in users)
-            {
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
                 <tr>
-                    <td>@user.Name</td>
-                    <td>@user.Email</td>
-                    <td>@user.Department</td>
-                    <td>@user.Position</td>
-                    <td>
-                        @if (user.IsApproved)
-                        {
-                            <span class="badge bg-success">Approved</span>
-                        }
-                        else
-                        {
-                            <span class="badge bg-warning">Pending</span>
-                        }
-                    </td>
-                    <td>@string.Join(", ", user.Roles)</td>
-                    <td>
-                        <button class="btn btn-sm btn-info" @onclick="() => EditUser(user.Id)" disabled="@isLoading">
-                            Edit
-                        </button>
-                        @if (!user.IsApproved)
-                        {
-                            <button class="btn btn-sm btn-success ms-1" @onclick="() => ApproveUser(user.Id)" disabled="@isLoading">
-                                Approve
-                            </button>
-                        }
-                        <button class="btn btn-sm btn-danger ms-1" @onclick="() => DeleteUser(user.Id)" disabled="@isLoading">
-                            Delete
-                        </button>
-                    </td>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Department</th>
+                    <th>Position</th>
+                    <th>Status</th>
+                    <th>Roles</th>
+                    <th>Actions</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var user in filteredUsers)
+                {
+                    <tr>
+                        <td>@user.Name</td>
+                        <td>@user.Email</td>
+                        <td>@user.Department</td>
+                        <td>@user.Position</td>
+                        <td>
+                            @if (user.IsApproved)
+                            {
+                                <span class="badge bg-success">Approved</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-warning">Pending</span>
+                            }
+                        </td>
+                        <td>@string.Join(", ", user.Roles)</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <button class="btn btn-sm btn-info" @onclick="() => EditUser(user.Id)" title="Edit" disabled="@isLoading">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                                @if (!user.IsApproved)
+                                {
+                                    <button class="btn btn-sm btn-success" @onclick="() => ApproveUser(user.Id)" title="Approve" disabled="@isLoading">
+                                        <i class="bi bi-check-circle"></i>
+                                    </button>
+                                }
+                                <button class="btn btn-sm btn-danger" @onclick="() => DeleteUser(user.Id)" title="Delete" disabled="@isLoading">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center">
+        <div>Showing @filteredUsers.Count of @users.Count users</div>
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li class="page-item @(currentPage == 1 ? "disabled" : "")">
+                    <button class="page-link" @onclick="() => ChangePage(-1)">Previous</button>
+                </li>
+                <li class="page-item active">
+                    <span class="page-link">@currentPage</span>
+                </li>
+                <li class="page-item @(currentPage * pageSize >= users.Count ? "disabled" : "")">
+                    <button class="page-link" @onclick="() => ChangePage(1)">Next</button>
+                </li>
+            </ul>
+        </nav>
+    </div>
 }
 
 <!-- Add User Modal -->
@@ -93,44 +121,62 @@ else
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
                     <h5 class="modal-title">Add New User</h5>
-                    <button type="button" class="btn-close btn-close-white" @onclick="CloseAddUserModal"></button>
+                    <button type="button" class="btn-close btn-close-white" @onclick="CloseAddUserModal" disabled="@isLoading"></button>
                 </div>
                 <div class="modal-body">
                     <EditForm Model="@newUser" OnValidSubmit="HandleAddUser">
                         <DataAnnotationsValidator />
                         <ValidationSummary />
 
-                        <div class="mb-3">
-                            <label class="form-label">Name</label>
-                            <InputText class="form-control" @bind-Value="newUser.Name" />
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Name*</label>
+                                <InputText class="form-control" @bind-Value="newUser.Name" required />
+                                <ValidationMessage For="@(() => newUser.Name)" />
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Email*</label>
+                                <InputText class="form-control" @bind-Value="newUser.Email" required />
+                                <ValidationMessage For="@(() => newUser.Email)" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Password*</label>
+                                <InputText type="password" class="form-control" @bind-Value="newUser.Password" required />
+                                <ValidationMessage For="@(() => newUser.Password)" />
+                                <small class="text-muted">Minimum 8 characters with at least 1 uppercase, 1 lowercase, 1 number</small>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Confirm Password*</label>
+                                <InputText type="password" class="form-control" @bind-Value="confirmPassword" required />
+                                <ValidationMessage For="@(() => confirmPassword)" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Department</label>
+                                <InputText class="form-control" @bind-Value="newUser.Department" />
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Position</label>
+                                <InputText class="form-control" @bind-Value="newUser.Position" />
+                            </div>
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Email</label>
-                            <InputText class="form-control" @bind-Value="newUser.Email" />
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Password</label>
-                            <InputText type="password" class="form-control" @bind-Value="newUser.Password" />
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Department</label>
-                            <InputText class="form-control" @bind-Value="newUser.Department" />
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Position</label>
-                            <InputText class="form-control" @bind-Value="newUser.Position" />
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Role</label>
-                            <select class="form-select" @bind="selectedRole">
-                                <option value="User">User</option>
-                                <option value="Manager">Manager</option>
-                                <option value="Admin">Admin</option>
+                            <label class="form-label">Role*</label>
+                            <select class="form-select" @bind="selectedRole" required>
+                                <option value="">Select Role</option>
+                                @foreach (var role in availableRoles)
+                                {
+                                    <option value="@role">@role</option>
+                                }
                             </select>
                         </div>
 
@@ -138,9 +184,9 @@ else
                             <button type="submit" class="btn btn-primary" disabled="@isLoading">
                                 @if (isLoading)
                                 {
-                                    <span class="spinner-border spinner-border-sm" role="status"></span>
+                                    <span class="spinner-border spinner-border-sm me-1" role="status"></span>
                                 }
-                                Save
+                                Save User
                             </button>
                             <button type="button" class="btn btn-secondary" @onclick="CloseAddUserModal" disabled="@isLoading">
                                 Cancel
@@ -153,13 +199,20 @@ else
     </div>
 }
 
+
 @code {
     private List<UserResponseDto> users = new();
+    private List<UserResponseDto> filteredUsers = new();
+    private List<string> availableRoles = new() { "User", "Manager", "Admin" };
     private bool showAddModal = false;
     private UserCreateDto newUser = new();
+    private string confirmPassword = string.Empty;
     private string selectedRole = "User";
     private string errorMessage = string.Empty;
+    private string searchTerm = string.Empty;
     private bool isLoading;
+    private int currentPage = 1;
+    private int pageSize = 10;
 
     protected override async Task OnInitializedAsync()
     {
@@ -169,42 +222,41 @@ else
     private async Task LoadUsers()
     {
         isLoading = true;
-        errorMessage = null;
+        errorMessage = string.Empty;
         StateHasChanged();
 
         try
         {
-            var response = await Http.GetAsync("api/Management/GetAllUsers");
+            var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+            var token = await LocalStorage.GetItemAsync<string>("authToken");
+
+            var request = new HttpRequestMessage(HttpMethod.Get, "api/Management/GetAllUsers");
+            request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+            var response = await Http.SendAsync(request);
 
             if (response.IsSuccessStatusCode)
             {
                 var result = await response.Content.ReadFromJsonAsync<OperationResult<List<UserResponseDto>>>();
-
+                
                 if (result?.Success == true)
                 {
                     users = result.Data ?? new List<UserResponseDto>();
+                    FilterUsers();
                 }
                 else
                 {
                     errorMessage = result?.Message ?? "Failed to load users";
                 }
             }
-            else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
-            {
-                await HandleUnauthorizedResponse();
-            }
             else
             {
-                errorMessage = await GetErrorMessage(response);
+                await HandleApiError(response);
             }
-        }
-        catch (HttpRequestException httpEx) when (httpEx.StatusCode == System.Net.HttpStatusCode.Unauthorized)
-        {
-            await HandleUnauthorizedResponse();
         }
         catch (Exception ex)
         {
-            errorMessage = $"Failed to load users: {ex.Message}";
+            errorMessage = $"An error occurred: {ex.Message}";
             Console.Error.WriteLine(ex);
         }
         finally
@@ -214,31 +266,71 @@ else
         }
     }
 
-    private async Task HandleUnauthorizedResponse()
+    private void FilterUsers()
     {
-        errorMessage = "Session expired. Redirecting to login...";
-        StateHasChanged(); // Update UI immediately
-
-        await Task.Delay(1500); // Give user time to see the message
-        await ((JwtAuthenticationStateProvider)AuthStateProvider).NotifyUserLogout();
-        Navigation.NavigateTo("/login", true);
+        if (string.IsNullOrWhiteSpace(searchTerm))
+        {
+            filteredUsers = users
+                .Skip((currentPage - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+        }
+        else
+        {
+            var term = searchTerm.ToLower();
+            filteredUsers = users
+                .Where(u =>
+                    u.Name?.ToLower().Contains(term) == true ||
+                    u.Email?.ToLower().Contains(term) == true ||
+                    u.Department?.ToLower().Contains(term) == true ||
+                    u.Position?.ToLower().Contains(term) == true ||
+                    u.Roles.Any(r => r.ToLower().Contains(term))
+                )
+                .Skip((currentPage - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+        }
     }
 
-    private async Task<string> GetErrorMessage(HttpResponseMessage response)
+    private void SearchUsers()
     {
+        currentPage = 1;
+        FilterUsers();
+    }
+
+    private void ChangePage(int direction)
+    {
+        currentPage += direction;
+        FilterUsers();
+    }
+
+    private async Task HandleApiError(HttpResponseMessage response)
+    {
+        if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+        {
+            errorMessage = "Session expired. Redirecting to login...";
+            StateHasChanged();
+            await Task.Delay(1500);
+            await ((JwtAuthenticationStateProvider)AuthStateProvider).NotifyUserLogout();
+            Navigation.NavigateTo("/login", true);
+            return;
+        }
+
         try
         {
-            return await response.Content.ReadAsStringAsync();
+            var errorResult = await response.Content.ReadFromJsonAsync<OperationResult>();
+            errorMessage = errorResult?.Message ?? $"Error: {response.StatusCode}";
         }
         catch
         {
-            return $"Error: {response.StatusCode}";
+            errorMessage = await response.Content.ReadAsStringAsync();
         }
     }
 
     private void ShowAddUserModal()
     {
         newUser = new UserCreateDto();
+        confirmPassword = string.Empty;
         selectedRole = "User";
         showAddModal = true;
     }
@@ -250,14 +342,24 @@ else
 
     private async Task HandleAddUser()
     {
+        if (newUser.Password != confirmPassword)
+        {
+            errorMessage = "Passwords do not match";
+            return;
+        }
+
         isLoading = true;
+        errorMessage = string.Empty;
         StateHasChanged();
 
         try
         {
-            var response = await Http.PostAsJsonAsync(
-                $"api/Management/AddApplicationUser?roleName={selectedRole}",
-                newUser);
+            var token = await LocalStorage.GetItemAsync<string>("authToken");
+            var request = new HttpRequestMessage(HttpMethod.Post, $"api/Management/AddApplicationUser?roleName={selectedRole}");
+            request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+            request.Content = JsonContent.Create(newUser);
+
+            var response = await Http.SendAsync(request);
 
             if (response.IsSuccessStatusCode)
             {
@@ -266,13 +368,13 @@ else
             }
             else
             {
-                errorMessage = await GetErrorMessage(response);
+                await HandleApiError(response);
             }
         }
         catch (Exception ex)
         {
             errorMessage = $"Failed to add user: {ex.Message}";
-        }
+            }
         finally
         {
             isLoading = false;
@@ -282,14 +384,20 @@ else
 
     private async Task ApproveUser(string userId)
     {
+        if (!await JSRuntime.InvokeAsync<bool>("confirm", "Are you sure you want to approve this user?"))
+            return;
+
         isLoading = true;
+        errorMessage = string.Empty;
         StateHasChanged();
 
         try
         {
-            var response = await Http.PostAsync(
-                $"api/Management/approve/{userId}",
-                null);
+            var token = await LocalStorage.GetItemAsync<string>("authToken");
+            var request = new HttpRequestMessage(HttpMethod.Post, $"api/Management/approve/{userId}");
+            request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+            var response = await Http.SendAsync(request);
 
             if (response.IsSuccessStatusCode)
             {
@@ -297,7 +405,7 @@ else
             }
             else
             {
-                errorMessage = await GetErrorMessage(response);
+                await HandleApiError(response);
             }
         }
         catch (Exception ex)
@@ -318,13 +426,20 @@ else
 
     private async Task DeleteUser(string userId)
     {
+        if (!await JSRuntime.InvokeAsync<bool>("confirm", "Are you sure you want to delete this user? This action cannot be undone."))
+            return;
+
         isLoading = true;
+        errorMessage = string.Empty;
         StateHasChanged();
 
         try
         {
-            var response = await Http.DeleteAsync(
-                $"api/Management/DeleteApplicationUser/{userId}");
+            var token = await LocalStorage.GetItemAsync<string>("authToken");
+            var request = new HttpRequestMessage(HttpMethod.Delete, $"api/Management/DeleteApplicationUser/{userId}");
+            request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+            var response = await Http.SendAsync(request);
 
             if (response.IsSuccessStatusCode)
             {
@@ -332,7 +447,7 @@ else
             }
             else
             {
-                errorMessage = await GetErrorMessage(response);
+                await HandleApiError(response);
             }
         }
         catch (Exception ex)

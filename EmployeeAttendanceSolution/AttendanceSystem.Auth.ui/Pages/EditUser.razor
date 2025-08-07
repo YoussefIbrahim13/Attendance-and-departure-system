@@ -1,48 +1,81 @@
 ﻿@page "/admin/edit-user/{userId}"
 @attribute [Authorize(Roles = "Admin")]
+@using System.Net.Http.Headers
+
 @inject HttpClient Http
 @inject NavigationManager Navigation
-@inject ISessionStorageService SessionStorage
+@inject IJSRuntime JSRuntime
+@inject ILocalStorageService LocalStorage
+@inject AuthenticationStateProvider AuthStateProvider
 
 <h3>Edit User</h3>
 
-@if (user == null)
+@if (!string.IsNullOrEmpty(errorMessage))
 {
-    <p>Loading user data...</p>
+    <div class="alert alert-danger">@errorMessage</div>
+}
+
+@if (isLoading)
+{
+    <div class="text-center my-4">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+}
+else if (user == null)
+{
+    <div class="alert alert-warning">Loading user data...</div>
 }
 else
 {
-    <EditForm Model="user" OnValidSubmit="@(() => HandleSave())">
+    <EditForm Model="user" OnValidSubmit="HandleSave">
         <DataAnnotationsValidator />
         <ValidationSummary />
 
-        <div class="mb-3">
-            <label class="form-label">Name</label>
-            <InputText class="form-control" @bind-Value="user.Name" />
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Name*</label>
+                <InputText class="form-control" @bind-Value="user.Name" required />
+                <ValidationMessage For="@(() => user.Name)" />
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Email*</label>
+                <InputText class="form-control" @bind-Value="user.Email" required />
+                <ValidationMessage For="@(() => user.Email)" />
+            </div>
         </div>
 
-        <div class="mb-3">
-            <label class="form-label">Email</label>
-            <InputText class="form-control" @bind-Value="user.Email" />
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Department</label>
+                <InputText class="form-control" @bind-Value="user.Department" />
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Position</label>
+                <InputText class="form-control" @bind-Value="user.Position" />
+            </div>
         </div>
 
-        <div class="mb-3">
-            <label class="form-label">Department</label>
-            <InputText class="form-control" @bind-Value="user.Department" />
-        </div>
-
-        <div class="mb-3">
-            <label class="form-label">Position</label>
-            <InputText class="form-control" @bind-Value="user.Position" />
-        </div>
-
-        <div class="mb-3">
-            <label class="form-label">Approved</label>
+        <div class="mb-3 form-check">
             <InputCheckbox class="form-check-input" @bind-Value="user.IsApproved" />
+            <label class="form-check-label">Approved</label>
         </div>
 
-        <button type="submit" class="btn btn-primary">Save</button>
-        <button type="button" class="btn btn-secondary" @onclick="Cancel">Cancel</button>
+        <div class="d-flex justify-content-end gap-2">
+            <button type="button" class="btn btn-outline-secondary" @onclick="Cancel" disabled="@isLoading">
+                Cancel
+            </button>
+            <button type="submit" class="btn btn-primary" disabled="@isLoading">
+                @if (isLoading)
+                {
+                    <span class="spinner-border spinner-border-sm me-1" role="status"></span>
+                }
+                Save Changes
+            </button>
+        </div>
     </EditForm>
 }
 
@@ -52,6 +85,7 @@ else
 
     private UserUpdateDto user = new();
     private string errorMessage = string.Empty;
+    private bool isLoading;
 
     protected override async Task OnInitializedAsync()
     {
@@ -60,54 +94,135 @@ else
 
     private async Task LoadUser()
     {
+        isLoading = true;
+        errorMessage = string.Empty;
+        StateHasChanged();
+
         try
         {
-            var token = await SessionStorage.GetItemAsync<string>("authToken");
+            var token = await LocalStorage.GetItemAsync<string>("authToken");
             var request = new HttpRequestMessage(HttpMethod.Get, $"api/Management/GetApplicationUser/{UserId}");
             request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
             var response = await Http.SendAsync(request);
-            response.EnsureSuccessStatusCode();
 
-            var result = await response.Content.ReadFromJsonAsync<UserResponseDto>();
-            user = new UserUpdateDto
+            if (response.IsSuccessStatusCode)
             {
-                Name = result.Name,
-                Email = result.Email,
-                Department = result.Department,
-                Position = result.Position,
-                IsApproved = result.IsApproved
-            };
+                var result = await response.Content.ReadFromJsonAsync<UserResponseDto>();
+                user = new UserUpdateDto
+                {
+                    Name = result.Name,
+                    Email = result.Email,
+                    Department = result.Department,
+                    Position = result.Position,
+                    IsApproved = result.IsApproved
+                };
+            }
+            else
+            {
+                await HandleApiError(response);
+            }
         }
         catch (Exception ex)
         {
-            errorMessage = "Failed to load user: " + ex.Message;
+            errorMessage = $"Failed to load user: {ex.Message}";
+        }
+        finally
+        {
+            isLoading = false;
+            StateHasChanged();
         }
     }
 
     private async Task HandleSave()
     {
+        isLoading = true;
+        errorMessage = string.Empty;
+        StateHasChanged();
+
         try
         {
-            var token = await SessionStorage.GetItemAsync<string>("authToken");
+            var token = await LocalStorage.GetItemAsync<string>("authToken");
             var request = new HttpRequestMessage(HttpMethod.Put, $"api/Management/UpdateApplicationUser/{UserId}");
             request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
             request.Content = JsonContent.Create(user);
 
             var response = await Http.SendAsync(request);
-            response.EnsureSuccessStatusCode();
 
-            Navigation.NavigateTo("/admin/users");
+            if (response.IsSuccessStatusCode)
+            {
+                await JSRuntime.InvokeVoidAsync("alert", "User updated successfully");
+                Navigation.NavigateTo("/admin/users");
+            }
+            else
+            {
+                await HandleApiError(response);
+            }
         }
         catch (Exception ex)
         {
-            errorMessage = "Failed to save user: " + ex.Message;
+            errorMessage = $"Failed to save user: {ex.Message}";
+        }
+        finally
+        {
+            isLoading = false;
+            StateHasChanged();
         }
     }
 
-    private void Cancel()
+    private async Task HandleApiError(HttpResponseMessage response)
     {
+        if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+        {
+            errorMessage = "Session expired. Redirecting to login...";
+            StateHasChanged();
+            await Task.Delay(1500);
+            await ((JwtAuthenticationStateProvider)AuthStateProvider).NotifyUserLogout();
+            Navigation.NavigateTo("/login", true);
+            return;
+        }
+
+        try
+        {
+            var errorResult = await response.Content.ReadFromJsonAsync<OperationResult>();
+            errorMessage = errorResult?.Message ?? $"Error: {response.StatusCode}";
+        }
+        catch
+        {
+            errorMessage = await response.Content.ReadAsStringAsync();
+        }
+    }
+
+    private async Task Cancel()
+    {
+        if (user != null &&
+            (user.Name != originalName ||
+             user.Email != originalEmail ||
+             user.Department != originalDepartment ||
+             user.Position != originalPosition ||
+             user.IsApproved != originalIsApproved))
+        {
+            if (!await JSRuntime.InvokeAsync<bool>("confirm", "You have unsaved changes. Are you sure you want to leave?"))
+            {
+                return;
+            }
+        }
         Navigation.NavigateTo("/admin/users");
     }
-}
 
+    // Track original values for dirty checking
+    private string originalName;
+    private string originalEmail;
+    private string originalDepartment;
+    private string originalPosition;
+    private bool originalIsApproved;
+
+    protected override void OnParametersSet()
+    {
+        originalName = user?.Name;
+        originalEmail = user?.Email;
+        originalDepartment = user?.Department;
+        originalPosition = user?.Position;
+        originalIsApproved = user?.IsApproved ?? false;
+    }
+}

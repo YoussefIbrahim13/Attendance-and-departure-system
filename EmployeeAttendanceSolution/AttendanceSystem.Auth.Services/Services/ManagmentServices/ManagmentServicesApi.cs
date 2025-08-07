@@ -1,6 +1,7 @@
 ﻿using EmployeesModels.Shared;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace AttendanceSystem.Auth.API.Services.Services.ManagmentServices
 {
@@ -96,6 +97,8 @@ namespace AttendanceSystem.Auth.API.Services.Services.ManagmentServices
 
         public async Task<UserResult> AddApplicationUserAsync(UserCreateDto dto, string roleName)
         {
+            if (!new EmailAddressAttribute().IsValid(dto.Email))
+                return new UserResult { Errors = new[] { new IdentityError { Description = "Invalid email format" } } };
             var user = new ApplicationUser
             {
                 UserName = dto.Email,

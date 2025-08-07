@@ -31,7 +31,7 @@ namespace AttendanceSystem.Auth.API.Services.Services.AuthoServices
 
             var authClaims = new List<Claim>
             {
-                new(ClaimTypes.Name, user.UserName),
+                new(ClaimTypes.Name, user.Name),
                 new(ClaimTypes.Email, user.Email),
                 new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new("IsApproved", user.IsApproved.ToString())
