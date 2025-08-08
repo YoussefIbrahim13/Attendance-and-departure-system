@@ -50,14 +50,14 @@ namespace AttendanceSystem.Auth.API.Controllers
         {
             try
             {
-                var userInfo = await _authService.GetCurrentUser(User);
+                var userInfo = await _authService.GetCurrentUserAsync(User);
 
                 if (userInfo == null)
                 {
                     return Unauthorized(new
                     {
                         Message = "User not found or not authorized",
-                        Solution = "Please ensure your account exists and is approved"
+                        Solution = "Please ensure your account exists, is approved, and you are logged in"
                     });
                 }
 
@@ -65,7 +65,7 @@ namespace AttendanceSystem.Auth.API.Controllers
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"API CurrentUser error: {ex}");
+                Console.WriteLine($"💥 API CurrentUser error: {ex}");
                 return StatusCode(500, new
                 {
                     Message = "An error occurred while processing your request",

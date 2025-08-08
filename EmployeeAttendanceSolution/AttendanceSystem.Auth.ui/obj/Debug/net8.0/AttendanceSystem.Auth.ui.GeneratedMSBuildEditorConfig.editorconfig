@@ -39,6 +39,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5NYW5hZ2VtZW50LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[A:/Micro-Tech/Attendance-and-departure-system/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/Pages/Dashboard.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGFzaGJvYXJkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [A:/Micro-Tech/Attendance-and-departure-system/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/Pages/EditUser.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdFVzZXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 

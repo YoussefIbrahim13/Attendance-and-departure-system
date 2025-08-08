@@ -1,14 +1,985 @@
 ﻿@page "/"
 
-<PageTitle>Home</PageTitle>
+<PageTitle>Welcome - Attendance Management System</PageTitle>
 
-<MudPaper Class="pa-6 mx-auto mt-6" Elevation="4" MaxWidth="600px">
-    <MudText Typo="Typo.h4" GutterBottom="true">👋 Hello, world!</MudText>
-    <MudText Typo="Typo.body1">
-        Welcome to your new Blazor WebAssembly application using <b>MudBlazor</b>! 🎉
-    </MudText>
-    <MudDivider Class="my-4" />
-    <MudButton Variant="Variant.Filled" Color="Color.Primary" Href="/login">
-        Go to Login
-    </MudButton>
-</MudPaper>
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="enhanced-welcome-container">
+    <!-- Enhanced Hero Section -->
+    <MudPaper Class="enhanced-hero-section" Elevation="0">
+        <div class="hero-content">
+            <MudIcon Icon="@Icons.Material.Filled.Schedule"
+                     Class="hero-icon"
+                     Size="Size.Large" />
+            <MudText Typo="Typo.h3" Class="hero-title">
+                Attendance Management System
+            </MudText>
+            <MudText Typo="Typo.h6" Class="hero-subtitle">
+                Streamline workforce management with intelligent attendance tracking
+            </MudText>
+            <MudText Typo="Typo.body1" Class="hero-description">
+                A comprehensive solution for managing employee attendance, tracking work hours, and maintaining organizational efficiency through advanced calendar views and role-based access control.
+            </MudText>
+            <MudButton Variant="Variant.Filled"
+                       Color="Color.Primary"
+                       Size="Size.Large"
+                       StartIcon="@Icons.Material.Filled.Login"
+                       Href="/login"
+                       Class="enhanced-cta-button">
+                Access System
+            </MudButton>
+        </div>
+        <div class="hero-decoration"></div>
+    </MudPaper>
+
+    <!-- Enhanced Features Overview Section -->
+    <MudPaper Class="enhanced-features-overview" Elevation="0">
+        <div class="section-header">
+            <div class="section-divider">
+                <MudIcon Icon="@Icons.Material.Filled.Star" Class="section-icon" />
+                <MudText Typo="Typo.h5" Class="section-title">System Features</MudText>
+            </div>
+            <MudText Typo="Typo.body1" Class="section-description">
+                Discover the powerful capabilities that make attendance management effortless and efficient
+            </MudText>
+        </div>
+
+        <MudGrid Spacing="4" Class="features-grid">
+            <MudItem xs="12" md="4">
+                <MudPaper Class="enhanced-feature-card" Elevation="0">
+                    <div class="feature-card-header">
+                        <MudIcon Icon="@Icons.Material.Filled.CalendarToday" Class="feature-card-icon" Color="Color.Primary" />
+                        <MudText Typo="Typo.h6" Class="feature-card-title">Multi-View Calendar</MudText>
+                    </div>
+                    <MudText Typo="Typo.body2" Class="feature-card-description">
+                        Experience flexible attendance tracking with three comprehensive calendar views: daily for detailed hour-by-hour tracking, monthly for overview planning, and yearly for long-term analysis and reporting.
+                    </MudText>
+                    <div class="feature-highlights">
+                        <div class="highlight-item">
+                            <MudIcon Icon="@Icons.Material.Filled.Today" Size="Size.Small" Color="Color.Primary" />
+                            <MudText Typo="Typo.caption">Daily View</MudText>
+                        </div>
+                        <div class="highlight-item">
+                            <MudIcon Icon="@Icons.Material.Filled.DateRange" Size="Size.Small" Color="Color.Primary" />
+                            <MudText Typo="Typo.caption">Monthly View</MudText>
+                        </div>
+                        <div class="highlight-item">
+                            <MudIcon Icon="@Icons.Material.Filled.Event" Size="Size.Small" Color="Color.Primary" />
+                            <MudText Typo="Typo.caption">Yearly View</MudText>
+                        </div>
+                    </div>
+                </MudPaper>
+            </MudItem>
+
+            <MudItem xs="12" md="4">
+                <MudPaper Class="enhanced-feature-card" Elevation="0">
+                    <div class="feature-card-header">
+                        <MudIcon Icon="@Icons.Material.Filled.PersonAdd" Class="feature-card-icon" Color="Color.Secondary" />
+                        <MudText Typo="Typo.h6" Class="feature-card-title">User Self-Registration</MudText>
+                    </div>
+                    <MudText Typo="Typo.body2" Class="feature-card-description">
+                        Employees can easily add their daily attendance records through an intuitive interface. Each user maintains their personal attendance log with the ability to mark presence, absence, or remote work status for any given day.
+                    </MudText>
+                    <div class="feature-highlights">
+                        <div class="highlight-item">
+                            <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Size="Size.Small" Color="Color.Success" />
+                            <MudText Typo="Typo.caption">Present</MudText>
+                        </div>
+                        <div class="highlight-item">
+                            <MudIcon Icon="@Icons.Material.Filled.Cancel" Size="Size.Small" Color="Color.Error" />
+                            <MudText Typo="Typo.caption">Absent</MudText>
+                        </div>
+                        <div class="highlight-item">
+                            <MudIcon Icon="@Icons.Material.Filled.Home" Size="Size.Small" Color="Color.Warning" />
+                            <MudText Typo="Typo.caption">Remote Work</MudText>
+                        </div>
+                    </div>
+                </MudPaper>
+            </MudItem>
+
+            <MudItem xs="12" md="4">
+                <MudPaper Class="enhanced-feature-card" Elevation="0">
+                    <div class="feature-card-header">
+                        <MudIcon Icon="@Icons.Material.Filled.AdminPanelSettings" Class="feature-card-icon" Color="Color.Info" />
+                        <MudText Typo="Typo.h6" Class="feature-card-title">Role-Based Management</MudText>
+                    </div>
+                    <MudText Typo="Typo.body2" Class="feature-card-description">
+                        Sophisticated role hierarchy ensures proper workflow management. Administrators handle user creation and system configuration, while managers focus on attendance verification and approval processes.
+                    </MudText>
+                    <div class="feature-highlights">
+                        <div class="highlight-item">
+                            <MudIcon Icon="@Icons.Material.Filled.SupervisorAccount" Size="Size.Small" Color="Color.Error" />
+                            <MudText Typo="Typo.caption">Administrator</MudText>
+                        </div>
+                        <div class="highlight-item">
+                            <MudIcon Icon="@Icons.Material.Filled.ManageAccounts" Size="Size.Small" Color="Color.Warning" />
+                            <MudText Typo="Typo.caption">Manager</MudText>
+                        </div>
+                        <div class="highlight-item">
+                            <MudIcon Icon="@Icons.Material.Filled.Person" Size="Size.Small" Color="Color.Info" />
+                            <MudText Typo="Typo.caption">Employee</MudText>
+                        </div>
+                    </div>
+                </MudPaper>
+            </MudItem>
+        </MudGrid>
+    </MudPaper>
+
+    <!-- Enhanced Workflow Section -->
+    <MudPaper Class="enhanced-workflow-section" Elevation="0">
+        <div class="section-header">
+            <div class="section-divider">
+                <MudIcon Icon="@Icons.Material.Filled.Work" Class="section-icon" />
+                <MudText Typo="Typo.h5" Class="section-title">How It Works</MudText>
+            </div>
+            <MudText Typo="Typo.body1" Class="section-description">
+                Understanding the seamless workflow that powers efficient attendance management
+            </MudText>
+        </div>
+
+        <MudGrid Spacing="4" Class="workflow-grid">
+            <MudItem xs="12" md="6" lg="3">
+                <MudPaper Class="enhanced-workflow-step" Elevation="0">
+                    <div class="step-number">1</div>
+                    <MudIcon Icon="@Icons.Material.Filled.PersonAdd" Class="step-icon" Color="Color.Primary" />
+                    <MudText Typo="Typo.h6" Class="step-title">User Creation</MudText>
+                    <MudText Typo="Typo.body2" Class="step-description">
+                        Administrators create new user accounts with appropriate role assignments and department information through the comprehensive user management interface.
+                    </MudText>
+                </MudPaper>
+            </MudItem>
+
+            <MudItem xs="12" md="6" lg="3">
+                <MudPaper Class="enhanced-workflow-step" Elevation="0">
+                    <div class="step-number">2</div>
+                    <MudIcon Icon="@Icons.Material.Filled.VerifiedUser" Class="step-icon" Color="Color.Secondary" />
+                    <MudText Typo="Typo.h6" Class="step-title">Manager Approval</MudText>
+                    <MudText Typo="Typo.body2" Class="step-description">
+                        Managers review and verify new user accounts, ensuring proper authorization and confirming that all necessary information is accurate before system activation.
+                    </MudText>
+                </MudPaper>
+            </MudItem>
+
+            <MudItem xs="12" md="6" lg="3">
+                <MudPaper Class="enhanced-workflow-step" Elevation="0">
+                    <div class="step-number">3</div>
+                    <MudIcon Icon="@Icons.Material.Filled.EditCalendar" Class="step-icon" Color="Color.Info" />
+                    <MudText Typo="Typo.h6" Class="step-title">Daily Attendance</MudText>
+                    <MudText Typo="Typo.body2" Class="step-description">
+                        Employees log their daily attendance status using the intuitive calendar interface, selecting from present, absent, or remote work options for each day.
+                    </MudText>
+                </MudPaper>
+            </MudItem>
+
+            <MudItem xs="12" md="6" lg="3">
+                <MudPaper Class="enhanced-workflow-step" Elevation="0">
+                    <div class="step-number">4</div>
+                    <MudIcon Icon="@Icons.Material.Filled.Analytics" Class="step-icon" Color="Color.Success" />
+                    <MudText Typo="Typo.h6" Class="step-title">Reporting & Analysis</MudText>
+                    <MudText Typo="Typo.body2" Class="step-description">
+                        Generate comprehensive reports and analyze attendance patterns across different time periods using the flexible calendar views and advanced filtering options.
+                    </MudText>
+                </MudPaper>
+            </MudItem>
+        </MudGrid>
+    </MudPaper>
+
+    <!-- Enhanced Roles Detail Section -->
+    <MudPaper Class="enhanced-roles-section" Elevation="0">
+        <div class="section-header">
+            <div class="section-divider">
+                <MudIcon Icon="@Icons.Material.Filled.Groups" Class="section-icon" />
+                <MudText Typo="Typo.h5" Class="section-title">User Roles & Permissions</MudText>
+            </div>
+            <MudText Typo="Typo.body1" Class="section-description">
+                Detailed breakdown of user roles and their specific responsibilities within the system
+            </MudText>
+        </div>
+
+        <MudGrid Spacing="4" Class="roles-grid">
+            <MudItem xs="12" lg="4">
+                <MudPaper Class="enhanced-role-card admin-role" Elevation="0">
+                    <div class="role-card-header">
+                        <MudAvatar Color="Color.Error" Size="Size.Large" Class="role-avatar">
+                            <MudIcon Icon="@Icons.Material.Filled.SupervisorAccount" />
+                        </MudAvatar>
+                        <MudText Typo="Typo.h5" Class="role-card-title">Administrator</MudText>
+                        <MudChip T="string" Color="Color.Error" Size="Size.Small" Class="role-badge">Full Access</MudChip>
+                    </div>
+                    <MudText Typo="Typo.body1" Class="role-card-description">
+                        System administrators have complete control over the attendance management system, with the authority to manage all aspects of user accounts and system configuration.
+                    </MudText>
+                    <div class="role-permissions">
+                        <MudText Typo="Typo.subtitle2" Class="permissions-title">Key Responsibilities:</MudText>
+                        <div class="permission-item">
+                            <MudIcon Icon="@Icons.Material.Filled.PersonAdd" Size="Size.Small" Color="Color.Error" />
+                            <MudText Typo="Typo.body2">Create new user accounts</MudText>
+                        </div>
+                        <div class="permission-item">
+                            <MudIcon Icon="@Icons.Material.Filled.Edit" Size="Size.Small" Color="Color.Error" />
+                            <MudText Typo="Typo.body2">Modify user information and roles</MudText>
+                        </div>
+                        <div class="permission-item">
+                            <MudIcon Icon="@Icons.Material.Filled.Delete" Size="Size.Small" Color="Color.Error" />
+                            <MudText Typo="Typo.body2">Remove users from the system</MudText>
+                        </div>
+                        <div class="permission-item">
+                            <MudIcon Icon="@Icons.Material.Filled.Settings" Size="Size.Small" Color="Color.Error" />
+                            <MudText Typo="Typo.body2">Configure system settings</MudText>
+                        </div>
+                        <div class="permission-item">
+                            <MudIcon Icon="@Icons.Material.Filled.Security" Size="Size.Small" Color="Color.Error" />
+                            <MudText Typo="Typo.body2">Manage security and permissions</MudText>
+                        </div>
+                    </div>
+                </MudPaper>
+            </MudItem>
+
+            <MudItem xs="12" lg="4">
+                <MudPaper Class="enhanced-role-card manager-role" Elevation="0">
+                    <div class="role-card-header">
+                        <MudAvatar Color="Color.Warning" Size="Size.Large" Class="role-avatar">
+                            <MudIcon Icon="@Icons.Material.Filled.ManageAccounts" />
+                        </MudAvatar>
+                        <MudText Typo="Typo.h5" Class="role-card-title">Manager</MudText>
+                        <MudChip T="string" Color="Color.Warning" Size="Size.Small" Class="role-badge">Approval Authority</MudChip>
+                    </div>
+                    <MudText Typo="Typo.body1" Class="role-card-description">
+                        Managers serve as the verification layer in the system, responsible for reviewing and approving user accounts created by administrators before they become active.
+                    </MudText>
+                    <div class="role-permissions">
+                        <MudText Typo="Typo.subtitle2" Class="permissions-title">Key Responsibilities:</MudText>
+                        <div class="permission-item">
+                            <MudIcon Icon="@Icons.Material.Filled.VerifiedUser" Size="Size.Small" Color="Color.Warning" />
+                            <MudText Typo="Typo.body2">Approve new user accounts</MudText>
+                        </div>
+                        <div class="permission-item">
+                            <MudIcon Icon="@Icons.Material.Filled.Reviews" Size="Size.Small" Color="Color.Warning" />
+                            <MudText Typo="Typo.body2">Review user information</MudText>
+                        </div>
+                        <div class="permission-item">
+                            <MudIcon Icon="@Icons.Material.Filled.Visibility" Size="Size.Small" Color="Color.Warning" />
+                            <MudText Typo="Typo.body2">Monitor attendance records</MudText>
+                        </div>
+                        <div class="permission-item">
+                            <MudIcon Icon="@Icons.Material.Filled.Assessment" Size="Size.Small" Color="Color.Warning" />
+                            <MudText Typo="Typo.body2">Generate team reports</MudText>
+                        </div>
+                        <div class="permission-item">
+                            <MudIcon Icon="@Icons.Material.Filled.Feedback" Size="Size.Small" Color="Color.Warning" />
+                            <MudText Typo="Typo.body2">Provide attendance feedback</MudText>
+                        </div>
+                    </div>
+                </MudPaper>
+            </MudItem>
+
+            <MudItem xs="12" lg="4">
+                <MudPaper Class="enhanced-role-card employee-role" Elevation="0">
+                    <div class="role-card-header">
+                        <MudAvatar Color="Color.Info" Size="Size.Large" Class="role-avatar">
+                            <MudIcon Icon="@Icons.Material.Filled.Person" />
+                        </MudAvatar>
+                        <MudText Typo="Typo.h5" Class="role-card-title">Employee</MudText>
+                        <MudChip T="string" Color="Color.Info" Size="Size.Small" Class="role-badge">Self-Service</MudChip>
+                    </div>
+                    <MudText Typo="Typo.body1" Class="role-card-description">
+                        Employees are the primary users of the attendance tracking features, with the ability to manage their own attendance records and view their historical data.
+                    </MudText>
+                    <div class="role-permissions">
+                        <MudText Typo="Typo.subtitle2" Class="permissions-title">Key Responsibilities:</MudText>
+                        <div class="permission-item">
+                            <MudIcon Icon="@Icons.Material.Filled.EditCalendar" Size="Size.Small" Color="Color.Info" />
+                            <MudText Typo="Typo.body2">Log daily attendance</MudText>
+                        </div>
+                        <div class="permission-item">
+                            <MudIcon Icon="@Icons.Material.Filled.History" Size="Size.Small" Color="Color.Info" />
+                            <MudText Typo="Typo.body2">View attendance history</MudText>
+                        </div>
+                        <div class="permission-item">
+                            <MudIcon Icon="@Icons.Material.Filled.Update" Size="Size.Small" Color="Color.Info" />
+                            <MudText Typo="Typo.body2">Update attendance status</MudText>
+                        </div>
+                        <div class="permission-item">
+                            <MudIcon Icon="@Icons.Material.Filled.CalendarViewMonth" Size="Size.Small" Color="Color.Info" />
+                            <MudText Typo="Typo.body2">Access calendar views</MudText>
+                        </div>
+                        <div class="permission-item">
+                            <MudIcon Icon="@Icons.Material.Filled.AccountCircle" Size="Size.Small" Color="Color.Info" />
+                            <MudText Typo="Typo.body2">Manage personal profile</MudText>
+                        </div>
+                    </div>
+                </MudPaper>
+            </MudItem>
+        </MudGrid>
+    </MudPaper>
+
+    <!-- Enhanced Calendar Views Section -->
+    <MudPaper Class="enhanced-calendar-section" Elevation="0">
+        <div class="section-header">
+            <div class="section-divider">
+                <MudIcon Icon="@Icons.Material.Filled.CalendarViewMonth" Class="section-icon" />
+                <MudText Typo="Typo.h5" Class="section-title">Calendar Views</MudText>
+            </div>
+            <MudText Typo="Typo.body1" Class="section-description">
+                Explore the three comprehensive calendar views designed to meet different attendance tracking and analysis needs
+            </MudText>
+        </div>
+
+        <MudGrid Spacing="4" Class="calendar-views-grid">
+            <MudItem xs="12" md="4">
+                <MudPaper Class="enhanced-calendar-view-card" Elevation="0">
+                    <div class="calendar-view-header">
+                        <MudIcon Icon="@Icons.Material.Filled.Today" Class="calendar-view-icon" Color="Color.Primary" />
+                        <MudText Typo="Typo.h6" Class="calendar-view-title">Daily View</MudText>
+                    </div>
+                    <MudText Typo="Typo.body1" Class="calendar-view-description">
+                        The daily view provides detailed, hour-by-hour attendance tracking for precise time management. Perfect for monitoring specific work periods, break times, and overtime hours.
+                    </MudText>
+                    <div class="calendar-view-features">
+                        <div class="feature-tag">
+                            <MudIcon Icon="@Icons.Material.Filled.Schedule" Size="Size.Small" />
+                            <MudText Typo="Typo.caption">Hour-by-hour tracking</MudText>
+                        </div>
+                        <div class="feature-tag">
+                            <MudIcon Icon="@Icons.Material.Filled.Timeline" Size="Size.Small" />
+                            <MudText Typo="Typo.caption">Time period analysis</MudText>
+                        </div>
+                        <div class="feature-tag">
+                            <MudIcon Icon="@Icons.Material.Filled.AccessTime" Size="Size.Small" />
+                            <MudText Typo="Typo.caption">Break time monitoring</MudText>
+                        </div>
+                    </div>
+                </MudPaper>
+            </MudItem>
+
+            <MudItem xs="12" md="4">
+                <MudPaper Class="enhanced-calendar-view-card" Elevation="0">
+                    <div class="calendar-view-header">
+                        <MudIcon Icon="@Icons.Material.Filled.DateRange" Class="calendar-view-icon" Color="Color.Secondary" />
+                        <MudText Typo="Typo.h6" Class="calendar-view-title">Monthly View</MudText>
+                    </div>
+                    <MudText Typo="Typo.body1" Class="calendar-view-description">
+                        The monthly view offers a comprehensive overview of attendance patterns across an entire month, ideal for planning, scheduling, and identifying trends in work attendance.
+                    </MudText>
+                    <div class="calendar-view-features">
+                        <div class="feature-tag">
+                            <MudIcon Icon="@Icons.Material.Filled.ViewModule" Size="Size.Small" />
+                            <MudText Typo="Typo.caption">Monthly overview</MudText>
+                        </div>
+                        <div class="feature-tag">
+                            <MudIcon Icon="@Icons.Material.Filled.TrendingUp" Size="Size.Small" />
+                            <MudText Typo="Typo.caption">Pattern recognition</MudText>
+                        </div>
+                        <div class="feature-tag">
+                            <MudIcon Icon="@Icons.Material.Filled.EventNote" Size="Size.Small" />
+                            <MudText Typo="Typo.caption">Planning assistance</MudText>
+                        </div>
+                    </div>
+                </MudPaper>
+            </MudItem>
+
+            <MudItem xs="12" md="4">
+                <MudPaper Class="enhanced-calendar-view-card" Elevation="0">
+                    <div class="calendar-view-header">
+                        <MudIcon Icon="@Icons.Material.Filled.Event" Class="calendar-view-icon" Color="Color.Info" />
+                        <MudText Typo="Typo.h6" Class="calendar-view-title">Yearly View</MudText>
+                    </div>
+                    <MudText Typo="Typo.body1" Class="calendar-view-description">
+                        The yearly view enables long-term attendance analysis and strategic planning, providing insights into annual patterns, seasonal trends, and overall workforce productivity.
+                    </MudText>
+                    <div class="calendar-view-features">
+                        <div class="feature-tag">
+                            <MudIcon Icon="@Icons.Material.Filled.BarChart" Size="Size.Small" />
+                            <MudText Typo="Typo.caption">Annual analysis</MudText>
+                        </div>
+                        <div class="feature-tag">
+                            <MudIcon Icon="@Icons.Material.Filled.Insights" Size="Size.Small" />
+                            <MudText Typo="Typo.caption">Strategic insights</MudText>
+                        </div>
+                        <div class="feature-tag">
+                            <MudIcon Icon="@Icons.Material.Filled.Assessment" Size="Size.Small" />
+                            <MudText Typo="Typo.caption">Performance metrics</MudText>
+                        </div>
+                    </div>
+                </MudPaper>
+            </MudItem>
+        </MudGrid>
+    </MudPaper>
+
+    <!-- Enhanced Call-to-Action Section -->
+    <MudPaper Class="enhanced-cta-section" Elevation="0">
+        <div class="cta-content">
+            <MudIcon Icon="@Icons.Material.Filled.RocketLaunch"
+                     Class="cta-icon"
+                     Size="Size.Large" />
+            <MudText Typo="Typo.h4" Class="cta-title">
+                Ready to Get Started?
+            </MudText>
+            <MudText Typo="Typo.body1" Class="cta-description">
+                Join thousands of organizations already using our attendance management system to streamline their workforce operations and improve productivity.
+            </MudText>
+            <MudStack Row Spacing="3" Class="cta-buttons" Justify="Justify.Center">
+                <MudButton Variant="Variant.Filled"
+                           Color="Color.Primary"
+                           Size="Size.Large"
+                           StartIcon="@Icons.Material.Filled.Login"
+                           Href="/login"
+                           Class="enhanced-primary-cta">
+                    Sign In Now
+                </MudButton>
+                <MudButton Variant="Variant.Outlined"
+                           Color="Color.Primary"
+                           Size="Size.Large"
+                           StartIcon="@Icons.Material.Filled.Info"
+                           Href="#features"
+                           Class="enhanced-secondary-cta">
+                    Learn More
+                </MudButton>
+            </MudStack>
+        </div>
+        <div class="cta-decoration"></div>
+    </MudPaper>
+</MudContainer>
+
+<style>
+    /* Enhanced Container */
+    .enhanced-welcome-container {
+        padding: 0;
+        background: linear-gradient(135deg, var(--mud-palette-background) 0%, var(--mud-palette-surface) 100%);
+        min-height: 100vh;
+    }
+
+    /* Enhanced Hero Section */
+    .enhanced-hero-section {
+        background: linear-gradient(135deg, var(--mud-palette-primary) 0%, var(--mud-palette-secondary) 100%);
+        padding: 80px 24px 60px 24px;
+        margin-bottom: 40px;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero-icon {
+        color: rgba(255, 255, 255, 0.9) !important;
+        margin-bottom: 24px;
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+        font-size: 4rem !important;
+    }
+
+    .hero-title {
+        color: white !important;
+        font-weight: 800 !important;
+        margin-bottom: 16px !important;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        line-height: 1.2;
+    }
+
+    .hero-subtitle {
+        color: rgba(255, 255, 255, 0.9) !important;
+        font-weight: 500 !important;
+        margin-bottom: 20px !important;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .hero-description {
+        color: rgba(255, 255, 255, 0.85) !important;
+        font-weight: 400 !important;
+        margin-bottom: 32px !important;
+        line-height: 1.6;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-decoration {
+        position: absolute;
+        top: -30%;
+        right: -15%;
+        width: 400px;
+        height: 400px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        z-index: 1;
+    }
+
+        .hero-decoration::before {
+            content: '';
+            position: absolute;
+            top: 25%;
+            left: 25%;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+    /* Enhanced CTA Button */
+    .enhanced-cta-button {
+        border-radius: 50px !important;
+        font-weight: 700 !important;
+        text-transform: none !important;
+        letter-spacing: 1px !important;
+        padding: 16px 40px !important;
+        font-size: 1.1rem !important;
+        background: rgba(255, 255, 255, 0.2) !important;
+        color: white !important;
+        border: 2px solid rgba(255, 255, 255, 0.3) !important;
+        backdrop-filter: blur(10px) !important;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+
+        .enhanced-cta-button:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.3) !important;
+            border-color: rgba(255, 255, 255, 0.5) !important;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2) !important;
+        }
+
+    /* Section Styling */
+    .enhanced-features-overview,
+    .enhanced-workflow-section,
+    .enhanced-roles-section,
+    .enhanced-calendar-section {
+        padding: 60px 24px;
+        margin-bottom: 40px;
+        background-color: var(--mud-palette-surface);
+    }
+
+    .enhanced-cta-section {
+        background: linear-gradient(135deg, var(--mud-palette-primary) 0%, var(--mud-palette-secondary) 100%);
+        padding: 80px 24px;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    /* Section Headers */
+    .section-header {
+        text-align: center;
+        margin-bottom: 48px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .section-divider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 3px solid var(--mud-palette-primary);
+        position: relative;
+    }
+
+        .section-divider::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--mud-palette-secondary);
+        }
+
+    .section-icon {
+        color: var(--mud-palette-primary) !important;
+        margin-right: 16px;
+        font-size: 2rem !important;
+    }
+
+    .section-title {
+        color: var(--mud-palette-text-primary) !important;
+        font-weight: 700 !important;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .section-description {
+        color: var(--mud-palette-text-secondary) !important;
+        line-height: 1.6;
+        font-size: 1.1rem;
+    }
+
+    /* Enhanced Feature Cards */
+    .enhanced-feature-card {
+        background: linear-gradient(135deg, var(--mud-palette-surface) 0%, rgba(25, 118, 210, 0.02) 100%);
+        border-radius: 20px;
+        padding: 32px 24px;
+        height: 100%;
+        border: 1px solid var(--mud-palette-lines-default);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+    }
+
+        .enhanced-feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+            border-color: var(--mud-palette-primary);
+        }
+
+    .feature-card-header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .feature-card-icon {
+        font-size: 3rem !important;
+        margin-bottom: 16px;
+    }
+
+    .feature-card-title {
+        color: var(--mud-palette-text-primary) !important;
+        font-weight: 600 !important;
+        margin-bottom: 12px !important;
+    }
+
+    .feature-card-description {
+        color: var(--mud-palette-text-secondary) !important;
+        line-height: 1.6;
+        margin-bottom: 24px;
+        text-align: center;
+    }
+
+    .feature-highlights {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .highlight-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        padding: 8px;
+        border-radius: 8px;
+        background: rgba(25, 118, 210, 0.05);
+        min-width: 80px;
+    }
+
+    /* Enhanced Workflow Steps */
+    .enhanced-workflow-step {
+        background: linear-gradient(135deg, var(--mud-palette-surface) 0%, rgba(156, 39, 176, 0.02) 100%);
+        border-radius: 20px;
+        padding: 32px 24px;
+        text-align: center;
+        height: 100%;
+        border: 1px solid var(--mud-palette-lines-default);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+    }
+
+        .enhanced-workflow-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+    .step-number {
+        position: absolute;
+        top: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, var(--mud-palette-primary), var(--mud-palette-secondary));
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 1.2rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .step-icon {
+        font-size: 2.5rem !important;
+        margin: 20px 0 16px 0;
+    }
+
+    .step-title {
+        color: var(--mud-palette-text-primary) !important;
+        font-weight: 600 !important;
+        margin-bottom: 12px !important;
+    }
+
+    .step-description {
+        color: var(--mud-palette-text-secondary) !important;
+        line-height: 1.5;
+    }
+
+    /* Enhanced Role Cards */
+    .enhanced-role-card {
+        border-radius: 20px;
+        padding: 32px 24px;
+        height: 100%;
+        border: 2px solid var(--mud-palette-lines-default);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .admin-role {
+        background: linear-gradient(135deg, var(--mud-palette-surface) 0%, rgba(244, 67, 54, 0.03) 100%);
+    }
+
+    .manager-role {
+        background: linear-gradient(135deg, var(--mud-palette-surface) 0%, rgba(255, 152, 0, 0.03) 100%);
+    }
+
+    .employee-role {
+        background: linear-gradient(135deg, var(--mud-palette-surface) 0%, rgba(33, 150, 243, 0.03) 100%);
+    }
+
+    .enhanced-role-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .role-card-header {
+        text-align: center;
+        margin-bottom: 24px;
+    }
+
+    .role-avatar {
+        margin-bottom: 16px;
+    }
+
+    .role-card-title {
+        color: var(--mud-palette-text-primary) !important;
+        font-weight: 700 !important;
+        margin-bottom: 8px !important;
+    }
+
+    .role-badge {
+        margin-bottom: 16px;
+    }
+
+    .role-card-description {
+        color: var(--mud-palette-text-secondary) !important;
+        line-height: 1.6;
+        margin-bottom: 24px;
+        text-align: center;
+    }
+
+    .role-permissions {
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 12px;
+        padding: 20px;
+    }
+
+    .permissions-title {
+        color: var(--mud-palette-text-primary) !important;
+        font-weight: 600 !important;
+        margin-bottom: 16px !important;
+        text-align: center;
+    }
+
+    .permission-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+        padding: 8px 0;
+    }
+
+        .permission-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .permission-item .mud-icon {
+            margin-right: 12px !important;
+        }
+
+        .permission-item .mud-text {
+            color: var(--mud-palette-text-primary) !important;
+            font-weight: 500 !important;
+        }
+
+    /* Enhanced Calendar View Cards */
+    .enhanced-calendar-view-card {
+        background: linear-gradient(135deg, var(--mud-palette-surface) 0%, rgba(25, 118, 210, 0.02) 100%);
+        border-radius: 20px;
+        padding: 32px 24px;
+        height: 100%;
+        border: 1px solid var(--mud-palette-lines-default);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+        .enhanced-calendar-view-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            border-color: var(--mud-palette-primary);
+        }
+
+    .calendar-view-header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .calendar-view-icon {
+        font-size: 2.5rem !important;
+        margin-bottom: 12px;
+    }
+
+    .calendar-view-title {
+        color: var(--mud-palette-text-primary) !important;
+        font-weight: 600 !important;
+        margin-bottom: 16px !important;
+    }
+
+    .calendar-view-description {
+        color: var(--mud-palette-text-secondary) !important;
+        line-height: 1.6;
+        margin-bottom: 24px;
+        text-align: center;
+    }
+
+    .calendar-view-features {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .feature-tag {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        background: rgba(25, 118, 210, 0.08);
+        border-radius: 20px;
+        border: 1px solid rgba(25, 118, 210, 0.2);
+    }
+
+        .feature-tag .mud-icon {
+            color: var(--mud-palette-primary) !important;
+        }
+
+        .feature-tag .mud-text {
+            color: var(--mud-palette-text-primary) !important;
+            font-weight: 500 !important;
+        }
+
+    /* Enhanced CTA Section */
+    .cta-content {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .cta-icon {
+        color: rgba(255, 255, 255, 0.9) !important;
+        margin-bottom: 24px;
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+        font-size: 4rem !important;
+    }
+
+    .cta-title {
+        color: white !important;
+        font-weight: 800 !important;
+        margin-bottom: 16px !important;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .cta-description {
+        color: rgba(255, 255, 255, 0.85) !important;
+        font-weight: 400 !important;
+        margin-bottom: 32px !important;
+        line-height: 1.6;
+        font-size: 1.1rem;
+    }
+
+    .cta-buttons {
+        margin-top: 32px;
+    }
+
+    .enhanced-primary-cta {
+        border-radius: 50px !important;
+        font-weight: 700 !important;
+        text-transform: none !important;
+        letter-spacing: 1px !important;
+        padding: 16px 40px !important;
+        font-size: 1.1rem !important;
+        background: rgba(255, 255, 255, 0.2) !important;
+        color: white !important;
+        border: 2px solid rgba(255, 255, 255, 0.3) !important;
+        backdrop-filter: blur(10px) !important;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+
+        .enhanced-primary-cta:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.3) !important;
+            border-color: rgba(255, 255, 255, 0.5) !important;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2) !important;
+        }
+
+    .enhanced-secondary-cta {
+        border-radius: 50px !important;
+        font-weight: 600 !important;
+        text-transform: none !important;
+        letter-spacing: 1px !important;
+        padding: 16px 40px !important;
+        font-size: 1.1rem !important;
+        color: white !important;
+        border: 2px solid rgba(255, 255, 255, 0.5) !important;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+
+        .enhanced-secondary-cta:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.1) !important;
+            border-color: white !important;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2) !important;
+        }
+
+    .cta-decoration {
+        position: absolute;
+        top: -30%;
+        left: -15%;
+        width: 400px;
+        height: 400px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        z-index: 1;
+    }
+
+        .cta-decoration::before {
+            content: '';
+            position: absolute;
+            top: 25%;
+            right: 25%;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+    /* Responsive Design */
+   
+
+    }
+
+   
+
+    .enhanced-feature-card,
+    .enhanced-workflow-step,
+    .enhanced-role-card,
+    .enhanced-calendar-view-card {
+        animation: fadeInUp 0.6s ease-out;
+    }
+
+    .enhanced-hero-section {
+        animation: fadeInUp 0.4s ease-out;
+    }
+</style>
+

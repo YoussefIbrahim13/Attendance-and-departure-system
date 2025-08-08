@@ -1,4 +1,4 @@
-﻿@page "/admin/edit-user/{userId}"
+﻿@page "/admin/edit-user/{UserId}"
 @attribute [Authorize(Roles = "Admin")]
 @using System.Net.Http.Headers
 
@@ -8,8 +8,20 @@
 @inject ILocalStorageService LocalStorage
 @inject AuthenticationStateProvider AuthStateProvider
 
-<MudContainer MaxWidth="MaxWidth.Large" Class="mt-4">
-    <MudText Typo="Typo.h4" GutterBottom="true">Edit User</MudText>
+<MudContainer MaxWidth="MaxWidth.ExtraExtraLarge" Class="mt-6">
+    <!-- Header Section -->
+    <MudStack Row Justify="Justify.SpaceBetween" AlignItems="AlignItems.Center" Class="mb-4">
+        <MudText Typo="Typo.h4" Class="fw-bold">Edit User</MudText>
+        <MudStack Row Spacing="2">
+            <MudButton Variant="Variant.Outlined"
+                       Color="Color.Default"
+                       OnClick="Cancel"
+                       Disabled="@isLoading"
+                       StartIcon="@Icons.Material.Filled.ArrowBack">
+                Back to Users
+            </MudButton>
+        </MudStack>
+    </MudStack>
 
     @if (!string.IsNullOrEmpty(errorMessage))
     {
@@ -18,9 +30,10 @@
 
     @if (isLoading)
     {
-        <MudContainer Class="d-flex justify-center my-4">
+        <MudStack AlignItems="AlignItems.Center" Class="mt-8">
             <MudProgressCircular Color="Color.Primary" Indeterminate="true" />
-        </MudContainer>
+            <MudText Typo="Typo.body1">Loading user data...</MudText>
+        </MudStack>
     }
     else if (user == null)
     {
@@ -28,67 +41,132 @@
     }
     else
     {
-        <MudPaper Class="pa-4" Elevation="2">
-            <EditForm Model="user" OnValidSubmit="HandleSave">
-                <DataAnnotationsValidator />
-                <MudGrid>
-                    <MudItem xs="12" sm="6">
-                        <MudTextField Label="Name" @bind-Value="user.Name" 
-                                    Required="true" 
-                                    RequiredError="Name is required"
-                                    Variant="Variant.Outlined" />
-                        <ValidationMessage For="@(() => user.Name)" />
-                    </MudItem>
+        <EditForm Model="user" OnValidSubmit="HandleSave">
+            <DataAnnotationsValidator />
 
-                    <MudItem xs="12" sm="6">
-                        <MudTextField Label="Email" @bind-Value="user.Email" 
-                                    Required="true" 
-                                    RequiredError="Email is required"
-                                    Variant="Variant.Outlined" />
-                        <ValidationMessage For="@(() => user.Email)" />
-                    </MudItem>
+            <!-- Personal Information Card -->
+            <MudCard Class="mb-4">
+                <MudCardHeader>
+                    <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                        <MudIcon Icon="@Icons.Material.Filled.Person" Color="Color.Primary" />
+                        <MudText Typo="Typo.h6" Class="mb-0">Personal Information</MudText>
+                    </MudStack>
+                </MudCardHeader>
+                <MudCardContent>
+                    <MudGrid Spacing="3">
+                        <MudItem xs="12" sm="6">
+                            <MudTextField Label="Name"
+                                          @bind-Value="user.Name"
+                                          Required="true"
+                                          RequiredError="Name is required"
+                                          Variant="Variant.Outlined"
+                                          Adornment="Adornment.Start"
+                                          AdornmentIcon="@Icons.Material.Filled.Badge" />
+                            <ValidationMessage For="@(() => user.Name)" />
+                        </MudItem>
 
-                    <MudItem xs="12" sm="6">
-                        <MudTextField Label="Department" @bind-Value="user.Department" 
-                                    Variant="Variant.Outlined" />
-                    </MudItem>
+                        <MudItem xs="12" sm="6">
+                            <MudTextField Label="Email"
+                                          @bind-Value="user.Email"
+                                          Required="true"
+                                          RequiredError="Email is required"
+                                          Variant="Variant.Outlined"
+                                          Adornment="Adornment.Start"
+                                          AdornmentIcon="@Icons.Material.Filled.Email" />
+                            <ValidationMessage For="@(() => user.Email)" />
+                        </MudItem>
+                    </MudGrid>
+                </MudCardContent>
+            </MudCard>
 
-                    <MudItem xs="12" sm="6">
-                        <MudTextField Label="Position" @bind-Value="user.Position" 
-                                    Variant="Variant.Outlined" />
-                    </MudItem>
+            <!-- Work Information Card -->
+            <MudCard Class="mb-4">
+                <MudCardHeader>
+                    <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                        <MudIcon Icon="@Icons.Material.Filled.Work" Color="Color.Primary" />
+                        <MudText Typo="Typo.h6" Class="mb-0">Work Information</MudText>
+                    </MudStack>
+                </MudCardHeader>
+                <MudCardContent>
+                    <MudGrid Spacing="3">
+                        <MudItem xs="12" sm="6">
+                            <MudTextField Label="Department"
+                                          @bind-Value="user.Department"
+                                          Variant="Variant.Outlined"
+                                          Adornment="Adornment.Start"
+                                          AdornmentIcon="@Icons.Material.Filled.Business" />
+                        </MudItem>
 
-                    <MudItem xs="12" Class="d-flex align-center gap-2">
-                        <MudTooltip Text="@(user.IsApproved ? "Click to revoke approval" : "Click to approve this user")">
-                            <MudToggleIconButton @bind-Toggled="user.IsApproved"
-                                                 Icon="@Icons.Material.Filled.Close"
-                                                 Color="@Color.Error"
-                                                 ToggledIcon="@Icons.Material.Filled.Check"
-                                                 ToggledColor="@Color.Success"
-                                                 Disabled="@isLoading" />
-                        </MudTooltip>
+                        <MudItem xs="12" sm="6">
+                            <MudTextField Label="Position"
+                                          @bind-Value="user.Position"
+                                          Variant="Variant.Outlined"
+                                          Adornment="Adornment.Start"
+                                          AdornmentIcon="@Icons.Material.Filled.Assignment" />
+                        </MudItem>
+                    </MudGrid>
+                </MudCardContent>
+            </MudCard>
 
-                        <MudText Typo="Typo.body2">
-                            Status:
-                            <MudBadge Color="@(user.IsApproved? Color.Success: Color.Error)"
-                                      Class="ml-1"
-                                      Variant="Variant.Filled">
-                                @(user.IsApproved ? "Approved" : "Pending Approval")
-                            </MudBadge>
-                        </MudText>
-                    </MudItem>
+            <!-- Account Status Card -->
+            <MudCard Class="mb-4">
+                <MudCardHeader>
+                    <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                        <MudIcon Icon="@Icons.Material.Filled.Security" Color="Color.Primary" />
+                        <MudText Typo="Typo.h6" Class="mb-0">Account Status</MudText>
+                    </MudStack>
+                </MudCardHeader>
+                <MudCardContent>
+                    <MudGrid Spacing="3">
+                        <MudItem xs="12">
+                            <MudStack Row AlignItems="AlignItems.Center" Spacing="3">
+                                <MudTooltip Text="@(user.IsApproved ? "Click to revoke approval" : "Click to approve this user")">
+                                    <MudToggleIconButton @bind-Toggled="@user.IsApproved"
+                                                         Icon="@Icons.Material.Filled.Close"
+                                                         Color="@Color.Error"
+                                                         ToggledIcon="@Icons.Material.Filled.Check"
+                                                         ToggledColor="@Color.Success"
+                                                         Disabled="@isLoading"
+                                                         Size="Size.Large"
+                                                         Title="@(user.IsApproved ? "Approved" : "Not Approved")" />
+                                </MudTooltip>
 
-                    <MudItem xs="12" Class="d-flex justify-end gap-2">
-                        <MudButton Variant="Variant.Outlined" 
-                                 Color="Color.Default" 
-                                 OnClick="Cancel" 
-                                 Disabled="@isLoading">
+                                <MudStack Spacing="1">
+                                    <MudText Typo="Typo.body1" Class="fw-bold">
+                                        Status: @(user.IsApproved ? "Approved" : "Pending Approval")
+                                    </MudText>
+                                    <MudChip T="string"
+                                             Color="@(user.IsApproved ? Color.Success : Color.Warning)"
+                                             Variant="Variant.Filled"
+                                             Size="Size.Small">
+                                        <MudIcon Icon="@(user.IsApproved? Icons.Material.Filled.CheckCircle : Icons.Material.Filled.Schedule)"
+                                                 Size="Size.Small"
+                                                 Class="mr-1" />
+                                        @(user.IsApproved ? "Active Account" : "Awaiting Approval")
+                                    </MudChip>
+                                </MudStack>
+                            </MudStack>
+                        </MudItem>
+                    </MudGrid>
+                </MudCardContent>
+            </MudCard>
+
+            <!-- Action Buttons -->
+            <MudCard>
+                <MudCardContent>
+                    <MudStack Row Spacing="2" Justify="Justify.FlexEnd">
+                        <MudButton Variant="Variant.Outlined"
+                                   Color="Color.Default"
+                                   OnClick="Cancel"
+                                   Disabled="@isLoading"
+                                   StartIcon="@Icons.Material.Filled.Close">
                             Cancel
                         </MudButton>
-                        <MudButton ButtonType="ButtonType.Submit" 
-                                 Variant="Variant.Filled" 
-                                 Color="Color.Primary" 
-                                 Disabled="@isLoading">
+                        <MudButton ButtonType="ButtonType.Submit"
+                                   Variant="Variant.Filled"
+                                   Color="Color.Primary"
+                                   Disabled="@isLoading"
+                                   StartIcon="@Icons.Material.Filled.Save">
                             @if (isLoading)
                             {
                                 <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
@@ -99,12 +177,40 @@
                                 <MudText>Save Changes</MudText>
                             }
                         </MudButton>
-                    </MudItem>
-                </MudGrid>
-            </EditForm>
-        </MudPaper>
+                    </MudStack>
+                </MudCardContent>
+            </MudCard>
+        </EditForm>
     }
 </MudContainer>
+
+<style>
+    .mud-card {
+        border-radius: 8px;
+        border: 1px solid var(--mud-palette-lines-default);
+    }
+
+    .mud-card-header {
+        padding: 16px 24px 8px 24px;
+        border-bottom: 1px solid var(--mud-palette-divider);
+    }
+
+    .mud-card-content {
+        padding: 16px 24px 24px 24px;
+    }
+
+    .mud-input-outlined-border {
+        border-radius: 4px;
+    }
+
+    .mud-chip {
+        font-size: 0.75rem;
+    }
+
+    .fw-bold {
+        font-weight: 600 !important;
+    }
+</style>
 
 @code {
     [Parameter]
@@ -249,7 +355,5 @@
     private string originalDepartment;
     private string originalPosition;
     private bool originalIsApproved;
-
-   
 }
 

@@ -1,5 +1,10 @@
 ﻿@inherits LayoutComponentBase
+@implements IDisposable
 @using MudBlazor
+@inject NavigationManager Navigation
+@inject AuthenticationStateProvider AuthStateProvider
+@inject AuthService AuthService
+@inject ILocalStorageService LocalStorage
 
 <!-- Required Providers -->
 <MudThemeProvider @bind-IsDarkMode="_isDarkMode" Theme="MyCustomTheme" />
@@ -8,9 +13,8 @@
 <MudSnackbarProvider />
 
 <MudLayout>
-
     <!-- Top App Bar -->
-    <MudAppBar Elevation="4" Dense="true" Class="px-4">
+    <MudAppBar Elevation="4" Dense="true" Class="px-4 appbar-gradient">
         <MudIconButton Icon="@Icons.Material.Filled.Menu"
                        Color="Color.Inherit"
                        Edge="Edge.Start"
@@ -19,6 +23,16 @@
 
         <MudSpacer />
 
+
+        @if (_isAuthenticated && !string.IsNullOrEmpty(_currentUser?.Name))
+        {
+            <MudText Typo="Typo.subtitle1" Class="me-3">Hello, @_currentUser.Name 👋</MudText>
+        }
+        <MudButton Variant="Variant.Outlined"
+                   Color="Color.Inherit"
+                   OnClick="@OnLoginLogoutClick">
+            @(_isAuthenticated ? "Logout" : "Login")
+        </MudButton>
         <MudToggleIconButton @bind-Toggled="_isDarkMode"
                              Icon="@Icons.Material.Filled.DarkMode"
                              ToggledIcon="@Icons.Material.Filled.WbSunny"
@@ -28,7 +42,7 @@
     </MudAppBar>
 
     <!-- Side Drawer -->
-    <MudDrawer @bind-Open="_drawerOpen" Elevation="1" ClipMode="DrawerClipMode.Always" Class="mt-appbar">
+    <MudDrawer @bind-Open="@_drawerOpen">
         <NavMenu />
     </MudDrawer>
 
@@ -36,14 +50,76 @@
     <MudMainContent Class="mt-appbar p-4">
         @Body
     </MudMainContent>
-
 </MudLayout>
+
+<style>
+    .appbar-gradient {
+        background: linear-gradient(135deg, var(--mud-palette-primary) 0%, var(--mud-palette-secondary) 100%);
+        color: white;
+    }
+</style>
 
 @code {
     private bool _drawerOpen = true;
     private bool _isDarkMode;
+    private bool _isAuthenticated;
+    private UserInfo _currentUser;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadAuthState();
+        ((JwtAuthenticationStateProvider)AuthStateProvider).AuthenticationStateChanged += OnAuthenticationStateChanged;
+    }
+
+    private async Task LoadAuthState()
+    {
+        try
+        {
+            var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+            _isAuthenticated = authState.User.Identity?.IsAuthenticated ?? false;
+
+            if (_isAuthenticated)
+            {
+                _currentUser = await AuthService.GetCurrentUser();
+            }
+            else
+            {
+                _currentUser = null;
+            }
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading auth state: {ex.Message}");
+        }
+    }
+
+    private async void OnAuthenticationStateChanged(Task<AuthenticationState> task)
+    {
+        await LoadAuthState();
+    }
 
     private void DrawerToggle() => _drawerOpen = !_drawerOpen;
+
+    private async Task OnLoginLogoutClick()
+    {
+        if (_isAuthenticated)
+        {
+            await AuthService.Logout();
+            _isAuthenticated = false;
+            _currentUser = null;
+            Navigation.NavigateTo("/", forceLoad: true);
+        }
+        else
+        {
+            Navigation.NavigateTo("/Login");
+        }
+    }
+
+    public void Dispose()
+    {
+        ((JwtAuthenticationStateProvider)AuthStateProvider).AuthenticationStateChanged -= OnAuthenticationStateChanged;
+    }
 
     MudTheme MyCustomTheme = new MudTheme()
     {

@@ -94,11 +94,11 @@ namespace AttendanceSystem.Auth.API.Services
             }
         }
 
-        public async Task<CurrentUserDto> GetCurrentUser()
+        public async Task<UserInfo> GetCurrentUser()
         {
             try
             {
-                // 1. Get token from storage (use localStorage only)
+                // 1. Get token from storage
                 var token = await _localStorage.GetItemAsync<string>("authToken");
                 if (string.IsNullOrEmpty(token))
                 {
@@ -107,23 +107,23 @@ namespace AttendanceSystem.Auth.API.Services
                         return null;
                 }
 
-                // 2. Manually attach the token to the request
+                // 2. Create request
                 var request = new HttpRequestMessage(HttpMethod.Get, "api/auth/currentuser");
                 request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-                // 3. Send the request
+                // 3. Send
                 var response = await _http.SendAsync(request);
-
                 if (!response.IsSuccessStatusCode)
                     return null;
 
-                // 4. Deserialize the response
-                return await response.Content.ReadFromJsonAsync<CurrentUserDto>();
+                // 4. Deserialize to UserInfo
+                return await response.Content.ReadFromJsonAsync<UserInfo>();
             }
             catch
             {
                 return null;
             }
         }
+
     }
 }

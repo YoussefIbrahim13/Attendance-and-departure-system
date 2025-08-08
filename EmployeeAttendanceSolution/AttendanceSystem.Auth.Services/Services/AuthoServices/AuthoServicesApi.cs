@@ -81,45 +81,51 @@ namespace AttendanceSystem.Auth.API.Services.Services.AuthoServices
                 signingCredentials: new SigningCredentials(
                     authSigningKey, SecurityAlgorithms.HmacSha256));
         }
-        public async Task<UserInfo> GetCurrentUser(ClaimsPrincipal userPrincipal)
+        public async Task<UserInfo?> GetCurrentUserAsync(ClaimsPrincipal userPrincipal)
         {
             try
             {
-                Console.WriteLine("GetCurrentUser started");
+                Console.WriteLine("🔍 GetCurrentUserAsync started");
 
                 if (userPrincipal?.Identity?.IsAuthenticated != true)
                 {
-                    Console.WriteLine("User not authenticated");
+                    Console.WriteLine("❌ User not authenticated");
                     return null;
                 }
 
                 // Log all claims
-                Console.WriteLine("User Claims:");
+                Console.WriteLine("📜 User Claims:");
                 foreach (var claim in userPrincipal.Claims)
                 {
                     Console.WriteLine($"{claim.Type}: {claim.Value}");
                 }
 
                 var email = userPrincipal.FindFirstValue(ClaimTypes.Email);
-                Console.WriteLine($"Looking up user by email: {email}");
+                if (string.IsNullOrEmpty(email))
+                {
+                    Console.WriteLine("⚠ No email claim found");
+                    return null;
+                }
+
+                Console.WriteLine($"🔎 Looking up user by email: {email}");
 
                 var user = await _userManager.FindByEmailAsync(email);
                 if (user == null)
                 {
-                    Console.WriteLine($"User with email {email} not found in database");
+                    Console.WriteLine($"❌ User with email {email} not found in database");
                     return null;
                 }
 
-                Console.WriteLine($"User found: {user.UserName}, IsApproved: {user.IsApproved}");
+                Console.WriteLine($"✅ User found: {user.UserName}, IsApproved: {user.IsApproved}");
 
                 if (!user.IsApproved)
                 {
-                    Console.WriteLine("User not approved");
+                    Console.WriteLine("⚠ User not approved");
                     return null;
                 }
 
                 var roles = await _userManager.GetRolesAsync(user);
-                Console.WriteLine($"User roles: {string.Join(", ", roles)}");
+                Console.WriteLine($"👤 User roles: {string.Join(", ", roles)}");
 
                 return new UserInfo
                 {
@@ -127,14 +133,16 @@ namespace AttendanceSystem.Auth.API.Services.Services.AuthoServices
                     UserName = user.UserName,
                     Email = user.Email,
                     Name = user.Name,
-                    Roles = roles.ToList()
+                    Roles = roles
                 };
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error in GetCurrentUser: {ex}");
+                Console.WriteLine($"💥 Error in GetCurrentUserAsync: {ex}");
                 return null;
             }
         }
+
+
     }
 }

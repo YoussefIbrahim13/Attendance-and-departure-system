@@ -9,109 +9,528 @@
 @inject AuthenticationStateProvider AuthStateProvider
 @inject IDialogService DialogService
 
-<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-16 px-4">
-    <MudText Typo="Typo.h4" GutterBottom="true">User Management</MudText>
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="enhanced-admin-container">
+    <!-- Enhanced Header Section -->
+    <MudPaper Class="enhanced-header-section" Elevation="0">
+        <div class="header-content">
+            <MudIcon Icon="@Icons.Material.Filled.AdminPanelSettings"
+                     Class="header-icon"
+                     Size="Size.Large" />
+            <MudText Typo="Typo.h4" Class="header-title">
+                User Management
+            </MudText>
+            <MudText Typo="Typo.body2" Class="header-subtitle">
+                Manage users, roles, and permissions in your attendance system
+            </MudText>
+        </div>
+        <div class="header-decoration"></div>
+    </MudPaper>
 
     @if (!string.IsNullOrEmpty(errorMessage))
     {
-        <MudAlert Severity="Severity.Error" Class="mb-4">@errorMessage</MudAlert>
+        <MudAlert Severity="Severity.Error" Class="enhanced-alert">
+            <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                <MudIcon Icon="@Icons.Material.Filled.Error" Size="Size.Small" />
+                <MudText>@errorMessage</MudText>
+            </MudStack>
+        </MudAlert>
     }
 
     @if (isLoading)
     {
-        <MudContainer Class="d-flex justify-center my-4">
-            <MudProgressCircular Color="Color.Primary" Indeterminate="true" />
+        <MudContainer Class="enhanced-loading-container">
+            <MudProgressCircular Color="Color.Primary" Indeterminate="true" Size="Size.Large" />
+            <MudText Typo="Typo.body1" Class="loading-text">Loading users...</MudText>
         </MudContainer>
     }
     else if (users == null || !users.Any())
     {
-        <MudAlert Severity="Severity.Info">No users found</MudAlert>
+        <MudPaper Class="enhanced-empty-state" Elevation="0">
+            <MudIcon Icon="@Icons.Material.Filled.PersonOff" Size="Size.Large" Class="empty-icon" />
+            <MudText Typo="Typo.h6" Class="empty-title">No Users Found</MudText>
+            <MudText Typo="Typo.body2" Class="empty-subtitle">Start by adding your first user to the system</MudText>
+            <MudButton ButtonType="ButtonType.Button"
+                       Variant="Variant.Filled"
+                       Color="Color.Primary"
+                       OnClick="@OpenAddUserDialog"
+                       StartIcon="@Icons.Material.Filled.PersonAdd"
+                       Class="enhanced-add-button">
+                Add First User
+            </MudButton>
+        </MudPaper>
     }
     else
     {
-        <MudPaper Class="pa-4" Elevation="2">
-            <MudGrid AlignItems="Center" Class="mb-4">
-                <MudItem xs="12" sm="6">
-                    <MudButton Color="Color.Primary"  OnClick="@OpenAddUserDialog">
-                        Add New User
-                    </MudButton>
-                </MudItem>
-                <MudItem xs="12" sm="6" Class="d-flex justify-end">
-                    <MudTextField @bind-Value="searchTerm"
-                                  Label="Search users..."
-                                  Variant="Variant.Outlined"
-                                  Adornment="Adornment.End"
-                                  AdornmentIcon="@Icons.Material.Filled.Search"
-                                  OnAdornmentClick="SearchUsers"
-                                  OnKeyUp="@(async (e) => { if (e.Key == "Enter") await SearchUsers(); })"
-                                  Style="max-width: 300px;" />
-                </MudItem>
-            </MudGrid>
+        <MudPaper Class="enhanced-content-section" Elevation="0">
+            <!-- Enhanced Controls Section -->
+            <MudPaper Class="enhanced-controls-section" Elevation="0">
+                <MudGrid AlignItems="Center" Class="controls-grid">
+                    <MudItem xs="12" sm="6" Class="search-section">
+                        <div class="section-divider">
+                            <MudIcon Icon="@Icons.Material.Filled.Search" Class="section-icon" />
+                            <MudText Typo="Typo.subtitle1" Class="section-title">Search</MudText>
+                        </div>
+                        <div class="enhanced-input-wrapper">
+                            <MudTextField @bind-Value="searchTerm"
+                                          Immediate="true"
+                                          Variant="Variant.Outlined"
+                                          Placeholder="Search users..."
+                                          Adornment="Adornment.Start"
+                                          AdornmentIcon="@Icons.Material.Filled.Search"
+                                          Style="width: 100%; max-width: 320px;"
+                                          TextChanged="@(e => { searchTerm = e.ToString(); SearchUsers(); })" />
+                        </div>
+                    </MudItem>
+                    <MudItem xs="12" sm="6" Class="actions-section">
+                        <div class="section-divider">
+                            <MudIcon Icon="@Icons.Material.Filled.Settings" Class="section-icon" />
+                            <MudText Typo="Typo.subtitle1" Class="section-title">Actions</MudText>
+                        </div>
+                        <div class="actions-wrapper">
+                            <MudButton ButtonType="ButtonType.Button"
+                                       Variant="Variant.Filled"
+                                       Color="Color.Primary"
+                                       OnClick="@OpenAddUserDialog"
+                                       Disabled="@isLoading"
+                                       StartIcon="@Icons.Material.Filled.PersonAdd"
+                                       Class="enhanced-add-button">
+                                Add New User
+                            </MudButton>
+                        </div>
+                    </MudItem>
+                </MudGrid>
+            </MudPaper>
 
-            <MudTable Items="@filteredUsers" Hover="true" Striped="true" Dense="true">
-                <HeaderContent>
-                    <MudTh>Name</MudTh>
-                    <MudTh>Email</MudTh>
-                    <MudTh>Department</MudTh>
-                    <MudTh>Position</MudTh>
-                    <MudTh>Status</MudTh>
-                    <MudTh>Roles</MudTh>
-                    <MudTh>Actions</MudTh>
-                </HeaderContent>
-                <RowTemplate>
-                    <MudTd DataLabel="Name">@context.Name</MudTd>
-                    <MudTd DataLabel="Email">@context.Email</MudTd>
-                    <MudTd DataLabel="Department">@context.Department</MudTd>
-                    <MudTd DataLabel="Position">@context.Position</MudTd>
-                    <MudTd DataLabel="Status">
-                        @if (context.IsApproved)
-                        {
-                            <MudChip T="string" Color="Color.Success" Size="Size.Small">Approved</MudChip>
-                        }
-                        else
-                        {
-                            <MudChip T="string" Color="Color.Warning" Size="Size.Small">Pending</MudChip>
-                        }
-                    </MudTd>
-                    <MudTd DataLabel="Roles">@string.Join(", ", context.Roles)</MudTd>
-                    <MudTd DataLabel="Actions">
-                        <MudButtonGroup Variant="Variant.Outlined" Size="Size.Small">
-                            <MudIconButton Icon="@Icons.Material.Filled.Edit"
-                                           Color="Color.Info"
-                                           OnClick="() => EditUser(context.Id)"
-                                           Title="Edit"
-                                           Disabled="@isLoading" />
-                            @if (!context.IsApproved)
+            <!-- Enhanced Table Section -->
+            <MudPaper Class="enhanced-table-section" Elevation="0">
+                <div class="section-divider">
+                    <MudIcon Icon="@Icons.Material.Filled.People" Class="section-icon" />
+                    <MudText Typo="Typo.subtitle1" Class="section-title">User Directory</MudText>
+                </div>
+
+                <MudTable Items="@filteredUsers"
+                          Hover="true"
+                          Striped="true"
+                          Dense="true"
+                          Class="enhanced-table">
+                    <HeaderContent>
+                        <MudTh Class="enhanced-table-header">Name</MudTh>
+                        <MudTh Class="enhanced-table-header">Email</MudTh>
+                        <MudTh Class="enhanced-table-header">Department</MudTh>
+                        <MudTh Class="enhanced-table-header">Position</MudTh>
+                        <MudTh Class="enhanced-table-header">Status</MudTh>
+                        <MudTh Class="enhanced-table-header">Roles</MudTh>
+                        <MudTh Class="enhanced-table-header">Actions</MudTh>
+                    </HeaderContent>
+                    <RowTemplate>
+                        <MudTd DataLabel="Name" Class="enhanced-table-cell">
+                            <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                                <MudAvatar Color="Color.Primary" Size="Size.Small">
+                                    @context.Name?.Substring(0, 1).ToUpper()
+                                </MudAvatar>
+                                <MudText Typo="Typo.body2" Class="user-name">@context.Name</MudText>
+                            </MudStack>
+                        </MudTd>
+                        <MudTd DataLabel="Email" Class="enhanced-table-cell">@context.Email</MudTd>
+                        <MudTd DataLabel="Department" Class="enhanced-table-cell">@context.Department</MudTd>
+                        <MudTd DataLabel="Position" Class="enhanced-table-cell">@context.Position</MudTd>
+                        <MudTd DataLabel="Status" Class="enhanced-table-cell">
+                            @if (context.IsApproved)
                             {
-                                <MudIconButton Icon="@Icons.Material.Filled.CheckCircle"
-                                               Color="Color.Success"
-                                               OnClick="() => ApproveUser(context.Id)"
-                                               Title="Approve"
-                                               Disabled="@isLoading" />
+                                <MudChip T="string" Color="Color.Success" Size="Size.Small" Class="enhanced-status-chip">
+                                    <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Size="Size.Small" Class="chip-icon" />
+                                    Approved
+                                </MudChip>
                             }
-                            <MudIconButton Icon="@Icons.Material.Filled.Delete"
-                                           Color="Color.Error"
-                                           OnClick="() => DeleteUser(context.Id)"
-                                           Title="Delete"
-                                           Disabled="@isLoading" />
-                        </MudButtonGroup>
-                    </MudTd>
-                </RowTemplate>
-            </MudTable>
+                            else
+                            {
+                                <MudChip T="string" Color="Color.Warning" Size="Size.Small" Class="enhanced-status-chip">
+                                    <MudIcon Icon="@Icons.Material.Filled.Schedule" Size="Size.Small" Class="chip-icon" />
+                                    Pending
+                                </MudChip>
+                            }
+                        </MudTd>
+                        <MudTd DataLabel="Roles" Class="enhanced-table-cell">
+                            <MudStack Row Spacing="1">
+                                @foreach (var role in context.Roles)
+                                {
+                                    <MudChip T="string" Size="Size.Small" Class="enhanced-role-chip" Color="@GetRoleColor(role)">
+                                        @role
+                                    </MudChip>
+                                }
+                            </MudStack>
+                        </MudTd>
+                        <MudTd DataLabel="Actions" Class="enhanced-table-cell">
+                            <MudButtonGroup Variant="Variant.Outlined" Size="Size.Small" Class="enhanced-action-group">
+                                <MudIconButton Icon="@Icons.Material.Filled.Edit"
+                                               Color="Color.Info"
+                                               OnClick="() => EditUser(context.Id)"
+                                               Title="Edit"
+                                               Disabled="@isLoading"
+                                               Class="enhanced-action-button" />
+                                @if (!context.IsApproved)
+                                {
+                                    <MudIconButton Icon="@Icons.Material.Filled.CheckCircle"
+                                                   Color="Color.Success"
+                                                   OnClick="() => ApproveUser(context.Id)"
+                                                   Title="Approve"
+                                                   Disabled="@isLoading"
+                                                   Class="enhanced-action-button" />
+                                }
+                                <MudIconButton Icon="@Icons.Material.Filled.Delete"
+                                               Color="Color.Error"
+                                               OnClick="() => DeleteUser(context.Id)"
+                                               Title="Delete"
+                                               Disabled="@isLoading"
+                                               Class="enhanced-action-button" />
+                            </MudButtonGroup>
+                        </MudTd>
+                    </RowTemplate>
+                </MudTable>
 
-            <MudGrid AlignItems="Center" Class="mt-4">
-                <MudItem xs="12" sm="6">
-                    <MudText Typo="Typo.body2">Showing @filteredUsers.Count of @users.Count users</MudText>
-                </MudItem>
-                <MudItem xs="12" sm="6" Class="d-flex justify-end">
-                    <MudPagination Count="@((int)Math.Ceiling((double)users.Count / pageSize))"
-                                   @bind-Selected="currentPage" />
-                </MudItem>
-            </MudGrid>
+                <!-- Enhanced Pagination Section -->
+                <MudPaper Class="enhanced-pagination-section" Elevation="0">
+                    <MudGrid AlignItems="Center" Class="pagination-grid">
+                        <MudItem xs="12" sm="6">
+                            <MudText Typo="Typo.body2" Class="pagination-info">
+                                <MudIcon Icon="@Icons.Material.Filled.Info" Size="Size.Small" Class="info-icon" />
+                                Showing @filteredUsers.Count of @TotalDisplayedUsers users
+                            </MudText>
+                        </MudItem>
+                        <MudItem xs="12" sm="6" Class="pagination-controls">
+                            <MudPagination Count="@((int)Math.Ceiling((double)TotalDisplayedUsers / pageSize))"
+                                           @bind-Selected="currentPage"
+                                           Class="enhanced-pagination" />
+                        </MudItem>
+                    </MudGrid>
+                </MudPaper>
+            </MudPaper>
         </MudPaper>
     }
 </MudContainer>
+<style>
+    /* Enhanced Container */
+    .enhanced-admin-container {
+        padding: 24px 16px;
+        background: linear-gradient(135deg, var(--mud-palette-background) 0%, var(--mud-palette-surface) 100%);
+        min-height: 100vh;
+    }
 
+    /* Enhanced Header Section */
+    .enhanced-header-section {
+        background: linear-gradient(135deg, var(--mud-palette-primary) 0%, var(--mud-palette-secondary) 100%);
+        padding: 32px 24px 24px 24px;
+        margin-bottom: 24px;
+        border-radius: 20px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .header-content {
+        text-align: center;
+        position: relative;
+        z-index: 2;
+    }
+
+    .header-icon {
+        color: rgba(255, 255, 255, 0.9) !important;
+        margin-bottom: 12px;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    }
+
+    .header-title {
+        color: white !important;
+        font-weight: 700 !important;
+        margin-bottom: 8px !important;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .header-subtitle {
+        color: rgba(255, 255, 255, 0.85) !important;
+        font-weight: 400 !important;
+    }
+
+    .header-decoration {
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 200px;
+        height: 200px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        z-index: 1;
+    }
+
+        .header-decoration::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+    /* Enhanced Alert */
+    .enhanced-alert {
+        margin-bottom: 24px;
+        border-radius: 12px;
+        border-left: 4px solid var(--mud-palette-error);
+    }
+
+    /* Enhanced Loading */
+    .enhanced-loading-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 64px 24px;
+        background-color: var(--mud-palette-surface);
+        border-radius: 20px;
+        margin-bottom: 24px;
+    }
+
+    .loading-text {
+        margin-top: 16px;
+        color: var(--mud-palette-text-secondary);
+    }
+
+    /* Enhanced Empty State */
+    .enhanced-empty-state {
+        text-align: center;
+        padding: 64px 24px;
+        background-color: var(--mud-palette-surface);
+        border-radius: 20px;
+        border: 2px dashed var(--mud-palette-lines-default);
+    }
+
+    .empty-icon {
+        color: var(--mud-palette-text-secondary) !important;
+        margin-bottom: 16px;
+    }
+
+    .empty-title {
+        color: var(--mud-palette-text-primary) !important;
+        font-weight: 600 !important;
+        margin-bottom: 8px !important;
+    }
+
+    .empty-subtitle {
+        color: var(--mud-palette-text-secondary) !important;
+        margin-bottom: 24px !important;
+    }
+
+    /* Enhanced Content Section */
+    .enhanced-content-section {
+        background-color: var(--mud-palette-surface);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Enhanced Controls Section */
+    .enhanced-controls-section {
+        padding: 24px;
+        background: linear-gradient(135deg, rgba(25, 118, 210, 0.05) 0%, rgba(156, 39, 176, 0.05) 100%);
+        border-bottom: 1px solid var(--mud-palette-divider);
+    }
+
+    .controls-grid {
+        margin: 0;
+    }
+
+    .search-section {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Section Dividers */
+    .section-divider {
+        display: flex;
+        align-items: center;
+        margin-bottom: 16px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--mud-palette-primary);
+        position: relative;
+    }
+
+        .section-divider::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--mud-palette-secondary);
+        }
+
+    .section-icon {
+        color: var(--mud-palette-primary) !important;
+        margin-right: 12px;
+    }
+
+    .section-title {
+        color: var(--mud-palette-text-primary) !important;
+        font-weight: 600 !important;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    /* Enhanced Input Fields */
+    .enhanced-input-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .enhanced-search-field {
+        border-radius: 12px !important;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+        .enhanced-search-field .mud-input-outlined-border {
+            border-color: var(--mud-palette-lines-default);
+            border-width: 1.5px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .enhanced-search-field:hover .mud-input-outlined-border {
+            border-color: var(--mud-palette-primary);
+            box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
+        }
+
+        .enhanced-search-field .mud-input:focus-within .mud-input-outlined-border {
+            border-color: var(--mud-palette-primary);
+            border-width: 2px;
+            box-shadow: 0 0 0 4px rgba(25, 118, 210, 0.15);
+        }
+
+    /* Enhanced Buttons */
+    .enhanced-add-button {
+        border-radius: 12px !important;
+        font-weight: 600 !important;
+        text-transform: none !important;
+        letter-spacing: 0.5px !important;
+        padding: 12px 24px !important;
+        box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3) !important;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+
+        .enhanced-add-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(25, 118, 210, 0.4) !important;
+        }
+
+    /* Enhanced Table Section */
+    .enhanced-table-section {
+        padding: 24px;
+    }
+
+    .enhanced-table {
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid var(--mud-palette-lines-default);
+    }
+
+    .enhanced-table-header {
+        background: linear-gradient(135deg, var(--mud-palette-primary) 0%, var(--mud-palette-secondary) 100%) !important;
+        color: white !important;
+        font-weight: 600 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.5px !important;
+        padding: 16px 12px !important;
+    }
+
+    .enhanced-table-cell {
+        padding: 16px 12px !important;
+        border-bottom: 1px solid var(--mud-palette-divider) !important;
+        vertical-align: middle !important;
+    }
+
+    .user-name {
+        font-weight: 500 !important;
+        color: var(--mud-palette-text-primary) !important;
+    }
+
+    /* Enhanced Chips */
+    .enhanced-status-chip {
+        border-radius: 20px !important;
+        font-weight: 500 !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 4px !important;
+    }
+
+    .enhanced-role-chip {
+        border-radius: 16px !important;
+        font-weight: 500 !important;
+        font-size: 0.75rem !important;
+    }
+
+    .chip-icon {
+        margin-right: 4px !important;
+    }
+
+    /* Enhanced Action Buttons */
+    .enhanced-action-group {
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .enhanced-action-button {
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+
+        .enhanced-action-button:hover {
+            transform: scale(1.1);
+        }
+
+    /* Enhanced Pagination */
+    .enhanced-pagination-section {
+        padding: 16px 24px;
+        background: linear-gradient(135deg, rgba(25, 118, 210, 0.02) 0%, rgba(156, 39, 176, 0.02) 100%);
+        border-top: 1px solid var(--mud-palette-divider);
+    }
+
+    .pagination-grid {
+        margin: 0;
+    }
+
+    .pagination-info {
+        display: flex;
+        align-items: center;
+        color: var(--mud-palette-text-secondary) !important;
+    }
+
+    .info-icon {
+        margin-right: 8px !important;
+        color: var(--mud-palette-primary) !important;
+    }
+
+    .pagination-controls {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .enhanced-pagination {
+        border-radius: 8px;
+    }
+
+    /* Responsive adjustments for controls section */
+    @@media (max-width: 600px) {
+        .search-section {
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .enhanced-input-wrapper {
+            width: 100%;
+        }
+    }
+</style>
 @code {
     private List<UserResponseDto> users = new();
     private List<UserResponseDto> filteredUsers = new();
@@ -129,9 +548,14 @@
             FilterUsers();
         }
     }
+    private string currentUserId = string.Empty;
+    private int TotalDisplayedUsers => users.Count - (string.IsNullOrEmpty(currentUserId) ? 0 : 1);
+
 
     protected override async Task OnInitializedAsync()
     {
+        var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+        currentUserId = authState.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         await LoadUsers();
     }
 
@@ -182,9 +606,11 @@
 
     private void FilterUsers()
     {
+        var usersToDisplay = users.Where(u => u.Id != currentUserId).ToList();
+
         if (string.IsNullOrWhiteSpace(searchTerm))
         {
-            filteredUsers = users
+            filteredUsers = usersToDisplay
                 .Skip((currentPage - 1) * pageSize)
                 .Take(pageSize)
                 .ToList();
@@ -192,7 +618,7 @@
         else
         {
             var term = searchTerm.ToLower();
-            filteredUsers = users
+            filteredUsers = usersToDisplay
                 .Where(u =>
                     u.Name?.ToLower().Contains(term) == true ||
                     u.Email?.ToLower().Contains(term) == true ||
@@ -205,7 +631,6 @@
                 .ToList();
         }
     }
-
     private async Task SearchUsers()
     {
         currentPage = 1;
@@ -314,6 +739,7 @@
             StateHasChanged();
         }
     }
+
     private async Task OpenAddUserDialog()
     {
         var options = new DialogOptions
@@ -332,4 +758,16 @@
             await LoadUsers();
         }
     }
+
+    private Color GetRoleColor(string role)
+    {
+        return role.ToLower() switch
+        {
+            "admin" => Color.Error,
+            "manager" => Color.Warning,
+            "user" => Color.Info,
+            _ => Color.Default
+        };
+    }
 }
+
