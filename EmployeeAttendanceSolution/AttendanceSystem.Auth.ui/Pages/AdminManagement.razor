@@ -7,8 +7,9 @@
 @inject IJSRuntime JSRuntime
 @inject ILocalStorageService LocalStorage
 @inject AuthenticationStateProvider AuthStateProvider
+@inject IDialogService DialogService
 
-<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-4">
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-16 px-4">
     <MudText Typo="Typo.h4" GutterBottom="true">User Management</MudText>
 
     @if (!string.IsNullOrEmpty(errorMessage))
@@ -31,23 +32,19 @@
         <MudPaper Class="pa-4" Elevation="2">
             <MudGrid AlignItems="Center" Class="mb-4">
                 <MudItem xs="12" sm="6">
-                    <MudButton Variant="Variant.Filled" 
-                             Color="Color.Primary" 
-                             StartIcon="@Icons.Material.Filled.Add" 
-                             OnClick="ShowAddUserModal" 
-                             Disabled="@isLoading">
+                    <MudButton Color="Color.Primary"  OnClick="@OpenAddUserDialog">
                         Add New User
                     </MudButton>
                 </MudItem>
                 <MudItem xs="12" sm="6" Class="d-flex justify-end">
-                    <MudTextField @bind-Value="searchTerm" 
-                                Label="Search users..." 
-                                Variant="Variant.Outlined" 
-                                Adornment="Adornment.End" 
-                                AdornmentIcon="@Icons.Material.Filled.Search" 
-                                OnAdornmentClick="SearchUsers"
-                                OnKeyUp="@(async (e) => { if (e.Key == "Enter") await SearchUsers(); })"
-                                Style="max-width: 300px;" />
+                    <MudTextField @bind-Value="searchTerm"
+                                  Label="Search users..."
+                                  Variant="Variant.Outlined"
+                                  Adornment="Adornment.End"
+                                  AdornmentIcon="@Icons.Material.Filled.Search"
+                                  OnAdornmentClick="SearchUsers"
+                                  OnKeyUp="@(async (e) => { if (e.Key == "Enter") await SearchUsers(); })"
+                                  Style="max-width: 300px;" />
                 </MudItem>
             </MudGrid>
 
@@ -73,30 +70,30 @@
                         }
                         else
                         {
-                            <MudChipT="string" Color="Color.Warning" Size="Size.Small">Pending</MudChipT>
+                            <MudChip T="string" Color="Color.Warning" Size="Size.Small">Pending</MudChip>
                         }
                     </MudTd>
                     <MudTd DataLabel="Roles">@string.Join(", ", context.Roles)</MudTd>
                     <MudTd DataLabel="Actions">
                         <MudButtonGroup Variant="Variant.Outlined" Size="Size.Small">
-                            <MudIconButton Icon="@Icons.Material.Filled.Edit" 
-                                         Color="Color.Info" 
-                                         OnClick="() => EditUser(context.Id)" 
-                                         Title="Edit" 
-                                         Disabled="@isLoading" />
+                            <MudIconButton Icon="@Icons.Material.Filled.Edit"
+                                           Color="Color.Info"
+                                           OnClick="() => EditUser(context.Id)"
+                                           Title="Edit"
+                                           Disabled="@isLoading" />
                             @if (!context.IsApproved)
                             {
-                                <MudIconButton Icon="@Icons.Material.Filled.CheckCircle" 
-                                             Color="Color.Success" 
-                                             OnClick="() => ApproveUser(context.Id)" 
-                                             Title="Approve" 
-                                             Disabled="@isLoading" />
+                                <MudIconButton Icon="@Icons.Material.Filled.CheckCircle"
+                                               Color="Color.Success"
+                                               OnClick="() => ApproveUser(context.Id)"
+                                               Title="Approve"
+                                               Disabled="@isLoading" />
                             }
-                            <MudIconButton Icon="@Icons.Material.Filled.Delete" 
-                                         Color="Color.Error" 
-                                         OnClick="() => DeleteUser(context.Id)" 
-                                         Title="Delete" 
-                                         Disabled="@isLoading" />
+                            <MudIconButton Icon="@Icons.Material.Filled.Delete"
+                                           Color="Color.Error"
+                                           OnClick="() => DeleteUser(context.Id)"
+                                           Title="Delete"
+                                           Disabled="@isLoading" />
                         </MudButtonGroup>
                     </MudTd>
                 </RowTemplate>
@@ -115,115 +112,12 @@
     }
 </MudContainer>
 
-<!-- Add User Modal -->
-<MudDialog @bind-IsVisible="showAddModal" Options="@(new DialogOptions() { MaxWidth = MaxWidth.Medium, FullWidth = true })">
-    <TitleContent>
-        <MudText Typo="Typo.h6">
-            <MudIcon Icon="@Icons.Material.Filled.PersonAdd" Class="mr-3" />
-            Add New User
-        </MudText>
-    </TitleContent>
-    <DialogContent>
-        <EditForm Model="@newUser" OnValidSubmit="HandleAddUser">
-            <DataAnnotationsValidator />
-            <MudGrid>
-                <MudItem xs="12" sm="6">
-                    <MudTextField Label="Name" @bind-Value="newUser.Name" 
-                                Required="true" 
-                                RequiredError="Name is required"
-                                Variant="Variant.Outlined" />
-                    <ValidationMessage For="@(() => newUser.Name)" />
-                </MudItem>
-
-                <MudItem xs="12" sm="6">
-                    <MudTextField Label="Email" @bind-Value="newUser.Email" 
-                                Required="true" 
-                                RequiredError="Email is required"
-                                Variant="Variant.Outlined" />
-                    <ValidationMessage For="@(() => newUser.Email)" />
-                </MudItem>
-
-                <MudItem xs="12" sm="6">
-                    <MudTextField Label="Password" @bind-Value="newUser.Password" 
-                                InputType="InputType.Password"
-                                Required="true" 
-                                RequiredError="Password is required"
-                                Variant="Variant.Outlined" />
-                    <ValidationMessage For="@(() => newUser.Password)" />
-                    <MudText Typo="Typo.caption" Class="mud-text-secondary">
-                        Minimum 8 characters with at least 1 uppercase, 1 lowercase, 1 number
-                    </MudText>
-                </MudItem>
-
-                <MudItem xs="12" sm="6">
-                    <MudTextField Label="Confirm Password" @bind-Value="confirmPassword" 
-                                InputType="InputType.Password"
-                                Required="true" 
-                                RequiredError="Confirm password is required"
-                                Variant="Variant.Outlined" />
-                    <ValidationMessage For="@(() => confirmPassword)" />
-                </MudItem>
-
-                <MudItem xs="12" sm="6">
-                    <MudTextField Label="Department" @bind-Value="newUser.Department" 
-                                Variant="Variant.Outlined" />
-                </MudItem>
-
-                <MudItem xs="12" sm="6">
-                    <MudTextField Label="Position" @bind-Value="newUser.Position" 
-                                Variant="Variant.Outlined" />
-                </MudItem>
-
-                <MudItem xs="12">
-                    <MudSelect T="string" @bind-Value="selectedRole" 
-                             Label="Role" 
-                             Required="true" 
-                             RequiredError="Role is required"
-                             Variant="Variant.Outlined">
-                        @foreach (var role in availableRoles)
-                        {
-                            <MudSelectItem Value="@role">@role</MudSelectItem>
-                        }
-                    </MudSelect>
-                </MudItem>
-            </MudGrid>
-        </EditForm>
-    </DialogContent>
-    <DialogActions>
-        <MudButton OnClick="CloseAddUserModal" 
-                 Variant="Variant.Text" 
-                 Disabled="@isLoading">
-            Cancel
-        </MudButton>
-        <MudButton OnClick="HandleAddUser" 
-                 Variant="Variant.Filled" 
-                 Color="Color.Primary" 
-                 Disabled="@isLoading">
-            @if (isLoading)
-            {
-                <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
-                <MudText Class="ms-2">Saving...</MudText>
-            }
-            else
-            {
-                <MudText>Save User</MudText>
-            }
-        </MudButton>
-    </DialogActions>
-</MudDialog>
-
 @code {
     private List<UserResponseDto> users = new();
     private List<UserResponseDto> filteredUsers = new();
-    private List<string> availableRoles = new() { "User", "Manager", "Admin" };
-    private bool showAddModal = false;
-    private UserCreateDto newUser = new();
-    private string confirmPassword = string.Empty;
-    private string selectedRole = "User";
     private string errorMessage = string.Empty;
     private string searchTerm = string.Empty;
     private bool isLoading;
-    // private int currentPage = 1;
     private int pageSize = 10;
     private int currentPageBacking = 1;
     private int currentPage
@@ -249,7 +143,6 @@
 
         try
         {
-            var authState = await AuthStateProvider.GetAuthenticationStateAsync();
             var token = await LocalStorage.GetItemAsync<string>("authToken");
 
             var request = new HttpRequestMessage(HttpMethod.Get, "api/Management/GetAllUsers");
@@ -260,7 +153,6 @@
             if (response.IsSuccessStatusCode)
             {
                 var result = await response.Content.ReadFromJsonAsync<OperationResult<List<UserResponseDto>>>();
-                
                 if (result?.Success == true)
                 {
                     users = result.Data ?? new List<UserResponseDto>();
@@ -321,12 +213,6 @@
         StateHasChanged();
     }
 
-    private void ChangePage(int direction)
-    {
-        currentPage += direction;
-        FilterUsers();
-    }
-
     private async Task HandleApiError(HttpResponseMessage response)
     {
         if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
@@ -350,59 +236,9 @@
         }
     }
 
-    private void ShowAddUserModal()
+    private void EditUser(string userId)
     {
-        newUser = new UserCreateDto();
-        confirmPassword = string.Empty;
-        selectedRole = "User";
-        showAddModal = true;
-    }
-
-    private void CloseAddUserModal()
-    {
-        showAddModal = false;
-    }
-
-    private async Task HandleAddUser()
-    {
-        if (newUser.Password != confirmPassword)
-        {
-            errorMessage = "Passwords do not match";
-            return;
-        }
-
-        isLoading = true;
-        errorMessage = string.Empty;
-        StateHasChanged();
-
-        try
-        {
-            var token = await LocalStorage.GetItemAsync<string>("authToken");
-            var request = new HttpRequestMessage(HttpMethod.Post, $"api/Management/AddApplicationUser?roleName={selectedRole}");
-            request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-            request.Content = JsonContent.Create(newUser);
-
-            var response = await Http.SendAsync(request);
-
-            if (response.IsSuccessStatusCode)
-            {
-                await LoadUsers();
-                showAddModal = false;
-            }
-            else
-            {
-                await HandleApiError(response);
-            }
-        }
-        catch (Exception ex)
-        {
-            errorMessage = $"Failed to add user: {ex.Message}";
-        }
-        finally
-        {
-            isLoading = false;
-            StateHasChanged();
-        }
+        Navigation.NavigateTo($"/admin/edit-user/{userId}");
     }
 
     private async Task ApproveUser(string userId)
@@ -442,11 +278,6 @@
         }
     }
 
-    private void EditUser(string userId)
-    {
-        Navigation.NavigateTo($"/admin/edit-user/{userId}");
-    }
-
     private async Task DeleteUser(string userId)
     {
         if (!await JSRuntime.InvokeAsync<bool>("confirm", "Are you sure you want to delete this user? This action cannot be undone."))
@@ -483,5 +314,22 @@
             StateHasChanged();
         }
     }
-}
+    private async Task OpenAddUserDialog()
+    {
+        var options = new DialogOptions
+        {
+            CloseButton = true,
+            CloseOnEscapeKey = true,
+            MaxWidth = MaxWidth.Medium,
+            FullWidth = true
+        };
 
+        var dialog = await DialogService.ShowAsync<AddUserDialog>("Add New User", options);
+        var result = await dialog.Result;
+
+        if (!result.Canceled && result.Data is bool success && success)
+        {
+            await LoadUsers();
+        }
+    }
+}

@@ -31,6 +31,10 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[A:/Micro-Tech/Attendance-and-departure-system/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/Pages/AddUserDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkVXNlckRpYWxvZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [A:/Micro-Tech/Attendance-and-departure-system/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/Pages/AdminManagement.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5NYW5hZ2VtZW50LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 

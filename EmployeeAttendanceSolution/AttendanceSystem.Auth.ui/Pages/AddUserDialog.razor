@@ -1,0 +1,180 @@
+﻿@using MudBlazor
+@inject HttpClient Http
+@inject IJSRuntime JSRuntime
+@inject ILocalStorageService LocalStorage
+@inject ISnackbar Snackbar
+
+<MudDialog>
+    <DialogContent>
+        <MudContainer Style="max-width: 500px; max-height: 80vh; overflow-y: auto; padding-bottom: 80px;">
+            <MudText Typo="Typo.h6" Class="mb-4">Add New User</MudText>
+
+            <MudForm @ref="form" Model="@newUser" @bind-IsValid="@isFormValid"  ErrorsChanged="@(errors => formErrors = errors.ToList())">
+                <MudGrid>
+                    <MudItem xs="12" sm="6">
+                        <MudTextField Label="Name" 
+                                    @bind-Value="newUser.Name" 
+                                    Required="true" 
+                                    RequiredError="Name is required" 
+                                    Variant="Variant.Outlined" />
+                    </MudItem>
+
+                    <MudItem xs="12" sm="6">
+                        <MudTextField Label="Email"
+                                      @bind-Value="newUser.Email"
+                                      Required="true"
+                                      RequiredError="Email is required"
+                                      Validation="@(new Func<string, IEnumerable<string>>(ValidateEmail))"
+                                      Variant="Variant.Outlined" />
+                    </MudItem>
+
+                    <MudItem xs="12" sm="6">
+                        <MudTextField Label="Password"
+                                      @bind-Value="newUser.Password"
+                                      InputType="InputType.Password"
+                                      Required="true"
+                                      RequiredError="Password is required"
+                                      Validation="@(new Func<string, IEnumerable<string>>(ValidatePassword))"
+                                      Variant="Variant.Outlined" />
+                        <MudText Typo="Typo.caption" Class="mud-text-secondary">
+                            Minimum 8 characters with at least 1 uppercase, 1 lowercase, 1 number
+                        </MudText>
+                    </MudItem>
+
+                    <MudItem xs="12" sm="6">
+                        <MudTextField Label="Confirm Password"
+                                    @bind-Value="confirmPassword"
+                                    InputType="InputType.Password"
+                                    Required="true"
+                                    RequiredError="Confirm password is required"
+                                    Variant="Variant.Outlined" />
+                    </MudItem>
+
+                    <MudItem xs="12" sm="6">
+                        <MudTextField Label="Department" 
+                                    @bind-Value="newUser.Department" 
+                                    Variant="Variant.Outlined" />
+                    </MudItem>
+
+                    <MudItem xs="12" sm="6">
+                        <MudTextField Label="Position" 
+                                    @bind-Value="newUser.Position" 
+                                    Variant="Variant.Outlined" />
+                    </MudItem>
+
+                    <MudItem xs="12">
+                        <MudSelect T="string"
+                                   @bind-Value="selectedRole"
+                                   Label="Role"
+                                   Required="true"
+                                   RequiredError="Role is required"
+                                   Variant="Variant.Outlined">
+                            @foreach (var role in availableRoles)
+                            {
+                                <MudSelectItem Value="@role">@role</MudSelectItem>
+                            }
+                        </MudSelect>
+                    </MudItem>
+                </MudGrid>
+            </MudForm>
+        </MudContainer>
+    </DialogContent>
+
+    <DialogActions>
+        <MudButton OnClick="Cancel" Variant="Variant.Text">Cancel</MudButton>
+        <MudButton Color="Color.Primary"
+                   Variant="Variant.Filled"
+                   OnClick="HandleAddUser"
+                   Disabled="@(!isFormValid || !IsPasswordMatch() || isLoading)"
+                   Loading="@isLoading">
+            Save User
+        </MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [CascadingParameter]
+    public IMudDialogInstance MudDialog { get; set; } = null!;
+
+    private UserCreateDto newUser = new();
+    private string confirmPassword = string.Empty;
+    private string selectedRole = "User";
+    private List<string> availableRoles = new() { "User", "Manager", "Admin" };
+    private bool isLoading = false;
+    private MudForm form = null!;
+    private bool isFormValid;
+    private List<string> formErrors = new();
+
+    private bool IsPasswordMatch() => newUser.Password == confirmPassword;
+
+    private IEnumerable<string> ValidatePassword(string value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+            yield return "Password is required";
+        else if (value.Length < 8)
+            yield return "Must be at least 8 characters";
+        else if (!value.Any(char.IsUpper))
+            yield return "Requires 1 uppercase letter";
+        else if (!value.Any(char.IsLower))
+            yield return "Requires 1 lowercase letter";
+        else if (!value.Any(char.IsDigit))
+            yield return "Requires 1 number";
+    }
+    private IEnumerable<string> ValidateEmail(string value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+            yield return "Email is required";
+        else if (!value.Contains("@") || !value.Contains("."))
+            yield return "Invalid email format";
+    }
+
+    private void Cancel()
+    {
+        newUser = new UserCreateDto();
+        confirmPassword = string.Empty;
+        MudDialog.Cancel();
+    }
+
+    private async Task HandleAddUser()
+    {
+        await form.Validate();
+
+        if (!form.IsValid || !IsPasswordMatch())
+        {
+            if (!IsPasswordMatch())
+                Snackbar.Add("Passwords do not match", Severity.Error);
+            return;
+        }
+
+        isLoading = true;
+
+        try
+        {
+            var token = await LocalStorage.GetItemAsync<string>("authToken");
+            var request = new HttpRequestMessage(HttpMethod.Post, $"api/Management/AddApplicationUser?roleName={selectedRole}");
+            request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+            request.Content = JsonContent.Create(newUser);
+
+            var response = await Http.SendAsync(request);
+
+            if (response.IsSuccessStatusCode)
+            {
+                Snackbar.Add("User added successfully", Severity.Success);
+                MudDialog.Close(DialogResult.Ok(true));
+            }
+            else
+            {
+                var errorResult = await response.Content.ReadFromJsonAsync<OperationResult>();
+                Snackbar.Add(errorResult?.Message ?? $"Error: {response.StatusCode}", Severity.Error);
+            }
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Failed to add user: {ex.Message}", Severity.Error);
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+}

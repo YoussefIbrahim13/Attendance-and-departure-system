@@ -19,5 +19,7 @@ namespace EmployeesModels.Shared
         public IEnumerable<string>? Roles { get; set; }
         public IEnumerable<IdentityError>? Errors { get; set; }
         public bool Success => Errors == null;
+
+
     }
 }

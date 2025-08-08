@@ -1,18 +1,20 @@
 ﻿@inherits LayoutComponentBase
 @using MudBlazor
 
-<MudThemeProvider />
+<!-- Required Providers -->
+<MudThemeProvider @bind-IsDarkMode="_isDarkMode" Theme="MyCustomTheme" />
 <MudPopoverProvider />
 <MudDialogProvider />
 <MudSnackbarProvider />
-<MudThemeProvider @bind-IsDarkMode="_isDarkMode" Theme="MyCustomTheme" />
 
 <MudLayout>
-    <MudAppBar>
+
+    <!-- Top App Bar -->
+    <MudAppBar Elevation="4" Dense="true" Class="px-4">
         <MudIconButton Icon="@Icons.Material.Filled.Menu"
                        Color="Color.Inherit"
                        Edge="Edge.Start"
-                       OnClick="@(() => DrawerToggle())" />
+                       OnClick="@DrawerToggle" />
         <MudText Typo="Typo.h6" Class="ml-2">Attendance System</MudText>
 
         <MudSpacer />
@@ -25,23 +27,23 @@
                              Class="mr-2" />
     </MudAppBar>
 
-    <MudDrawer @bind-Open="_drawerOpen">
+    <!-- Side Drawer -->
+    <MudDrawer @bind-Open="_drawerOpen" Elevation="1" ClipMode="DrawerClipMode.Always" Class="mt-appbar">
         <NavMenu />
     </MudDrawer>
 
-    <MudMainContent Class="m-0 p-0">
+    <!-- Page Content -->
+    <MudMainContent Class="mt-appbar p-4">
         @Body
     </MudMainContent>
+
 </MudLayout>
 
 @code {
     private bool _drawerOpen = true;
     private bool _isDarkMode;
 
-    private void DrawerToggle()
-    {
-        _drawerOpen = !_drawerOpen;
-    }
+    private void DrawerToggle() => _drawerOpen = !_drawerOpen;
 
     MudTheme MyCustomTheme = new MudTheme()
     {

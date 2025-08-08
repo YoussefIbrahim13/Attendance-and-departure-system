@@ -152,21 +152,47 @@ namespace AttendanceSystem.Auth.API.Services.Services.ManagmentServices
 
         public async Task<UserResult> UpdateApplicationUserAsync(string id, UserUpdateDto dto)
         {
+            // 1. Find user
             var user = await _userManager.FindByIdAsync(id);
             if (user == null)
                 return new UserResult { Errors = new[] { new IdentityError { Description = "User not found" } } };
 
+            // 2. Email validation and update
             if (!string.IsNullOrEmpty(dto.Email))
-                user.Email = user.UserName = dto.Email;
+            {
+                // Check if email is changing
+                if (!string.Equals(dto.Email, user.Email, StringComparison.OrdinalIgnoreCase))
+                {
+                    // Validate email format
+                    var emailValidator = new EmailAddressAttribute();
+                    if (!emailValidator.IsValid(dto.Email))
+                        return new UserResult { Errors = new[] { new IdentityError { Description = "Invalid email format" } } };
 
+                    // Check for duplicate email
+                    var existingUser = await _userManager.FindByEmailAsync(dto.Email);
+                    if (existingUser != null && existingUser.Id != user.Id)
+                        return new UserResult { Errors = new[] { new IdentityError { Description = "Email is already in use" } } };
+
+                    // Update email-related fields
+                    user.Email = dto.Email;
+                    user.UserName = dto.Email;
+                    user.NormalizedEmail = _userManager.NormalizeEmail(dto.Email);
+                    user.NormalizedUserName = _userManager.NormalizeEmail(dto.Email);
+                }
+            }
+
+            // 3. Update other properties
             user.Name = dto.Name ?? user.Name;
             user.Department = dto.Department ?? user.Department;
             user.Position = dto.Position ?? user.Position;
+            user.IsApproved = dto.IsApproved; // Add approval status update
 
-            var result = await _userManager.UpdateAsync(user);
-            if (!result.Succeeded)
-                return new UserResult { Errors = result.Errors };
+            // 4. Save changes
+            var updateResult = await _userManager.UpdateAsync(user);
+            if (!updateResult.Succeeded)
+                return new UserResult { Errors = updateResult.Errors };
 
+            // 5. Return success result
             return new UserResult
             {
                 Id = user.Id,

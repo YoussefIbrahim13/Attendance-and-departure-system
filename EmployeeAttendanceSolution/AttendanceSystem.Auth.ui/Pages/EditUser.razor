@@ -58,8 +58,24 @@
                                     Variant="Variant.Outlined" />
                     </MudItem>
 
-                    <MudItem xs="12">
-                        <MudCheckBox T="bool" @bind-Checked="user.IsApproved" Label="Approved" Color="Color.Primary" />
+                    <MudItem xs="12" Class="d-flex align-center gap-2">
+                        <MudTooltip Text="@(user.IsApproved ? "Click to revoke approval" : "Click to approve this user")">
+                            <MudToggleIconButton @bind-Toggled="user.IsApproved"
+                                                 Icon="@Icons.Material.Filled.Close"
+                                                 Color="@Color.Error"
+                                                 ToggledIcon="@Icons.Material.Filled.Check"
+                                                 ToggledColor="@Color.Success"
+                                                 Disabled="@isLoading" />
+                        </MudTooltip>
+
+                        <MudText Typo="Typo.body2">
+                            Status:
+                            <MudBadge Color="@(user.IsApproved? Color.Success: Color.Error)"
+                                      Class="ml-1"
+                                      Variant="Variant.Filled">
+                                @(user.IsApproved ? "Approved" : "Pending Approval")
+                            </MudBadge>
+                        </MudText>
                     </MudItem>
 
                     <MudItem xs="12" Class="d-flex justify-end gap-2">
@@ -128,6 +144,12 @@
                     Position = result.Position,
                     IsApproved = result.IsApproved
                 };
+                // Store original values
+                originalName = user.Name;
+                originalEmail = user.Email;
+                originalDepartment = user.Department;
+                originalPosition = user.Position;
+                originalIsApproved = user.IsApproved;
             }
             else
             {
@@ -228,13 +250,6 @@
     private string originalPosition;
     private bool originalIsApproved;
 
-    protected override void OnParametersSet()
-    {
-        originalName = user?.Name;
-        originalEmail = user?.Email;
-        originalDepartment = user?.Department;
-        originalPosition = user?.Position;
-        originalIsApproved = user?.IsApproved ?? false;
-    }
+   
 }
 
