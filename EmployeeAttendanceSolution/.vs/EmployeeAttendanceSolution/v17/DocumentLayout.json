@@ -1,94 +1,130 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\",
+  "WorkspaceRootPath": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|a:\\micro-tech\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.ui\\pages\\adminmanagement.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|solutionrelative:attendancesystem.auth.ui\\pages\\adminmanagement.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|a:\\micro-tech\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.ui\\pages\\adduserdialog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|a:\\micro-tech\\mynew app\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.ui\\pages\\adduserdialog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|solutionrelative:attendancesystem.auth.ui\\pages\\adduserdialog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|a:\\micro-tech\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.ui\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|solutionrelative:attendancesystem.auth.ui\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|a:\\micro-tech\\mynew app\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.ui\\pages\\adminmanagement.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|solutionrelative:attendancesystem.auth.ui\\pages\\adminmanagement.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\micro-tech\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.importfile.ui\\pages\\addemployeedialog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\pages\\addemployeedialog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EA9BB0D7-BEF0-4C66-9E2A-B8DFB588F0E8}|Employee.Shared\\EmployeesModels.Shared.csproj|a:\\micro-tech\\attendance-and-departure-system\\employeeattendancesolution\\employee.shared\\userinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EA9BB0D7-BEF0-4C66-9E2A-B8DFB588F0E8}|Employee.Shared\\EmployeesModels.Shared.csproj|solutionrelative:employee.shared\\userinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\micro-tech\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.importfile.ui\\pages\\dayview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\pages\\dayview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|a:\\micro-tech\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.ui\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|a:\\micro-tech\\mynew app\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.ui\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|solutionrelative:attendancesystem.auth.ui\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|a:\\micro-tech\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.ui\\pages\\edituser.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|solutionrelative:attendancesystem.auth.ui\\pages\\edituser.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|a:\\micro-tech\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.ui\\pages\\dashboard.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|solutionrelative:attendancesystem.auth.ui\\pages\\dashboard.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|a:\\micro-tech\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.ui\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|solutionrelative:attendancesystem.auth.ui\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|a:\\micro-tech\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.ui\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|solutionrelative:attendancesystem.auth.ui\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\micro-tech\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.importfile.ui\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|a:\\micro-tech\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.ui\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|solutionrelative:attendancesystem.auth.ui\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|a:\\micro-tech\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.ui\\services\\authtokenhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|solutionrelative:attendancesystem.auth.ui\\services\\authtokenhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|a:\\micro-tech\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.ui\\services\\jwtauthenticationstateprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|solutionrelative:attendancesystem.auth.ui\\services\\jwtauthenticationstateprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{675C7774-987F-47DA-83E0-F244A55E1EC9}|AttendanceSystem.Auth.Services\\AttendanceSystem.Auth.Services.csproj|a:\\micro-tech\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.services\\services\\authoservices\\iauthoservicesapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{675C7774-987F-47DA-83E0-F244A55E1EC9}|AttendanceSystem.Auth.Services\\AttendanceSystem.Auth.Services.csproj|solutionrelative:attendancesystem.auth.services\\services\\authoservices\\iauthoservicesapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{675C7774-987F-47DA-83E0-F244A55E1EC9}|AttendanceSystem.Auth.Services\\AttendanceSystem.Auth.Services.csproj|a:\\micro-tech\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.services\\services\\authoservices\\authoservicesapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{675C7774-987F-47DA-83E0-F244A55E1EC9}|AttendanceSystem.Auth.Services\\AttendanceSystem.Auth.Services.csproj|solutionrelative:attendancesystem.auth.services\\services\\authoservices\\authoservicesapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8994437B-3345-4821-91A1-0ECB71081954}|AttendanceSystem.Auth.API\\AttendanceSystem.Auth.API.csproj|a:\\micro-tech\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8994437B-3345-4821-91A1-0ECB71081954}|AttendanceSystem.Auth.API\\AttendanceSystem.Auth.API.csproj|solutionrelative:attendancesystem.auth.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{675C7774-987F-47DA-83E0-F244A55E1EC9}|AttendanceSystem.Auth.Services\\AttendanceSystem.Auth.Services.csproj|a:\\micro-tech\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.services\\services\\managmentservices\\managmentservicesapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{675C7774-987F-47DA-83E0-F244A55E1EC9}|AttendanceSystem.Auth.Services\\AttendanceSystem.Auth.Services.csproj|solutionrelative:attendancesystem.auth.services\\services\\managmentservices\\managmentservicesapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|a:\\micro-tech\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.ui\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|a:\\micro-tech\\mynew app\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.ui\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|solutionrelative:attendancesystem.auth.ui\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EA9BB0D7-BEF0-4C66-9E2A-B8DFB588F0E8}|Employee.Shared\\EmployeesModels.Shared.csproj|a:\\micro-tech\\attendance-and-departure-system\\employeeattendancesolution\\employee.shared\\userresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EA9BB0D7-BEF0-4C66-9E2A-B8DFB588F0E8}|Employee.Shared\\EmployeesModels.Shared.csproj|solutionrelative:employee.shared\\userresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|a:\\micro-tech\\mynew app\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.ui\\services\\authtokenhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|solutionrelative:attendancesystem.auth.ui\\services\\authtokenhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\micro-tech\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.importfile.ui\\pages\\monthview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|a:\\micro-tech\\mynew app\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.ui\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|solutionrelative:attendancesystem.auth.ui\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|a:\\micro-tech\\mynew app\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.ui\\pages\\edituser.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|solutionrelative:attendancesystem.auth.ui\\pages\\edituser.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\micro-tech\\mynew app\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.importfile.ui\\pages\\attendanceimport.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\pages\\attendanceimport.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8994437B-3345-4821-91A1-0ECB71081954}|AttendanceSystem.Auth.API\\AttendanceSystem.Auth.API.csproj|a:\\micro-tech\\mynew app\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.api\\controllers\\managementcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8994437B-3345-4821-91A1-0ECB71081954}|AttendanceSystem.Auth.API\\AttendanceSystem.Auth.API.csproj|solutionrelative:attendancesystem.auth.api\\controllers\\managementcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{675C7774-987F-47DA-83E0-F244A55E1EC9}|AttendanceSystem.Auth.Services\\AttendanceSystem.Auth.Services.csproj|a:\\micro-tech\\mynew app\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.services\\services\\managmentservices\\managmentservicesapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{675C7774-987F-47DA-83E0-F244A55E1EC9}|AttendanceSystem.Auth.Services\\AttendanceSystem.Auth.Services.csproj|solutionrelative:attendancesystem.auth.services\\services\\managmentservices\\managmentservicesapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|a:\\micro-tech\\mynew app\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.ui\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|solutionrelative:attendancesystem.auth.ui\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|a:\\micro-tech\\mynew app\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.ui\\pages\\dashboard.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|solutionrelative:attendancesystem.auth.ui\\pages\\dashboard.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|a:\\micro-tech\\mynew app\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.ui\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|solutionrelative:attendancesystem.auth.ui\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA9BB0D7-BEF0-4C66-9E2A-B8DFB588F0E8}|Employee.Shared\\EmployeesModels.Shared.csproj|a:\\micro-tech\\mynew app\\attendance-and-departure-system\\employeeattendancesolution\\employee.shared\\usercreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA9BB0D7-BEF0-4C66-9E2A-B8DFB588F0E8}|Employee.Shared\\EmployeesModels.Shared.csproj|solutionrelative:employee.shared\\usercreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|a:\\micro-tech\\mynew app\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.ui\\services\\managementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|solutionrelative:attendancesystem.auth.ui\\services\\managementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|a:\\micro-tech\\mynew app\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.ui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{33B8D451-0FA8-401E-A9B9-362BE42D3AB1}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|solutionrelative:attendancesystem.auth.ui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{675C7774-987F-47DA-83E0-F244A55E1EC9}|AttendanceSystem.Auth.Services\\AttendanceSystem.Auth.Services.csproj|a:\\micro-tech\\mynew app\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.services\\services\\managmentservices\\imanagmentservicesapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{675C7774-987F-47DA-83E0-F244A55E1EC9}|AttendanceSystem.Auth.Services\\AttendanceSystem.Auth.Services.csproj|solutionrelative:attendancesystem.auth.services\\services\\managmentservices\\imanagmentservicesapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{675C7774-987F-47DA-83E0-F244A55E1EC9}|AttendanceSystem.Auth.Services\\AttendanceSystem.Auth.Services.csproj|a:\\micro-tech\\mynew app\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.services\\services\\authoservices\\iauthoservicesapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{675C7774-987F-47DA-83E0-F244A55E1EC9}|AttendanceSystem.Auth.Services\\AttendanceSystem.Auth.Services.csproj|solutionrelative:attendancesystem.auth.services\\services\\authoservices\\iauthoservicesapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{675C7774-987F-47DA-83E0-F244A55E1EC9}|AttendanceSystem.Auth.Services\\AttendanceSystem.Auth.Services.csproj|a:\\micro-tech\\mynew app\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.services\\services\\authoservices\\authoservicesapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{675C7774-987F-47DA-83E0-F244A55E1EC9}|AttendanceSystem.Auth.Services\\AttendanceSystem.Auth.Services.csproj|solutionrelative:attendancesystem.auth.services\\services\\authoservices\\authoservicesapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA9BB0D7-BEF0-4C66-9E2A-B8DFB588F0E8}|Employee.Shared\\EmployeesModels.Shared.csproj|a:\\micro-tech\\mynew app\\attendance-and-departure-system\\employeeattendancesolution\\employee.shared\\attendancerecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA9BB0D7-BEF0-4C66-9E2A-B8DFB588F0E8}|Employee.Shared\\EmployeesModels.Shared.csproj|solutionrelative:employee.shared\\attendancerecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA9BB0D7-BEF0-4C66-9E2A-B8DFB588F0E8}|Employee.Shared\\EmployeesModels.Shared.csproj|a:\\micro-tech\\mynew app\\attendance-and-departure-system\\employeeattendancesolution\\employee.shared\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA9BB0D7-BEF0-4C66-9E2A-B8DFB588F0E8}|Employee.Shared\\EmployeesModels.Shared.csproj|solutionrelative:employee.shared\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7CF20F76-5997-4454-833D-269865BCDE6B}|AttendanceSystem.ImportFile.API.Services\\AttendanceSystem.ImportFile.API.Services.csproj|a:\\micro-tech\\mynew app\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.importfile.api.services\\attendanceservices\\iattendanceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7CF20F76-5997-4454-833D-269865BCDE6B}|AttendanceSystem.ImportFile.API.Services\\AttendanceSystem.ImportFile.API.Services.csproj|solutionrelative:attendancesystem.importfile.api.services\\attendanceservices\\iattendanceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7CF20F76-5997-4454-833D-269865BCDE6B}|AttendanceSystem.ImportFile.API.Services\\AttendanceSystem.ImportFile.API.Services.csproj|a:\\micro-tech\\mynew app\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.importfile.api.services\\attendanceservices\\attendanceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7CF20F76-5997-4454-833D-269865BCDE6B}|AttendanceSystem.ImportFile.API.Services\\AttendanceSystem.ImportFile.API.Services.csproj|solutionrelative:attendancesystem.importfile.api.services\\attendanceservices\\attendanceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{519F080A-7CDA-9AA0-8A8E-91317EFFD842}|AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj|a:\\micro-tech\\mynew app\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.importfile.api\\controllers\\attendancecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{519F080A-7CDA-9AA0-8A8E-91317EFFD842}|AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj|solutionrelative:attendancesystem.importfile.api\\controllers\\attendancecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\micro-tech\\mynew app\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.importfile.ui\\services\\attendanceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\services\\attendanceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{519F080A-7CDA-9AA0-8A8E-91317EFFD842}|AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj|a:\\micro-tech\\mynew app\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.importfile.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{519F080A-7CDA-9AA0-8A8E-91317EFFD842}|AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj|solutionrelative:attendancesystem.importfile.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\micro-tech\\mynew app\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.importfile.ui\\pages\\yearview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\pages\\yearview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\micro-tech\\mynew app\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.importfile.ui\\pages\\monthview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\pages\\monthview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\micro-tech\\mynew app\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.importfile.ui\\pages\\dayview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\pages\\dayview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|a:\\micro-tech\\mynew app\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.importfile.ui\\shared\\calendarmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\shared\\calendarmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA9BB0D7-BEF0-4C66-9E2A-B8DFB588F0E8}|Employee.Shared\\EmployeesModels.Shared.csproj|a:\\micro-tech\\mynew app\\attendance-and-departure-system\\employeeattendancesolution\\employee.shared\\calendarmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA9BB0D7-BEF0-4C66-9E2A-B8DFB588F0E8}|Employee.Shared\\EmployeesModels.Shared.csproj|solutionrelative:employee.shared\\calendarmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -98,8 +134,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 8,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "CalendarModels.cs",
+              "DocumentMoniker": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Shared\\CalendarModels.cs",
+              "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\Shared\\CalendarModels.cs",
+              "ToolTip": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Shared\\CalendarModels.cs",
+              "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\Shared\\CalendarModels.cs",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAAAFEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-27T11:43:00.736Z",
+              "IsPinned": true
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
@@ -118,268 +167,382 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "NavMenu.razor",
-              "DocumentMoniker": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Layout\\NavMenu.razor",
-              "RelativeDocumentMoniker": "AttendanceSystem.Auth.ui\\Layout\\NavMenu.razor",
-              "ToolTip": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Layout\\NavMenu.razor",
-              "RelativeToolTip": "AttendanceSystem.Auth.ui\\Layout\\NavMenu.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-08T13:19:36.361Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "AdminManagement.razor",
-              "DocumentMoniker": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Pages\\AdminManagement.razor",
+              "DocumentMoniker": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Pages\\AdminManagement.razor",
               "RelativeDocumentMoniker": "AttendanceSystem.Auth.ui\\Pages\\AdminManagement.razor",
-              "ToolTip": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Pages\\AdminManagement.razor",
+              "ToolTip": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Pages\\AdminManagement.razor",
               "RelativeToolTip": "AttendanceSystem.Auth.ui\\Pages\\AdminManagement.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHgCAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAALYBAAAAAAAAAAAAAMgBAABuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-08T08:42:28.79Z",
+              "WhenOpened": "2025-08-10T08:59:52.783Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "AddEmployeeDialog.razor",
-              "DocumentMoniker": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Pages\\AddEmployeeDialog.razor",
-              "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\Pages\\AddEmployeeDialog.razor",
-              "ToolTip": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Pages\\AddEmployeeDialog.razor",
-              "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\Pages\\AddEmployeeDialog.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAmAAAAAAAAAA==",
+              "Title": "App.razor",
+              "DocumentMoniker": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\App.razor",
+              "RelativeDocumentMoniker": "AttendanceSystem.Auth.ui\\App.razor",
+              "ToolTip": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\App.razor",
+              "RelativeToolTip": "AttendanceSystem.Auth.ui\\App.razor",
+              "ViewState": "AgIAABIAAAAAAAAAAAAUwCIAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-08T15:25:34.124Z"
+              "WhenOpened": "2025-08-10T09:07:51.527Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "UserInfo.cs",
-              "DocumentMoniker": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\UserInfo.cs",
-              "RelativeDocumentMoniker": "Employee.Shared\\UserInfo.cs",
-              "ToolTip": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\UserInfo.cs",
-              "RelativeToolTip": "Employee.Shared\\UserInfo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAyAAAAAAAAAA==",
+              "Title": "AuthTokenHandler.cs",
+              "DocumentMoniker": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Services\\AuthTokenHandler.cs",
+              "RelativeDocumentMoniker": "AttendanceSystem.Auth.ui\\Services\\AuthTokenHandler.cs",
+              "ToolTip": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Services\\AuthTokenHandler.cs",
+              "RelativeToolTip": "AttendanceSystem.Auth.ui\\Services\\AuthTokenHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAABRAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T13:40:34.628Z"
+              "WhenOpened": "2025-08-10T09:43:06.356Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "AddUserDialog.razor",
-              "DocumentMoniker": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Pages\\AddUserDialog.razor",
+              "DocumentMoniker": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Pages\\AddUserDialog.razor",
               "RelativeDocumentMoniker": "AttendanceSystem.Auth.ui\\Pages\\AddUserDialog.razor",
-              "ToolTip": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Pages\\AddUserDialog.razor",
+              "ToolTip": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Pages\\AddUserDialog.razor",
               "RelativeToolTip": "AttendanceSystem.Auth.ui\\Pages\\AddUserDialog.razor",
-              "ViewState": "AgIAAKoCAAAAAAAAAAAkwNACAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABQCAAAAAAAAAAAEwDMCAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-08T08:43:25.076Z"
+              "WhenOpened": "2025-08-10T09:22:15.191Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "EditUser.razor",
+              "DocumentMoniker": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Pages\\EditUser.razor",
+              "RelativeDocumentMoniker": "AttendanceSystem.Auth.ui\\Pages\\EditUser.razor",
+              "ToolTip": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Pages\\EditUser.razor",
+              "RelativeToolTip": "AttendanceSystem.Auth.ui\\Pages\\EditUser.razor",
+              "ViewState": "AgIAAEMBAAAAAAAAAAAEwFMBAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-10T09:27:08.529Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "AttendanceSystem.Auth.ui\\Services\\AuthService.cs",
+              "ToolTip": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Services\\AuthService.cs",
+              "RelativeToolTip": "AttendanceSystem.Auth.ui\\Services\\AuthService.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-10T09:42:36.798Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Layout\\MainLayout.razor",
+              "RelativeDocumentMoniker": "AttendanceSystem.Auth.ui\\Layout\\MainLayout.razor",
+              "ToolTip": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Layout\\MainLayout.razor",
+              "RelativeToolTip": "AttendanceSystem.Auth.ui\\Layout\\MainLayout.razor",
+              "ViewState": "AgIAAHEAAAAAAAAAAAAAAIMAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-10T09:54:28.961Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "Dashboard.razor",
-              "DocumentMoniker": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Pages\\Dashboard.razor",
-              "RelativeDocumentMoniker": "AttendanceSystem.Auth.ui\\Pages\\Dashboard.razor",
-              "ToolTip": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Pages\\Dashboard.razor",
-              "RelativeToolTip": "AttendanceSystem.Auth.ui\\Pages\\Dashboard.razor",
-              "ViewState": "AgIAAPcAAAAAAAAAAAAAAAkBAAAIAAAAAAAAAA==",
+              "Title": "ManagementController.cs",
+              "DocumentMoniker": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.API\\Controllers\\ManagementController.cs",
+              "RelativeDocumentMoniker": "AttendanceSystem.Auth.API\\Controllers\\ManagementController.cs",
+              "ToolTip": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.API\\Controllers\\ManagementController.cs",
+              "RelativeToolTip": "AttendanceSystem.Auth.API\\Controllers\\ManagementController.cs",
+              "ViewState": "AgIAAHgAAAAAAAAAAAAwwJYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-10T09:02:09.83Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AttendanceImport.razor",
+              "DocumentMoniker": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Pages\\AttendanceImport.razor",
+              "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\Pages\\AttendanceImport.razor",
+              "ToolTip": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Pages\\AttendanceImport.razor",
+              "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\Pages\\AttendanceImport.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-08T12:51:21.001Z"
+              "WhenOpened": "2025-07-27T11:44:41.131Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "Login.razor",
-              "DocumentMoniker": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Pages\\Login.razor",
-              "RelativeDocumentMoniker": "AttendanceSystem.Auth.ui\\Pages\\Login.razor",
-              "ToolTip": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Pages\\Login.razor",
-              "RelativeToolTip": "AttendanceSystem.Auth.ui\\Pages\\Login.razor",
-              "ViewState": "AgIAAJYAAAAAAAAAAAAAALcBAABFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-08T09:01:20.556Z"
+              "Title": "ManagmentServicesApi.cs",
+              "DocumentMoniker": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.Services\\Services\\ManagmentServices\\ManagmentServicesApi.cs",
+              "RelativeDocumentMoniker": "AttendanceSystem.Auth.Services\\Services\\ManagmentServices\\ManagmentServicesApi.cs",
+              "ToolTip": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.Services\\Services\\ManagmentServices\\ManagmentServicesApi.cs",
+              "RelativeToolTip": "AttendanceSystem.Auth.Services\\Services\\ManagmentServices\\ManagmentServicesApi.cs",
+              "ViewState": "AgIAAN0AAAAAAAAAAAAIwPEAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-10T09:02:50.325Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
               "Title": "Home.razor",
-              "DocumentMoniker": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Pages\\Home.razor",
+              "DocumentMoniker": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Pages\\Home.razor",
               "RelativeDocumentMoniker": "AttendanceSystem.Auth.ui\\Pages\\Home.razor",
-              "ToolTip": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Pages\\Home.razor",
+              "ToolTip": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Pages\\Home.razor",
               "RelativeToolTip": "AttendanceSystem.Auth.ui\\Pages\\Home.razor",
-              "ViewState": "AgIAAKYBAAAAAAAAAIAwwLoBAAAPAAAAAAAAAA==",
+              "ViewState": "AgIAAJUBAAAAAAAAAAAAAK8BAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-08T11:09:51.349Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "EditUser.razor",
-              "DocumentMoniker": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Pages\\EditUser.razor",
-              "RelativeDocumentMoniker": "AttendanceSystem.Auth.ui\\Pages\\EditUser.razor",
-              "ToolTip": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Pages\\EditUser.razor",
-              "RelativeToolTip": "AttendanceSystem.Auth.ui\\Pages\\EditUser.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-08T09:36:00.804Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "DayView.razor",
-              "DocumentMoniker": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Pages\\DayView.razor",
-              "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\Pages\\DayView.razor",
-              "ToolTip": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Pages\\DayView.razor",
-              "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\Pages\\DayView.razor",
-              "ViewState": "AgIAAN0BAAAAAAAAAIAwwPsBAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-08T15:21:09.401Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "MainLayout.razor",
-              "DocumentMoniker": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Layout\\MainLayout.razor",
-              "RelativeDocumentMoniker": "AttendanceSystem.Auth.ui\\Layout\\MainLayout.razor",
-              "ToolTip": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Layout\\MainLayout.razor",
-              "RelativeToolTip": "AttendanceSystem.Auth.ui\\Layout\\MainLayout.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-08T11:29:06.175Z"
+              "WhenOpened": "2025-08-10T09:29:33.448Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 11,
-              "Title": "MainLayout.razor",
-              "DocumentMoniker": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Layout\\MainLayout.razor",
-              "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\Layout\\MainLayout.razor",
-              "ToolTip": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Layout\\MainLayout.razor",
-              "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\Layout\\MainLayout.razor",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAACIAAAAQAAAAAAAAAA==",
+              "Title": "Dashboard.razor",
+              "DocumentMoniker": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Pages\\Dashboard.razor",
+              "RelativeDocumentMoniker": "AttendanceSystem.Auth.ui\\Pages\\Dashboard.razor",
+              "ToolTip": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Pages\\Dashboard.razor",
+              "RelativeToolTip": "AttendanceSystem.Auth.ui\\Pages\\Dashboard.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-08T15:00:25.681Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "AuthoServicesApi.cs",
-              "DocumentMoniker": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.Services\\Services\\AuthoServices\\AuthoServicesApi.cs",
-              "RelativeDocumentMoniker": "AttendanceSystem.Auth.Services\\Services\\AuthoServices\\AuthoServicesApi.cs",
-              "ToolTip": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.Services\\Services\\AuthoServices\\AuthoServicesApi.cs",
-              "RelativeToolTip": "AttendanceSystem.Auth.Services\\Services\\AuthoServices\\AuthoServicesApi.cs",
-              "ViewState": "AgIAAGoAAAAAAAAAAAAkwFUAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T13:41:06.641Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "IAuthoServicesApi.cs",
-              "DocumentMoniker": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.Services\\Services\\AuthoServices\\IAuthoServicesApi.cs",
-              "RelativeDocumentMoniker": "AttendanceSystem.Auth.Services\\Services\\AuthoServices\\IAuthoServicesApi.cs",
-              "ToolTip": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.Services\\Services\\AuthoServices\\IAuthoServicesApi.cs",
-              "RelativeToolTip": "AttendanceSystem.Auth.Services\\Services\\AuthoServices\\IAuthoServicesApi.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAsAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T13:46:02.591Z"
+              "WhenOpened": "2025-08-10T09:27:06.807Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 12,
-              "Title": "AuthService.cs",
-              "DocumentMoniker": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Services\\AuthService.cs",
-              "RelativeDocumentMoniker": "AttendanceSystem.Auth.ui\\Services\\AuthService.cs",
-              "ToolTip": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Services\\AuthService.cs",
-              "RelativeToolTip": "AttendanceSystem.Auth.ui\\Services\\AuthService.cs",
-              "ViewState": "AgIAAFkAAAAAAAAAAAAwwIAAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T14:23:06.092Z"
+              "Title": "Login.razor",
+              "DocumentMoniker": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Pages\\Login.razor",
+              "RelativeDocumentMoniker": "AttendanceSystem.Auth.ui\\Pages\\Login.razor",
+              "ToolTip": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Pages\\Login.razor",
+              "RelativeToolTip": "AttendanceSystem.Auth.ui\\Pages\\Login.razor",
+              "ViewState": "AgIAAKgBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-10T09:29:43.027Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 13,
-              "Title": "AuthTokenHandler.cs",
-              "DocumentMoniker": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Services\\AuthTokenHandler.cs",
-              "RelativeDocumentMoniker": "AttendanceSystem.Auth.ui\\Services\\AuthTokenHandler.cs",
-              "ToolTip": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Services\\AuthTokenHandler.cs",
-              "RelativeToolTip": "AttendanceSystem.Auth.ui\\Services\\AuthTokenHandler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "UserCreateDto.cs",
+              "DocumentMoniker": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\UserCreateDto.cs",
+              "RelativeDocumentMoniker": "Employee.Shared\\UserCreateDto.cs",
+              "ToolTip": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\UserCreateDto.cs",
+              "RelativeToolTip": "Employee.Shared\\UserCreateDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAQAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T14:30:11.093Z"
+              "WhenOpened": "2025-08-10T09:23:43.831Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 14,
-              "Title": "JwtAuthenticationStateProvider.cs",
-              "DocumentMoniker": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Services\\JwtAuthenticationStateProvider.cs",
-              "RelativeDocumentMoniker": "AttendanceSystem.Auth.ui\\Services\\JwtAuthenticationStateProvider.cs",
-              "ToolTip": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Services\\JwtAuthenticationStateProvider.cs",
-              "RelativeToolTip": "AttendanceSystem.Auth.ui\\Services\\JwtAuthenticationStateProvider.cs",
-              "ViewState": "AgIAADkAAAAAAAAAAAAkwF0AAAABAAAAAAAAAA==",
+              "Title": "ManagementService.cs",
+              "DocumentMoniker": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Services\\ManagementService.cs",
+              "RelativeDocumentMoniker": "AttendanceSystem.Auth.ui\\Services\\ManagementService.cs",
+              "ToolTip": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Services\\ManagementService.cs",
+              "RelativeToolTip": "AttendanceSystem.Auth.ui\\Services\\ManagementService.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAArwDMAAABLAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T14:51:30.597Z"
+              "WhenOpened": "2025-08-10T09:09:03.652Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Program.cs",
+              "DocumentMoniker": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Program.cs",
+              "RelativeDocumentMoniker": "AttendanceSystem.Auth.ui\\Program.cs",
+              "ToolTip": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Program.cs",
+              "RelativeToolTip": "AttendanceSystem.Auth.ui\\Program.cs",
+              "ViewState": "AgIAAK4AAAAAAAAAAAAmwMAAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-10T09:08:27.118Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "IManagmentServicesApi.cs",
+              "DocumentMoniker": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.Services\\Services\\ManagmentServices\\IManagmentServicesApi.cs",
+              "RelativeDocumentMoniker": "AttendanceSystem.Auth.Services\\Services\\ManagmentServices\\IManagmentServicesApi.cs",
+              "ToolTip": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.Services\\Services\\ManagmentServices\\IManagmentServicesApi.cs",
+              "RelativeToolTip": "AttendanceSystem.Auth.Services\\Services\\ManagmentServices\\IManagmentServicesApi.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-10T09:02:52.268Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 17,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.API\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "AttendanceSystem.Auth.API\\Controllers\\AuthController.cs",
-              "ToolTip": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.API\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "AttendanceSystem.Auth.API\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAACgAAAAAAAAAAAAQwDQAAABFAAAAAAAAAA==",
+              "Title": "IAuthoServicesApi.cs",
+              "DocumentMoniker": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.Services\\Services\\AuthoServices\\IAuthoServicesApi.cs",
+              "RelativeDocumentMoniker": "AttendanceSystem.Auth.Services\\Services\\AuthoServices\\IAuthoServicesApi.cs",
+              "ToolTip": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.Services\\Services\\AuthoServices\\IAuthoServicesApi.cs",
+              "RelativeToolTip": "AttendanceSystem.Auth.Services\\Services\\AuthoServices\\IAuthoServicesApi.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T13:41:51.118Z"
+              "WhenOpened": "2025-08-10T09:02:43.192Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 18,
-              "Title": "ManagmentServicesApi.cs",
-              "DocumentMoniker": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.Services\\Services\\ManagmentServices\\ManagmentServicesApi.cs",
-              "RelativeDocumentMoniker": "AttendanceSystem.Auth.Services\\Services\\ManagmentServices\\ManagmentServicesApi.cs",
-              "ToolTip": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.Services\\Services\\ManagmentServices\\ManagmentServicesApi.cs",
-              "RelativeToolTip": "AttendanceSystem.Auth.Services\\Services\\ManagmentServices\\ManagmentServicesApi.cs",
-              "ViewState": "AgIAAH8AAAAAAAAAAAApwJgAAAAyAAAAAAAAAA==",
+              "Title": "AuthoServicesApi.cs",
+              "DocumentMoniker": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.Services\\Services\\AuthoServices\\AuthoServicesApi.cs",
+              "RelativeDocumentMoniker": "AttendanceSystem.Auth.Services\\Services\\AuthoServices\\AuthoServicesApi.cs",
+              "ToolTip": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.Services\\Services\\AuthoServices\\AuthoServicesApi.cs",
+              "RelativeToolTip": "AttendanceSystem.Auth.Services\\Services\\AuthoServices\\AuthoServicesApi.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T09:40:10.177Z"
+              "WhenOpened": "2025-08-10T09:02:42.011Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 19,
-              "Title": "App.razor",
-              "DocumentMoniker": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\App.razor",
-              "RelativeDocumentMoniker": "AttendanceSystem.Auth.ui\\App.razor",
-              "ToolTip": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\App.razor",
-              "RelativeToolTip": "AttendanceSystem.Auth.ui\\App.razor",
-              "ViewState": "AgIAABIAAAAAAAAAAAAwwDkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-08T13:19:46.297Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "UserResult.cs",
-              "DocumentMoniker": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\UserResult.cs",
-              "RelativeDocumentMoniker": "Employee.Shared\\UserResult.cs",
-              "ToolTip": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\UserResult.cs",
-              "RelativeToolTip": "Employee.Shared\\UserResult.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAqwBkAAAAAAAAAAAAAAA==",
+              "Title": "AttendanceRecord.cs",
+              "DocumentMoniker": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\AttendanceRecord.cs",
+              "RelativeDocumentMoniker": "Employee.Shared\\AttendanceRecord.cs",
+              "ToolTip": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\AttendanceRecord.cs",
+              "RelativeToolTip": "Employee.Shared\\AttendanceRecord.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T09:44:06.486Z"
+              "WhenOpened": "2025-07-27T19:29:33.228Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 21,
-              "Title": "MonthView.razor",
-              "DocumentMoniker": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Pages\\MonthView.razor",
-              "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\Pages\\MonthView.razor",
-              "ToolTip": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Pages\\MonthView.razor",
-              "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\Pages\\MonthView.razor",
-              "ViewState": "AgIAAFAAAAAAAAAAAIAwwGIAAABnAAAAAAAAAA==",
+              "Title": "IAttendanceService.cs",
+              "DocumentMoniker": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API.Services\\AttendanceServices\\IAttendanceService.cs",
+              "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.API.Services\\AttendanceServices\\IAttendanceService.cs",
+              "ToolTip": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API.Services\\AttendanceServices\\IAttendanceService.cs",
+              "RelativeToolTip": "AttendanceSystem.ImportFile.API.Services\\AttendanceServices\\IAttendanceService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAgAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-27T12:12:50.87Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "AttendanceService.cs",
+              "DocumentMoniker": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API.Services\\AttendanceServices\\AttendanceService.cs",
+              "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.API.Services\\AttendanceServices\\AttendanceService.cs",
+              "ToolTip": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API.Services\\AttendanceServices\\AttendanceService.cs",
+              "RelativeToolTip": "AttendanceSystem.ImportFile.API.Services\\AttendanceServices\\AttendanceService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-27T12:02:49.903Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "YearView.razor",
+              "DocumentMoniker": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Pages\\YearView.razor",
+              "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\Pages\\YearView.razor",
+              "ToolTip": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Pages\\YearView.razor",
+              "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\Pages\\YearView.razor",
+              "ViewState": "AgIAAOUAAAAAAAAAAAAwwPMAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-07T17:25:12.024Z"
+              "WhenOpened": "2025-07-27T11:54:56.193Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Program.cs",
+              "DocumentMoniker": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API\\Program.cs",
+              "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.API\\Program.cs",
+              "ToolTip": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API\\Program.cs",
+              "RelativeToolTip": "AttendanceSystem.ImportFile.API\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-27T12:04:42.005Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "AttendanceController.cs",
+              "DocumentMoniker": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API\\Controllers\\AttendanceController.cs",
+              "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.API\\Controllers\\AttendanceController.cs",
+              "ToolTip": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API\\Controllers\\AttendanceController.cs",
+              "RelativeToolTip": "AttendanceSystem.ImportFile.API\\Controllers\\AttendanceController.cs",
+              "ViewState": "AgIAAM0AAAAAAAAAAAAewNsAAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-27T11:43:52.558Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Employee.cs",
+              "DocumentMoniker": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\Employee.cs",
+              "RelativeDocumentMoniker": "Employee.Shared\\Employee.cs",
+              "ToolTip": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\Employee.cs",
+              "RelativeToolTip": "Employee.Shared\\Employee.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-27T11:51:30.406Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "AttendanceService.cs",
+              "DocumentMoniker": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Services\\AttendanceService.cs",
+              "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\Services\\AttendanceService.cs",
+              "ToolTip": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Services\\AttendanceService.cs",
+              "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\Services\\AttendanceService.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAowDwAAABWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-27T11:48:08.322Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "DayView.razor",
+              "DocumentMoniker": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Pages\\DayView.razor",
+              "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\Pages\\DayView.razor",
+              "ToolTip": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Pages\\DayView.razor",
+              "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\Pages\\DayView.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-27T11:45:17.242Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "MonthView.razor",
+              "DocumentMoniker": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Pages\\MonthView.razor",
+              "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\Pages\\MonthView.razor",
+              "ToolTip": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Pages\\MonthView.razor",
+              "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\Pages\\MonthView.razor",
+              "ViewState": "AgIAAPoAAAAAAAAAAAAwwAgBAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-27T11:54:39.039Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "CalendarModels.cs",
+              "DocumentMoniker": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\CalendarModels.cs",
+              "RelativeDocumentMoniker": "Employee.Shared\\CalendarModels.cs",
+              "ToolTip": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\CalendarModels.cs",
+              "RelativeToolTip": "Employee.Shared\\CalendarModels.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-27T11:43:05.111Z"
             }
           ]
         }

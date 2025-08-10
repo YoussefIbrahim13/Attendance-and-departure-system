@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AttendanceSystem.Auth.Services")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ac53adf2004ce5d1cb110cec086583afc568897e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a858fa047443125c3a55883ab220c372894b6d43")]
 [assembly: System.Reflection.AssemblyProductAttribute("AttendanceSystem.Auth.Services")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AttendanceSystem.Auth.Services")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

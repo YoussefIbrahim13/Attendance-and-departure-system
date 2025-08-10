@@ -7,6 +7,7 @@
 @inject IJSRuntime JSRuntime
 @inject ILocalStorageService LocalStorage
 @inject AuthenticationStateProvider AuthStateProvider
+@inject ManagementService ManagementService
 
 <MudContainer MaxWidth="MaxWidth.ExtraExtraLarge" Class="mt-6">
     <!-- Header Section -->
@@ -233,15 +234,10 @@
 
         try
         {
-            var token = await LocalStorage.GetItemAsync<string>("authToken");
-            var request = new HttpRequestMessage(HttpMethod.Get, $"api/Management/GetApplicationUser/{UserId}");
-            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            var result = await ManagementService.GetApplicationUserAsync(UserId);
 
-            var response = await Http.SendAsync(request);
-
-            if (response.IsSuccessStatusCode)
+            if (result.Success)
             {
-                var result = await response.Content.ReadFromJsonAsync<UserResponseDto>();
                 user = new UserUpdateDto
                 {
                     Name = result.Name,
@@ -250,6 +246,7 @@
                     Position = result.Position,
                     IsApproved = result.IsApproved
                 };
+
                 // Store original values
                 originalName = user.Name;
                 originalEmail = user.Email;
@@ -259,12 +256,14 @@
             }
             else
             {
-                await HandleApiError(response);
+                errorMessage = result.Errors?.FirstOrDefault()?.Description
+                              ?? "Failed to load user";
             }
         }
         catch (Exception ex)
         {
             errorMessage = $"Failed to load user: {ex.Message}";
+            Console.Error.WriteLine(ex); // Added error logging
         }
         finally
         {
@@ -281,26 +280,23 @@
 
         try
         {
-            var token = await LocalStorage.GetItemAsync<string>("authToken");
-            var request = new HttpRequestMessage(HttpMethod.Put, $"api/Management/UpdateApplicationUser/{UserId}");
-            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
-            request.Content = JsonContent.Create(user);
+            var result = await ManagementService.UpdateApplicationUserAsync(UserId, user);
 
-            var response = await Http.SendAsync(request);
-
-            if (response.IsSuccessStatusCode)
+            if (result.Success)
             {
-                await JSRuntime.InvokeVoidAsync("alert", "User updated successfully");
+               // await JSRuntime.InvokeVoidAsync("alert", "User updated successfully");
                 Navigation.NavigateTo("/admin/users");
             }
             else
             {
-                await HandleApiError(response);
+                errorMessage = result.Errors?.FirstOrDefault()?.Description
+                             ?? "Failed to update user";
             }
         }
         catch (Exception ex)
         {
             errorMessage = $"Failed to save user: {ex.Message}";
+            Console.Error.WriteLine(ex); // Added error logging
         }
         finally
         {
@@ -341,10 +337,10 @@
              user.Position != originalPosition ||
              user.IsApproved != originalIsApproved))
         {
-            if (!await JSRuntime.InvokeAsync<bool>("confirm", "You have unsaved changes. Are you sure you want to leave?"))
-            {
-                return;
-            }
+            // if (!await JSRuntime.InvokeAsync<bool>("confirm", "You have unsaved changes. Are you sure you want to leave?"))
+            // {
+            //     return;
+            // }
         }
         Navigation.NavigateTo("/admin/users");
     }

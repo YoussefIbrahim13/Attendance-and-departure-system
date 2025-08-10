@@ -3,6 +3,7 @@
 @inject IJSRuntime JSRuntime
 @inject ILocalStorageService LocalStorage
 @inject ISnackbar Snackbar
+@inject ManagementService ManagementService
 
 <MudDialog Class="enhanced-dialog-container" MaxWidth="MaxWidth.Small" FullHeight="true">
     <DialogContent>
@@ -544,14 +545,22 @@
         text-transform: none !important;
         letter-spacing: 0.5px !important;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-        border: 1.5px solid var(--mud-palette-lines-default) !important;
+        border: 1.5px solid var(--mud-palette-error) !important;
+        color: var(--mud-palette-error) !important;
+        background-color: transparent !important;
     }
 
         .enhanced-cancel-button:hover {
-            background-color: var(--mud-palette-action-default) !important;
-            border-color: var(--mud-palette-text-secondary) !important;
+            background-color: var(--mud-palette-error) !important;
+            color: var(--mud-palette-error-text) !important;
+            border-color: var(--mud-palette-error) !important;
             transform: translateY(-1px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .enhanced-cancel-button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
     .enhanced-save-button {
@@ -689,27 +698,24 @@
 
         try
         {
-            var token = await LocalStorage.GetItemAsync<string>("authToken");
-            var request = new HttpRequestMessage(HttpMethod.Post, $"api/Management/AddApplicationUser?roleName={selectedRole}");
-            request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-            request.Content = JsonContent.Create(newUser);
+            var result = await ManagementService.AddApplicationUserAsync(newUser, selectedRole);
 
-            var response = await Http.SendAsync(request);
-
-            if (response.IsSuccessStatusCode)
+            if (result.Success)
             {
                 Snackbar.Add("User added successfully", Severity.Success);
                 MudDialog.Close(DialogResult.Ok(true));
             }
             else
             {
-                var errorResult = await response.Content.ReadFromJsonAsync<OperationResult>();
-                Snackbar.Add(errorResult?.Message ?? $"Error: {response.StatusCode}", Severity.Error);
+                var errorMessage = result.Errors?.FirstOrDefault()?.Description ??
+                                  "Failed to add user";
+                Snackbar.Add(errorMessage, Severity.Error);
             }
         }
         catch (Exception ex)
         {
             Snackbar.Add($"Failed to add user: {ex.Message}", Severity.Error);
+            Console.Error.WriteLine(ex); // Added error logging
         }
         finally
         {

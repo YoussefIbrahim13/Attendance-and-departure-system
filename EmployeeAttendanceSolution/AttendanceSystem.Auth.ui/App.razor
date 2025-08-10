@@ -26,11 +26,15 @@
 
 @code {
     [Inject] private ISessionStorageService _sessionStorage { get; set; } = null!;
-    [Inject] private SessionValidationService SessionValidator { get; set; } = null!;
+    // [Inject] private SessionValidationService SessionValidator { get; set; } = null!;
+    [Inject] private ILocalStorageService LocalStorage { get; set; } = null!;
 
     protected override async Task OnInitializedAsync()
     {
-        await SessionValidator.ValidateSession();
+        var token = await LocalStorage.GetItemAsync<string>("authToken");
+		if (!string.IsNullOrEmpty(token))
+            await LocalStorage.RemoveItemAsync("authToken");
+       
     }
 
     private RenderFragment NotAuthorized(AuthenticationState context) => builder =>

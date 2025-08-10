@@ -189,7 +189,8 @@ builder.Services.AddScoped<AuthenticationStateProvider>(sp =>
 
 // Application Services
 builder.Services.AddScoped<AuthService>();
-builder.Services.AddScoped<SessionValidationService>();
+//builder.Services.AddScoped<SessionValidationService>();
+builder.Services.AddScoped<ManagementService>();
 
 /////
 builder.Services.AddMudServices();

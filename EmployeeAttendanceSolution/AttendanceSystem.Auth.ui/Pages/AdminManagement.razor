@@ -8,6 +8,7 @@
 @inject ILocalStorageService LocalStorage
 @inject AuthenticationStateProvider AuthStateProvider
 @inject IDialogService DialogService
+@inject ManagementService ManagementService
 
 <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="enhanced-admin-container">
     <!-- Enhanced Header Section -->
@@ -435,8 +436,8 @@
         border: 1px solid var(--mud-palette-lines-default);
     }
 
+  
     .enhanced-table-header {
-        background: linear-gradient(135deg, var(--mud-palette-primary) 0%, var(--mud-palette-secondary) 100%) !important;
         color: white !important;
         font-weight: 600 !important;
         text-transform: uppercase !important;
@@ -444,6 +445,25 @@
         padding: 16px 12px !important;
     }
 
+        /* First 3 columns - Primary */
+        .enhanced-table-header:nth-child(1),
+        .enhanced-table-header:nth-child(2),
+        .enhanced-table-header:nth-child(3) {
+            background: var(--mud-palette-primary) !important;
+        }
+
+        /* 4th column - Gradient (Primary → Secondary) */
+        .enhanced-table-header:nth-child(4) {
+            background: linear-gradient(135deg, var(--mud-palette-primary) 30%, var(--mud-palette-secondary) 50%) !important;
+        }
+
+        /* Last 3 columns - Secondary */
+        .enhanced-table-header:nth-child(5),
+        .enhanced-table-header:nth-child(6),
+        .enhanced-table-header:nth-child(7) {
+            background: var(--mud-palette-secondary) !important;
+        }
+        
     .enhanced-table-cell {
         padding: 16px 12px !important;
         border-bottom: 1px solid var(--mud-palette-divider) !important;
@@ -567,29 +587,16 @@
 
         try
         {
-            var token = await LocalStorage.GetItemAsync<string>("authToken");
+            var result = await ManagementService.GetAllUsersAsync();
 
-            var request = new HttpRequestMessage(HttpMethod.Get, "api/Management/GetAllUsers");
-            request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-
-            var response = await Http.SendAsync(request);
-
-            if (response.IsSuccessStatusCode)
+            if (result.Success)
             {
-                var result = await response.Content.ReadFromJsonAsync<OperationResult<List<UserResponseDto>>>();
-                if (result?.Success == true)
-                {
-                    users = result.Data ?? new List<UserResponseDto>();
-                    FilterUsers();
-                }
-                else
-                {
-                    errorMessage = result?.Message ?? "Failed to load users";
-                }
+                users = result.Data ?? new List<UserResponseDto>();
+                FilterUsers();
             }
             else
             {
-                await HandleApiError(response);
+                errorMessage = result.Message ?? "Failed to load users";
             }
         }
         catch (Exception ex)
@@ -620,11 +627,12 @@
             var term = searchTerm.ToLower();
             filteredUsers = usersToDisplay
                 .Where(u =>
-                    u.Name?.ToLower().Contains(term) == true ||
-                    u.Email?.ToLower().Contains(term) == true ||
-                    u.Department?.ToLower().Contains(term) == true ||
-                    u.Position?.ToLower().Contains(term) == true ||
-                    u.Roles.Any(r => r.ToLower().Contains(term))
+                    u.Name?.ToLower().Contains(term) == true 
+                    // ||
+                    // u.Email?.ToLower().Contains(term) == true ||
+                    // u.Department?.ToLower().Contains(term) == true ||
+                    // u.Position?.ToLower().Contains(term) == true ||
+                    // u.Roles.Any(r => r.ToLower().Contains(term))
                 )
                 .Skip((currentPage - 1) * pageSize)
                 .Take(pageSize)
@@ -668,8 +676,8 @@
 
     private async Task ApproveUser(string userId)
     {
-        if (!await JSRuntime.InvokeAsync<bool>("confirm", "Are you sure you want to approve this user?"))
-            return;
+        // if (!await JSRuntime.InvokeAsync<bool>("confirm", "Are you sure you want to approve this user?"))
+        //     return;
 
         isLoading = true;
         errorMessage = string.Empty;
@@ -677,24 +685,21 @@
 
         try
         {
-            var token = await LocalStorage.GetItemAsync<string>("authToken");
-            var request = new HttpRequestMessage(HttpMethod.Post, $"api/Management/approve/{userId}");
-            request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+            var result = await ManagementService.ApproveUserAsync(userId);
 
-            var response = await Http.SendAsync(request);
-
-            if (response.IsSuccessStatusCode)
+            if (result.Success)
             {
-                await LoadUsers();
+                await LoadUsers(); // Refresh the user list
             }
             else
             {
-                await HandleApiError(response);
+                errorMessage = result.Message ?? "Failed to approve user";
             }
         }
         catch (Exception ex)
         {
             errorMessage = $"Failed to approve user: {ex.Message}";
+            Console.Error.WriteLine(ex);
         }
         finally
         {
@@ -705,8 +710,8 @@
 
     private async Task DeleteUser(string userId)
     {
-        if (!await JSRuntime.InvokeAsync<bool>("confirm", "Are you sure you want to delete this user? This action cannot be undone."))
-            return;
+        // if (!await JSRuntime.InvokeAsync<bool>("confirm", "Are you sure you want to delete this user? This action cannot be undone."))
+        //     return;
 
         isLoading = true;
         errorMessage = string.Empty;
@@ -714,24 +719,21 @@
 
         try
         {
-            var token = await LocalStorage.GetItemAsync<string>("authToken");
-            var request = new HttpRequestMessage(HttpMethod.Delete, $"api/Management/DeleteApplicationUser/{userId}");
-            request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+            var result = await ManagementService.DeleteApplicationUserAsync(userId);
 
-            var response = await Http.SendAsync(request);
-
-            if (response.IsSuccessStatusCode)
+            if (result.Success)
             {
-                await LoadUsers();
+                await LoadUsers(); // Refresh the user list after deletion
             }
             else
             {
-                await HandleApiError(response);
+                errorMessage = result.Message ?? "Failed to delete user";
             }
         }
         catch (Exception ex)
         {
             errorMessage = $"Failed to delete user: {ex.Message}";
+            Console.Error.WriteLine(ex); // Added error logging
         }
         finally
         {
