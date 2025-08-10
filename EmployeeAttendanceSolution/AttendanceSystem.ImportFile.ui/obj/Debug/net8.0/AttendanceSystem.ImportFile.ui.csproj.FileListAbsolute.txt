@@ -9637,6 +9637,7 @@ Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.ImportFi
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\refint\AttendanceSystem.ImportFile.ui.dll
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\AttendanceSystem.ImportFile.ui.pdb
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\ref\AttendanceSystem.ImportFile.ui.dll
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\t05ut6bg1j-wxuu3neamd.gz
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\9xqkoric6b-nrmuws0piy.gz
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\rbzvdshd60-djypkz300l.gz
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\t05ut6bg1j-083p0yxzhh.gz
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\9xqkoric6b-dep4qj0qq4.gz
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\rbzvdshd60-q4wvu0h8vi.gz

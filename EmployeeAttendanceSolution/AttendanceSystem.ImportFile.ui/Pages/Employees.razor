@@ -36,7 +36,7 @@
         <MudPaper Class="pa-6" Elevation="2" Style="border-radius:18px; background: var(--mud-palette-surface);">
             <MudText Typo="Typo.h6" Class="mb-4">All Employees</MudText>
             <MudStack Row Spacing="2" Class="mb-3">
-                <MudTextField @bind-Value="searchcode" Label="Search by Employee Code" Variant="Variant.Outlined" Margin="Margin.Dense" Style="width:200px;" />
+                <MudTextField @bind-Value="searchcode" Label="Search by Code" Variant="Variant.Outlined" Margin="Margin.Dense" Style="width:200px;" />
                 <MudSelect T="DepartmentEnum?" @bind-Value="selectedDepartment" Label="Department" Variant="Variant.Outlined" Margin="Margin.Dense" Style="width:200px;">
                     <MudSelectItem T="DepartmentEnum?" Value="@((DepartmentEnum?)null)">All Departments</MudSelectItem>
                     @foreach (var dept in Enum.GetValues(typeof(DepartmentEnum)))
