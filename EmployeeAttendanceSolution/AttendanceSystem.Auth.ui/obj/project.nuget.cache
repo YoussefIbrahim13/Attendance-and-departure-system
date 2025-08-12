@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wEDKyaLaVLw=",
+  "dgSpecHash": "0KfgGqJMkqQ=",
   "success": true,
-  "projectFilePath": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj",
+  "projectFilePath": "A:\\EmployeeAttendanceSolution\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ehabm\\.nuget\\packages\\blazored.localstorage\\4.5.0\\blazored.localstorage.4.5.0.nupkg.sha512",
     "C:\\Users\\ehabm\\.nuget\\packages\\blazored.sessionstorage\\2.4.0\\blazored.sessionstorage.2.4.0.nupkg.sha512",

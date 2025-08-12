@@ -1,0 +1,107 @@
+﻿@page "/vacation/requests"
+@attribute [Authorize]
+
+@using System.ComponentModel.DataAnnotations
+
+<MudContainer MaxWidth="MaxWidth.Medium" Class="mt-4">
+
+    <MudPaper Class="pa-4 mb-4" Elevation="2">
+        <MudText Typo="Typo.h5" Class="mb-3">New Vacation Request</MudText>
+
+        <EditForm Model="@requestModel" OnValidSubmit="SubmitRequest">
+            <DataAnnotationsValidator />
+
+            <MudDatePicker Label="From Date"
+                           @bind-Date="requestModel.From"
+                           Required="true"
+                           Variant="Variant.Outlined"
+                           Class="mb-3" />
+
+            <MudDatePicker Label="To Date"
+                           @bind-Date="requestModel.To"
+                           Required="true"
+                           Variant="Variant.Outlined"
+                           Class="mb-3" />
+
+            <MudTextField T="string" Label="Reason"
+                          @bind-Value="requestModel.Reason"
+                          Required="true"
+                          Variant="Variant.Outlined"
+                          Lines="3"
+                          Class="mb-3" />
+
+            <MudButton Color="Color.Primary" Variant="Variant.Filled" Type="Submit">
+                Submit
+            </MudButton>
+        </EditForm>
+    </MudPaper>
+
+    <MudPaper Class="pa-4" Elevation="2">
+        <MudText Typo="Typo.h6" Class="mb-2">Vacation History</MudText>
+        <MudTable Items="@pastRequests" Dense="true" Hover="true">
+            <HeaderContent>
+                <MudTh>From</MudTh>
+                <MudTh>To</MudTh>
+                <MudTh>Reason</MudTh>
+                <MudTh>Status</MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd>@context.From?.ToShortDateString()</MudTd>
+                <MudTd>@context.To?.ToShortDateString()</MudTd>
+                <MudTd>@context.Reason</MudTd>
+                <MudTd>@context.Status</MudTd>
+            </RowTemplate>
+            <NoRecordsContent>
+                <MudText>No vacation requests yet.</MudText>
+            </NoRecordsContent>
+        </MudTable>
+    </MudPaper>
+
+</MudContainer>
+
+@code {
+    private VacationRequestModel requestModel = new();
+    private List<VacationHistory> pastRequests = new();
+
+    protected override void OnInitialized()
+    {
+        LoadVacationHistory();
+    }
+
+    private void LoadVacationHistory()
+    {
+        pastRequests = new List<VacationHistory>
+        {
+            new VacationHistory { From = DateTime.Now.AddDays(-10), To = DateTime.Now.AddDays(-8), Reason = "Family trip", Status = "Approved" },
+            new VacationHistory { From = DateTime.Now.AddDays(-5), To = DateTime.Now.AddDays(-3), Reason = "Flu recovery", Status = "Pending" }
+        };
+    }
+
+    private void SubmitRequest()
+    {
+        pastRequests.Add(new VacationHistory
+        {
+            From = requestModel.From,
+            To = requestModel.To,
+            Reason = requestModel.Reason,
+            Status = "Pending"
+        });
+
+        requestModel = new();
+    }
+
+    public class VacationRequestModel
+    {
+        [Required] public DateTime? From { get; set; } = DateTime.Today;
+        [Required] public DateTime? To { get; set; } = DateTime.Today;
+        [Required] public string Reason { get; set; } = string.Empty;
+    }
+
+    public class VacationHistory
+    {
+        public DateTime? From { get; set; }
+        public DateTime? To { get; set; }
+        public string Reason { get; set; } = string.Empty;
+        public string Status { get; set; } = string.Empty;
+    }
+}

@@ -30,3 +30,19 @@ A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSoluti
 A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.Services\obj\Debug\net8.0\refint\AttendanceSystem.Auth.Services.dll
 A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.Services\obj\Debug\net8.0\AttendanceSystem.Auth.Services.pdb
 A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.Services\obj\Debug\net8.0\ref\AttendanceSystem.Auth.Services.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.Services\bin\Debug\net8.0\AttendanceSystem.Auth.Services.deps.json
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.Services\bin\Debug\net8.0\AttendanceSystem.Auth.Services.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.Services\bin\Debug\net8.0\AttendanceSystem.Auth.Services.pdb
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.Services\bin\Debug\net8.0\EmployeesModels.Shared.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.Services\bin\Debug\net8.0\EmployeesModels.Shared.pdb
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.Services\obj\Debug\net8.0\AttendanceSystem.Auth.Services.csproj.AssemblyReference.cache
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.Services\obj\Debug\net8.0\AttendanceSystem.Auth.Services.GeneratedMSBuildEditorConfig.editorconfig
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.Services\obj\Debug\net8.0\AttendanceSystem.Auth.Services.AssemblyInfoInputs.cache
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.Services\obj\Debug\net8.0\AttendanceSystem.Auth.Services.AssemblyInfo.cs
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.Services\obj\Debug\net8.0\AttendanceSystem.Auth.Services.csproj.CoreCompileInputs.cache
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.Services\obj\Debug\net8.0\AttendanceSystem.Auth.Services.sourcelink.json
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.Services\obj\Debug\net8.0\Attendan.C0DE6C98.Up2Date
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.Services\obj\Debug\net8.0\AttendanceSystem.Auth.Services.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.Services\obj\Debug\net8.0\refint\AttendanceSystem.Auth.Services.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.Services\obj\Debug\net8.0\AttendanceSystem.Auth.Services.pdb
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.Services\obj\Debug\net8.0\ref\AttendanceSystem.Auth.Services.dll

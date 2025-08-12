@@ -9,6 +9,8 @@
 @inject AuthenticationStateProvider AuthStateProvider
 @inject IDialogService DialogService
 @inject ManagementService ManagementService
+@inject ISnackbar Snackbar
+@inject CurrentUserService CurrentUser
 
 <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="enhanced-admin-container">
     <!-- Enhanced Header Section -->
@@ -574,8 +576,9 @@
 
     protected override async Task OnInitializedAsync()
     {
-        var authState = await AuthStateProvider.GetAuthenticationStateAsync();
-        currentUserId = authState.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        // var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+        // currentUserId = authState.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        currentUserId = await CurrentUser.GetUserIdAsync();
         await LoadUsers();
     }
 
@@ -686,19 +689,40 @@
         try
         {
             var result = await ManagementService.ApproveUserAsync(userId);
+            Console.WriteLine($"User {userId} approved Enterrrrrrrrrrr.");
+            Console.WriteLine($"Result received - Success: {result.Success}, Message: {result.Message ?? "null"}");
 
             if (result.Success)
             {
-                await LoadUsers(); // Refresh the user list
+				Console.WriteLine($"User {userId} approved successfully.");
+                // Show snackbar with correct syntax
+                Snackbar.Add("User approved successfully !!", Severity.Success);
+
+                // Optimistically update the local user object
+                var user = users.FirstOrDefault(u => u.Id == userId);
+                if (user != null)
+                {
+                    user.IsApproved = true;
+                }
+
+                // Force UI update
+                // StateHasChanged();
+
+                // // Optional: Still refresh from server to ensure consistency
+                // await LoadUsers();
+                Navigation.NavigateTo($"/admin/users");
+
             }
             else
             {
                 errorMessage = result.Message ?? "Failed to approve user";
+                Snackbar.Add(errorMessage, Severity.Error);
             }
         }
         catch (Exception ex)
         {
             errorMessage = $"Failed to approve user: {ex.Message}";
+            Snackbar.Add(errorMessage, Severity.Error);
             Console.Error.WriteLine(ex);
         }
         finally
@@ -710,12 +734,13 @@
 
     private async Task DeleteUser(string userId)
     {
+        // Uncomment if you want a JS confirmation dialog
         // if (!await JSRuntime.InvokeAsync<bool>("confirm", "Are you sure you want to delete this user? This action cannot be undone."))
         //     return;
 
         isLoading = true;
         errorMessage = string.Empty;
-        StateHasChanged();
+        StateHasChanged(); // Force UI update for loading state
 
         try
         {
@@ -723,22 +748,25 @@
 
             if (result.Success)
             {
-                await LoadUsers(); // Refresh the user list after deletion
+                await LoadUsers(); // Refresh the user list
+                Snackbar.Add("✅ User deleted successfully!", Severity.Success);
             }
             else
             {
                 errorMessage = result.Message ?? "Failed to delete user";
+                Snackbar.Add($"❌ {errorMessage}", Severity.Error); // Show error in Snackbar
             }
         }
         catch (Exception ex)
         {
             errorMessage = $"Failed to delete user: {ex.Message}";
-            Console.Error.WriteLine(ex); // Added error logging
+            Snackbar.Add($"⚠️ {errorMessage}", Severity.Warning); // Show exception in Snackbar
+            Console.Error.WriteLine(ex); // Log to console (or use ILogger)
         }
         finally
         {
             isLoading = false;
-            StateHasChanged();
+            StateHasChanged(); // Update UI after operation
         }
     }
 

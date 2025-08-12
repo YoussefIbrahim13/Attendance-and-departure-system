@@ -34,7 +34,8 @@ namespace AttendanceSystem.Auth.API.Services.Services.AuthoServices
                 new(ClaimTypes.Name, user.Name),
                 new(ClaimTypes.Email, user.Email),
                 new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new("IsApproved", user.IsApproved.ToString())
+                new("IsApproved", user.IsApproved.ToString()),
+                new (ClaimTypes.NameIdentifier, user.Id)
             };
 
             var userRoles = await _userManager.GetRolesAsync(user);

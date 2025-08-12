@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "x57wHAQ3QYs=",
+  "dgSpecHash": "wWxEy6X1DWw=",
   "success": true,
-  "projectFilePath": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj",
+  "projectFilePath": "A:\\EmployeeAttendanceSolution\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ehabm\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\8.0.0\\microsoft.aspnetcore.cryptography.internal.8.0.0.nupkg.sha512",
     "C:\\Users\\ehabm\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\8.0.0\\microsoft.aspnetcore.cryptography.keyderivation.8.0.0.nupkg.sha512",

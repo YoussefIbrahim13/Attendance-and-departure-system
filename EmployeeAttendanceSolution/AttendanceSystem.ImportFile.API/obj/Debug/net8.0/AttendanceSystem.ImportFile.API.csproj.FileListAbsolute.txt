@@ -1432,3 +1432,4 @@ A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSoluti
 A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.pdb
 A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.genruntimeconfig.cache
 A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\obj\Debug\net8.0\ref\AttendanceSystem.ImportFile.API.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll

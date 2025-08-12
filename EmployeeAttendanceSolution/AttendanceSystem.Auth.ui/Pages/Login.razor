@@ -428,29 +428,35 @@
 
     private async Task HandleLogin()
     {
-        Console.WriteLine($"[Login] Submitted: {loginModel.Email}, {loginModel.Password}");
+        Console.WriteLine($"[Login] Submitted: {loginModel.Email}");
         errorMessage = null;
 
         try
         {
             var loginResult = await AuthService.Login(loginModel);
 
-            if (loginResult.Success)
-            {
-                var currentUser = await AuthService.GetCurrentUser();
-                Navigation.NavigateTo(currentUser?.IsAdmin == true
-                    ? "/admin/users"
-                    : "/");
-            }
-            else
+            if (!loginResult.Success)
             {
                 errorMessage = loginResult.Error ?? "Invalid login attempt";
+                return;
             }
+
+            var currentUser = await AuthService.GetCurrentUser();
+
+            if (currentUser == null)
+            {
+                errorMessage = "Failed to load user information";
+                return;
+            }
+
+            Navigation.NavigateTo(currentUser.InRole("Admin") ? "/admin/users" : "/");
         }
         catch (Exception ex)
         {
             errorMessage = "Login failed. Please try again.";
-            Console.Error.WriteLine(ex);
+            Console.Error.WriteLine($"[Login Error] {ex.Message}");
+            // Consider logging the full exception for debugging:
+            // Console.Error.WriteLine(ex.ToString());
         }
     }
 }

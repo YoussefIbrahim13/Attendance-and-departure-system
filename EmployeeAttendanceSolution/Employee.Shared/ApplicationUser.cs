@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿    using Microsoft.AspNetCore.Identity;
 using System;
 
 namespace EmployeesModels.Shared
@@ -11,7 +11,9 @@ namespace EmployeesModels.Shared
         public string? Department { get; set; }
         public string? Position { get; set; }
         public bool IsApproved { get; set; } = false; // Default to false, needs approval
-
+                                                      
+        // Navigation property for vacation requests
+        public virtual ICollection<VacationRequest> VacationRequests { get; set; }
 
 
     }

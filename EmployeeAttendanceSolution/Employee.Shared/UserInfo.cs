@@ -12,9 +12,10 @@ namespace EmployeesModels.Shared
         public string? UserName { get; set; }
         public string? Email { get; set; }
         public string? Name { get; set; }
-        public IList<string>? Roles { get; set; } 
-        public bool IsAdmin => Roles.Contains("Admin");
-        public bool IsManager => Roles.Contains("Manager");
-        public bool IsUser => Roles.Contains("User");
+        public string? PhoneNumber { get; set; }
+        public string? Department { get; set; }
+        public IList<string>? Roles { get; set; }
+        public bool InRole(string role) =>
+              Roles?.Contains(role, StringComparer.OrdinalIgnoreCase) ?? false;
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace AttendanceSystem.Auth.API.Database
+namespace EmployeesModels.Shared.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
@@ -11,6 +11,8 @@ namespace AttendanceSystem.Auth.API.Database
             : base(options)
         {
         }
+        public DbSet<VacationRequest> VacationRequests { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -29,6 +31,20 @@ namespace AttendanceSystem.Auth.API.Database
             builder.Entity<ApplicationRole>()
                    .Property(r => r.RoleType)
                    .HasConversion<string>();
+
+            // Configure VacationRequest
+            builder.Entity<VacationRequest>(entity =>
+            {
+                entity.HasKey(v => v.Id);
+
+                entity.Property(v => v.Status)
+                      .HasConversion<string>();
+
+                entity.HasOne(v => v.User)
+                      .WithMany(u => u.VacationRequests)
+                      .HasForeignKey(v => v.UserId)
+                      .OnDelete(DeleteBehavior.Cascade);
+            });
         }
     }
 }

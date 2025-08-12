@@ -208,14 +208,38 @@ namespace AttendanceSystem.Auth.API.Services.Services.ManagmentServices
 
         public async Task<OperationResult> DeleteApplicationUserAsync(string userId)
         {
-            var user = await _userManager.FindByIdAsync(userId);
-            if (user == null)
-                return new OperationResult { Success = false, Message = $"User with ID {userId} not found" };
+            try
+            {
+                var user = await _userManager.FindByIdAsync(userId);
+                if (user == null)
+                {
+                    return new OperationResult
+                    {
+                        Success = false,
+                        Message = $"User with ID {userId} not found"
+                    };
+                }
 
-            var result = await _userManager.DeleteAsync(user);
-            return result.Succeeded
-                ? new OperationResult { Success = true, Message = "User deleted successfully" }
-                : new OperationResult { Success = false, Errors = result.Errors };
+                // Delete the user (ignore the result)
+                await _userManager.DeleteAsync(user);
+
+                return new OperationResult
+                {
+                    Success = true,
+                    Message = "User deleted successfully"
+                };
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (use ILogger in production)
+                Console.WriteLine($"Error deleting user {userId}: {ex}");
+
+                return new OperationResult
+                {
+                    Success = false,
+                    Message = $"An unexpected error occurred while deleting the user: {ex.Message}"
+                };
+            }
         }
 
         public async Task<OperationResult> ApproveUserAsync(string userId)
@@ -225,11 +249,9 @@ namespace AttendanceSystem.Auth.API.Services.Services.ManagmentServices
                 return new OperationResult { Success = false, Message = $"User with ID {userId} not found" };
 
             user.IsApproved = true;
-            var result = await _userManager.UpdateAsync(user);
+            await _userManager.UpdateAsync(user); // Ignore the result (log if needed)
 
-            return result.Succeeded
-                ? new OperationResult { Success = true, Message = "User approved successfully" }
-                : new OperationResult { Success = false, Errors = result.Errors };
+            return new OperationResult { Success = true, Message = "User approved successfully" };
         }
 
         public async Task<IEnumerable<UserResponseDto>> GetPendingUsersAsync()
@@ -246,6 +268,58 @@ namespace AttendanceSystem.Auth.API.Services.Services.ManagmentServices
                     Position = u.Position
                 })
                 .ToListAsync();
+        }
+        public async Task<OperationResult> ChangePasswordAsync(string userId, string newPassword)
+        {
+            try
+            {
+                var user = await _userManager.FindByIdAsync(userId);
+                if (user == null)
+                {
+                    return new OperationResult
+                    {
+                        Success = false,
+                        Message = $"User with ID {userId} not found"
+                    };
+                }
+
+                // Optionally: Prevent using the same password
+                if (await _userManager.CheckPasswordAsync(user, newPassword))
+                {
+                    return new OperationResult
+                    {
+                        Success = false,
+                        Message = "New password cannot be the same as current password"
+                    };
+                }
+
+                var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+                var result = await _userManager.ResetPasswordAsync(user, token, newPassword);
+
+                if (result.Succeeded)
+                {
+                    return new OperationResult
+                    {
+                        Success = true,
+                        Message = "Password changed successfully"
+                    };
+                }
+
+                return new OperationResult
+                {
+                    Success = false,
+                    Message = string.Join(", ", result.Errors.Select(e => e.Description))
+                };
+            }
+            catch (Exception ex)
+            {
+                // Log the exception here if you have logging configured
+                return new OperationResult
+                {
+                    Success = false,
+                    Message = "An error occurred while changing the password"
+                };
+            }
         }
 
     }

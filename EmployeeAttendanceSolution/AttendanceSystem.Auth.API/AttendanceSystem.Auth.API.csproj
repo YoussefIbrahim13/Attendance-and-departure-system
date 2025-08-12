@@ -28,4 +28,8 @@
     <ProjectReference Include="..\Employee.Shared\EmployeesModels.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\" />
+  </ItemGroup>
+
 </Project>

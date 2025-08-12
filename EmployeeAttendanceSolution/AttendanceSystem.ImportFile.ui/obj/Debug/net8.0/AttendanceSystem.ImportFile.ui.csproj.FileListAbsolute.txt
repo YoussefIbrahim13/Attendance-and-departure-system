@@ -9511,11 +9511,6 @@ A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendance
 A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\2n6k7aqxkt-epnagkv91l.gz
 A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\qo44i7ef5c-u6wau0ktb7.gz
 A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\qwzvi86xqd-710onjtcga.gz
-A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\50hrlzrqlk-qx1ov9a81l.gz
-A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\t4iurl147h-p7bq8y241h.gz
-A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\t05ut6bg1j-pj8ywk01vx.gz
-A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\9xqkoric6b-oq1j1vrllr.gz
-A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\rbzvdshd60-8kx0ingujd.gz
 A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\bin\Debug\net8.0\wwwroot\_framework\blazor.webassembly.js
 A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\bin\Debug\net8.0\wwwroot\_framework\dotnet.js
 A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\bin\Debug\net8.0\wwwroot\_framework\dotnet.js.map
@@ -11762,3 +11757,38 @@ A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSoluti
 A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\refint\AttendanceSystem.ImportFile.ui.dll
 A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\AttendanceSystem.ImportFile.ui.pdb
 A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\ref\AttendanceSystem.ImportFile.ui.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\bin\Debug\net8.0\wwwroot\_framework\Microsoft.AspNetCore.Cryptography.Internal.wasm
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\bin\Debug\net8.0\wwwroot\_framework\Microsoft.AspNetCore.Cryptography.KeyDerivation.wasm
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\bin\Debug\net8.0\wwwroot\_framework\Microsoft.AspNetCore.Identity.EntityFrameworkCore.wasm
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\bin\Debug\net8.0\wwwroot\_framework\Microsoft.EntityFrameworkCore.Relational.wasm
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\bin\Debug\net8.0\wwwroot\_framework\Microsoft.Extensions.Identity.Core.wasm
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\bin\Debug\net8.0\wwwroot\_framework\Microsoft.Extensions.Identity.Stores.wasm
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\bin\Debug\net8.0\wwwroot\_framework\Microsoft.Extensions.Identity.Stores.wasm.gz
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\bin\Debug\net8.0\wwwroot\_framework\Microsoft.AspNetCore.Cryptography.KeyDerivation.wasm.gz
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\bin\Debug\net8.0\wwwroot\_framework\Microsoft.Extensions.Identity.Core.wasm.gz
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\bin\Debug\net8.0\wwwroot\_framework\Microsoft.EntityFrameworkCore.Relational.wasm.gz
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\bin\Debug\net8.0\wwwroot\_framework\Microsoft.AspNetCore.Cryptography.Internal.wasm.gz
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\bin\Debug\net8.0\wwwroot\_framework\Microsoft.AspNetCore.Identity.EntityFrameworkCore.wasm.gz
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\webcil\Microsoft.AspNetCore.Cryptography.Internal.wasm
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\webcil\Microsoft.AspNetCore.Cryptography.KeyDerivation.wasm
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\webcil\Microsoft.AspNetCore.Identity.EntityFrameworkCore.wasm
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\webcil\Microsoft.EntityFrameworkCore.Relational.wasm
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\webcil\Microsoft.Extensions.Identity.Core.wasm
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\webcil\Microsoft.Extensions.Identity.Stores.wasm
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\ycz2tntqht-ggfmw1lv5c.gz
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\c01uz8kz94-krm8c4azay.gz
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\zinmzqy6rd-btxu5tymnh.gz
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\s3skcq8jeg-1fujhdh0u0.gz
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\o3omzptot5-5t5a6dgiij.gz
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\aj0clpgrfr-72f2qtpvho.gz
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\50hrlzrqlk-79jwtoczer.gz
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\t4iurl147h-r2x2dck1t2.gz
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\t05ut6bg1j-kcja5pdsag.gz
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\9xqkoric6b-puzhcm293c.gz
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\rbzvdshd60-ar2hhiu5dn.gz

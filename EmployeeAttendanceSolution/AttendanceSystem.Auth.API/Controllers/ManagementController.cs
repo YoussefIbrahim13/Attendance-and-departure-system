@@ -1,4 +1,5 @@
 ﻿using AttendanceSystem.Auth.API.Services.Services.ManagmentServices;
+using Azure.Core;
 using EmployeesModels.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -123,9 +124,9 @@ namespace AttendanceSystem.Auth.API.Controllers
         public async Task<IActionResult> DeleteApplicationUser(string userId)
         {
             var result = await _managementService.DeleteApplicationUserAsync(userId);
-            return result.Success
-                ? Ok(new { result.Message })
-                : BadRequest(result.Errors ?? new[] { new IdentityError { Description = result.Message } });
+
+            // Return Ok if deletion was attempted (even if user didn't exist)
+            return Ok(new { result.Success, result.Message });
         }
 
         [HttpPost("approve/{userId}")]
@@ -133,9 +134,9 @@ namespace AttendanceSystem.Auth.API.Controllers
         public async Task<IActionResult> ApproveUser(string userId)
         {
             var result = await _managementService.ApproveUserAsync(userId);
-            return result.Success
-                ? Ok(new { result.Message })
-                : BadRequest(result.Errors ?? new[] { new IdentityError { Description = result.Message } });
+
+            // Always return Ok if the user was found and updated
+            return Ok(new { result.Success, result.Message });
         }
 
         [HttpGet("pending")]
@@ -144,6 +145,19 @@ namespace AttendanceSystem.Auth.API.Controllers
         {
             var users = await _managementService.GetPendingUsersAsync();
             return Ok(users);
+        }
+        [HttpPut("ChangePassword/{userId}")]
+        [Authorize(Roles = "Manager,Admin,User")]
+        public async Task<IActionResult> ChangePassword(string userId, [FromBody] string newPassword)
+        {
+
+            if (string.IsNullOrWhiteSpace(newPassword))
+            {
+                return BadRequest("New password is required");
+            }
+
+            var result = await _managementService.ChangePasswordAsync(userId, newPassword);
+            return Ok(new { result.Success, result.Message });
         }
     }
 

@@ -89,6 +89,12 @@ namespace AttendanceSystem.Auth.ui.Services
             var client = await GetAuthorizedClient();
             return await client.GetFromJsonAsync<IEnumerable<UserResponseDto>>("api/Management/pending");
         }
+        public async Task<OperationResult> ChangePasswordAsync(string userId, string newPassword)
+        {
+            var client = await GetAuthorizedClient();
+            var response = await client.PutAsJsonAsync($"api/Management/ChangePassword/{userId}", newPassword);
+            return await HandleResponse<OperationResult>(response);
+        }
 
         private async Task<T> HandleResponse<T>(HttpResponseMessage response) where T : class
         {

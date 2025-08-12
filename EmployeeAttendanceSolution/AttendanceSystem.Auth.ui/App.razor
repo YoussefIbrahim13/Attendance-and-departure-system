@@ -32,8 +32,8 @@
     protected override async Task OnInitializedAsync()
     {
         var token = await LocalStorage.GetItemAsync<string>("authToken");
-		if (!string.IsNullOrEmpty(token))
-            await LocalStorage.RemoveItemAsync("authToken");
+		//if (!string.IsNullOrEmpty(token))
+           //// await LocalStorage.RemoveItemAsync("authToken");
        
     }
 

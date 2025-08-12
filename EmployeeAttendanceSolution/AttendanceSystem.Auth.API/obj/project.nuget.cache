@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "BnC1aorB/6U=",
+  "dgSpecHash": "BFGfwi+7j2Y=",
   "success": true,
-  "projectFilePath": "A:\\Micro-Tech\\MyNew App\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.API\\AttendanceSystem.Auth.API.csproj",
+  "projectFilePath": "A:\\EmployeeAttendanceSolution\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.API\\AttendanceSystem.Auth.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ehabm\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\ehabm\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
