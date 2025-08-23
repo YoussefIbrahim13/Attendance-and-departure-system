@@ -1,0 +1,355 @@
+﻿@page "/admin/edit-user/{UserId}"
+@attribute [Authorize(Roles = "Admin")]
+@using System.Net.Http.Headers
+
+@inject HttpClient Http
+@inject NavigationManager Navigation
+@inject IJSRuntime JSRuntime
+@inject ILocalStorageService LocalStorage
+@inject AuthenticationStateProvider AuthStateProvider
+@inject ManagementService ManagementService
+
+<MudContainer MaxWidth="MaxWidth.ExtraExtraLarge" Class="mt-6">
+    <!-- Header Section -->
+    <MudStack Row Justify="Justify.SpaceBetween" AlignItems="AlignItems.Center" Class="mb-4">
+        <MudText Typo="Typo.h4" Class="fw-bold">Edit User</MudText>
+        <MudStack Row Spacing="2">
+            <MudButton Variant="Variant.Outlined"
+                       Color="Color.Default"
+                       OnClick="Cancel"
+                       Disabled="@isLoading"
+                       StartIcon="@Icons.Material.Filled.ArrowBack">
+                Back to Users
+            </MudButton>
+        </MudStack>
+    </MudStack>
+
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <MudAlert Severity="Severity.Error" Class="mb-4">@errorMessage</MudAlert>
+    }
+
+    @if (isLoading)
+    {
+        <MudStack AlignItems="AlignItems.Center" Class="mt-8">
+            <MudProgressCircular Color="Color.Primary" Indeterminate="true" />
+            <MudText Typo="Typo.body1">Loading user data...</MudText>
+        </MudStack>
+    }
+    else if (user == null)
+    {
+        <MudAlert Severity="Severity.Warning">Loading user data...</MudAlert>
+    }
+    else
+    {
+        <EditForm Model="user" OnValidSubmit="HandleSave">
+            <DataAnnotationsValidator />
+
+            <!-- Personal Information Card -->
+            <MudCard Class="mb-4">
+                <MudCardHeader>
+                    <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                        <MudIcon Icon="@Icons.Material.Filled.Person" Color="Color.Primary" />
+                        <MudText Typo="Typo.h6" Class="mb-0">Personal Information</MudText>
+                    </MudStack>
+                </MudCardHeader>
+                <MudCardContent>
+                    <MudGrid Spacing="3">
+                        <MudItem xs="12" sm="6">
+                            <MudTextField Label="Name"
+                                          @bind-Value="user.Name"
+                                          Required="true"
+                                          RequiredError="Name is required"
+                                          Variant="Variant.Outlined"
+                                          Adornment="Adornment.Start"
+                                          AdornmentIcon="@Icons.Material.Filled.Badge" />
+                            <ValidationMessage For="@(() => user.Name)" />
+                        </MudItem>
+
+                        <MudItem xs="12" sm="6">
+                            <MudTextField Label="Email"
+                                          @bind-Value="user.Email"
+                                          Required="true"
+                                          RequiredError="Email is required"
+                                          Variant="Variant.Outlined"
+                                          Adornment="Adornment.Start"
+                                          AdornmentIcon="@Icons.Material.Filled.Email" />
+                            <ValidationMessage For="@(() => user.Email)" />
+                        </MudItem>
+                    </MudGrid>
+                </MudCardContent>
+            </MudCard>
+
+            <!-- Work Information Card -->
+            <MudCard Class="mb-4">
+                <MudCardHeader>
+                    <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                        <MudIcon Icon="@Icons.Material.Filled.Work" Color="Color.Primary" />
+                        <MudText Typo="Typo.h6" Class="mb-0">Work Information</MudText>
+                    </MudStack>
+                </MudCardHeader>
+                <MudCardContent>
+                    <MudGrid Spacing="3">
+                        <MudItem xs="12" sm="6">
+                            <MudTextField Label="Department"
+                                          @bind-Value="user.Department"
+                                          Variant="Variant.Outlined"
+                                          Adornment="Adornment.Start"
+                                          AdornmentIcon="@Icons.Material.Filled.Business" />
+                        </MudItem>
+
+                        <MudItem xs="12" sm="6">
+                            <MudTextField Label="Position"
+                                          @bind-Value="user.Position"
+                                          Variant="Variant.Outlined"
+                                          Adornment="Adornment.Start"
+                                          AdornmentIcon="@Icons.Material.Filled.Assignment" />
+                        </MudItem>
+                    </MudGrid>
+                </MudCardContent>
+            </MudCard>
+
+            <!-- Account Status Card -->
+            <MudCard Class="mb-4">
+                <MudCardHeader>
+                    <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                        <MudIcon Icon="@Icons.Material.Filled.Security" Color="Color.Primary" />
+                        <MudText Typo="Typo.h6" Class="mb-0">Account Status</MudText>
+                    </MudStack>
+                </MudCardHeader>
+                <MudCardContent>
+                    <MudGrid Spacing="3">
+                        <MudItem xs="12">
+                            <MudStack Row AlignItems="AlignItems.Center" Spacing="3">
+                                <MudTooltip Text="@(user.IsApproved ? "Click to revoke approval" : "Click to approve this user")">
+                                    <MudToggleIconButton @bind-Toggled="@user.IsApproved"
+                                                         Icon="@Icons.Material.Filled.Close"
+                                                         Color="@Color.Error"
+                                                         ToggledIcon="@Icons.Material.Filled.Check"
+                                                         ToggledColor="@Color.Success"
+                                                         Disabled="@isLoading"
+                                                         Size="Size.Large"
+                                                         Title="@(user.IsApproved ? "Approved" : "Not Approved")" />
+                                </MudTooltip>
+
+                                <MudStack Spacing="1">
+                                    <MudText Typo="Typo.body1" Class="fw-bold">
+                                        Status: @(user.IsApproved ? "Approved" : "Pending Approval")
+                                    </MudText>
+                                    <MudChip T="string"
+                                             Color="@(user.IsApproved ? Color.Success : Color.Warning)"
+                                             Variant="Variant.Filled"
+                                             Size="Size.Small">
+                                        <MudIcon Icon="@(user.IsApproved? Icons.Material.Filled.CheckCircle : Icons.Material.Filled.Schedule)"
+                                                 Size="Size.Small"
+                                                 Class="mr-1" />
+                                        @(user.IsApproved ? "Active Account" : "Awaiting Approval")
+                                    </MudChip>
+                                </MudStack>
+                            </MudStack>
+                        </MudItem>
+                    </MudGrid>
+                </MudCardContent>
+            </MudCard>
+
+            <!-- Action Buttons -->
+            <MudCard>
+                <MudCardContent>
+                    <MudStack Row Spacing="2" Justify="Justify.FlexEnd">
+                        <MudButton Variant="Variant.Outlined"
+                                   Color="Color.Default"
+                                   OnClick="Cancel"
+                                   Disabled="@isLoading"
+                                   StartIcon="@Icons.Material.Filled.Close">
+                            Cancel
+                        </MudButton>
+                        <MudButton ButtonType="ButtonType.Submit"
+                                   Variant="Variant.Filled"
+                                   Color="Color.Primary"
+                                   Disabled="@isLoading"
+                                   StartIcon="@Icons.Material.Filled.Save">
+                            @if (isLoading)
+                            {
+                                <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
+                                <MudText Class="ms-2">Saving...</MudText>
+                            }
+                            else
+                            {
+                                <MudText>Save Changes</MudText>
+                            }
+                        </MudButton>
+                    </MudStack>
+                </MudCardContent>
+            </MudCard>
+        </EditForm>
+    }
+</MudContainer>
+
+<style>
+    .mud-card {
+        border-radius: 8px;
+        border: 1px solid var(--mud-palette-lines-default);
+    }
+
+    .mud-card-header {
+        padding: 16px 24px 8px 24px;
+        border-bottom: 1px solid var(--mud-palette-divider);
+    }
+
+    .mud-card-content {
+        padding: 16px 24px 24px 24px;
+    }
+
+    .mud-input-outlined-border {
+        border-radius: 4px;
+    }
+
+    .mud-chip {
+        font-size: 0.75rem;
+    }
+
+    .fw-bold {
+        font-weight: 600 !important;
+    }
+</style>
+
+@code {
+    [Parameter]
+    public string UserId { get; set; }
+
+    private UserUpdateDto user = new();
+    private string errorMessage = string.Empty;
+    private bool isLoading;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadUser();
+    }
+
+    private async Task LoadUser()
+    {
+        isLoading = true;
+        errorMessage = string.Empty;
+        StateHasChanged();
+
+        try
+        {
+            var result = await ManagementService.GetApplicationUserAsync(UserId);
+
+            if (result.Success)
+            {
+                user = new UserUpdateDto
+                {
+                    Name = result.Name,
+                    Email = result.Email,
+                    Department = result.Department,
+                    Position = result.Position,
+                    IsApproved = result.IsApproved
+                };
+
+                // Store original values
+                originalName = user.Name;
+                originalEmail = user.Email;
+                originalDepartment = user.Department;
+                originalPosition = user.Position;
+                originalIsApproved = user.IsApproved;
+            }
+            else
+            {
+                errorMessage = result.Errors?.FirstOrDefault()?.Description
+                              ?? "Failed to load user";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Failed to load user: {ex.Message}";
+            Console.Error.WriteLine(ex); // Added error logging
+        }
+        finally
+        {
+            isLoading = false;
+            StateHasChanged();
+        }
+    }
+
+    private async Task HandleSave()
+    {
+        isLoading = true;
+        errorMessage = string.Empty;
+        StateHasChanged();
+
+        try
+        {
+            var result = await ManagementService.UpdateApplicationUserAsync(UserId, user);
+
+            if (result.Success)
+            {
+               // await JSRuntime.InvokeVoidAsync("alert", "User updated successfully");
+                Navigation.NavigateTo("/admin/users");
+            }
+            else
+            {
+                errorMessage = result.Errors?.FirstOrDefault()?.Description
+                             ?? "Failed to update user";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Failed to save user: {ex.Message}";
+            Console.Error.WriteLine(ex); // Added error logging
+        }
+        finally
+        {
+            isLoading = false;
+            StateHasChanged();
+        }
+    }
+
+    private async Task HandleApiError(HttpResponseMessage response)
+    {
+        if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+        {
+            errorMessage = "Session expired. Redirecting to login...";
+            StateHasChanged();
+            await Task.Delay(1500);
+            await ((JwtAuthenticationStateProvider)AuthStateProvider).NotifyUserLogout();
+            Navigation.NavigateTo("/login", true);
+            return;
+        }
+
+        try
+        {
+            var errorResult = await response.Content.ReadFromJsonAsync<OperationResult>();
+            errorMessage = errorResult?.Message ?? $"Error: {response.StatusCode}";
+        }
+        catch
+        {
+            errorMessage = await response.Content.ReadAsStringAsync();
+        }
+    }
+
+    private async Task Cancel()
+    {
+        if (user != null &&
+            (user.Name != originalName ||
+             user.Email != originalEmail ||
+             user.Department != originalDepartment ||
+             user.Position != originalPosition ||
+             user.IsApproved != originalIsApproved))
+        {
+            // if (!await JSRuntime.InvokeAsync<bool>("confirm", "You have unsaved changes. Are you sure you want to leave?"))
+            // {
+            //     return;
+            // }
+        }
+        Navigation.NavigateTo("/admin/users");
+    }
+
+    // Track original values for dirty checking
+    private string originalName;
+    private string originalEmail;
+    private string originalDepartment;
+    private string originalPosition;
+    private bool originalIsApproved;
+}
+

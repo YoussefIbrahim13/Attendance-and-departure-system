@@ -1,4 +1,9 @@
-﻿@inherits LayoutComponentBase
+﻿   
+@inherits LayoutComponentBase
+@inject Blazored.LocalStorage.ILocalStorageService LocalStorage
+@inject NavigationManager Navigation
+
+@using AttendanceSystem.ImportFile.ui.Pages
 
 @* Required *@
 <MudThemeProvider />
@@ -22,6 +27,20 @@
 
         <MudSpacer />
 
+
+        @if (!isLoggedIn)
+        {
+            <MudButton Color="Color.Inherit" Variant="Variant.Outlined" Class="mr-2" Style="position:absolute;left:1140px;top:15px;" OnClick="GoToLogin">
+                Login
+            </MudButton>
+        }
+        @* @if (isLoggedIn)
+        {
+                <MudButton Color="Color.Error" Variant="Variant.Outlined" Class="mr-2" Style="position:absolute;left:1140px;top:15px;" OnClick="@(async () => await LogoutAndClearToken())">
+                Logout
+            </MudButton>
+        } *@
+
         <MudToggleIconButton @bind-Toggled="@_isDarkMode"
                              Icon="@Icons.Material.Filled.DarkMode"
                              ToggledIcon="@Icons.Material.Filled.WbSunny"
@@ -31,11 +50,27 @@
     </MudAppBar>
 
     <MudDrawer @bind-Open="@_drawerOpen">
-        <NavMenu />
+            @if (isLoggedIn)
+            {
+                <NavMenu />
+                @if (IsAdmin)
+                {
+                    <MudNavLink Href="https://localhost:7203/" Icon="@Icons.Material.Filled.Home" Match="NavLinkMatch.All" Target="_blank">
+                        <span>Authorization Home</span>
+                    </MudNavLink>
+                }
+            }
     </MudDrawer>
 
     <MudMainContent Class="m-0 p-0">
-        @Body
+        @if (!isLoggedIn)
+            {
+                <Calendar />
+            }
+        else
+        {
+            @Body
+        }
     </MudMainContent>
 </MudLayout>
 @* <MudLayout>
@@ -57,10 +92,54 @@
 @code {
     bool _drawerOpen = true;
     private bool _isDarkMode;
+    private bool isLoggedIn;
+    private bool IsAdmin;
+    // حذف التكرار: تعريف واحد فقط لدالة LogoutAndClearToken
+    protected override async Task OnInitializedAsync()
+    {
+        // تحقق من التوكن في كل تحميل صفحة
+        var uri = Navigation.ToAbsoluteUri(Navigation.Uri);
+        var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
+        var urlToken = query["token"];
+
+        if (!string.IsNullOrEmpty(urlToken))
+        {
+            await LocalStorage.SetItemAsync("authToken", urlToken);
+        }
+
+        var token = await LocalStorage.GetItemAsync<string>("authToken");
+        isLoggedIn = !string.IsNullOrEmpty(token);
+        if (isLoggedIn && token != null)
+        {
+            var handler = new System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler();
+            var jwtToken = handler.ReadJwtToken(token);
+            var roleClaim = jwtToken.Claims.FirstOrDefault(c => c.Type == "role" || c.Type == "roles");
+            IsAdmin = roleClaim != null && (roleClaim.Value == "Admin" || roleClaim.Value.Contains("Admin"));
+        }
+        else
+        {
+            // إذا لم يوجد توكن، اعتبر المستخدم غير مسجل دخول
+            isLoggedIn = false;
+            IsAdmin = false;
+        }
+    }
 
     void DrawerToggle()
     {
         _drawerOpen = !_drawerOpen;
+    }
+
+    void GoToLogin()
+    {
+        Navigation.NavigateTo("https://localhost:7203/Login", true);
+    }
+
+    async Task LogoutAndClearToken()
+    {
+        await LocalStorage.RemoveItemAsync("authToken");
+        isLoggedIn = false;
+        IsAdmin = false;
+        Navigation.NavigateTo("/", true);
     }
 
     MudTheme MyCustomTheme = new MudTheme()

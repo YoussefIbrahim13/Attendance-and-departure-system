@@ -1,0 +1,148 @@
+﻿//namespace AttendanceSystem.ImportFile.ui.Shared
+//{
+//    public enum AttendanceStatus
+//    {
+//        Present,
+//        Absent,
+//        Vacation,
+//        WorkFromHome,
+//        //Sick,
+//        //Late,
+//        //EarlyLeave
+//    }
+
+
+using AttendanceSystem.ImportFile.ui.Services;
+using EmployeesModels.Shared;
+using MudBlazor;
+
+namespace AttendanceSystem.ImportFile.ui.Pages
+{
+    public partial class Employees
+    {
+        // Mapping departments to allowed positions
+        private readonly Dictionary<DepartmentEnum, List<PositionEnum>> departmentPositions = new()
+        {
+            { DepartmentEnum.HR, new List<PositionEnum> { PositionEnum.Manager, PositionEnum.Recruiter } },
+            { DepartmentEnum.IT, new List<PositionEnum> { PositionEnum.Manager, PositionEnum.Developer} },
+            { DepartmentEnum.Finance, new List<PositionEnum> { PositionEnum.Manager, PositionEnum.Accountant } },
+            { DepartmentEnum.Marketing, new List<PositionEnum> { PositionEnum.Manager, PositionEnum.Designer, PositionEnum.SalesRep } },
+            { DepartmentEnum.Sales, new List<PositionEnum> { PositionEnum.Manager, PositionEnum.SalesRep } },
+        };
+
+        private IEnumerable<PositionEnum> GetPositionsForDepartment(DepartmentEnum? dept)
+        {
+            if (dept.HasValue && departmentPositions.TryGetValue(dept.Value, out var positions))
+                return positions;
+            return Enum.GetValues(typeof(PositionEnum)).Cast<PositionEnum>();
+        }
+        private List<EmployeeDto> employees = new();
+        private string? searchcode;
+        private DepartmentEnum? selectedDepartment = null;
+        private PositionEnum? selectedPosition = null;
+        private IEnumerable<EmployeeDto> filteredEmployees =>
+            employees.Where(e =>
+                (string.IsNullOrEmpty(searchcode) || e.Code == searchcode)
+                && (!selectedDepartment.HasValue || e.Department == selectedDepartment.Value)
+                && (!selectedPosition.HasValue || e.Position == selectedPosition.Value)
+            );
+        private EmployeeDto newEmployee = new EmployeeDto();
+        private EmployeeDto? editRow;
+        private string editName = string.Empty;
+        private DepartmentEnum editDepartment;
+        private PositionEnum editPosition;
+
+        protected override async Task OnInitializedAsync()
+        {
+            await LoadEmployees();
+        }
+
+        private async Task LoadEmployees()
+        {
+            employees = await AttendanceService.GetAllEmployeesAsync();
+        }
+
+        private async Task AddEmployee()
+        {
+            if (!string.IsNullOrWhiteSpace(newEmployee.Code) && !string.IsNullOrWhiteSpace(newEmployee.Name))
+            {
+                // تحقق من تكرار الـ ID
+                if (employees.Any(e => e.Code == newEmployee.Code))
+                {
+                    Snackbar.Add("This Code already exists", Severity.Warning);
+                    return;
+                }
+                try
+                {
+                    await AttendanceService.AddEmployeeAsync(newEmployee);
+                    Snackbar.Add("Employee added successfully", Severity.Success);
+                    newEmployee = new EmployeeDto();
+                    await LoadEmployees();
+                }
+                catch
+                {
+                    Snackbar.Add("Failed to add employee", Severity.Error);
+                }
+            }
+            else
+            {
+                Snackbar.Add("Please enter both ID and Name", Severity.Warning);
+            }
+        }
+
+        private async Task DeleteEmployee(string id)
+        {
+            try
+            {
+                await AttendanceService.DeleteEmployeeAsync(id);
+                Snackbar.Add("Employee deleted", Severity.Success);
+                await LoadEmployees();
+            }
+            catch
+            {
+                Snackbar.Add("Failed to delete employee", Severity.Error);
+            }
+        }
+
+        // إزالة تعريف EmployeeDto المحلي واستخدام النوع من AttendanceService فقط
+
+
+
+
+        private void StartEdit(EmployeeDto emp)
+        {
+            editRow = emp;
+            editName = emp.Name;
+            editDepartment = emp.Department;
+            editPosition = emp.Position;
+        }
+
+        private void CancelEdit()
+        {
+            editRow = null;
+        }
+
+        private async Task SaveEdit(EmployeeDto emp)
+        {
+            if (editRow == null) return;
+            emp.Name = editName;
+            emp.Department = editDepartment;
+            emp.Position = editPosition;
+            try
+            {
+                await AttendanceService.UpdateEmployeeAsync(emp);
+                Snackbar.Add("Employee updated successfully", Severity.Success);
+                editRow = null;
+                await LoadEmployees();
+            }
+            catch
+            {
+                Snackbar.Add("Failed to update employee", Severity.Error);
+            }
+        }
+
+
+
+
+    }
+}

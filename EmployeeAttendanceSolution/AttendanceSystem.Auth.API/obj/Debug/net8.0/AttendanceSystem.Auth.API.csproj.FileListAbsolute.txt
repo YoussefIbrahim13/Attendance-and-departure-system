@@ -1,0 +1,588 @@
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.csproj.AssemblyReference.cache
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\rpswa.dswa.cache.json
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.GeneratedMSBuildEditorConfig.editorconfig
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.AssemblyInfoInputs.cache
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.AssemblyInfo.cs
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.csproj.CoreCompileInputs.cache
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.MvcApplicationPartsAssemblyInfo.cs
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.MvcApplicationPartsAssemblyInfo.cache
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.sourcelink.json
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\appsettings.Development.json
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\appsettings.json
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\AttendanceSystem.Auth.API.staticwebassets.endpoints.json
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\AttendanceSystem.Auth.API.exe
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\AttendanceSystem.Auth.API.deps.json
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\AttendanceSystem.Auth.API.runtimeconfig.json
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\AttendanceSystem.Auth.API.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\AttendanceSystem.Auth.API.pdb
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Azure.Core.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Azure.Identity.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Humanizer.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.Identity.Client.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.OpenApi.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Mono.TextTemplating.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.CodeDom.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Composition.AttributedModel.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Composition.Convention.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Composition.Hosting.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Composition.Runtime.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Composition.TypedParts.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Drawing.Common.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Memory.Data.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Runtime.Caching.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Security.Permissions.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Windows.Extensions.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\rjimswa.dswa.cache.json
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\scopedcss\bundle\AttendanceSystem.Auth.API.styles.css
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\staticwebassets.build.json
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\staticwebassets.build.json.cache
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\staticwebassets.development.json
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\Attendan.C0F33322.Up2Date
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\refint\AttendanceSystem.Auth.API.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.pdb
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.genruntimeconfig.cache
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\ref\AttendanceSystem.Auth.API.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Blazored.LocalStorage.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\EmployeesModels.Shared.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\EmployeesModels.Shared.pdb
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\AttendanceSystem.Auth.Services.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\AttendanceSystem.Auth.Services.pdb
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\appsettings.Development.json
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\appsettings.json
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\AttendanceSystem.Auth.API.staticwebassets.endpoints.json
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\AttendanceSystem.Auth.API.exe
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\AttendanceSystem.Auth.API.deps.json
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\AttendanceSystem.Auth.API.runtimeconfig.json
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\AttendanceSystem.Auth.API.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\AttendanceSystem.Auth.API.pdb
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Azure.Core.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Azure.Identity.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Blazored.LocalStorage.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Humanizer.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.Identity.Client.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.OpenApi.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Mono.TextTemplating.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.CodeDom.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Composition.AttributedModel.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Composition.Convention.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Composition.Hosting.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Composition.Runtime.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Composition.TypedParts.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Drawing.Common.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Memory.Data.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Runtime.Caching.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Security.Permissions.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Windows.Extensions.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\AttendanceSystem.Auth.Services.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\EmployeesModels.Shared.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\AttendanceSystem.Auth.Services.pdb
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\EmployeesModels.Shared.pdb
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.csproj.AssemblyReference.cache
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\rpswa.dswa.cache.json
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.GeneratedMSBuildEditorConfig.editorconfig
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.AssemblyInfoInputs.cache
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.AssemblyInfo.cs
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.csproj.CoreCompileInputs.cache
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.MvcApplicationPartsAssemblyInfo.cs
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.MvcApplicationPartsAssemblyInfo.cache
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.sourcelink.json
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\rjimswa.dswa.cache.json
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\scopedcss\bundle\AttendanceSystem.Auth.API.styles.css
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\staticwebassets.build.json
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\staticwebassets.build.json.cache
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\staticwebassets.development.json
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\Attendan.C0F33322.Up2Date
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\refint\AttendanceSystem.Auth.API.dll
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.pdb
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.genruntimeconfig.cache
+A:\Micro-Tech\MyNew App\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\ref\AttendanceSystem.Auth.API.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\appsettings.Development.json
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\appsettings.json
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\AttendanceSystem.Auth.API.staticwebassets.endpoints.json
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\AttendanceSystem.Auth.API.exe
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\AttendanceSystem.Auth.API.deps.json
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\AttendanceSystem.Auth.API.runtimeconfig.json
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\AttendanceSystem.Auth.API.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\AttendanceSystem.Auth.API.pdb
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Azure.Core.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Azure.Identity.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Blazored.LocalStorage.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Humanizer.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.Identity.Client.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.OpenApi.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Mono.TextTemplating.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.CodeDom.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Composition.AttributedModel.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Composition.Convention.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Composition.Hosting.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Composition.Runtime.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Composition.TypedParts.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Drawing.Common.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Memory.Data.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Runtime.Caching.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Security.Permissions.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Windows.Extensions.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\AttendanceSystem.Auth.Services.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\EmployeesModels.Shared.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\AttendanceSystem.Auth.Services.pdb
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\EmployeesModels.Shared.pdb
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.csproj.AssemblyReference.cache
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\rpswa.dswa.cache.json
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.GeneratedMSBuildEditorConfig.editorconfig
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.AssemblyInfoInputs.cache
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.AssemblyInfo.cs
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.csproj.CoreCompileInputs.cache
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.MvcApplicationPartsAssemblyInfo.cs
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.MvcApplicationPartsAssemblyInfo.cache
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.sourcelink.json
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\rjimswa.dswa.cache.json
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\scopedcss\bundle\AttendanceSystem.Auth.API.styles.css
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\staticwebassets.build.json
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\staticwebassets.build.json.cache
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\staticwebassets.development.json
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\Attendan.C0F33322.Up2Date
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\refint\AttendanceSystem.Auth.API.dll
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.pdb
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.genruntimeconfig.cache
+A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\ref\AttendanceSystem.Auth.API.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\appsettings.Development.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\appsettings.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\AttendanceSystem.Auth.API.staticwebassets.endpoints.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\AttendanceSystem.Auth.API.exe
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\AttendanceSystem.Auth.API.deps.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\AttendanceSystem.Auth.API.runtimeconfig.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\AttendanceSystem.Auth.API.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\AttendanceSystem.Auth.API.pdb
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Azure.Core.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Azure.Identity.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Blazored.LocalStorage.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Humanizer.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.Identity.Client.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.OpenApi.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Mono.TextTemplating.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.CodeDom.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Composition.AttributedModel.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Composition.Convention.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Composition.Hosting.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Composition.Runtime.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Composition.TypedParts.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Drawing.Common.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Memory.Data.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Runtime.Caching.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Security.Permissions.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\System.Windows.Extensions.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\AttendanceSystem.Auth.Services.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\EmployeesModels.Shared.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\AttendanceSystem.Auth.Services.pdb
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\EmployeesModels.Shared.pdb
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.csproj.AssemblyReference.cache
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\rpswa.dswa.cache.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.GeneratedMSBuildEditorConfig.editorconfig
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.AssemblyInfoInputs.cache
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.AssemblyInfo.cs
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.csproj.CoreCompileInputs.cache
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.MvcApplicationPartsAssemblyInfo.cs
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.MvcApplicationPartsAssemblyInfo.cache
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.sourcelink.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\rjimswa.dswa.cache.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\scopedcss\bundle\AttendanceSystem.Auth.API.styles.css
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\staticwebassets.build.json.cache
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\staticwebassets.development.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\Attendan.C0F33322.Up2Date
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\refint\AttendanceSystem.Auth.API.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.pdb
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.genruntimeconfig.cache
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\ref\AttendanceSystem.Auth.API.dll

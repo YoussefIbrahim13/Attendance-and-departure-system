@@ -1,11 +1,9 @@
-﻿
-@inject AttendanceSystem.ImportFile.ui.Services.AttendanceService AttendanceService
+﻿@inject AttendanceSystem.ImportFile.ui.Services.AttendanceService AttendanceService
 @inject ISnackbar Snackbar
 @inject NavigationManager Navigation
 @using AttendanceSystem.ImportFile.ui.Services
 @using MudBlazor
 @using EmployeesModels.Shared
-
 
 <MudDialog>
     <DialogContent>
@@ -54,6 +52,12 @@
                                Variant="Variant.Outlined"
                                Required="true"
                                RequiredError="Actual status is required">
+                        <MudSelectItem Value="@AttendanceStatus.No_status">
+                            <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                                <div class="status-indicator status-none"></div>
+                                <MudText>No status</MudText>
+                            </MudStack>
+                        </MudSelectItem>
                         <MudSelectItem Value="@AttendanceStatus.Present">
                             <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
                                 <div class="status-indicator present"></div>
@@ -85,6 +89,12 @@
                                Variant="Variant.Outlined"
                                Required="true"
                                RequiredError="Planned status is required">
+                        <MudSelectItem Value="@AttendanceStatus.No_status">
+                            <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                                <div class="status-indicator status-none"></div>
+                                <MudText>No status</MudText>
+                            </MudStack>
+                        </MudSelectItem>
                         <MudSelectItem Value="@AttendanceStatus.Present">
                             <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
                                 <div class="status-indicator present"></div>
@@ -152,115 +162,3 @@
         }
 </style>
 
-@code {
-
-    // Add these parameters at the top of your code block
-    [Parameter]
-    public DateTime InitialDate { get; set; }
-
-    [Parameter]
-    public DateTime? DefaultDateFrom { get; set; }
-
-    [Parameter]
-    public DateTime? DefaultDateTo { get; set; }
-
-    [CascadingParameter]
-    IMudDialogInstance MudDialog { get; set; } = null!;
-
-    private EmployeeDto? selectedEmployee;
-
-    private List<AttendanceSystem.ImportFile.ui.Services.EmployeeDto> employees = new();
-    private bool isProcessing;
-
-    [CascadingParameter]
-    public IDialogReference DialogReference { get; set; } = default!;
-
-    private MudForm form = null!;
-    private bool isFormValid;
-    private DateTime? dateFrom;
-    private DateTime? dateTo;
-    private AttendanceStatus actualStatus = AttendanceStatus.Present;
-    private AttendanceStatus plannedStatus = AttendanceStatus.Present;
-
-    protected override async Task OnInitializedAsync()
-    {
-        // Set dates from parameters or fall back to InitialDate
-        dateFrom = DefaultDateFrom ?? InitialDate;
-        dateTo = DefaultDateTo ?? InitialDate;
-        await LoadEmployees();
-    }
-
-    private void Cancel()
-    {
-        MudDialog.Cancel();
-    }
-
-    private async Task LoadEmployees()
-    {
-        employees = await AttendanceService.GetAllEmployeesAsync();
-    }
-    private Task<IEnumerable<EmployeeDto>> SearchEmployees(string value, CancellationToken cancellationToken)
-    {
-        if (string.IsNullOrWhiteSpace(value))
-            return Task.FromResult(employees.AsEnumerable());
-
-        return Task.FromResult(employees.Where(x =>
-            x.Name.Contains(value, StringComparison.OrdinalIgnoreCase) ||
-            x.Code.Contains(value, StringComparison.OrdinalIgnoreCase)));
-    }
-
-    private async Task Submit()
-    {
-        if (!form.IsValid || !dateFrom.HasValue || !dateTo.HasValue || selectedEmployee == null)
-        {
-            return;
-        }
-
-        if (dateTo.Value < dateFrom.Value)
-        {
-            Snackbar.Add("Date_To cannot be before Date_From", Severity.Error);
-            return;
-        }
-
-        isProcessing = true;
-
-        try
-        {
-            bool allSuccess = true;
-            for (var d = dateFrom.Value.Date; d <= dateTo.Value.Date; d = d.AddDays(1))
-            {
-                var record = new AttendanceRecord
-                {
-                    Code = selectedEmployee.Code,
-                    Date = d,
-                    ActualStatus = actualStatus,
-                    PlannedStatus = plannedStatus,
-                    // يمكن إضافة خصائص أخرى مثل ApprovalStatus, CheckIn, CheckOut, Note إذا أردت
-                };
-                var success = await AttendanceService.UpdateEmployeeAttendanceRecordAsync(record);
-                if (!success)
-                {
-                    allSuccess = false;
-                }
-            }
-
-            if (allSuccess)
-            {
-                Snackbar.Add("Attendance status updated successfully", Severity.Success);
-                MudDialog.Close(DialogResult.Ok(true));
-            }
-            else
-            {
-                Snackbar.Add("Some days failed to update attendance status", Severity.Error);
-            }
-        }
-        catch (Exception ex)
-        {
-            Snackbar.Add($"Error: {ex.Message}", Severity.Error);
-        }
-        finally
-        {
-            isProcessing = false;
-        }
-    }
-}

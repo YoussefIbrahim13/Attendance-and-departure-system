@@ -1,7 +1,8 @@
 ﻿@page "/"
 @page "/calendar"
 @inject NavigationManager Navigation
-
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize(Roles = "Admin,Manager,User,DataEntry")]
 <MudContainer MaxWidth="MaxWidth.False" Class="m-0 p-0" Style="min-height: calc(100vh - 64px);">
 
     <MudGrid Justify="Justify.Center">
@@ -151,18 +152,7 @@
 </MudContainer>
 
 
-@code {
-    private string hoverClass = "";
-    private void GoToMonthView() => Navigation.NavigateTo($"/calendar/month/{DateTime.Today.Year}/{DateTime.Today.Month}");
-    private void GoToYearView() => Navigation.NavigateTo($"/calendar/year/{DateTime.Today.Year}");
-    private void GoToTodayView() => Navigation.NavigateTo($"/calendar/day/{DateTime.Today:yyyy-MM-dd}");
-    private void GoToCurrentMonth() => Navigation.NavigateTo($"/calendar/month/{DateTime.Today.Year}/{DateTime.Today.Month}");
-    private void GoToCurrentYear() => Navigation.NavigateTo($"/calendar/year/{DateTime.Today.Year}");
-    private void GoToToday() => Navigation.NavigateTo($"/calendar/day/{DateTime.Today:yyyy-MM-dd}");
-    private void GoToImport() => Navigation.NavigateTo("/ImportAttendance");
-   
-   
-}
+
 
 <style>
     .calendar-option-card:hover {

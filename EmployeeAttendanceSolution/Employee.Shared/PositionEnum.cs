@@ -6,6 +6,7 @@ namespace EmployeesModels.Shared
         Developer,
         Accountant,
         Designer,
-        SalesRep
+        SalesRep,
+        Recruiter
     }
 }

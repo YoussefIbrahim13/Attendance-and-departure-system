@@ -1,5 +1,8 @@
-﻿ @page "/calendar/month"
+﻿
+@page "/calendar/month"
 @page "/calendar/month/{Year:int}/{Month:int}"
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize(Roles = "Admin,Manager,User,DataEntry")]
 @inject AttendanceSystem.ImportFile.ui.Services.AttendanceService AttendanceService
 @inject NavigationManager Navigation
 @inject IDialogService DialogService
@@ -9,11 +12,28 @@
 @using MudBlazor
 
 
-
 <MudContainer MaxWidth="MaxWidth.ExtraExtraLarge" Class="mt-4">
     <MudStack Row Justify="Justify.SpaceBetween" AlignItems="AlignItems.Center" Class="mb-4">
         <MudText Typo="Typo.h4" Class="fw-bold">@GetMonthYearTitle()</MudText>
         <MudStack Row Spacing="2">
+            <MudSelect T="AttendanceStatus?" Label="Filter by status" @bind-Value="selectedStatus" Class="me-4" Clearable="true">
+                <MudSelectItem T="AttendanceStatus?" Value="@(null)">All statuses</MudSelectItem>
+                <MudSelectItem T="AttendanceStatus?" Value="AttendanceStatus.No_status">No Status</MudSelectItem>
+                <MudSelectItem T="AttendanceStatus?" Value="AttendanceStatus.Present">Present</MudSelectItem>
+                <MudSelectItem T="AttendanceStatus?" Value="AttendanceStatus.Absent">Absent</MudSelectItem>
+                <MudSelectItem T="AttendanceStatus?" Value="AttendanceStatus.Vacation">Vacation</MudSelectItem>
+                <MudSelectItem T="AttendanceStatus?" Value="AttendanceStatus.WorkFromHome">Work From Home</MudSelectItem>
+            </MudSelect>
+            <MudAutocomplete T="string"
+                             Label="Search employee"
+                             @bind-Value="selectedEmployeeName"
+                             SearchFunc="SearchEmployees"
+                             ToStringFunc="(x => x)"
+                             Class="me-4"
+                             Clearable="true"
+                             Dense="true"
+                             MinCharacters="1"
+                             ResetValueOnEmptyText="true" />
             <MudButtonGroup Variant="Variant.Outlined" Color="Color.Primary">
                 <MudButton StartIcon="@Icons.Material.Filled.ChevronLeft" OnClick="PreviousMonth">
                     Previous
@@ -22,10 +42,10 @@
                     Next
                 </MudButton>
             </MudButtonGroup>
-            <MudButton Variant="Variant.Filled" 
-                      Color="Color.Primary" 
-                      StartIcon="@Icons.Material.Filled.CalendarMonth" 
-                      OnClick="GoToYearView">
+            <MudButton Variant="Variant.Filled"
+                       Color="Color.Primary"
+                       StartIcon="@Icons.Material.Filled.CalendarMonth"
+                       OnClick="GoToYearView">
                 Year View
             </MudButton>
         </MudStack>
@@ -81,22 +101,22 @@
                     var isCurrentMonth = currentDate.Month == currentMonth;
                     var isToday = currentDate.Date == DateTime.Today;
 
-                    <MudPaper Class="@GetCalendarDayClass(isCurrentMonth, isToday)" 
-                             Square="true" 
-                             Elevation="@(isCurrentMonth ? 1 : 0)"
-                             @ondblclick="() => { if (isCurrentMonth) GoToDayView(currentDate); }">
+                    <MudPaper Class="@GetCalendarDayClass(isCurrentMonth, isToday)"
+                              Square="true"
+                              Elevation="@(isCurrentMonth ? 1 : 0)"
+                              @ondblclick="() => { if (isCurrentMonth) GoToDayView(currentDate); }">
 
                         <MudStack Justify="Justify.SpaceBetween" Style="height: 100%; min-height: 120px;">
                             <MudStack Row Justify="Justify.SpaceBetween" AlignItems="AlignItems.Center">
                                 <MudText Typo="Typo.subtitle2" Class="fw-bold">@currentDate.Day</MudText>
                                 @if (isCurrentMonth)
                                 {
-                                    <MudIconButton Icon="@Icons.Material.Filled.Add" 
-                                                  Size="Size.Small" 
-                                                  Color="Color.Primary" 
-                                                  Variant="Variant.Filled"
-                                                  Style="width: 24px; height: 24px;"
-                                                  OnClick="() => OpenAddEmployeeDialog(currentDate)" />
+                                    <MudIconButton Icon="@Icons.Material.Filled.Add"
+                                                   Size="Size.Small"
+                                                   Color="Color.Primary"
+                                                   Variant="Variant.Filled"
+                                                   Style="width: 24px; height: 24px;"
+                                                   OnClick="() => OpenAddEmployeeDialog(currentDate)" />
                                 }
                             </MudStack>
 
@@ -113,19 +133,24 @@
                                     </MudStack>
 
                                     <MudStack Spacing="1" Class="employee-preview">
-                                        @foreach (var emp in dayData.TopEmployees.Take(3))
+                                        @if (dayData is not null)
                                         {
-                                            <MudPaper Class="@GetEmployeeStatusClass(emp.ActualStatus)" Square="true" Elevation="0">
-                                                <MudStack Row Justify="Justify.SpaceBetween" AlignItems="AlignItems.Center" Class="pa-1">
-                                                    <MudText Typo="Typo.caption" Class="employee-name">@emp.EmployeeName</MudText>
-                                                    <div class="status-indicator @GetStatusIndicatorClass(emp.ActualStatus)"></div>
-                                                </MudStack>
-                                            </MudPaper>
+                                            foreach (var emp in dayData?.GetSelectedEmployee(selectedEmployeeName, selectedStatus, 10))
+                                            {
+                                                <MudPaper Class="@GetEmployeeStatusClass(emp.ActualStatus)" Square="true" Elevation="0">
+                                                    <MudStack Row Justify="Justify.SpaceBetween" AlignItems="AlignItems.Center" Class="pa-1">
+                                                        <MudText Typo="Typo.caption" Class="employee-name">@emp.EmployeeName</MudText>
+                                                        <div class="status-indicator @GetStatusIndicatorClass(emp.ActualStatus)"></div>
+                                                    </MudStack>
+                                                </MudPaper>
+                                            }
                                         }
-                                        @if (dayData.TotalEmployees > 3)
+                                        @if (dayData.AllEmployees.Count(e => (!selectedStatus.HasValue || e.ActualStatus == selectedStatus)
+                                                                    && (string.IsNullOrWhiteSpace(selectedEmployeeName) || $"{e.EmployeeName} -- {e.Code}" == selectedEmployeeName)) > 3)
                                         {
                                             <MudText Typo="Typo.caption" Align="Align.Center" Class="more-employees">
-                                                +@(dayData.TotalEmployees - 3) more
+                                                +@(dayData.AllEmployees.Count(e => (!selectedStatus.HasValue || e.ActualStatus == selectedStatus)
+                                                                                && (string.IsNullOrWhiteSpace(selectedEmployeeName) || $"{e.EmployeeName} -- {e.Code}" == selectedEmployeeName)) - 3) more
                                             </MudText>
                                         }
                                     </MudStack>
@@ -138,6 +163,11 @@
         </MudPaper>
     }
 </MudContainer>
+
+
+
+
+
 
 <style>
     .calendar-container {
@@ -221,6 +251,12 @@
         border: 1px solid transparent; /* Default transparent border */
     }
 
+           
+        .employee-item.no-statu {
+            color: var(--mud-palette-text-secondary);
+            border-color: var(--mud-palette-divider-lighten);
+        }
+
         .employee-item.present {
             color: var(--mud-palette-success-darken);
             border-color: var(--mud-palette-success-lighten);
@@ -261,6 +297,9 @@
         margin-left: 4px;
     }
 
+        .status-indicator.no-status {
+            background-color: var(--mud-palette-text-disabled); 
+        }
     .status-indicator.present {
         background-color: var(--mud-palette-success);
     }
@@ -288,175 +327,7 @@
     }
 </style>
 
-@code {
-    [Parameter] public int Year { get; set; }
-    [Parameter] public int Month { get; set; }
-    [Parameter] public DateTime SelectedDate { get; set; }
-    [CascadingParameter]
-    public IDialogReference DialogReference { get; set; } = default!;
 
-    private DateTime? dateFrom => SelectedDate;
-    private DateTime? dateTo => SelectedDate;
-
-    private MonthViewDto? monthData;
-    private bool isLoading = true;
-    private int currentYear;
-    private int currentMonth;
-
-    protected override async Task OnInitializedAsync()
-    {
-        var today = DateTime.Today;
-        currentYear = Year > 0 ? Year : today.Year;
-        currentMonth = Month > 0 ? Month : today.Month;
-
-        await LoadMonthData();
-    }
-
-    protected override async Task OnParametersSetAsync()
-    {
-        if (Year > 0) currentYear = Year;
-        if (Month > 0) currentMonth = Month;
-        await LoadMonthData();
-    }
-
-    private async Task LoadMonthData()
-    {
-        isLoading = true;
-        // StateHasChanged(); // Force UI update to show loading state
-
-        try
-        {
-            monthData = await AttendanceService.GetMonthViewAsync(currentYear, currentMonth);
-        }
-        catch (Exception ex)
-        {
-            Snackbar.Add($"Error loading data: {ex.Message}", Severity.Error);
-        }
-        finally
-        {
-            isLoading = false;
-            // StateHasChanged(); // Force UI update to hide loading state
-        }
-    }
-
-    private string GetMonthYearTitle()
-    {
-        return new DateTime(currentYear, currentMonth, 1).ToString("MMMM yyyy");
-    }
-
-    private void PreviousMonth()
-    {
-        if (currentMonth == 1)
-        {
-            currentMonth = 12;
-            currentYear--;
-        }
-        else
-        {
-            currentMonth--;
-        }
-        Navigation.NavigateTo($"/calendar/month/{currentYear}/{currentMonth}");
-    }
-
-    private void NextMonth()
-    {
-        if (currentMonth == 12)
-        {
-            currentMonth = 1;
-            currentYear++;
-        }
-        else
-        {
-            currentMonth++;
-        }
-        Navigation.NavigateTo($"/calendar/month/{currentYear}/{currentMonth}");
-    }
-
-    private void GoToYearView()
-    {
-        Navigation.NavigateTo($"/calendar/year/{currentYear}");
-    }
-
-    private void GoToDayView(DateTime date)
-    {
-        Navigation.NavigateTo($"/calendar/day/{date:yyyy-MM-dd}");
-    }
-
-    private string GetCalendarDayClass(bool isCurrentMonth, bool isToday)
-    {
-        var classes = new List<string> { "calendar-day" };
-
-        if (isCurrentMonth)
-            classes.Add("current-month");
-        else
-            classes.Add("other-month");
-
-        if (isToday)
-            classes.Add("today");
-
-        return string.Join(" ", classes);
-    }
-
-    private string GetEmployeeStatusClass(AttendanceStatus status)
-    {
-        return $"employee-item {GetStatusClass(status)}";
-    }
-
-    private string GetStatusClass(AttendanceStatus status)
-    {
-        return status switch
-        {
-            AttendanceStatus.Present => "present",
-            AttendanceStatus.Absent => "absent",
-            AttendanceStatus.Vacation => "vacation",
-            AttendanceStatus.WorkFromHome => "work-from-home",
-            // AttendanceStatus.Late => "late",
-            _ => "absent"
-        };
-    }
-
-    private string GetStatusIndicatorClass(AttendanceStatus status)
-    {
-        return GetStatusClass(status);
-    }
-
-    private async Task OpenAddEmployeeDialog(DateTime selectedDate)
-    {
-        try
-        {
-            var parameters = new DialogParameters
-            {
-                [nameof(AddEmployeeDialog.InitialDate)] = selectedDate,
-                [nameof(AddEmployeeDialog.DefaultDateFrom)] = selectedDate,
-                [nameof(AddEmployeeDialog.DefaultDateTo)] = selectedDate
-            };
-            var options = new DialogOptions
-            {
-                CloseButton = true,
-                CloseOnEscapeKey = true,
-                MaxWidth = MaxWidth.Small,
-                FullWidth = true
-            };
-
-            var dialog = await DialogService.ShowAsync<AddEmployeeDialog>("Update Attendance Status", parameters, options);
-            var result = await dialog.Result;
-
-            if (!result.Canceled && result.Data is bool success && success)
-            {
-                await LoadMonthData();
-            }
-            else
-            {
-                await LoadMonthData();
-            }
-        }
-        catch (Exception ex)
-        {
-            Snackbar.Add($"Error: {ex.Message}", Severity.Error);
-        }
-    }
-
-}
 
 
 

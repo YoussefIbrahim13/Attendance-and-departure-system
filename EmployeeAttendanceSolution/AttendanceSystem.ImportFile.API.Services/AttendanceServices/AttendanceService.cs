@@ -174,7 +174,7 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
                 var record = await db.AttendanceRecords.FirstOrDefaultAsync(x => x.Code == dto.Code && x.Date == date);
                 if (record != null)
                 {
-                       // إذا لم يتم تعديل ActualStatus يدويًا (أي يساوي PlannedStatus القديم)، حدثه مع PlannedStatus الجديد
+                       
                     if (record.ActualStatus == record.PlannedStatus)
                     {
                             record.ActualStatus = dto.PlannedStatus;
@@ -188,7 +188,7 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
                         Code = dto.Code,
                         Date = date,
                         PlannedStatus = dto.PlannedStatus,
-                        ActualStatus = dto.PlannedStatus, // تعيين الحالة الفعلية = المخطط لها عند الإضافة
+                        ActualStatus = dto.PlannedStatus, 
                         ApprovalStatus = ApprovalStatus.Pending,
                         CheckIn = TimeSpan.Zero,
                         CheckOut = TimeSpan.Zero
@@ -230,7 +230,7 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
                     {
                         Code = emp.Code,
                         EmployeeName = emp.Name,
-                        ActualStatus = attendance?.ActualStatus ?? AttendanceStatus.Absent,
+                        ActualStatus = attendance?.ActualStatus ?? AttendanceStatus.No_status,
                         Note = attendance?.Note
                     };
                 }).ToList();
@@ -242,6 +242,7 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
                 {
                     Date = date,
                     TopEmployees = employeeStatuses.Take(4).ToList(),
+                    AllEmployees = employeeStatuses.ToList(),
                     TotalEmployees = employees.Count,
                     PresentCount = presentCount,
                     AbsentCount = absentCount
@@ -272,8 +273,8 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
                     Date = day,
                     CheckIn = attendance?.CheckIn ?? TimeSpan.Zero,
                     CheckOut = attendance?.CheckOut ?? TimeSpan.Zero,
-                    ActualStatus = attendance?.ActualStatus ?? AttendanceStatus.Absent,
-                    PlannedStatus = attendance?.PlannedStatus ?? AttendanceStatus.Absent,
+                    ActualStatus = attendance?.ActualStatus ?? AttendanceStatus.No_status,
+                    PlannedStatus = attendance?.PlannedStatus ?? AttendanceStatus.No_status,
                     ApprovalStatus = attendance?.ApprovalStatus ?? ApprovalStatus.Pending,
                     Note = attendance?.Note ?? string.Empty
                 };

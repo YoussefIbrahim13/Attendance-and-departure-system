@@ -1,0 +1,61 @@
+﻿<CascadingAuthenticationState>
+    <Router AppAssembly="@typeof(App).Assembly">
+        <Found Context="routeData">
+            <AuthorizeRouteView RouteData="@routeData"
+                                DefaultLayout="@typeof(MainLayout)"
+                                NotAuthorized="@NotAuthorized">
+                <Authorizing>
+                    <MudPaper Class="mx-auto mt-12 pa-6 text-center">
+                        <MudProgressCircular Indeterminate="true" Color="Color.Primary" />
+                        <MudText Typo="Typo.h6">Checking authentication status...</MudText>
+                    </MudPaper>
+                </Authorizing>
+            </AuthorizeRouteView>
+        </Found>
+        <NotFound>
+            <LayoutView Layout="@typeof(MainLayout)">
+                <MudContainer MaxWidth="MaxWidth.False" Class="pa-6 text-center">
+                    <MudText Typo="Typo.h4">🚫 Page Not Found</MudText>
+                    <MudText Typo="Typo.subtitle1" Class="mb-4">Sorry, there's nothing at this address.</MudText>
+                    <MudButton Variant="Variant.Filled" Color="Color.Primary" Href="/">Return Home</MudButton>
+                </MudContainer>
+            </LayoutView>
+        </NotFound>
+    </Router>
+</CascadingAuthenticationState>
+
+@code {
+    [Inject] private ISessionStorageService _sessionStorage { get; set; } = null!;
+    // [Inject] private SessionValidationService SessionValidator { get; set; } = null!;
+    [Inject] private ILocalStorageService LocalStorage { get; set; } = null!;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var token = await LocalStorage.GetItemAsync<string>("authToken");
+		//if (!string.IsNullOrEmpty(token))
+           //// await LocalStorage.RemoveItemAsync("authToken");
+       
+    }
+
+    private RenderFragment NotAuthorized(AuthenticationState context) => builder =>
+    {
+        builder.OpenElement(0, "div");
+        builder.AddAttribute(1, "class", "not-authorized");
+
+        builder.OpenElement(2, "h1");
+        builder.AddContent(3, "Not Authorized");
+        builder.CloseElement();
+
+        builder.OpenElement(4, "p");
+        builder.AddContent(5, "You don't have permission to access this resource.");
+        builder.CloseElement();
+
+        builder.OpenComponent<NavLink>(6);
+        builder.AddAttribute(7, "href", context.User.Identity?.IsAuthenticated == true ? "/" : "/login");
+        builder.AddAttribute(8, "class", "btn btn-primary");
+        builder.AddContent(9, context.User.Identity?.IsAuthenticated == true ? "Return Home" : "Login");
+        builder.CloseComponent();
+
+        builder.CloseElement();
+    };
+}

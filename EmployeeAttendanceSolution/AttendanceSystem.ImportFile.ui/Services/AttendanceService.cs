@@ -1,3 +1,4 @@
+using Blazored.LocalStorage;
 using EmployeesModels.Shared;
 using System.Net.Http.Json;
 
@@ -6,24 +7,31 @@ namespace AttendanceSystem.ImportFile.ui.Services
 
 
 
-    public class AttendanceService: BaseHTTPService
+    public class AttendanceService : BaseHTTPService
     {
         private readonly HttpClient _http;
         private List<AttendanceRecord> _records = new();
-        public AttendanceService(HttpClient http):base(http)
+        public AttendanceService(HttpClient http, ILocalStorageService localStorage) : base(http, localStorage)
         {
             _http = http;
         }
 
         // رفع ملف CSV
-        public  async Task<List<AttendanceRecord>?> UploadCsvAsync(MultipartFormDataContent content)
+        //public  async Task<List<AttendanceRecord>?> UploadCsvAsync(MultipartFormDataContent content)
+        //{
+        //  var response= await  Post<Task<List<AttendanceRecord>?>, MultipartFormDataContent>(content);
+        //    //var response = await _http.PostAsync("Attendance/upload-csv", content);
+        //    //if (response.IsSuccessStatusCode)
+        //    //    return await response.Content.ReadFromJsonAsync<List<AttendanceRecord>>();
+        //    //return null;
+        //    return await response;
+        //}
+        public async Task<List<AttendanceRecord>?> UploadCsvAsync(MultipartFormDataContent content)
         {
-          var response= await  Post<Task<List<AttendanceRecord>?>, MultipartFormDataContent>(content);
-            //var response = await _http.PostAsync("Attendance/upload-csv", content);
-            //if (response.IsSuccessStatusCode)
-            //    return await response.Content.ReadFromJsonAsync<List<AttendanceRecord>>();
-            //return null;
-            return await response;
+            var response = await _http.PostAsync("Attendance/upload-csv", content);
+            if (response.IsSuccessStatusCode)
+                return await response.Content.ReadFromJsonAsync<List<AttendanceRecord>>();
+            return null;
         }
 
         // تعديل سجل مؤقت
@@ -154,7 +162,7 @@ namespace AttendanceSystem.ImportFile.ui.Services
         {
             try
             {
-            var response = await _http.PutAsJsonAsync("Attendance/update-attendance-record", employeeAttendance);
+                var response = await _http.PutAsJsonAsync("Attendance/update-attendance-record", employeeAttendance);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -191,7 +199,7 @@ namespace AttendanceSystem.ImportFile.ui.Services
             }
 
         }
-        
+
         // جدولة حضور موظف لأيام محددة (Plan Attendance)
         public async Task<bool> PlanAttendanceAsync(string employeeCode, List<DateTime> days, AttendanceStatus plannedStatus)
         {
@@ -215,5 +223,5 @@ namespace AttendanceSystem.ImportFile.ui.Services
     //    public string Position { get; set; }
     //}
 
-   
+
 }

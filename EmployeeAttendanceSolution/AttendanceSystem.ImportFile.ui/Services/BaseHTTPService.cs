@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System.Net.Http.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using Blazored.LocalStorage;
 
 namespace AttendanceSystem.ImportFile.ui.Services
 {
@@ -12,15 +13,27 @@ namespace AttendanceSystem.ImportFile.ui.Services
     public class BaseHTTPService
     {
         private readonly HttpClient _http;
+        private readonly ILocalStorageService _localStorage;
         private List<AttendanceRecord> _records = new();
-        public BaseHTTPService(HttpClient http)
+        public BaseHTTPService(HttpClient http, ILocalStorageService localStorage)
         {
             _http = http;
+            _localStorage = localStorage;
         }
 
-        // رفع ملف CSV
+        private async Task AddAuthHeaderAsync()
+        {
+            var token = await _localStorage.GetItemAsync<string>("authToken");
+            _http.DefaultRequestHeaders.Authorization = null;
+            if (!string.IsNullOrEmpty(token))
+            {
+                _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+            }
+        }
+
         public async Task<TResponse> Post<TResponse,TRequest>(TRequest content)
         {
+            await AddAuthHeaderAsync();
             var response =  await _http.PostAsJsonAsync<TRequest>("Attendance/upload-csv", content);
             TResponse result = JsonConvert.DeserializeObject<TResponse>(await response.Content.ReadAsStringAsync());
             return result;
@@ -29,6 +42,7 @@ namespace AttendanceSystem.ImportFile.ui.Services
         // تعديل سجل مؤقت
         public async Task<bool> EditPendingAttendanceAsync(EditAttendanceDto dto)
         {
+            await AddAuthHeaderAsync();
             var response = await _http.PutAsJsonAsync("Attendance/edit-pending", dto);
             return response.IsSuccessStatusCode;
         }
@@ -36,6 +50,7 @@ namespace AttendanceSystem.ImportFile.ui.Services
         // حفظ البيانات المؤقتة
         public async Task<bool> SaveAttendanceAsync()
         {
+            await AddAuthHeaderAsync();
             var response = await _http.PostAsync("Attendance/save", null);
             return response.IsSuccessStatusCode;
         }
@@ -44,6 +59,7 @@ namespace AttendanceSystem.ImportFile.ui.Services
         {
             try
             {
+                await AddAuthHeaderAsync();
                 var response = await _http.GetFromJsonAsync<MonthViewDto>(
                     $"Attendance/month-view?year={year}&month={month}");
                 return response;
@@ -60,6 +76,7 @@ namespace AttendanceSystem.ImportFile.ui.Services
         {
             try
             {
+                await AddAuthHeaderAsync();
                 var response = await _http.GetFromJsonAsync<List<DailyAttendanceDto>>(
                     $"Attendance/day-view?date={date:yyyy-MM-dd}");
 
@@ -77,6 +94,7 @@ namespace AttendanceSystem.ImportFile.ui.Services
         {
             try
             {
+                await AddAuthHeaderAsync();
                 return await _http.GetFromJsonAsync<YearViewDto>($"Attendance/year-view/{year}");
             }
             catch (Exception ex)
@@ -91,6 +109,7 @@ namespace AttendanceSystem.ImportFile.ui.Services
         {
             try
             {
+                await AddAuthHeaderAsync();
                 var response = await _http.GetFromJsonAsync<List<EmployeeDto>>("Attendance/employees");
                 return response ?? new List<EmployeeDto>();
             }
@@ -104,18 +123,21 @@ namespace AttendanceSystem.ImportFile.ui.Services
         // Add new employee
         public async Task AddEmployeeAsync(EmployeeDto employee)
         {
+            await AddAuthHeaderAsync();
             await _http.PostAsJsonAsync("Attendance/add-employee", employee);
         }
 
         // Delete employee
         public async Task DeleteEmployeeAsync(string id)
         {
+            await AddAuthHeaderAsync();
             await _http.DeleteAsync($"Attendance/delete-employee/{id}");
         }
 
         // Update employee
         public async Task UpdateEmployeeAsync(EmployeeDto employee)
         {
+            await AddAuthHeaderAsync();
             await _http.PutAsJsonAsync("Attendance/update-employee", employee);
         }
 
@@ -124,6 +146,7 @@ namespace AttendanceSystem.ImportFile.ui.Services
         {
             try
             {
+                await AddAuthHeaderAsync();
                 var dayData = await GetDayViewAsync(date);
                 return dayData.Select(d => new AttendanceDayStatus(
                     d.Code,
@@ -154,7 +177,8 @@ namespace AttendanceSystem.ImportFile.ui.Services
         {
             try
             {
-            var response = await _http.PutAsJsonAsync("Attendance/update-attendance-record", employeeAttendance);
+                await AddAuthHeaderAsync();
+                var response = await _http.PutAsJsonAsync("Attendance/update-attendance-record", employeeAttendance);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -175,6 +199,7 @@ namespace AttendanceSystem.ImportFile.ui.Services
         {
             try
             {
+                await AddAuthHeaderAsync();
                 var response = await _http.PutAsJsonAsync("Attendance/update-attendance-record", EmployeeAttedanceRecord);
                 if (response.IsSuccessStatusCode)
                 {
@@ -195,6 +220,7 @@ namespace AttendanceSystem.ImportFile.ui.Services
         // جدولة حضور موظف لأيام محددة (Plan Attendance)
         public async Task<bool> PlanAttendanceAsync(string employeeCode, List<DateTime> days, AttendanceStatus plannedStatus)
         {
+            await AddAuthHeaderAsync();
             var dto = new PlanAttendanceDto
             {
                 Code= employeeCode,

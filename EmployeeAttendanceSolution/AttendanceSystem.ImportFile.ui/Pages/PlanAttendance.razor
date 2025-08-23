@@ -1,7 +1,10 @@
 @page "/PlanAttendance"
-@using MudBlazor
-@using EmployeesModels.Shared
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize(Roles = "Admin,Manager,User,DataEntry")]
+@using AttendanceSystem.ImportFile.ui.Pages.nvvm
 @using AttendanceSystem.ImportFile.ui.Services
+@using EmployeesModels.Shared
+@using MudBlazor
 @inject AttendanceSystem.ImportFile.ui.Services.AttendanceService AttendanceService
 @inject ISnackbar Snackbar
 @inject IPlanAttendanceService PlanAttendanceService
@@ -25,11 +28,11 @@
                         <MudDatePicker @bind-Date="singleDate" Label="Single Day" Variant="Variant.Outlined" Dense="true" PickerVariant="PickerVariant.Dialog" Style="flex:1;" />
                         <MudIconButton Icon="@Icons.Material.Filled.Clear" Color="Color.Default" Size="Size.Small" OnClick="@(() => singleDate = null)" ToolTip="Clear" />
                     </MudStack>
-<div style="display:flex; justify-content:flex-start;">
-    <MudButton Variant="Variant.Outlined" Color="Color.Primary" Size="Size.Small" Style="margin-top:6px; min-width:120px; max-width:140px; height:32px; border-radius:8px;" OnClick="@(() => showRangeOptions = !showRangeOptions)">
-         Multiple Days
-    </MudButton>
-</div>
+                    <div style="display:flex; justify-content:flex-start;">
+                        <MudButton Variant="Variant.Outlined" Color="Color.Primary" Size="Size.Small" Style="margin-top:6px; min-width:120px; max-width:140px; height:32px; border-radius:8px;" OnClick="@(() => showRangeOptions = !showRangeOptions)">
+                            Multiple Days
+                        </MudButton>
+                    </div>
                     @if (showRangeOptions)
                     {
                         <MudText Typo="Typo.subtitle2" Class="mb-1 mt-2" Style="color:var(--mud-palette-primary); font-weight:600;">Or Select Range</MudText>
@@ -38,12 +41,14 @@
                             <MudIconButton Icon="@Icons.Material.Filled.Clear" Color="Color.Default" Size="Size.Small" OnClick="@ClearRange" ToolTip="Clear" />
                         </MudStack>
                         <MudText Typo="Typo.subtitle2" Class="mb-1 mt-2" Style="color:var(--mud-palette-primary); font-weight:600;">Choose Days of Week</MudText>
-                        <MudSelect T="DayOfWeek" Label="Days of Week" SelectedValues="selectedDays" SelectedValuesChanged="@(v => selectedDays = new HashSet<DayOfWeek>(v))" MultiSelection="true" Dense="true" Style="background:var(--mud-palette-background-grey);">
-                            @foreach (DayOfWeek day in Enum.GetValues(typeof(DayOfWeek)))
-                            {
-                                <MudSelectItem T="DayOfWeek" Value="day">@day</MudSelectItem>
-                            }
-                        </MudSelect>
+                        <MudStack Row Spacing="2" AlignItems="AlignItems.Center" Style="margin-top:8px;">
+                            <MudSelect T="DayOfWeek" Label="Days of Week" SelectedValues="selectedDays" SelectedValuesChanged="@(v => selectedDays = new HashSet<DayOfWeek>(v))" MultiSelection="true" Dense="true" Style="background:var(--mud-palette-background-grey);">
+                                @foreach (var day in new[] { DayOfWeek.Saturday, DayOfWeek.Sunday, DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Thursday, DayOfWeek.Friday })
+                                {
+                                    <MudSelectItem T="DayOfWeek" Value="day">@day</MudSelectItem>
+                                }
+                            </MudSelect>
+                        </MudStack>
                     }
                 </MudStack>
                 <MudStack Spacing="2" Style="min-width:220px; max-width:260px;">

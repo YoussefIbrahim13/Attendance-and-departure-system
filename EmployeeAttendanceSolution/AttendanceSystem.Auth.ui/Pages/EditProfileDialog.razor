@@ -1,0 +1,68 @@
+﻿@inject HttpClient Http
+@inject ISnackbar Snackbar
+<EditForm Model="@model" OnValidSubmit="SaveProfile">
+    <DataAnnotationsValidator />
+    <MudDialog>
+        <DialogContent>
+            <MudText Typo="Typo.h6" Class="mb-4">Edit Profile</MudText>
+
+            <MudTextField @bind-Value="model.FullName" Label="Full Name" Required="true" For="@(() => model.FullName)" />
+            <MudTextField @bind-Value="model.Email" Label="Email" Required="true" For="@(() => model.Email)" />
+            <MudTextField @bind-Value="model.Phone" Label="Phone" For="@(() => model.Phone)" />
+            <MudTextField @bind-Value="model.Department" Label="Department" For="@(() => model.Department)" />
+        </DialogContent>
+
+        <DialogActions>
+            <MudButton Variant="Variant.Outlined" Color="Color.Secondary" OnClick="Cancel">Cancel</MudButton>
+            <MudButton Color="Color.Primary" Type="Submit">Save</MudButton>
+        </DialogActions>
+    </MudDialog>
+</EditForm>
+
+@code {
+    [CascadingParameter]
+    public IMudDialogInstance MudDialog { get; set; } = null!;
+    private EditProfileModel model = new();
+
+    protected override void OnInitialized()
+    {
+        // Load initial values if passed via parameters
+        // if (DialogParameters.TryGetValue("Profile", out var profileObj) && profileObj is EditProfileModel profile)
+        // {
+        //     model = profile;
+        // }
+    }
+
+    private void Cancel()
+    {
+        MudDialog.Cancel();
+    }
+
+    private async Task SaveProfile()
+    {
+        // Call API to save
+        var response = await Http.PutAsJsonAsync("api/user/profile", model);
+        if (response.IsSuccessStatusCode)
+        {
+            Snackbar.Add("Profile saved successfully", Severity.Success);
+            MudDialog.Close(DialogResult.Ok(true));
+        }
+        else
+        {
+            Snackbar.Add("Error saving profile", Severity.Error);
+        }
+    }
+
+    public class EditProfileModel
+    {
+        [Required]
+        public string FullName { get; set; } = "";
+
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; } = "";
+
+        public string Phone { get; set; } = "";
+        public string Department { get; set; } = "";
+    }
+}

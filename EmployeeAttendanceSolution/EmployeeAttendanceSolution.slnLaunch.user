@@ -9,6 +9,47 @@
       {
         "Path": "AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj",
         "Action": "Start"
+      },
+      {
+        "Path": "Employee.Shared\\EmployeesModels.Shared.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "AttendanceSystem.ImportFile.API.Services\\AttendanceSystem.ImportFile.API.Services.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "AttendanceSystem.Auth.API\\AttendanceSystem.Auth.API.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "AttendanceSystem.Auth.Services\\AttendanceSystem.Auth.Services.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj",
+        "Action": "Start"
+      }
+    ]
+  },
+  {
+    "Name": "New Profile (1)",
+    "Projects": [
+      {
+        "Path": "AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "AttendanceSystem.Auth.API\\AttendanceSystem.Auth.API.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj",
+        "Action": "Start"
       }
     ]
   }

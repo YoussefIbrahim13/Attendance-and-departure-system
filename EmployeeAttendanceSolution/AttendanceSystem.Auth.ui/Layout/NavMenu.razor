@@ -1,0 +1,124 @@
+﻿   
+@using MudBlazor
+@inject AuthenticationStateProvider AuthStateProvider
+@inject AuthService AuthService
+@inject NavigationManager Navigation
+@inherits LayoutComponentBase
+@implements IDisposable
+
+@inject ILocalStorageService LocalStorage
+@inject IJSRuntime JS
+
+<MudPaper Elevation="0" Class="d-flex flex-column h-100">
+    <!-- Project Header -->
+    <MudPaper Class="px-4 py-1 d-flex align-center"
+              Elevation="1"
+              Style="background: linear-gradient(135deg, var(--mud-palette-primary) 100%, var(--mud-palette-secondary) 1%); color: white; height: 48px;">
+        <MudIcon Icon="@Icons.Material.Filled.Assignment" Size="Size.Small" Class="mr-1" />
+        <MudText Typo="Typo.body2">Attendance System</MudText>
+    </MudPaper>
+
+
+    <!-- Navigation Links -->
+    <MudNavMenu Dense="true" Class="flex-grow-1">
+        <MudNavLink Href="/" Icon="@Icons.Material.Filled.Home" Match="NavLinkMatch.All">
+            Home
+        </MudNavLink>
+
+      
+
+        @if (_isAuthenticated)
+        {
+            <MudNavLink Href="admin/users" Icon="@Icons.Material.Filled.AdminPanelSettings" Match="NavLinkMatch.Prefix">
+                Admin Management
+            </MudNavLink>
+            <MudNavLink Href="profile" Icon="@Icons.Material.Filled.PersonPin" Match="NavLinkMatch.Prefix">
+                User Profile
+            </MudNavLink>
+            <MudNavLink Href="vacation/requests" Icon="@Icons.Material.Filled.TimeToLeave" Match="NavLinkMatch.Prefix">
+                Vacation Requests
+            </MudNavLink>
+            <MudIconButton Icon="@Icons.Material.Filled.CalendarToday"
+                           Color="Color.Inherit"
+                           OnClick="@GoToAttendance"
+                           Title="Attendance Calendar"
+                           Class="mr-2" />
+            <span class="ms-1">Attendance Calendar</span>
+        }
+       
+    </MudNavMenu>
+
+    <!-- Login/Logout Section -->
+    @* <MudPaper Class="px-4 py-2" Elevation="0">
+        @if (_isAuthenticated)
+        {
+            <MudButton FullWidth="true"
+                       Variant="Variant.Outlined"
+                       Color="Color.Error"
+                       StartIcon="@Icons.Material.Filled.Logout"
+                       OnClick="Logout">
+                Logout
+            </MudButton>
+        }
+        else
+        {
+            <MudButton FullWidth="true"
+                       Variant="Variant.Outlined"
+                       Color="Color.Primary"
+                       StartIcon="@Icons.Material.Filled.Login"
+                       OnClick="RedirectToLogin">
+                Login
+            </MudButton>
+        }
+    </MudPaper> *@
+</MudPaper>
+
+@code {
+    private bool _isAuthenticated;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+        _isAuthenticated = authState.User.Identity?.IsAuthenticated ?? false;
+        AuthStateProvider.AuthenticationStateChanged += OnAuthenticationStateChanged;
+    }
+
+    private async void OnAuthenticationStateChanged(Task<AuthenticationState> task)
+    {
+        var authState = await task;
+        _isAuthenticated = authState.User.Identity?.IsAuthenticated ?? false;
+        StateHasChanged();
+    }
+
+    private async Task Logout()
+    {
+    await AuthService.Logout();
+    // إعادة تحميل Attendance لمسح التوكن في نفس النافذة
+    await JS.InvokeVoidAsync("open", "https://localhost:7280/logout-sync", "_self");
+    Navigation.NavigateTo("/", forceLoad: true);
+    }
+
+    private void RedirectToLogin()
+    {
+        Navigation.NavigateTo("/login");
+    }
+    
+
+    public void Dispose()
+    {
+        AuthStateProvider.AuthenticationStateChanged -= OnAuthenticationStateChanged;
+    }
+    private async void GoToAttendance()
+    {
+        var token = await LocalStorage.GetItemAsync<string>("authToken");
+        if (!string.IsNullOrEmpty(token))
+        {
+            Navigation.NavigateTo($"https://localhost:7280/?token={token}", true);
+        }
+        else
+        {
+            Navigation.NavigateTo("https://localhost:7280/", true);
+        }
+    }
+
+}

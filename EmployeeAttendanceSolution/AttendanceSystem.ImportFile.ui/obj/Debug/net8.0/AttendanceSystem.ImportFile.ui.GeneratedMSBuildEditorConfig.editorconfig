@@ -43,6 +43,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FsZW5kYXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[Y:/project/AttendanceSystem/EmployeeAttendanceSolution/AttendanceSystem.ImportFile.ui/Pages/Components/DayComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcG9uZW50c1xEYXlDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[Y:/project/AttendanceSystem/EmployeeAttendanceSolution/AttendanceSystem.ImportFile.ui/Pages/Components/MonthComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcG9uZW50c1xNb250aENvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [Y:/project/AttendanceSystem/EmployeeAttendanceSolution/AttendanceSystem.ImportFile.ui/Pages/DayView.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGF5Vmlldy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -51,16 +59,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbG95ZWVzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[Y:/project/AttendanceSystem/EmployeeAttendanceSolution/AttendanceSystem.ImportFile.ui/Pages/LogoutSync.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9nb3V0U3luYy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [Y:/project/AttendanceSystem/EmployeeAttendanceSolution/AttendanceSystem.ImportFile.ui/Pages/MonthView.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW9udGhWaWV3LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [Y:/project/AttendanceSystem/EmployeeAttendanceSolution/AttendanceSystem.ImportFile.ui/Pages/PlanAttendance.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGxhbkF0dGVuZGFuY2UucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[Y:/project/AttendanceSystem/EmployeeAttendanceSolution/AttendanceSystem.ImportFile.ui/Pages/RecurringWFHDialog.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVjdXJyaW5nV0ZIRGlhbG9nLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [Y:/project/AttendanceSystem/EmployeeAttendanceSolution/AttendanceSystem.ImportFile.ui/Pages/YearView.razor]

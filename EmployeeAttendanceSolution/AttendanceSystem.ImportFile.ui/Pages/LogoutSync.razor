@@ -1,0 +1,12 @@
+@page "/logout-sync"
+@inject IJSRuntime JS
+
+<MudText Typo="Typo.h6" Color="Color.Info">Logging out...</MudText>
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        await JS.InvokeVoidAsync("localStorage.removeItem", "authToken");
+        await JS.InvokeVoidAsync("close");
+    }
+}

@@ -1,0 +1,357 @@
+﻿@page "/profile"
+@attribute [Authorize]
+
+@using System.Net.Http.Json
+@inject HttpClient Http
+@inject NavigationManager Navigation
+@inject IDialogService DialogService
+@inject ISnackbar Snackbar
+@inject AuthService AuthService
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="mt-6">
+    <!-- Enhanced Header -->
+    <div class="profile-header">
+        <MudGrid AlignItems="Center">
+            <MudItem xs="12" sm="3" Class="text-center">
+                <MudAvatar Size="Size.Large" 
+                          Class="profile-avatar mb-3" 
+                          Src="" 
+                          Style="width: 120px; height: 120px;" />
+                <MudButton Variant="Variant.Outlined" 
+                          Color="Color.Inherit" 
+                          Size="Size.Small" 
+                          Class="action-button"
+                          StartIcon="@Icons.Material.Filled.CameraAlt"
+                          OnClick="@ChangeProfilePicture"
+                          Style="border-color: rgba(255,255,255,0.5); color: white;">
+                    Change Picture
+                </MudButton>
+            </MudItem>
+            <MudItem xs="12" sm="9">
+                <MudText Typo="Typo.h4" Class="fw-bold mb-2">@UserProfile.Name</MudText>
+                <MudText Typo="Typo.h6" Style="opacity: 0.9; margin-bottom: 1rem;">@string.Join(", ", UserProfile.Roles ?? new List<string>())</MudText>
+                <MudChip T ="String" Icon="@Icons.Material.Filled.Work"
+                         Label="true"
+                         Color="Color.Inherit"
+                         Style="background-color: rgba(255,255,255,0.2); color: white;">
+                    @UserProfile.Department
+                </MudChip>
+            </MudItem>
+        </MudGrid>
+    </div>
+
+    <!-- Profile Information Card -->
+    <MudCard Class="profile-card mb-4">
+        <MudCardContent>
+            <MudText Typo="Typo.h6" Class="section-title">
+                <MudIcon Icon="@Icons.Material.Filled.Person" Class="section-icon" />
+                Contact Information
+            </MudText>
+            <div class="info-section">
+                <div class="info-item">
+                    <MudIcon Icon="@Icons.Material.Filled.Email" Class="info-icon" />
+                    <div>
+                        <MudText Typo="Typo.body2" Style="opacity: 0.7;">Email</MudText>
+                        <MudText Typo="Typo.body1">@UserProfile.Email</MudText>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <MudIcon Icon="@Icons.Material.Filled.Phone" Class="info-icon" />
+                    <div>
+                        <MudText Typo="Typo.body2" Style="opacity: 0.7;">Phone</MudText>
+                        <MudText Typo="Typo.body1">@UserProfile.PhoneNumber</MudText>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <MudIcon Icon="@Icons.Material.Filled.Business" Class="info-icon" />
+                    <div>
+                        <MudText Typo="Typo.body2" Style="opacity: 0.7;">Department</MudText>
+                        <MudText Typo="Typo.body1">@UserProfile.Department</MudText>
+                    </div>
+                </div>
+            </div>
+            <MudDivider Class="my-4" />
+            <MudGrid>
+                <MudItem xs="12" sm="6">
+                    <MudButton Variant="Variant.Filled" 
+                              Color="Color.Primary" 
+                              StartIcon="@Icons.Material.Filled.Edit" 
+                              Class="action-button"
+                              FullWidth="true"
+                              OnClick="@EditProfile">
+                        Edit Profile
+                    </MudButton>
+                </MudItem>
+                <MudItem xs="12" sm="6">
+                    <MudButton Variant="Variant.Outlined" 
+                              Color="Color.Secondary" 
+                              StartIcon="@Icons.Material.Filled.Lock" 
+                              Class="action-button"
+                              FullWidth="true"
+                              OnClick="@ChangePassword">
+                        Change Password
+                    </MudButton>
+                </MudItem>
+            </MudGrid>
+        </MudCardContent>
+    </MudCard>
+
+    <!-- Enhanced Tabs -->
+    <MudTabs Elevation="0" 
+             Rounded="true" 
+             ApplyEffectsToContainer="true" 
+             Class="mt-4"
+             PanelClass="tab-panel-content">
+        
+        <!-- Attendance Summary -->
+        <MudTabPanel Text="Attendance Overview" Icon="@Icons.Material.Filled.Analytics">
+            <MudText Typo="Typo.h6" Class="section-title mb-4">
+                <MudIcon Icon="@Icons.Material.Filled.BarChart" Class="section-icon" />
+                Attendance Statistics
+            </MudText>
+            <MudGrid>
+                <MudItem xs="12" sm="6" md="3">
+                    <div class="stats-card">
+                        <MudText Typo="Typo.h4" Class="stat-value">@AttendanceStats.DaysPresent</MudText>
+                        <MudText Typo="Typo.body2" Style="opacity: 0.7;">Days Present</MudText>
+                        <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Style="color: #4CAF50; float: right;" />
+                    </div>
+                </MudItem>
+                <MudItem xs="12" sm="6" md="3">
+                    <div class="stats-card">
+                        <MudText Typo="Typo.h4" Class="stat-value">@AttendanceStats.DaysAbsent</MudText>
+                        <MudText Typo="Typo.body2" Style="opacity: 0.7;">Days Absent</MudText>
+                        <MudIcon Icon="@Icons.Material.Filled.Cancel" Style="color: #F44336; float: right;" />
+                    </div>
+                </MudItem>
+                <MudItem xs="12" sm="6" md="3">
+                    <div class="stats-card">
+                        <MudText Typo="Typo.h4" Class="stat-value">@AttendanceStats.VacationDaysUsed</MudText>
+                        <MudText Typo="Typo.body2" Style="opacity: 0.7;">Vacation Used</MudText>
+                        <MudIcon Icon="@Icons.Material.Filled.BeachAccess" Style="color: #FF9800; float: right;" />
+                    </div>
+                </MudItem>
+                <MudItem xs="12" sm="6" md="3">
+                    <div class="stats-card">
+                        <MudText Typo="Typo.h4" Class="stat-value">@AttendanceStats.VacationDaysRemaining</MudText>
+                        <MudText Typo="Typo.body2" Style="opacity: 0.7;">Vacation Left</MudText>
+                        <MudIcon Icon="@Icons.Material.Filled.Event" Style="color: #2196F3; float: right;" />
+                    </div>
+                </MudItem>
+            </MudGrid>
+        </MudTabPanel>
+
+        <!-- Recent Attendance -->
+        <MudTabPanel Text="Recent Activity" Icon="@Icons.Material.Filled.History">
+            <MudText Typo="Typo.h6" Class="section-title mb-4">
+                <MudIcon Icon="@Icons.Material.Filled.Schedule" Class="section-icon" />
+                Recent Attendance Records
+            </MudText>
+            <MudTable Items="@RecentAttendance" 
+                     Hover="true" 
+                     Striped="true" 
+                     Class="attendance-table"
+                     Elevation="2">
+                <HeaderContent>
+                    <MudTh><MudIcon Icon="@Icons.Material.Filled.CalendarToday" Class="mr-2" />Date</MudTh>
+                    <MudTh><MudIcon Icon="@Icons.Material.Filled.Info" Class="mr-2" />Status</MudTh>
+                    <MudTh><MudIcon Icon="@Icons.Material.Filled.Login" Class="mr-2" />Check In</MudTh>
+                    <MudTh><MudIcon Icon="@Icons.Material.Filled.Logout" Class="mr-2" />Check Out</MudTh>
+                    <MudTh><MudIcon Icon="@Icons.Material.Filled.Note" Class="mr-2" />Note</MudTh>
+                </HeaderContent>
+                <RowTemplate>
+                    <MudTr>
+                        <MudTd DataLabel="Date">
+                            <MudText Typo="Typo.body2">@context.Date.ToString("MMM dd, yyyy")</MudText>
+                        </MudTd>
+                        <MudTd DataLabel="Status">
+                          @*   <MudChip T="string" Class="status-badge @GetStatusClass(context.Status)" 
+                                    Variant="Variant.Filled" 
+                                    Color="@GetStatusColor(context.Status)">
+                                @context.Status
+                            </MudChip> *@
+                        </MudTd>
+                        <MudTd DataLabel="Check In">
+                            @if (context.CheckIn.HasValue)
+                            {
+                                <MudText Typo="Typo.body2">@context.CheckIn.Value.ToString("hh:mm tt")</MudText>
+                            }
+                            else
+                            {
+                                <MudText Typo="Typo.body2" Style="opacity: 0.5;">--</MudText>
+                            }
+                        </MudTd>
+                        <MudTd DataLabel="Check Out">
+                            @if (context.CheckOut.HasValue)
+                            {
+                                <MudText Typo="Typo.body2">@context.CheckOut.Value.ToString("hh:mm tt")</MudText>
+                            }
+                            else
+                            {
+                                <MudText Typo="Typo.body2" Style="opacity: 0.5;">--</MudText>
+                            }
+                        </MudTd>
+                        <MudTd DataLabel="Note">
+                            <MudText Typo="Typo.body2">@(string.IsNullOrEmpty(context.Note) ? "--" : context.Note)</MudText>
+                        </MudTd>
+                    </MudTr>
+                </RowTemplate>
+            </MudTable>
+        </MudTabPanel>
+
+        <!-- Quick Links -->
+        <MudTabPanel Text="Quick Actions" Icon="@Icons.Material.Filled.Speed">
+            <MudText Typo="Typo.h6" Class="section-title mb-4">
+                <MudIcon Icon="@Icons.Material.Filled.FlashOn" Class="section-icon" />
+                Quick Actions
+            </MudText>
+            <MudGrid>
+                <MudItem xs="12" sm="6" md="4">
+                    <MudCard Class="quick-link-item" Style="cursor: pointer;" @onclick="@(()=>Navigation.NavigateTo("/vacation/request"))">
+                        <MudCardContent>
+                            <MudGrid AlignItems="Center">
+                                <MudItem xs="3">
+                                    <MudIcon Icon="@Icons.Material.Filled.BeachAccess" 
+                                            Size="Size.Large" 
+                                            Color="Color.Primary" />
+                                </MudItem>
+                                <MudItem xs="9">
+                                    <MudText Typo="Typo.h6">Request Vacation</MudText>
+                                    <MudText Typo="Typo.body2" Style="opacity: 0.7;">Submit a new vacation request</MudText>
+                                </MudItem>
+                            </MudGrid>
+                        </MudCardContent>
+                    </MudCard>
+                </MudItem>
+                <MudItem xs="12" sm="6" md="4">
+                    <MudCard Class="quick-link-item" Style="cursor: pointer;" @onclick="@(()=>Navigation.NavigateTo("/attendance/report"))">
+                        <MudCardContent>
+                            <MudGrid AlignItems="Center">
+                                <MudItem xs="3">
+                                    <MudIcon Icon="@Icons.Material.Filled.Assessment" 
+                                            Size="Size.Large" 
+                                            Color="Color.Secondary" />
+                                </MudItem>
+                                <MudItem xs="9">
+                                    <MudText Typo="Typo.h6">View Reports</MudText>
+                                    <MudText Typo="Typo.body2" Style="opacity: 0.7;">Access detailed attendance reports</MudText>
+                                </MudItem>
+                            </MudGrid>
+                        </MudCardContent>
+                    </MudCard>
+                </MudItem>
+                <MudItem xs="12" sm="6" md="4">
+                    <MudCard Class="quick-link-item" Style="cursor: pointer;" @onclick="@(()=>Navigation.NavigateTo("/settings"))">
+                        <MudCardContent>
+                            <MudGrid AlignItems="Center">
+                                <MudItem xs="3">
+                                    <MudIcon Icon="@Icons.Material.Filled.Settings" 
+                                            Size="Size.Large" 
+                                            Color="Color.Tertiary" />
+                                </MudItem>
+                                <MudItem xs="9">
+                                    <MudText Typo="Typo.h6">Settings</MudText>
+                                    <MudText Typo="Typo.body2" Style="opacity: 0.7;">Manage your preferences</MudText>
+                                </MudItem>
+                            </MudGrid>
+                        </MudCardContent>
+                    </MudCard>
+                </MudItem>
+            </MudGrid>
+        </MudTabPanel>
+    </MudTabs>
+</MudContainer>
+
+<style>
+    /* Your existing CSS styles remain unchanged */
+</style>
+
+@code {
+    private UserInfo UserProfile = new();
+    private AttendanceStatsModel AttendanceStats = new();
+    private List<AttendanceRecord> RecentAttendance = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        try 
+        {
+            UserProfile = await AuthService.GetCurrentUser();
+            
+            // Uncomment these when your API endpoints are ready
+            //AttendanceStats = await Http.GetFromJsonAsync<AttendanceStatsModel>("api/user/attendance/stats") ?? new();
+            //RecentAttendance = await Http.GetFromJsonAsync<List<AttendanceRecord>>("api/user/attendance/recent") ?? new();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add("Error loading profile data", Severity.Error);
+            Console.Error.WriteLine(ex);
+        }
+    }
+
+    private string GetStatusClass(string status)
+    {
+        return status?.ToLower() switch
+        {
+            "present" => "status-present",
+            "absent" => "status-absent",
+            "vacation" => "status-vacation",
+            "work from home" => "status-work_from_home",
+            _ => "status-unknown"
+        };
+    }
+
+    private Color GetStatusColor(string status)
+    {
+        return status?.ToLower() switch
+        {
+            "present" => Color.Success,
+            "absent" => Color.Error,
+            "vacation" => Color.Info,
+            "work from home" => Color.Warning,
+            _ => Color.Default
+        };
+    }
+
+    private void EditProfile()
+    {
+        var parameters = new DialogParameters
+        {
+            ["Profile"] = new EditProfileDialog.EditProfileModel
+            {
+                FullName = UserProfile.Name,
+                Email = UserProfile.Email,
+                Phone = UserProfile.PhoneNumber,
+                Department = UserProfile.Department
+            }
+        };
+
+        DialogService.Show<EditProfileDialog>("Edit Profile", parameters);
+    }
+
+    private void ChangePassword()
+    {
+        DialogService.Show<ChangePasswordDialog>("Change Password");
+    }
+
+    private void ChangeProfilePicture()
+    {
+        Snackbar.Add("Profile picture change feature coming soon!", Severity.Info);
+    }
+
+    public class AttendanceStatsModel
+    {
+        public int DaysPresent { get; set; } = 245;
+        public int DaysAbsent { get; set; } = 5;
+        public int VacationDaysUsed { get; set; } = 12;
+        public int VacationDaysRemaining { get; set; } = 8;
+    }
+
+    public class AttendanceRecord
+    {
+        public DateTime Date { get; set; }
+        public string Status { get; set; } = "Present";
+        public DateTime? CheckIn { get; set; }
+        public DateTime? CheckOut { get; set; }
+        public string Note { get; set; } = "";
+    }
+}

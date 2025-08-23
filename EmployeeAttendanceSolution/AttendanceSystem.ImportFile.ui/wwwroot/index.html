@@ -33,13 +33,26 @@
         <a href="" class="reload">Reload</a>
         <a class="dismiss">🗙</a>
     </div>
-    <script src="_framework/blazor.webassembly.js"></script>
-    <script src="_content/MudBlazor/MudBlazor.min.js?v=@(MudBlazor.Metadata.Version)"></script>
-    <script>
-      window.triggerFileInput = function(id) {
-        document.getElementById(id).click();
-      }
-    </script>
+        <script src="_framework/blazor.webassembly.js"></script>
+        <script src="_content/MudBlazor/MudBlazor.min.js?v=@(MudBlazor.Metadata.Version)"></script>
+        <script>
+            window.triggerFileInput = function(id) {
+                document.getElementById(id).click();
+            }
+
+                    // مراقبة إضافة أو حذف التوكن من أي تبويب
+                    window.addEventListener('storage', function(event) {
+                        if (event.key === 'authToken') {
+                            if (event.newValue === null) {
+                                // تم حذف التوكن: سجل خروج
+                                window.location.href = '/';
+                            } else {
+                                // تم إضافة أو تحديث التوكن: سجل دخول
+                                window.location.href = '/'; // أو '/calendar' أو أي صفحة تريدها بعد تسجيل الدخول
+                            }
+                        }
+                    });
+        </script>
 </body>
 
 </html>

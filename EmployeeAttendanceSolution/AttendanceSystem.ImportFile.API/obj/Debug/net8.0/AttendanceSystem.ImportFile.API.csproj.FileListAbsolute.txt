@@ -1003,6 +1003,7 @@ Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.ImportFi
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\bin\Debug\net8.0\Azure.Core.dll
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\bin\Debug\net8.0\Azure.Identity.dll
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\bin\Debug\net8.0\Humanizer.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
@@ -1131,6 +1132,7 @@ Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.ImportFi
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\obj\Debug\net8.0\staticwebassets.build.json.cache
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\obj\Debug\net8.0\staticwebassets.development.json
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\obj\Debug\net8.0\Attendan.624A7C23.Up2Date
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.dll
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\obj\Debug\net8.0\refint\AttendanceSystem.ImportFile.API.dll
