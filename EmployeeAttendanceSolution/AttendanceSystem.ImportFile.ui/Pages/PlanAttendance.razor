@@ -1,6 +1,6 @@
 @page "/PlanAttendance"
 @using Microsoft.AspNetCore.Authorization
-@attribute [Authorize(Roles = "Admin,Manager,User,DataEntry")]
+@using Microsoft.AspNetCore.Components.Authorization
 @using AttendanceSystem.ImportFile.ui.Pages.nvvm
 @using AttendanceSystem.ImportFile.ui.Services
 @using EmployeesModels.Shared
@@ -8,7 +8,12 @@
 @inject AttendanceSystem.ImportFile.ui.Services.AttendanceService AttendanceService
 @inject ISnackbar Snackbar
 @inject IPlanAttendanceService PlanAttendanceService
+@inject IJSRuntime JS
 
+
+@attribute [Authorize(Roles = "Admin")]
+<AuthorizeView Roles="Admin">
+    <Authorized>
 <MudContainer MaxWidth="MaxWidth.Medium" Class="mt-10 d-flex justify-center align-center" Style="min-height:90vh; max-height:90vh; overflow-y:auto;">
     <MudPaper Class="pa-10" Elevation="12" Style="border-radius:32px; min-width:440px; background: var(--mud-palette-surface); box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.13), 0 1.5px 8px 0 rgba(25, 118, 210, 0.10);">
         <MudText Typo="Typo.h3" Align="Align.Center" Class="mb-6 fw-bold" Style="letter-spacing:2.5px; color:#1976d2; text-shadow:0 4px 16px #e3f2fd, 0 1px 0 #fff; font-family:'Segoe UI',Roboto,sans-serif;">
@@ -80,5 +85,6 @@
         <!-- الرسائل ستظهر عبر Snackbar -->
     </MudPaper>
 </MudContainer>
-
+    </Authorized>
+</AuthorizeView>
 

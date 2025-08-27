@@ -88,22 +88,23 @@ namespace AttendanceSystem.ImportFile.ui.Pages
         [Inject] NavigationManager Navigation { get; set; }
         [Inject] Blazored.LocalStorage.ILocalStorageService LocalStorage { get; set; }
         [CascadingParameter] public Task<AuthenticationState> AuthenticationStateTask { get; set; }
-        async Task CheckAdminRoleAsync()
-        {
-            if (AuthenticationStateTask == null)
-            return;
-            var authState = await AuthenticationStateTask;
-            var user = authState?.User;
-            if (user == null || !user.Identity.IsAuthenticated || !user.IsInRole("Admin"))
-            {
-              Navigation?.NavigateTo("/");
-            }
-        }
+       
         protected override async Task OnInitializedAsync()
         {
-                var token = await LocalStorage.GetItemAsync<string>("authToken");
-                var role = GetUserRoleFromToken(token);
-                Console.WriteLine($"Role in token: {role}");
+            var authState = await AuthenticationStateTask;
+            var user = authState.User;
+
+            string[] roles = { "Admin" };
+
+            if (!user.Identity.IsAuthenticated || !roles.Any(role => user.IsInRole(role)))
+            {
+                Navigation.NavigateTo("/access-denied");
+                return;
+            }
+
+            var token = await LocalStorage.GetItemAsync<string>("authToken");
+            var role = GetUserRoleFromToken(token);
+            Console.WriteLine($"Role in token: {role}");
         }
 
          

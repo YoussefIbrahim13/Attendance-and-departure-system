@@ -14,7 +14,13 @@
 
 using AttendanceSystem.ImportFile.ui.Services;
 using EmployeesModels.Shared;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
 using MudBlazor;
+using Microsoft.AspNetCore.Components.Forms;
+using System.IdentityModel.Tokens.Jwt;
+using Blazored.LocalStorage;
+
 
 namespace AttendanceSystem.ImportFile.ui.Pages
 {
@@ -31,12 +37,27 @@ namespace AttendanceSystem.ImportFile.ui.Pages
             private HashSet<DayOfWeek> selectedDays = new();
             private bool showRangeOptions = false;
 
-            protected override async Task OnInitializedAsync()
+        [CascadingParameter] public Task<AuthenticationState> AuthenticationStateTask { get; set; }
+        [Inject] NavigationManager Navigation { get; set; }
+
+        protected override async Task OnInitializedAsync()
+        {
+            // 1- تحقق من الرول
+            var authState = await AuthenticationStateTask;
+            var user = authState.User;
+
+            string[] roles = { "Admin" };
+
+            if (!user.Identity.IsAuthenticated || !roles.Any(role => user.IsInRole(role)))
             {
-                employees = await AttendanceService.GetAllEmployeesAsync();
+                Navigation.NavigateTo("/access-denied");
+                return;
             }
 
-            private Task<IEnumerable<EmployeeDto>> SearchEmployee(string value, CancellationToken token)
+            // 2- لو اليوزر مسموحله، هات الموظفين
+            employees = await AttendanceService.GetAllEmployeesAsync();
+        }
+        private Task<IEnumerable<EmployeeDto>> SearchEmployee(string value, CancellationToken token)
             {
                 if (string.IsNullOrWhiteSpace(value))
                     return Task.FromResult(employees.AsEnumerable());

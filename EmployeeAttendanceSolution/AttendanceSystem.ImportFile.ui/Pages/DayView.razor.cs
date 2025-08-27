@@ -16,6 +16,12 @@ using AttendanceSystem.ImportFile.ui.Services;
 using EmployeesModels.Shared;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
+using Microsoft.AspNetCore.Components.Forms;
+using Microsoft.AspNetCore.Components.Authorization;
+using System.IdentityModel.Tokens.Jwt;
+using Blazored.LocalStorage;
+
+
 
 namespace AttendanceSystem.ImportFile.ui.Pages
 {
@@ -46,12 +52,26 @@ namespace AttendanceSystem.ImportFile.ui.Pages
         private bool _readOnly = false;
         private bool _isCellEditMode = false;
         private bool _editTriggerRowClick = false;
-
+        [CascadingParameter] public Task<AuthenticationState> AuthenticationStateTask { get; set; }
         protected override async Task OnInitializedAsync()
         {
+            // 1- Parse Date
             if (!DateTime.TryParse(DateString, out selectedDate))
                 selectedDate = DateTime.Today;
 
+            // 2- Authorization Check
+            var authState = await AuthenticationStateTask;
+            var user = authState.User;
+
+            string[] roles = { "Admin" };
+
+            if (!user.Identity.IsAuthenticated || !roles.Any(role => user.IsInRole(role)))
+            {
+                Navigation.NavigateTo("/access-denied");
+                return;
+            }
+
+            // 3- Load data if Authorized
             await LoadDayData();
         }
 

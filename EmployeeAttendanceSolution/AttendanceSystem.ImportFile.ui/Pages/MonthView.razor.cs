@@ -15,7 +15,12 @@
 using AttendanceSystem.ImportFile.ui.Services;
 using EmployeesModels.Shared;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
 using MudBlazor;
+using Microsoft.AspNetCore.Components.Forms;
+using System.IdentityModel.Tokens.Jwt;
+using Blazored.LocalStorage;
+
 
 namespace AttendanceSystem.ImportFile.ui.Pages
 // ...existing code...
@@ -46,22 +51,38 @@ namespace AttendanceSystem.ImportFile.ui.Pages
         private DateTime? dateFrom => SelectedDate;
         private DateTime? dateTo => SelectedDate;
 
-    private MonthViewDto? monthData;
-    private bool isLoading = true;
-    private int currentYear;
-    private int currentMonth;
-
+          private MonthViewDto? monthData;
+          private bool isLoading = true;
+          private int currentYear;
+          private int currentMonth;
+ 
     // Filter for employee status
-    private AttendanceStatus? selectedStatus = null;
+         private AttendanceStatus? selectedStatus = null;
+        [CascadingParameter] public Task<AuthenticationState> AuthenticationStateTask { get; set; }
+
 
         protected override async Task OnInitializedAsync()
         {
+            // 1- تحقق من الرول قبل أي حاجة
+            var authState = await AuthenticationStateTask;
+            var user = authState.User;
+
+            string[] roles = { "Admin" };
+
+            if (!user.Identity.IsAuthenticated || !roles.Any(role => user.IsInRole(role)))
+            {
+                Navigation.NavigateTo("/access-denied");
+                return;
+            }
+
+            // 2- تحميل بيانات الشهر بعد التأكد من الأذونات
             var today = DateTime.Today;
             currentYear = Year > 0 ? Year : today.Year;
             currentMonth = Month > 0 ? Month : today.Month;
 
             await LoadMonthData();
-            // Fill employeeNames from monthData after loading
+
+            // 3- ملء أسماء الموظفين بعد تحميل البيانات
             if (monthData != null)
             {
                 employeeNames = monthData.Days

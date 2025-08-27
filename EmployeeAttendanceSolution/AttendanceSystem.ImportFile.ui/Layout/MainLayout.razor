@@ -1,21 +1,14 @@
-﻿   
-@inherits LayoutComponentBase
+﻿@inherits LayoutComponentBase
 @inject Blazored.LocalStorage.ILocalStorageService LocalStorage
 @inject NavigationManager Navigation
 
 @using AttendanceSystem.ImportFile.ui.Pages
 
-@* Required *@
-<MudThemeProvider />
+@* Theme & Providers *@
+<MudThemeProvider Theme="MyCustomTheme" @bind-IsDarkMode="@_isDarkMode" />
 <MudPopoverProvider />
-@* Needed for dialogs *@
 <MudDialogProvider />
-@* Needed for snackbars *@
 <MudSnackbarProvider />
-@* Needed for Dark Mode *@
-<MudThemeProvider @bind-IsDarkMode="@_isDarkMode" Theme="MyCustomTheme" />
-
-
 
 <MudLayout>
     <MudAppBar>
@@ -27,16 +20,21 @@
 
         <MudSpacer />
 
-
         @if (!isLoggedIn)
         {
-            <MudButton Color="Color.Inherit" Variant="Variant.Outlined" Class="mr-2" Style="position:absolute;left:1140px;top:15px;" OnClick="GoToLogin">
+            <MudButton Color="Color.Inherit" Variant="Variant.Outlined"
+                       Class="mr-2"
+                       Style="position:absolute;left:1140px;top:15px;"
+                       OnClick="GoToLogin">
                 Login
             </MudButton>
         }
-        @* @if (isLoggedIn)
+        @* else
         {
-                <MudButton Color="Color.Error" Variant="Variant.Outlined" Class="mr-2" Style="position:absolute;left:1140px;top:15px;" OnClick="@(async () => await LogoutAndClearToken())">
+            <MudButton Color="Color.Error" Variant="Variant.Outlined"
+                       Class="mr-2"
+                       Style="position:absolute;left:1140px;top:15px;"
+                       OnClick="@(async () => await LogoutAndClearToken())">
                 Logout
             </MudButton>
         } *@
@@ -50,54 +48,42 @@
     </MudAppBar>
 
     <MudDrawer @bind-Open="@_drawerOpen">
-            @if (isLoggedIn)
+        @if (isLoggedIn)
+        {
+            <NavMenu />
+            @if (IsAdmin)
             {
-                <NavMenu />
-                @if (IsAdmin)
-                {
-                    <MudNavLink Href="https://localhost:7203/" Icon="@Icons.Material.Filled.Home" Match="NavLinkMatch.All" Target="_blank">
-                        <span>Authorization Home</span>
-                    </MudNavLink>
-                }
+                <MudNavLink Href="https://localhost:7203/"
+                            Icon="@Icons.Material.Filled.Home"
+                            Match="NavLinkMatch.All"
+                            Target="_blank">
+                    <span>Authorization Home</span>
+                </MudNavLink>
             }
+        }
     </MudDrawer>
 
     <MudMainContent Class="m-0 p-0">
         @if (!isLoggedIn)
-            {
-                <Calendar />
-            }
+        {
+            <Calendar />
+        }
         else
         {
             @Body
         }
     </MudMainContent>
 </MudLayout>
-@* <MudLayout>
-    <MudAppBar>
-        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
-        My Application
-        <MudToggleIconButton @bind-Toggled="@_isDarkMode"
-                             Icon="@Icons.Material.Filled.DarkMode" Color="@Color.Default"
-                             ToggledIcon="@Icons.Material.Filled.WbSunny" ToggledColor="@Color.Default" />
-    </MudAppBar>
-    <MudDrawer @bind-Open="@_drawerOpen">
-        <NavMenu />
-    </MudDrawer>
-    <MudMainContent Class="m-0 p-0">
-        @Body
-    </MudMainContent>
-</MudLayout> *@
 
 @code {
     bool _drawerOpen = true;
     private bool _isDarkMode;
     private bool isLoggedIn;
     private bool IsAdmin;
-    // حذف التكرار: تعريف واحد فقط لدالة LogoutAndClearToken
+
     protected override async Task OnInitializedAsync()
     {
-        // تحقق من التوكن في كل تحميل صفحة
+        // check token on every page load
         var uri = Navigation.ToAbsoluteUri(Navigation.Uri);
         var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
         var urlToken = query["token"];
@@ -109,6 +95,7 @@
 
         var token = await LocalStorage.GetItemAsync<string>("authToken");
         isLoggedIn = !string.IsNullOrEmpty(token);
+
         if (isLoggedIn && token != null)
         {
             var handler = new System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler();
@@ -118,7 +105,6 @@
         }
         else
         {
-            // إذا لم يوجد توكن، اعتبر المستخدم غير مسجل دخول
             isLoggedIn = false;
             IsAdmin = false;
         }
@@ -146,49 +132,35 @@
     {
         PaletteLight = new PaletteLight()
         {
-            // Special cases (calendar-day.today)
-
-            Dark = Colors.Gray.Lighten3,             // Hover states (#eeeeee)
-            Primary = "#1976d2",                   // Material Blue 700
-            Secondary = "#388e3c",                 // Material Green 700
-            AppbarBackground = "#1565c0",          // Dark Blue 800
-            Background = Colors.Gray.Lighten5,     // Light gray
-            LinesDefault = Colors.Gray.Lighten2,     // Borders
-            Surface = "#ffffff",                   // White cards
-            TextPrimary = "rgba(0,0,0,0.87)",      // Standard text color
-            TextSecondary = "rgba(0,0,0,0.6)",     // Secondary text
-            ActionDefault = Colors.Blue.Lighten4,  // Light blue highlight (#bbdefb) (used for calendar highlights)
-            Divider = Colors.Gray.Lighten2,        // For borders
-            DrawerBackground = "#ffffff",          // Solid white drawer
-            OverlayLight = "rgba(255,255,255,0.5)" // Light overlay
+            Dark = Colors.Gray.Lighten3,
+            Primary = "#1976d2",
+            Secondary = "#388e3c",
+            AppbarBackground = "#1565c0",
+            Background = Colors.Gray.Lighten5,
+            LinesDefault = Colors.Gray.Lighten2,
+            Surface = "#ffffff",
+            TextPrimary = "rgba(0,0,0,0.87)",
+            TextSecondary = "rgba(0,0,0,0.6)",
+            ActionDefault = Colors.Blue.Lighten4,
+            Divider = Colors.Gray.Lighten2,
+            DrawerBackground = "#ffffff",
+            OverlayLight = "rgba(255,255,255,0.5)"
         },
         PaletteDark = new PaletteDark()
         {
-            // Primary Colors
-            Primary = Colors.Blue.Lighten1,         // Soft blue (#42a5f5)
-            Secondary = Colors.Teal.Accent4,        // Vibrant teal
-            AppbarBackground = "#0d47a1",           // Deep blue app bar
-
-            // Backgrounds
-            Background = "#121212",                 // Dark gray background
-            Surface = "#1e1e1e",                    // Card surfaces
-            DrawerBackground = "#1a1a1a",           // Slightly darker drawer
-
-            // Text
-            TextPrimary = "rgba(255,255,255,0.87)", // 87% white
-            TextSecondary = "rgba(255,255,255,0.6)",// 60% white
-
-            // UI Elements
-            ActionDefault = Colors.Gray.Darken3,    // Today's highlight (#1565c0)
-            Divider = "rgba(255,255,255,0.12)",     // Subtle borders
-            OverlayDark = "rgba(0,0,0,0.7)",        // Dark overlays
-
-            // States
-            HoverOpacity = 0.08,                    // Subtle hover effects
+            Primary = Colors.Blue.Lighten1,
+            Secondary = Colors.Teal.Accent4,
+            AppbarBackground = "#0d47a1",
+            Background = "#121212",
+            Surface = "#1e1e1e",
+            DrawerBackground = "#1a1a1a",
+            TextPrimary = "rgba(255,255,255,0.87)",
+            TextSecondary = "rgba(255,255,255,0.6)",
+            ActionDefault = Colors.Gray.Darken3,
+            Divider = "rgba(255,255,255,0.12)",
+            OverlayDark = "rgba(0,0,0,0.7)",
+            HoverOpacity = 0.08,
             GrayDefault = "#757575"
-            
-        },
-
+        }
     };
 }
-

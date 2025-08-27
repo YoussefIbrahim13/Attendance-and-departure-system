@@ -45,10 +45,15 @@ A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendance
 A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\obj\Debug\net8.0\refint\AttendanceSystem.ImportFile.API.Services.dll
 A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.Services.pdb
 A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\obj\Debug\net8.0\ref\AttendanceSystem.ImportFile.API.Services.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\bin\Debug\net8.0\appsettings.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\bin\Debug\net8.0\AttendanceSystem.Auth.ui.staticwebassets.runtime.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\bin\Debug\net8.0\AttendanceSystem.Auth.ui.staticwebassets.endpoints.json
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\bin\Debug\net8.0\AttendanceSystem.ImportFile.API.Services.deps.json
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\bin\Debug\net8.0\AttendanceSystem.ImportFile.API.Services.dll
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\bin\Debug\net8.0\AttendanceSystem.ImportFile.API.Services.pdb
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\bin\Debug\net8.0\AttendanceSystem.Auth.ui.dll
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\bin\Debug\net8.0\EmployeesModels.Shared.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\bin\Debug\net8.0\AttendanceSystem.Auth.ui.pdb
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\bin\Debug\net8.0\EmployeesModels.Shared.pdb
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.Services.csproj.AssemblyReference.cache
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.Services.GeneratedMSBuildEditorConfig.editorconfig

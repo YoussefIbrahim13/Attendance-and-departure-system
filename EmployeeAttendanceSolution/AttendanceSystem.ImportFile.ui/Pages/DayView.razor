@@ -1,13 +1,17 @@
 ﻿@page "/calendar/day"
 @page "/calendar/day/{DateString}"
 @using Microsoft.AspNetCore.Authorization
-@attribute [Authorize(Roles = "Admin,Manager,User,DataEntry")]
 @inject AttendanceSystem.ImportFile.ui.Services.AttendanceService AttendanceService
 @inject NavigationManager Navigation
 @inject ISnackbar Snackbar
+@inject IJSRuntime JS
 @using AttendanceSystem.ImportFile.ui.Services
 @using EmployeesModels.Shared
 
+
+@attribute [Authorize(Roles = "Admin")]
+<AuthorizeView Roles="Admin">
+    <Authorized>
 <MudContainer MaxWidth="MaxWidth.ExtraExtraLarge" Class="mt-4">
     <!-- ✅ HEADER -->
     <MudStack Row Justify="Justify.SpaceBetween" AlignItems="AlignItems.Center" Class="mb-4">
@@ -289,6 +293,8 @@
         </div>
     }
 </MudContainer>
+    </Authorized>
+</AuthorizeView>
 
 <style>
     .summary-card {

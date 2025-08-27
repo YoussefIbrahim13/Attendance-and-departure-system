@@ -1,14 +1,19 @@
 ﻿@page "/calendar/year"
 @page "/calendar/year/{Year:int}"
 @using Microsoft.AspNetCore.Authorization
-@attribute [Authorize(Roles = "Admin,Manager,User,DataEntry")]
 @inject AttendanceSystem.ImportFile.ui.Services.AttendanceService AttendanceService
 @inject NavigationManager Navigation
 @inject AttendanceService AttendanceService
 @using AttendanceSystem.ImportFile.ui.Services
 @using EmployeesModels.Shared
+@inject ISnackbar Snackbar
+@inject IJSRuntime JS
 
 
+
+@attribute [Authorize(Roles = "Admin,Manager,User,DataEntry")]
+<AuthorizeView Roles="Admin,Manager,User,DataEntry">
+    <Authorized>
 <MudContainer MaxWidth="MaxWidth.False" Class="mt-4">
     <!-- Header & Navigation -->
     <MudGrid Class="mb-4">
@@ -138,7 +143,8 @@
         </MudGrid>
     }
 </MudContainer>
-
+</Authorized>
+</AuthorizeView>
 <style>
     .year-summary-card {
         background-color: var(--mud-palette-surface);

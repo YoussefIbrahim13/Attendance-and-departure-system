@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Components.Authorization;
+
 using AttendanceSystem.ImportFile.ui;
 using AttendanceSystem.ImportFile.ui.Pages.nvvm;
 using Microsoft.AspNetCore.Components.Web;
@@ -25,4 +27,8 @@ builder.Services.AddScoped<AttendanceSystem.ImportFile.ui.Services.BaseHTTPServi
 });
 //builder.Services.AddScoped<AttendanceService>();
 
+
+// إضافة خدمات المصادقة والأدوار
+builder.Services.AddAuthorizationCore();
+builder.Services.AddScoped<AuthenticationStateProvider, AttendanceSystem.ImportFile.ui.Services.JwtAuthenticationStateProvider>();
 await builder.Build().RunAsync();

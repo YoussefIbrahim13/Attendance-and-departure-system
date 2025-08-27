@@ -4789,11 +4789,11 @@ Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\compressed\ea5ywvgczo-tptq2av103.gz
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\compressed\lgsne8wcnn-lfu7j35m59.gz
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\compressed\st85gpk738-oyz0vx2fzb.gz
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\compressed\wj40u5s5pr-29i4faphxz.gz
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\compressed\mr8o2wqfym-me227g2gvp.gz
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\compressed\4yvw3pwnb2-emg0y8v837.gz
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\compressed\2lbmy12kb4-6nr4penxcu.gz
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\compressed\lrbgnk7ewd-wfqnag244y.gz
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\compressed\wj40u5s5pr-07r3dovnug.gz
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\compressed\mr8o2wqfym-zhqqvh9igr.gz
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\compressed\4yvw3pwnb2-u2gm8kxo22.gz
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\compressed\2lbmy12kb4-bb72n1e192.gz
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\compressed\lrbgnk7ewd-57s7amz9fu.gz
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json.cache
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.development.json

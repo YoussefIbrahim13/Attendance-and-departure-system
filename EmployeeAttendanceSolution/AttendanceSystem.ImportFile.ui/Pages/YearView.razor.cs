@@ -15,7 +15,9 @@
 using AttendanceSystem.ImportFile.ui.Services;
 using EmployeesModels.Shared;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
 using MudBlazor;
+using System.Data;
 
 namespace AttendanceSystem.ImportFile.ui.Pages
 {
@@ -26,13 +28,24 @@ namespace AttendanceSystem.ImportFile.ui.Pages
         private YearViewDto? yearData;
         private bool isLoading = true;
         private int currentYear;
+        [CascadingParameter] public Task<AuthenticationState> AuthenticationStateTask { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
+            var authState = await AuthenticationStateTask;
+            var user = authState.User;
+
+            string[] roles = { "Admin", "Manager", "User", "DataEntry" };
+
+            if (!user.Identity.IsAuthenticated || !roles.Any(role => user.IsInRole(role)))
+            {
+                Navigation.NavigateTo("/access-denied");
+                return;
+            }
+
             currentYear = Year > 0 ? Year : DateTime.Today.Year;
             await LoadYearData();
         }
-
         protected override async Task OnParametersSetAsync()
         {
             if (Year > 0) currentYear = Year;

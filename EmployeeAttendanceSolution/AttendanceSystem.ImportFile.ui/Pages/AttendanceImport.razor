@@ -1,8 +1,9 @@
 
 @page "/ImportAttendance"
+
+
 @using Microsoft.AspNetCore.Authorization
 @using Microsoft.AspNetCore.Components.Authorization
-@attribute [Authorize(Roles = "Admin")]
 @inject AttendanceSystem.ImportFile.ui.Services.AttendanceService AttendanceService
 @inject ISnackbar Snackbar
 @inject IJSRuntime JS
@@ -11,6 +12,10 @@
 @using EmployeesModels.Shared
 @using Microsoft.AspNetCore.Components.Forms
 
+
+@attribute [Authorize(Roles = "Admin")]
+<AuthorizeView Roles="Admin">
+    <Authorized>
 <MudContainer MaxWidth="MaxWidth.Medium" Class="mt-10 d-flex justify-center align-center" Style="min-height:90vh;">
     <MudPaper Class="pa-10" Elevation="12" Style="
         border-radius:32px;
@@ -80,11 +85,11 @@
                         <MudTh>Note</MudTh>
                         <MudTh>Edit</MudTh>
                     </HeaderContent>
-                    <RowTemplate>
-                        <MudTd DataLabel="Employee ID">@context.Code</MudTd>
+                    <RowTemplate Context="row">
+                        <MudTd DataLabel="Employee ID">@row.Code</MudTd>
                         <MudTd DataLabel="Date">
                             @{
-                                string? dateStr = context.Date.ToString();
+                                string? dateStr = row.Date.ToString();
                                 if (!string.IsNullOrEmpty(dateStr) && DateTime.TryParse(dateStr, out var dt))
                                 {
                                     @dt.ToString("yyyy-MM-dd")
@@ -100,7 +105,7 @@
                             }
                         </MudTd>
                         <MudTd DataLabel="Check In">
-                            @if (editRow == context)
+                            @if (editRow == row)
                             {
                                 <MudStack Row AlignItems="AlignItems.Center" Spacing="1">
                                     <MudTimePicker 
@@ -120,11 +125,11 @@
                             }
                             else
                             {
-                                @context.CheckIn.ToString(@"hh\:mm")
+                                @row.CheckIn.ToString(@"hh\:mm")
                             }
                         </MudTd>
                         <MudTd DataLabel="Check Out">
-                            @if (editRow == context)
+                            @if (editRow == row)
                             {
                                 <MudStack Row AlignItems="AlignItems.Center" Spacing="1">
                                     <MudTimePicker 
@@ -144,11 +149,11 @@
                             }
                             else
                             {
-                                @context.CheckOut.ToString(@"hh\:mm")
+                                @row.CheckOut.ToString(@"hh\:mm")
                             }
                         </MudTd>
                         <MudTd DataLabel="Actual Status">
-                            @if (editRow == context)
+                            @if (editRow == row)
                             {
                                 <MudSelect T="AttendanceStatus" @bind-Value="editStatusValue" Dense="true" Style="width:120px;">
                                     @foreach (var status in Enum.GetValues<AttendanceStatus>())
@@ -159,11 +164,11 @@
                             }
                             else
                             {
-                                @context.ActualStatus
+                                @row.ActualStatus
                             }
                         </MudTd>
                         <MudTd DataLabel="Approval Status">
-                            @if (editRow == context)
+                            @if (editRow == row)
                             {
                                 <MudSelect T="ApprovalStatus" @bind-Value="editApprovalStatus" Dense="true" Style="width:120px;">
                                     <MudSelectItem Value="@ApprovalStatus.Pending">Pending</MudSelectItem>
@@ -172,30 +177,30 @@
                             }
                             else
                             {
-                                @context.ApprovalStatus
+                                @row.ApprovalStatus
                             }
                         </MudTd>
                         <MudTd DataLabel="Note">
-                            @if (editRow == context)
+                            @if (editRow == row)
                             {
                                 <MudTextField T="string" @bind-Value="editNote" Dense="true" />
                             }
                             else
                             {
-                                @context.Note
+                                @row.Note
                             }
                         </MudTd>
                         <MudTd DataLabel="Edit">
-                            @if (editRow == context)
+                            @if (editRow == row)
                             {
                                 <MudStack Row Spacing="1">
-                                    <MudButton Variant="Variant.Filled" Color="Color.Success" Size="Size.Small" OnClick="() => SaveEdit(context)" Style="min-width:70px;">SAVE</MudButton>
+                                    <MudButton Variant="Variant.Filled" Color="Color.Success" Size="Size.Small" OnClick="() => SaveEdit(row)" Style="min-width:70px;">SAVE</MudButton>
                                     <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Size="Size.Small" OnClick="CancelEdit" Style="min-width:70px;">CANCEL</MudButton>
                                 </MudStack>
                             }
                             else
                             {
-                                <MudButton Variant="Variant.Outlined" Color="Color.Primary" Size="Size.Small" OnClick="() => StartEdit(context)">Edit</MudButton>
+                                <MudButton Variant="Variant.Outlined" Color="Color.Primary" Size="Size.Small" OnClick="() => StartEdit(row)">Edit</MudButton>
                             }
                         </MudTd>
                     </RowTemplate>
@@ -209,5 +214,5 @@
         }
     </MudPaper>
 </MudContainer>
-
-
+</Authorized>
+</AuthorizeView>

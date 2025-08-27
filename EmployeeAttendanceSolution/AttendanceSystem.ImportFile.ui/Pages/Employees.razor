@@ -1,132 +1,160 @@
-
 @page "/Employees"
 @using Microsoft.AspNetCore.Authorization
-@attribute [Authorize(Roles = "Admin,Manager")]
 @using MudBlazor
 @using AttendanceSystem.ImportFile.ui.Services
 @using EmployeesModels.Shared
+@using Microsoft.AspNetCore.Components.Authorization
 @inject AttendanceSystem.ImportFile.ui.Services.AttendanceService AttendanceService
 @inject ISnackbar Snackbar
+@inject IJSRuntime JS
+@using Microsoft.AspNetCore.Components.Forms
 
-<MudContainer MaxWidth="MaxWidth.Medium" Class="mt-10 d-flex justify-center align-center" Style="min-height:90vh;">
-    <MudPaper Class="pa-10 mb-8" Elevation="12" Style="border-radius:32px; min-width:440px; background: var(--mud-palette-surface); box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.13), 0 1.5px 8px 0 rgba(25, 118, 210, 0.10);">
-        <MudText Typo="Typo.h3" Align="Align.Center" Class="mb-6 fw-bold" Style="letter-spacing:2.5px; color:#1976d2; text-shadow:0 4px 16px #e3f2fd, 0 1px 0 #fff; font-family:'Segoe UI',Roboto,sans-serif;">
-            <MudIcon Icon="@Icons.Material.Filled.People" Size="Size.Large" Class="me-2" Style="vertical-align:middle; color:#90caf9; filter:drop-shadow(0 2px 8px #1976d2aa);" />
-            Employees Management
-        </MudText>
-        <MudPaper Class="pa-6 mb-6" Elevation="2" Style="border-radius:18px; background: var(--mud-palette-surface);">
-            <MudText Typo="Typo.h6" Class="mb-4">Add New Employee</MudText>
-            <MudStack Row Spacing="2" Class="mb-2">
-                <MudTextField T="string" Label="Code" @bind-Value="newEmployee.Code" Variant="Variant.Outlined" Style="width:140px;" />
-                <MudTextField T="string" Label="Name" @bind-Value="newEmployee.Name" Variant="Variant.Outlined" Style="width:180px;" />
-                <MudSelect T="DepartmentEnum" Label="Department" @bind-Value="newEmployee.Department" Variant="Variant.Outlined" Style="width:180px;">
-                    @foreach (var dept in Enum.GetValues(typeof(DepartmentEnum)))
-                    {
-                        <MudSelectItem T="DepartmentEnum" Value="@((DepartmentEnum)dept)">@dept</MudSelectItem>
-                    }
-                </MudSelect>
-                <MudSelect T="PositionEnum" Label="Position" @bind-Value="newEmployee.Position" Variant="Variant.Outlined" Style="width:180px;">
-                    @foreach (var pos in GetPositionsForDepartment(newEmployee.Department))
-                    {
-                        <MudSelectItem T="PositionEnum" Value="@pos">@pos</MudSelectItem>
-                    }
-                </MudSelect>
-            </MudStack>
-            <MudButton Variant="Variant.Filled" Color="Color.Success" OnClick="AddEmployee" Class="mt-2" StartIcon="@Icons.Material.Filled.PersonAdd">Add Employee</MudButton>
-        </MudPaper>
+@attribute [Authorize(Roles = "Admin")]
 
-        <MudPaper Class="pa-6" Elevation="2" Style="border-radius:18px; background: var(--mud-palette-surface);">
-            <MudText Typo="Typo.h6" Class="mb-4">All Employees</MudText>
-            <MudStack Row Spacing="2" Class="mb-3">
-                <MudTextField @bind-Value="searchcode" Label="Search by Code" Variant="Variant.Outlined" Margin="Margin.Dense" Style="width:200px;" />
-                <MudSelect T="DepartmentEnum?" @bind-Value="selectedDepartment" Label="Department" Variant="Variant.Outlined" Margin="Margin.Dense" Style="width:200px;">
-                    <MudSelectItem T="DepartmentEnum?" Value="@((DepartmentEnum?)null)">All Departments</MudSelectItem>
-                    @foreach (var dept in Enum.GetValues(typeof(DepartmentEnum)))
-                    {
-                        <MudSelectItem T="DepartmentEnum?" Value="@((DepartmentEnum)dept)">@dept</MudSelectItem>
-                    }
-                </MudSelect>
-                <MudSelect T="PositionEnum?" @bind-Value="selectedPosition" Label="Position" Variant="Variant.Outlined" Margin="Margin.Dense" Style="width:200px;">
-                    <MudSelectItem T="PositionEnum?" Value="@((PositionEnum?)null)">All Positions</MudSelectItem>
-                    @foreach (var pos in GetPositionsForDepartment(selectedDepartment))
-                    {
-                        <MudSelectItem T="PositionEnum?" Value="@pos">@pos</MudSelectItem>
-                    }
-                </MudSelect>
-            </MudStack>
-            <MudTable Items="@filteredEmployees" Hover="true" Bordered="true" Striped="true" Dense="true" GroupByField="Department">
-                <HeaderContent>
-                    <MudTh>Code</MudTh>
-                    <MudTh>Name</MudTh>
-                    <MudTh>Department</MudTh>
-                    <MudTh>Position</MudTh>
-                    <MudTh>Actions</MudTh>
-                </HeaderContent>
-                <GroupHeaderTemplate>
-                    <tr style="background:#e3f2fd;">
-                        <td colspan="5" style="font-weight:bold; font-size:1.08rem; color:#1976d2; border-top:2px solid #90caf9;">Department: @context.Key</td>
-                    </tr>
-                </GroupHeaderTemplate>
-                <RowTemplate>
-                    <MudTd DataLabel="Code">@context.Code</MudTd>
-                    <MudTd DataLabel="Name">
-                        @if (editRow == context)
-                        {
-                            <MudTextField T="string" @bind-Value="editName" Dense="true" />
-                        }
-                        else
-                        {
-                            @context.Name
-                        }
-                    </MudTd>
-                    <MudTd DataLabel="Department">
-                        @if (editRow == context)
-                        {
-                            <MudSelect T="DepartmentEnum" @bind-Value="editDepartment" Dense="true">
-                                @foreach (var dept in Enum.GetValues(typeof(DepartmentEnum)))
+<AuthorizeView Roles="Admin">
+    <Authorized>
+        <MudContainer MaxWidth="MaxWidth.Medium" Class="mt-10 d-flex justify-center align-center" Style="min-height:90vh;">
+            <MudPaper Class="pa-10 mb-8" Elevation="12"
+                      Style="border-radius:32px; min-width:440px; background: var(--mud-palette-surface);
+                             box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.13), 0 1.5px 8px 0 rgba(25, 118, 210, 0.10);">
+
+                <!-- Title -->
+                <MudText Typo="Typo.h3" Align="Align.Center" Class="mb-6 fw-bold"
+                         Style="letter-spacing:2.5px; color:#1976d2; text-shadow:0 4px 16px #e3f2fd, 0 1px 0 #fff;
+                                font-family:'Segoe UI',Roboto,sans-serif;">
+                    <MudIcon Icon="@Icons.Material.Filled.People" Size="Size.Large" Class="me-2"
+                             Style="vertical-align:middle; color:#90caf9; filter:drop-shadow(0 2px 8px #1976d2aa);" />
+                    Employees Management
+                </MudText>
+
+                <!-- Add Employee Form -->
+                <MudPaper Class="pa-6 mb-6" Elevation="2" Style="border-radius:18px; background: var(--mud-palette-surface);">
+                    <MudText Typo="Typo.h6" Class="mb-4">Add New Employee</MudText>
+                    <MudStack Row Spacing="2" Class="mb-2">
+                        <MudTextField T="string" Label="Code" @bind-Value="newEmployee.Code" Variant="Variant.Outlined" Style="width:140px;" />
+                        <MudTextField T="string" Label="Name" @bind-Value="newEmployee.Name" Variant="Variant.Outlined" Style="width:180px;" />
+                        <MudSelect T="DepartmentEnum" Label="Department" @bind-Value="newEmployee.Department" Variant="Variant.Outlined" Style="width:180px;">
+                            @foreach (var dept in Enum.GetValues(typeof(DepartmentEnum)))
+                            {
+                                <MudSelectItem T="DepartmentEnum" Value="@((DepartmentEnum)dept)">@dept</MudSelectItem>
+                            }
+                        </MudSelect>
+                        <MudSelect T="PositionEnum" Label="Position" @bind-Value="newEmployee.Position" Variant="Variant.Outlined" Style="width:180px;">
+                            @foreach (var pos in GetPositionsForDepartment(newEmployee.Department))
+                            {
+                                <MudSelectItem T="PositionEnum" Value="@pos">@pos</MudSelectItem>
+                            }
+                        </MudSelect>
+                    </MudStack>
+                    <MudButton Variant="Variant.Filled" Color="Color.Success" OnClick="AddEmployee" Class="mt-2"
+                               StartIcon="@Icons.Material.Filled.PersonAdd">Add Employee</MudButton>
+                </MudPaper>
+
+                <!-- All Employees Table -->
+                <MudPaper Class="pa-6" Elevation="2" Style="border-radius:18px; background: var(--mud-palette-surface);">
+                    <MudText Typo="Typo.h6" Class="mb-4">All Employees</MudText>
+
+                    <!-- Filters -->
+                    <MudStack Row Spacing="2" Class="mb-3">
+                        <MudTextField @bind-Value="searchcode" Label="Search by Code" Variant="Variant.Outlined" Margin="Margin.Dense" Style="width:200px;" />
+                        <MudSelect T="DepartmentEnum?" @bind-Value="selectedDepartment" Label="Department" Variant="Variant.Outlined" Margin="Margin.Dense" Style="width:200px;">
+                            <MudSelectItem T="DepartmentEnum?" Value="@((DepartmentEnum?)null)">All Departments</MudSelectItem>
+                            @foreach (var dept in Enum.GetValues(typeof(DepartmentEnum)))
+                            {
+                                <MudSelectItem T="DepartmentEnum?" Value="@((DepartmentEnum)dept)">@dept</MudSelectItem>
+                            }
+                        </MudSelect>
+                        <MudSelect T="PositionEnum?" @bind-Value="selectedPosition" Label="Position" Variant="Variant.Outlined" Margin="Margin.Dense" Style="width:200px;">
+                            <MudSelectItem T="PositionEnum?" Value="@((PositionEnum?)null)">All Positions</MudSelectItem>
+                            @foreach (var pos in GetPositionsForDepartment(selectedDepartment))
+                            {
+                                <MudSelectItem T="PositionEnum?" Value="@pos">@pos</MudSelectItem>
+                            }
+                        </MudSelect>
+                    </MudStack>
+
+                    <!-- Table -->
+                    <MudTable Items="@filteredEmployees" Hover="true" Bordered="true" Striped="true" Dense="true" GroupByField="Department">
+                        <HeaderContent>
+                            <MudTh>Code</MudTh>
+                            <MudTh>Name</MudTh>
+                            <MudTh>Department</MudTh>
+                            <MudTh>Position</MudTh>
+                            <MudTh>Actions</MudTh>
+                        </HeaderContent>
+
+                        <!-- Group Header -->
+                        <GroupHeaderTemplate Context="deptGroup">
+                            <tr style="background:#e3f2fd;">
+                                <td colspan="5" style="font-weight:bold; font-size:1.08rem; color:#1976d2; border-top:2px solid #90caf9;">
+                                    Department: @deptGroup.Key
+                                </td>
+                            </tr>
+                        </GroupHeaderTemplate>
+
+                        <!-- Row -->
+                        <RowTemplate Context="emp">
+                            <MudTd DataLabel="Code">@emp.Code</MudTd>
+                            <MudTd DataLabel="Name">
+                                @if (editRow == emp)
                                 {
-                                    <MudSelectItem T="DepartmentEnum" Value="@((DepartmentEnum)dept)">@dept</MudSelectItem>
+                                    <MudTextField T="string" @bind-Value="editName" Dense="true" />
                                 }
-                            </MudSelect>
-                        }
-                        else
-                        {
-                            @context.Department.ToString()
-                        }
-                    </MudTd>
-                    <MudTd DataLabel="Position">
-                        @if (editRow == context)
-                        {
-                            <MudSelect T="PositionEnum" @bind-Value="editPosition" Dense="true">
-                                @foreach (var pos in GetPositionsForDepartment(editDepartment))
+                                else
                                 {
-                                    <MudSelectItem T="PositionEnum" Value="@pos">@pos</MudSelectItem>
+                                    @emp.Name
                                 }
-                            </MudSelect>
-                        }
-                        else
-                        {
-                            @context.Position.ToString()
-                        }
-                    </MudTd>
-                    <MudTd DataLabel="Actions">
-                        @if (editRow == context)
-                        {
-                            <MudStack Row Spacing="1">
-                                <MudButton Variant="Variant.Filled" Color="Color.Success" Size="Size.Small" OnClick="() => SaveEdit(context)">SAVE</MudButton>
-                                <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Size="Size.Small" OnClick="CancelEdit">CANCEL</MudButton>
-                            </MudStack>
-                        }
-                        else
-                        {
-                            <MudButton Variant="Variant.Outlined" Color="Color.Primary" Size="Size.Small" OnClick="() => StartEdit(context)" Class="me-2" StartIcon="@Icons.Material.Filled.Edit">Edit</MudButton>
-                            <MudButton Variant="Variant.Outlined" Color="Color.Error" Size="Size.Small" OnClick="() => DeleteEmployee(context.Code)" StartIcon="@Icons.Material.Filled.Delete">Delete</MudButton>
-                        }
-                    </MudTd>
-                </RowTemplate>
-            </MudTable>
-        </MudPaper>
-
-
-    </MudPaper>
-</MudContainer>
+                            </MudTd>
+                            <MudTd DataLabel="Department">
+                                @if (editRow == emp)
+                                {
+                                    <MudSelect T="DepartmentEnum" @bind-Value="editDepartment" Dense="true">
+                                        @foreach (var dept in Enum.GetValues(typeof(DepartmentEnum)))
+                                        {
+                                            <MudSelectItem T="DepartmentEnum" Value="@((DepartmentEnum)dept)">@dept</MudSelectItem>
+                                        }
+                                    </MudSelect>
+                                }
+                                else
+                                {
+                                    @emp.Department.ToString()
+                                }
+                            </MudTd>
+                            <MudTd DataLabel="Position">
+                                @if (editRow == emp)
+                                {
+                                    <MudSelect T="PositionEnum" @bind-Value="editPosition" Dense="true">
+                                        @foreach (var pos in GetPositionsForDepartment(editDepartment))
+                                        {
+                                            <MudSelectItem T="PositionEnum" Value="@pos">@pos</MudSelectItem>
+                                        }
+                                    </MudSelect>
+                                }
+                                else
+                                {
+                                    @emp.Position.ToString()
+                                }
+                            </MudTd>
+                            <MudTd DataLabel="Actions">
+                                @if (editRow == emp)
+                                {
+                                    <MudStack Row Spacing="1">
+                                        <MudButton Variant="Variant.Filled" Color="Color.Success" Size="Size.Small" OnClick="() => SaveEdit(emp)">SAVE</MudButton>
+                                        <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Size="Size.Small" OnClick="CancelEdit">CANCEL</MudButton>
+                                    </MudStack>
+                                }
+                                else
+                                {
+                                    <MudButton Variant="Variant.Outlined" Color="Color.Primary" Size="Size.Small" OnClick="() => StartEdit(emp)" Class="me-2"
+                                               StartIcon="@Icons.Material.Filled.Edit">Edit</MudButton>
+                                    <MudButton Variant="Variant.Outlined" Color="Color.Error" Size="Size.Small" OnClick="() => DeleteEmployee(emp.Code)"
+                                               StartIcon="@Icons.Material.Filled.Delete">Delete</MudButton>
+                                }
+                            </MudTd>
+                        </RowTemplate>
+                    </MudTable>
+                </MudPaper>
+            </MudPaper>
+        </MudContainer>
+    </Authorized>
+</AuthorizeView>
