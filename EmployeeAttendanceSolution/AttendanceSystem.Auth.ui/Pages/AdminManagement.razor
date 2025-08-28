@@ -124,6 +124,7 @@
                         <MudTh Class="enhanced-table-header">Status</MudTh>
                         <MudTh Class="enhanced-table-header">Roles</MudTh>
                         <MudTh Class="enhanced-table-header">Actions</MudTh>
+                        <MudTh Class="enhanced-table-header">Unlock</MudTh>
                     </HeaderContent>
                     <RowTemplate>
                         <MudTd DataLabel="Name" Class="enhanced-table-cell">
@@ -187,6 +188,38 @@
                                                Disabled="@isLoading"
                                                Class="enhanced-action-button" />
                             </MudButtonGroup>
+                        </MudTd>
+                        <MudTd DataLabel="Unlock" Class="enhanced-table-cell">
+                            @if (context.IsLockedByAdmin)
+                            {
+                                <MudStack Row Spacing="1" AlignItems="AlignItems.Center">
+                                    <MudChip T="string" Color="Color.Error" Size="Size.Small">
+                                        <MudIcon Icon="@Icons.Material.Filled.Lock" Class="mr-1" />
+                                        Locked
+                                    </MudChip>
+                                    <MudButton Variant="Variant.Outlined"
+                                               Color="Color.Warning"
+                                               Size="Size.Small"
+                                               OnClick="() => UnlockUser(context.Id)">
+                                        <MudIcon Icon="@Icons.Material.Filled.LockOpen" Class="mr-1" />
+                                        Unlock
+                                    </MudButton>
+                                </MudStack>
+                            }
+                            else if (!context.IsApproved)
+                            {
+                                <MudChip T="string" Color="Color.Warning" Size="Size.Small">
+                                    <MudIcon Icon="@Icons.Material.Filled.Schedule" Class="mr-1" />
+                                    Pending
+                                </MudChip>
+                            }
+                            else
+                            {
+                                <MudChip T="string" Color="Color.Success" Size="Size.Small">
+                                    <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Class="mr-1" />
+                                    Active
+                                </MudChip>
+                            }
                         </MudTd>
                     </RowTemplate>
                 </MudTable>
@@ -462,7 +495,8 @@
         /* Last 3 columns - Secondary */
         .enhanced-table-header:nth-child(5),
         .enhanced-table-header:nth-child(6),
-        .enhanced-table-header:nth-child(7) {
+        .enhanced-table-header:nth-child(7),
+        .enhanced-table-header:nth-child(8) {
             background: var(--mud-palette-secondary) !important;
         }
         
@@ -769,6 +803,51 @@
             StateHasChanged(); // Update UI after operation
         }
     }
+
+    private async Task UnlockUser(string userId)
+    {
+        isLoading = true;
+        errorMessage = string.Empty;
+        StateHasChanged();
+
+        try
+        {
+            var result = await ManagementService.UnlockUserAsync(userId);
+
+            if (result.Success)
+            {
+                Snackbar.Add("User account unlocked successfully ✅", Severity.Success);
+
+                // Update the local object without reloading
+                var user = users.FirstOrDefault(u => u.Id == userId);
+                if (user != null)
+                {
+                    user.IsLockedByAdmin = false;
+                }
+
+                // Refresh the table
+                FilterUsers();
+                StateHasChanged();
+            }
+            else
+            {
+                errorMessage = result.Message ?? "Failed to unlock user";
+                Snackbar.Add($"❌ {errorMessage}", Severity.Error);
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error unlocking user: {ex.Message}";
+            Snackbar.Add($"⚠️ {errorMessage}", Severity.Warning);
+            Console.Error.WriteLine(ex);
+        }
+        finally
+        {
+            isLoading = false;
+            StateHasChanged();
+        }
+    }
+
 
     private async Task OpenAddUserDialog()
     {

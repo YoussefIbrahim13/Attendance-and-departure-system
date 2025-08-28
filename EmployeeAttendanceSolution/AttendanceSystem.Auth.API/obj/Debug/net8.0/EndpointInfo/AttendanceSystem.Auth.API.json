@@ -337,6 +337,28 @@
         }
       }
     },
+    "/api/Management/UnlockUser/{userId}": {
+      "put": {
+        "tags": [
+          "Management"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/VacationRequests/CreateVacationRequest": {
       "post": {
         "tags": [

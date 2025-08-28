@@ -74,6 +74,7 @@ namespace AttendanceSystem.Auth.API.Services.Services.ManagmentServices
                         Department = u.Department,
                         Position = u.Position,
                         IsApproved = u.IsApproved,
+                        IsLockedByAdmin = u.IsLockedByAdmin,   // 🔴 Added
                         Roles = await _userManager.GetRolesAsync(u)
                     });
                 }
@@ -146,6 +147,7 @@ namespace AttendanceSystem.Auth.API.Services.Services.ManagmentServices
                 Department = user.Department,
                 Position = user.Position,
                 IsApproved = user.IsApproved,
+                IsLockedByAdmin = user.IsLockedByAdmin,
                 Roles = await _userManager.GetRolesAsync(user)
             };
         }
@@ -202,6 +204,7 @@ namespace AttendanceSystem.Auth.API.Services.Services.ManagmentServices
                 Department = user.Department,
                 Position = user.Position,
                 IsApproved = user.IsApproved,
+                IsLockedByAdmin = user.IsLockedByAdmin,
                 Roles = await _userManager.GetRolesAsync(user)
             };
         }
@@ -322,5 +325,19 @@ namespace AttendanceSystem.Auth.API.Services.Services.ManagmentServices
             }
         }
 
+        public async Task<OperationResult> UnlockUserAsync(string userId)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+                return new OperationResult { Success = false, Message = "User not found" };
+
+            user.IsLockedByAdmin = false;
+            user.AccessFailedCount = 0;
+            user.LockoutEnd = null;
+
+            await _userManager.UpdateAsync(user);
+
+            return new OperationResult { Success = true, Message = "User unlocked successfully" };
+        }
     }
 }

@@ -15,6 +15,8 @@ namespace EmployeesModels.Shared
         // Navigation property for vacation requests
         public virtual ICollection<VacationRequest> VacationRequests { get; set; }
 
+        public bool IsLockedByAdmin { get; set; } = false;
+
 
     }
 }

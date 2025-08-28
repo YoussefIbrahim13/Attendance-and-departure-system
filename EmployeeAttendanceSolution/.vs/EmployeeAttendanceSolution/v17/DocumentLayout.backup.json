@@ -3,6 +3,66 @@
   "WorkspaceRootPath": "A:\\Micro-tec Work\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{4B29FCF1-DA6B-CCC2-62ED-48AE378B76DB}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|a:\\micro-tec work\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.ui\\pages\\adminmanagement.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4B29FCF1-DA6B-CCC2-62ED-48AE378B76DB}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|solutionrelative:attendancesystem.auth.ui\\pages\\adminmanagement.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4B29FCF1-DA6B-CCC2-62ED-48AE378B76DB}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|a:\\micro-tec work\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.ui\\pages\\adminvacationrequests.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4B29FCF1-DA6B-CCC2-62ED-48AE378B76DB}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|solutionrelative:attendancesystem.auth.ui\\pages\\adminvacationrequests.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4B29FCF1-DA6B-CCC2-62ED-48AE378B76DB}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|a:\\micro-tec work\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.ui\\services\\managementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4B29FCF1-DA6B-CCC2-62ED-48AE378B76DB}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|solutionrelative:attendancesystem.auth.ui\\services\\managementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2CE85DE-03FE-9A9C-60AE-ED71EC8FFE2C}|AttendanceSystem.Auth.Services\\AttendanceSystem.Auth.Services.csproj|a:\\micro-tec work\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.services\\services\\managmentservices\\managmentservicesapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F2CE85DE-03FE-9A9C-60AE-ED71EC8FFE2C}|AttendanceSystem.Auth.Services\\AttendanceSystem.Auth.Services.csproj|solutionrelative:attendancesystem.auth.services\\services\\managmentservices\\managmentservicesapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FBD47D9-B8B1-3422-1E41-D1FD8C57327C}|AttendanceSystem.Auth.API\\AttendanceSystem.Auth.API.csproj|a:\\micro-tec work\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.api\\controllers\\managementcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FBD47D9-B8B1-3422-1E41-D1FD8C57327C}|AttendanceSystem.Auth.API\\AttendanceSystem.Auth.API.csproj|solutionrelative:attendancesystem.auth.api\\controllers\\managementcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FBD47D9-B8B1-3422-1E41-D1FD8C57327C}|AttendanceSystem.Auth.API\\AttendanceSystem.Auth.API.csproj|a:\\micro-tec work\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.api\\controllers\\vacationrequestscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FBD47D9-B8B1-3422-1E41-D1FD8C57327C}|AttendanceSystem.Auth.API\\AttendanceSystem.Auth.API.csproj|solutionrelative:attendancesystem.auth.api\\controllers\\vacationrequestscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA9BB0D7-BEF0-4C66-9E2A-B8DFB588F0E8}|Employee.Shared\\EmployeesModels.Shared.csproj|a:\\micro-tec work\\attendance-and-departure-system\\employeeattendancesolution\\employee.shared\\userresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA9BB0D7-BEF0-4C66-9E2A-B8DFB588F0E8}|Employee.Shared\\EmployeesModels.Shared.csproj|solutionrelative:employee.shared\\userresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA9BB0D7-BEF0-4C66-9E2A-B8DFB588F0E8}|Employee.Shared\\EmployeesModels.Shared.csproj|a:\\micro-tec work\\attendance-and-departure-system\\employeeattendancesolution\\employee.shared\\userresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA9BB0D7-BEF0-4C66-9E2A-B8DFB588F0E8}|Employee.Shared\\EmployeesModels.Shared.csproj|solutionrelative:employee.shared\\userresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2CE85DE-03FE-9A9C-60AE-ED71EC8FFE2C}|AttendanceSystem.Auth.Services\\AttendanceSystem.Auth.Services.csproj|a:\\micro-tec work\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.services\\services\\managmentservices\\imanagmentservicesapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F2CE85DE-03FE-9A9C-60AE-ED71EC8FFE2C}|AttendanceSystem.Auth.Services\\AttendanceSystem.Auth.Services.csproj|solutionrelative:attendancesystem.auth.services\\services\\managmentservices\\imanagmentservicesapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2CE85DE-03FE-9A9C-60AE-ED71EC8FFE2C}|AttendanceSystem.Auth.Services\\AttendanceSystem.Auth.Services.csproj|a:\\micro-tec work\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.services\\services\\authoservices\\authoservicesapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F2CE85DE-03FE-9A9C-60AE-ED71EC8FFE2C}|AttendanceSystem.Auth.Services\\AttendanceSystem.Auth.Services.csproj|solutionrelative:attendancesystem.auth.services\\services\\authoservices\\authoservicesapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FBD47D9-B8B1-3422-1E41-D1FD8C57327C}|AttendanceSystem.Auth.API\\AttendanceSystem.Auth.API.csproj|a:\\micro-tec work\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FBD47D9-B8B1-3422-1E41-D1FD8C57327C}|AttendanceSystem.Auth.API\\AttendanceSystem.Auth.API.csproj|solutionrelative:attendancesystem.auth.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|A:\\Micro-tec Work\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.API\\Migrations\\20250828122503_AddIsLockedByAdmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:AttendanceSystem.Auth.API\\Migrations\\20250828122503_AddIsLockedByAdmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2CE85DE-03FE-9A9C-60AE-ED71EC8FFE2C}|AttendanceSystem.Auth.Services\\AttendanceSystem.Auth.Services.csproj|a:\\micro-tec work\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.services\\services\\authoservices\\iauthoservicesapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F2CE85DE-03FE-9A9C-60AE-ED71EC8FFE2C}|AttendanceSystem.Auth.Services\\AttendanceSystem.Auth.Services.csproj|solutionrelative:attendancesystem.auth.services\\services\\authoservices\\iauthoservicesapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4B29FCF1-DA6B-CCC2-62ED-48AE378B76DB}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|a:\\micro-tec work\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.ui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4B29FCF1-DA6B-CCC2-62ED-48AE378B76DB}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|solutionrelative:attendancesystem.auth.ui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA9BB0D7-BEF0-4C66-9E2A-B8DFB588F0E8}|Employee.Shared\\EmployeesModels.Shared.csproj|a:\\micro-tec work\\attendance-and-departure-system\\employeeattendancesolution\\employee.shared\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA9BB0D7-BEF0-4C66-9E2A-B8DFB588F0E8}|Employee.Shared\\EmployeesModels.Shared.csproj|solutionrelative:employee.shared\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{4B29FCF1-DA6B-CCC2-62ED-48AE378B76DB}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|a:\\micro-tec work\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.ui\\pages\\vacationrequests.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{4B29FCF1-DA6B-CCC2-62ED-48AE378B76DB}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|solutionrelative:attendancesystem.auth.ui\\pages\\vacationrequests.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -21,14 +81,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{4B29FCF1-DA6B-CCC2-62ED-48AE378B76DB}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|a:\\micro-tec work\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.ui\\pages\\logoutsync.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{4B29FCF1-DA6B-CCC2-62ED-48AE378B76DB}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|solutionrelative:attendancesystem.auth.ui\\pages\\logoutsync.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4B29FCF1-DA6B-CCC2-62ED-48AE378B76DB}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|a:\\micro-tec work\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.ui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4B29FCF1-DA6B-CCC2-62ED-48AE378B76DB}|AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj|solutionrelative:attendancesystem.auth.ui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6FBD47D9-B8B1-3422-1E41-D1FD8C57327C}|AttendanceSystem.Auth.API\\AttendanceSystem.Auth.API.csproj|a:\\micro-tec work\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.auth.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6FBD47D9-B8B1-3422-1E41-D1FD8C57327C}|AttendanceSystem.Auth.API\\AttendanceSystem.Auth.API.csproj|solutionrelative:attendancesystem.auth.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +90,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -58,7 +110,174 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AdminVacationRequests.razor",
+              "DocumentMoniker": "A:\\Micro-tec Work\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Pages\\AdminVacationRequests.razor",
+              "RelativeDocumentMoniker": "AttendanceSystem.Auth.ui\\Pages\\AdminVacationRequests.razor",
+              "ToolTip": "A:\\Micro-tec Work\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Pages\\AdminVacationRequests.razor",
+              "RelativeToolTip": "AttendanceSystem.Auth.ui\\Pages\\AdminVacationRequests.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-28T13:00:29.672Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "VacationRequestsController.cs",
+              "DocumentMoniker": "A:\\Micro-tec Work\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.API\\Controllers\\VacationRequestsController.cs",
+              "RelativeDocumentMoniker": "AttendanceSystem.Auth.API\\Controllers\\VacationRequestsController.cs",
+              "ToolTip": "A:\\Micro-tec Work\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.API\\Controllers\\VacationRequestsController.cs",
+              "RelativeToolTip": "AttendanceSystem.Auth.API\\Controllers\\VacationRequestsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-28T12:59:22.036Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UserResult.cs",
+              "DocumentMoniker": "A:\\Micro-tec Work\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\UserResult.cs",
+              "RelativeDocumentMoniker": "Employee.Shared\\UserResult.cs",
+              "ToolTip": "A:\\Micro-tec Work\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\UserResult.cs",
+              "RelativeToolTip": "Employee.Shared\\UserResult.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABEAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-28T12:57:34.28Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "20250828122503_AddIsLockedByAdmin.cs",
+              "DocumentMoniker": "A:\\Micro-tec Work\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.API\\Migrations\\20250828122503_AddIsLockedByAdmin.cs",
+              "RelativeDocumentMoniker": "AttendanceSystem.Auth.API\\Migrations\\20250828122503_AddIsLockedByAdmin.cs",
+              "ToolTip": "A:\\Micro-tec Work\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.API\\Migrations\\20250828122503_AddIsLockedByAdmin.cs",
+              "RelativeToolTip": "AttendanceSystem.Auth.API\\Migrations\\20250828122503_AddIsLockedByAdmin.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-28T12:25:03.809Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UserResponseDto.cs",
+              "DocumentMoniker": "A:\\Micro-tec Work\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\UserResponseDto.cs",
+              "RelativeDocumentMoniker": "Employee.Shared\\UserResponseDto.cs",
+              "ToolTip": "A:\\Micro-tec Work\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\UserResponseDto.cs",
+              "RelativeToolTip": "Employee.Shared\\UserResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAIAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-28T12:17:17.203Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "AdminManagement.razor",
+              "DocumentMoniker": "A:\\Micro-tec Work\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Pages\\AdminManagement.razor",
+              "RelativeDocumentMoniker": "AttendanceSystem.Auth.ui\\Pages\\AdminManagement.razor",
+              "ToolTip": "A:\\Micro-tec Work\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Pages\\AdminManagement.razor",
+              "RelativeToolTip": "AttendanceSystem.Auth.ui\\Pages\\AdminManagement.razor",
+              "ViewState": "AgIAAOcBAAAAAAAAAAAiwPIBAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-28T12:14:56.66Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ManagementService.cs",
+              "DocumentMoniker": "A:\\Micro-tec Work\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Services\\ManagementService.cs",
+              "RelativeDocumentMoniker": "AttendanceSystem.Auth.ui\\Services\\ManagementService.cs",
+              "ToolTip": "A:\\Micro-tec Work\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Services\\ManagementService.cs",
+              "RelativeToolTip": "AttendanceSystem.Auth.ui\\Services\\ManagementService.cs",
+              "ViewState": "AgIAAFwAAAAAAAAAAAAwwGQAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-28T12:13:02.885Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IManagmentServicesApi.cs",
+              "DocumentMoniker": "A:\\Micro-tec Work\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.Services\\Services\\ManagmentServices\\IManagmentServicesApi.cs",
+              "RelativeDocumentMoniker": "AttendanceSystem.Auth.Services\\Services\\ManagmentServices\\IManagmentServicesApi.cs",
+              "ToolTip": "A:\\Micro-tec Work\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.Services\\Services\\ManagmentServices\\IManagmentServicesApi.cs",
+              "RelativeToolTip": "AttendanceSystem.Auth.Services\\Services\\ManagmentServices\\IManagmentServicesApi.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAkAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-28T12:11:40.345Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ApplicationUser.cs",
+              "DocumentMoniker": "A:\\Micro-tec Work\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\ApplicationUser.cs",
+              "RelativeDocumentMoniker": "Employee.Shared\\ApplicationUser.cs",
+              "ToolTip": "A:\\Micro-tec Work\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\ApplicationUser.cs",
+              "RelativeToolTip": "Employee.Shared\\ApplicationUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-28T11:53:37.008Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AuthoServicesApi.cs",
+              "DocumentMoniker": "A:\\Micro-tec Work\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.Services\\Services\\AuthoServices\\AuthoServicesApi.cs",
+              "RelativeDocumentMoniker": "AttendanceSystem.Auth.Services\\Services\\AuthoServices\\AuthoServicesApi.cs",
+              "ToolTip": "A:\\Micro-tec Work\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.Services\\Services\\AuthoServices\\AuthoServicesApi.cs",
+              "RelativeToolTip": "AttendanceSystem.Auth.Services\\Services\\AuthoServices\\AuthoServicesApi.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAiwBsAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-28T11:51:15.46Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "IAuthoServicesApi.cs",
+              "DocumentMoniker": "A:\\Micro-tec Work\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.Services\\Services\\AuthoServices\\IAuthoServicesApi.cs",
+              "RelativeDocumentMoniker": "AttendanceSystem.Auth.Services\\Services\\AuthoServices\\IAuthoServicesApi.cs",
+              "ToolTip": "A:\\Micro-tec Work\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.Services\\Services\\AuthoServices\\IAuthoServicesApi.cs",
+              "RelativeToolTip": "AttendanceSystem.Auth.Services\\Services\\AuthoServices\\IAuthoServicesApi.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-28T11:51:14.078Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ManagmentServicesApi.cs",
+              "DocumentMoniker": "A:\\Micro-tec Work\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.Services\\Services\\ManagmentServices\\ManagmentServicesApi.cs",
+              "RelativeDocumentMoniker": "AttendanceSystem.Auth.Services\\Services\\ManagmentServices\\ManagmentServicesApi.cs",
+              "ToolTip": "A:\\Micro-tec Work\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.Services\\Services\\ManagmentServices\\ManagmentServicesApi.cs",
+              "RelativeToolTip": "AttendanceSystem.Auth.Services\\Services\\ManagmentServices\\ManagmentServicesApi.cs",
+              "ViewState": "AgIAAMEAAAAAAAAAAADwv84AAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-28T11:49:09.914Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ManagementController.cs",
+              "DocumentMoniker": "A:\\Micro-tec Work\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.API\\Controllers\\ManagementController.cs",
+              "RelativeDocumentMoniker": "AttendanceSystem.Auth.API\\Controllers\\ManagementController.cs",
+              "ToolTip": "A:\\Micro-tec Work\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.API\\Controllers\\ManagementController.cs",
+              "RelativeToolTip": "AttendanceSystem.Auth.API\\Controllers\\ManagementController.cs",
+              "ViewState": "AgIAAI8AAAAAAAAAAAAgwEMAAABpAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-28T11:48:52.907Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
               "Title": "VacationRequests.razor",
               "DocumentMoniker": "A:\\Micro-tec Work\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Pages\\VacationRequests.razor",
               "RelativeDocumentMoniker": "AttendanceSystem.Auth.ui\\Pages\\VacationRequests.razor",
@@ -66,12 +285,11 @@
               "RelativeToolTip": "AttendanceSystem.Auth.ui\\Pages\\VacationRequests.razor",
               "ViewState": "AgIAAH4AAAAAAAAAAAAAAIwAAABPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-28T11:41:25.799Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-28T11:41:25.799Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 17,
               "Title": "MainLayout.razor",
               "DocumentMoniker": "A:\\Micro-tec Work\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Layout\\MainLayout.razor",
               "RelativeDocumentMoniker": "AttendanceSystem.Auth.ui\\Layout\\MainLayout.razor",
@@ -79,12 +297,11 @@
               "RelativeToolTip": "AttendanceSystem.Auth.ui\\Layout\\MainLayout.razor",
               "ViewState": "AgIAADwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-28T11:40:07.899Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-28T11:40:07.899Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 16,
               "Title": "NavMenu.razor",
               "DocumentMoniker": "A:\\Micro-tec Work\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Layout\\NavMenu.razor",
               "RelativeDocumentMoniker": "AttendanceSystem.Auth.ui\\Layout\\NavMenu.razor",
@@ -92,12 +309,11 @@
               "RelativeToolTip": "AttendanceSystem.Auth.ui\\Layout\\NavMenu.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-28T11:40:05.11Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-28T11:40:05.11Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 18,
               "Title": "Login.razor",
               "DocumentMoniker": "A:\\Micro-tec Work\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Pages\\Login.razor",
               "RelativeDocumentMoniker": "AttendanceSystem.Auth.ui\\Pages\\Login.razor",
@@ -105,12 +321,11 @@
               "RelativeToolTip": "AttendanceSystem.Auth.ui\\Pages\\Login.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-28T11:40:01.886Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-28T11:40:01.886Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 19,
               "Title": "LogoutSync.razor",
               "DocumentMoniker": "A:\\Micro-tec Work\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Pages\\LogoutSync.razor",
               "RelativeDocumentMoniker": "AttendanceSystem.Auth.ui\\Pages\\LogoutSync.razor",
@@ -118,31 +333,29 @@
               "RelativeToolTip": "AttendanceSystem.Auth.ui\\Pages\\LogoutSync.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-28T11:39:59.055Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-28T11:39:59.055Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 13,
               "Title": "Program.cs",
               "DocumentMoniker": "A:\\Micro-tec Work\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Program.cs",
               "RelativeDocumentMoniker": "AttendanceSystem.Auth.ui\\Program.cs",
               "ToolTip": "A:\\Micro-tec Work\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\Program.cs",
               "RelativeToolTip": "AttendanceSystem.Auth.ui\\Program.cs",
-              "ViewState": "AgIAALMAAAAAAAAAAAAAAMIAAAA2AAAAAAAAAA==",
+              "ViewState": "AgIAALwAAAAAAAAAAAAAAMIAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-28T11:39:09.417Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-28T11:39:09.417Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 10,
               "Title": "Program.cs",
               "DocumentMoniker": "A:\\Micro-tec Work\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.API\\Program.cs",
               "RelativeDocumentMoniker": "AttendanceSystem.Auth.API\\Program.cs",
               "ToolTip": "A:\\Micro-tec Work\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.API\\Program.cs",
               "RelativeToolTip": "AttendanceSystem.Auth.API\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-28T11:37:03.196Z",
               "EditorCaption": ""

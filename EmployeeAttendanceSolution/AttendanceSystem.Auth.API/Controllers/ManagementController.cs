@@ -74,7 +74,8 @@ namespace AttendanceSystem.Auth.API.Controllers
                     Department = result.Department,
                     Position = result.Position,
                     IsApproved = result.IsApproved,
-                    Roles = result.Roles
+                    Roles = result.Roles,
+                    IsLockedByAdmin= false
                 })
                 : BadRequest(result.Errors);
         }
@@ -157,6 +158,14 @@ namespace AttendanceSystem.Auth.API.Controllers
             }
 
             var result = await _managementService.ChangePasswordAsync(userId, newPassword);
+            return Ok(new { result.Success, result.Message });
+        }
+
+        [HttpPut("UnlockUser/{userId}")]
+        [Authorize(Roles = "Manager,Admin")]
+        public async Task<IActionResult> UnlockUser(string userId)
+        {
+            var result = await _managementService.UnlockUserAsync(userId);
             return Ok(new { result.Success, result.Message });
         }
     }

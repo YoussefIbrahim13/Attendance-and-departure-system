@@ -13,10 +13,21 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
-    .AddEntityFrameworkStores<ApplicationDbContext>()
-    .AddDefaultTokenProviders();
+//// Add services to the container.
+//builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
+//    .AddEntityFrameworkStores<ApplicationDbContext>()
+//    .AddDefaultTokenProviders();
+
+// Identity configuration for lockout account after multiple failed attempts
+builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
+{
+    options.Lockout.AllowedForNewUsers = false;  // turn off built-in lockout
+    options.Lockout.MaxFailedAccessAttempts = int.MaxValue; // disable threshold
+})
+.AddEntityFrameworkStores<ApplicationDbContext>()
+.AddDefaultTokenProviders();
+
+
 
 // Configure CORS (Specific to your Blazor client)
 var allowedOrigins = builder.Configuration.GetSection("AllowedOrigins").Get<string[]>();

@@ -15,5 +15,6 @@ namespace AttendanceSystem.Auth.API.Services.Services.ManagmentServices
         Task<OperationResult> ApproveUserAsync(string userId);
         Task<IEnumerable<UserResponseDto>> GetPendingUsersAsync();
         Task<OperationResult> ChangePasswordAsync(string userId,string newPassword);
+        Task<OperationResult> UnlockUserAsync(string userId);
     }
 }

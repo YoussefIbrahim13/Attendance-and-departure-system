@@ -23,20 +23,44 @@ namespace AttendanceSystem.Auth.API.Services.Services.AuthoServices
         public async Task<AuthResult> Login(LoginModel model)
         {
             var user = await _userManager.FindByEmailAsync(model.Email);
-            if (user == null || !await _userManager.CheckPasswordAsync(user, model.Password))
+
+            if (user == null)
                 return new AuthResult { ErrorMessage = "Invalid credentials" };
+
+            // Check if admin has locked the user
+            if (user.IsLockedByAdmin)
+                return new AuthResult { ErrorMessage = "Account locked by admin. Contact support." };
+
+            // Verify password
+            if (!await _userManager.CheckPasswordAsync(user, model.Password))
+            {
+                var failedCount = await _userManager.GetAccessFailedCountAsync(user);
+                await _userManager.AccessFailedAsync(user);
+
+                if (failedCount + 1 >= 5) // because AccessFailedAsync increments after
+                {
+                    user.IsLockedByAdmin = true;
+                    await _userManager.UpdateAsync(user);
+                }
+
+                return new AuthResult { ErrorMessage = "Invalid credentials" };
+            }
+
+            // Reset failed count if login successful
+            await _userManager.ResetAccessFailedCountAsync(user);
 
             if (!user.IsApproved)
                 return new AuthResult { ErrorMessage = "Account not approved yet" };
 
+            // Build claims for JWT
             var authClaims = new List<Claim>
-            {
-                new(ClaimTypes.Name, user.Name),
-                new(ClaimTypes.Email, user.Email),
-                new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new("IsApproved", user.IsApproved.ToString()),
-                new (ClaimTypes.NameIdentifier, user.Id)
-            };
+    {
+        new(ClaimTypes.Name, user.Name),
+        new(ClaimTypes.Email, user.Email),
+        new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+        new("IsApproved", user.IsApproved.ToString()),
+        new(ClaimTypes.NameIdentifier, user.Id)
+    };
 
             var userRoles = await _userManager.GetRolesAsync(user);
             foreach (var role in userRoles)
@@ -61,7 +85,6 @@ namespace AttendanceSystem.Auth.API.Services.Services.AuthoServices
             };
         }
 
-       
         public AuthResult Logout()
         {
             return new AuthResult

@@ -10909,11 +10909,6 @@ A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\Att
 A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\8bv271bi3n-tptq2av103.gz
 A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\r8hasavtt1-lfu7j35m59.gz
 A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\arzyyxdnwk-oyz0vx2fzb.gz
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\50hrlzrqlk-sz6rt8l5bf.gz
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\t4iurl147h-yvs2le2aut.gz
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\t05ut6bg1j-us9w4d7gxx.gz
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\9xqkoric6b-nulmxaz97s.gz
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\rbzvdshd60-fh6uoiiff3.gz
 A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\staticwebassets.build.json
 A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\staticwebassets.build.json.cache
 A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\staticwebassets.development.json
@@ -10924,3 +10919,8 @@ A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\Att
 A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\refint\AttendanceSystem.ImportFile.ui.dll
 A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\AttendanceSystem.ImportFile.ui.pdb
 A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\ref\AttendanceSystem.ImportFile.ui.dll
+A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\50hrlzrqlk-0j5d36dmqw.gz
+A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\t4iurl147h-8mi73r9rig.gz
+A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\t05ut6bg1j-vup07urj9t.gz
+A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\9xqkoric6b-klrspotwcs.gz
+A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\rbzvdshd60-6bywp4adns.gz

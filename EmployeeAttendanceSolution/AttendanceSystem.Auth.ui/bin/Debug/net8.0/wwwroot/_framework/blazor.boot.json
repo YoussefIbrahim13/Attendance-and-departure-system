@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "AttendanceSystem.Auth.ui",
   "resources": {
-    "hash": "sha256-sVGKlkZeTg2AWSxlPw3VJ1clVFSoapr6LoTkR/9+q0Y=",
+    "hash": "sha256-4QCYWAbcqa6G9z8SR8OAXZntE3e0Z4x5z+7uxLF5SOg=",
     "jsModuleNative": {
       "dotnet.native.js": "sha256-YyxJV6dv935qHoQAmjB+2qRjHeGpm4SyWxE0T/KvsIE="
     },
@@ -253,12 +253,12 @@
       "mscorlib.wasm": "sha256-RLW/7NVuhoPfq151II3kX2kWHgBwQgpCw9aemQNg3to=",
       "netstandard.wasm": "sha256-lAg5WvTiA8wbsIwlr51xh0YWpXT9F5EX3Cnv+11O/mU=",
       "System.Private.CoreLib.wasm": "sha256-3O3muuRQwoLRecYRjfIFWUURvTjP4EmD2O8wYg2UDNY=",
-      "EmployeesModels.Shared.wasm": "sha256-KEkK+CX23blvo1MoGNTuvwHuHO4sHT5PqdTp90k5M3Q=",
-      "AttendanceSystem.Auth.ui.wasm": "sha256-L3wSrH5lv2+/6Fi7fiGydY6nbTU4A7/Ms5VT6O8Qrsg="
+      "EmployeesModels.Shared.wasm": "sha256-xJeieTdYvYbJsgycwQtKFHeFMa7MqeQIIrCJp71yb9c=",
+      "AttendanceSystem.Auth.ui.wasm": "sha256-/Crftjb905t8/2jejbGQMLk0jNhZAgJFGxkzNUS1N/A="
     },
     "pdb": {
-      "EmployeesModels.Shared.pdb": "sha256-vsu/54Ztt1RiRaMhngG4hXU3cMzdH8FdyaHIVQt/SiE=",
-      "AttendanceSystem.Auth.ui.pdb": "sha256-p4NeFjbqp4ogIPrP1Ul6IwR+m+WwaKMGQfuOU8dLAXM="
+      "EmployeesModels.Shared.pdb": "sha256-ANkrQPeet6BSkZLUDuDvtXT74ZMcFXAxj3ZIytsX+jk=",
+      "AttendanceSystem.Auth.ui.pdb": "sha256-60bO5FIxZG9ByuVlMdY8WxolGSQcrlIqkx7JDShO2dk="
     }
   },
   "cacheBootResources": true,

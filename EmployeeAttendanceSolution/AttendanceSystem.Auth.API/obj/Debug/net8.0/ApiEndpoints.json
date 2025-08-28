@@ -189,6 +189,22 @@
   },
   {
     "ContainingType": "AttendanceSystem.Auth.API.Controllers.ManagementController",
+    "Method": "UnlockUser",
+    "RelativePath": "api/Management/UnlockUser/{userId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AttendanceSystem.Auth.API.Controllers.ManagementController",
     "Method": "UpdateApplicationUser",
     "RelativePath": "api/Management/UpdateApplicationUser/{id}",
     "HttpMethod": "PUT",
