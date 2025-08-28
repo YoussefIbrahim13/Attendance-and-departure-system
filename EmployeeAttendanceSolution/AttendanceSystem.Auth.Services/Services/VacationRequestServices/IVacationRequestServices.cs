@@ -9,8 +9,8 @@ namespace AttendanceSystem.Auth.Services.Services.VacationRequestServices
 {
     public interface IVacationRequestServices
     {
-        Task<OperationResult> CreateVacationRequestAsync(VacationRequest vacationRequestDto);
-        Task<OperationResult> UpdateVacationRequestAsync(string requestId, VacationRequest vacationRequestDto);
+        Task<OperationResult> CreateVacationRequestAsync(string userId, CreateVacationRequestDto vacationRequestDto);
+        Task<OperationResult> UpdateVacationRequestAsync(string requestId, UpdateVacationRequestDto vacationRequestDto);
         Task<OperationResult> DeleteVacationRequestAsync(string requestId);
         Task<OperationResult<List<VacationRequest>>> GetAllVacationRequestsAsync();
         Task<OperationResult<VacationRequest>> GetVacationRequestByIdAsync(string requestId);

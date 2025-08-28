@@ -1,7 +1,8 @@
-using EmployeesModels.Shared.Data;
 using AttendanceSystem.Auth.API.Services.Services.AuthoServices;
 using AttendanceSystem.Auth.API.Services.Services.ManagmentServices;
+using AttendanceSystem.Auth.Services.Services.VacationRequestServices;
 using EmployeesModels.Shared;
+using EmployeesModels.Shared.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -124,6 +125,7 @@ builder.Services.AddSwaggerGen(c =>
 // Register services
 builder.Services.AddScoped<IAuthoServicesApi, AuthoServicesApi>();
 builder.Services.AddScoped<IManagmentServicesApi, ManagmentServicesApi>();
+builder.Services.AddScoped<IVacationRequestServices, VacationRequestServices>();
 builder.Services.AddControllers();
 
 var app = builder.Build();

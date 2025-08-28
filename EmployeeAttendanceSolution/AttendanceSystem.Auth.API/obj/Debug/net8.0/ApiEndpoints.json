@@ -234,7 +234,7 @@
     "Parameters": [
       {
         "Name": "vacationRequest",
-        "Type": "EmployeesModels.Shared.VacationRequest",
+        "Type": "EmployeesModels.Shared.CreateVacationRequestDto",
         "IsRequired": true
       }
     ],
@@ -300,6 +300,16 @@
   },
   {
     "ContainingType": "AttendanceSystem.Auth.API.Controllers.VacationRequestsController",
+    "Method": "GetMyRequests",
+    "RelativePath": "api/VacationRequests/GetMyRequests",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AttendanceSystem.Auth.API.Controllers.VacationRequestsController",
     "Method": "Reject",
     "RelativePath": "api/VacationRequests/Reject/{id}",
     "HttpMethod": "PUT",
@@ -329,7 +339,7 @@
       },
       {
         "Name": "vacationRequest",
-        "Type": "EmployeesModels.Shared.VacationRequest",
+        "Type": "EmployeesModels.Shared.UpdateVacationRequestDto",
         "IsRequired": true
       }
     ],

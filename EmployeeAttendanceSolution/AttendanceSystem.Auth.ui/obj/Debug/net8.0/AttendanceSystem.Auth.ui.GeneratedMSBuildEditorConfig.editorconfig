@@ -16,73 +16,77 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = browser
 build_property.RootNamespace = AttendanceSystem.Auth.ui
 build_property.RootNamespace = AttendanceSystem.Auth.ui
-build_property.ProjectDir = Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\
+build_property.ProjectDir = A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = false
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui
+build_property.MSBuildProjectDirectory = A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
-[Y:/project/AttendanceSystem/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/App.razor]
+[A:/Micro-tec Work/Attendance-and-departure-system/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[Y:/project/AttendanceSystem/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/Pages/AddUserDialog.razor]
+[A:/Micro-tec Work/Attendance-and-departure-system/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/Pages/AddUserDialog.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkVXNlckRpYWxvZy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[Y:/project/AttendanceSystem/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/Pages/AdminManagement.razor]
+[A:/Micro-tec Work/Attendance-and-departure-system/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/Pages/AdminManagement.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5NYW5hZ2VtZW50LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[Y:/project/AttendanceSystem/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/Pages/ChangePasswordDialog.razor]
+[A:/Micro-tec Work/Attendance-and-departure-system/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/Pages/AdminVacationRequests.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5WYWNhdGlvblJlcXVlc3RzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[A:/Micro-tec Work/Attendance-and-departure-system/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/Pages/ChangePasswordDialog.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2hhbmdlUGFzc3dvcmREaWFsb2cucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[Y:/project/AttendanceSystem/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/Pages/Dashboard.razor]
+[A:/Micro-tec Work/Attendance-and-departure-system/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/Pages/Dashboard.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGFzaGJvYXJkLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[Y:/project/AttendanceSystem/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/Pages/EditProfileDialog.razor]
+[A:/Micro-tec Work/Attendance-and-departure-system/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/Pages/EditProfileDialog.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdFByb2ZpbGVEaWFsb2cucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[Y:/project/AttendanceSystem/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/Pages/EditUser.razor]
+[A:/Micro-tec Work/Attendance-and-departure-system/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/Pages/EditUser.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdFVzZXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[Y:/project/AttendanceSystem/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/Pages/Home.razor]
+[A:/Micro-tec Work/Attendance-and-departure-system/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[Y:/project/AttendanceSystem/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/Pages/Login.razor]
+[A:/Micro-tec Work/Attendance-and-departure-system/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/Pages/Login.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[Y:/project/AttendanceSystem/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/Pages/LogoutSync.razor]
+[A:/Micro-tec Work/Attendance-and-departure-system/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/Pages/LogoutSync.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9nb3V0U3luYy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[Y:/project/AttendanceSystem/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/Pages/Profile.razor]
+[A:/Micro-tec Work/Attendance-and-departure-system/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/Pages/Profile.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZmlsZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[Y:/project/AttendanceSystem/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/Pages/VacationRequests.razor]
+[A:/Micro-tec Work/Attendance-and-departure-system/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/Pages/VacationRequests.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmFjYXRpb25SZXF1ZXN0cy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[Y:/project/AttendanceSystem/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/_Imports.razor]
+[A:/Micro-tec Work/Attendance-and-departure-system/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[Y:/project/AttendanceSystem/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/Layout/MainLayout.razor]
+[A:/Micro-tec Work/Attendance-and-departure-system/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-zb43ivbmce
 
-[Y:/project/AttendanceSystem/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/Layout/NavMenu.razor]
+[A:/Micro-tec Work/Attendance-and-departure-system/EmployeeAttendanceSolution/AttendanceSystem.Auth.ui/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-q920ooipsp

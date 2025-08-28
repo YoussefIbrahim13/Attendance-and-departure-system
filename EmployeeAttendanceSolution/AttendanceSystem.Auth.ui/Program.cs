@@ -192,6 +192,7 @@ builder.Services.AddScoped<AuthService>();
 //builder.Services.AddScoped<SessionValidationService>();
 builder.Services.AddScoped<ManagementService>();
 builder.Services.AddScoped<CurrentUserService>();
+builder.Services.AddScoped<VacationRequestServices>();
 
 /////
 builder.Services.AddMudServices();

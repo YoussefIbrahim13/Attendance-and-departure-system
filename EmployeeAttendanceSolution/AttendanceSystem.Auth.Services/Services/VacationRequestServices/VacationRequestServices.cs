@@ -15,12 +15,12 @@ namespace AttendanceSystem.Auth.Services.Services.VacationRequestServices
         private readonly ApplicationDbContext _dbContext;
         public VacationRequestServices(ApplicationDbContext dbContext)
         {
-            _dbContext= dbContext ;
+            _dbContext = dbContext;
         }
 
-        public async Task<OperationResult> CreateVacationRequestAsync(VacationRequest vacationRequest)
+        public async Task<OperationResult> CreateVacationRequestAsync(string userId, CreateVacationRequestDto vacationRequestDto)
         {
-           if (vacationRequest == null)
+            if (vacationRequestDto == null)
             {
                 return new OperationResult
                 {
@@ -28,10 +28,31 @@ namespace AttendanceSystem.Auth.Services.Services.VacationRequestServices
                     Message = "Vacation request cannot be null"
                 };
             }
-           vacationRequest.Id = Guid.NewGuid().ToString();
-            vacationRequest.Status = VacationRequestStatus.Pending;
-            vacationRequest.CreatedAt = DateTime.UtcNow;
-            _dbContext.VacationRequests.Add(vacationRequest);
+
+            // Validate dates
+            if (vacationRequestDto.FromTime >= vacationRequestDto.ToTime)
+            {
+                return new OperationResult
+                {
+                    Success = false,
+                    Message = "End date must be after start date"
+                };
+            }
+
+            // Create ENTITY from DTO (this is the key fix)
+            var vacationRequest = new VacationRequest
+            {
+                Id = Guid.NewGuid().ToString(),
+                UserId = userId, // Get userId from parameter, not DTO
+                FromTime = vacationRequestDto.FromTime,
+                ToTime = vacationRequestDto.ToTime,
+                Reason = vacationRequestDto.Reason ?? "",
+                Status = VacationRequestStatus.Pending, // Set status here
+                CreatedAt = DateTime.UtcNow // Set timestamp here
+            };
+
+            _dbContext.VacationRequests.Add(vacationRequest); // Add ENTITY, not DTO
+
             try
             {
                 await _dbContext.SaveChangesAsync();
@@ -39,7 +60,6 @@ namespace AttendanceSystem.Auth.Services.Services.VacationRequestServices
                 {
                     Success = true,
                     Message = "Vacation request created successfully"
-                   
                 };
             }
             catch (Exception ex)
@@ -50,9 +70,41 @@ namespace AttendanceSystem.Auth.Services.Services.VacationRequestServices
                     Message = $"Error creating vacation request: {ex.Message}"
                 };
             }
-
         }
 
+        public async Task<OperationResult> UpdateVacationRequestAsync(string requestId, UpdateVacationRequestDto vacationRequestDto)
+        {
+            var request = await _dbContext.VacationRequests.FindAsync(requestId);
+            if (request == null)
+                return new OperationResult { Success = false, Message = "Vacation request not found" };
+
+            // Validate dates
+            if (vacationRequestDto.FromTime >= vacationRequestDto.ToTime)
+            {
+                return new OperationResult
+                {
+                    Success = false,
+                    Message = "End date must be after start date"
+                };
+            }
+
+            // Update only allowed fields (don't update Status from DTO)
+            request.FromTime = vacationRequestDto.FromTime;
+            request.ToTime = vacationRequestDto.ToTime;
+            request.Reason = vacationRequestDto.Reason ?? "";
+            // Don't update Status - use separate Approve/Reject methods
+            // Don't update CreatedAt or UserId
+
+            try
+            {
+                await _dbContext.SaveChangesAsync();
+                return new OperationResult { Success = true, Message = "Vacation request updated successfully" };
+            }
+            catch (Exception ex)
+            {
+                return new OperationResult { Success = false, Message = $"Error updating vacation request: {ex.Message}" };
+            }
+        }
         public async Task<OperationResult> DeleteVacationRequestAsync(string requestId)
         {
             var request = await _dbContext.VacationRequests.FindAsync(requestId);
@@ -63,19 +115,6 @@ namespace AttendanceSystem.Auth.Services.Services.VacationRequestServices
             return new OperationResult { Success = true, Message = "Vacation request deleted successfully" };
 
 
-        }
-        public async Task<OperationResult> UpdateVacationRequestAsync(string requestId, VacationRequest vacationRequestDto)
-        {
-           var request = await _dbContext.VacationRequests.FindAsync(requestId);
-           if (request == null)
-            return new OperationResult { Success = false, Message = "Vacation request not found" };
-           request.Status = vacationRequestDto.Status;
-           request.FromTime = vacationRequestDto.FromTime;
-           request.ToTime = vacationRequestDto.ToTime;
-           request.Reason = vacationRequestDto.Reason;
-
-           await _dbContext.SaveChangesAsync();
-            return new OperationResult { Success = true, Message = "Vacation request updated successfully" };
         }
 
         public async Task<OperationResult<List<VacationRequest>>> GetAllVacationRequestsAsync()

@@ -50,3 +50,18 @@ Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Employee.Shared\obj\Debug
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.pdb
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.genruntimeconfig.cache
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\ref\EmployeesModels.Shared.dll
+A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\EmployeesModels.Shared.deps.json
+A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\EmployeesModels.Shared.runtimeconfig.json
+A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\EmployeesModels.Shared.dll
+A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\EmployeesModels.Shared.pdb
+A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.csproj.AssemblyReference.cache
+A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.GeneratedMSBuildEditorConfig.editorconfig
+A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.AssemblyInfoInputs.cache
+A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.AssemblyInfo.cs
+A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.csproj.CoreCompileInputs.cache
+A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.sourcelink.json
+A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.dll
+A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\refint\EmployeesModels.Shared.dll
+A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.pdb
+A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.genruntimeconfig.cache
+A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\ref\EmployeesModels.Shared.dll
