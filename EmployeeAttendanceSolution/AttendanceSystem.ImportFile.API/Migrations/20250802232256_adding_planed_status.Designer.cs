@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AttendanceSystem.ImportFile.API.Migrations
 {
-    [DbContext(typeof(AttendanceDbContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20250802232256_adding_planed_status")]
     partial class adding_planed_status
     {

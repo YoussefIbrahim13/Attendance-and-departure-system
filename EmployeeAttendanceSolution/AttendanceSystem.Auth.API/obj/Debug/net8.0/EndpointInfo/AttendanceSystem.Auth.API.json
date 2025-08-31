@@ -635,11 +635,10 @@
       },
       "UserCreateDto": {
         "required": [
-          "department",
           "email",
+          "employeeCode",
           "name",
-          "password",
-          "position"
+          "password"
         ],
         "type": "object",
         "properties": {
@@ -655,11 +654,7 @@
             "minLength": 1,
             "type": "string"
           },
-          "department": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "position": {
+          "employeeCode": {
             "minLength": 1,
             "type": "string"
           }

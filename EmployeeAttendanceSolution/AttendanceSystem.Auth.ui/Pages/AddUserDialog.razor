@@ -122,35 +122,30 @@
                             </div>
                         </MudItem>
 
-                        <!-- Work Information Section -->
+                        @* ADDED THIS NEW SECTION *@
+                        <!-- Employee Information Section -->
                         <MudItem xs="12">
                             <div class="section-divider">
                                 <MudIcon Icon="@Icons.Material.Filled.Work" Class="section-icon" />
-                                <MudText Typo="Typo.subtitle1" Class="section-title">Work Information</MudText>
+                                <MudText Typo="Typo.subtitle1" Class="section-title">Employee Information</MudText>
                             </div>
                         </MudItem>
 
-                        <MudItem xs="12" sm="6">
+                        <MudItem xs="12">
                             <div class="enhanced-input-wrapper">
-                                <MudTextField Label="Department"
-                                              @bind-Value="newUser.Department"
+                                <MudTextField Label="Employee Code"
+                                              @bind-Value="newUser.EmployeeCode"
+                                              Required="true"
+                                              RequiredError="Employee Code is required"
                                               Variant="Variant.Outlined"
                                               Class="enhanced-input-field"
                                               Margin="Margin.Dense"
                                               Adornment="Adornment.Start"
-                                              AdornmentIcon="@Icons.Material.Filled.Business" />
-                            </div>
-                        </MudItem>
-
-                        <MudItem xs="12" sm="6">
-                            <div class="enhanced-input-wrapper">
-                                <MudTextField Label="Position"
-                                              @bind-Value="newUser.Position"
-                                              Variant="Variant.Outlined"
-                                              Class="enhanced-input-field"
-                                              Margin="Margin.Dense"
-                                              Adornment="Adornment.Start"
-                                              AdornmentIcon="@Icons.Material.Filled.Assignment" />
+                                              AdornmentIcon="@Icons.Material.Filled.Badge" />
+                                <MudText Typo="Typo.caption" Class="enhanced-hint-text">
+                                    <MudIcon Icon="@Icons.Material.Filled.Info" Size="Size.Small" Class="hint-icon" />
+                                    Unique identifier for the employee (e.g., EMP001)
+                                </MudText>
                             </div>
                         </MudItem>
 

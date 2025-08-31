@@ -1,8 +1,9 @@
 using AttendanceSystem.Auth.API.Services.Services.AuthoServices;
-using AttendanceSystem.Auth.API.Services.Services.ManagmentServices;
-using AttendanceSystem.Auth.Services.Services.VacationRequestServices;
+using AttendanceSystem.Auth.Services.Features.Users.Commands.UpdateUser;
+using AttendanceSystem.Auth.Services.Features.VacationRequests.Commands.CreateVacationRequest;
 using EmployeesModels.Shared;
 using EmployeesModels.Shared.Data;
+using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -27,6 +28,14 @@ builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
 .AddEntityFrameworkStores<ApplicationDbContext>()
 .AddDefaultTokenProviders();
 
+
+
+// Register MediatR (scans your assembly for IRequestHandlers)
+builder.Services.AddMediatR(cfg =>
+{
+    cfg.RegisterServicesFromAssembly(typeof(UpdateUserCommandHandler).Assembly);
+    cfg.RegisterServicesFromAssembly(typeof(CreateVacationRequestCommandHandler).Assembly);
+});
 
 
 // Configure CORS (Specific to your Blazor client)
@@ -135,8 +144,6 @@ builder.Services.AddSwaggerGen(c =>
 
 // Register services
 builder.Services.AddScoped<IAuthoServicesApi, AuthoServicesApi>();
-builder.Services.AddScoped<IManagmentServicesApi, ManagmentServicesApi>();
-builder.Services.AddScoped<IVacationRequestServices, VacationRequestServices>();
 builder.Services.AddControllers();
 
 var app = builder.Build();

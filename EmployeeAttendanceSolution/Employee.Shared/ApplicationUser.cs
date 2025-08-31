@@ -8,15 +8,15 @@ namespace EmployeesModels.Shared
     {
         
         public string Name { get; set; }
-        public string? Department { get; set; }
-        public string? Position { get; set; }
         public bool IsApproved { get; set; } = false; // Default to false, needs approval
+        public bool IsLockedByAdmin { get; set; } = false;
                                                       
         // Navigation property for vacation requests
         public virtual ICollection<VacationRequest> VacationRequests { get; set; }
 
-        public bool IsLockedByAdmin { get; set; } = false;
-
+        // 🔹 Link to Employee
+        public string? EmployeeId { get; set; }  // Nullable FK
+        public virtual Employee Employee { get; set; }
 
     }
 }

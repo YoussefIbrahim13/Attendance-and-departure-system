@@ -48,7 +48,7 @@ namespace AttendanceSystem.ImportFile.API.Controllers
 
         // حفظ البيانات المؤقتة في الداتا بيز بعد موافقة HR
         [HttpPost("save")]
-        public async Task<IActionResult> SaveAttendance([FromServices] AttendanceDbContext db)
+        public async Task<IActionResult> SaveAttendance([FromServices] ApplicationDbContext db)
         {
             var result = await attendanceService.SavePendingAttendance(_pendingAttendance, db);
             if (result == "No pending attendance data to save.")
@@ -59,7 +59,7 @@ namespace AttendanceSystem.ImportFile.API.Controllers
         }
         // Get month view data
         [HttpGet("month-view")]
-        public async Task<IActionResult> GetMonthView([FromServices] AttendanceDbContext db, int year, int month)
+        public async Task<IActionResult> GetMonthView([FromServices] ApplicationDbContext db, int year, int month)
         {
             var result = await attendanceService.GetMonthViewAsync(year, month, db);
 
@@ -70,7 +70,7 @@ namespace AttendanceSystem.ImportFile.API.Controllers
 
         // Get day view data
         [HttpGet("day-view")]
-        public async Task<IActionResult> GetDayView([FromServices] AttendanceDbContext db, DateTime date)
+        public async Task<IActionResult> GetDayView([FromServices] ApplicationDbContext db, DateTime date)
         {
                var result = await attendanceService.GetDayViewAsync(date, db);
         return Ok(result);
@@ -78,7 +78,7 @@ namespace AttendanceSystem.ImportFile.API.Controllers
 
         // Get year view data
         [HttpGet("year-view/{year}")]
-        public async Task<IActionResult> GetYearView([FromServices] AttendanceDbContext db, int year)
+        public async Task<IActionResult> GetYearView([FromServices] ApplicationDbContext db, int year)
         {
                 var result = await attendanceService.GetYearViewAsync(year, db);
                 return Ok(result);
@@ -86,7 +86,7 @@ namespace AttendanceSystem.ImportFile.API.Controllers
 
     // Get all employees
     [HttpGet("employees")]
-    public async Task<IActionResult> GetEmployees([FromServices] AttendanceDbContext db)
+    public async Task<IActionResult> GetEmployees([FromServices] ApplicationDbContext db)
     {
             var result = await attendanceService.GetEmployeesAsync(db);
             return Ok(result);
@@ -94,7 +94,7 @@ namespace AttendanceSystem.ImportFile.API.Controllers
 
     // Delete employee
     [HttpDelete("delete-employee/{id}")]
-    public async Task<IActionResult> DeleteEmployee([FromServices] AttendanceDbContext db, string id)
+    public async Task<IActionResult> DeleteEmployee([FromServices] ApplicationDbContext db, string id)
     {
             var result = await attendanceService.DeleteEmployeeAsync(id, db);
             if (!result.Success)
@@ -106,7 +106,7 @@ namespace AttendanceSystem.ImportFile.API.Controllers
 
     // Add new employee
     [HttpPost("add-employee")]
-    public async Task<IActionResult> AddEmployee([FromServices] AttendanceDbContext db, [FromBody] Employee employeeDto)
+    public async Task<IActionResult> AddEmployee([FromServices] ApplicationDbContext db, [FromBody] Employee employeeDto)
     {
             var result = await attendanceService.AddEmployeeAsync(employeeDto, db);
             if (!result.Success)
@@ -117,7 +117,7 @@ namespace AttendanceSystem.ImportFile.API.Controllers
 
     // Update employee
     [HttpPut("update-employee")]
-    public async Task<IActionResult> UpdateEmployee([FromServices] AttendanceDbContext db, [FromBody] Employee employeeDto)
+    public async Task<IActionResult> UpdateEmployee([FromServices] ApplicationDbContext db, [FromBody] Employee employeeDto)
     {
             var result = await attendanceService.UpdateEmployeeAsync(employeeDto, db);
             if (!result.Success)
@@ -128,7 +128,7 @@ namespace AttendanceSystem.ImportFile.API.Controllers
 
     // إضافة خطة حضور لموظف لأيام محددة (API Endpoint)
     [HttpPost("plan-attendance")]
-    public async Task<IActionResult> PlanAttendance([FromServices] AttendanceDbContext db, [FromBody] PlanAttendanceDto dto)
+    public async Task<IActionResult> PlanAttendance([FromServices] ApplicationDbContext db, [FromBody] PlanAttendanceDto dto)
     {
         var ok = await attendanceService.PlanAttendanceAsync(dto, db);
         if (ok)
@@ -137,7 +137,7 @@ namespace AttendanceSystem.ImportFile.API.Controllers
     }
     // تحديث سجل حضور موظف ليوم معين
     [HttpPut("update-attendance-record")]
-    public async Task<IActionResult> UpdateAttendanceRecord([FromServices] AttendanceDbContext db, [FromBody] AttendanceRecord record)
+    public async Task<IActionResult> UpdateAttendanceRecord([FromServices] ApplicationDbContext db, [FromBody] AttendanceRecord record)
     {
             var result = await attendanceService.UpdateAttendanceRecordAsync(record, db);
             if (!result)

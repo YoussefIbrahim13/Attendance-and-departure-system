@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace EmployeesModels.Shared
 {
+    
     public class VacationRequest
     {
         public string Id { get; set; } = Guid.NewGuid().ToString();
@@ -24,7 +25,8 @@ namespace EmployeesModels.Shared
 
         [StringLength(500)]
         public string Reason { get; set; }
-
+        public int DaysRequested { get; set; }
+        public string ApprovedBy { get; set; } = "";
         public VacationRequestStatus Status { get; set; } = VacationRequestStatus.Pending;
 
         [DataType(DataType.DateTime)]
@@ -32,5 +34,6 @@ namespace EmployeesModels.Shared
 
         // Navigation property
         public virtual ApplicationUser User { get; set; }
+        public DateTime ApprovedAt { get; set; }
     }
 }

@@ -715,7 +715,6 @@ A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\Att
 A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.AssemblyInfoInputs.cache
 A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.AssemblyInfo.cs
 A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.csproj.CoreCompileInputs.cache
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.MvcApplicationPartsAssemblyInfo.cs
 A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.MvcApplicationPartsAssemblyInfo.cache
 A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.sourcelink.json
 A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\rjimswa.dswa.cache.json
@@ -733,3 +732,5 @@ A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\Att
 A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.pdb
 A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.genruntimeconfig.cache
 A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\ref\AttendanceSystem.Auth.API.dll
+A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\MediatR.dll
+A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\MediatR.Contracts.dll

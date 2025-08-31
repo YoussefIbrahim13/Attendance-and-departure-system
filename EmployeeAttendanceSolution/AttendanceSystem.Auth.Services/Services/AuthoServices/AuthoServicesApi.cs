@@ -1,5 +1,6 @@
 ﻿using EmployeesModels.Shared;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -133,7 +134,11 @@ namespace AttendanceSystem.Auth.API.Services.Services.AuthoServices
 
                 Console.WriteLine($"🔎 Looking up user by email: {email}");
 
-                var user = await _userManager.FindByEmailAsync(email);
+                // Load user with Employee
+                var user = await _userManager.Users
+                    .Include(u => u.Employee)
+                    .FirstOrDefaultAsync(u => u.Email == email);
+
                 if (user == null)
                 {
                     Console.WriteLine($"❌ User with email {email} not found in database");
@@ -157,6 +162,10 @@ namespace AttendanceSystem.Auth.API.Services.Services.AuthoServices
                     UserName = user.UserName,
                     Email = user.Email,
                     Name = user.Name,
+                    PhoneNumber = user.PhoneNumber,
+                    Code = user.Employee?.Code,
+                    Department = user.Employee?.Department.ToString(),
+                    Position = user.Employee?.Position.ToString(),
                     Roles = roles
                 };
             }
@@ -166,6 +175,7 @@ namespace AttendanceSystem.Auth.API.Services.Services.AuthoServices
                 return null;
             }
         }
+
 
 
     }

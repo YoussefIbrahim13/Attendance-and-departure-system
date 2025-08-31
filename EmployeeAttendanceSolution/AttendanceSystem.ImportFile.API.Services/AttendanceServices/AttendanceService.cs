@@ -12,7 +12,7 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
     public class AttendanceService : IAttendanceService
     {
         // حفظ البيانات المؤقتة في قاعدة البيانات
-        public async Task<string> SavePendingAttendance(List<AttendanceRecord> pendingAttendance, AttendanceDbContext db)
+        public async Task<string> SavePendingAttendance(List<AttendanceRecord> pendingAttendance, ApplicationDbContext db)
         {
             if (db == null)
                 return "Invalid DbContext.";
@@ -164,7 +164,7 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
             return workingDays;
         }
 
-        public async Task<bool> PlanAttendanceAsync(PlanAttendanceDto dto, AttendanceDbContext db)
+        public async Task<bool> PlanAttendanceAsync(PlanAttendanceDto dto, ApplicationDbContext db)
         {
             if (dto == null || db == null || string.IsNullOrWhiteSpace(dto.Code) || dto.Dates == null || dto.Dates.Count == 0)
                 return false;
@@ -199,7 +199,7 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
             return true;
         }
 
-        public async Task<MonthViewDto> GetMonthViewAsync(int year, int month, AttendanceDbContext db)
+        public async Task<MonthViewDto> GetMonthViewAsync(int year, int month, ApplicationDbContext db)
         {
             var startDate = new DateTime(year, month, 1);
             var endDate = startDate.AddMonths(1).AddDays(-1);
@@ -252,7 +252,7 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
             return monthViewDto;
         }
 
-        public async Task<List<DailyAttendanceDto>> GetDayViewAsync(DateTime date, AttendanceDbContext db)
+        public async Task<List<DailyAttendanceDto>> GetDayViewAsync(DateTime date, ApplicationDbContext db)
         {
             var day = date.Date;
 
@@ -283,7 +283,7 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
             return dailyAttendance;
         }
 
-        public async Task<YearViewDto> GetYearViewAsync(int year, AttendanceDbContext db)
+        public async Task<YearViewDto> GetYearViewAsync(int year, ApplicationDbContext db)
         {
             var yearViewDto = new YearViewDto
             {
@@ -324,11 +324,11 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
             return yearViewDto;
         }
 
-        public async Task<List<Employee>> GetEmployeesAsync(AttendanceDbContext db)
+        public async Task<List<Employee>> GetEmployeesAsync(ApplicationDbContext db)
         {
             return await db.Employees.ToListAsync();
         }
-        public async Task<(bool Success, string Message)> DeleteEmployeeAsync(string code, AttendanceDbContext db)
+        public async Task<(bool Success, string Message)> DeleteEmployeeAsync(string code, ApplicationDbContext db)
         {
             if (string.IsNullOrWhiteSpace(code))
                 return (false, "Employee Code is required.");
@@ -341,7 +341,7 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
             await db.SaveChangesAsync();
             return (true, "Employee deleted successfully.");
         }
-        public async Task<(bool Success, string Message)> AddEmployeeAsync(Employee employeeDto, AttendanceDbContext db)
+        public async Task<(bool Success, string Message)> AddEmployeeAsync(Employee employeeDto, ApplicationDbContext db)
         {
             if (employeeDto == null || string.IsNullOrWhiteSpace(employeeDto.Code) || string.IsNullOrWhiteSpace(employeeDto.Name))
                 return (false, "Employee data is required.");
@@ -355,7 +355,7 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
 
             return (true, "Employee added successfully.");
         }
-        public async Task<(bool Success, string Message)> UpdateEmployeeAsync(Employee employeeDto, AttendanceDbContext db)
+        public async Task<(bool Success, string Message)> UpdateEmployeeAsync(Employee employeeDto, ApplicationDbContext db)
         {
             if (employeeDto == null || string.IsNullOrWhiteSpace(employeeDto.Code))
                 return (false, "Employee data is required.");
@@ -371,7 +371,7 @@ namespace AttendanceSystem.ImportFile.API.Services.AttendanceServices
             await db.SaveChangesAsync();
             return (true, "Employee updated successfully.");
         }
-        public async Task<bool> UpdateAttendanceRecordAsync(AttendanceRecord record, AttendanceDbContext db)
+        public async Task<bool> UpdateAttendanceRecordAsync(AttendanceRecord record, ApplicationDbContext db)
         {
             if (record == null || string.IsNullOrWhiteSpace(record.Code))
                 return false;

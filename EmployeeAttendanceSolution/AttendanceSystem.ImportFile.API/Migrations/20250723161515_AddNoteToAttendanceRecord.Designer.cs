@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AttendanceSystem.ImportFile.API.Migrations
 {
-    [DbContext(typeof(AttendanceDbContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20250723161515_AddNoteToAttendanceRecord")]
     partial class AddNoteToAttendanceRecord
     {

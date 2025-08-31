@@ -1320,7 +1320,6 @@ A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\Att
 A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.AssemblyInfoInputs.cache
 A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.AssemblyInfo.cs
 A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.csproj.CoreCompileInputs.cache
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.MvcApplicationPartsAssemblyInfo.cs
 A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.MvcApplicationPartsAssemblyInfo.cache
 A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.sourcelink.json
 A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\obj\Debug\net8.0\rjimswa.dswa.cache.json

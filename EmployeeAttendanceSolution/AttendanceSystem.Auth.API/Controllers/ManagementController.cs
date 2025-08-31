@@ -1,49 +1,55 @@
-﻿using AttendanceSystem.Auth.API.Services.Services.ManagmentServices;
-using Azure.Core;
+﻿using AttendanceSystem.Auth.Services.Features.Roles.Commands.CreateRole;
+using AttendanceSystem.Auth.Services.Features.Roles.Queries.GetAllRoles;
+using AttendanceSystem.Auth.Services.Features.Roles.Queries.GetRoleById;
+using AttendanceSystem.Auth.Services.Features.Users.Commands.AddUser;
+using AttendanceSystem.Auth.Services.Features.Users.Commands.ApproveUser;
+using AttendanceSystem.Auth.Services.Features.Users.Commands.ChangePassword;
+using AttendanceSystem.Auth.Services.Features.Users.Commands.DeleteUser;
+using AttendanceSystem.Auth.Services.Features.Users.Commands.UnlockUser;
+using AttendanceSystem.Auth.Services.Features.Users.Commands.UpdateUser;
+using AttendanceSystem.Auth.Services.Features.Users.Queries.GetAllUsers;
+using AttendanceSystem.Auth.Services.Features.Users.Queries.GetPendingUsers;
+using AttendanceSystem.Auth.Services.Features.Users.Queries.GetUserById;
 using EmployeesModels.Shared;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace AttendanceSystem.Auth.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize(Roles = "Admin,Manager")]
     public class ManagementController : ControllerBase
     {
-        private readonly IManagmentServicesApi _managementService;
+        private readonly IMediator _mediator;
 
-        public ManagementController(IManagmentServicesApi managementService)
+        public ManagementController(IMediator mediator)
         {
-            _managementService = managementService;
+            _mediator = mediator;
         }
 
         [HttpPost("CreateRole")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateRole([FromBody] string roleName)
         {
-            var result = await _managementService.CreateRoleAsync(roleName);
+            var result = await _mediator.Send(new CreateRoleCommand(roleName));
             return result.Success
-                ? CreatedAtAction(nameof(GetRole), new { id = result.Id }, new { result.Id, result.Name, result.RoleType })
+                ? CreatedAtAction(nameof(GetRole), new { id = result.Id }, result)
                 : BadRequest(result.Errors);
         }
 
         [HttpGet("GetRole/{id}")]
         public async Task<IActionResult> GetRole(string id)
         {
-            var result = await _managementService.GetRoleAsync(id);
-            return result.Success
-                ? Ok(new { result.Id, result.Name, result.RoleType })
-                : NotFound();
+            var result = await _mediator.Send(new GetRoleByIdQuery(id));
+            return result.Success ? Ok(result) : NotFound();
         }
 
         [HttpGet("GetAllRoles")]
         [Authorize(Roles = "Admin,Manager")]
         public async Task<IActionResult> GetAllRoles()
         {
-            var roles = await _managementService.GetAllRolesAsync();
+            var roles = await _mediator.Send(new GetAllRolesQuery());
             return Ok(roles);
         }
 
@@ -51,10 +57,8 @@ namespace AttendanceSystem.Auth.API.Controllers
         [Authorize(Roles = "Admin,Manager")]
         public async Task<IActionResult> GetAllUsers()
         {
-            var result = await _managementService.GetAllUsersAsync();
-            return result.Success
-                ? Ok(result)  // Return the OperationResult directly
-                : BadRequest(result);
+            var result = await _mediator.Send(new GetAllUsersQuery());
+            return result.Success ? Ok(result) : BadRequest(result);
         }
 
         [HttpPost("AddApplicationUser")]
@@ -63,20 +67,9 @@ namespace AttendanceSystem.Auth.API.Controllers
             [FromBody] UserCreateDto dto,
             [FromQuery] string roleName)
         {
-            var result = await _managementService.AddApplicationUserAsync(dto, roleName);
+            var result = await _mediator.Send(new AddUserCommand(dto, roleName));
             return result.Success
-                ? CreatedAtAction(nameof(GetApplicationUser), new { id = result.Id }, new UserResponseDto
-                {
-                    Id = result.Id,
-                    UserName = result.UserName,
-                    Email = result.Email,
-                    Name = result.Name,
-                    Department = result.Department,
-                    Position = result.Position,
-                    IsApproved = result.IsApproved,
-                    Roles = result.Roles,
-                    IsLockedByAdmin= false
-                })
+                ? CreatedAtAction(nameof(GetApplicationUser), new { id = result.Id }, result)
                 : BadRequest(result.Errors);
         }
 
@@ -84,49 +77,23 @@ namespace AttendanceSystem.Auth.API.Controllers
         [Authorize(Roles = "Manager,Admin")]
         public async Task<IActionResult> GetApplicationUser(string id)
         {
-            var result = await _managementService.GetApplicationUserAsync(id);
-            return result.Success
-                ? Ok(new UserResponseDto
-                {
-                    Id = result.Id,
-                    UserName = result.UserName,
-                    Email = result.Email,
-                    Name = result.Name,
-                    Department = result.Department,
-                    Position = result.Position,
-                    IsApproved = result.IsApproved,
-                    Roles = result.Roles
-                })
-                : NotFound();
+            var result = await _mediator.Send(new GetUserByIdQuery(id));
+            return result.Success ? Ok(result) : NotFound();
         }
 
         [HttpPut("UpdateApplicationUser/{id}")]
         [Authorize(Roles = "Manager,Admin")]
         public async Task<IActionResult> UpdateApplicationUser(string id, [FromBody] UserUpdateDto dto)
         {
-            var result = await _managementService.UpdateApplicationUserAsync(id, dto);
-            return result.Success
-                ? Ok(new UserResponseDto
-                {
-                    Id = result.Id,
-                    UserName = result.UserName,
-                    Email = result.Email,
-                    Name = result.Name,
-                    Department = result.Department,
-                    Position = result.Position,
-                    IsApproved = result.IsApproved,
-                    Roles = result.Roles
-                })
-                : BadRequest(result.Errors);
+            var result = await _mediator.Send(new UpdateUserCommand(id, dto));
+            return result.Success ? Ok(result) : BadRequest(result.Errors);
         }
 
         [HttpDelete("DeleteApplicationUser/{userId}")]
         [Authorize(Roles = "Manager,Admin")]
         public async Task<IActionResult> DeleteApplicationUser(string userId)
         {
-            var result = await _managementService.DeleteApplicationUserAsync(userId);
-
-            // Return Ok if deletion was attempted (even if user didn't exist)
+            var result = await _mediator.Send(new DeleteUserCommand(userId));
             return Ok(new { result.Success, result.Message });
         }
 
@@ -134,9 +101,7 @@ namespace AttendanceSystem.Auth.API.Controllers
         [Authorize(Roles = "Manager,Admin")]
         public async Task<IActionResult> ApproveUser(string userId)
         {
-            var result = await _managementService.ApproveUserAsync(userId);
-
-            // Always return Ok if the user was found and updated
+            var result = await _mediator.Send(new ApproveUserCommand(userId));
             return Ok(new { result.Success, result.Message });
         }
 
@@ -144,20 +109,18 @@ namespace AttendanceSystem.Auth.API.Controllers
         [Authorize(Roles = "Manager,Admin")]
         public async Task<IActionResult> GetPendingUsers()
         {
-            var users = await _managementService.GetPendingUsersAsync();
+            var users = await _mediator.Send(new GetPendingUsersQuery());
             return Ok(users);
         }
+
         [HttpPut("ChangePassword/{userId}")]
         [Authorize(Roles = "Manager,Admin,User")]
         public async Task<IActionResult> ChangePassword(string userId, [FromBody] string newPassword)
         {
-
             if (string.IsNullOrWhiteSpace(newPassword))
-            {
                 return BadRequest("New password is required");
-            }
 
-            var result = await _managementService.ChangePasswordAsync(userId, newPassword);
+            var result = await _mediator.Send(new ChangePasswordCommand(userId, newPassword));
             return Ok(new { result.Success, result.Message });
         }
 
@@ -165,9 +128,8 @@ namespace AttendanceSystem.Auth.API.Controllers
         [Authorize(Roles = "Manager,Admin")]
         public async Task<IActionResult> UnlockUser(string userId)
         {
-            var result = await _managementService.UnlockUserAsync(userId);
+            var result = await _mediator.Send(new UnlockUserCommand(userId));
             return Ok(new { result.Success, result.Message });
         }
     }
-
 }
