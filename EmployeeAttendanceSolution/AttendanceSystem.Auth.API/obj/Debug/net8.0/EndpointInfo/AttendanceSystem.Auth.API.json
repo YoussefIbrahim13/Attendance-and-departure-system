@@ -262,6 +262,40 @@
         }
       }
     },
+    "/api/Management/GetUserByEmployeeCode/{employeeCode}": {
+      "get": {
+        "tags": [
+          "Management"
+        ],
+        "parameters": [
+          {
+            "name": "employeeCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Management/GetAllEmployees": {
+      "get": {
+        "tags": [
+          "Management"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Management/approve/{userId}": {
       "post": {
         "tags": [
@@ -637,16 +671,11 @@
         "required": [
           "email",
           "employeeCode",
-          "name",
-          "password"
+          "name"
         ],
         "type": "object",
         "properties": {
           "email": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "password": {
             "minLength": 1,
             "type": "string"
           },

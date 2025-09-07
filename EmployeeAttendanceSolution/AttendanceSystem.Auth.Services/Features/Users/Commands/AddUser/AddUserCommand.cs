@@ -8,5 +8,15 @@ using System.Threading.Tasks;
 
 namespace AttendanceSystem.Auth.Services.Features.Users.Commands.AddUser
 {
-    public record AddUserCommand(UserCreateDto Dto, string RoleName) : IRequest<UserResult>;
+    public class AddUserCommand : IRequest<UserResult>
+    {
+        public UserCreateDto Dto { get; set; } = new();
+        public string RoleName { get; set; } = string.Empty;
+
+        public AddUserCommand(UserCreateDto dto, string roleName)
+        {
+            Dto = dto;
+            RoleName = roleName;
+        }
+    }
 }

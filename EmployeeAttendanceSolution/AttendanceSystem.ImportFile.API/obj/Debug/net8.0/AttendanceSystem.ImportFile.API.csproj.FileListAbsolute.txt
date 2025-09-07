@@ -1337,3 +1337,4 @@ A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\Att
 A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.pdb
 A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.genruntimeconfig.cache
 A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\obj\Debug\net8.0\ref\AttendanceSystem.ImportFile.API.dll
+A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.MvcApplicationPartsAssemblyInfo.cs

@@ -127,6 +127,16 @@
   },
   {
     "ContainingType": "AttendanceSystem.Auth.API.Controllers.ManagementController",
+    "Method": "GetAllEmployees",
+    "RelativePath": "api/Management/GetAllEmployees",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AttendanceSystem.Auth.API.Controllers.ManagementController",
     "Method": "GetAllRoles",
     "RelativePath": "api/Management/GetAllRoles",
     "HttpMethod": "GET",
@@ -171,6 +181,22 @@
     "Parameters": [
       {
         "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AttendanceSystem.Auth.API.Controllers.ManagementController",
+    "Method": "GetUserByEmployeeCode",
+    "RelativePath": "api/Management/GetUserByEmployeeCode/{employeeCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "employeeCode",
         "Type": "System.String",
         "IsRequired": true
       }

@@ -734,3 +734,9 @@ A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\Att
 A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\ref\AttendanceSystem.Auth.API.dll
 A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\MediatR.dll
 A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\MediatR.Contracts.dll
+A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.MvcApplicationPartsAssemblyInfo.cs
+A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\MailKit.dll
+A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\MimeKit.dll
+A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\NETCore.MailKit.dll
+A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\BouncyCastle.Crypto.dll
+A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\MediatR.Extensions.Microsoft.DependencyInjection.dll

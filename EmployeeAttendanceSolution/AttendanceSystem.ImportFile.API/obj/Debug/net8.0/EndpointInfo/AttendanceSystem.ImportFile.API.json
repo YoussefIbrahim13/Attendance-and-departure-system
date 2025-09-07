@@ -524,6 +524,22 @@
           "position": {
             "$ref": "#/components/schemas/PositionEnum"
           },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "salary": {
+            "type": "number",
+            "format": "double"
+          },
+          "profileImagePath": {
+            "type": "string",
+            "nullable": true
+          },
           "user": {
             "$ref": "#/components/schemas/ApplicationUser"
           }

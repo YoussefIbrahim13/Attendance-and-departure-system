@@ -1,4 +1,5 @@
-﻿using EmployeesModels.Shared;
+﻿using AttendanceSystem.Auth.Services.Features.Users.Commands.SendRandomPassword;
+using EmployeesModels.Shared;
 using EmployeesModels.Shared.Data;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
@@ -11,16 +12,19 @@ namespace AttendanceSystem.Auth.Services.Features.Users.Commands.AddUser
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<ApplicationRole> _roleManager;
-        private readonly ApplicationDbContext _db;  // 🔹 Add DbContext
+        private readonly ApplicationDbContext _db;
+        private readonly IMediator _mediator; // ✅ use mediator to call SendRandomPasswordCommand
 
         public AddUserCommandHandler(
             UserManager<ApplicationUser> userManager,
             RoleManager<ApplicationRole> roleManager,
-            ApplicationDbContext db)
+            ApplicationDbContext db,
+            IMediator mediator)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _db = db;
+            _mediator = mediator;
         }
 
         public async Task<UserResult> Handle(AddUserCommand request, CancellationToken cancellationToken)
@@ -60,17 +64,30 @@ namespace AttendanceSystem.Auth.Services.Features.Users.Commands.AddUser
                 };
             }
 
+            // ✅ Ask SendRandomPasswordCommand to generate password & send email
+            var passwordResult = await _mediator.Send(new SendRandomPasswordCommand(dto.Email), cancellationToken);
+
+            if (string.IsNullOrEmpty(passwordResult.Password))
+            {
+                return new UserResult
+                {
+                    Errors = new[] { new IdentityError { Description = "Failed to generate password" } }
+                };
+            }
+
+            var randomPassword = passwordResult.Password;
+
             // ✅ Create new ApplicationUser
             var user = new ApplicationUser
             {
-                UserName = dto.Name,
+                UserName = dto.Email,
                 Email = dto.Email,
                 Name = employee.Name,   // from Employee
                 IsApproved = false,
                 EmployeeId = employee.Id
             };
 
-            var result = await _userManager.CreateAsync(user, dto.Password);
+            var result = await _userManager.CreateAsync(user, randomPassword);
             if (!result.Succeeded)
                 return new UserResult { Errors = result.Errors };
 

@@ -7,12 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MediatR" Version="8.0.0" />
+    <PackageReference Include="MediatR" Version="13.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
+    <PackageReference Include="NETCore.MailKit" Version="2.1.0" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.13.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Employee.Shared\EmployeesModels.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\Employees\Commands\" />
   </ItemGroup>
 
 </Project>

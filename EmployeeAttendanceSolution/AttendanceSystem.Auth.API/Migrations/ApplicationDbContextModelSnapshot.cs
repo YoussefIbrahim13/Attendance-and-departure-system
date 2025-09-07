@@ -179,12 +179,26 @@ namespace AttendanceSystem.Auth.API.Migrations
                     b.Property<int>("Department")
                         .HasColumnType("int");
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Position")
                         .HasColumnType("int");
+
+                    b.Property<string>("ProfileImagePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Salary")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 

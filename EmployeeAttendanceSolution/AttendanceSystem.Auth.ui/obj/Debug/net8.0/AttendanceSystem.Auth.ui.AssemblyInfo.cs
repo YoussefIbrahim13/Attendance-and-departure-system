@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AttendanceSystem.Auth.ui")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e8e1b39617c762a2f57d77e1c675fe777264e3a2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+346b391d8baaa90c08a5760c37df7ae48c65e51a")]
 [assembly: System.Reflection.AssemblyProductAttribute("AttendanceSystem.Auth.ui")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AttendanceSystem.Auth.ui")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

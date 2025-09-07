@@ -1,14 +1,19 @@
 using AttendanceSystem.Auth.API.Services.Services.AuthoServices;
+using AttendanceSystem.Auth.Services.Features.Users.Commands.AddUser;
+using AttendanceSystem.Auth.Services.Features.Users.Commands.SendRandomPassword;
 using AttendanceSystem.Auth.Services.Features.Users.Commands.UpdateUser;
 using AttendanceSystem.Auth.Services.Features.VacationRequests.Commands.CreateVacationRequest;
 using EmployeesModels.Shared;
 using EmployeesModels.Shared.Data;
+using MailKit.Net.Smtp;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using NETCore.MailKit.Extensions;
+using NETCore.MailKit.Infrastructure.Internal;
 using System.Security.Claims;
 using System.Text;
 
@@ -33,8 +38,10 @@ builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
 // Register MediatR (scans your assembly for IRequestHandlers)
 builder.Services.AddMediatR(cfg =>
 {
+    cfg.RegisterServicesFromAssembly(typeof(Program).Assembly);
     cfg.RegisterServicesFromAssembly(typeof(UpdateUserCommandHandler).Assembly);
     cfg.RegisterServicesFromAssembly(typeof(CreateVacationRequestCommandHandler).Assembly);
+    cfg.RegisterServicesFromAssembly(typeof(AddUserCommandHandler).Assembly);
 });
 
 
@@ -99,6 +106,11 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("RequireApprovedUser", policy =>
         policy.RequireClaim("IsApproved", "True"));
 });
+
+//// ? MailKit setup Email service
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+// Add MailKit if not already added
+builder.Services.AddTransient<SmtpClient>(); // Optional: if you want to inject SmtpClient
 
 // Database
 builder.Services.AddDbContext<ApplicationDbContext>(options =>

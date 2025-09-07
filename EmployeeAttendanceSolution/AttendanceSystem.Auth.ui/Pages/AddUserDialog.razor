@@ -5,7 +5,7 @@
 @inject ISnackbar Snackbar
 @inject ManagementService ManagementService
 
-<MudDialog Class="enhanced-dialog-container" MaxWidth="MaxWidth.Small" FullHeight="true">
+<MudDialog Class="enhanced-dialog-container" MaxWidth="MaxWidth.Medium" FullHeight="true">
     <DialogContent>
         <MudContainer Class="enhanced-form-container" Style="padding: 0;">
             <!-- Enhanced Header Section -->
@@ -18,168 +18,226 @@
                         Add New User
                     </MudText>
                     <MudText Typo="Typo.body2" Class="header-subtitle">
-                        Create a new user account with role assignment
+                        Select an employee and create a user account
                     </MudText>
                 </div>
                 <div class="header-decoration"></div>
             </MudPaper>
 
-            <!-- Enhanced Form Section -->
+            <!-- Employee Selection Section -->
             <MudPaper Class="enhanced-form-section" Elevation="0">
-                <MudForm @ref="form" Model="@newUser" @bind-IsValid="@isFormValid" ErrorsChanged="@(errors => formErrors = errors.ToList())">
-                    <MudGrid Spacing="3" Class="form-grid">
-                        <!-- Personal Information Section -->
-                        <MudItem xs="12">
-                            <div class="section-divider">
-                                <MudIcon Icon="@Icons.Material.Filled.Person" Class="section-icon" />
-                                <MudText Typo="Typo.subtitle1" Class="section-title">Personal Information</MudText>
-                            </div>
-                        </MudItem>
+                <div class="section-divider">
+                    <MudIcon Icon="@Icons.Material.Filled.People" Class="section-icon" />
+                    <MudText Typo="Typo.subtitle1" Class="section-title">Select Employee</MudText>
+                </div>
 
-                        <MudItem xs="12" sm="6">
-                            <div class="enhanced-input-wrapper">
-                                <MudTextField Label="Full Name"
-                                              @bind-Value="newUser.Name"
-                                              Required="true"
-                                              RequiredError="Name is required"
-                                              Variant="Variant.Outlined"
-                                              Class="enhanced-input-field"
-                                              Margin="Margin.Dense"
-                                              Adornment="Adornment.Start"
-                                              AdornmentIcon="@Icons.Material.Filled.Badge" />
-                            </div>
-                        </MudItem>
-
-                        <MudItem xs="12" sm="6">
-                            <div class="enhanced-input-wrapper">
-                                <MudTextField Label="Email Address"
-                                              @bind-Value="newUser.Email"
-                                              Required="true"
-                                              RequiredError="Email is required"
-                                              Validation="@(new Func<string, IEnumerable<string>>(ValidateEmail))"
-                                              Variant="Variant.Outlined"
-                                              Class="enhanced-input-field"
-                                              Margin="Margin.Dense"
-                                              Adornment="Adornment.Start"
-                                              AdornmentIcon="@Icons.Material.Filled.Email" />
-                            </div>
-                        </MudItem>
-
-                        <!-- Security Section -->
-                        <MudItem xs="12">
-                            <div class="section-divider">
-                                <MudIcon Icon="@Icons.Material.Filled.Security" Class="section-icon" />
-                                <MudText Typo="Typo.subtitle1" Class="section-title">Security</MudText>
-                            </div>
-                        </MudItem>
-
-                        <MudItem xs="12" sm="6">
-                            <div class="enhanced-input-wrapper">
-                                <MudTextField Label="Password"
-                                              @bind-Value="newUser.Password"
-                                              InputType="InputType.Password"
-                                              Required="true"
-                                              RequiredError="Password is required"
-                                              Validation="@(new Func<string, IEnumerable<string>>(ValidatePassword))"
-                                              Variant="Variant.Outlined"
-                                              Class="enhanced-input-field"
-                                              Margin="Margin.Dense"
-                                              Adornment="Adornment.Start"
-                                              AdornmentIcon="@Icons.Material.Filled.Lock" />
-                                <MudText Typo="Typo.caption" Class="enhanced-hint-text">
-                                    <MudIcon Icon="@Icons.Material.Filled.Info" Size="Size.Small" Class="hint-icon" />
-                                    Minimum 8 characters with uppercase, lowercase, and number
-                                </MudText>
-                            </div>
-                        </MudItem>
-
-                        <MudItem xs="12" sm="6">
-                            <div class="enhanced-input-wrapper">
-                                <MudTextField Label="Confirm Password"
-                                              @bind-Value="confirmPassword"
-                                              InputType="InputType.Password"
-                                              Required="true"
-                                              RequiredError="Confirm password is required"
-                                              Variant="Variant.Outlined"
-                                              Class="enhanced-input-field"
-                                              Margin="Margin.Dense"
-                                              Adornment="Adornment.Start"
-                                              AdornmentIcon="@Icons.Material.Filled.LockOpen" />
-                                @if (!string.IsNullOrEmpty(confirmPassword) && !IsPasswordMatch())
-                                {
-                                    <MudText Typo="Typo.caption" Class="password-mismatch-text">
-                                        <MudIcon Icon="@Icons.Material.Filled.Warning" Size="Size.Small" Class="warning-icon" />
-                                        Passwords do not match
+                <!-- Employee Autocomplete -->
+                <div class="mb-4">
+                    <MudAutocomplete T="EmployeeResult"
+                                     @bind-Value="selectedEmployee"
+                                     Label="Search Employee by Name or Code"
+                                     Variant="Variant.Outlined"
+                                     Required="true"
+                                     RequiredError="Employee selection is required"
+                                     Class="enhanced-input-field"
+                                     Margin="Margin.Dense"
+                                     Adornment="Adornment.Start"
+                                     AdornmentIcon="@Icons.Material.Filled.Search"
+                                     SearchFunc="@SearchEmployees"
+                                     ToStringFunc="@(e => e != null ? $"{e.Name} ({e.Code})" : string.Empty)"
+                                     ResetValueOnEmptyText="true"
+                                     Direction="Direction.Bottom"
+                                     AnchorOrigin="Origin.BottomCenter"
+                                     TransformOrigin="Origin.TopCenter">
+                        <ItemTemplate>
+                            <div class="autocomplete-item">
+                                <MudAvatar Color="Color.Primary" Size="Size.Small" Class="mr-2">
+                                    @context.Name.Substring(0, 1).ToUpper()
+                                </MudAvatar>
+                                <div class="autocomplete-item-details">
+                                    <MudText Class="autocomplete-item-name">@context.Name</MudText>
+                                    <MudText Typo="Typo.caption" Color="Color.Secondary">
+                                        @context.Code • @context.Department • @context.Position
                                     </MudText>
-                                }
-                                else if (!string.IsNullOrEmpty(confirmPassword) && IsPasswordMatch())
-                                {
-                                    <MudText Typo="Typo.caption" Class="password-match-text">
-                                        <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Size="Size.Small" Class="success-icon" />
-                                        Passwords match
-                                    </MudText>
-                                }
+                                </div>
                             </div>
-                        </MudItem>
+                        </ItemTemplate>
+                    </MudAutocomplete>
+                </div>
 
-                        @* ADDED THIS NEW SECTION *@
-                        <!-- Employee Information Section -->
-                        <MudItem xs="12">
-                            <div class="section-divider">
-                                <MudIcon Icon="@Icons.Material.Filled.Work" Class="section-icon" />
-                                <MudText Typo="Typo.subtitle1" Class="section-title">Employee Information</MudText>
-                            </div>
-                        </MudItem>
-
-                        <MudItem xs="12">
-                            <div class="enhanced-input-wrapper">
-                                <MudTextField Label="Employee Code"
-                                              @bind-Value="newUser.EmployeeCode"
-                                              Required="true"
-                                              RequiredError="Employee Code is required"
-                                              Variant="Variant.Outlined"
-                                              Class="enhanced-input-field"
-                                              Margin="Margin.Dense"
-                                              Adornment="Adornment.Start"
-                                              AdornmentIcon="@Icons.Material.Filled.Badge" />
-                                <MudText Typo="Typo.caption" Class="enhanced-hint-text">
-                                    <MudIcon Icon="@Icons.Material.Filled.Info" Size="Size.Small" Class="hint-icon" />
-                                    Unique identifier for the employee (e.g., EMP001)
-                                </MudText>
-                            </div>
-                        </MudItem>
-
-                        <MudItem xs="12">
-                            <div class="enhanced-input-wrapper full-width-select">
-                                <MudSelect T="string"
-                                           @bind-Value="selectedRole"
-                                           Placeholder="User Role"
-                                           Required="true"
-                                           RequiredError="Role is required"
-                                           Variant="Variant.Outlined"
-                                           Class="enhanced-select-field full-width"
-                                           Margin="Margin.Dense"
-                                           FullWidth="true"
-                                           Adornment="Adornment.Start"
-                                           AdornmentIcon="@Icons.Material.Filled.AdminPanelSettings">
-                                    @foreach (var role in availableRoles)
-                                    {
-                                        <MudSelectItem Value="@role" Class="enhanced-select-item">
-                                            <div class="role-item">
-                                                <MudIcon Icon="@GetRoleIcon(role)" Class="role-icon" Size="Size.Small" />
-                                                <span class="role-text">@role</span>
-                                                <MudChip T="string" Size="Size.Small" Class="role-chip" Color="@GetRoleColor(role)">
-                                                    @GetRoleDescription(role)
-                                                </MudChip>
-                                            </div>
-                                        </MudSelectItem>
-                                    }
-                                </MudSelect>
-                            </div>
-                        </MudItem>
-                    </MudGrid>
-                </MudForm>
+                @if (isLoadingEmployees)
+                {
+                    <div class="loading-container">
+                        <MudProgressCircular Color="Color.Primary" Indeterminate="true" />
+                        <MudText Typo="Typo.body2" Class="mt-2">Loading employees...</MudText>
+                    </div>
+                }
+                else if (!allEmployees.Any())
+                {
+                    <MudAlert Severity="Severity.Info" Class="mt-4">
+                        No employees found. Please check if employees are available in the system.
+                    </MudAlert>
+                }
             </MudPaper>
+
+            <!-- Selected Employee Information -->
+            @if (selectedEmployee != null)
+            {
+                <MudPaper Class="enhanced-form-section employee-info-section" Elevation="0">
+                    <div class="section-divider">
+                        <MudIcon Icon="@Icons.Material.Filled.Person" Class="section-icon" />
+                        <MudText Typo="Typo.subtitle1" Class="section-title">Selected Employee Information</MudText>
+                    </div>
+
+                    <MudCard Class="employee-info-card" Elevation="2">
+                        <MudCardContent>
+                            <div class="employee-info-header">
+                                <MudAvatar Color="Color.Primary" Size="Size.Large" Class="employee-info-avatar">
+                                    @selectedEmployee.Name.Substring(0, 1).ToUpper()
+                                </MudAvatar>
+                                <div class="employee-info-details">
+                                    <MudText Typo="Typo.h6" Class="employee-info-name">@selectedEmployee.Name</MudText>
+                                    <MudText Typo="Typo.body2" Class="employee-info-code">Employee Code: @selectedEmployee.Code</MudText>
+                                </div>
+                            </div>
+
+                            <MudDivider Class="my-4" />
+
+                            <MudGrid Spacing="3">
+                                <MudItem xs="12" sm="6">
+                                    <div class="info-item">
+                                        <MudIcon Icon="@Icons.Material.Filled.Business" Class="info-icon" />
+                                        <div>
+                                            <MudText Typo="Typo.caption" Class="info-label">Department</MudText>
+                                            <MudText Typo="Typo.body2" Class="info-value">@selectedEmployee.Department</MudText>
+                                        </div>
+                                    </div>
+                                </MudItem>
+                                <MudItem xs="12" sm="6">
+                                    <div class="info-item">
+                                        <MudIcon Icon="@Icons.Material.Filled.Work" Class="info-icon" />
+                                        <div>
+                                            <MudText Typo="Typo.caption" Class="info-label">Position</MudText>
+                                            <MudText Typo="Typo.body2" Class="info-value">@selectedEmployee.Position</MudText>
+                                        </div>
+                                    </div>
+                                </MudItem>
+                                <MudItem xs="12" sm="6">
+                                    <div class="info-item">
+                                        <MudIcon Icon="@Icons.Material.Filled.Email" Class="info-icon" />
+                                        <div>
+                                            <MudText Typo="Typo.caption" Class="info-label">Email</MudText>
+                                            <MudText Typo="Typo.body2" Class="info-value">@selectedEmployee.Email</MudText>
+                                        </div>
+                                    </div>
+                                </MudItem>
+                                <MudItem xs="12" sm="6">
+                                    <div class="info-item">
+                                        <MudIcon Icon="@Icons.Material.Filled.Phone" Class="info-icon" />
+                                        <div>
+                                            <MudText Typo="Typo.caption" Class="info-label">Phone</MudText>
+                                            <MudText Typo="Typo.body2" Class="info-value">@selectedEmployee.Phone</MudText>
+                                        </div>
+                                    </div>
+                                </MudItem>
+                            </MudGrid>
+                        </MudCardContent>
+                    </MudCard>
+                </MudPaper>
+
+                <!-- User Creation Form -->
+                <MudPaper Class="enhanced-form-section" Elevation="0">
+                    <div class="section-divider">
+                        <MudIcon Icon="@Icons.Material.Filled.Security" Class="section-icon" />
+                        <MudText Typo="Typo.subtitle1" Class="section-title">User Account Details</MudText>
+                    </div>
+
+                    <MudForm @ref="form" Model="@newUser" @bind-IsValid="@isFormValid" ErrorsChanged="@(errors => formErrors = errors.ToList())">
+                        <MudGrid Spacing="3" Class="form-grid">
+                            <!-- Auto-populated fields (read-only) -->
+                            <MudItem xs="12" sm="6">
+                                <div class="enhanced-input-wrapper">
+                                    <MudTextField Label="Full Name"
+                                                  Value="@selectedEmployee.Name"
+                                                  ReadOnly="true"
+                                                  Variant="Variant.Outlined"
+                                                  Class="enhanced-input-field readonly-field"
+                                                  Margin="Margin.Dense"
+                                                  Adornment="Adornment.Start"
+                                                  AdornmentIcon="@Icons.Material.Filled.Badge" />
+                                    <MudText Typo="Typo.caption" Class="field-hint">
+                                        <MudIcon Icon="@Icons.Material.Filled.Info" Size="Size.Small" />
+                                        Auto-filled from selected employee
+                                    </MudText>
+                                </div>
+                            </MudItem>
+
+                            <MudItem xs="12" sm="6">
+                                <div class="enhanced-input-wrapper">
+                                    <MudTextField Label="Email Address"
+                                                  Value="@selectedEmployee.Email"
+                                                  ReadOnly="true"
+                                                  Variant="Variant.Outlined"
+                                                  Class="enhanced-input-field readonly-field"
+                                                  Margin="Margin.Dense"
+                                                  Adornment="Adornment.Start"
+                                                  AdornmentIcon="@Icons.Material.Filled.Email" />
+                                    <MudText Typo="Typo.caption" Class="field-hint">
+                                        <MudIcon Icon="@Icons.Material.Filled.Info" Size="Size.Small" />
+                                        Auto-filled from selected employee
+                                    </MudText>
+                                </div>
+                            </MudItem>
+
+                            <MudItem xs="12">
+                                <div class="enhanced-input-wrapper">
+                                    <MudTextField Label="Employee Code"
+                                                  Value="@selectedEmployee.Code"
+                                                  ReadOnly="true"
+                                                  Variant="Variant.Outlined"
+                                                  Class="enhanced-input-field readonly-field"
+                                                  Margin="Margin.Dense"
+                                                  Adornment="Adornment.Start"
+                                                  AdornmentIcon="@Icons.Material.Filled.Badge" />
+                                    <MudText Typo="Typo.caption" Class="field-hint">
+                                        <MudIcon Icon="@Icons.Material.Filled.Info" Size="Size.Small" />
+                                        Auto-filled from selected employee
+                                    </MudText>
+                                </div>
+                            </MudItem>
+                            <!-- Role selection -->
+                            <MudItem xs="12">
+                                <div class="enhanced-input-wrapper full-width-select">
+                                    <MudSelect T="string"
+                                               @bind-Value="selectedRole"
+                                               Placeholder="User Role"
+                                               Required="true"
+                                               RequiredError="Role is required"
+                                               Variant="Variant.Outlined"
+                                               Class="enhanced-select-field full-width"
+                                               Margin="Margin.Dense"
+                                               FullWidth="true"
+                                               Adornment="Adornment.Start"
+                                               AdornmentIcon="@Icons.Material.Filled.AdminPanelSettings">
+                                        @foreach (var role in availableRoles)
+                                        {
+                                            <MudSelectItem Value="@role" Class="enhanced-select-item">
+                                                <div class="role-item">
+                                                    <MudIcon Icon="@GetRoleIcon(role)" Class="role-icon" Size="Size.Small" />
+                                                    <span class="role-text">@role</span>
+                                                    <MudChip T="string" Size="Size.Small" Class="role-chip" Color="@GetRoleColor(role)">
+                                                        @GetRoleDescription(role)
+                                                    </MudChip>
+                                                </div>
+                                            </MudSelectItem>
+                                        }
+                                    </MudSelect>
+                                </div>
+                            </MudItem>
+                        </MudGrid>
+                    </MudForm>
+                </MudPaper>
+            }
         </MudContainer>
     </DialogContent>
 
@@ -196,7 +254,7 @@
                 <MudButton Color="Color.Primary"
                            Variant="Variant.Filled"
                            OnClick="HandleAddUser"
-                           Disabled="@(!isFormValid || !IsPasswordMatch() || isLoading)"
+                           Disabled="@(selectedEmployee == null || !isFormValid || isLoading)"
                            Loading="@isLoading"
                            Class="enhanced-save-button"
                            StartIcon="@Icons.Material.Filled.Save">
@@ -290,6 +348,11 @@
         border-radius: 0;
     }
 
+    .employee-info-section {
+        background-color: var(--mud-palette-background);
+        border-left: 4px solid var(--mud-palette-primary);
+    }
+
     .form-grid {
         max-width: 100%;
     }
@@ -326,6 +389,89 @@
         letter-spacing: 0.5px;
     }
 
+    /* Autocomplete Styles */
+    .autocomplete-item {
+        display: flex;
+        align-items: center;
+        padding: 8px;
+    }
+
+    .autocomplete-item-details {
+        flex: 1;
+    }
+
+    .autocomplete-item-name {
+        font-weight: 500 !important;
+        margin-bottom: 2px !important;
+    }
+
+    /* Loading Container */
+    .loading-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 40px;
+    }
+
+    /* Employee Info Card */
+    .employee-info-card {
+        border-radius: 16px;
+        border: 1px solid var(--mud-palette-divider);
+        background: var(--mud-palette-surface);
+    }
+
+    .employee-info-header {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 16px;
+    }
+
+    .employee-info-avatar {
+        flex-shrink: 0;
+        background: linear-gradient(135deg, var(--mud-palette-primary) 0%, var(--mud-palette-secondary) 100%);
+    }
+
+    .employee-info-details {
+        flex: 1;
+    }
+
+    .employee-info-name {
+        font-weight: 600 !important;
+        margin-bottom: 4px !important;
+        color: var(--mud-palette-text-primary) !important;
+    }
+
+    .employee-info-code {
+        color: var(--mud-palette-text-secondary) !important;
+    }
+
+    .info-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 8px 0;
+    }
+
+    .info-icon {
+        color: var(--mud-palette-primary) !important;
+        flex-shrink: 0;
+    }
+
+    .info-label {
+        color: var(--mud-palette-text-secondary) !important;
+        font-weight: 500 !important;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 2px !important;
+        font-size: 0.75rem;
+    }
+
+    .info-value {
+        color: var(--mud-palette-text-primary) !important;
+        font-weight: 500 !important;
+    }
+
     /* Enhanced Input Fields */
     .enhanced-input-wrapper {
         position: relative;
@@ -337,37 +483,49 @@
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-        .enhanced-input-field .mud-input-outlined-border {
-            border-color: var(--mud-palette-lines-default);
-            border-width: 1.5px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    .readonly-field {
+        background-color: var(--mud-palette-action-disabled-background) !important;
+    }
+
+        .readonly-field .mud-input-outlined-border {
+            border-color: var(--mud-palette-action-disabled) !important;
         }
 
-        .enhanced-input-field:hover .mud-input-outlined-border {
-            border-color: var(--mud-palette-primary);
-            box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
-        }
+    .field-hint {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 6px;
+        color: var(--mud-palette-info) !important;
+        font-size: 0.75rem;
+        padding: 6px 12px;
+        background-color: rgba(33, 150, 243, 0.1);
+        border-radius: 8px;
+        border-left: 3px solid var(--mud-palette-info);
+    }
 
-        .enhanced-input-field .mud-input:focus-within .mud-input-outlined-border {
-            border-color: var(--mud-palette-primary);
-            border-width: 2px;
-            box-shadow: 0 0 0 4px rgba(25, 118, 210, 0.15);
-        }
+    .enhanced-input-field .mud-input-outlined-border {
+        border-color: var(--mud-palette-lines-default);
+        border-width: 1.5px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-        .enhanced-input-field .mud-input-adornment-start {
-            color: var(--mud-palette-primary) !important;
-        }
+    .enhanced-input-field:hover .mud-input-outlined-border {
+        border-color: var(--mud-palette-primary);
+        box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
+    }
 
-        .enhanced-input-field .mud-input-label {
-            color: var(--mud-palette-text-secondary) !important;
-            font-weight: 500 !important;
-        }
+    .enhanced-input-field .mud-input:focus-within .mud-input-outlined-border {
+        border-color: var(--mud-palette-primary);
+        border-width: 2px;
+        box-shadow: 0 0 0 4px rgba(25, 118, 210, 0.15);
+    }
 
-        .enhanced-input-field .mud-input:focus-within .mud-input-label {
-            color: var(--mud-palette-primary) !important;
-        }
+    .enhanced-input-field .mud-input-adornment-start {
+        color: var(--mud-palette-primary) !important;
+    }
 
-    /* Enhanced Select Field */
+    /* Enhanced Select Fields */
     .enhanced-select-field {
         border-radius: 12px !important;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -390,59 +548,17 @@
             box-shadow: 0 0 0 4px rgba(25, 118, 210, 0.15);
         }
 
-    /* Full Width Select Styles */
     .full-width-select {
-        width: 100% !important;
-        max-width: 100% !important;
+        width: 100%;
     }
 
-    .enhanced-select-field.full-width {
+    .full-width {
         width: 100% !important;
-        max-width: 100% !important;
-        min-width: 100% !important;
     }
-
-        .enhanced-select-field.full-width .mud-input {
-            width: 100% !important;
-            max-width: 100% !important;
-            min-width: 100% !important;
-        }
-
-        .enhanced-select-field.full-width .mud-input-control {
-            width: 100% !important;
-            max-width: 100% !important;
-            min-width: 100% !important;
-        }
-
-        .enhanced-select-field.full-width .mud-input-control-input-container {
-            width: 100% !important;
-            max-width: 100% !important;
-            min-width: 100% !important;
-        }
-
-        .enhanced-select-field.full-width .mud-select {
-            width: 100% !important;
-            max-width: 100% !important;
-            min-width: 100% !important;
-        }
-
-        .enhanced-select-field.full-width .mud-input-slot {
-            width: 100% !important;
-            max-width: 100% !important;
-            min-width: 100% !important;
-        }
 
     .enhanced-select-item {
         padding: 12px 16px !important;
-        border-radius: 8px !important;
-        margin: 4px 8px !important;
-        transition: all 0.2s ease;
     }
-
-        .enhanced-select-item:hover {
-            background-color: var(--mud-palette-action-default) !important;
-            transform: translateX(4px);
-        }
 
     .role-item {
         display: flex;
@@ -465,7 +581,7 @@
         height: 20px !important;
     }
 
-    /* Enhanced Hint Text */
+    /* Hint and Error Text */
     .enhanced-hint-text {
         display: flex;
         align-items: center;
@@ -473,14 +589,14 @@
         margin-top: 6px;
         color: var(--mud-palette-text-secondary) !important;
         font-size: 0.75rem;
-        padding: 8px 12px;
-        background-color: var(--mud-palette-action-default);
+        padding: 6px 12px;
+        background-color: var(--mud-palette-action-hover);
         border-radius: 8px;
-        border-left: 3px solid var(--mud-palette-primary);
+        border-left: 3px solid var(--mud-palette-info);
     }
 
     .hint-icon {
-        color: var(--mud-palette-primary) !important;
+        color: var(--mud-palette-info) !important;
     }
 
     .password-mismatch-text {
@@ -581,10 +697,10 @@
             box-shadow: none !important;
         }
 
-
     .enhanced-input-field.mud-input-error .mud-input-outlined-border {
         animation: shake 0.5s ease-in-out;
     }
+
     /* Style for the select placeholder */
     .enhanced-select-field .mud-input-placeholder {
         color: var(--mud-palette-text-secondary) !important;
@@ -607,13 +723,40 @@
     .enhanced-select-field .mud-input-slot {
         padding-top: 4px !important;
     }
+    /* Add this to your style section */
+    .mud-popover {
+        margin-top: 4px !important;
+    }
 
+    .mud-autocomplete {
+        z-index: 1000;
+    }
+    /* Animation for error state */
+    @@keyframes shake {
+        0%, 100% {
+            transform: translateX(0);
+        }
+
+        25% {
+            transform: translateX(-5px);
+        }
+
+        75% {
+            transform: translateX(5px);
+        }
+    }
 </style>
 
 @code {
     [CascadingParameter]
     public IMudDialogInstance MudDialog { get; set; } = null!;
 
+    // Employee selection
+    private List<EmployeeResult> allEmployees = new();
+    private EmployeeResult? selectedEmployee = null;
+    private bool isLoadingEmployees = true;
+
+    // User creation
     private UserCreateDto newUser = new();
     private string confirmPassword = string.Empty;
     private string selectedRole = "User";
@@ -623,7 +766,43 @@
     private bool isFormValid;
     private List<string> formErrors = new();
 
-    private bool IsPasswordMatch() => newUser.Password == confirmPassword;
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadEmployees();
+    }
+
+    private async Task LoadEmployees()
+    {
+        isLoadingEmployees = true;
+        try
+        {
+            allEmployees = await ManagementService.GetAllEmployeesAsync();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Failed to load employees: {ex.Message}", Severity.Error);
+            allEmployees = new List<EmployeeResult>();
+        }
+        finally
+        {
+            isLoadingEmployees = false;
+            StateHasChanged();
+        }
+    }
+
+    private Task<IEnumerable<EmployeeResult>> SearchEmployees(string value, CancellationToken cancellationToken)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+            return Task.FromResult(allEmployees.AsEnumerable());
+
+        return Task.FromResult(allEmployees.Where(e =>
+            e.Name.Contains(value, StringComparison.OrdinalIgnoreCase) ||
+            e.Code.Contains(value, StringComparison.OrdinalIgnoreCase) ||
+            e.Department.ToString().Contains(value, StringComparison.OrdinalIgnoreCase) ||
+            (e.Position != null && e.Position.ToString().Contains(value, StringComparison.OrdinalIgnoreCase))));
+    }
+
+ 
 
     private string GetRoleIcon(string role) => role switch
     {
@@ -663,29 +842,26 @@
             yield return "Requires 1 number";
     }
 
-    private IEnumerable<string> ValidateEmail(string value)
-    {
-        if (string.IsNullOrWhiteSpace(value))
-            yield return "Email is required";
-        else if (!value.Contains("@") || !value.Contains("."))
-            yield return "Invalid email format";
-    }
-
     private void Cancel()
     {
         newUser = new UserCreateDto();
         confirmPassword = string.Empty;
+        selectedEmployee = null;
         MudDialog.Cancel();
     }
 
     private async Task HandleAddUser()
     {
+        if (selectedEmployee == null)
+        {
+            Snackbar.Add("Please select an employee first", Severity.Warning);
+            return;
+        }
+
         await form.Validate();
 
-        if (!form.IsValid || !IsPasswordMatch())
+        if (!form.IsValid )
         {
-            if (!IsPasswordMatch())
-                Snackbar.Add("Passwords do not match", Severity.Error);
             return;
         }
 
@@ -693,24 +869,58 @@
 
         try
         {
-            var result = await ManagementService.AddApplicationUserAsync(newUser, selectedRole);
+            // // Check if employee already has a user account
+            // try
+            // {
+            //     var existingUser = await ManagementService.GetUserByEmployeeCodeAsync(selectedEmployee.Code);
+            //     if (existingUser != null)
+            //     {
+            //         Snackbar.Add("This employee already has a user account", Severity.Warning);
+            //         return;
+            //     }
+            // }
+            // catch (HttpRequestException ex) when (ex.Message.Contains("404") || ex.Message.Contains("NotFound"))
+            // {
+            //     // 404 is expected when no user exists - continue
+            // }
+            // catch (Exception ex)
+            // {
+            //     Snackbar.Add($"Warning: Could not verify existing user: {ex.Message}", Severity.Warning);
+            // }
+
+            // ADD TEMPORARY EMAIL LOGIC HERE
+            var emailToUse = !string.IsNullOrWhiteSpace(selectedEmployee.Email)
+                ? selectedEmployee.Email
+                : "ehabmo.salah2005@gmail.com"; // Temporary email
+
+            // Create a fresh DTO with all required values
+            var userToCreate = new UserCreateDto
+            {
+                Name = selectedEmployee.Name,
+                Email = emailToUse, // Use the processed email
+                EmployeeCode = selectedEmployee.Code
+            };
+
+            Console.WriteLine($"Creating user with: {userToCreate.Email}, {userToCreate.EmployeeCode}");
+
+            var result = await ManagementService.AddApplicationUserAsync(userToCreate, selectedRole);
 
             if (result.Success)
             {
-                Snackbar.Add("User added successfully", Severity.Success);
+                Snackbar.Add($"User account created successfully for {selectedEmployee.Name}", Severity.Success);
                 MudDialog.Close(DialogResult.Ok(true));
             }
             else
             {
                 var errorMessage = result.Errors?.FirstOrDefault()?.Description ??
-                                  "Failed to add user";
+                                  "Failed to create user account";
                 Snackbar.Add(errorMessage, Severity.Error);
             }
         }
         catch (Exception ex)
         {
-            Snackbar.Add($"Failed to add user: {ex.Message}", Severity.Error);
-            Console.Error.WriteLine(ex); // Added error logging
+            Snackbar.Add($"Failed to create user account: {ex.Message}", Severity.Error);
+            Console.Error.WriteLine($"Error details: {ex}");
         }
         finally
         {
@@ -718,4 +928,3 @@
         }
     }
 }
-

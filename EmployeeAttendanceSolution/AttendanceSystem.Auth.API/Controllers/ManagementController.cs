@@ -1,14 +1,17 @@
-﻿using AttendanceSystem.Auth.Services.Features.Roles.Commands.CreateRole;
+﻿using AttendanceSystem.Auth.Services.Features.Employees.Queries.GetAllEmployees;
+using AttendanceSystem.Auth.Services.Features.Roles.Commands.CreateRole;
 using AttendanceSystem.Auth.Services.Features.Roles.Queries.GetAllRoles;
 using AttendanceSystem.Auth.Services.Features.Roles.Queries.GetRoleById;
 using AttendanceSystem.Auth.Services.Features.Users.Commands.AddUser;
 using AttendanceSystem.Auth.Services.Features.Users.Commands.ApproveUser;
 using AttendanceSystem.Auth.Services.Features.Users.Commands.ChangePassword;
 using AttendanceSystem.Auth.Services.Features.Users.Commands.DeleteUser;
+using AttendanceSystem.Auth.Services.Features.Users.Commands.SendRandomPassword;
 using AttendanceSystem.Auth.Services.Features.Users.Commands.UnlockUser;
 using AttendanceSystem.Auth.Services.Features.Users.Commands.UpdateUser;
 using AttendanceSystem.Auth.Services.Features.Users.Queries.GetAllUsers;
 using AttendanceSystem.Auth.Services.Features.Users.Queries.GetPendingUsers;
+using AttendanceSystem.Auth.Services.Features.Users.Queries.GetUserByEmployeeCode;
 using AttendanceSystem.Auth.Services.Features.Users.Queries.GetUserById;
 using EmployeesModels.Shared;
 using MediatR;
@@ -64,10 +67,16 @@ namespace AttendanceSystem.Auth.API.Controllers
         [HttpPost("AddApplicationUser")]
         [Authorize(Roles = "Admin,Manager")]
         public async Task<IActionResult> AddApplicationUser(
-            [FromBody] UserCreateDto dto,
-            [FromQuery] string roleName)
+     [FromBody] UserCreateDto dto,
+     [FromQuery] string roleName)
         {
+            if (string.IsNullOrEmpty(roleName))
+            {
+                return BadRequest("Role name is required");
+            }
+
             var result = await _mediator.Send(new AddUserCommand(dto, roleName));
+
             return result.Success
                 ? CreatedAtAction(nameof(GetApplicationUser), new { id = result.Id }, result)
                 : BadRequest(result.Errors);
@@ -95,6 +104,24 @@ namespace AttendanceSystem.Auth.API.Controllers
         {
             var result = await _mediator.Send(new DeleteUserCommand(userId));
             return Ok(new { result.Success, result.Message });
+        }
+
+        [HttpGet("GetUserByEmployeeCode/{employeeCode}")]
+        [Authorize(Roles = "Manager,Admin")]
+        public async Task<IActionResult> GetUserByEmployeeCode([FromRoute] string employeeCode)
+        {
+            var query = new GetUserByEmployeeCodeQuery { EmployeeCode = employeeCode };
+
+            var result = await _mediator.Send(query);
+            return result.Success ? Ok(result) : NotFound(result.Errors);
+        }
+
+        [HttpGet("GetAllEmployees")]
+        [Authorize(Roles = "Manager,Admin")]
+        public async Task<IActionResult> GetAllEmployees()
+        {
+            var result = await _mediator.Send(new GetAllEmployeesQuery());
+            return Ok(result);
         }
 
         [HttpPost("approve/{userId}")]
@@ -131,5 +158,6 @@ namespace AttendanceSystem.Auth.API.Controllers
             var result = await _mediator.Send(new UnlockUserCommand(userId));
             return Ok(new { result.Success, result.Message });
         }
+
     }
 }
