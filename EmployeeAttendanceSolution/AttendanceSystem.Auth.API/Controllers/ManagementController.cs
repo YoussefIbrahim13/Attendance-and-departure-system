@@ -6,7 +6,6 @@ using AttendanceSystem.Auth.Services.Features.Users.Commands.AddUser;
 using AttendanceSystem.Auth.Services.Features.Users.Commands.ApproveUser;
 using AttendanceSystem.Auth.Services.Features.Users.Commands.ChangePassword;
 using AttendanceSystem.Auth.Services.Features.Users.Commands.DeleteUser;
-using AttendanceSystem.Auth.Services.Features.Users.Commands.SendRandomPassword;
 using AttendanceSystem.Auth.Services.Features.Users.Commands.UnlockUser;
 using AttendanceSystem.Auth.Services.Features.Users.Commands.UpdateUser;
 using AttendanceSystem.Auth.Services.Features.Users.Queries.GetAllUsers;
@@ -37,8 +36,8 @@ namespace AttendanceSystem.Auth.API.Controllers
         {
             var result = await _mediator.Send(new CreateRoleCommand(roleName));
             return result.Success
-                ? CreatedAtAction(nameof(GetRole), new { id = result.Id }, result)
-                : BadRequest(result.Errors);
+                   ? CreatedAtAction(nameof(GetRole), new { id = result.Id }, result)
+                   : BadRequest(result.Errors);
         }
 
         [HttpGet("GetRole/{id}")]

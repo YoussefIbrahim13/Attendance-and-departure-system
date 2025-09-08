@@ -6070,6 +6070,6 @@ A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\Att
 A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\compressed\jxvcbq2s0h-710onjtcga.gz
 A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\compressed\wj40u5s5pr-a2rj5cdu4o.gz
 A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\compressed\mr8o2wqfym-4kzlljrn1g.gz
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\compressed\4yvw3pwnb2-iwgepagug7.gz
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\compressed\2lbmy12kb4-d0b043cr77.gz
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\compressed\lrbgnk7ewd-lxujzsx7l7.gz
+A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\compressed\4yvw3pwnb2-sgyu7kuph0.gz
+A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\compressed\2lbmy12kb4-04k4irygy1.gz
+A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\compressed\lrbgnk7ewd-1llwamwxik.gz
