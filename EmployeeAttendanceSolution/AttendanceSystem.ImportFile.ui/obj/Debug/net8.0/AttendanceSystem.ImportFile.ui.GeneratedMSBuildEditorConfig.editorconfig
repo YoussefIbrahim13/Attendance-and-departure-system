@@ -55,6 +55,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGF5Vmlldy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[Y:/project/AttendanceSystem/EmployeeAttendanceSolution/AttendanceSystem.ImportFile.ui/Pages/EmployeeProfile.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbG95ZWVQcm9maWxlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [Y:/project/AttendanceSystem/EmployeeAttendanceSolution/AttendanceSystem.ImportFile.ui/Pages/Employees.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbG95ZWVzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 

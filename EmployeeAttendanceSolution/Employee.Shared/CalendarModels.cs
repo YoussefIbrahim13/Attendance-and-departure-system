@@ -1,4 +1,6 @@
-﻿namespace EmployeesModels.Shared
+﻿using Domain.Enums;
+
+namespace EmployeesModels.Shared
 {
     public record AttendanceDayStatus(
        string Code,

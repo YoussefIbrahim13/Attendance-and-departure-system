@@ -1,0 +1,55 @@
+﻿using Domain.Entities;
+using Domain.Enums;
+using Infrastructure;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
+
+namespace Applications.PlanAttendance.Command;
+
+public class PlanAttendancecommandHandler : IRequestHandler<PlanAttendancecommand, (bool Success, string Message)>
+{
+    private readonly AppDbcontext _db;
+
+    public PlanAttendancecommandHandler(AppDbcontext db)
+    {
+        _db = db;
+    }
+
+    public async Task<(bool Success, string Message)> Handle(PlanAttendancecommand command, CancellationToken cancellationToken)
+    {
+        var dto = command.Dto;
+
+        if (dto == null || string.IsNullOrWhiteSpace(dto.Code) || dto.Dates == null || dto.Dates.Count == 0)
+            return (false, "Invalid attendance plan data.");
+
+        foreach (var date in dto.Dates)
+        {
+            var record = await _db.AttendanceRecords
+                .FirstOrDefaultAsync(x => x.Code == dto.Code && x.Date == date, cancellationToken);
+
+            if (record != null)
+            {
+                if (record.ActualStatus == record.PlannedStatus)
+                    record.ActualStatus = dto.PlannedStatus;
+
+                record.PlannedStatus = dto.PlannedStatus;
+            }
+            else
+            {
+                _db.AttendanceRecords.Add(new AttendanceRecord
+                {
+                    Code = dto.Code,
+                    Date = date,
+                    PlannedStatus = dto.PlannedStatus,
+                    ActualStatus = dto.PlannedStatus,
+                    ApprovalStatus = ApprovalStatus.Pending,
+                    CheckIn = TimeSpan.Zero,
+                    CheckOut = TimeSpan.Zero
+                });
+            }
+        }
+
+        await _db.SaveChangesAsync(cancellationToken);
+        return (true, "Attendance plan saved successfully.");
+    }
+}}

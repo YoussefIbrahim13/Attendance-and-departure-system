@@ -1,0 +1,11 @@
+﻿using Applications.Employees.DTO.EmployeeDtos;
+using MediatR;
+
+namespace Applications.Employees.Querys.GetEmployeeByCode;
+
+public class GetEmployeeByCodeQuery : IRequest<EmployeeeByCodeOutPut>
+{
+    public string Code { get; set; }
+
+
+}

@@ -1,0 +1,65 @@
+﻿using Applications.Employees.Commands.UploadProfileImagecommand;
+using Applications.Employees.DTO.EmployeeDtos;
+using Infrastructure;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
+
+namespace Applications.Employees.Commands.UploadProfileImage;
+
+public class UploadProfileImagecommandHandler : IRequestHandler<UploadProfileImageCommand, UploadProfileImageResultDto>
+{
+    private readonly AppDbcontext _db;
+
+    public UploadProfileImagecommandHandler(AppDbcontext db)
+    {
+        _db = db;
+    }
+
+    public async Task<UploadProfileImageResultDto> Handle(UploadProfileImageCommand command, CancellationToken cancellationToken)
+    {
+        if (string.IsNullOrWhiteSpace(command.EmployeeCode) || command.File == null || command.File.Length == 0)
+            return new UploadProfileImageResultDto { Success = false, Message = "Invalid employee code or file." };
+
+        var employee = await _db.Employees.FirstOrDefaultAsync(e => e.Code == command.EmployeeCode, cancellationToken);
+        if (employee == null)
+            return new UploadProfileImageResultDto { Success = false, Message = "Employee not found." };
+
+        var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
+        var extension = Path.GetExtension(command.File.FileName).ToLowerInvariant();
+        if (!allowedExtensions.Contains(extension))
+            return new UploadProfileImageResultDto { Success = false, Message = "Invalid file type." };
+
+        var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "profile_images");
+        if (!Directory.Exists(uploadsFolder))
+            Directory.CreateDirectory(uploadsFolder);
+
+        var fileName = $"{employee.Code}_{DateTime.UtcNow:yyyyMMddHHmmss}_{Guid.NewGuid()}{extension}";
+        var filePath = Path.Combine(uploadsFolder, fileName);
+
+        using (var stream = new FileStream(filePath, FileMode.Create))
+        {
+            await command.File.CopyToAsync(stream);
+        }
+
+        // حذف الصورة القديمة
+        if (!string.IsNullOrEmpty(employee.ProfileImagePath))
+        {
+            var oldPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", employee.ProfileImagePath.TrimStart('/'));
+            if (File.Exists(oldPath))
+                File.Delete(oldPath);
+        }
+
+        employee.ProfileImagePath = $"/profile_images/{fileName}";
+        await _db.SaveChangesAsync(cancellationToken);
+
+        var baseUrl = $"{command.HttpContext.Request.Scheme}://{command.HttpContext.Request.Host}";
+        var imageUrl = $"{baseUrl}{employee.ProfileImagePath}";
+
+        return new UploadProfileImageResultDto
+        {
+            Success = true,
+            Message = "Profile image uploaded successfully.",
+            ImageUrl = imageUrl
+        };
+    }
+}}

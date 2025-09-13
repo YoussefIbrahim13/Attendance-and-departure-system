@@ -1,0 +1,16 @@
+﻿using Applications.MonthView.DTOS;
+using MediatR;
+
+namespace Applications.MonthView.Querys.GetMonthViewquery;
+
+public class GetMonthViewquery : IRequest<MonthViewDto>
+{
+    public int Year { get; }
+    public int Month { get; }
+
+    public GetMonthViewquery(int year, int month)
+    {
+        Year = year;
+        Month = month;
+    }
+}

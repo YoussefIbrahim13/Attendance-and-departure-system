@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -21,8 +21,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Applications\Applications.csproj" />
     <ProjectReference Include="..\AttendanceSystem.ImportFile.API.Services\AttendanceSystem.ImportFile.API.Services.csproj" />
     <ProjectReference Include="..\Employee.Shared\EmployeesModels.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="AttendanceSystem.ImportFile.API\" />
+    <Folder Include="wwwroot\profile_images\" />
   </ItemGroup>
 
 </Project>

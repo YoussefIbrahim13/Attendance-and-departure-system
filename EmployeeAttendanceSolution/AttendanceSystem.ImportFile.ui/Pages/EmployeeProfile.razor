@@ -1,0 +1,202 @@
+﻿@page "/EmployeeProfile/{Code}"
+@using AttendanceSystem.ImportFile.ui.Services
+@using Domain.Enums
+@using EmployeesModels.Shared
+@inject AttendanceService AttendanceService
+@inject HttpClient Http
+@inject NavigationManager Nav
+
+<PageTitle>Employee Profile</PageTitle>
+
+
+<MudPaper Class="pa-6 ma-4" Elevation="4" Rounded="true">
+    @if (employee == null)
+    {
+        <MudProgressCircular Indeterminate="true" Color="Color.Primary" Size="Size.Large" />
+    }
+    else
+    {
+        <MudGrid>
+            <MudItem xs="12" sm="3">
+                <img src="@GetImage()" alt="Employee Image"
+                     style="width:220px;height:220px;object-fit:cover;border-radius:50%;display:block;margin:auto;" />
+                @if (string.IsNullOrWhiteSpace(employee?.ProfileImagePath))
+                {
+                    <MudText Color="Color.Warning" Class="mt-2">This Employee Without photo</MudText>
+                }
+                @if (!string.IsNullOrWhiteSpace(imageError))
+                {
+                    <MudAlert Severity="Severity.Error" Elevation="0" Dense="true">@imageError</MudAlert>
+                }
+                @if (isEditMode)
+                {
+                    <InputFile OnChange="UploadProfileImage" accept="image/*" />
+                }
+            </MudItem>
+            <MudItem xs="12" sm="9">
+    
+    
+                <MudText Typo="Typo.h5" Class="mb-0">@employee.Name</MudText>
+                <MudText Typo="Typo.subtitle2" Class="mb-2">@employee.Position.ToString()</MudText>
+                <MudText Typo="Typo.body2" Color="Color.Secondary">@employee.Department.ToString()</MudText>
+                <MudText Typo="Typo.body2" Class="mt-2"><b>Email:</b> @employee.Email</MudText>
+                <MudText Typo="Typo.body2" Class="mt-1"><b>Phone:</b> @employee.Phone</MudText>
+                <MudText Typo="Typo.body2" Class="mt-1"><b>Salary:</b> @employee.Salary.ToString("C")</MudText>
+                <MudDivider Class="my-2" />
+                @if (!isEditMode)
+                {
+                    <MudTable T="object">
+                        <MudTr>
+                            <MudTd><b>Full Name</b></MudTd>
+                            <MudTd>@employee.Name</MudTd>
+                        </MudTr>
+                        <MudTr>
+                            <MudTd><b>Email</b></MudTd>
+                            <MudTd>@employee.Email</MudTd>
+                        </MudTr>
+                        <MudTr>
+                            <MudTd><b>Contact Phone</b></MudTd>
+                            <MudTd>
+                                @employee.Phone
+                                @if (!string.IsNullOrWhiteSpace(employee.Phone))
+                                {
+                                    <MudChip T="string" Color="Color.Success" Class="ml-2">Verified</MudChip>
+                                }
+                            </MudTd>
+                        </MudTr>
+                        <MudTr>
+                            <MudTd><b>Salary</b></MudTd>
+                            <MudTd>@employee.Salary.ToString("C")</MudTd>
+                        </MudTr>
+                        <MudTr>
+                            <MudTd><b>Department</b></MudTd>
+                            <MudTd>@employee.Department.ToString()</MudTd>
+                        </MudTr>
+                        <MudTr>
+                            <MudTd><b>Position</b></MudTd>
+                            <MudTd>@employee.Position.ToString()</MudTd>
+                        </MudTr>
+                    </MudTable>
+                    <MudButton Color="Color.Primary" Variant="Variant.Filled" Class="mt-4" OnClick="EnableEdit">Edit Profile</MudButton>
+                }
+                else
+                {
+                    <EditForm Model="@employee" OnValidSubmit="SaveChanges">
+                        <DataAnnotationsValidator />
+                        <ValidationSummary />
+                        <MudTextField @bind-Value="employee.Name" Label="Full Name" Variant="Variant.Outlined" />
+                        <MudTextField @bind-Value="employee.Email" Label="Email" Variant="Variant.Outlined" />
+                        <MudTextField @bind-Value="employee.Phone" Label="Phone" Variant="Variant.Outlined" />
+                        <MudNumericField @bind-Value="employee.Salary" Label="Salary" Variant="Variant.Outlined" />
+                        <MudSelect @bind-Value="employee.Department" Label="Department" Variant="Variant.Outlined">
+                            @foreach (var dep in Enum.GetValues<DepartmentEnum>())
+                            {
+                                <MudSelectItem Value="@dep">@dep</MudSelectItem>
+                            }
+                        </MudSelect>
+                        <MudSelect @bind-Value="employee.Position" Label="Position" Variant="Variant.Outlined">
+                            @foreach (var pos in Enum.GetValues<PositionEnum>())
+                            {
+                                <MudSelectItem Value="@pos">@pos</MudSelectItem>
+                            }
+                        </MudSelect>
+                        <MudStack Row Spacing="2" Class="mt-4">
+                            <MudButton Color="Color.Success" Variant="Variant.Filled" ButtonType="ButtonType.Submit">Save</MudButton>
+                            <MudButton Color="Color.Secondary" Variant="Variant.Outlined" OnClick="CancelEdit">Cancel</MudButton>
+                        </MudStack>
+                    </EditForm>
+                }
+            </MudItem>
+        </MudGrid>
+    }
+</MudPaper>
+@code {
+    [Parameter] public string Code { get; set; } = string.Empty;
+
+    private EmployeeDto? employee;
+    private bool isEditMode = false;
+    private string? imageError;
+
+    protected override async Task OnInitializedAsync()
+    {
+        employee = await AttendanceService.GetEmployeeByCodeAsync(Code);
+        Console.WriteLine(employee.ProfileImagePath);
+    }
+
+    private void EnableEdit()
+    {
+        isEditMode = true;
+    }
+
+    private async Task SaveChanges()
+    {
+        if (employee != null)
+        {
+            await AttendanceService.UpdateEmployeeAsync(employee);
+            isEditMode = false;
+        }
+    }
+
+    private void CancelEdit()
+    {
+        isEditMode = false;
+        StateHasChanged();
+    }
+
+    // ✅ رفع صورة الموظف باستخدام AttendanceService
+    private async Task UploadProfileImage(InputFileChangeEventArgs e)
+    {
+        imageError = null;
+        var file = e.File;
+
+        if (file != null && employee != null)
+        {
+            try
+            {
+                var imageUrl = await AttendanceService.UploadProfileImageAsync(employee.Code, file);
+                if (!string.IsNullOrEmpty(imageUrl))
+                {
+                    employee.ProfileImagePath = Path.GetFileName(imageUrl);
+                    imageError = null;
+                    StateHasChanged();
+                }
+                else
+                {
+                    imageError = "Image upload failed.";
+                }
+            }
+            catch (Exception ex)
+            {
+                imageError = $"Error uploading image: {ex.Message}";
+            }
+        }
+        else
+        {
+            imageError = "No file selected.";
+        }
+    }
+
+
+    // جلب رابط الصورة للعرض
+    private string GetImage()
+    {
+        if (!string.IsNullOrWhiteSpace(employee?.ProfileImagePath))
+        {
+            var fileName = Path.GetFileName(employee.ProfileImagePath); // الاسم فقط
+            return $"https://localhost:7002/profile_images/{fileName}";
+        }
+
+        return "https://via.placeholder.com/220";
+    }
+
+    public class ProfileImageResult
+    {
+        public string? ImageUrl { get; set; }   // رابط الصورة بعد رفعها
+        public string? Message { get; set; }
+    }
+
+    // عنوان السيرفر الخاص بالـ API، لازم يكون HTTPS لتجنب Mixed Content
+    private string ImportApiBaseUrl =>
+        Environment.GetEnvironmentVariable("IMPORT_API_BASE_URL")
+        ?? "https://localhost:7002"; // HTTPS بدل HTTP
+}

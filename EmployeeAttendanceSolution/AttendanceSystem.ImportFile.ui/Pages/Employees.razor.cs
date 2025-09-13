@@ -13,13 +13,16 @@
 
 
 using AttendanceSystem.ImportFile.ui.Services;
+using Blazored.LocalStorage;
+using Domain.Enums;
 using EmployeesModels.Shared;
-using MudBlazor;
-using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Components.Forms;
+using MudBlazor;
 using System.IdentityModel.Tokens.Jwt;
-using Blazored.LocalStorage;
+using Domain.Enums;
+using Applications.Employees.Commands.UpdataEmployeecommand;
 
 
 namespace AttendanceSystem.ImportFile.ui.Pages
@@ -57,6 +60,10 @@ namespace AttendanceSystem.ImportFile.ui.Pages
         private string editName = string.Empty;
         private DepartmentEnum editDepartment;
         private PositionEnum editPosition;
+        private string editEmail = string.Empty;
+        private string editPhone = string.Empty;
+        private decimal editSalary;
+
 
         [CascadingParameter] public Task<AuthenticationState> AuthenticationStateTask { get; set; }
         [Inject] NavigationManager Navigation { get; set; }
@@ -88,12 +95,13 @@ namespace AttendanceSystem.ImportFile.ui.Pages
         {
             if (!string.IsNullOrWhiteSpace(newEmployee.Code) && !string.IsNullOrWhiteSpace(newEmployee.Name))
             {
-                // تحقق من تكرار الـ ID
+                // تحقق من تكرار الـ Code محليًا قبل الإرسال للسيرفر
                 if (employees.Any(e => e.Code == newEmployee.Code))
                 {
                     Snackbar.Add("This Code already exists", Severity.Warning);
                     return;
                 }
+
                 try
                 {
                     await AttendanceService.AddEmployeeAsync(newEmployee);
@@ -101,16 +109,17 @@ namespace AttendanceSystem.ImportFile.ui.Pages
                     newEmployee = new EmployeeDto();
                     await LoadEmployees();
                 }
-                catch
+                catch (Exception ex)
                 {
-                    Snackbar.Add("Failed to add employee", Severity.Error);
+                    Snackbar.Add($"Failed to add employee: {ex.Message}", Severity.Error);
                 }
             }
             else
             {
-                Snackbar.Add("Please enter both ID and Name", Severity.Warning);
+                Snackbar.Add("Please enter both Code and Name", Severity.Warning);
             }
         }
+
 
         private async Task DeleteEmployee(string id)
         {
@@ -135,31 +144,44 @@ namespace AttendanceSystem.ImportFile.ui.Pages
         {
             editRow = emp;
             editName = emp.Name;
+            editEmail = emp.Email;
+            editPhone = emp.Phone;
+            editSalary = emp.Salary;
             editDepartment = emp.Department;
             editPosition = emp.Position;
+           
         }
 
         private void CancelEdit()
         {
             editRow = null;
         }
-
         private async Task SaveEdit(EmployeeDto emp)
         {
             if (editRow == null) return;
-            emp.Name = editName;
-            emp.Department = editDepartment;
-            emp.Position = editPosition;
-            try
+
+            var command = new UpdataEmployeecommand
             {
-                await AttendanceService.UpdateEmployeeAsync(emp);
+                Code = emp.Code,
+                Name = editName,
+                Email = editEmail,
+                Phone = editPhone,
+                Salary = editSalary,
+                Department = editDepartment,
+                Position = editPosition
+            };
+
+            var result = await AttendanceService.UpdateEmployeeAsync(command);
+
+            if (result == "success")
+            {
                 Snackbar.Add("Employee updated successfully", Severity.Success);
                 editRow = null;
                 await LoadEmployees();
             }
-            catch
+            else
             {
-                Snackbar.Add("Failed to update employee", Severity.Error);
+                Snackbar.Add(result, Severity.Warning);
             }
         }
 

@@ -6,6 +6,7 @@
 @inject ISnackbar Snackbar
 @inject IJSRuntime JS
 @using AttendanceSystem.ImportFile.ui.Services
+@using Domain.Enums
 @using EmployeesModels.Shared
 
 
@@ -204,14 +205,14 @@
 
                         <PropertyColumn Property="x => x.ApprovalStatus" Title="Approval Status">
                             <CellTemplate>
-                                <MudChip T="string" Color="@(context.Item.ApprovalStatus == ApprovalStatus.Approved ? Color.Success : Color.Warning)" Variant="Variant.Filled" Size="Size.Small">
+                                            <MudChip T="string" Color="@(context.Item.ApprovalStatus == ApprovalStatus.Approved ? Color.Success : Color.Warning)" Variant="Variant.Filled" Size="Size.Small">
                                     @context.Item.ApprovalStatus
                                 </MudChip>
                             </CellTemplate>
                             <EditTemplate>
                                 <MudSelect @bind-Value="context.Item.ApprovalStatus" Label="Approval Status" Variant="Variant.Outlined" Required="true" RequiredError="Approval status is required">
                                     <MudSelectItem Value="@ApprovalStatus.Pending">Pending</MudSelectItem>
-                                    <MudSelectItem Value="@ApprovalStatus.Approved">Approved</MudSelectItem>
+                                                <MudSelectItem Value="@ApprovalStatus.Approved">Approved</MudSelectItem>
                                 </MudSelect>
                             </EditTemplate>
                         </PropertyColumn>

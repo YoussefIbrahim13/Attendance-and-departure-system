@@ -1,0 +1,17 @@
+﻿using Domain.Enums;
+using MediatR;
+using System.Windows.Input;
+using Applications.Employees.Commands.AddEmployees.Dtos;
+
+namespace Applications.Employees.Commands.AddEmployees;
+
+public class AddEmployeesCommand : IRequest<AddEmployeesDto>
+{
+    public string Code { get; set; } = string.Empty;
+    public string Name { get; set; } = string.Empty;
+    public DepartmentEnum Department { get; set; }
+    public PositionEnum Position { get; set; }
+    public string Email { get; set; } = string.Empty;
+    public string Phone { get; set; } = string.Empty;
+    public decimal Salary { get; set; }
+}}

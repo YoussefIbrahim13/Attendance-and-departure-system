@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "6mYYQWKQdi4=",
+  "dgSpecHash": "icUCfBQnRdc=",
   "success": true,
   "projectFilePath": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj",
   "expectedPackageFiles": [
@@ -62,8 +62,8 @@
     "C:\\Users\\Youssef\\.nuget\\packages\\microsoft.identitymodel.tokens\\8.13.0\\microsoft.identitymodel.tokens.8.13.0.nupkg.sha512",
     "C:\\Users\\Youssef\\.nuget\\packages\\microsoft.jsinterop\\8.0.17\\microsoft.jsinterop.8.0.17.nupkg.sha512",
     "C:\\Users\\Youssef\\.nuget\\packages\\microsoft.jsinterop.webassembly\\8.0.17\\microsoft.jsinterop.webassembly.8.0.17.nupkg.sha512",
-    "C:\\Users\\Youssef\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.19\\microsoft.net.illink.tasks.8.0.19.nupkg.sha512",
-    "C:\\Users\\Youssef\\.nuget\\packages\\microsoft.net.sdk.webassembly.pack\\9.0.8\\microsoft.net.sdk.webassembly.pack.9.0.8.nupkg.sha512",
+    "C:\\Users\\Youssef\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.20\\microsoft.net.illink.tasks.8.0.20.nupkg.sha512",
+    "C:\\Users\\Youssef\\.nuget\\packages\\microsoft.net.sdk.webassembly.pack\\9.0.9\\microsoft.net.sdk.webassembly.pack.9.0.9.nupkg.sha512",
     "C:\\Users\\Youssef\\.nuget\\packages\\microsoft.sqlserver.server\\1.0.0\\microsoft.sqlserver.server.1.0.0.nupkg.sha512",
     "C:\\Users\\Youssef\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\Youssef\\.nuget\\packages\\mudblazor\\8.0.0\\mudblazor.8.0.0.nupkg.sha512",
@@ -89,7 +89,7 @@
     "C:\\Users\\Youssef\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512",
     "C:\\Users\\Youssef\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\Youssef\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
-    "C:\\Users\\Youssef\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.19\\microsoft.netcore.app.runtime.mono.browser-wasm.8.0.19.nupkg.sha512"
+    "C:\\Users\\Youssef\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.20\\microsoft.netcore.app.runtime.mono.browser-wasm.8.0.20.nupkg.sha512"
   ],
   "logs": []
 }

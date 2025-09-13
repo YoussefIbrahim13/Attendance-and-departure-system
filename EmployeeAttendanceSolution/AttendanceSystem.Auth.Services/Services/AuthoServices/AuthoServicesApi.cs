@@ -23,7 +23,10 @@ namespace AttendanceSystem.Auth.API.Services.Services.AuthoServices
         public async Task<AuthResult> Login(LoginModel model)
         {
             var user = await _userManager.FindByEmailAsync(model.Email);
-            if (user == null || !await _userManager.CheckPasswordAsync(user, model.Password))
+            if (user == null) 
+                return new AuthResult {ErrorMessage="User Not Found"};
+
+            if (!await _userManager.CheckPasswordAsync(user, model.Password))
                 return new AuthResult { ErrorMessage = "Invalid credentials" };
 
             if (!user.IsApproved)

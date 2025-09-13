@@ -8,6 +8,7 @@
 @inject ISnackbar Snackbar
 @inject IJSRuntime JS
 @using AttendanceSystem.ImportFile.ui.Services
+@using Domain.Enums
 @using MudBlazor
 @using EmployeesModels.Shared
 @using Microsoft.AspNetCore.Components.Forms
@@ -170,9 +171,9 @@
                         <MudTd DataLabel="Approval Status">
                             @if (editRow == row)
                             {
-                                <MudSelect T="ApprovalStatus" @bind-Value="editApprovalStatus" Dense="true" Style="width:120px;">
-                                    <MudSelectItem Value="@ApprovalStatus.Pending">Pending</MudSelectItem>
-                                    <MudSelectItem Value="@ApprovalStatus.Approved">Approved</MudSelectItem>
+                                        <MudSelect T="ApprovalStatus" @bind-Value="editApprovalStatus" Dense="true" Style="width:120px;">
+                                            <MudSelectItem Value="@ApprovalStatus.Pending">Pending</MudSelectItem>
+                                            <MudSelectItem Value="@ApprovalStatus.Approved">Approved</MudSelectItem>
                                 </MudSelect>
                             }
                             else

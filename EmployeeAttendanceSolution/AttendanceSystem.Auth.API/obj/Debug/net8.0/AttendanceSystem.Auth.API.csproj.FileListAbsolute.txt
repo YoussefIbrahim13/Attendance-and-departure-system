@@ -559,9 +559,11 @@ Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\AttendanceSystem.Auth.Services.dll
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Domain.dll
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\EmployeesModels.Shared.dll
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\AttendanceSystem.Auth.Services.pdb
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\EmployeesModels.Shared.pdb
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\bin\Debug\net8.0\Domain.pdb
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.csproj.AssemblyReference.cache
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\rpswa.dswa.cache.json
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.GeneratedMSBuildEditorConfig.editorconfig

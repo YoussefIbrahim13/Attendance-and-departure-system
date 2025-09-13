@@ -1,0 +1,81 @@
+﻿using Domain.Entities;
+using System.Globalization;
+using System.Text;
+using Domain.Enums;
+using Applications.CSVFile.DTOS.AttendanceRecord;
+using MediatR;
+
+namespace Applications.CSVFile.Querys.UploadCSVFilequery;
+
+public class UploadCSVFilequeryHandler : IRequestHandler<UploadCSVFilequery, List<AttendanceRecordDto>>
+{
+    public async Task<List<AttendanceRecordDto>> Handle(UploadCSVFilequery query, CancellationToken cancellationToken)
+    {
+        var attendanceRecords = new List<AttendanceRecordDto>();
+        List<string> employeeCodes = new();
+
+        using (var stream = query.File.OpenReadStream())
+        using (var reader = new StreamReader(stream, new UTF8Encoding(true)))
+        {
+            await reader.ReadLineAsync(); 
+            var empLine = await reader.ReadLineAsync();
+            var empParts = empLine?.Split(';') ?? Array.Empty<string>();
+            await reader.ReadLineAsync();
+
+            for (int i = 1; i < empParts.Length; i += 2)
+            {
+                var empCode = empParts[i].Trim();
+                if (!string.IsNullOrEmpty(empCode))
+                    employeeCodes.Add(empCode);
+            }
+
+            string? line;
+            while ((line = await reader.ReadLineAsync()) != null)
+            {
+                var parts = line.Split(';');
+                if (parts.Length < 2) continue;
+                var dateStr = parts[0].Trim();
+                if (string.IsNullOrEmpty(dateStr) || dateStr.ToLower().Contains("total") || dateStr.ToLower().Contains("grand"))
+                    continue;
+
+                if (!DateTime.TryParseExact(dateStr, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out var date))
+                    continue;
+
+                int empIndex = 0;
+                for (int i = 1; i < parts.Length - 1 && empIndex < employeeCodes.Count; i += 2, empIndex++)
+                {
+                    var checkInStr = parts[i].Trim().Replace("�", string.Empty);
+                    var checkOutStr = parts[i + 1].Trim().Replace("�", string.Empty);
+                    TimeSpan checkIn = TimeSpan.Zero;
+                    TimeSpan checkOut = TimeSpan.Zero;
+                    TimeSpan.TryParse(checkInStr, out checkIn);
+                    TimeSpan.TryParse(checkOutStr, out checkOut);
+                    var empCode = employeeCodes[empIndex];
+
+                    attendanceRecords.Add(new AttendanceRecordDto
+                    {
+                        Code = empCode,
+                        Date = date,
+                        CheckIn = checkIn,
+                        CheckOut = checkOut,
+                        ActualStatus = DetermineAttendanceStatus(checkInStr, checkOutStr),
+                        ApprovalStatus = ApprovalStatus.Pending
+                    });
+                }
+            }
+        }
+
+        return attendanceRecords;
+    }
+
+
+
+    private AttendanceStatus DetermineAttendanceStatus(string checkIn, string checkOut)
+    {
+        if (string.IsNullOrEmpty(checkIn) && string.IsNullOrEmpty(checkOut))
+            return AttendanceStatus.Absent;
+
+        return AttendanceStatus.Present;
+    }
+
+}

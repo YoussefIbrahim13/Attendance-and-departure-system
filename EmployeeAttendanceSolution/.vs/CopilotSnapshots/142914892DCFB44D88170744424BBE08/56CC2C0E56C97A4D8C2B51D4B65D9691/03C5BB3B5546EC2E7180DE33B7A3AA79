@@ -1,0 +1,14 @@
+﻿using Applications.UpdateAttendanceRecord.DTOS;
+using MediatR;
+
+namespace Applications.UpdateAttendanceRecord.Commands;
+
+public class UpdateAttendanceRecordcommand : IRequest<(bool Success, string Message)>
+{
+    public UpdateAttendanceRecordDto RecordDto { get; }
+
+    public UpdateAttendanceRecordcommand(UpdateAttendanceRecordDto recordDto)
+    {
+        RecordDto = recordDto;
+    }
+}}

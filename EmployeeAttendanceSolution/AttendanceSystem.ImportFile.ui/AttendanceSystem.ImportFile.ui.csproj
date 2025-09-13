@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Applications\Applications.csproj" />
     <ProjectReference Include="..\Employee.Shared\EmployeesModels.Shared.csproj" />
   </ItemGroup>
 

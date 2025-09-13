@@ -1,0 +1,14 @@
+﻿using Applications.PlanAttendance.DTO;
+using MediatR;
+
+namespace Applications.PlanAttendance.Command;
+
+public class PlanAttendancecommand: IRequest<(bool Success, string Message)>
+{
+    public PlanAttendanceDto Dto { get; }
+
+    public PlanAttendancecommand(PlanAttendanceDto dto)
+    {
+        Dto = dto;
+    }
+}}
