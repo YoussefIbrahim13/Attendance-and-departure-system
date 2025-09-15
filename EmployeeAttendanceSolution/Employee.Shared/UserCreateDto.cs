@@ -5,9 +5,9 @@ namespace EmployeesModels.Shared
     public class UserCreateDto
     {
         [Required] public string Email { get; set; }
-        [Required] public string Password { get; set; }
+        //[Required] public string Password { get; set; }
         [Required] public string Name { get; set; }
-        [Required] public string Department { get; set; }
-        [Required] public string Position { get; set; }
+        // 🔹 Needed to link to Employee
+        [Required] public string EmployeeCode { get; set; }
     }
 }

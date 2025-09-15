@@ -13,9 +13,10 @@ namespace EmployeesModels.Shared
          public string Email { get; set; }= string.Empty;
         public string Phone { get; set; }= string.Empty;
         public decimal Salary { get; set; }
-        public string? ProfileImagePath { get; set; } 
+        public string? ProfileImagePath { get; set; }
 
-
+        // 🔹 Back reference (0..1 user)
+        public virtual ApplicationUser? User { get; set; }
 
     }
 

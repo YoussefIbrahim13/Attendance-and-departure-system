@@ -14,3 +14,19 @@ Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Infrastructure\obj\Debug\
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\refint\Infrastructure.dll
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll
+A:\New folder (2)\New Project\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\bin\Debug\net8.0\Infrastructure.deps.json
+A:\New folder (2)\New Project\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\bin\Debug\net8.0\Infrastructure.dll
+A:\New folder (2)\New Project\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\bin\Debug\net8.0\Infrastructure.pdb
+A:\New folder (2)\New Project\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\bin\Debug\net8.0\Domain.dll
+A:\New folder (2)\New Project\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\bin\Debug\net8.0\Domain.pdb
+A:\New folder (2)\New Project\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.csproj.AssemblyReference.cache
+A:\New folder (2)\New Project\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+A:\New folder (2)\New Project\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfoInputs.cache
+A:\New folder (2)\New Project\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfo.cs
+A:\New folder (2)\New Project\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.csproj.CoreCompileInputs.cache
+A:\New folder (2)\New Project\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.sourcelink.json
+A:\New folder (2)\New Project\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastr.15EFFBFE.Up2Date
+A:\New folder (2)\New Project\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.dll
+A:\New folder (2)\New Project\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\refint\Infrastructure.dll
+A:\New folder (2)\New Project\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
+A:\New folder (2)\New Project\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll

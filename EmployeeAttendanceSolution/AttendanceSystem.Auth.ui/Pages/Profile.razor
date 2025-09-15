@@ -2,156 +2,237 @@
 @attribute [Authorize]
 
 @using System.Net.Http.Json
+@using Domain.Entities
+@using EmployeesModels.Shared
 @inject HttpClient Http
 @inject NavigationManager Navigation
 @inject IDialogService DialogService
 @inject ISnackbar Snackbar
 @inject AuthService AuthService
+@inject ManagementService ManagementService
+@inject VacationRequestServices VacationRequestService
+@inject CurrentUserService CurrentUserService
 
 <MudContainer MaxWidth="MaxWidth.Large" Class="mt-6">
-    <!-- Enhanced Header -->
+    <!-- Enhanced Header with more information -->
     <div class="profile-header">
-        <MudGrid AlignItems="Center">
+        <MudGrid AlignItems="Center" Spacing="3">
             <MudItem xs="12" sm="3" Class="text-center">
-                <MudAvatar Size="Size.Large" 
-                          Class="profile-avatar mb-3" 
-                          Src="" 
-                          Style="width: 120px; height: 120px;" />
-                <MudButton Variant="Variant.Outlined" 
-                          Color="Color.Inherit" 
-                          Size="Size.Small" 
-                          Class="action-button"
-                          StartIcon="@Icons.Material.Filled.CameraAlt"
-                          OnClick="@ChangeProfilePicture"
-                          Style="border-color: rgba(255,255,255,0.5); color: white;">
+                <MudAvatar Size="Size.Large"
+                           Class="profile-avatar mb-3"
+                           Src=""
+                           Style="width: 140px; height: 140px;" />
+                <MudButton Variant="Variant.Outlined"
+                           Color="Color.Inherit"
+                           Size="Size.Small"
+                           Class="change-picture-btn"
+                           StartIcon="@Icons.Material.Filled.CameraAlt"
+                           OnClick="@ChangeProfilePicture">
                     Change Picture
                 </MudButton>
             </MudItem>
-            <MudItem xs="12" sm="9">
-                <MudText Typo="Typo.h4" Class="fw-bold mb-2">@UserProfile.Name</MudText>
-                <MudText Typo="Typo.h6" Style="opacity: 0.9; margin-bottom: 1rem;">@string.Join(", ", UserProfile.Roles ?? new List<string>())</MudText>
-                <MudChip T ="String" Icon="@Icons.Material.Filled.Work"
-                         Label="true"
-                         Color="Color.Inherit"
-                         Style="background-color: rgba(255,255,255,0.2); color: white;">
-                    @UserProfile.Department
-                </MudChip>
+            <MudItem xs="12" sm="6">
+                <MudText Typo="Typo.h3" Class="fw-bold mb-2 profile-name">@UserProfile.Name</MudText>
+                <MudText Typo="Typo.h6" Class="profile-subtitle mb-3">@UserProfile.Position</MudText>
+
+                <!-- Enhanced info chips -->
+                <div class="info-chips-container mb-3">
+                    <MudChip T="String" Icon="@Icons.Material.Filled.Work"
+                             Label="true"
+                             Color="Color.Inherit"
+                             Class="info-chip">
+                        @UserProfile.Department
+                    </MudChip>
+                    <MudChip T="String" Icon="@Icons.Material.Filled.Badge"
+                             Label="true"
+                             Color="Color.Inherit"
+                             Class="info-chip">
+                        ID: @UserProfile.Id
+                    </MudChip>
+                    <MudChip T="String" Icon="@Icons.Material.Filled.Security"
+                             Label="true"
+                             Color="Color.Inherit"
+                             Class="info-chip">
+                        @string.Join(", ", UserProfile.Roles ?? new List<string>())
+                    </MudChip>
+                </div>
+
+                <!-- Quick contact info -->
+                <div class="quick-contact-info">
+                    <div class="contact-item">
+                        <MudIcon Icon="@Icons.Material.Filled.Email" Class="contact-icon" />
+                        <MudText Typo="Typo.body2">@UserProfile.Email</MudText>
+                    </div>
+                    <div class="contact-item">
+                        <MudIcon Icon="@Icons.Material.Filled.Phone" Class="contact-icon" />
+                        <MudText Typo="Typo.body2">@UserProfile.PhoneNumber</MudText>
+                    </div>
+                </div>
+            </MudItem>
+            <MudItem xs="12" sm="3" Class="text-center">
+                <!-- Quick stats preview -->
+                <div class="quick-stats">
+                    <div class="quick-stat-item">
+                        <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Style="color: #4CAF50; font-size: 2rem;" />
+                        <MudText Typo="Typo.h5" Class="stat-number">@AttendanceStats.DaysPresent</MudText>
+                        <MudText Typo="Typo.caption" Class="stat-label">Days Present</MudText>
+                    </div>
+                    <div class="quick-stat-item">
+                        <MudIcon Icon="@Icons.Material.Filled.BeachAccess" Style="color: #FF9800; font-size: 2rem;" />
+                        <MudText Typo="Typo.h5" Class="stat-number">@AttendanceStats.VacationDaysRemaining</MudText>
+                        <MudText Typo="Typo.caption" Class="stat-label">Vacation Left</MudText>
+                    </div>
+                </div>
             </MudItem>
         </MudGrid>
     </div>
 
-    <!-- Profile Information Card -->
-    <MudCard Class="profile-card mb-4">
-        <MudCardContent>
-            <MudText Typo="Typo.h6" Class="section-title">
-                <MudIcon Icon="@Icons.Material.Filled.Person" Class="section-icon" />
-                Contact Information
-            </MudText>
-            <div class="info-section">
-                <div class="info-item">
-                    <MudIcon Icon="@Icons.Material.Filled.Email" Class="info-icon" />
-                    <div>
-                        <MudText Typo="Typo.body2" Style="opacity: 0.7;">Email</MudText>
-                        <MudText Typo="Typo.body1">@UserProfile.Email</MudText>
-                    </div>
-                </div>
-                <div class="info-item">
-                    <MudIcon Icon="@Icons.Material.Filled.Phone" Class="info-icon" />
-                    <div>
-                        <MudText Typo="Typo.body2" Style="opacity: 0.7;">Phone</MudText>
-                        <MudText Typo="Typo.body1">@UserProfile.PhoneNumber</MudText>
-                    </div>
-                </div>
-                <div class="info-item">
-                    <MudIcon Icon="@Icons.Material.Filled.Business" Class="info-icon" />
-                    <div>
-                        <MudText Typo="Typo.body2" Style="opacity: 0.7;">Department</MudText>
-                        <MudText Typo="Typo.body1">@UserProfile.Department</MudText>
-                    </div>
-                </div>
-            </div>
-            <MudDivider Class="my-4" />
-            <MudGrid>
-                <MudItem xs="12" sm="6">
-                    <MudButton Variant="Variant.Filled" 
-                              Color="Color.Primary" 
-                              StartIcon="@Icons.Material.Filled.Edit" 
-                              Class="action-button"
-                              FullWidth="true"
-                              OnClick="@EditProfile">
-                        Edit Profile
-                    </MudButton>
-                </MudItem>
-                <MudItem xs="12" sm="6">
-                    <MudButton Variant="Variant.Outlined" 
-                              Color="Color.Secondary" 
-                              StartIcon="@Icons.Material.Filled.Lock" 
-                              Class="action-button"
-                              FullWidth="true"
-                              OnClick="@ChangePassword">
-                        Change Password
-                    </MudButton>
-                </MudItem>
-            </MudGrid>
-        </MudCardContent>
-    </MudCard>
+    <!-- Enhanced Tabs with theme colors -->
+    <MudTabs Elevation="2"
+             Rounded="true"
+             Centered="true"
+             Class="profile-tabs my-6"
+             Color="Color.Primary"
+             PanelClass="tab-panel-content"
+             SliderColor="Color.Secondary">
 
-    <!-- Enhanced Tabs -->
-    <MudTabs Elevation="0" 
-             Rounded="true" 
-             ApplyEffectsToContainer="true" 
-             Class="mt-4"
-             PanelClass="tab-panel-content">
-        
-        <!-- Attendance Summary -->
+        <!-- Contact Info Tab -->
+        <MudTabPanel Text="Contact Info" Icon="@Icons.Material.Filled.Person">
+            <MudCard Class="profile-card mb-4" Elevation="3">
+                <MudCardContent>
+                    <MudText Typo="Typo.h6" Class="section-title">
+                        <MudIcon Icon="@Icons.Material.Filled.Person" Class="section-icon" />
+                        Employee Information
+                    </MudText>
+                    <div class="info-section">
+                        <div class="info-item">
+                            <MudIcon Icon="@Icons.Material.Filled.Badge" Class="info-icon" />
+                            <div>
+                                <MudText Typo="Typo.body2" Class="info-label">Full Name</MudText>
+                                <MudText Typo="Typo.body1" Class="info-value">@UserProfile.Name</MudText>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <MudIcon Icon="@Icons.Material.Filled.Email" Class="info-icon" />
+                            <div>
+                                <MudText Typo="Typo.body2" Class="info-label">Email</MudText>
+                                <MudText Typo="Typo.body1" Class="info-value">@UserProfile.Email</MudText>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <MudIcon Icon="@Icons.Material.Filled.Phone" Class="info-icon" />
+                            <div>
+                                <MudText Typo="Typo.body2" Class="info-label">Phone</MudText>
+                                <MudText Typo="Typo.body1" Class="info-value">@UserProfile.PhoneNumber</MudText>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <MudIcon Icon="@Icons.Material.Filled.Business" Class="info-icon" />
+                            <div>
+                                <MudText Typo="Typo.body2" Class="info-label">Department</MudText>
+                                <MudText Typo="Typo.body1" Class="info-value">@UserProfile.Department</MudText>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <MudIcon Icon="@Icons.Material.Filled.BusinessCenter" Class="info-icon" />
+                            <div>
+                                <MudText Typo="Typo.body2" Class="info-label">Position</MudText>
+                                <MudText Typo="Typo.body1" Class="info-value">@UserProfile.Position</MudText>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <MudIcon Icon="@Icons.Material.Filled.Work" Class="info-icon" />
+                            <div>
+                                <MudText Typo="Typo.body2" Class="info-label">Role</MudText>
+                                <MudText Typo="Typo.body1" Class="info-value">@string.Join(", ", UserProfile.Roles ?? new List<string>())</MudText>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <MudIcon Icon="@Icons.Material.Filled.CalendarToday" Class="info-icon" />
+                            <div>
+                                <MudText Typo="Typo.body2" Class="info-label">Employee Code</MudText>
+                                <MudText Typo="Typo.body1" Class="info-value">@UserProfile.Code</MudText>
+                            </div>
+                        </div>
+                    </div>
+                    <MudDivider Class="my-4" />
+                    <MudGrid>
+                        <MudItem xs="12" sm="6">
+                            <MudButton Variant="Variant.Filled"
+                                       Color="Color.Primary"
+                                       StartIcon="@Icons.Material.Filled.Edit"
+                                       Class="action-button"
+                                       FullWidth="true"
+                                       OnClick="@EditProfile">
+                                Edit Profile
+                            </MudButton>
+                        </MudItem>
+                        <MudItem xs="12" sm="6">
+                            <MudButton Variant="Variant.Outlined"
+                                       Color="Color.Secondary"
+                                       StartIcon="@Icons.Material.Filled.Lock"
+                                       Class="action-button"
+                                       FullWidth="true"
+                                       OnClick="@ChangePassword">
+                                Change Password
+                            </MudButton>
+                        </MudItem>
+                    </MudGrid>
+                </MudCardContent>
+            </MudCard>
+        </MudTabPanel>
+
+        <!-- Attendance Overview Tab -->
         <MudTabPanel Text="Attendance Overview" Icon="@Icons.Material.Filled.Analytics">
             <MudText Typo="Typo.h6" Class="section-title mb-4">
                 <MudIcon Icon="@Icons.Material.Filled.BarChart" Class="section-icon" />
                 Attendance Statistics
             </MudText>
-            <MudGrid>
+            <MudGrid Spacing="3">
                 <MudItem xs="12" sm="6" md="3">
-                    <div class="stats-card">
+                    <div class="stats-card present-card">
+                        <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Class="stat-icon present-icon" />
                         <MudText Typo="Typo.h4" Class="stat-value">@AttendanceStats.DaysPresent</MudText>
-                        <MudText Typo="Typo.body2" Style="opacity: 0.7;">Days Present</MudText>
-                        <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Style="color: #4CAF50; float: right;" />
+                        <MudText Typo="Typo.body2" Class="stat-label">Days Present</MudText>
                     </div>
                 </MudItem>
                 <MudItem xs="12" sm="6" md="3">
-                    <div class="stats-card">
+                    <div class="stats-card absent-card">
+                        <MudIcon Icon="@Icons.Material.Filled.Cancel" Class="stat-icon absent-icon" />
                         <MudText Typo="Typo.h4" Class="stat-value">@AttendanceStats.DaysAbsent</MudText>
-                        <MudText Typo="Typo.body2" Style="opacity: 0.7;">Days Absent</MudText>
-                        <MudIcon Icon="@Icons.Material.Filled.Cancel" Style="color: #F44336; float: right;" />
+                        <MudText Typo="Typo.body2" Class="stat-label">Days Absent</MudText>
                     </div>
                 </MudItem>
                 <MudItem xs="12" sm="6" md="3">
-                    <div class="stats-card">
+                    <div class="stats-card vacation-used-card">
+                        <MudIcon Icon="@Icons.Material.Filled.BeachAccess" Class="stat-icon vacation-used-icon" />
                         <MudText Typo="Typo.h4" Class="stat-value">@AttendanceStats.VacationDaysUsed</MudText>
-                        <MudText Typo="Typo.body2" Style="opacity: 0.7;">Vacation Used</MudText>
-                        <MudIcon Icon="@Icons.Material.Filled.BeachAccess" Style="color: #FF9800; float: right;" />
+                        <MudText Typo="Typo.body2" Class="stat-label">Vacation Used</MudText>
                     </div>
                 </MudItem>
                 <MudItem xs="12" sm="6" md="3">
-                    <div class="stats-card">
+                    <div class="stats-card vacation-left-card">
+                        <MudIcon Icon="@Icons.Material.Filled.Event" Class="stat-icon vacation-left-icon" />
                         <MudText Typo="Typo.h4" Class="stat-value">@AttendanceStats.VacationDaysRemaining</MudText>
-                        <MudText Typo="Typo.body2" Style="opacity: 0.7;">Vacation Left</MudText>
-                        <MudIcon Icon="@Icons.Material.Filled.Event" Style="color: #2196F3; float: right;" />
+                        <MudText Typo="Typo.body2" Class="stat-label">Vacation Left</MudText>
                     </div>
                 </MudItem>
             </MudGrid>
         </MudTabPanel>
 
-        <!-- Recent Attendance -->
+        <!-- Recent Activity Tab -->
         <MudTabPanel Text="Recent Activity" Icon="@Icons.Material.Filled.History">
             <MudText Typo="Typo.h6" Class="section-title mb-4">
                 <MudIcon Icon="@Icons.Material.Filled.Schedule" Class="section-icon" />
                 Recent Attendance Records
             </MudText>
-            <MudTable Items="@RecentAttendance" 
-                     Hover="true" 
-                     Striped="true" 
-                     Class="attendance-table"
-                     Elevation="2">
+
+            <MudTable Items="@RecentAttendance"
+                      Hover="true"
+                      Striped="true"
+                      Class="attendance-table"
+                      Elevation="3"
+                      FullWidth="true">
                 <HeaderContent>
                     <MudTh><MudIcon Icon="@Icons.Material.Filled.CalendarToday" Class="mr-2" />Date</MudTh>
                     <MudTh><MudIcon Icon="@Icons.Material.Filled.Info" Class="mr-2" />Status</MudTh>
@@ -159,133 +240,606 @@
                     <MudTh><MudIcon Icon="@Icons.Material.Filled.Logout" Class="mr-2" />Check Out</MudTh>
                     <MudTh><MudIcon Icon="@Icons.Material.Filled.Note" Class="mr-2" />Note</MudTh>
                 </HeaderContent>
+
                 <RowTemplate>
                     <MudTr>
                         <MudTd DataLabel="Date">
                             <MudText Typo="Typo.body2">@context.Date.ToString("MMM dd, yyyy")</MudText>
                         </MudTd>
+
                         <MudTd DataLabel="Status">
-                          @*   <MudChip T="string" Class="status-badge @GetStatusClass(context.Status)" 
-                                    Variant="Variant.Filled" 
-                                    Color="@GetStatusColor(context.Status)">
-                                @context.Status
-                            </MudChip> *@
+                            <MudChip T="string"
+                                     Class=@($"status-badge {GetStatusClass(context.ApprovalStatus.ToString())}")
+                                     Variant="Variant.Filled"
+                                     Color="@GetStatusColor(context.ApprovalStatus.ToString())">
+                                @context.ApprovalStatus
+                            </MudChip>
                         </MudTd>
+
                         <MudTd DataLabel="Check In">
-                            @if (context.CheckIn.HasValue)
+                            @if (context.CheckIn != TimeSpan.Zero)
                             {
-                                <MudText Typo="Typo.body2">@context.CheckIn.Value.ToString("hh:mm tt")</MudText>
+                                <MudText Typo="Typo.body2">@DateTime.Today.Add(context.CheckIn).ToString("hh:mm tt")</MudText>
                             }
                             else
                             {
-                                <MudText Typo="Typo.body2" Style="opacity: 0.5;">--</MudText>
+                                <MudText Typo="Typo.body2" Class="muted-text">--</MudText>
                             }
                         </MudTd>
+
                         <MudTd DataLabel="Check Out">
-                            @if (context.CheckOut.HasValue)
+                            @if (context.CheckOut != TimeSpan.Zero)
                             {
-                                <MudText Typo="Typo.body2">@context.CheckOut.Value.ToString("hh:mm tt")</MudText>
+                                <MudText Typo="Typo.body2">@DateTime.Today.Add(context.CheckOut).ToString("hh:mm tt")</MudText>
                             }
                             else
                             {
-                                <MudText Typo="Typo.body2" Style="opacity: 0.5;">--</MudText>
+                                <MudText Typo="Typo.body2" Class="muted-text">--</MudText>
                             }
                         </MudTd>
+
                         <MudTd DataLabel="Note">
-                            <MudText Typo="Typo.body2">@(string.IsNullOrEmpty(context.Note) ? "--" : context.Note)</MudText>
+                            <MudText Typo="Typo.body2">
+                                @(string.IsNullOrEmpty(context.Note) ? "--" : context.Note)
+                            </MudText>
                         </MudTd>
                     </MudTr>
                 </RowTemplate>
             </MudTable>
         </MudTabPanel>
 
-        <!-- Quick Links -->
-        <MudTabPanel Text="Quick Actions" Icon="@Icons.Material.Filled.Speed">
+        <!-- Vacation Requests Tab -->
+        <MudTabPanel Text="Vacation Requests" Icon="@Icons.Material.Filled.BeachAccess">
             <MudText Typo="Typo.h6" Class="section-title mb-4">
-                <MudIcon Icon="@Icons.Material.Filled.FlashOn" Class="section-icon" />
-                Quick Actions
+                <MudIcon Icon="@Icons.Material.Filled.EventNote" Class="section-icon" />
+                Vacation History
             </MudText>
-            <MudGrid>
+            <MudGrid Class="mb-4">
                 <MudItem xs="12" sm="6" md="4">
-                    <MudCard Class="quick-link-item" Style="cursor: pointer;" @onclick="@(()=>Navigation.NavigateTo("/vacation/request"))">
-                        <MudCardContent>
-                            <MudGrid AlignItems="Center">
-                                <MudItem xs="3">
-                                    <MudIcon Icon="@Icons.Material.Filled.BeachAccess" 
-                                            Size="Size.Large" 
-                                            Color="Color.Primary" />
-                                </MudItem>
-                                <MudItem xs="9">
-                                    <MudText Typo="Typo.h6">Request Vacation</MudText>
-                                    <MudText Typo="Typo.body2" Style="opacity: 0.7;">Submit a new vacation request</MudText>
-                                </MudItem>
-                            </MudGrid>
-                        </MudCardContent>
-                    </MudCard>
-                </MudItem>
-                <MudItem xs="12" sm="6" md="4">
-                    <MudCard Class="quick-link-item" Style="cursor: pointer;" @onclick="@(()=>Navigation.NavigateTo("/attendance/report"))">
-                        <MudCardContent>
-                            <MudGrid AlignItems="Center">
-                                <MudItem xs="3">
-                                    <MudIcon Icon="@Icons.Material.Filled.Assessment" 
-                                            Size="Size.Large" 
-                                            Color="Color.Secondary" />
-                                </MudItem>
-                                <MudItem xs="9">
-                                    <MudText Typo="Typo.h6">View Reports</MudText>
-                                    <MudText Typo="Typo.body2" Style="opacity: 0.7;">Access detailed attendance reports</MudText>
-                                </MudItem>
-                            </MudGrid>
-                        </MudCardContent>
-                    </MudCard>
-                </MudItem>
-                <MudItem xs="12" sm="6" md="4">
-                    <MudCard Class="quick-link-item" Style="cursor: pointer;" @onclick="@(()=>Navigation.NavigateTo("/settings"))">
-                        <MudCardContent>
-                            <MudGrid AlignItems="Center">
-                                <MudItem xs="3">
-                                    <MudIcon Icon="@Icons.Material.Filled.Settings" 
-                                            Size="Size.Large" 
-                                            Color="Color.Tertiary" />
-                                </MudItem>
-                                <MudItem xs="9">
-                                    <MudText Typo="Typo.h6">Settings</MudText>
-                                    <MudText Typo="Typo.body2" Style="opacity: 0.7;">Manage your preferences</MudText>
-                                </MudItem>
-                            </MudGrid>
-                        </MudCardContent>
-                    </MudCard>
+                    <MudButton Variant="Variant.Filled"
+                               Color="Color.Primary"
+                               StartIcon="@Icons.Material.Filled.Add"
+                               Class="action-button"
+                               FullWidth="true"
+                               OnClick="@(() => Navigation.NavigateTo("/vacation/requests"))">
+                        Request New Vacation
+                    </MudButton>
                 </MudItem>
             </MudGrid>
+
+            <!-- Table Container with proper styling -->
+            <div class="table-responsive-container">
+                <MudTable Items="@VacationHistory"
+                          Hover="true"
+                          Striped="true"
+                          Class="vacation-table-fixed"
+                          Elevation="3"
+                          FixedHeader="true"
+                          Height="500px">
+                    <HeaderContent>
+                        <MudTh Class="col-request-day">
+                            <MudIcon Icon="@Icons.Material.Filled.CalendarToday" Class="mr-2" />Request At Day
+                        </MudTh>
+                        <MudTh Class="col-from-date">
+                            <MudIcon Icon="@Icons.Material.Filled.DateRange" Class="mr-2" />From Date
+                        </MudTh>
+                        <MudTh Class="col-to-date">
+                            <MudIcon Icon="@Icons.Material.Filled.DateRange" Class="mr-2" />To Date
+                        </MudTh>
+                        <MudTh Class="col-days">
+                            <MudIcon Icon="@Icons.Material.Filled.Schedule" Class="mr-2" />Days
+                        </MudTh>
+                        <MudTh Class="col-status">
+                            <MudIcon Icon="@Icons.Material.Filled.Info" Class="mr-2" />Status
+                        </MudTh>
+                        <MudTh Class="col-approved-by">
+                            <MudIcon Icon="@Icons.Material.Filled.Person" Class="mr-2" />Approved By
+                        </MudTh>
+                        <MudTh Class="col-approved-at">
+                            <MudIcon Icon="@Icons.Material.Filled.DateRange" Class="mr-2" />Approved At
+                        </MudTh>
+                        <MudTh Class="col-reason">
+                            <MudIcon Icon="@Icons.Material.Filled.Note" Class="mr-2" />Reason
+                        </MudTh>
+                    </HeaderContent>
+                    <RowTemplate>
+                        <MudTd DataLabel="Request At Day" Class="col-request-day">
+                            <MudText Typo="Typo.body2">@context.CreatedAt.ToString("MMM dd, yyyy")</MudText>
+                        </MudTd>
+                        <MudTd DataLabel="From Date" Class="col-from-date">
+                            <MudText Typo="Typo.body2">@context.FromTime.ToString("MMM dd, yyyy")</MudText>
+                        </MudTd>
+                        <MudTd DataLabel="To Date" Class="col-to-date">
+                            <MudText Typo="Typo.body2">@context.ToTime.ToString("MMM dd, yyyy")</MudText>
+                        </MudTd>
+                        <MudTd DataLabel="Days" Class="col-days">
+                            <MudText Typo="Typo.body2">@context.DaysRequested</MudText>
+                        </MudTd>
+                        <MudTd DataLabel="Status" Class="col-status">
+                            <MudChip T="string"
+                                     Class="status-badge"
+                                     Variant="Variant.Filled"
+                                     Size="Size.Small"
+                                     Color="@GetVacationStatusColor(context.Status.ToString())">
+                                @context.Status
+                            </MudChip>
+                        </MudTd>
+                        <MudTd DataLabel="Approved By" Class="col-approved-by">
+                            <MudText Typo="Typo.body2" title="@(!string.IsNullOrEmpty(context.ApprovedBy) ? context.ApprovedBy : "--")">
+                                @(!string.IsNullOrEmpty(context.ApprovedBy) ? context.ApprovedBy : "--")
+                            </MudText>
+                        </MudTd>
+                        <MudTd DataLabel="Approved At" Class="col-approved-at">
+                            <MudText Typo="Typo.body2">
+                                @(context.ApprovedAt != DateTime.MinValue ? context.ApprovedAt.ToString("MMM dd, yyyy") : "--")
+                            </MudText>
+                        </MudTd>
+                        <MudTd DataLabel="Reason" Class="col-reason">
+                            <MudText Typo="Typo.body2" title="@(!string.IsNullOrEmpty(context.Reason) ? context.Reason : "--")">
+                                @(!string.IsNullOrEmpty(context.Reason) ? context.Reason : "--")
+                            </MudText>
+                        </MudTd>
+                    </RowTemplate>
+                </MudTable>
+            </div>
         </MudTabPanel>
     </MudTabs>
 </MudContainer>
 
 <style>
-    /* Your existing CSS styles remain unchanged */
+    /* Enhanced header with theme colors */
+    .profile-header {
+        background: linear-gradient(135deg, var(--mud-palette-primary) 0%, var(--mud-palette-secondary) 100%);
+        border-radius: 20px;
+        padding: 2.5rem;
+        margin-bottom: 2rem;
+        color: white;
+        box-shadow: 0 12px 40px rgba(66, 165, 245, 0.25);
+        position: relative;
+        overflow: hidden;
+    }
+
+        .profile-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+    .profile-avatar {
+        border: 5px solid rgba(255, 255, 255, 0.4);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s ease;
+    }
+
+        .profile-avatar:hover {
+            transform: scale(1.05);
+        }
+
+    .change-picture-btn {
+        border-color: rgba(255,255,255,0.6) !important;
+        color: white !important;
+        backdrop-filter: blur(10px);
+        background: rgba(255,255,255,0.1);
+        border-radius: 12px;
+        font-weight: 500;
+    }
+
+    .profile-name {
+        text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        letter-spacing: -0.02em;
+    }
+
+    .profile-subtitle {
+        opacity: 0.9;
+        font-weight: 500;
+    }
+
+    .info-chips-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .info-chip {
+        background-color: rgba(255,255,255,0.2) !important;
+        color: white !important;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.3);
+        font-weight: 500;
+    }
+
+    .quick-contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.5rem 0;
+    }
+
+    .contact-icon {
+        color: rgba(255,255,255,0.9);
+        font-size: 1.25rem;
+    }
+
+    .quick-stats {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .quick-stat-item {
+        text-align: center;
+        padding: 1rem;
+        border-radius: 16px;
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.2);
+        min-width: 100px;
+    }
+
+    .stat-number {
+        font-weight: 700;
+        color: white;
+        margin: 0.5rem 0 0.25rem 0;
+    }
+
+    .stat-label {
+        opacity: 0.9;
+        font-size: 0.75rem;
+    }
+
+    /* Enhanced cards with theme colors */
+    .profile-card {
+        border-radius: 20px;
+        box-shadow: 0 6px 30px rgba(0, 0, 0, 0.08);
+        border: none;
+        background: var(--mud-palette-surface);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+        .profile-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        }
+
+    .section-title {
+        display: flex;
+        align-items: center;
+        margin-bottom: 2rem;
+        font-weight: 700;
+        color: var(--mud-palette-text-primary);
+        font-size: 1.4rem;
+    }
+
+    .section-icon {
+        margin-right: 0.75rem;
+        color: var(--mud-palette-primary);
+        font-size: 1.75rem;
+    }
+
+    .info-section {
+        display: grid;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .info-item {
+        display: flex;
+        align-items: center;
+        padding: 1.5rem;
+        background: var(--mud-palette-background);
+        border-radius: 16px;
+        border-left: 5px solid var(--mud-palette-primary);
+        transition: all 0.2s ease;
+    }
+
+        .info-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 20px rgba(66, 165, 245, 0.15);
+        }
+
+    .info-icon {
+        margin-right: 1.25rem;
+        color: var(--mud-palette-primary);
+        font-size: 1.75rem;
+    }
+
+    .info-label {
+        opacity: 0.7;
+        font-size: 0.875rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .info-value {
+        font-weight: 600;
+        margin-top: 0.25rem;
+    }
+
+    /* Enhanced stats cards */
+    .stats-card {
+        background: var(--mud-palette-surface);
+        padding: 2rem 1.5rem;
+        border-radius: 20px;
+        box-shadow: 0 6px 30px rgba(0, 0, 0, 0.08);
+        border: none;
+        position: relative;
+        transition: all 0.3s ease;
+        overflow: hidden;
+    }
+
+        .stats-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            border-radius: 20px 20px 0 0;
+        }
+
+    .present-card::before {
+        background: linear-gradient(90deg, #4CAF50, #66BB6A);
+    }
+
+    .absent-card::before {
+        background: linear-gradient(90deg, #F44336, #EF5350);
+    }
+
+    .vacation-used-card::before {
+        background: linear-gradient(90deg, #FF9800, #FFB74D);
+    }
+
+    .vacation-left-card::before {
+        background: linear-gradient(90deg, #2196F3, #42A5F5);
+    }
+
+    .stats-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 16px 50px rgba(0, 0, 0, 0.15);
+    }
+
+    .stat-icon {
+        font-size: 2.5rem !important;
+        margin-bottom: 1rem;
+    }
+
+    .present-icon {
+        color: #4CAF50;
+    }
+
+    .absent-icon {
+        color: #F44336;
+    }
+
+    .vacation-used-icon {
+        color: #FF9800;
+    }
+
+    .vacation-left-icon {
+        color: #2196F3;
+    }
+
+    .stat-value {
+        font-weight: 800;
+        color: var(--mud-palette-text-primary);
+        margin-bottom: 0.5rem;
+    }
+
+    /* Enhanced tabs */
+    .profile-tabs {
+        background: var(--mud-palette-surface);
+        border-radius: 20px;
+        box-shadow: 0 6px 30px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+    }
+
+    .action-button {
+        border-radius: 16px;
+        text-transform: none;
+        font-weight: 600;
+        padding: 1rem 2rem;
+        transition: all 0.2s ease;
+    }
+
+        .action-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(66, 165, 245, 0.3);
+        }
+
+    .attendance-table, .vacation-table {
+        border-radius: 20px;
+        overflow: hidden;
+        background: var(--mud-palette-surface);
+        width: 100% !important;
+        table-layout: auto !important;
+    }
+
+    .tab-panel-content {
+        padding: 2.5rem 0;
+        width: 100% !important;
+        overflow-x: auto !important;
+    }
+
+    .muted-text {
+        opacity: 0.5;
+    }
+
+    /* NEW VACATION TABLE STYLES */
+    .table-responsive-container {
+        width: 100%;
+        overflow-x: auto;
+        border-radius: 20px;
+        box-shadow: 0 6px 30px rgba(0, 0, 0, 0.08);
+        background: var(--mud-palette-surface);
+        margin-bottom: 1rem;
+    }
+
+    .vacation-table-fixed {
+        width: 100% !important;
+        min-width: 900px;
+        border-radius: 20px;
+        background: var(--mud-palette-surface);
+    }
+
+        .vacation-table-fixed .mud-table-container {
+            width: 100% !important;
+            border-radius: 20px;
+        }
+
+        .vacation-table-fixed table {
+            width: 100% !important;
+            table-layout: fixed !important;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        .vacation-table-fixed thead th {
+            background-color: var(--mud-palette-primary) !important;
+            color: white !important;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            border-bottom: 2px solid var(--mud-palette-primary-darken);
+            padding: 16px 12px !important;
+        }
+
+        .vacation-table-fixed tbody td {
+            border-bottom: 1px solid var(--mud-palette-divider);
+            vertical-align: middle;
+            padding: 12px 8px !important;
+        }
+
+        .vacation-table-fixed tbody tr:hover {
+            background-color: var(--mud-palette-action-hover) !important;
+        }
+
+        .vacation-table-fixed .mud-table-head {
+            background-color: var(--mud-palette-primary) !important;
+        }
+
+    /* Column-specific styles */
+    .col-request-day, .col-from-date, .col-to-date, .col-approved-at {
+        width: 12% !important;
+        min-width: 120px !important;
+        white-space: nowrap !important;
+    }
+
+    .col-days {
+        width: 8% !important;
+        min-width: 80px !important;
+        text-align: center !important;
+        white-space: nowrap !important;
+    }
+
+    .col-status {
+        width: 12% !important;
+        min-width: 100px !important;
+        text-align: center !important;
+        white-space: nowrap !important;
+    }
+
+    .col-approved-by {
+        width: 15% !important;
+        min-width: 130px !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    .col-reason {
+        width: 17% !important;
+        min-width: 150px !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    .status-badge {
+        font-size: 0.75rem !important;
+        font-weight: 600;
+        border-radius: 12px;
+        padding: 4px 8px;
+        min-width: 70px;
+        text-align: center;
+    }
+
+    /* Fix for MudBlazor table scroll */
+    .mud-table-container {
+        overflow-x: visible !important;
+    }
+
 </style>
+
 
 @code {
     private UserInfo UserProfile = new();
     private AttendanceStatsModel AttendanceStats = new();
     private List<AttendanceRecord> RecentAttendance = new();
+    private List<VacationRequest> VacationHistory = new();
 
     protected override async Task OnInitializedAsync()
     {
-        try 
+        try
         {
             UserProfile = await AuthService.GetCurrentUser();
-            
+
+            // Initialize sample data for demonstration
+            InitializeSampleData();
+
             // Uncomment these when your API endpoints are ready
             //AttendanceStats = await Http.GetFromJsonAsync<AttendanceStatsModel>("api/user/attendance/stats") ?? new();
-            //RecentAttendance = await Http.GetFromJsonAsync<List<AttendanceRecord>>("api/user/attendance/recent") ?? new();
+
+            RecentAttendance = new List<AttendanceRecord>(); // TODO: replace with API
+
+            var vacationResult = await VacationRequestService.GetVacationRequestsByUserIdAsync(UserProfile.Id);
+            if (vacationResult.Success)
+                VacationHistory = vacationResult.Data.ToList();
+            else
+                Snackbar.Add(vacationResult.Message, Severity.Error);
+
         }
         catch (Exception ex)
         {
             Snackbar.Add("Error loading profile data", Severity.Error);
             Console.Error.WriteLine(ex);
         }
+    }
+
+    private void InitializeSampleData()
+    {
+        // Sample attendance stats
+        AttendanceStats = new AttendanceStatsModel
+        {
+            DaysPresent = 245,
+            DaysAbsent = 5,
+            VacationDaysUsed = 12,
+            VacationDaysRemaining = 8
+        };
+
+        // Sample recent attendance
+        // RecentAttendance = new List<AttendanceRecord>
+        // {
+        //     new() { Date = DateTime.Today.AddDays(-1), Status = "Present", CheckIn = DateTime.Today.AddDays(-1).AddHours(9), CheckOut = DateTime.Today.AddDays(-1).AddHours(17), Note = "" },
+        //     new() { Date = DateTime.Today.AddDays(-2), Status = "Present", CheckIn = DateTime.Today.AddDays(-2).AddHours(8.5), CheckOut = DateTime.Today.AddDays(-2).AddHours(17.5), Note = "" },
+        //     new() { Date = DateTime.Today.AddDays(-3), Status = "Work from Home", CheckIn = DateTime.Today.AddDays(-3).AddHours(9), CheckOut = DateTime.Today.AddDays(-3).AddHours(17), Note = "Remote work" },
+        //     new() { Date = DateTime.Today.AddDays(-4), Status = "Present", CheckIn = DateTime.Today.AddDays(-4).AddHours(9.25), CheckOut = DateTime.Today.AddDays(-4).AddHours(17.25), Note = "" },
+        //     new() { Date = DateTime.Today.AddDays(-5), Status = "Vacation", CheckIn = null, CheckOut = null, Note = "Annual leave" }
+        // };
+
+        // Sample vacation history
+        // VacationHistory = new List<VacationRequest>;
+
     }
 
     private string GetStatusClass(string status)
@@ -308,6 +862,18 @@
             "absent" => Color.Error,
             "vacation" => Color.Info,
             "work from home" => Color.Warning,
+            _ => Color.Default
+        };
+    }
+
+    private Color GetVacationStatusColor(string status)
+    {
+        return status?.ToLower() switch
+        {
+            "approved" => Color.Success,
+            "pending" => Color.Warning,
+            "rejected" => Color.Error,
+            "cancelled" => Color.Default,
             _ => Color.Default
         };
     }
@@ -346,12 +912,5 @@
         public int VacationDaysRemaining { get; set; } = 8;
     }
 
-    public class AttendanceRecord
-    {
-        public DateTime Date { get; set; }
-        public string Status { get; set; } = "Present";
-        public DateTime? CheckIn { get; set; }
-        public DateTime? CheckOut { get; set; }
-        public string Note { get; set; } = "";
-    }
+
 }

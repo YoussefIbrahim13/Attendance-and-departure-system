@@ -127,6 +127,16 @@
   },
   {
     "ContainingType": "AttendanceSystem.Auth.API.Controllers.ManagementController",
+    "Method": "GetAllEmployees",
+    "RelativePath": "api/Management/GetAllEmployees",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AttendanceSystem.Auth.API.Controllers.ManagementController",
     "Method": "GetAllRoles",
     "RelativePath": "api/Management/GetAllRoles",
     "HttpMethod": "GET",
@@ -179,12 +189,44 @@
   },
   {
     "ContainingType": "AttendanceSystem.Auth.API.Controllers.ManagementController",
+    "Method": "GetUserByEmployeeCode",
+    "RelativePath": "api/Management/GetUserByEmployeeCode/{employeeCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "employeeCode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AttendanceSystem.Auth.API.Controllers.ManagementController",
     "Method": "GetPendingUsers",
     "RelativePath": "api/Management/pending",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AttendanceSystem.Auth.API.Controllers.ManagementController",
+    "Method": "UnlockUser",
+    "RelativePath": "api/Management/UnlockUser/{userId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -234,7 +276,7 @@
     "Parameters": [
       {
         "Name": "vacationRequest",
-        "Type": "EmployeesModels.Shared.VacationRequest",
+        "Type": "EmployeesModels.Shared.CreateVacationRequestDto",
         "IsRequired": true
       }
     ],
@@ -300,6 +342,16 @@
   },
   {
     "ContainingType": "AttendanceSystem.Auth.API.Controllers.VacationRequestsController",
+    "Method": "GetMyRequests",
+    "RelativePath": "api/VacationRequests/GetMyRequests",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AttendanceSystem.Auth.API.Controllers.VacationRequestsController",
     "Method": "Reject",
     "RelativePath": "api/VacationRequests/Reject/{id}",
     "HttpMethod": "PUT",
@@ -329,7 +381,7 @@
       },
       {
         "Name": "vacationRequest",
-        "Type": "EmployeesModels.Shared.VacationRequest",
+        "Type": "EmployeesModels.Shared.UpdateVacationRequestDto",
         "IsRequired": true
       }
     ],

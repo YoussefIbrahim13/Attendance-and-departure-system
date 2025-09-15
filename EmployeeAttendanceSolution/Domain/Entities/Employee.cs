@@ -1,10 +1,11 @@
 ﻿using Domain.Enums;
+using EmployeesModels.Shared;
 
 namespace Domain.Entities;
 
 public class Employee
 {
-    public Guid Id { get; set; } // Primary Key
+    public string Id { get; set; } = Guid.NewGuid().ToString(); // Primary Key
     public string Code { get; set; } = string.Empty; // Unique employee code
     public string Name { get; set; } = string.Empty;
     public DepartmentEnum Department { get; set; }
@@ -13,6 +14,7 @@ public class Employee
     public string Phone { get; set; } = string.Empty;
     public decimal Salary { get; set; }
     public string? ProfileImagePath { get; set; }
-
+    // 🔹 Back reference (0..1 user)
+    public virtual ApplicationUser? User { get; set; }
 
 }

@@ -1,5 +1,7 @@
 ﻿using Blazored.LocalStorage;
 using EmployeesModels.Shared;
+using Microsoft.AspNetCore.Identity;
+using System.Net;
 using System.Net.Http.Json;
 
 namespace AttendanceSystem.Auth.ui.Services
@@ -51,9 +53,24 @@ namespace AttendanceSystem.Auth.ui.Services
 
         public async Task<UserResult> AddApplicationUserAsync(UserCreateDto dto, string roleName)
         {
-            var client = await GetAuthorizedClient();
-            var response = await client.PostAsJsonAsync($"api/Management/AddApplicationUser?roleName={roleName}", dto);
-            return await HandleResponse<UserResult>(response);
+            try
+            {
+                // URL encode the roleName and create the full URL
+                var encodedRoleName = Uri.EscapeDataString(roleName);
+                var url = $"api/Management/AddApplicationUser?roleName={encodedRoleName}";
+
+                Console.WriteLine($"Calling API: {url}");
+                Console.WriteLine($"With data: Name={dto.Name}, Email={dto.Email}, EmployeeCode={dto.EmployeeCode}");
+
+                var response = await _httpClient.PostAsJsonAsync(url, dto);
+
+                return await HandleResponse<UserResult>(response);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in AddApplicationUserAsync: {ex.Message}");
+                return new UserResult { Errors = new[] { new IdentityError { Description = ex.Message } } };
+            }
         }
 
         public async Task<UserResult> GetApplicationUserAsync(string id)
@@ -76,6 +93,43 @@ namespace AttendanceSystem.Auth.ui.Services
             var response = await client.DeleteAsync($"api/Management/DeleteApplicationUser/{userId}");
             return await HandleResponse<OperationResult>(response);
         }
+        public async Task<UserResult> GetUserByEmployeeCodeAsync(string employeeCode)
+        {
+           
+            
+            try
+            {
+                var client = await GetAuthorizedClient();
+                var response = await client.GetAsync($"api/Management/GetUserByEmployeeCode/{employeeCode}");
+
+                if (response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    // 404 means no user found - return null instead of throwing
+                    return null;
+                }
+
+                response.EnsureSuccessStatusCode();
+                return await HandleResponse<UserResult>(response);
+               // return await response.Content.ReadFromJsonAsync<UserResult>();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error checking user by employee code: {ex.Message}");
+                throw;
+            }
+        }
+       
+
+        /// //////////////////////////////////////
+        public async Task<List<EmployeeResult>> GetAllEmployeesAsync()
+        {
+            var client = await GetAuthorizedClient();
+            var response = await client.GetAsync("api/Management/GetAllEmployees");
+            return await HandleResponse<List<EmployeeResult>>(response)?? new List<EmployeeResult>();
+        }
+
+
+        /// //////////////////////////////////////
 
         public async Task<OperationResult> ApproveUserAsync(string userId)
         {
@@ -93,6 +147,12 @@ namespace AttendanceSystem.Auth.ui.Services
         {
             var client = await GetAuthorizedClient();
             var response = await client.PutAsJsonAsync($"api/Management/ChangePassword/{userId}", newPassword);
+            return await HandleResponse<OperationResult>(response);
+        }
+        public async Task<OperationResult> UnlockUserAsync(string userId)
+        {
+            var client = await GetAuthorizedClient();
+            var response = await client.PutAsync($"api/Management/UnlockUser/{userId}", null);
             return await HandleResponse<OperationResult>(response);
         }
 

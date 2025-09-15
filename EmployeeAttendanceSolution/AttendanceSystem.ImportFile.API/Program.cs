@@ -19,7 +19,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 
 builder.Services.AddEndpointsApiExplorer();
@@ -32,11 +31,17 @@ builder.Services.AddDbContext<AppDbcontext>(options =>
 
 
 
-// Replace the incorrect AutoMapper registration line with the correct usage.
-// The method 'RegisterServicesFromAssemblies' does not exist on IMapperConfigurationExpression.
-// To scan for profiles in the current assembly, use AddAutoMapper and pass the assembly.
-builder.Services.AddAutoMapper(typeof(UploadCSVFilequery).Assembly);
-builder.Services.AddAutoMapper(typeof(EmployeeProfile).Assembly);
+// CORRECTED: AutoMapper registration - only call this once
+// Option 1: Scan all assemblies (if you have profiles in multiple assemblies)
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+// Option 2: OR specify specific assemblies (choose one approach)
+// builder.Services.AddAutoMapper(typeof(UploadCSVFilequery).Assembly, typeof(EmployeeProfile).Assembly);
+
+// Remove these duplicate calls as they cause the error:
+// builder.Services.AddAutoMapper(typeof(UploadCSVFilequery).Assembly);
+// builder.Services.AddAutoMapper(typeof(EmployeeProfile).Assembly);
+
 
 
 //builder.Services.AddTransient<IAttendanceService, AttendanceService>();

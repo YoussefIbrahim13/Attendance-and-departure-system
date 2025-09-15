@@ -1,21 +1,49 @@
-using EmployeesModels.Shared.Data;
 using AttendanceSystem.Auth.API.Services.Services.AuthoServices;
-using AttendanceSystem.Auth.API.Services.Services.ManagmentServices;
+using AttendanceSystem.Auth.Services.Features.Users.Commands.AddUser;
+using AttendanceSystem.Auth.Services.Features.Users.Commands.SendRandomPassword;
+using AttendanceSystem.Auth.Services.Features.Users.Commands.UpdateUser;
+using AttendanceSystem.Auth.Services.Features.VacationRequests.Commands.CreateVacationRequest;
 using EmployeesModels.Shared;
+using EmployeesModels.Shared.Data;
+using MailKit.Net.Smtp;
+using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using NETCore.MailKit.Extensions;
+using NETCore.MailKit.Infrastructure.Internal;
 using System.Security.Claims;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
-    .AddEntityFrameworkStores<ApplicationDbContext>()
-    .AddDefaultTokenProviders();
+//// Add services to the container.
+//builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
+//    .AddEntityFrameworkStores<ApplicationDbContext>()
+//    .AddDefaultTokenProviders();
+
+// Identity configuration for lockout account after multiple failed attempts
+builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
+{
+    options.Lockout.AllowedForNewUsers = false;  // turn off built-in lockout
+    options.Lockout.MaxFailedAccessAttempts = int.MaxValue; // disable threshold
+})
+.AddEntityFrameworkStores<ApplicationDbContext>()
+.AddDefaultTokenProviders();
+
+
+
+// Register MediatR (scans your assembly for IRequestHandlers)
+builder.Services.AddMediatR(cfg =>
+{
+    cfg.RegisterServicesFromAssembly(typeof(Program).Assembly);
+    cfg.RegisterServicesFromAssembly(typeof(UpdateUserCommandHandler).Assembly);
+    cfg.RegisterServicesFromAssembly(typeof(CreateVacationRequestCommandHandler).Assembly);
+    cfg.RegisterServicesFromAssembly(typeof(AddUserCommandHandler).Assembly);
+});
+
 
 // Configure CORS (Specific to your Blazor client)
 var allowedOrigins = builder.Configuration.GetSection("AllowedOrigins").Get<string[]>();
@@ -79,6 +107,11 @@ builder.Services.AddAuthorization(options =>
         policy.RequireClaim("IsApproved", "True"));
 });
 
+//// ? MailKit setup Email service
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+// Add MailKit if not already added
+builder.Services.AddTransient<SmtpClient>(); // Optional: if you want to inject SmtpClient
+
 // Database
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(
@@ -123,7 +156,6 @@ builder.Services.AddSwaggerGen(c =>
 
 // Register services
 builder.Services.AddScoped<IAuthoServicesApi, AuthoServicesApi>();
-builder.Services.AddScoped<IManagmentServicesApi, ManagmentServicesApi>();
 builder.Services.AddControllers();
 
 var app = builder.Build();

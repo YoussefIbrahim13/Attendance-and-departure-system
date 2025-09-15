@@ -1,34 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\",
+  "WorkspaceRootPath": "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|y:\\project\\attendancesystem\\employeeattendancesolution\\attendancesystem.importfile.ui\\pages\\employeeprofile.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\pages\\employeeprofile.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{519F080A-7CDA-9AA0-8A8E-91317EFFD842}|AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj|y:\\project\\attendancesystem\\employeeattendancesolution\\attendancesystem.importfile.api\\controllers\\attendancecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{519F080A-7CDA-9AA0-8A8E-91317EFFD842}|AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj|solutionrelative:attendancesystem.importfile.api\\controllers\\attendancecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|y:\\project\\attendancesystem\\employeeattendancesolution\\attendancesystem.importfile.ui\\services\\attendanceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\services\\attendanceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{519F080A-7CDA-9AA0-8A8E-91317EFFD842}|AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj|y:\\project\\attendancesystem\\employeeattendancesolution\\attendancesystem.importfile.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{519F080A-7CDA-9AA0-8A8E-91317EFFD842}|AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj|a:\\new folder (2)\\new project\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.importfile.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{519F080A-7CDA-9AA0-8A8E-91317EFFD842}|AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj|solutionrelative:attendancesystem.importfile.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|y:\\project\\attendancesystem\\employeeattendancesolution\\attendancesystem.importfile.ui\\services\\basehttpservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{101B4A16-C11D-463D-94C6-B43E761EAA94}|AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj|solutionrelative:attendancesystem.importfile.ui\\services\\basehttpservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A9406543-5F85-425B-91B5-A61A11F481F7}|Applications\\Applications.csproj|y:\\project\\attendancesystem\\employeeattendancesolution\\applications\\employees\\querys\\getemployeebycode\\getemployeebycodequeryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A9406543-5F85-425B-91B5-A61A11F481F7}|Applications\\Applications.csproj|solutionrelative:applications\\employees\\querys\\getemployeebycode\\getemployeebycodequeryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A9406543-5F85-425B-91B5-A61A11F481F7}|Applications\\Applications.csproj|y:\\project\\attendancesystem\\employeeattendancesolution\\applications\\employees\\querys\\getemployeebycode\\getemployeebycodequery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A9406543-5F85-425B-91B5-A61A11F481F7}|Applications\\Applications.csproj|solutionrelative:applications\\employees\\querys\\getemployeebycode\\getemployeebycodequery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{519F080A-7CDA-9AA0-8A8E-91317EFFD842}|AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj|a:\\new folder (2)\\new project\\attendance-and-departure-system\\employeeattendancesolution\\attendancesystem.importfile.api\\attendancesystem.importfile.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{519F080A-7CDA-9AA0-8A8E-91317EFFD842}|AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj|solutionrelative:attendancesystem.importfile.api\\attendancesystem.importfile.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,12 +18,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 4,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
@@ -61,96 +37,30 @@
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API\\Program.cs",
+              "DocumentMoniker": "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API\\Program.cs",
               "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.API\\Program.cs",
-              "ToolTip": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API\\Program.cs",
+              "ToolTip": "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API\\Program.cs",
               "RelativeToolTip": "AttendanceSystem.ImportFile.API\\Program.cs",
-              "ViewState": "AgIAAEMAAAAAAAAAAAAiwFgAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAewCMAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-13T01:24:19.219Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AttendanceService.cs",
-              "DocumentMoniker": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Services\\AttendanceService.cs",
-              "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\Services\\AttendanceService.cs",
-              "ToolTip": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Services\\AttendanceService.cs",
-              "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\Services\\AttendanceService.cs",
-              "ViewState": "AgIAADQBAAAAAAAAAADwvzYBAABcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-12T20:37:25.613Z",
+              "WhenOpened": "2025-09-15T07:31:28.355Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "AttendanceController.cs",
-              "DocumentMoniker": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API\\Controllers\\AttendanceController.cs",
-              "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.API\\Controllers\\AttendanceController.cs",
-              "ToolTip": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API\\Controllers\\AttendanceController.cs",
-              "RelativeToolTip": "AttendanceSystem.ImportFile.API\\Controllers\\AttendanceController.cs",
-              "ViewState": "AgIAAKoAAAAAAAAAAAAowMcAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-12T20:30:54.926Z",
+              "Title": "AttendanceSystem.ImportFile.API.csproj",
+              "DocumentMoniker": "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj",
+              "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj",
+              "ToolTip": "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj",
+              "RelativeToolTip": "AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABUAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-09-15T07:28:41.442Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "BaseHTTPService.cs",
-              "DocumentMoniker": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Services\\BaseHTTPService.cs",
-              "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\Services\\BaseHTTPService.cs",
-              "ToolTip": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Services\\BaseHTTPService.cs",
-              "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\Services\\BaseHTTPService.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAzwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-12T20:31:18.249Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "EmployeeProfile.razor",
-              "DocumentMoniker": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Pages\\EmployeeProfile.razor",
-              "RelativeDocumentMoniker": "AttendanceSystem.ImportFile.ui\\Pages\\EmployeeProfile.razor",
-              "ToolTip": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\Pages\\EmployeeProfile.razor",
-              "RelativeToolTip": "AttendanceSystem.ImportFile.ui\\Pages\\EmployeeProfile.razor",
-              "ViewState": "AgIAAKkAAAAAAAAAAAAiwL0AAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-12T20:30:39.709Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "GetEmployeeByCodeQueryHandler.cs",
-              "DocumentMoniker": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Applications\\Employees\\Querys\\GetEmployeeByCode\\GetEmployeeByCodeQueryHandler.cs",
-              "RelativeDocumentMoniker": "Applications\\Employees\\Querys\\GetEmployeeByCode\\GetEmployeeByCodeQueryHandler.cs",
-              "ToolTip": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Applications\\Employees\\Querys\\GetEmployeeByCode\\GetEmployeeByCodeQueryHandler.cs",
-              "RelativeToolTip": "Applications\\Employees\\Querys\\GetEmployeeByCode\\GetEmployeeByCodeQueryHandler.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAUwCIAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-12T20:41:58.864Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "GetEmployeeByCodeQuery.cs",
-              "DocumentMoniker": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Applications\\Employees\\Querys\\GetEmployeeByCode\\GetEmployeeByCodeQuery.cs",
-              "RelativeDocumentMoniker": "Applications\\Employees\\Querys\\GetEmployeeByCode\\GetEmployeeByCodeQuery.cs",
-              "ToolTip": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Applications\\Employees\\Querys\\GetEmployeeByCode\\GetEmployeeByCodeQuery.cs",
-              "RelativeToolTip": "Applications\\Employees\\Querys\\GetEmployeeByCode\\GetEmployeeByCodeQuery.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-12T20:41:48.449Z"
             }
           ]
         }

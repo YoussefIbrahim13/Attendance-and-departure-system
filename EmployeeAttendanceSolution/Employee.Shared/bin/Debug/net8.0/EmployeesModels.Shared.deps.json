@@ -970,6 +970,10 @@
         }
       },
       "Domain/1.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Identity.Core": "8.0.0",
+          "Microsoft.Extensions.Identity.Stores": "8.0.0"
+        },
         "runtime": {
           "Domain.dll": {
             "assemblyVersion": "1.0.0.0",

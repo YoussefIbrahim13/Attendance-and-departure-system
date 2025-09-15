@@ -16,6 +16,7 @@ namespace EmployeesModels.Shared
         public string? Department { get; set; }
         public string? Position { get; set; }
         public bool IsApproved { get; set; }
+        public bool IsLockedByAdmin { get; set; }
         public IEnumerable<string>? Roles { get; set; }
         public IEnumerable<IdentityError>? Errors { get; set; }
         public bool Success => Errors == null;

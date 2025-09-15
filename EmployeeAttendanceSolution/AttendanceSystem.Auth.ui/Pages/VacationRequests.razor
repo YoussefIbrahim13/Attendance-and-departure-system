@@ -1,107 +1,402 @@
 ﻿@page "/vacation/requests"
 @attribute [Authorize]
-
 @using System.ComponentModel.DataAnnotations
+@inject VacationRequestServices VacationService
+@inject CurrentUserService CurrentUserService
+@inject NavigationManager Navigation
+@inject ISnackbar Snackbar
 
-<MudContainer MaxWidth="MaxWidth.Medium" Class="mt-4">
 
-    <MudPaper Class="pa-4 mb-4" Elevation="2">
-        <MudText Typo="Typo.h5" Class="mb-3">New Vacation Request</MudText>
+<MudContainer MaxWidth="MaxWidth.Medium" Class="vacation-container">
 
-        <EditForm Model="@requestModel" OnValidSubmit="SubmitRequest">
-            <DataAnnotationsValidator />
+    <!-- New Vacation Request Section -->
+    <MudPaper Class="vacation-paper pa-6">
+        <div class="text-center mb-4">
+            <MudText Typo="Typo.h4" Class="vacation-header" GutterBottom="true">
+                📅 New Vacation Request
+            </MudText>
+            <MudText Typo="Typo.body2" Color="Color.Secondary">
+                Fill out the form below to submit a new vacation request
+            </MudText>
+        </div>
 
-            <MudDatePicker Label="From Date"
-                           @bind-Date="requestModel.From"
-                           Required="true"
-                           Variant="Variant.Outlined"
-                           Class="mb-3" />
+        <div class="form-container">
+            <EditForm Model="@requestModel" OnSubmit="SubmitRequest">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
 
-            <MudDatePicker Label="To Date"
-                           @bind-Date="requestModel.To"
-                           Required="true"
-                           Variant="Variant.Outlined"
-                           Class="mb-3" />
+                <div class="form-grid">
+                    <div class="form-field">
+                        <MudDatePicker Label="From Date"
+                                       @bind-Date="requestModel.FromTime"
+                                       Required="true"
+                                       Variant="Variant.Outlined"
+                                       Class="w-100"
+                                       InputClass="custom-date-input" />
+                        <ValidationMessage For="@(() => requestModel.FromTime)" />
+                    </div>
 
-            <MudTextField T="string" Label="Reason"
-                          @bind-Value="requestModel.Reason"
-                          Required="true"
-                          Variant="Variant.Outlined"
-                          Lines="3"
-                          Class="mb-3" />
+                    <div class="form-field">
+                        <MudDatePicker Label="To Date"
+                                       @bind-Date="requestModel.ToTime"
+                                       Required="true"
+                                       Variant="Variant.Outlined"
+                                       Class="w-100"
+                                       InputClass="custom-date-input" />
+                        <ValidationMessage For="@(() => requestModel.ToTime)" />
+                    </div>
+                </div>
 
-            <MudButton Color="Color.Primary" Variant="Variant.Filled" Type="Submit">
-                Submit
-            </MudButton>
-        </EditForm>
+                <div class="form-field">
+                    <MudTextField Label="Reason"
+                                  @bind-Value="requestModel.Reason"
+                                  Required="true"
+                                  Variant="Variant.Outlined"
+                                  Lines="3"
+                                  Multiline="true"
+                                  Class="w-100"
+                                  Placeholder="Please provide a reason for your vacation request..." />
+                    <ValidationMessage For="@(() => requestModel.Reason)" />
+                </div>
+
+                <div class="text-center mt-4">
+                    <button type="submit" class="submit-button">
+                        📋 Submit Request
+                    </button>
+                </div>
+            </EditForm>
+        </div>
     </MudPaper>
 
-    <MudPaper Class="pa-4" Elevation="2">
-        <MudText Typo="Typo.h6" Class="mb-2">Vacation History</MudText>
-        <MudTable Items="@pastRequests" Dense="true" Hover="true">
-            <HeaderContent>
-                <MudTh>From</MudTh>
-                <MudTh>To</MudTh>
-                <MudTh>Reason</MudTh>
-                <MudTh>Status</MudTh>
-            </HeaderContent>
-            <RowTemplate>
-                <MudTd>@context.From?.ToShortDateString()</MudTd>
-                <MudTd>@context.To?.ToShortDateString()</MudTd>
-                <MudTd>@context.Reason</MudTd>
-                <MudTd>@context.Status</MudTd>
-            </RowTemplate>
-            <NoRecordsContent>
-                <MudText>No vacation requests yet.</MudText>
-            </NoRecordsContent>
-        </MudTable>
+    <!-- Vacation History Section -->
+    <MudPaper Class="vacation-paper pa-6">
+        <div class="text-center mb-4">
+            <MudText Typo="Typo.h4" Class="history-header" GutterBottom="true">
+                📊 Vacation History
+            </MudText>
+            <MudText Typo="Typo.body2" Color="Color.Secondary">
+                Review your past vacation requests and their status
+            </MudText>
+        </div>
+
+        @if (isLoading)
+        {
+            <div class="loading-container">
+                <MudProgressLinear Color="Color.Primary" Indeterminate="true" Class="w-50" />
+            </div>
+        }
+        else if (vacationRequests?.Any() == true)
+        {
+            <div class="vacation-table">
+                <MudTable Items="@vacationRequests" Dense="true" Hover="true" Striped="true">
+                    <HeaderContent>
+                        <MudTh>From Date</MudTh>
+                        <MudTh>To Date</MudTh>
+                        <MudTh>Reason</MudTh>
+                        <MudTh>Status</MudTh>
+                        <MudTh>Created On</MudTh>
+                        <MudTh>Cancel Vacation</MudTh>
+
+                    </HeaderContent>
+                    <RowTemplate>
+                        <MudTd>
+                            <MudText Typo="Typo.body2" Class="font-weight-bold">
+                                @context.FromTime.ToShortDateString()
+                            </MudText>
+                        </MudTd>
+                        <MudTd>
+                            <MudText Typo="Typo.body2" Class="font-weight-bold">
+                                @context.ToTime.ToShortDateString()
+                            </MudText>
+                        </MudTd>
+                        <MudTd>
+                            <MudText Typo="Typo.body2" Class="text-truncate" Style="max-width: 150px;">
+                                @context.Reason
+                            </MudText>
+                        </MudTd>
+                        <MudTd>
+                            <MudChip T="String"
+                                     Color="@GetStatusColor(context.Status)"
+                                     Size="Size.Small"
+                                     Class="status-chip">
+                                @context.Status
+                            </MudChip>
+                        </MudTd>
+                        <MudTd>
+                            <MudText Typo="Typo.caption" Color="Color.Default">
+                                @context.CreatedAt.ToShortDateString()
+                            </MudText>
+                        </MudTd>
+                        <MudTd>
+                            @if (@context.Status == VacationRequestStatus.Pending)
+                            {
+
+                                <MudButton Color="Color.Error" Variant="Variant.Outlined" Size="Size.Small"
+                                           OnClick="@(() => DeleteVacation(context.Id.ToString()))">
+                                    Cancel Vacation
+                                </MudButton>
+                            }
+                            else
+                            {
+                                <MudText Typo="Typo.body2" Color="Color.Default">
+                                    You can Delete only pending requests.
+                                </MudText>
+                            }
+                        </MudTd>
+
+                    </RowTemplate>
+                </MudTable>
+            </div>
+        }
+        else
+        {
+            <div class="no-requests">
+                <MudIcon Icon="@Icons.Material.Filled.EventNote" Size="Size.Large" Class="mb-2" />
+                <MudText Typo="Typo.h6" Color="Color.Secondary">
+                    No vacation requests yet.
+                </MudText>
+                <MudText Typo="Typo.body2" Color="Color.Secondary">
+                    Submit your first request above to get started!
+                </MudText>
+            </div>
+        }
     </MudPaper>
 
 </MudContainer>
 
+<style>
+    .vacation-container {
+        padding: 2rem 0;
+    }
+
+    .vacation-paper {
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        background: linear-gradient(135deg, var(--mud-palette-background) 0%, var(--mud-palette-surface) 100%);
+        border: 1px solid var(--mud-palette-lines-default);
+    }
+
+    .vacation-header {
+        color: var(--mud-palette-text-primary);
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        border-bottom: 2px solid var(--mud-palette-primary);
+        padding-bottom: 0.5rem;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .form-field {
+        margin-bottom: 1rem;
+    }
+
+    .submit-button {
+        background: linear-gradient(45deg, var(--mud-palette-primary), var(--mud-palette-secondary));
+        color: var(--mud-palette-white);
+        padding: 12px 30px;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px var(--mud-palette-action-default);
+    }
+
+        .submit-button:hover {
+            background: linear-gradient(45deg, var(--mud-palette-secondary), var(--mud-palette-primary));
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px var(--mud-palette-action-default);
+        }
+
+        .submit-button:active {
+            transform: translateY(0);
+        }
+
+    .history-section {
+        margin-top: 2rem;
+    }
+
+    .history-header {
+        color: var(--mud-palette-text-primary);
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        border-bottom: 2px solid var(--mud-palette-error);
+        padding-bottom: 0.5rem;
+    }
+
+    .vacation-table {
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        background: var(--mud-palette-surface);
+    }
+
+    .status-chip {
+        font-weight: 600;
+        padding: 4px 12px;
+        border-radius: 20px;
+        color: var(--mud-palette-text-primary);
+        background-color: var(--mud-palette-action-default);
+    }
+
+    .no-requests {
+        text-align: center;
+        color: var(--mud-palette-text-secondary);
+        font-style: italic;
+        padding: 2rem;
+    }
+
+    .loading-container {
+        display: flex;
+        justify-content: center;
+        padding: 2rem;
+    }
+
+    .form-container {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+</style>
+
+
 @code {
     private VacationRequestModel requestModel = new();
-    private List<VacationHistory> pastRequests = new();
+    private List<VacationRequest> vacationRequests = new();
+    private string notificationMessage = "";
+    private Severity notificationSeverity = Severity.Info;
+    private bool isSubmitting = false;
+    private bool isLoading = false;
+    private string? currentUserId;
 
-    protected override void OnInitialized()
+
+    protected override async Task OnInitializedAsync()
     {
-        LoadVacationHistory();
+        isSubmitting = false;
+        currentUserId = await CurrentUserService.GetUserIdAsync();
+
+        if (string.IsNullOrEmpty(currentUserId))
+        {
+            notificationMessage = "Unable to identify user. Please log in again.";
+            notificationSeverity = Severity.Error;
+
+            return;
+        }
+
+        await LoadVacationHistory();
     }
 
-    private void LoadVacationHistory()
+    private async Task LoadVacationHistory()
     {
-        pastRequests = new List<VacationHistory>
+        isLoading = true;
+        StateHasChanged();
+
+        try
         {
-            new VacationHistory { From = DateTime.Now.AddDays(-10), To = DateTime.Now.AddDays(-8), Reason = "Family trip", Status = "Approved" },
-            new VacationHistory { From = DateTime.Now.AddDays(-5), To = DateTime.Now.AddDays(-3), Reason = "Flu recovery", Status = "Pending" }
+            var result = await VacationService.GetVacationRequestsByUserIdAsync(currentUserId);
+            if (result.Success && result.Data != null)
+            {
+                vacationRequests = result.Data.ToList();
+            }
+            else
+            {
+                notificationMessage = result.Message ?? "Failed to load vacation history.";
+                notificationSeverity = Severity.Error;
+            }
+        }
+        catch (Exception ex)
+        {
+            notificationMessage = $"Error loading vacation history: {ex.Message}";
+            notificationSeverity = Severity.Error;
+        }
+        finally
+        {
+            isLoading = false;
+            StateHasChanged();
+        }
+    }
+
+    private async Task SubmitRequest()
+    {
+        // Console.WriteLine("SubmitRequest called"); // DEBUG
+        isSubmitting = true;
+        notificationMessage = "";
+        StateHasChanged();
+
+        try
+        {
+            // Validate dates
+            if (requestModel.FromTime >= requestModel.ToTime)
+            {
+                notificationMessage = "End date must be after start date.";
+                notificationSeverity = Severity.Error;
+                isSubmitting = false;
+                return;
+            }
+
+            var dto = new CreateVacationRequestDto
+            {
+                UserId = currentUserId!,
+                FromTime = requestModel.FromTime ?? DateTime.Now,
+                ToTime = requestModel.ToTime ?? DateTime.Now.AddDays(1),
+                Reason = requestModel.Reason
+            };
+
+            var result = await VacationService.CreateVacationRequestAsync(dto);
+
+            if (result.Success)
+            {
+                Snackbar.Add("Request Added successfully", Severity.Success);
+
+                notificationMessage = "Vacation request submitted successfully!";
+                notificationSeverity = Severity.Success;
+                requestModel = new VacationRequestModel(); // reset the form
+                await LoadVacationHistory(); // Refresh the list
+            }
+            else
+            {
+                notificationMessage = result.Message ?? "Failed to submit vacation request.";
+                notificationSeverity = Severity.Error;
+            }
+        }
+        catch (Exception ex)
+        {
+            notificationMessage = $"Error submitting request: {ex.Message}";
+            notificationSeverity = Severity.Error;
+        }
+        finally
+        {
+            isSubmitting = false;
+            StateHasChanged();
+        }
+    }
+    private async Task DeleteVacation(string id)
+    {
+        var result = await VacationService.DeleteVacationRequestAsync(id);
+        if (result.Success)
+        {
+            Snackbar.Add("Vacation request cancelled successfully", Severity.Success);
+            await LoadVacationHistory();
+        }
+        else
+        {
+            Snackbar.Add($"Failed to cancel vacation request: {result.Message}", Severity.Error);
+        }
+    }
+
+    private Color GetStatusColor(VacationRequestStatus status)
+    {
+        return status switch
+        {
+            VacationRequestStatus.Pending => Color.Warning,
+            VacationRequestStatus.Approved => Color.Success,
+            VacationRequestStatus.Rejected => Color.Error,
+            _ => Color.Default
         };
-    }
-
-    private void SubmitRequest()
-    {
-        pastRequests.Add(new VacationHistory
-        {
-            From = requestModel.From,
-            To = requestModel.To,
-            Reason = requestModel.Reason,
-            Status = "Pending"
-        });
-
-        requestModel = new();
-    }
-
-    public class VacationRequestModel
-    {
-        [Required] public DateTime? From { get; set; } = DateTime.Today;
-        [Required] public DateTime? To { get; set; } = DateTime.Today;
-        [Required] public string Reason { get; set; } = string.Empty;
-    }
-
-    public class VacationHistory
-    {
-        public DateTime? From { get; set; }
-        public DateTime? To { get; set; }
-        public string Reason { get; set; } = string.Empty;
-        public string Status { get; set; } = string.Empty;
     }
 }

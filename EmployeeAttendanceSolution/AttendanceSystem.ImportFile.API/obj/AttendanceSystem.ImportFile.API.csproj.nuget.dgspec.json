@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj": {}
+    "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj": {}
   },
   "projects": {
-    "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Applications\\Applications.csproj": {
+    "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Applications\\Applications.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Applications\\Applications.csproj",
+        "projectUniqueName": "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Applications\\Applications.csproj",
         "projectName": "Applications",
-        "projectPath": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Applications\\Applications.csproj",
-        "packagesPath": "C:\\Users\\Youssef\\.nuget\\packages\\",
-        "outputPath": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Applications\\obj\\",
+        "projectPath": "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Applications\\Applications.csproj",
+        "packagesPath": "C:\\Users\\ehabm\\.nuget\\packages\\",
+        "outputPath": "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Applications\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Youssef\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ehabm\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -32,8 +32,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Infrastructure\\Infrastructure.csproj"
+              "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -56,7 +56,7 @@
           "dependencies": {
             "AutoMapper": {
               "target": "Package",
-              "version": "[13.0.1, )"
+              "version": "[15.0.1, )"
             },
             "MediatR": {
               "target": "Package",
@@ -91,24 +91,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj": {
+    "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj",
+        "projectUniqueName": "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj",
         "projectName": "AttendanceSystem.Auth.ui",
-        "projectPath": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj",
-        "packagesPath": "C:\\Users\\Youssef\\.nuget\\packages\\",
-        "outputPath": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\obj\\",
+        "projectPath": "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj",
+        "packagesPath": "C:\\Users\\ehabm\\.nuget\\packages\\",
+        "outputPath": "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Youssef\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ehabm\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -123,8 +123,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj": {
-                "projectPath": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj"
+              "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj": {
+                "projectPath": "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj"
               }
             }
           }
@@ -173,13 +173,13 @@
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.20, )",
+              "version": "[8.0.17, )",
               "autoReferenced": true
             },
             "Microsoft.NET.Sdk.WebAssembly.Pack": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.9, )",
+              "version": "[9.0.6, )",
               "autoReferenced": true
             },
             "MudBlazor": {
@@ -209,7 +209,7 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
-              "version": "[8.0.20, 8.0.20]"
+              "version": "[8.0.17, 8.0.17]"
             }
           ],
           "frameworkReferences": {
@@ -217,7 +217,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
@@ -226,20 +226,20 @@
         }
       }
     },
-    "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API.Services\\AttendanceSystem.ImportFile.API.Services.csproj": {
+    "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API.Services\\AttendanceSystem.ImportFile.API.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API.Services\\AttendanceSystem.ImportFile.API.Services.csproj",
+        "projectUniqueName": "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API.Services\\AttendanceSystem.ImportFile.API.Services.csproj",
         "projectName": "AttendanceSystem.ImportFile.API.Services",
-        "projectPath": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API.Services\\AttendanceSystem.ImportFile.API.Services.csproj",
-        "packagesPath": "C:\\Users\\Youssef\\.nuget\\packages\\",
-        "outputPath": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API.Services\\obj\\",
+        "projectPath": "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API.Services\\AttendanceSystem.ImportFile.API.Services.csproj",
+        "packagesPath": "C:\\Users\\ehabm\\.nuget\\packages\\",
+        "outputPath": "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API.Services\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Youssef\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ehabm\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -254,14 +254,14 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Applications\\Applications.csproj": {
-                "projectPath": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Applications\\Applications.csproj"
+              "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Applications\\Applications.csproj": {
+                "projectPath": "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Applications\\Applications.csproj"
               },
-              "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj": {
-                "projectPath": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj"
+              "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj": {
+                "projectPath": "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.ui\\AttendanceSystem.Auth.ui.csproj"
               },
-              "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj": {
-                "projectPath": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj"
+              "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj": {
+                "projectPath": "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj"
               }
             }
           }
@@ -307,24 +307,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj": {
+    "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj",
+        "projectUniqueName": "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj",
         "projectName": "AttendanceSystem.ImportFile.API",
-        "projectPath": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj",
-        "packagesPath": "C:\\Users\\Youssef\\.nuget\\packages\\",
-        "outputPath": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API\\obj\\",
+        "projectPath": "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj",
+        "packagesPath": "C:\\Users\\ehabm\\.nuget\\packages\\",
+        "outputPath": "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Youssef\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ehabm\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -339,14 +339,14 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Applications\\Applications.csproj": {
-                "projectPath": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Applications\\Applications.csproj"
+              "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Applications\\Applications.csproj": {
+                "projectPath": "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Applications\\Applications.csproj"
               },
-              "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API.Services\\AttendanceSystem.ImportFile.API.Services.csproj": {
-                "projectPath": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API.Services\\AttendanceSystem.ImportFile.API.Services.csproj"
+              "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API.Services\\AttendanceSystem.ImportFile.API.Services.csproj": {
+                "projectPath": "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API.Services\\AttendanceSystem.ImportFile.API.Services.csproj"
               },
-              "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj": {
-                "projectPath": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj"
+              "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj": {
+                "projectPath": "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj"
               }
             }
           }
@@ -411,24 +411,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Domain\\Domain.csproj": {
+    "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Domain\\Domain.csproj",
+        "projectUniqueName": "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\Youssef\\.nuget\\packages\\",
-        "outputPath": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Domain\\obj\\",
+        "projectPath": "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\ehabm\\.nuget\\packages\\",
+        "outputPath": "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Youssef\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ehabm\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -460,6 +460,16 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.Extensions.Identity.Core": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.Identity.Stores": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -476,24 +486,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj": {
+    "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj",
+        "projectUniqueName": "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj",
         "projectName": "EmployeesModels.Shared",
-        "projectPath": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj",
-        "packagesPath": "C:\\Users\\Youssef\\.nuget\\packages\\",
-        "outputPath": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Employee.Shared\\obj\\",
+        "projectPath": "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj",
+        "packagesPath": "C:\\Users\\ehabm\\.nuget\\packages\\",
+        "outputPath": "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Youssef\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ehabm\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -508,8 +518,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Domain\\Domain.csproj": {
-                "projectPath": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Domain\\Domain.csproj"
+              "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\Domain.csproj": {
+                "projectPath": "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\Domain.csproj"
               }
             }
           }
@@ -577,24 +587,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Infrastructure\\Infrastructure.csproj": {
+    "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Infrastructure\\Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\Youssef\\.nuget\\packages\\",
-        "outputPath": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Infrastructure\\obj\\",
+        "projectPath": "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Infrastructure\\Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\ehabm\\.nuget\\packages\\",
+        "outputPath": "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Youssef\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ehabm\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -609,8 +619,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Domain\\Domain.csproj": {
-                "projectPath": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Domain\\Domain.csproj"
+              "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\Domain.csproj": {
+                "projectPath": "A:\\New folder (2)\\New Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\Domain.csproj"
               }
             }
           }
@@ -652,7 +662,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

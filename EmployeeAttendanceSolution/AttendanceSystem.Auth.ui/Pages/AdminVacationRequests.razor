@@ -1,0 +1,421 @@
+﻿@page "/admin/vacation-requests"
+@attribute [Authorize(Roles = "Admin")]
+@inject VacationRequestServices VacationService
+@inject ManagementService ManagementService
+@inject ISnackbar Snackbar
+
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="admin-vacation-container">
+
+    <!-- Header Section -->
+    <div class="admin-header">
+        <MudText Color="Color.Default" Typo="Typo.h4" Class="mb-1">
+            All Vacation Requests
+        </MudText>
+        <MudText Typo="Typo.body2" Color="Color.Primary">
+            Manage and review all employee vacation requests
+        </MudText>
+    </div>
+
+    @if (isLoading)
+    {
+        <div class="loading-container">
+            <div class="text-center">
+                <MudProgressLinear Color="Color.Primary" Indeterminate="true" Class="mb-3 w-50" />
+                <MudText Typo="Typo.body2" Color="Color.Secondary">
+                    Loading vacation requests...
+                </MudText>
+            </div>
+        </div>
+    }
+    else if (vacationRequests?.Any() == true)
+    {
+        <div class="admin-table-container">
+            <MudTable Items="@vacationRequests" Hover="true" Dense="true" Striped="true">
+                <HeaderContent>
+                    <MudTh Class="table-header">Employee Name</MudTh>
+                    <MudTh Class="table-header">From Date</MudTh>
+                    <MudTh Class="table-header">To Date</MudTh>
+                    <MudTh Class="table-header">Reason</MudTh>
+                    <MudTh Class="table-header">Status</MudTh>
+                    <MudTh Class="table-header">Actions</MudTh>
+                    <MudTh Class="table-header">Delete Request</MudTh>
+                </HeaderContent>
+                <RowTemplate>
+                    <MudTd Class="table-cell">
+                        <span class="employee-name">
+                            @(employeeNames.ContainsKey(context.UserId) ? employeeNames[context.UserId] : "Loading...")
+                        </span>
+                    </MudTd>
+                    <MudTd Class="table-cell date-cell">
+                        @context.FromTime.ToShortDateString()
+                    </MudTd>
+                    <MudTd Class="table-cell date-cell">
+                        @context.ToTime.ToShortDateString()
+                    </MudTd>
+                    <MudTd Class="table-cell reason-cell" Title="@context.Reason">
+                        @context.Reason
+                    </MudTd>
+                    <MudTd Class="table-cell">
+                        <MudChip T="String"
+                                 Color="@GetStatusColor(context.Status)"
+                                 Size="Size.Small"
+                                 Class="status-chip">
+                            @context.Status.ToString()
+                        </MudChip>
+                    </MudTd>
+                    <MudTd Class="table-cell">
+                        @if (context.Status == VacationRequestStatus.Pending)
+                        {
+                            <div class="action-buttons">
+                                <button class="approve-btn" onclick="@(() => Approve(context.Id.ToString()))">
+                                    ✅ Approve
+                                </button>
+                                <button class="reject-btn" onclick="@(() => Reject(context.Id.ToString()))">
+                                    ❌ Reject
+                                </button>
+                            </div>
+                        }
+                        else
+                        {
+                            <MudText Typo="Typo.body2" Class="no-action-text">
+                                No Action Required
+                            </MudText>
+                        }
+                    </MudTd>
+                    <MudTd Class="table-cell">
+                        <div class="action-buttons">
+                            <button class="delete-btn" onclick="@(() => Delete(context.Id.ToString()))">
+                                🗑 Delete
+                            </button>
+                        </div>
+                    </MudTd>
+                </RowTemplate>
+            </MudTable>
+        </div>
+    }
+    else
+    {
+        <div class="no-requests-container">
+            <div class="no-requests-icon">📋</div>
+            <MudText Typo="Typo.h6" Color="Color.Secondary" Class="mb-2">
+                No Vacation Requests Found
+            </MudText>
+            <MudText Typo="Typo.body2" Color="Color.Secondary">
+                There are no vacation requests to display at this time.
+            </MudText>
+        </div>
+    }
+</MudContainer>
+
+<style>
+    .admin-vacation-container {
+        padding: 2rem 0;
+    }
+
+    .admin-header {
+        color: var(--mud-palette-default);
+        font-weight: 700;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 3px solid var(--mud-palette-primary);
+        background: linear-gradient(135deg, var(--mud-palette-surface) 0%, var(--mud-palette-background) 100%);
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .admin-table-container {
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        background: var(--mud-palette-surface);
+    }
+
+    .table-header {
+        background: linear-gradient(135deg, var(--mud-palette-primary) 0%, var(--mud-palette-primary-darken) 100%);
+        color: var(--mud-palette-primary-text);
+    }
+
+        .table-header th {
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 1rem 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--mud-palette-primary-text);
+        }
+
+    .table-row:hover {
+        background: linear-gradient(135deg, var(--mud-palette-action-default-hover) 0%, var(--mud-palette-background) 100%);
+        transform: translateY(-1px);
+        transition: all 0.2s ease;
+    }
+
+    .table-cell {
+        padding: 1rem 0.5rem;
+        border-bottom: 1px solid var(--mud-palette-divider);
+        vertical-align: middle;
+        color: var(--mud-palette-text-primary);
+    }
+
+    .status-chip {
+        font-weight: 600;
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+
+    .approve-btn {
+        background: linear-gradient(45deg, var(--mud-palette-success) 0%, var(--mud-palette-success-darken) 100%);
+        color: var(--mud-palette-success-text);
+        border: none;
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 0.8rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 4px rgba(var(--mud-palette-success-rgb), 0.3);
+    }
+
+        .approve-btn:hover {
+            background: linear-gradient(45deg, var(--mud-palette-success-darken) 0%, var(--mud-palette-success) 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(var(--mud-palette-success-rgb), 0.4);
+        }
+
+    .reject-btn {
+        background: linear-gradient(45deg, var(--mud-palette-error) 0%, var(--mud-palette-error-darken) 100%);
+        color: var(--mud-palette-error-text);
+        border: none;
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 0.8rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 4px rgba(var(--mud-palette-error-rgb), 0.3);
+    }
+
+        .reject-btn:hover {
+            background: linear-gradient(45deg, var(--mud-palette-error-darken) 0%, var(--mud-palette-error) 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(var(--mud-palette-error-rgb), 0.4);
+        }
+
+    .no-action-text {
+        color: var(--mud-palette-text-secondary);
+        font-style: italic;
+        font-size: 0.9rem;
+    }
+
+    .loading-container {
+        display: flex;
+        justify-content: center;
+        padding: 3rem;
+        background: var(--mud-palette-surface);
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .no-requests-container {
+        text-align: center;
+        padding: 3rem;
+        background: var(--mud-palette-surface);
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .no-requests-icon {
+        font-size: 4rem;
+        color: var(--mud-palette-text-disabled);
+        margin-bottom: 1rem;
+    }
+
+    .employee-name {
+        font-weight: 600;
+        color: var(--mud-palette-text-primary);
+    }
+
+    .loading-text {
+        color: var(--mud-palette-text-secondary);
+        font-style: italic;
+    }
+
+    .date-cell {
+        font-weight: 500;
+        color: var(--mud-palette-text-primary);
+    }
+
+    .reason-cell {
+        max-width: 200px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .delete-btn {
+        background-color: white;
+        color: var(--mud-palette-error);
+        border: 2px solid var(--mud-palette-error);
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 0.8rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+        .delete-btn:hover {
+            background-color: var(--mud-palette-error);
+            color: white;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(var(--mud-palette-error-rgb), 0.4);
+        }
+
+
+    /* Additional theme-specific variables */
+    .admin-header {
+        --primary-light: var(--mud-palette-primary-lighten);
+        --primary-dark: var(--mud-palette-primary-darken);
+        --surface: var(--mud-palette-surface);
+        --background: var(--mud-palette-background);
+        --text-primary: var(--mud-palette-text-primary);
+        --text-secondary: var(--mud-palette-text-secondary);
+        --divider: var(--mud-palette-divider);
+        --success: var(--mud-palette-success);
+        --error: var(--mud-palette-error);
+        --action-hover: var(--mud-palette-action-default-hover);
+    }
+</style>
+
+@code {
+    private List<VacationRequest>? vacationRequests;
+    private Dictionary<string, string> employeeNames = new();
+    private bool isLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadVacationRequests();
+    }
+
+    private async Task LoadVacationRequests()
+    {
+        isLoading = true;
+        StateHasChanged();
+
+        try
+        {
+            var result = await VacationService.GetAllVacationRequestsAsync();
+            if (result.Success && result.Data != null)
+            {
+                vacationRequests = result.Data.ToList();
+                await LoadEmployeeNames(); // Load all employee names at once
+            }
+            else
+            {
+                Snackbar.Add($"Failed to load vacation requests: {result.Message}", Severity.Error);
+                vacationRequests = new List<VacationRequest>();
+            }
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Error loading requests: {ex.Message}", Severity.Error);
+            vacationRequests = new List<VacationRequest>();
+        }
+
+        isLoading = false;
+        StateHasChanged();
+    }
+
+    private async Task LoadEmployeeNames()
+    {
+        if (vacationRequests == null) return;
+
+        // Get unique user IDs from all vacation requests
+        var uniqueUserIds = vacationRequests
+            .Where(r => !string.IsNullOrEmpty(r.UserId))
+            .Select(r => r.UserId)
+            .Distinct()
+            .ToList();
+
+        foreach (var userId in uniqueUserIds)
+        {
+            if (!employeeNames.ContainsKey(userId))
+            {
+                try
+                {
+                    // Use async/await properly - NO .Result!
+                    var userResult = await ManagementService.GetApplicationUserAsync(userId);
+                    employeeNames[userId] = userResult?.Name ?? "Unknown";
+                }
+                catch (Exception ex)
+                {
+                    employeeNames[userId] = "Error loading";
+                    Console.WriteLine($"Error loading user {userId}: {ex.Message}");
+                }
+            }
+        }
+
+        StateHasChanged(); // Refresh the UI to show the loaded names
+    }
+
+    private async Task Approve(string id)
+    {
+        var result = await VacationService.ApproveVacationRequestAsync(id);
+        if (result.Success)
+        {
+            Snackbar.Add("Request approved successfully", Severity.Success);
+            await LoadVacationRequests();
+        }
+        else
+        {
+            Snackbar.Add($"Failed to approve request: {result.Message}", Severity.Error);
+        }
+    }
+
+    private async Task Reject(string id)
+    {
+        var result = await VacationService.RejectVacationRequestAsync(id);
+        if (result.Success)
+        {
+            Snackbar.Add("Request rejected successfully", Severity.Warning);
+            await LoadVacationRequests();
+        }
+        else
+        {
+            Snackbar.Add($"Failed to reject request: {result.Message}", Severity.Error);
+        }
+    }
+    private async Task Delete(string id)
+    {
+        var result = await VacationService.DeleteVacationRequestAsync(id);
+        if (result.Success)
+        {
+            Snackbar.Add("Request deleted successfully", Severity.Info);
+            await LoadVacationRequests();
+        }
+        else
+        {
+            Snackbar.Add($"Failed to delete request: {result.Message}", Severity.Error);
+        }
+    }
+
+    private Color GetStatusColor(VacationRequestStatus status) => status switch
+    {
+        VacationRequestStatus.Approved => Color.Success,
+        VacationRequestStatus.Rejected => Color.Error,
+        VacationRequestStatus.Pending => Color.Warning,
+        VacationRequestStatus.Cancelled => Color.Info,
+        _ => Color.Default
+    };
+}

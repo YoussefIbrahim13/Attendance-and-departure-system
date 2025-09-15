@@ -1,5 +1,6 @@
 ﻿using EmployeesModels.Shared;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -23,23 +24,44 @@ namespace AttendanceSystem.Auth.API.Services.Services.AuthoServices
         public async Task<AuthResult> Login(LoginModel model)
         {
             var user = await _userManager.FindByEmailAsync(model.Email);
-            if (user == null) 
-                return new AuthResult {ErrorMessage="User Not Found"};
 
-            if (!await _userManager.CheckPasswordAsync(user, model.Password))
+            if (user == null)
                 return new AuthResult { ErrorMessage = "Invalid credentials" };
+
+            // Check if admin has locked the user
+            if (user.IsLockedByAdmin)
+                return new AuthResult { ErrorMessage = "Account locked by admin. Contact support." };
+
+            // Verify password
+            if (!await _userManager.CheckPasswordAsync(user, model.Password))
+            {
+                var failedCount = await _userManager.GetAccessFailedCountAsync(user);
+                await _userManager.AccessFailedAsync(user);
+
+                if (failedCount + 1 >= 5) // because AccessFailedAsync increments after
+                {
+                    user.IsLockedByAdmin = true;
+                    await _userManager.UpdateAsync(user);
+                }
+
+                return new AuthResult { ErrorMessage = "Invalid credentials" };
+            }
+
+            // Reset failed count if login successful
+            await _userManager.ResetAccessFailedCountAsync(user);
 
             if (!user.IsApproved)
                 return new AuthResult { ErrorMessage = "Account not approved yet" };
 
+            // Build claims for JWT
             var authClaims = new List<Claim>
-            {
-                new(ClaimTypes.Name, user.Name),
-                new(ClaimTypes.Email, user.Email),
-                new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new("IsApproved", user.IsApproved.ToString()),
-                new (ClaimTypes.NameIdentifier, user.Id)
-            };
+    {
+        new(ClaimTypes.Name, user.Name),
+        new(ClaimTypes.Email, user.Email),
+        new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+        new("IsApproved", user.IsApproved.ToString()),
+        new(ClaimTypes.NameIdentifier, user.Id)
+    };
 
             var userRoles = await _userManager.GetRolesAsync(user);
             foreach (var role in userRoles)
@@ -64,7 +86,6 @@ namespace AttendanceSystem.Auth.API.Services.Services.AuthoServices
             };
         }
 
-       
         public AuthResult Logout()
         {
             return new AuthResult
@@ -113,7 +134,11 @@ namespace AttendanceSystem.Auth.API.Services.Services.AuthoServices
 
                 Console.WriteLine($"🔎 Looking up user by email: {email}");
 
-                var user = await _userManager.FindByEmailAsync(email);
+                // Load user with Employee
+                var user = await _userManager.Users
+                    .Include(u => u.Employee)
+                    .FirstOrDefaultAsync(u => u.Email == email);
+
                 if (user == null)
                 {
                     Console.WriteLine($"❌ User with email {email} not found in database");
@@ -137,6 +162,10 @@ namespace AttendanceSystem.Auth.API.Services.Services.AuthoServices
                     UserName = user.UserName,
                     Email = user.Email,
                     Name = user.Name,
+                    PhoneNumber = user.PhoneNumber,
+                    Code = user.Employee?.Code,
+                    Department = user.Employee?.Department.ToString(),
+                    Position = user.Employee?.Position.ToString(),
                     Roles = roles
                 };
             }
@@ -146,6 +175,7 @@ namespace AttendanceSystem.Auth.API.Services.Services.AuthoServices
                 return null;
             }
         }
+
 
 
     }

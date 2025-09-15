@@ -65,9 +65,6 @@ namespace AttendanceSystem.Auth.API.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Department")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -75,7 +72,13 @@ namespace AttendanceSystem.Auth.API.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("EmployeeId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<bool>("IsApproved")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsLockedByAdmin")
                         .HasColumnType("bit");
 
                     b.Property<bool>("LockoutEnabled")
@@ -105,9 +108,6 @@ namespace AttendanceSystem.Auth.API.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Position")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -120,6 +120,10 @@ namespace AttendanceSystem.Auth.API.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("EmployeeId")
+                        .IsUnique()
+                        .HasFilter("[EmployeeId] IS NOT NULL");
+
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
 
@@ -131,13 +135,96 @@ namespace AttendanceSystem.Auth.API.Migrations
                     b.ToTable("Users", (string)null);
                 });
 
+            modelBuilder.Entity("EmployeesModels.Shared.AttendanceRecord", b =>
+                {
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ActualStatus")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ApprovalStatus")
+                        .HasColumnType("int");
+
+                    b.Property<TimeSpan>("CheckIn")
+                        .HasColumnType("time");
+
+                    b.Property<TimeSpan>("CheckOut")
+                        .HasColumnType("time");
+
+                    b.Property<string>("Note")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PlannedStatus")
+                        .HasColumnType("int");
+
+                    b.HasKey("Code", "Date");
+
+                    b.ToTable("AttendanceRecords");
+                });
+
+            modelBuilder.Entity("EmployeesModels.Shared.Employee", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Department")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Position")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ProfileImagePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Salary")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Code")
+                        .IsUnique();
+
+                    b.ToTable("Employees");
+                });
+
             modelBuilder.Entity("EmployeesModels.Shared.VacationRequest", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<DateTime>("ApprovedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ApprovedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("DaysRequested")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("FromTime")
                         .HasColumnType("datetime2");
@@ -271,6 +358,16 @@ namespace AttendanceSystem.Auth.API.Migrations
                     b.ToTable("UserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("EmployeesModels.Shared.ApplicationUser", b =>
+                {
+                    b.HasOne("EmployeesModels.Shared.Employee", "Employee")
+                        .WithOne("User")
+                        .HasForeignKey("EmployeesModels.Shared.ApplicationUser", "EmployeeId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("Employee");
+                });
+
             modelBuilder.Entity("EmployeesModels.Shared.VacationRequest", b =>
                 {
                     b.HasOne("EmployeesModels.Shared.ApplicationUser", "User")
@@ -336,6 +433,11 @@ namespace AttendanceSystem.Auth.API.Migrations
             modelBuilder.Entity("EmployeesModels.Shared.ApplicationUser", b =>
                 {
                     b.Navigation("VacationRequests");
+                });
+
+            modelBuilder.Entity("EmployeesModels.Shared.Employee", b =>
+                {
+                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }

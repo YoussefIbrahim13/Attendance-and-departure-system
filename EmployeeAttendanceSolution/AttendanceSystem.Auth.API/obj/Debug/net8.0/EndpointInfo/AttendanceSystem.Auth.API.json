@@ -262,6 +262,40 @@
         }
       }
     },
+    "/api/Management/GetUserByEmployeeCode/{employeeCode}": {
+      "get": {
+        "tags": [
+          "Management"
+        ],
+        "parameters": [
+          {
+            "name": "employeeCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Management/GetAllEmployees": {
+      "get": {
+        "tags": [
+          "Management"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Management/approve/{userId}": {
       "post": {
         "tags": [
@@ -337,6 +371,28 @@
         }
       }
     },
+    "/api/Management/UnlockUser/{userId}": {
+      "put": {
+        "tags": [
+          "Management"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/VacationRequests/CreateVacationRequest": {
       "post": {
         "tags": [
@@ -346,17 +402,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/VacationRequest"
+                "$ref": "#/components/schemas/CreateVacationRequestDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/VacationRequest"
+                "$ref": "#/components/schemas/CreateVacationRequestDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/VacationRequest"
+                "$ref": "#/components/schemas/CreateVacationRequestDto"
               }
             }
           }
@@ -424,6 +480,18 @@
         }
       }
     },
+    "/api/VacationRequests/GetMyRequests": {
+      "get": {
+        "tags": [
+          "VacationRequests"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/VacationRequests/Update/{id}": {
       "put": {
         "tags": [
@@ -443,17 +511,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/VacationRequest"
+                "$ref": "#/components/schemas/UpdateVacationRequestDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/VacationRequest"
+                "$ref": "#/components/schemas/UpdateVacationRequestDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/VacationRequest"
+                "$ref": "#/components/schemas/UpdateVacationRequestDto"
               }
             }
           }
@@ -534,87 +602,30 @@
   },
   "components": {
     "schemas": {
-      "ApplicationUser": {
+      "CreateVacationRequestDto": {
+        "required": [
+          "fromTime",
+          "reason",
+          "toTime"
+        ],
         "type": "object",
         "properties": {
-          "id": {
+          "userId": {
             "type": "string",
             "nullable": true
           },
-          "userName": {
+          "fromTime": {
             "type": "string",
-            "nullable": true
+            "format": "date-time"
           },
-          "normalizedUserName": {
+          "toTime": {
             "type": "string",
-            "nullable": true
+            "format": "date-time"
           },
-          "email": {
-            "type": "string",
-            "nullable": true
-          },
-          "normalizedEmail": {
-            "type": "string",
-            "nullable": true
-          },
-          "emailConfirmed": {
-            "type": "boolean"
-          },
-          "passwordHash": {
-            "type": "string",
-            "nullable": true
-          },
-          "securityStamp": {
-            "type": "string",
-            "nullable": true
-          },
-          "concurrencyStamp": {
-            "type": "string",
-            "nullable": true
-          },
-          "phoneNumber": {
-            "type": "string",
-            "nullable": true
-          },
-          "phoneNumberConfirmed": {
-            "type": "boolean"
-          },
-          "twoFactorEnabled": {
-            "type": "boolean"
-          },
-          "lockoutEnd": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "lockoutEnabled": {
-            "type": "boolean"
-          },
-          "accessFailedCount": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "department": {
-            "type": "string",
-            "nullable": true
-          },
-          "position": {
-            "type": "string",
-            "nullable": true
-          },
-          "isApproved": {
-            "type": "boolean"
-          },
-          "vacationRequests": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/VacationRequest"
-            },
-            "nullable": true
+          "reason": {
+            "maxLength": 500,
+            "minLength": 0,
+            "type": "string"
           }
         },
         "additionalProperties": false
@@ -638,13 +649,29 @@
         },
         "additionalProperties": false
       },
+      "UpdateVacationRequestDto": {
+        "type": "object",
+        "properties": {
+          "fromTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "toTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "reason": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "UserCreateDto": {
         "required": [
-          "department",
           "email",
-          "name",
-          "password",
-          "position"
+          "employeeCode",
+          "name"
         ],
         "type": "object",
         "properties": {
@@ -652,19 +679,11 @@
             "minLength": 1,
             "type": "string"
           },
-          "password": {
-            "minLength": 1,
-            "type": "string"
-          },
           "name": {
             "minLength": 1,
             "type": "string"
           },
-          "department": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "position": {
+          "employeeCode": {
             "minLength": 1,
             "type": "string"
           }
@@ -696,59 +715,6 @@
           }
         },
         "additionalProperties": false
-      },
-      "VacationRequest": {
-        "required": [
-          "fromTime",
-          "toTime",
-          "userId"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "nullable": true
-          },
-          "userId": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "fromTime": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "toTime": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "reason": {
-            "maxLength": 500,
-            "minLength": 0,
-            "type": "string",
-            "nullable": true
-          },
-          "status": {
-            "$ref": "#/components/schemas/VacationRequestStatus"
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "user": {
-            "$ref": "#/components/schemas/ApplicationUser"
-          }
-        },
-        "additionalProperties": false
-      },
-      "VacationRequestStatus": {
-        "enum": [
-          0,
-          1,
-          2,
-          3
-        ],
-        "type": "integer",
-        "format": "int32"
       }
     },
     "securitySchemes": {
