@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Domain.Entities;
 
 namespace AttendanceSystem.Auth.Services.Features.Users.Queries.GetUserById
 {

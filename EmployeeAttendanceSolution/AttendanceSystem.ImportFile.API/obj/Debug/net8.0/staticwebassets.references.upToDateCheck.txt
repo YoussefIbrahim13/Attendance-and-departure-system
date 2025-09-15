@@ -77,120 +77,287 @@ Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
 Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\AttendanceSystem\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\mareg\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\mareg\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\mareg\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\mareg\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\mareg\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\mareg\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\mareg\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\mareg\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\mareg\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\mareg\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\mareg\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\mareg\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\mareg\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\mareg\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\mareg\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json
+Y:\project\mareg\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\staticwebassets.build.json

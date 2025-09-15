@@ -1,0 +1,14 @@
+﻿using Applications.DailyAttendance.DTO;
+using MediatR;
+
+namespace Applications.DailyAttendance.Querys;
+
+public class GetDayViewquery : IRequest<List<DailyAttendanceDto>>
+{
+    public DateTime Date { get; }
+
+    public GetDayViewquery(DateTime date)
+    {
+        Date = date;
+    }
+}

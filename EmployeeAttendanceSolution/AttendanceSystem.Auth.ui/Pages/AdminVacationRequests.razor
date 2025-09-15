@@ -1,4 +1,6 @@
 ﻿@page "/admin/vacation-requests"
+@using Domain.Entities
+@using Domain.Enums
 @attribute [Authorize(Roles = "Admin")]
 @inject VacationRequestServices VacationService
 @inject ManagementService ManagementService

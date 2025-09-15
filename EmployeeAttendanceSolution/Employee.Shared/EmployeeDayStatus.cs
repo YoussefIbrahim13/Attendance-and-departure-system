@@ -1,4 +1,6 @@
-﻿namespace EmployeesModels.Shared
+﻿using Domain.Enums;
+
+namespace EmployeesModels.Shared
 {
     public class EmployeeDayStatus
     {
@@ -11,7 +13,3 @@
     }
 
 }
-
-
-
-

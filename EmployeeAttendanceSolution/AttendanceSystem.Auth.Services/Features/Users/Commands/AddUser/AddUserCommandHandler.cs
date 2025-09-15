@@ -1,4 +1,5 @@
 ﻿using AttendanceSystem.Auth.Services.Features.Users.Commands.SendRandomPassword;
+using Domain.Entities;
 using EmployeesModels.Shared;
 using EmployeesModels.Shared.Data;
 using MediatR;

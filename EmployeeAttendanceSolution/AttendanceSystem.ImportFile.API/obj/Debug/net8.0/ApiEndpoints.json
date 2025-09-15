@@ -2,14 +2,14 @@
   {
     "ContainingType": "AttendanceSystem.ImportFile.API.Controllers.AttendanceController",
     "Method": "AddEmployee",
-    "RelativePath": "Attendance/add-employee",
+    "RelativePath": "api/Attendance/add-employee",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "employeeDto",
-        "Type": "EmployeesModels.Shared.Employee",
+        "Name": "command",
+        "Type": "Applications.Employees.Commands.AddEmployees.AddEmployeesCommand",
         "IsRequired": true
       }
     ],
@@ -18,7 +18,7 @@
   {
     "ContainingType": "AttendanceSystem.ImportFile.API.Controllers.AttendanceController",
     "Method": "GetDayView",
-    "RelativePath": "Attendance/day-view",
+    "RelativePath": "api/Attendance/day-view",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -34,13 +34,13 @@
   {
     "ContainingType": "AttendanceSystem.ImportFile.API.Controllers.AttendanceController",
     "Method": "DeleteEmployee",
-    "RelativePath": "Attendance/delete-employee/{id}",
+    "RelativePath": "api/Attendance/delete-employee/{Code}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "code",
         "Type": "System.String",
         "IsRequired": true
       }
@@ -50,14 +50,30 @@
   {
     "ContainingType": "AttendanceSystem.ImportFile.API.Controllers.AttendanceController",
     "Method": "EditPendingAttendance",
-    "RelativePath": "Attendance/edit-pending",
+    "RelativePath": "api/Attendance/edit-pending",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "dto",
-        "Type": "EmployeesModels.Shared.EditAttendanceDto",
+        "Name": "command",
+        "Type": "Applications.CSVFile.Commandss.EditPendingAttendance.EditPendingAttendanceCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AttendanceSystem.ImportFile.API.Controllers.AttendanceController",
+    "Method": "GetEmployeeByCode",
+    "RelativePath": "api/Attendance/employee-by-code/{code}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "code",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],
@@ -66,7 +82,7 @@
   {
     "ContainingType": "AttendanceSystem.ImportFile.API.Controllers.AttendanceController",
     "Method": "GetEmployees",
-    "RelativePath": "Attendance/employees",
+    "RelativePath": "api/Attendance/employees",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -76,7 +92,7 @@
   {
     "ContainingType": "AttendanceSystem.ImportFile.API.Controllers.AttendanceController",
     "Method": "GetMonthView",
-    "RelativePath": "Attendance/month-view",
+    "RelativePath": "api/Attendance/month-view",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -97,14 +113,14 @@
   {
     "ContainingType": "AttendanceSystem.ImportFile.API.Controllers.AttendanceController",
     "Method": "PlanAttendance",
-    "RelativePath": "Attendance/plan-attendance",
+    "RelativePath": "api/Attendance/plan-attendance",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "dto",
-        "Type": "EmployeesModels.Shared.PlanAttendanceDto",
+        "Name": "command",
+        "Type": "Applications.PlanAttendance.Command.PlanAttendancecommand",
         "IsRequired": true
       }
     ],
@@ -112,25 +128,31 @@
   },
   {
     "ContainingType": "AttendanceSystem.ImportFile.API.Controllers.AttendanceController",
-    "Method": "SaveAttendance",
-    "RelativePath": "Attendance/save",
+    "Method": "SavePendingAttendance",
+    "RelativePath": "api/Attendance/save",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "pendingAttendance",
+        "Type": "System.Collections.Generic.List\u00601[[Domain.Entities.AttendanceRecord, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
     "ContainingType": "AttendanceSystem.ImportFile.API.Controllers.AttendanceController",
     "Method": "UpdateAttendanceRecord",
-    "RelativePath": "Attendance/update-attendance-record",
+    "RelativePath": "api/Attendance/update-attendance-record",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "record",
-        "Type": "EmployeesModels.Shared.AttendanceRecord",
+        "Name": "command",
+        "Type": "Applications.UpdateAttendanceRecord.Commands.UpdateAttendanceRecordcommand",
         "IsRequired": true
       }
     ],
@@ -139,14 +161,14 @@
   {
     "ContainingType": "AttendanceSystem.ImportFile.API.Controllers.AttendanceController",
     "Method": "UpdateEmployee",
-    "RelativePath": "Attendance/update-employee",
+    "RelativePath": "api/Attendance/update-employee",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "employeeDto",
-        "Type": "EmployeesModels.Shared.Employee",
+        "Name": "command",
+        "Type": "Applications.Employees.Commands.UpdataEmployeecommand.UpdataEmployeecommand",
         "IsRequired": true
       }
     ],
@@ -155,13 +177,34 @@
   {
     "ContainingType": "AttendanceSystem.ImportFile.API.Controllers.AttendanceController",
     "Method": "UploadCsv",
-    "RelativePath": "Attendance/upload-csv",
+    "RelativePath": "api/Attendance/upload-csv",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "file",
+        "Name": "File",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AttendanceSystem.ImportFile.API.Controllers.AttendanceController",
+    "Method": "UploadProfileImage",
+    "RelativePath": "api/Attendance/upload-profile-image/{employeeCode}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "employeeCode",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "File",
         "Type": "Microsoft.AspNetCore.Http.IFormFile",
         "IsRequired": false
       }
@@ -171,7 +214,7 @@
   {
     "ContainingType": "AttendanceSystem.ImportFile.API.Controllers.AttendanceController",
     "Method": "GetYearView",
-    "RelativePath": "Attendance/year-view/{year}",
+    "RelativePath": "api/Attendance/year-view/{year}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

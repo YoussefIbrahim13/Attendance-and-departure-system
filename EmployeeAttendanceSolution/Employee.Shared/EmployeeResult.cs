@@ -1,14 +1,15 @@
-﻿using System;
+﻿using Domain.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EmployeesModels.Shared
-{
+namespace EmployeesModels.Shared;
+
     public class EmployeeResult
     {
-        public string Id { get; set; } = string.Empty;
+        public Guid Id { get; set; }
         public string Code { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
         public DepartmentEnum Department { get; set; }
@@ -18,4 +19,4 @@ namespace EmployeesModels.Shared
         public decimal Salary { get; set; }
         public string? ProfileImagePath { get; set; }
     }
-}
+

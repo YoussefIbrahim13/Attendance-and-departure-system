@@ -1,7 +1,8 @@
-@page "/Employees"
+﻿@page "/Employees"
 @using Microsoft.AspNetCore.Authorization
 @using MudBlazor
 @using AttendanceSystem.ImportFile.ui.Services
+@using Domain.Enums
 @using EmployeesModels.Shared
 @using Microsoft.AspNetCore.Components.Authorization
 @inject AttendanceSystem.ImportFile.ui.Services.AttendanceService AttendanceService
@@ -31,15 +32,18 @@
                 <MudPaper Class="pa-6 mb-6" Elevation="2" Style="border-radius:18px; background: var(--mud-palette-surface);">
                     <MudText Typo="Typo.h6" Class="mb-4">Add New Employee</MudText>
                     <MudStack Row Spacing="2" Class="mb-2">
-                        <MudTextField T="string" Label="Code" @bind-Value="newEmployee.Code" Variant="Variant.Outlined" Style="width:140px;" />
-                        <MudTextField T="string" Label="Name" @bind-Value="newEmployee.Name" Variant="Variant.Outlined" Style="width:180px;" />
-                        <MudSelect T="DepartmentEnum" Label="Department" @bind-Value="newEmployee.Department" Variant="Variant.Outlined" Style="width:180px;">
+                        <MudTextField T="string" Label="Code" @bind-Value="newEmployee.Code" Variant="Variant.Outlined" Style="width:100px; min-width:80px;" />
+                        <MudTextField T="string" Label="Name" @bind-Value="newEmployee.Name" Variant="Variant.Outlined" Style="width:100px; min-width:80px;" />
+                        <MudTextField T="string" Label="Email" @bind-Value="newEmployee.Email" Variant="Variant.Outlined" Style="width:120px; min-width:90px;" />
+                        <MudTextField T="string" Label="Phone" @bind-Value="newEmployee.Phone" Variant="Variant.Outlined" Style="width:90px; min-width:70px;" />
+                        <MudNumericField T="decimal" Label="Salary" @bind-Value="newEmployee.Salary" Variant="Variant.Outlined" Style="width:80px; min-width:60px;" />
+                        <MudSelect T="DepartmentEnum" Label="Department" @bind-Value="newEmployee.Department" Variant="Variant.Outlined" Style="width:100px; min-width:80px;">
                             @foreach (var dept in Enum.GetValues(typeof(DepartmentEnum)))
                             {
                                 <MudSelectItem T="DepartmentEnum" Value="@((DepartmentEnum)dept)">@dept</MudSelectItem>
                             }
                         </MudSelect>
-                        <MudSelect T="PositionEnum" Label="Position" @bind-Value="newEmployee.Position" Variant="Variant.Outlined" Style="width:180px;">
+                        <MudSelect T="PositionEnum" Label="Position" @bind-Value="newEmployee.Position" Variant="Variant.Outlined" Style="width:100px; min-width:80px;">
                             @foreach (var pos in GetPositionsForDepartment(newEmployee.Department))
                             {
                                 <MudSelectItem T="PositionEnum" Value="@pos">@pos</MudSelectItem>
@@ -78,9 +82,13 @@
                         <HeaderContent>
                             <MudTh>Code</MudTh>
                             <MudTh>Name</MudTh>
+                             <MudTh>Email</MudTh>
+                            <MudTh>Phone</MudTh>
+                            <MudTh>Salary</MudTh>
                             <MudTh>Department</MudTh>
                             <MudTh>Position</MudTh>
                             <MudTh>Actions</MudTh>
+                           
                         </HeaderContent>
 
                         <!-- Group Header -->
@@ -105,6 +113,40 @@
                                     @emp.Name
                                 }
                             </MudTd>
+                            <MudTd DataLabel="Email">
+                                @if (editRow == emp)
+                                {
+                                    <MudTextField T="string" @bind-Value="editEmail" Dense="true" />
+                                }
+                                else
+                                {
+                                    @emp.Email
+                                }
+                            </MudTd>
+
+                            <MudTd DataLabel="Phone">
+                                @if (editRow == emp)
+                                {
+                                    <MudTextField T="string" @bind-Value="editPhone" Dense="true" />
+                                }
+                                else
+                                {
+                                    @emp.Phone
+                                }
+                            </MudTd>
+
+                            <MudTd DataLabel="Salary">
+                                @if (editRow == emp)
+                                {
+                                    <MudNumericField T="decimal" @bind-Value="editSalary" Dense="true" />
+                                }
+                                else
+                                {
+                                    @emp.Salary.ToString("C")
+                                }
+                            </MudTd>
+
+
                             <MudTd DataLabel="Department">
                                 @if (editRow == emp)
                                 {
@@ -120,6 +162,7 @@
                                     @emp.Department.ToString()
                                 }
                             </MudTd>
+
                             <MudTd DataLabel="Position">
                                 @if (editRow == emp)
                                 {
@@ -145,16 +188,28 @@
                                 }
                                 else
                                 {
-                                    <MudButton Variant="Variant.Outlined" Color="Color.Primary" Size="Size.Small" OnClick="() => StartEdit(emp)" Class="me-2"
-                                               StartIcon="@Icons.Material.Filled.Edit">Edit</MudButton>
-                                    <MudButton Variant="Variant.Outlined" Color="Color.Error" Size="Size.Small" OnClick="() => DeleteEmployee(emp.Code)"
-                                               StartIcon="@Icons.Material.Filled.Delete">Delete</MudButton>
+                                    <MudStack Row Spacing="1" AlignItems="AlignItems.Center" JustifyContent="Justify.Center">
+                                        <MudButton Variant="Variant.Outlined" Color="Color.Primary" Size="Size.Small" OnClick="() => StartEdit(emp)"
+                                                   StartIcon="@Icons.Material.Filled.Edit">Edit</MudButton>
+                                        <MudButton Variant="Variant.Outlined" Color="Color.Error" Size="Size.Small" OnClick="() => DeleteEmployee(emp.Code)"
+                                                   StartIcon="@Icons.Material.Filled.Delete">Delete</MudButton>
+                                        <MudButton Variant="Variant.Filled" Color="Color.Info" Size="Size.Small" OnClick="() => ShowProfile(emp.Code)"
+                                                   StartIcon="@Icons.Material.Filled.Person">Show</MudButton>
+                                    </MudStack>
                                 }
                             </MudTd>
+
                         </RowTemplate>
                     </MudTable>
                 </MudPaper>
             </MudPaper>
         </MudContainer>
     </Authorized>
+
+@code {
+    private void ShowProfile(string code)
+    {
+        Navigation.NavigateTo($"/EmployeeProfile/{code}");
+    }
+}
 </AuthorizeView>

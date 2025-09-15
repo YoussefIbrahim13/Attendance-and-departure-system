@@ -1,149 +1,205 @@
-using EmployeesModels.Shared.Data;
+﻿using Applications.CSVFile.Commandss.EditPendingAttendance;
+using Applications.CSVFile.Commandss.SavePendingAttendanceCommand;
+using Applications.CSVFile.DTOS.AttendanceRecord;
+using Applications.CSVFile.Querys.UploadCSVFilequery;
+using Applications.DailyAttendance.Querys;
+using Applications.Employees.Commands.AddEmployees;
+using Applications.Employees.Commands.DeleteEmployee;
+using Applications.Employees.Commands.UpdataEmployeecommand;
+using Applications.Employees.Commands.UploadProfileImagecommand;
+using Applications.Employees.Querys.GetEmployeeByCode;
+using Applications.Employees.Querys.GetEmployeesquery;
+using Applications.MonthView.Querys.GetMonthViewquery;
+using Applications.PlanAttendance.Command;
+using Applications.UpdateAttendanceRecord.Commands;
+using Applications.YearView.Querys;
+using AutoMapper;
+using Domain.Entities;
 using EmployeesModels.Shared;
+using Infrastructure;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using AttendanceSystem.ImportFile.API.Services.AttendanceServices;
-using System.Globalization;
-using System.Text;
+using static MudBlazor.CategoryTypes;
+using AttendanceSystem.ImportFile.API.Controllers.Dto;
 
 namespace AttendanceSystem.ImportFile.API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class AttendanceController : ControllerBase
     {
-        public AttendanceController(IAttendanceService attendanceService)
-        {
-            this.attendanceService = attendanceService;
-        }
-        // تخزين مؤقت للبيانات المرفوعة (في الذاكرة)
-        private static List<AttendanceRecord> _pendingAttendance = new();
-        private readonly IAttendanceService attendanceService;
+        private readonly IMediator _mediator;
+        private readonly AppDbcontext _context;
+        private readonly IMapper _mapper;
 
+
+        private static List<AttendanceRecordDto> _pendingAttendance = new();
+
+        public AttendanceController(IMediator mediator , AppDbcontext context, IMapper mapper)
+        {
+            _mediator = mediator;
+            _context = context;
+            _mapper = mapper;
+        }
+
+        // ===================== CSV Upload =====================
         [HttpPost("upload-csv")]
-        public async Task<IActionResult> UploadCsv(IFormFile file)
+        [Consumes("multipart/form-data")]
+        public async Task<IActionResult> UploadCsv([FromForm] UploadCsvDto dto)
         {
-            if (file == null || file.Length == 0)
+            if (dto.File == null || dto.File.Length == 0)
                 return BadRequest("No file uploaded.");
-            _pendingAttendance = await attendanceService.UploadCSVFileAsync(file);
 
-            return Ok(_pendingAttendance);
+            var query = new UploadCSVFilequery(dto.File);
+            var result = await _mediator.Send(query);
+
+            _pendingAttendance = result;
+
+            return Ok(result);
         }
-
-        // تعديل سجل في البيانات المؤقتة فقط
-
 
         [HttpPut("edit-pending")]
-        public IActionResult EditPendingAttendance([FromBody] EditAttendanceDto dto)
+        public async Task<IActionResult> EditPendingAttendance([FromBody] EditPendingAttendanceCommand command)
         {
-            // تمرير الطلب إلى AttendanceService عبر الواجهة
-            var result = attendanceService.EditPendingAttendance(_pendingAttendance, dto);
-            if (result == "EmployeeId is required.")
-                return BadRequest(result);
-            if (result == "Attendance record not found in pending data.")
-                return NotFound(result);
-            return Ok(result);
+            if (command == null)
+                return BadRequest("Invalid request data.");
+
+            var result = await _mediator.Send(command);
+
+            return Ok(new { Message = result });
         }
-
-
-        // حفظ البيانات المؤقتة في الداتا بيز بعد موافقة HR
         [HttpPost("save")]
-        public async Task<IActionResult> SaveAttendance([FromServices] ApplicationDbContext db)
+        public async Task<IActionResult> SavePendingAttendance([FromBody] List<AttendanceRecord> pendingAttendance)
         {
-            var result = await attendanceService.SavePendingAttendance(_pendingAttendance, db);
-            if (result == "No pending attendance data to save.")
-                return BadRequest(result);
-            if (result == "Invalid DbContext.")
-                return StatusCode(500, result);
-            return Ok(result);
-        }
-        // Get month view data
-        [HttpGet("month-view")]
-        public async Task<IActionResult> GetMonthView([FromServices] ApplicationDbContext db, int year, int month)
-        {
-            var result = await attendanceService.GetMonthViewAsync(year, month, db);
+            if (pendingAttendance == null || !pendingAttendance.Any())
+                return BadRequest("Pending attendance data is required.");
 
-            return Ok(result);
+            // 1. تحويل من DTO → Entity
+            var entities = _mapper.Map<List<AttendanceRecord>>(pendingAttendance);
+
+            // 2. الحفظ في الداتا بيز
+            _context.AttendanceRecords.AddRange(entities);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { Message = "Saved Successfully" });
         }
 
 
+        // ===================== Employee Queries =====================
+        [HttpGet("employee-by-code/{code}")]
+        public async Task<IActionResult> GetEmployeeByCode(string code)
+        {
+            var result = await _mediator.Send(new GetEmployeeByCodeQuery { Code = code });
+            if (result == null)
+                return NotFound("Employee not found.");
+            return Ok(result);
+        }
 
-        // Get day view data
+        // ===================== Day / Month / Year Views =====================
+
         [HttpGet("day-view")]
-        public async Task<IActionResult> GetDayView([FromServices] ApplicationDbContext db, DateTime date)
+        public async Task<IActionResult> GetDayView([FromQuery] DateTime date)
         {
-               var result = await attendanceService.GetDayViewAsync(date, db);
-        return Ok(result);
+            var query = new GetDayViewquery(date);
+            var result = await _mediator.Send(query);
+
+            return Ok(result);
         }
-
-        // Get year view data
-        [HttpGet("year-view/{year}")]
-        public async Task<IActionResult> GetYearView([FromServices] ApplicationDbContext db, int year)
+        [HttpGet("month-view")]
+        public async Task<IActionResult> GetMonthView(int year, int month)
         {
-                var result = await attendanceService.GetYearViewAsync(year, db);
-                return Ok(result);
-            }
-
-    // Get all employees
-    [HttpGet("employees")]
-    public async Task<IActionResult> GetEmployees([FromServices] ApplicationDbContext db)
-    {
-            var result = await attendanceService.GetEmployeesAsync(db);
+            var query = new GetMonthViewquery(year, month);
+            var result = await _mediator.Send(query);
             return Ok(result);
         }
 
-    // Delete employee
-    [HttpDelete("delete-employee/{id}")]
-    public async Task<IActionResult> DeleteEmployee([FromServices] ApplicationDbContext db, string id)
-    {
-            var result = await attendanceService.DeleteEmployeeAsync(id, db);
+        [HttpGet("year-view/{year}")]
+        public async Task<IActionResult> GetYearView(int year)
+        {
+            var query = new GetYearViewquery(year);
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+
+        // ===================== Employee Commands =====================
+        [HttpPost("add-employee")]
+        public async Task<IActionResult> AddEmployee([FromBody] AddEmployeesCommand command)
+        {
+            var result = await _mediator.Send(command);
+            if (!result.Success)
+                return BadRequest(result.Message);
+            return Ok(result.Message);
+        }
+        [HttpPut("update-employee")]
+        public async Task<IActionResult> UpdateEmployee([FromBody] UpdataEmployeecommand command)
+        {
+            if (string.IsNullOrWhiteSpace(command.Code))
+                return BadRequest("Employee Code is required.");
+
+            if (!ModelState.IsValid)
+                return BadRequest("Invalid data.");
+
+            var result = await _mediator.Send(command);
+
             if (!result.Success)
                 return BadRequest(result.Message);
 
             return Ok(result.Message);
         }
-    // SRP: جلب كل الموظفين فقط
 
-    // Add new employee
-    [HttpPost("add-employee")]
-    public async Task<IActionResult> AddEmployee([FromServices] ApplicationDbContext db, [FromBody] Employee employeeDto)
-    {
-            var result = await attendanceService.AddEmployeeAsync(employeeDto, db);
+
+        [HttpGet("employees")]
+        public async Task<IActionResult> GetEmployees()
+        {
+            var query = new GetEmployeesquerys();
+            var result = await _mediator.Send(query);
+
+            return Ok(result);
+        }
+        [HttpDelete("delete-employee/{Code}")]
+        public async Task<IActionResult> DeleteEmployee(string code)
+        {
+            var result = await _mediator.Send(new DeleteEmployeeCommand { Code = code });
             if (!result.Success)
-                return BadRequest(result.Message);
+                return NotFound(result.Message);
 
             return Ok(result.Message);
         }
 
-    // Update employee
-    [HttpPut("update-employee")]
-    public async Task<IActionResult> UpdateEmployee([FromServices] ApplicationDbContext db, [FromBody] Employee employeeDto)
-    {
-            var result = await attendanceService.UpdateEmployeeAsync(employeeDto, db);
+        [HttpPost("plan-attendance")]
+        public async Task<IActionResult> PlanAttendance([FromBody] PlanAttendancecommand command)
+        {
+            var result = await _mediator.Send(command);
             if (!result.Success)
                 return BadRequest(result.Message);
-
             return Ok(result.Message);
         }
 
-    // إضافة خطة حضور لموظف لأيام محددة (API Endpoint)
-    [HttpPost("plan-attendance")]
-    public async Task<IActionResult> PlanAttendance([FromServices] ApplicationDbContext db, [FromBody] PlanAttendanceDto dto)
-    {
-        var ok = await attendanceService.PlanAttendanceAsync(dto, db);
-        if (ok)
-            return Ok("Attendance plan saved successfully.");
-        return BadRequest("Failed to save attendance plan.");
-    }
-    // تحديث سجل حضور موظف ليوم معين
-    [HttpPut("update-attendance-record")]
-    public async Task<IActionResult> UpdateAttendanceRecord([FromServices] ApplicationDbContext db, [FromBody] AttendanceRecord record)
-    {
-            var result = await attendanceService.UpdateAttendanceRecordAsync(record, db);
-            if (!result)
-                return BadRequest("Attendance record data is required.");
-
+        [HttpPut("update-attendance-record")]
+        public async Task<IActionResult> UpdateAttendanceRecord([FromBody] UpdateAttendanceRecordcommand command)
+        {
+            var result = await _mediator.Send(command);
+            if (!result.Success)
+                return BadRequest(result.Message);
             return Ok(true);
         }
-}
+        [HttpPost("upload-profile-image/{employeeCode}")]
+        public async Task<IActionResult> UploadProfileImage(string employeeCode, [FromForm] UploadProfileImageDto dto)
+        {
+            var command = new UploadProfileImageCommand
+            {
+                EmployeeCode = employeeCode,
+                File = dto.File,
+                HttpContext = HttpContext
+            };
+            var result = await _mediator.Send(command);
+            if (!result.Success)
+                return BadRequest(new { message = result.Message });
+            return Ok(new { imageUrl = result.ImageUrl, message = result.Message });
+        }
+
+
+
+    }
 }

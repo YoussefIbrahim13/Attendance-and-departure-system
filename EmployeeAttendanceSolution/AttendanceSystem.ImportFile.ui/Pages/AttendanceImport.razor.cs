@@ -20,6 +20,8 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using System.IdentityModel.Tokens.Jwt;
 using Blazored.LocalStorage;
+using Domain.Entities;
+using Domain.Enums;
 
 
 namespace AttendanceSystem.ImportFile.ui.Pages
@@ -202,7 +204,7 @@ namespace AttendanceSystem.ImportFile.ui.Pages
             var ok = false;
             try
             {
-                ok = await AttendanceService.SaveAttendanceAsync();
+                ok = await AttendanceService.SaveAttendanceAsync(pendingAttendance);
             }
             catch
             {

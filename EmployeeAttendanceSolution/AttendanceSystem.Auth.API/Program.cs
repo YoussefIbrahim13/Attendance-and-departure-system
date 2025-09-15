@@ -16,6 +16,7 @@ using NETCore.MailKit.Extensions;
 using NETCore.MailKit.Infrastructure.Internal;
 using System.Security.Claims;
 using System.Text;
+using Domain.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,9 +1,11 @@
-﻿using EmployeesModels.Shared;
+﻿using Domain.Entities;
+using EmployeesModels.Shared;
 using EmployeesModels.Shared.Data;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using Domain.Enums;
 
 namespace AttendanceSystem.Auth.Services.Features.Users.Commands.UpdateUser
 {
@@ -51,7 +53,7 @@ namespace AttendanceSystem.Auth.Services.Features.Users.Commands.UpdateUser
 
             // ❌ DO NOT set Department/Position on ApplicationUser anymore
             // ✅ Instead, update Employee entity if needed
-            if (!string.IsNullOrEmpty(user.EmployeeId))
+            if (user.EmployeeId != null && user.EmployeeId != Guid.Empty)
             {
                 var employee = await _db.Employees.FirstOrDefaultAsync(e => e.Id == user.EmployeeId, cancellationToken);
                 if (employee != null)
@@ -74,9 +76,9 @@ namespace AttendanceSystem.Auth.Services.Features.Users.Commands.UpdateUser
                 return new UserResult { Errors = updateResult.Errors };
 
             // 5. Reload Employee for DTO
-            var updatedEmployee = !string.IsNullOrEmpty(user.EmployeeId)
-                                 ? await _db.Employees.FirstOrDefaultAsync(e => e.Id == user.EmployeeId, cancellationToken)
-                                 : null;
+            var updatedEmployee = user.EmployeeId != Guid.Empty
+                ? await _db.Employees.FirstOrDefaultAsync(e => e.Id == user.EmployeeId, cancellationToken)
+                : null;
 
             // 6. Return updated user info
             return new UserResult

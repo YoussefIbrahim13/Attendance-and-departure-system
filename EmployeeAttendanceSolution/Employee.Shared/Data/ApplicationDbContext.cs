@@ -1,4 +1,5 @@
-﻿using EmployeesModels.Shared;
+﻿using Domain.Entities;
+using EmployeesModels.Shared;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
