@@ -2859,11 +2859,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Github Project\\EmployeeAttendanceSolution\\Infrastructure\\Infrastructure.csproj",
+      "projectUniqueName": "A:\\please\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Infrastructure\\Infrastructure.csproj",
       "projectName": "Infrastructure",
-      "projectPath": "C:\\Github Project\\EmployeeAttendanceSolution\\Infrastructure\\Infrastructure.csproj",
+      "projectPath": "A:\\please\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Infrastructure\\Infrastructure.csproj",
       "packagesPath": "C:\\Users\\ehabm\\.nuget\\packages\\",
-      "outputPath": "C:\\Github Project\\EmployeeAttendanceSolution\\Infrastructure\\obj\\",
+      "outputPath": "A:\\please\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -2884,8 +2884,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Github Project\\EmployeeAttendanceSolution\\Domain\\Domain.csproj": {
-              "projectPath": "C:\\Github Project\\EmployeeAttendanceSolution\\Domain\\Domain.csproj"
+            "A:\\please\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\Domain.csproj": {
+              "projectPath": "A:\\please\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\Domain.csproj"
             }
           }
         }

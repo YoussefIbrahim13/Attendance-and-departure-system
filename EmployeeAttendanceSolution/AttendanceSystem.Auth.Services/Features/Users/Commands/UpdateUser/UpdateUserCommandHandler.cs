@@ -1,11 +1,11 @@
 ﻿using Domain.Entities;
 using EmployeesModels.Shared;
-using EmployeesModels.Shared.Data;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using Domain.Enums;
+using Infrastructure_.DBContext;
 
 namespace AttendanceSystem.Auth.Services.Features.Users.Commands.UpdateUser
 {

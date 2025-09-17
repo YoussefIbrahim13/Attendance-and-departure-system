@@ -13,6 +13,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AttendanceSystem.Auth.ui\AttendanceSystem.Auth.ui.csproj" />
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+    <ProjectReference Include="..\Employee.Shared\EmployeesModels.Shared.csproj" />
+    <ProjectReference Include="..\Infrastructure_\Infrastructure_.csproj" />
   </ItemGroup>
 
 </Project>

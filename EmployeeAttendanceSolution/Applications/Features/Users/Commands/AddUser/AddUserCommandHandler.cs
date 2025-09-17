@@ -1,8 +1,7 @@
 ﻿using AttendanceSystem.Auth.Services.Features.Users.Commands.SendRandomPassword;
 using Domain.Comman;
 using Domain.Entities;
-using Infrastructure.Comman;
-using Infrastructure.DBContext;
+using Infrastructure_.DBContext;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore; // 🔹 Needed for FirstOrDefaultAsync

@@ -35,3 +35,16 @@ C:\Github Project\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.dll
 C:\Github Project\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\refint\Domain.dll
 C:\Github Project\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.pdb
 C:\Github Project\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\ref\Domain.dll
+A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\bin\Debug\net8.0\Domain.deps.json
+A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\bin\Debug\net8.0\Domain.dll
+A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\bin\Debug\net8.0\Domain.pdb
+A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.csproj.AssemblyReference.cache
+A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.sourcelink.json
+A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.dll
+A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\refint\Domain.dll
+A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.pdb
+A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\ref\Domain.dll

@@ -89,10 +89,33 @@ namespace AttendanceSystem.Auth.Services.Features.Users.Commands.SendRandomPassw
 
         private string GenerateRandomPassword()
         {
-            const string validChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*";
             var random = new Random();
-            return new string(Enumerable.Repeat(validChars, 12)
-                .Select(s => s[random.Next(s.Length)]).ToArray());
+
+            // Required sets
+            const string lower = "abcdefghijklmnopqrstuvwxyz";
+            const string upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            const string digits = "1234567890";
+            const string special = "!@#$%^&*";
+
+            // Pick one from each required set
+            var passwordChars = new List<char>
+    {
+        lower[random.Next(lower.Length)],
+        upper[random.Next(upper.Length)],
+        digits[random.Next(digits.Length)],
+        special[random.Next(special.Length)]
+    };
+
+            // Fill the rest randomly from all sets
+            string allChars = lower + upper + digits + special;
+            while (passwordChars.Count < 12)
+            {
+                passwordChars.Add(allChars[random.Next(allChars.Length)]);
+            }
+
+            // Shuffle to avoid predictable pattern
+            return new string(passwordChars.OrderBy(_ => random.Next()).ToArray());
         }
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using EmployeesModels.Shared;
+﻿using Domain.Entities;
+using EmployeesModels.Shared;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using System;

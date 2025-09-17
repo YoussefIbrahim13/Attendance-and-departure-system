@@ -1,4 +1,5 @@
-﻿using EmployeesModels.Shared;
+﻿using Domain.Entities;
+using EmployeesModels.Shared;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using System;
@@ -27,8 +28,8 @@ namespace AttendanceSystem.Auth.Services.Features.Roles.Commands.CreateRole
             if (await _roleManager.RoleExistsAsync(request.RoleName))
                 return new RoleResult { Errors = new[] { new IdentityError { Description = $"Role '{request.RoleName}' already exists" } } };
 
-            if (!Enum.TryParse<EmployeesModels.Shared.Roles>(request.RoleName, true, out var roleType))
-                return new RoleResult { Errors = new[] { new IdentityError { Description = $"Invalid role. Valid roles are: {string.Join(", ", Enum.GetNames(typeof(EmployeesModels.Shared.Roles)))}" } } };
+            if (!Enum.TryParse<Domain.Enums.Roles>(request.RoleName, true, out var roleType))
+                return new RoleResult { Errors = new[] { new IdentityError { Description = $"Invalid role. Valid roles are: {string.Join(", ", Enum.GetNames(typeof(Domain.Enums.Roles)))}" } } };
 
             var role = new ApplicationRole
             {

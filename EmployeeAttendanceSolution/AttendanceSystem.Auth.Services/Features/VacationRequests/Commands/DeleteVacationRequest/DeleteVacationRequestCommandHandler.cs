@@ -1,5 +1,5 @@
 ﻿using EmployeesModels.Shared;
-using EmployeesModels.Shared.Data;
+using Infrastructure_.DBContext;
 using MediatR;
 using System;
 using System.Collections.Generic;

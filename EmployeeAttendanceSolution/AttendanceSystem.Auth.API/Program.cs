@@ -4,7 +4,6 @@ using AttendanceSystem.Auth.Services.Features.Users.Commands.SendRandomPassword;
 using AttendanceSystem.Auth.Services.Features.Users.Commands.UpdateUser;
 using AttendanceSystem.Auth.Services.Features.VacationRequests.Commands.CreateVacationRequest;
 using EmployeesModels.Shared;
-using EmployeesModels.Shared.Data;
 using MailKit.Net.Smtp;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -13,10 +12,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using NETCore.MailKit.Extensions;
-using NETCore.MailKit.Infrastructure.Internal;
 using System.Security.Claims;
 using System.Text;
 using Domain.Entities;
+using AttendanceSystem.Auth.Services.Features.VacationRequests.Queries.GetVacationRequestsByUserId;
+using Infrastructure_.DBContext;
+using Domain.Enums;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -43,6 +44,7 @@ builder.Services.AddMediatR(cfg =>
     cfg.RegisterServicesFromAssembly(typeof(UpdateUserCommandHandler).Assembly);
     cfg.RegisterServicesFromAssembly(typeof(CreateVacationRequestCommandHandler).Assembly);
     cfg.RegisterServicesFromAssembly(typeof(AddUserCommandHandler).Assembly);
+    cfg.RegisterServicesFromAssembly(typeof(GetVacationRequestsByUserIdHandler).Assembly);
 });
 
 
@@ -119,7 +121,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
         builder.Configuration.GetConnectionString("DefaultConnection"),
         sqlOptions =>
         {
-            sqlOptions.MigrationsAssembly("AttendanceSystem.Auth.API");
+            //sqlOptions.MigrationsAssembly("AttendanceSystem.Auth.API");
             sqlOptions.EnableRetryOnFailure(
                 maxRetryCount: 5,
                 maxRetryDelay: TimeSpan.FromSeconds(30),

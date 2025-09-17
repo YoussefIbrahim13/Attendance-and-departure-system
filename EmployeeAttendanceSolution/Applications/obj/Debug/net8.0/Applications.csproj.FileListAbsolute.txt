@@ -52,3 +52,21 @@ C:\Github Project\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Appli
 C:\Github Project\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\refint\Applications.dll
 C:\Github Project\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.pdb
 C:\Github Project\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\ref\Applications.dll
+A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Applications.deps.json
+A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Applications.dll
+A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Applications.pdb
+A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Domain.dll
+A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Infrastructure_.dll
+A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Domain.pdb
+A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Infrastructure_.pdb
+A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.csproj.AssemblyReference.cache
+A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.GeneratedMSBuildEditorConfig.editorconfig
+A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.AssemblyInfoInputs.cache
+A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.AssemblyInfo.cs
+A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.csproj.CoreCompileInputs.cache
+A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.sourcelink.json
+A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applicat.B7D1A39B.Up2Date
+A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.dll
+A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\refint\Applications.dll
+A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.pdb
+A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\ref\Applications.dll

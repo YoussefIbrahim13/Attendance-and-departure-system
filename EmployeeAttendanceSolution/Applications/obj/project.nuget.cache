@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rG6KWZjoVO0=",
+  "dgSpecHash": "X1zkpDQDu34=",
   "success": true,
-  "projectFilePath": "C:\\Github Project\\EmployeeAttendanceSolution\\Applications\\Applications.csproj",
+  "projectFilePath": "A:\\please\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Applications\\Applications.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ehabm\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\ehabm\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",

@@ -6,8 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Domain.Enums;
-using Infrastructure.Comman;
 using Domain.Comman;
+using Domain.Entities;
 
 
 namespace AttendanceSystem.Auth.Services.Features.Roles.Commands.CreateRole

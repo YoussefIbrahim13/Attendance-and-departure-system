@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "W6XlFIH+96w=",
+  "dgSpecHash": "h6OnqgqJbM4=",
   "success": true,
-  "projectFilePath": "C:\\Github Project\\EmployeeAttendanceSolution\\Infrastructure\\Infrastructure.csproj",
+  "projectFilePath": "A:\\please\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ehabm\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\ehabm\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

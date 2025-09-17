@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Domain.Entities;
-using Infrastructure.DBContext;
+using Infrastructure_.DBContext;
 using Domain.Dtos;
 
 namespace AttendanceSystem.Auth.Services.Features.Users.Queries.GetPendingUsers

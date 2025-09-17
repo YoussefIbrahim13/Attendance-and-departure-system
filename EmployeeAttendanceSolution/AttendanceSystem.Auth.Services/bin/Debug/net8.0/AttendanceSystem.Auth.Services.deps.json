@@ -8,7 +8,9 @@
     ".NETCoreApp,Version=v8.0": {
       "AttendanceSystem.Auth.Services/1.0.0": {
         "dependencies": {
+          "Domain": "1.0.0",
           "EmployeesModels.Shared": "1.0.0",
+          "Infrastructure_": "1.0.0",
           "MediatR": "13.0.0",
           "MediatR.Extensions.Microsoft.DependencyInjection": "11.1.0",
           "NETCore.MailKit": "2.1.0",
@@ -716,6 +718,18 @@
             "fileVersion": "1.0.0.0"
           }
         }
+      },
+      "Infrastructure_/1.0.0": {
+        "dependencies": {
+          "Domain": "1.0.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "8.0.0"
+        },
+        "runtime": {
+          "Infrastructure_.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
       }
     }
   },
@@ -1165,6 +1179,11 @@
       "sha512": ""
     },
     "EmployeesModels.Shared/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Infrastructure_/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -2,7 +2,7 @@
         
 //using EmployeesModels.Shared;
 //using EmployeesModels.Shared.Data;
-//using Infrastructure;
+//using Infrastructure_;
 //using Microsoft.AspNetCore.Http;
 //using Microsoft.EntityFrameworkCore;
 //using System.Globalization;
@@ -15,7 +15,7 @@
 //    public class AttendanceService : IAttendanceService
 //    {
 //        // حفظ البيانات المؤقتة في قاعدة البيانات
-//        public async Task<string> SavePendingAttendance(List<AttendanceRecordShare> pendingAttendance, AppDbcontext db)
+//        public async Task<string> SavePendingAttendance(List<AttendanceRecordShare> pendingAttendance, ApplicationDbContext db)
 //        {
 //            if (db == null)
 //                return "Invalid DbContext.";
@@ -167,7 +167,7 @@
 //            return workingDays;
 //        }
 
-//        public async Task<bool> PlanAttendanceAsync(PlanAttendanceDto dto, AppDbcontext db)
+//        public async Task<bool> PlanAttendanceAsync(PlanAttendanceDto dto, ApplicationDbContext db)
 //        {
 //            if (dto == null || db == null || string.IsNullOrWhiteSpace(dto.Code) || dto.Dates == null || dto.Dates.Count == 0)
 //                return false;
@@ -202,7 +202,7 @@
 //            return true;
 //        }
 
-//        public async Task<MonthViewDto> GetMonthViewAsync(int year, int month, AppDbcontext db)
+//        public async Task<MonthViewDto> GetMonthViewAsync(int year, int month, ApplicationDbContext db)
 //        {
 //            var startDate = new DateTime(year, month, 1);
 //            var endDate = startDate.AddMonths(1).AddDays(-1);
@@ -255,7 +255,7 @@
 //            return monthViewDto;
 //        }
 
-//        public async Task<List<DailyAttendanceDto>> GetDayViewAsync(DateTime date, AppDbcontext db)
+//        public async Task<List<DailyAttendanceDto>> GetDayViewAsync(DateTime date, ApplicationDbContext db)
 //        {
 //            var day = date.Date;
 
@@ -286,7 +286,7 @@
 //            return dailyAttendance;
 //        }
 
-//        public async Task<YearViewDto> GetYearViewAsync(int year, AppDbcontext db)
+//        public async Task<YearViewDto> GetYearViewAsync(int year, ApplicationDbContext db)
 //        {
 //            var yearViewDto = new YearViewDto
 //            {
@@ -327,11 +327,11 @@
 //            return yearViewDto;
 //        }
 
-//        public async Task<List<Employee>> GetEmployeesAsync(AppDbcontext db)
+//        public async Task<List<Employee>> GetEmployeesAsync(ApplicationDbContext db)
 //        {
 //            return await db.Employees.ToListAsync();
 //        }
-//        public async Task<(bool Success, string Message)> DeleteEmployeeAsync(string code, AppDbcontext db)
+//        public async Task<(bool Success, string Message)> DeleteEmployeeAsync(string code, ApplicationDbContext db)
 //        {
 //            if (string.IsNullOrWhiteSpace(code))
 //                return (false, "Employee Code is required.");
@@ -344,7 +344,7 @@
 //            await db.SaveChangesAsync();
 //            return (true, "Employee deleted successfully.");
 //        }
-//        public async Task<(bool Success, string Message)> AddEmployeeAsync(Employee employeeDto, AppDbcontext db)
+//        public async Task<(bool Success, string Message)> AddEmployeeAsync(Employee employeeDto, ApplicationDbContext db)
 //        {
 //            if (employeeDto == null || string.IsNullOrWhiteSpace(employeeDto.Code) || string.IsNullOrWhiteSpace(employeeDto.Name))
 //                return (false, "Employee data is required.");
@@ -358,7 +358,7 @@
 
 //            return (true, "Employee added successfully.");
 //        }
-//        public async Task<(bool Success, string Message)> UpdateEmployeeAsync(Employee employeeDto, AppDbcontext db)
+//        public async Task<(bool Success, string Message)> UpdateEmployeeAsync(Employee employeeDto, ApplicationDbContext db)
 //        {
 //            if (employeeDto == null || string.IsNullOrWhiteSpace(employeeDto.Code))
 //                return (false, "Employee data is required.");
@@ -378,7 +378,7 @@
 //            await db.SaveChangesAsync();
 //            return (true, "Employee updated successfully.");
 //        }
-//        public async Task<bool> UpdateAttendanceRecordAsync(AttendanceRecordShare record, AppDbcontext db)
+//        public async Task<bool> UpdateAttendanceRecordAsync(AttendanceRecordShare record, ApplicationDbContext db)
 //        {
 //            if (record == null || string.IsNullOrWhiteSpace(record.Code))
 //                return false;
@@ -413,13 +413,13 @@
 //            return true;
 //        }
 //        // جلب بيانات موظف بالكود
-//        public async Task<Employee?> GetEmployeeByCodeAsync(string code, AppDbcontext db)
+//        public async Task<Employee?> GetEmployeeByCodeAsync(string code, ApplicationDbContext db)
 //        {
 //            if (string.IsNullOrWhiteSpace(code))
 //                return null;
 //            return await db.Employees.FirstOrDefaultAsync(e => e.Code == code);
 //        }
-//        public async Task<(bool Success, string Message, string? ImageUrl)> UploadProfileImageAsync(  string code, IFormFile file, AppDbcontext db, HttpContext httpContext)
+//        public async Task<(bool Success, string Message, string? ImageUrl)> UploadProfileImageAsync(  string code, IFormFile file, ApplicationDbContext db, HttpContext httpContext)
 //        {
 //            if (string.IsNullOrWhiteSpace(code) || file == null || file.Length == 0)
 //                return (false, "Invalid employee code or file.", null);

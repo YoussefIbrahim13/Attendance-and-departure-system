@@ -3,16 +3,20 @@ using Applications.Employees.Commands.UpdataEmployeecommand;
 using Applications.Employees.profiles;
 using Applications.Employees.Querys.GetEmployeeByCode;
 using Applications.UpdateAttendanceRecord.Commands;
+using AttendanceSystem.Auth.Services.Features.VacationRequests.Queries.GetVacationRequestsByUserId; // Add this using directive
 using AttendanceSystem.ImportFile.API.Services.AttendanceServices;
-using EmployeesModels.Shared.Data;
-using Infrastructure;
+using Domain.Entities;
+using EmployeesModels.Shared;
+using Infrastructure_;
+using Infrastructure_.DBContext;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using System.Reflection;
-using MediatR;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,12 +28,15 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<AppDbcontext>(options =>
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection")
     )
 );
-
+// ✅ Register Identity services
+builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultTokenProviders();
 
 
 // Replace the incorrect AutoMapper registration line with the correct usage.
@@ -49,7 +56,12 @@ builder.Services.AddCors(options =>
 });
 builder.Services.AddMediatR(cfg =>
 {
-    cfg.RegisterServicesFromAssemblies(typeof(UploadCSVFilequery).Assembly);
+    // The key is to register ALL assemblies that contain MediatR handlers.
+    // The error points to GetVacationRequestsByUserIdHandler, so we must include its assembly.
+    cfg.RegisterServicesFromAssemblies(
+        typeof(UploadCSVFilequery).Assembly,
+        typeof(GetVacationRequestsByUserIdHandler).Assembly // Add this line to scan the correct assembly
+    );
 });
 
 var app = builder.Build();
@@ -67,8 +79,8 @@ app.UseRouting();
 
 app.UseCors(policy =>
     policy.AllowAnyOrigin()
-          .AllowAnyHeader()
-          .AllowAnyMethod()
+             .AllowAnyHeader()
+             .AllowAnyMethod()
 );
 app.UseHttpsRedirection();
 

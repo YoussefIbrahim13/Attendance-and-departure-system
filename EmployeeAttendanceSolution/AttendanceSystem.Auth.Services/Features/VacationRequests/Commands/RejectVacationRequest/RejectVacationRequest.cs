@@ -1,5 +1,4 @@
 ﻿using EmployeesModels.Shared;
-using EmployeesModels.Shared.Data;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -7,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Domain.Enums;
+using Infrastructure_.DBContext;
 
 namespace AttendanceSystem.Auth.Services.Features.VacationRequests.Commands.RejectVacationRequest
 {

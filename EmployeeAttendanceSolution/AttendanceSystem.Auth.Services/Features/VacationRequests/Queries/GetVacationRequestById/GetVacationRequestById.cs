@@ -1,5 +1,4 @@
 ﻿using EmployeesModels.Shared;
-using EmployeesModels.Shared.Data;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -8,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Domain.Entities;
+using Infrastructure_.DBContext;
 
 namespace AttendanceSystem.Auth.Services.Features.VacationRequests.Queries.GetVacationRequestById
 {

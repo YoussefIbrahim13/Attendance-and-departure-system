@@ -1,5 +1,5 @@
 ﻿using Domain.Comman;
-using Infrastructure.Comman;
+using Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using System;

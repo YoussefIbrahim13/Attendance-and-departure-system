@@ -16,12 +16,13 @@ using Applications.YearView.Querys;
 using AutoMapper;
 using Domain.Entities;
 using EmployeesModels.Shared;
-using Infrastructure;
+using Infrastructure_;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using static MudBlazor.CategoryTypes;
 using AttendanceSystem.ImportFile.API.Controllers.Dto;
+using Infrastructure_.DBContext;
 
 namespace AttendanceSystem.ImportFile.API.Controllers
 {
@@ -30,13 +31,13 @@ namespace AttendanceSystem.ImportFile.API.Controllers
     public class AttendanceController : ControllerBase
     {
         private readonly IMediator _mediator;
-        private readonly AppDbcontext _context;
+        private readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
 
 
         private static List<AttendanceRecordDto> _pendingAttendance = new();
 
-        public AttendanceController(IMediator mediator , AppDbcontext context, IMapper mapper)
+        public AttendanceController(IMediator mediator , ApplicationDbContext context, IMapper mapper)
         {
             _mediator = mediator;
             _context = context;
