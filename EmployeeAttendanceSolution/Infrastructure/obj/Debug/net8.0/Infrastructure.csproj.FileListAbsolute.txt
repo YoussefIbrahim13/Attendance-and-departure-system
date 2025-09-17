@@ -30,3 +30,19 @@ Y:\project\mareg\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infr
 Y:\project\mareg\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\refint\Infrastructure.dll
 Y:\project\mareg\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
 Y:\project\mareg\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll
+C:\Github Project\EmployeeAttendanceSolution\Infrastructure\bin\Debug\net8.0\Infrastructure.deps.json
+C:\Github Project\EmployeeAttendanceSolution\Infrastructure\bin\Debug\net8.0\Infrastructure.dll
+C:\Github Project\EmployeeAttendanceSolution\Infrastructure\bin\Debug\net8.0\Infrastructure.pdb
+C:\Github Project\EmployeeAttendanceSolution\Infrastructure\bin\Debug\net8.0\Domain.dll
+C:\Github Project\EmployeeAttendanceSolution\Infrastructure\bin\Debug\net8.0\Domain.pdb
+C:\Github Project\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.csproj.AssemblyReference.cache
+C:\Github Project\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Github Project\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfoInputs.cache
+C:\Github Project\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfo.cs
+C:\Github Project\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.csproj.CoreCompileInputs.cache
+C:\Github Project\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.sourcelink.json
+C:\Github Project\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastr.15EFFBFE.Up2Date
+C:\Github Project\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.dll
+C:\Github Project\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\refint\Infrastructure.dll
+C:\Github Project\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
+C:\Github Project\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll

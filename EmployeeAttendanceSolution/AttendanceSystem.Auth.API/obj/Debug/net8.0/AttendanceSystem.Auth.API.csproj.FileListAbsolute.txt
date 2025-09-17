@@ -896,3 +896,12 @@ Y:\project\mareg\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\
 Y:\project\mareg\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.genruntimeconfig.cache
 Y:\project\mareg\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\ref\AttendanceSystem.Auth.API.dll
 Y:\project\mareg\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Github Project\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.csproj.AssemblyReference.cache
+C:\Github Project\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Github Project\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Github Project\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.AssemblyInfoInputs.cache
+C:\Github Project\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.AssemblyInfo.cs
+C:\Github Project\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.csproj.CoreCompileInputs.cache
+C:\Github Project\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.MvcApplicationPartsAssemblyInfo.cs
+C:\Github Project\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.MvcApplicationPartsAssemblyInfo.cache
+C:\Github Project\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\obj\Debug\net8.0\AttendanceSystem.Auth.API.sourcelink.json

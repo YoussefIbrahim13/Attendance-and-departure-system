@@ -22,3 +22,16 @@ Y:\project\mareg\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.dll
 Y:\project\mareg\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\refint\Domain.dll
 Y:\project\mareg\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.pdb
 Y:\project\mareg\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\ref\Domain.dll
+C:\Github Project\EmployeeAttendanceSolution\Domain\bin\Debug\net8.0\Domain.deps.json
+C:\Github Project\EmployeeAttendanceSolution\Domain\bin\Debug\net8.0\Domain.dll
+C:\Github Project\EmployeeAttendanceSolution\Domain\bin\Debug\net8.0\Domain.pdb
+C:\Github Project\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.csproj.AssemblyReference.cache
+C:\Github Project\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Github Project\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+C:\Github Project\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+C:\Github Project\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+C:\Github Project\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.sourcelink.json
+C:\Github Project\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.dll
+C:\Github Project\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\refint\Domain.dll
+C:\Github Project\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.pdb
+C:\Github Project\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\ref\Domain.dll

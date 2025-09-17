@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Infrastructure;
+using Infrastructure.DBContext;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,11 +8,11 @@ namespace Applications.Employees.Commands.UpdataEmployeecommand;
 
 public class UpdateEmployeeCommandHandler : IRequestHandler<UpdataEmployeecommand, (bool Success, string Message)>
 {
-    private readonly AppDbcontext _dbcontext;
+    private readonly ApplicationDbContext _dbcontext;
     
 
 
-    public UpdateEmployeeCommandHandler(AppDbcontext dbcontext )
+    public UpdateEmployeeCommandHandler(ApplicationDbContext dbcontext )
     {
         _dbcontext = dbcontext;
         

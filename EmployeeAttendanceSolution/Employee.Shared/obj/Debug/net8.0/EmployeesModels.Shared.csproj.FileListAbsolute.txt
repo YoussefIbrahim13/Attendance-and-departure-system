@@ -83,3 +83,9 @@ Y:\project\mareg\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\ref
 Y:\project\mareg\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.pdb
 Y:\project\mareg\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.genruntimeconfig.cache
 Y:\project\mareg\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\ref\EmployeesModels.Shared.dll
+C:\Github Project\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.csproj.AssemblyReference.cache
+C:\Github Project\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Github Project\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.AssemblyInfoInputs.cache
+C:\Github Project\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.AssemblyInfo.cs
+C:\Github Project\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.csproj.CoreCompileInputs.cache
+C:\Github Project\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.sourcelink.json

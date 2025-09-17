@@ -20,7 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\AttendanceSystem\EmployeeAttendanceSolution\Domain\Domain.csproj" />
   </ItemGroup>
 
 </Project>

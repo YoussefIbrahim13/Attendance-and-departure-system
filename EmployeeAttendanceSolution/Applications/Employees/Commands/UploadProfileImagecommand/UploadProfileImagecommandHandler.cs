@@ -1,6 +1,7 @@
 ﻿using Applications.Employees.Commands.UploadProfileImagecommand;
 using Applications.Employees.DTO.EmployeeDtos;
 using Infrastructure;
+using Infrastructure.DBContext;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,9 +9,9 @@ namespace Applications.Employees.Commands.UploadProfileImage;
 
 public class UploadProfileImagecommandHandler : IRequestHandler<UploadProfileImageCommand, UploadProfileImageResultDto>
 {
-    private readonly AppDbcontext _db;
+    private readonly ApplicationDbContext _db;
 
-    public UploadProfileImagecommandHandler(AppDbcontext db)
+    public UploadProfileImagecommandHandler(ApplicationDbContext db)
     {
         _db = db;
     }

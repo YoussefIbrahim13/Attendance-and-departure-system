@@ -2,6 +2,7 @@
 using AutoMapper;
 using Domain.Entities;
 using Infrastructure;
+using Infrastructure.DBContext;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,11 +10,11 @@ namespace Applications.Employees.Commands.AddEmployees;
 
 public class AddEmployeesCommandHandler : IRequestHandler<AddEmployeesCommand, AddEmployeesDto>
 {
-    private readonly AppDbcontext _dbcontext;
+    private readonly ApplicationDbContext _dbcontext;
     private readonly IMapper _mapper;
 
 
-    public AddEmployeesCommandHandler(AppDbcontext dbcontext, IMapper mapper)
+    public AddEmployeesCommandHandler(ApplicationDbContext dbcontext, IMapper mapper)
     {
         _dbcontext = dbcontext;
         _mapper = mapper;

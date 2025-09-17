@@ -7,14 +7,15 @@ using Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
 using MediatR;
+using Infrastructure.DBContext;
 
 namespace Applications.YearView.Querys;
 
 public class GetYearViewqueryHandler : IRequestHandler<GetYearViewquery, YearViewDto>
 {
-    private readonly AppDbcontext _db;
+    private readonly ApplicationDbContext _db;
 
-    public GetYearViewqueryHandler(AppDbcontext db)
+    public GetYearViewqueryHandler(ApplicationDbContext db)
     {
         _db = db;
     }

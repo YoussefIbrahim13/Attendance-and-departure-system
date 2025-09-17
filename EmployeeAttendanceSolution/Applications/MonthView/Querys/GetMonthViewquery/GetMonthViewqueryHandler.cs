@@ -2,6 +2,7 @@
 using Applications.MonthView.Helper.DateHelper;
 using Domain.Enums;
 using Infrastructure;
+using Infrastructure.DBContext;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,9 +10,9 @@ namespace Applications.MonthView.Querys.GetMonthViewquery;
 
 public class GetMonthViewqueryHandler : IRequestHandler<GetMonthViewquery, MonthViewDto>
 {
-    private readonly AppDbcontext _db;
+    private readonly ApplicationDbContext _db;
 
-    public GetMonthViewqueryHandler(AppDbcontext db)
+    public GetMonthViewqueryHandler(ApplicationDbContext db)
     {
         _db = db;
     }

@@ -11038,3 +11038,11 @@ Y:\project\mareg\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\D
 Y:\project\mareg\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\t05ut6bg1j-ttnuvkff41.gz
 Y:\project\mareg\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\9xqkoric6b-qmwr8nin5j.gz
 Y:\project\mareg\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\compressed\rbzvdshd60-aoeetirhis.gz
+C:\Github Project\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\AttendanceSystem.ImportFile.ui.csproj.AssemblyReference.cache
+C:\Github Project\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Github Project\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\AttendanceSystem.ImportFile.ui.GeneratedMSBuildEditorConfig.editorconfig
+C:\Github Project\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\AttendanceSystem.ImportFile.ui.AssemblyInfoInputs.cache
+C:\Github Project\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\AttendanceSystem.ImportFile.ui.AssemblyInfo.cs
+C:\Github Project\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\AttendanceSystem.ImportFile.ui.csproj.CoreCompileInputs.cache
+C:\Github Project\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\AttendanceSystem.ImportFile.ui.MvcApplicationPartsAssemblyInfo.cache
+C:\Github Project\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.ui\obj\Debug\net8.0\AttendanceSystem.ImportFile.ui.sourcelink.json

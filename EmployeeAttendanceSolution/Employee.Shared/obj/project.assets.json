@@ -1547,19 +1547,6 @@
             "rid": "win"
           }
         }
-      },
-      "Domain/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v8.0",
-        "dependencies": {
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.0"
-        },
-        "compile": {
-          "bin/placeholder/Domain.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Domain.dll": {}
-        }
       }
     }
   },
@@ -4155,16 +4142,10 @@
         "system.windows.extensions.nuspec",
         "useSharedDesignerContext.txt"
       ]
-    },
-    "Domain/1.0.0": {
-      "type": "project",
-      "path": "../../../AttendanceSystem/EmployeeAttendanceSolution/Domain/Domain.csproj",
-      "msbuildProject": "../../../AttendanceSystem/EmployeeAttendanceSolution/Domain/Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "Domain >= 1.0.0",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 8.0.0",
       "Microsoft.EntityFrameworkCore >= 8.0.0",
       "Microsoft.EntityFrameworkCore.Design >= 8.0.0",
@@ -4175,23 +4156,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Youssef\\.nuget\\packages\\": {},
+    "C:\\Users\\ehabm\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "Y:\\project\\mareg\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj",
+      "projectUniqueName": "C:\\Github Project\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj",
       "projectName": "EmployeesModels.Shared",
-      "projectPath": "Y:\\project\\mareg\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj",
-      "packagesPath": "C:\\Users\\Youssef\\.nuget\\packages\\",
-      "outputPath": "Y:\\project\\mareg\\EmployeeAttendanceSolution\\Employee.Shared\\obj\\",
+      "projectPath": "C:\\Github Project\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj",
+      "packagesPath": "C:\\Users\\ehabm\\.nuget\\packages\\",
+      "outputPath": "C:\\Github Project\\EmployeeAttendanceSolution\\Employee.Shared\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Youssef\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ehabm\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -4205,11 +4186,7 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {
-            "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Domain\\Domain.csproj": {
-              "projectPath": "Y:\\project\\AttendanceSystem\\EmployeeAttendanceSolution\\Domain\\Domain.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
@@ -4275,7 +4252,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

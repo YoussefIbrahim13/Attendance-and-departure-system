@@ -1,6 +1,7 @@
 ﻿using Domain.Entities;
 using Domain.Enums;
 using Infrastructure;
+using Infrastructure.DBContext;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,9 +9,9 @@ namespace Applications.PlanAttendance.Command;
 
 public class PlanAttendancecommandHandler : IRequestHandler<PlanAttendancecommand, (bool Success, string Message)>
 {
-    private readonly AppDbcontext _db;
+    private readonly ApplicationDbContext _db;
 
-    public PlanAttendancecommandHandler(AppDbcontext db)
+    public PlanAttendancecommandHandler(ApplicationDbContext db)
     {
         _db = db;
     }

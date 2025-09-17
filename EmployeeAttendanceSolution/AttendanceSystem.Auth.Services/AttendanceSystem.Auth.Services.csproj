@@ -14,11 +14,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Employee.Shared\EmployeesModels.Shared.csproj" />
+    <Folder Include="Features\Employees\Commands\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Employees\Commands\" />
+    <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
 </Project>

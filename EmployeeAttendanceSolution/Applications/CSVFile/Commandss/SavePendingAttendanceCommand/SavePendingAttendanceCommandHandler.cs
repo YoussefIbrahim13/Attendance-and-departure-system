@@ -2,6 +2,7 @@
 using AutoMapper;
 using Domain.Entities;
 using Infrastructure;
+using Infrastructure.DBContext;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,9 +11,9 @@ namespace Applications.CSVFile.Commandss.SavePendingAttendanceCommand;
 public class SavePendingAttendanceCommandHandler : IRequestHandler<SavePendingAttendanceCommand, string>
 {
     private readonly IMapper _mapper;
-    private readonly AppDbcontext _db;
+    private readonly ApplicationDbContext _db;
 
-    public SavePendingAttendanceCommandHandler(IMapper mapper, AppDbcontext db)
+    public SavePendingAttendanceCommandHandler(IMapper mapper, ApplicationDbContext db)
     {
         _mapper = mapper;
         _db = db;

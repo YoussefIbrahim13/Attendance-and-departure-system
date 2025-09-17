@@ -1,6 +1,7 @@
 ﻿using Applications.DailyAttendance.DTO;
 using Domain.Enums;
 using Infrastructure;
+using Infrastructure.DBContext;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,9 +9,9 @@ namespace Applications.DailyAttendance.Querys;
 
 public class GetDayViewqueryHandler : IRequestHandler<GetDayViewquery, List<DailyAttendanceDto>>
 {
-    private readonly AppDbcontext _db;
+    private readonly ApplicationDbContext _db;
 
-    public GetDayViewqueryHandler(AppDbcontext db)
+    public GetDayViewqueryHandler(ApplicationDbContext db)
     {
         _db = db;
     }

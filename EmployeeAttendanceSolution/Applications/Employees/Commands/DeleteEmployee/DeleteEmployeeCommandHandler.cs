@@ -1,4 +1,5 @@
 ﻿using Infrastructure;
+using Infrastructure.DBContext;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,9 +7,9 @@ namespace Applications.Employees.Commands.DeleteEmployee;
 
 public class DeleteEmployeeCommandHandler:IRequestHandler<DeleteEmployeeCommand, (bool Success, string Message)>
 {
-    private readonly AppDbcontext _db;
+    private readonly ApplicationDbContext _db;
 
-    public DeleteEmployeeCommandHandler(AppDbcontext db)
+    public DeleteEmployeeCommandHandler(ApplicationDbContext db)
     {
         _db = db;
     }

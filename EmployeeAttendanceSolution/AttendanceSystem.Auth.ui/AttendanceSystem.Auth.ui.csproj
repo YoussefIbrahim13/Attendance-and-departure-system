@@ -19,7 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Employee.Shared\EmployeesModels.Shared.csproj" />
   </ItemGroup>
 
 </Project>

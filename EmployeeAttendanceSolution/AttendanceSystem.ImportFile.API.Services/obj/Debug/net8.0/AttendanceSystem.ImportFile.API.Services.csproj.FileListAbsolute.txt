@@ -99,3 +99,9 @@ Y:\project\mareg\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Serv
 Y:\project\mareg\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\obj\Debug\net8.0\refint\AttendanceSystem.ImportFile.API.Services.dll
 Y:\project\mareg\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.Services.pdb
 Y:\project\mareg\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\obj\Debug\net8.0\ref\AttendanceSystem.ImportFile.API.Services.dll
+C:\Github Project\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.Services.csproj.AssemblyReference.cache
+C:\Github Project\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Github Project\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.Services.AssemblyInfoInputs.cache
+C:\Github Project\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.Services.AssemblyInfo.cs
+C:\Github Project\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.Services.csproj.CoreCompileInputs.cache
+C:\Github Project\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.Services.sourcelink.json

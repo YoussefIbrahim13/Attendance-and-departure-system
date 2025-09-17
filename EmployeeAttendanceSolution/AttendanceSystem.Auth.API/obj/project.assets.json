@@ -1863,7 +1863,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "EmployeesModels.Shared": "1.0.0",
+          "Domain": "1.0.0",
           "MediatR": "13.0.0",
           "MediatR.Extensions.Microsoft.DependencyInjection": "11.1.0",
           "NETCore.MailKit": "2.1.0",
@@ -1879,33 +1879,11 @@
       "Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
-        "dependencies": {
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.0"
-        },
         "compile": {
           "bin/placeholder/Domain.dll": {}
         },
         "runtime": {
           "bin/placeholder/Domain.dll": {}
-        }
-      },
-      "EmployeesModels.Shared/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v8.0",
-        "dependencies": {
-          "Domain": "1.0.0",
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.0",
-          "Microsoft.EntityFrameworkCore": "8.0.0",
-          "Microsoft.EntityFrameworkCore.Relational": "8.0.0",
-          "Microsoft.EntityFrameworkCore.SqlServer": "8.0.0",
-          "Microsoft.Extensions.Identity.Core": "8.0.0",
-          "Microsoft.Extensions.Identity.Stores": "8.0.0"
-        },
-        "compile": {
-          "bin/placeholder/EmployeesModels.Shared.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/EmployeesModels.Shared.dll": {}
         }
       }
     }
@@ -4979,20 +4957,14 @@
     },
     "Domain/1.0.0": {
       "type": "project",
-      "path": "../../../AttendanceSystem/EmployeeAttendanceSolution/Domain/Domain.csproj",
-      "msbuildProject": "../../../AttendanceSystem/EmployeeAttendanceSolution/Domain/Domain.csproj"
-    },
-    "EmployeesModels.Shared/1.0.0": {
-      "type": "project",
-      "path": "../Employee.Shared/EmployeesModels.Shared.csproj",
-      "msbuildProject": "../Employee.Shared/EmployeesModels.Shared.csproj"
+      "path": "../Domain/Domain.csproj",
+      "msbuildProject": "../Domain/Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
       "AttendanceSystem.Auth.Services >= 1.0.0",
       "Blazored.LocalStorage >= 4.5.0",
-      "EmployeesModels.Shared >= 1.0.0",
       "MediatR >= 13.0.0",
       "MediatR.Extensions.Microsoft.DependencyInjection >= 11.1.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 8.0.0",
@@ -5005,23 +4977,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Youssef\\.nuget\\packages\\": {},
+    "C:\\Users\\ehabm\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "Y:\\project\\mareg\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.API\\AttendanceSystem.Auth.API.csproj",
+      "projectUniqueName": "C:\\Github Project\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.API\\AttendanceSystem.Auth.API.csproj",
       "projectName": "AttendanceSystem.Auth.API",
-      "projectPath": "Y:\\project\\mareg\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.API\\AttendanceSystem.Auth.API.csproj",
-      "packagesPath": "C:\\Users\\Youssef\\.nuget\\packages\\",
-      "outputPath": "Y:\\project\\mareg\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.API\\obj\\",
+      "projectPath": "C:\\Github Project\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.API\\AttendanceSystem.Auth.API.csproj",
+      "packagesPath": "C:\\Users\\ehabm\\.nuget\\packages\\",
+      "outputPath": "C:\\Github Project\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Youssef\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ehabm\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -5036,11 +5008,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "Y:\\project\\mareg\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.Services\\AttendanceSystem.Auth.Services.csproj": {
-              "projectPath": "Y:\\project\\mareg\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.Services\\AttendanceSystem.Auth.Services.csproj"
-            },
-            "Y:\\project\\mareg\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj": {
-              "projectPath": "Y:\\project\\mareg\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj"
+            "C:\\Github Project\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.Services\\AttendanceSystem.Auth.Services.csproj": {
+              "projectPath": "C:\\Github Project\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.Services\\AttendanceSystem.Auth.Services.csproj"
             }
           }
         }
@@ -5125,7 +5094,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
       }
     }
   },

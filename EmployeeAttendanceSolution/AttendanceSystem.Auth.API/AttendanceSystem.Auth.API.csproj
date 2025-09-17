@@ -27,7 +27,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AttendanceSystem.Auth.Services\AttendanceSystem.Auth.Services.csproj" />
-    <ProjectReference Include="..\Employee.Shared\EmployeesModels.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>

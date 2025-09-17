@@ -34,3 +34,21 @@ Y:\project\mareg\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applic
 Y:\project\mareg\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\refint\Applications.dll
 Y:\project\mareg\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.pdb
 Y:\project\mareg\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\ref\Applications.dll
+C:\Github Project\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Applications.deps.json
+C:\Github Project\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Applications.dll
+C:\Github Project\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Applications.pdb
+C:\Github Project\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Domain.dll
+C:\Github Project\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Infrastructure.dll
+C:\Github Project\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Domain.pdb
+C:\Github Project\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Infrastructure.pdb
+C:\Github Project\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.csproj.AssemblyReference.cache
+C:\Github Project\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.GeneratedMSBuildEditorConfig.editorconfig
+C:\Github Project\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.AssemblyInfoInputs.cache
+C:\Github Project\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.AssemblyInfo.cs
+C:\Github Project\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.csproj.CoreCompileInputs.cache
+C:\Github Project\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.sourcelink.json
+C:\Github Project\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applicat.B7D1A39B.Up2Date
+C:\Github Project\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.dll
+C:\Github Project\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\refint\Applications.dll
+C:\Github Project\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.pdb
+C:\Github Project\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\ref\Applications.dll

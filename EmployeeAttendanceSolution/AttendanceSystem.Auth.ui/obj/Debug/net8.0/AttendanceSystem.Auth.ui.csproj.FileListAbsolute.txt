@@ -7351,3 +7351,11 @@ Y:\project\mareg\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\n
 Y:\project\mareg\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\compressed\4yvw3pwnb2-13c5f45x7g.gz
 Y:\project\mareg\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\compressed\2lbmy12kb4-l6z5yi697i.gz
 Y:\project\mareg\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\compressed\lrbgnk7ewd-b5mxms11wy.gz
+C:\Github Project\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\AttendanceSystem.Auth.ui.csproj.AssemblyReference.cache
+C:\Github Project\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Github Project\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\AttendanceSystem.Auth.ui.GeneratedMSBuildEditorConfig.editorconfig
+C:\Github Project\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\AttendanceSystem.Auth.ui.AssemblyInfoInputs.cache
+C:\Github Project\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\AttendanceSystem.Auth.ui.AssemblyInfo.cs
+C:\Github Project\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\AttendanceSystem.Auth.ui.csproj.CoreCompileInputs.cache
+C:\Github Project\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\AttendanceSystem.Auth.ui.MvcApplicationPartsAssemblyInfo.cache
+C:\Github Project\EmployeeAttendanceSolution\AttendanceSystem.Auth.ui\obj\Debug\net8.0\AttendanceSystem.Auth.ui.sourcelink.json

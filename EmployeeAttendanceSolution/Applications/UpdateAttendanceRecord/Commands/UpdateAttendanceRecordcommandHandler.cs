@@ -3,6 +3,7 @@ using Applications.Employees.DTO.EmployeeDtos;
 using AutoMapper;
 using Domain.Entities;
 using Infrastructure;
+using Infrastructure.DBContext;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,10 +11,10 @@ namespace Applications.UpdateAttendanceRecord.Commands;
 
 public class UpdateAttendanceRecordcommandHandler :  IRequestHandler<UpdateAttendanceRecordcommand, (bool Success, string Message)>
 {
-    private readonly AppDbcontext _db;
+    private readonly ApplicationDbContext _db;
     private readonly IMapper _mapper;
 
-    public UpdateAttendanceRecordcommandHandler(AppDbcontext db, IMapper mapper)
+    public UpdateAttendanceRecordcommandHandler(ApplicationDbContext db, IMapper mapper)
     {
         _db = db;
         _mapper = mapper;

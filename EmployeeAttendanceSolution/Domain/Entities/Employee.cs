@@ -14,5 +14,6 @@ public class Employee
     public decimal Salary { get; set; }
     public string? ProfileImagePath { get; set; }
 
-
+    // 🔹 Back reference (0..1 user)
+    public virtual ApplicationUser? User { get; set; }
 }

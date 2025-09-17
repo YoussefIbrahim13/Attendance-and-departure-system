@@ -1,6 +1,7 @@
 ﻿using Applications.Employees.DTO.EmployeeDtos;
 using AutoMapper;
 using Infrastructure;
+using Infrastructure.DBContext;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,10 +9,10 @@ namespace Applications.Employees.Querys.GetEmployeeByCode;
 
 public class GetEmployeeByCodeQueryHandler : IRequestHandler<GetEmployeeByCodeQuery, EmployeeeByCodeOutPut>
 {
-    private readonly AppDbcontext _db;
+    private readonly ApplicationDbContext _db;
     private readonly IMapper _mapper;
 
-    public GetEmployeeByCodeQueryHandler(AppDbcontext db, IMapper mapper)
+    public GetEmployeeByCodeQueryHandler(ApplicationDbContext db, IMapper mapper)
     {
         _db = db;
         _mapper = mapper;
