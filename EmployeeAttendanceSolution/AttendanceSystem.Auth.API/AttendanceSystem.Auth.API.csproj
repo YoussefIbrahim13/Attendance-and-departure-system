@@ -33,9 +33,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Applications\Applications.csproj" />
     <ProjectReference Include="..\AttendanceSystem.Auth.Services\AttendanceSystem.Auth.Services.csproj" />
     <ProjectReference Include="..\Employee.Shared\EmployeesModels.Shared.csproj" />
-    <ProjectReference Include="..\Infrastructure_\Infrastructure_.csproj" />
+    <ProjectReference Include="..\EmployeeAttendanceSolution.ServiceDefaults\EmployeeAttendanceSolution.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

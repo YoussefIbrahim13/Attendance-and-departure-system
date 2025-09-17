@@ -3,11 +3,11 @@ using Applications.YearView.DTO;
 using Applications.YearView.Helper;
 
 using Domain.Enums;
-using Infrastructure_;
+using Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
 using MediatR;
-using Infrastructure_.DBContext;
+using Infrastructure.DBContext;
 
 namespace Applications.YearView.Querys;
 

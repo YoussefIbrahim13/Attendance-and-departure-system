@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Domain.Entities;
-using Infrastructure_.DBContext;
+using Infrastructure.DBContext;
 using Domain.Comman;
 
 namespace AttendanceSystem.Auth.Services.Features.Users.Queries.GetUserByEmployeeCode

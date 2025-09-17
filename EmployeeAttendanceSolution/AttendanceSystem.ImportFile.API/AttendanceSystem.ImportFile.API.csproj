@@ -23,7 +23,8 @@
     <ProjectReference Include="..\AttendanceSystem.ImportFile.API.Services\AttendanceSystem.ImportFile.API.Services.csproj" />
     <ProjectReference Include="..\Domain\Domain.csproj" />
     <ProjectReference Include="..\Employee.Shared\EmployeesModels.Shared.csproj" />
-    <ProjectReference Include="..\Infrastructure_\Infrastructure_.csproj" />
+    <ProjectReference Include="..\EmployeeAttendanceSolution.ServiceDefaults\EmployeeAttendanceSolution.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>

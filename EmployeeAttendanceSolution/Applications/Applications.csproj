@@ -8,6 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Features\Employees\Commands\**" />
+    <EmbeddedResource Remove="Features\Employees\Commands\**" />
+    <None Remove="Features\Employees\Commands\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="MailKit" Version="3.2.0" />
     <PackageReference Include="MediatR" Version="12.0.1" />
@@ -20,7 +26,6 @@
     <Folder Include="DailyAttendance\DTO\" />
     <Folder Include="Employees\Commands\AddEmployees\Dtos\" />
     <Folder Include="Employees\Commands\DeleteEmployee\" />
-    <Folder Include="Features\Employees\Commands\" />
     <Folder Include="MonthView\Helper\DateHelper\" />
     <Folder Include="PlanAttendance\DTO\" />
     <Folder Include="UpdateAttendanceRecord\Commands\" />
@@ -28,7 +33,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj" />
-    <ProjectReference Include="..\Infrastructure_\Infrastructure_.csproj" />
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

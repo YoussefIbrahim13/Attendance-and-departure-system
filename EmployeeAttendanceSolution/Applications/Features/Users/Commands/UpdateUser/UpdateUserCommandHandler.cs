@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using Domain.Enums;
-using Infrastructure_.DBContext;
+using Infrastructure.DBContext;
 
 namespace AttendanceSystem.Auth.Services.Features.Users.Commands.UpdateUser
 {

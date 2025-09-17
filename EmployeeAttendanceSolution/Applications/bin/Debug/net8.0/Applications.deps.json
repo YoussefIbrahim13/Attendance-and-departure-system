@@ -10,7 +10,7 @@
         "dependencies": {
           "AutoMapper": "13.0.1",
           "Domain": "1.0.0",
-          "Infrastructure_": "1.0.0",
+          "Infrastructure": "1.0.0",
           "MailKit": "3.2.0",
           "MediatR": "12.0.1",
           "MediatR.Extensions.Microsoft.DependencyInjection": "11.0.0",
@@ -738,13 +738,13 @@
           }
         }
       },
-      "Infrastructure_/1.0.0": {
+      "Infrastructure/1.0.0": {
         "dependencies": {
           "Domain": "1.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.0"
         },
         "runtime": {
-          "Infrastructure_.dll": {
+          "Infrastructure.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -1246,7 +1246,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Infrastructure_/1.0.0": {
+    "Infrastructure/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

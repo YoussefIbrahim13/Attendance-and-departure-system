@@ -1,9 +1,4 @@
 using AttendanceSystem.Auth.API.Services.Services.AuthoServices;
-using AttendanceSystem.Auth.Services.Features.Users.Commands.AddUser;
-using AttendanceSystem.Auth.Services.Features.Users.Commands.SendRandomPassword;
-using AttendanceSystem.Auth.Services.Features.Users.Commands.UpdateUser;
-using AttendanceSystem.Auth.Services.Features.VacationRequests.Commands.CreateVacationRequest;
-using EmployeesModels.Shared;
 using MailKit.Net.Smtp;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -11,15 +6,19 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using NETCore.MailKit.Extensions;
 using System.Security.Claims;
 using System.Text;
 using Domain.Entities;
-using AttendanceSystem.Auth.Services.Features.VacationRequests.Queries.GetVacationRequestsByUserId;
-using Infrastructure_.DBContext;
+using Infrastructure.DBContext;
 using Domain.Enums;
+using AttendanceSystem.Auth.Services.Features.Users.Commands.UpdateUser;
+using AttendanceSystem.Auth.Services.Features.VacationRequests.Commands.CreateVacationRequest;
+using AttendanceSystem.Auth.Services.Features.VacationRequests.Queries.GetVacationRequestsByUserId;
+using AttendanceSystem.Auth.Services.Features.Users.Commands.AddUser;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.AddServiceDefaults();
 
 //// Add services to the container.
 //builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
@@ -162,6 +161,8 @@ builder.Services.AddScoped<IAuthoServicesApi, AuthoServicesApi>();
 builder.Services.AddControllers();
 
 var app = builder.Build();
+
+app.MapDefaultEndpoints();
 
 // Middleware Pipeline
 if (app.Environment.IsDevelopment())

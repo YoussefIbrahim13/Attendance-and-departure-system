@@ -11,7 +11,7 @@
           "AttendanceSystem.Auth.ui": "1.0.0",
           "Domain": "1.0.0",
           "EmployeesModels.Shared": "1.0.0",
-          "Infrastructure_": "1.0.0",
+          "Infrastructure": "1.0.0",
           "Microsoft.AspNetCore.Http": "2.3.0",
           "Microsoft.EntityFrameworkCore": "8.0.0"
         },
@@ -988,7 +988,7 @@
           "Blazored.SessionStorage": "2.4.0",
           "Domain": "1.0.0",
           "EmployeesModels.Shared": "1.0.0",
-          "Infrastructure_": "1.0.0",
+          "Infrastructure": "1.0.0",
           "Microsoft.AspNetCore.Components.Authorization": "8.0.0",
           "Microsoft.AspNetCore.Components.WebAssembly": "8.0.17",
           "Microsoft.Extensions.Http": "8.0.0",
@@ -1031,13 +1031,13 @@
           }
         }
       },
-      "Infrastructure_/1.0.0": {
+      "Infrastructure/1.0.0": {
         "dependencies": {
           "Domain": "1.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.0"
         },
         "runtime": {
-          "Infrastructure_.dll": {
+          "Infrastructure.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -1689,7 +1689,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Infrastructure_/1.0.0": {
+    "Infrastructure/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

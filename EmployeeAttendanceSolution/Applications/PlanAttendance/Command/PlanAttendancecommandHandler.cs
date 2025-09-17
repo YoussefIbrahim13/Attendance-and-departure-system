@@ -1,7 +1,7 @@
 ﻿using Domain.Entities;
 using Domain.Enums;
-using Infrastructure_;
-using Infrastructure_.DBContext;
+using Infrastructure;
+using Infrastructure.DBContext;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 

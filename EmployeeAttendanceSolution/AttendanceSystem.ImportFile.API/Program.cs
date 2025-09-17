@@ -1,4 +1,4 @@
-﻿using Applications.CSVFile.Querys.UploadCSVFilequery;
+using Applications.CSVFile.Querys.UploadCSVFilequery;
 using Applications.Employees.Commands.UpdataEmployeecommand;
 using Applications.Employees.profiles;
 using Applications.Employees.Querys.GetEmployeeByCode;
@@ -7,8 +7,8 @@ using AttendanceSystem.Auth.Services.Features.VacationRequests.Queries.GetVacati
 using AttendanceSystem.ImportFile.API.Services.AttendanceServices;
 using Domain.Entities;
 using EmployeesModels.Shared;
-using Infrastructure_;
-using Infrastructure_.DBContext;
+using Infrastructure;
+using Infrastructure.DBContext;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
@@ -20,6 +20,8 @@ using System.Reflection;
 
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.AddServiceDefaults();
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -65,6 +67,8 @@ builder.Services.AddMediatR(cfg =>
 });
 
 var app = builder.Build();
+
+app.MapDefaultEndpoints();
 
 // Configure the HTTP request pipeline.
 

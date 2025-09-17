@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Domain.Entities;
-using Infrastructure_.DBContext;
+using Infrastructure.DBContext;
 using Domain.Comman;
 
 namespace AttendanceSystem.Auth.Services.Features.Users.Queries.GetUserById

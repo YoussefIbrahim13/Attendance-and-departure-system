@@ -21,7 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj" />
     <ProjectReference Include="..\Employee.Shared\EmployeesModels.Shared.csproj" />
-    <ProjectReference Include="..\Infrastructure_\Infrastructure_.csproj" />
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
