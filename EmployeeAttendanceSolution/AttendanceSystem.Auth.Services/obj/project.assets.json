@@ -2920,51 +2920,45 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Ahmed\\.nuget\\packages\\": {},
-    "d:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\ehabm\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Microtec\\Projects\\Training\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.Services\\AttendanceSystem.Auth.Services.csproj",
+      "projectUniqueName": "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.Services\\AttendanceSystem.Auth.Services.csproj",
       "projectName": "AttendanceSystem.Auth.Services",
-      "projectPath": "E:\\Microtec\\Projects\\Training\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.Services\\AttendanceSystem.Auth.Services.csproj",
-      "packagesPath": "C:\\Users\\Ahmed\\.nuget\\packages\\",
-      "outputPath": "E:\\Microtec\\Projects\\Training\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.Services\\obj\\",
+      "projectPath": "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.Services\\AttendanceSystem.Auth.Services.csproj",
+      "packagesPath": "C:\\Users\\ehabm\\.nuget\\packages\\",
+      "outputPath": "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.Auth.Services\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "d:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Ahmed\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ehabm\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "E:\\Microtec\\Projects\\Training\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\Domain.csproj": {
-              "projectPath": "E:\\Microtec\\Projects\\Training\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\Domain.csproj"
+            "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\Domain.csproj": {
+              "projectPath": "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\Domain.csproj"
             },
-            "E:\\Microtec\\Projects\\Training\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj": {
-              "projectPath": "E:\\Microtec\\Projects\\Training\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj"
+            "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj": {
+              "projectPath": "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj"
             },
-            "E:\\Microtec\\Projects\\Training\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "E:\\Microtec\\Projects\\Training\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Infrastructure\\Infrastructure.csproj"
+            "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Infrastructure\\Infrastructure.csproj"
             }
           }
         }
@@ -3013,12 +3007,26 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[8.0.20, 8.0.20]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[8.0.20, 8.0.20]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[8.0.20, 8.0.20]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
       }
     }
   },

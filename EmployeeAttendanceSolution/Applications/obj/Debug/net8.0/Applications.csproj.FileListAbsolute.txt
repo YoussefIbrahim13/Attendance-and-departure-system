@@ -1,90 +1,18 @@
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Applications.deps.json
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Applications.dll
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Applications.pdb
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Domain.dll
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Infrastructure.dll
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Infrastructure.pdb
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Domain.pdb
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.csproj.AssemblyReference.cache
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.GeneratedMSBuildEditorConfig.editorconfig
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.AssemblyInfoInputs.cache
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.AssemblyInfo.cs
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.csproj.CoreCompileInputs.cache
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.sourcelink.json
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applicat.B7D1A39B.Up2Date
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.dll
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\refint\Applications.dll
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.pdb
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\ref\Applications.dll
-Y:\project\mareg\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Applications.deps.json
-Y:\project\mareg\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Applications.dll
-Y:\project\mareg\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Applications.pdb
-Y:\project\mareg\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Domain.dll
-Y:\project\mareg\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Infrastructure.dll
-Y:\project\mareg\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Infrastructure.pdb
-Y:\project\mareg\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Domain.pdb
-Y:\project\mareg\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.csproj.AssemblyReference.cache
-Y:\project\mareg\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.GeneratedMSBuildEditorConfig.editorconfig
-Y:\project\mareg\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.AssemblyInfoInputs.cache
-Y:\project\mareg\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.AssemblyInfo.cs
-Y:\project\mareg\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.csproj.CoreCompileInputs.cache
-Y:\project\mareg\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.sourcelink.json
-Y:\project\mareg\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applicat.B7D1A39B.Up2Date
-Y:\project\mareg\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.dll
-Y:\project\mareg\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\refint\Applications.dll
-Y:\project\mareg\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.pdb
-Y:\project\mareg\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\ref\Applications.dll
-C:\Github Project\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Applications.deps.json
-C:\Github Project\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Applications.dll
-C:\Github Project\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Applications.pdb
-C:\Github Project\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Domain.dll
-C:\Github Project\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Infrastructure.dll
-C:\Github Project\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Domain.pdb
-C:\Github Project\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Infrastructure.pdb
-C:\Github Project\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.csproj.AssemblyReference.cache
-C:\Github Project\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.GeneratedMSBuildEditorConfig.editorconfig
-C:\Github Project\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.AssemblyInfoInputs.cache
-C:\Github Project\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.AssemblyInfo.cs
-C:\Github Project\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.csproj.CoreCompileInputs.cache
-C:\Github Project\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.sourcelink.json
-C:\Github Project\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applicat.B7D1A39B.Up2Date
-C:\Github Project\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.dll
-C:\Github Project\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\refint\Applications.dll
-C:\Github Project\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.pdb
-C:\Github Project\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\ref\Applications.dll
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Applications.deps.json
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Applications.dll
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Applications.pdb
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Domain.dll
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Infrastructure_.dll
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Domain.pdb
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Infrastructure_.pdb
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.csproj.AssemblyReference.cache
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.GeneratedMSBuildEditorConfig.editorconfig
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.AssemblyInfoInputs.cache
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.AssemblyInfo.cs
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.csproj.CoreCompileInputs.cache
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.sourcelink.json
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applicat.B7D1A39B.Up2Date
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.dll
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\refint\Applications.dll
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.pdb
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\ref\Applications.dll
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Applications.deps.json
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Applications.dll
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Applications.pdb
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Domain.dll
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Domain.pdb
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.csproj.AssemblyReference.cache
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.GeneratedMSBuildEditorConfig.editorconfig
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.AssemblyInfoInputs.cache
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.AssemblyInfo.cs
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.csproj.CoreCompileInputs.cache
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.sourcelink.json
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applicat.B7D1A39B.Up2Date
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.dll
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\refint\Applications.dll
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.pdb
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\ref\Applications.dll
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Infrastructure.dll
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Infrastructure.pdb
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Applications.deps.json
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Applications.dll
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Applications.pdb
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Domain.dll
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Infrastructure.dll
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Domain.pdb
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Infrastructure.pdb
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.csproj.AssemblyReference.cache
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.GeneratedMSBuildEditorConfig.editorconfig
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.AssemblyInfoInputs.cache
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.AssemblyInfo.cs
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.csproj.CoreCompileInputs.cache
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.sourcelink.json
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applicat.B7D1A39B.Up2Date
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.dll
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\refint\Applications.dll
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.pdb
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\ref\Applications.dll

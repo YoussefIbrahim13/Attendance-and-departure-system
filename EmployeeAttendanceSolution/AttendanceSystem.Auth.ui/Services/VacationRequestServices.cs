@@ -135,6 +135,7 @@ using Blazored.LocalStorage;
 using EmployeesModels.Shared;
 using System.Net.Http.Json;
 using Domain.Entities;
+using Domain.Dtos;
 
 namespace AttendanceSystem.Auth.ui.Services
 {

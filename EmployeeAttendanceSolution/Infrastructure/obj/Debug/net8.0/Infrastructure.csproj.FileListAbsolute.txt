@@ -1,16 +1,16 @@
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\bin\Debug\net8.0\Infrastructure.deps.json
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\bin\Debug\net8.0\Infrastructure.dll
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\bin\Debug\net8.0\Infrastructure.pdb
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\bin\Debug\net8.0\Domain.dll
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\bin\Debug\net8.0\Domain.pdb
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.csproj.AssemblyReference.cache
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfoInputs.cache
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfo.cs
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.csproj.CoreCompileInputs.cache
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.sourcelink.json
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastr.15EFFBFE.Up2Date
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.dll
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\refint\Infrastructure.dll
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\bin\Debug\net8.0\Infrastructure.deps.json
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\bin\Debug\net8.0\Infrastructure.dll
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\bin\Debug\net8.0\Infrastructure.pdb
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\bin\Debug\net8.0\Domain.dll
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\bin\Debug\net8.0\Domain.pdb
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.csproj.AssemblyReference.cache
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfoInputs.cache
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfo.cs
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.csproj.CoreCompileInputs.cache
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.sourcelink.json
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastr.15EFFBFE.Up2Date
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.dll
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\refint\Infrastructure.dll
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll

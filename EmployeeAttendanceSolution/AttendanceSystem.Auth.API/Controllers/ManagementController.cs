@@ -12,6 +12,7 @@ using AttendanceSystem.Auth.Services.Features.Users.Queries.GetAllUsers;
 using AttendanceSystem.Auth.Services.Features.Users.Queries.GetPendingUsers;
 using AttendanceSystem.Auth.Services.Features.Users.Queries.GetUserByEmployeeCode;
 using AttendanceSystem.Auth.Services.Features.Users.Queries.GetUserById;
+using Domain.Dtos;
 using EmployeesModels.Shared;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;

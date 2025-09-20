@@ -45,7 +45,7 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "EmployeesModels.Shared.UserCreateDto",
+        "Type": "Domain.Dtos.UserCreateDto",
         "IsRequired": true
       },
       {
@@ -244,7 +244,7 @@
       },
       {
         "Name": "dto",
-        "Type": "EmployeesModels.Shared.UserUpdateDto",
+        "Type": "Domain.Dtos.UserUpdateDto",
         "IsRequired": true
       }
     ],
@@ -276,7 +276,7 @@
     "Parameters": [
       {
         "Name": "vacationRequest",
-        "Type": "EmployeesModels.Shared.CreateVacationRequestDto",
+        "Type": "Domain.Dtos.CreateVacationRequestDto",
         "IsRequired": true
       }
     ],
@@ -381,7 +381,7 @@
       },
       {
         "Name": "vacationRequest",
-        "Type": "EmployeesModels.Shared.UpdateVacationRequestDto",
+        "Type": "Domain.Dtos.UpdateVacationRequestDto",
         "IsRequired": true
       }
     ],

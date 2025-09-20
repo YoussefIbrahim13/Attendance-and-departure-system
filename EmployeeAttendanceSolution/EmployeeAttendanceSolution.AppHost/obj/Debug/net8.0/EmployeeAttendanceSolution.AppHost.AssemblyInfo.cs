@@ -12,23 +12,23 @@ using System;
 using System.Reflection;
 
 [assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("36baab69-36d2-44fa-9292-bf778073a2ab")]
-[assembly: System.Reflection.AssemblyMetadata("dcpclipath", "C:\\Users\\Ahmed\\.nuget\\packages\\aspire.hosting.orchestration.win-x64\\9.3.1\\tools\\d" +
+[assembly: System.Reflection.AssemblyMetadata("dcpclipath", "C:\\Users\\ehabm\\.nuget\\packages\\aspire.hosting.orchestration.win-x64\\9.3.1\\tools\\d" +
     "cp.exe")]
-[assembly: System.Reflection.AssemblyMetadata("dcpextensionpaths", "C:\\Users\\Ahmed\\.nuget\\packages\\aspire.hosting.orchestration.win-x64\\9.3.1\\tools\\e" +
+[assembly: System.Reflection.AssemblyMetadata("dcpextensionpaths", "C:\\Users\\ehabm\\.nuget\\packages\\aspire.hosting.orchestration.win-x64\\9.3.1\\tools\\e" +
     "xt\\")]
-[assembly: System.Reflection.AssemblyMetadata("dcpbinpath", "C:\\Users\\Ahmed\\.nuget\\packages\\aspire.hosting.orchestration.win-x64\\9.3.1\\tools\\e" +
+[assembly: System.Reflection.AssemblyMetadata("dcpbinpath", "C:\\Users\\ehabm\\.nuget\\packages\\aspire.hosting.orchestration.win-x64\\9.3.1\\tools\\e" +
     "xt\\bin\\")]
-[assembly: System.Reflection.AssemblyMetadata("apphostprojectpath", "E:\\Microtec\\Projects\\Training\\Attendance-and-departure-system\\EmployeeAttendanceS" +
-    "olution\\EmployeeAttendanceSolution.AppHost")]
+[assembly: System.Reflection.AssemblyMetadata("apphostprojectpath", "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee" +
+    "AttendanceSolution.AppHost")]
 [assembly: System.Reflection.AssemblyMetadata("apphostprojectname", "EmployeeAttendanceSolution.AppHost.csproj")]
-[assembly: System.Reflection.AssemblyMetadata("aspiredashboardpath", "C:\\Users\\Ahmed\\.nuget\\packages\\aspire.dashboard.sdk.win-x64\\9.3.1\\tools\\Aspire.Da" +
+[assembly: System.Reflection.AssemblyMetadata("aspiredashboardpath", "C:\\Users\\ehabm\\.nuget\\packages\\aspire.dashboard.sdk.win-x64\\9.3.1\\tools\\Aspire.Da" +
     "shboard.exe")]
-[assembly: System.Reflection.AssemblyMetadataAttribute("apphostprojectbaseintermediateoutputpath", "E:\\Microtec\\Projects\\Training\\Attendance-and-departure-system\\EmployeeAttendanceS" +
-    "olution\\EmployeeAttendanceSolution.AppHost\\obj\\")]
+[assembly: System.Reflection.AssemblyMetadataAttribute("apphostprojectbaseintermediateoutputpath", "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee" +
+    "AttendanceSolution.AppHost\\obj\\")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("EmployeeAttendanceSolution.AppHost")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+078a18ee2ba9d8fd0b14544e09f3ce61907ca371")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f344b6a3da6bfa20b19eed3a71fff8b6f0fe6ab5")]
 [assembly: System.Reflection.AssemblyProductAttribute("EmployeeAttendanceSolution.AppHost")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EmployeeAttendanceSolution.AppHost")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

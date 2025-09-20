@@ -15,6 +15,10 @@ using AttendanceSystem.Auth.Services.Features.Users.Commands.UpdateUser;
 using AttendanceSystem.Auth.Services.Features.VacationRequests.Commands.CreateVacationRequest;
 using AttendanceSystem.Auth.Services.Features.VacationRequests.Queries.GetVacationRequestsByUserId;
 using AttendanceSystem.Auth.Services.Features.Users.Commands.AddUser;
+using AttendanceSystem.Auth.Services.Features.Users.Commands.SendRandomPassword;
+using AutoMapper;
+using Applications.UpdateAttendanceRecord.Commands;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,7 +38,12 @@ builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
 .AddEntityFrameworkStores<ApplicationDbContext>()
 .AddDefaultTokenProviders();
 
-
+// Add AutoMapper registration here
+builder.Services.AddAutoMapper(
+    // Example of how to add multiple assemblies
+    typeof(Program).Assembly,
+    typeof(UpdateAttendanceRecordcommand).Assembly
+);
 
 // Register MediatR (scans your assembly for IRequestHandlers)
 builder.Services.AddMediatR(cfg =>

@@ -1,6 +1,7 @@
 ﻿@page "/admin/edit-user/{UserId}"
 @attribute [Authorize(Roles = "Admin")]
 @using System.Net.Http.Headers
+@using Domain.Dtos
 
 @inject HttpClient Http
 @inject NavigationManager Navigation

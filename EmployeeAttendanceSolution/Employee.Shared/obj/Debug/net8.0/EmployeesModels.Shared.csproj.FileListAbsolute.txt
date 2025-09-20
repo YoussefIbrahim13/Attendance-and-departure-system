@@ -1,127 +1,18 @@
-A:\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\EmployeesModels.Shared.deps.json
-A:\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\EmployeesModels.Shared.dll
-A:\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\EmployeesModels.Shared.pdb
-A:\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.GeneratedMSBuildEditorConfig.editorconfig
-A:\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.AssemblyInfoInputs.cache
-A:\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.AssemblyInfo.cs
-A:\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.csproj.CoreCompileInputs.cache
-A:\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.dll
-A:\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\refint\EmployeesModels.Shared.dll
-A:\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.pdb
-A:\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\ref\EmployeesModels.Shared.dll
-Y:\project\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\EmployeesModels.Shared.deps.json
-Y:\project\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\EmployeesModels.Shared.dll
-Y:\project\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\EmployeesModels.Shared.pdb
-Y:\project\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.GeneratedMSBuildEditorConfig.editorconfig
-Y:\project\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.AssemblyInfoInputs.cache
-Y:\project\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.AssemblyInfo.cs
-Y:\project\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.csproj.CoreCompileInputs.cache
-Y:\project\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.sourcelink.json
-Y:\project\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.dll
-Y:\project\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\refint\EmployeesModels.Shared.dll
-Y:\project\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.pdb
-Y:\project\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\ref\EmployeesModels.Shared.dll
-Y:\project\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.csproj.AssemblyReference.cache
-A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\EmployeesModels.Shared.deps.json
-A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\EmployeesModels.Shared.dll
-A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\EmployeesModels.Shared.pdb
-A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.csproj.AssemblyReference.cache
-A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.GeneratedMSBuildEditorConfig.editorconfig
-A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.AssemblyInfoInputs.cache
-A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.AssemblyInfo.cs
-A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.csproj.CoreCompileInputs.cache
-A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.sourcelink.json
-A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.dll
-A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\refint\EmployeesModels.Shared.dll
-A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.pdb
-A:\EmployeeAttendanceSolution\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\ref\EmployeesModels.Shared.dll
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\EmployeesModels.Shared.deps.json
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\EmployeesModels.Shared.runtimeconfig.json
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\EmployeesModels.Shared.dll
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\EmployeesModels.Shared.pdb
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.csproj.AssemblyReference.cache
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.GeneratedMSBuildEditorConfig.editorconfig
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.AssemblyInfoInputs.cache
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.AssemblyInfo.cs
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.csproj.CoreCompileInputs.cache
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.sourcelink.json
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.dll
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\refint\EmployeesModels.Shared.dll
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.pdb
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.genruntimeconfig.cache
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\ref\EmployeesModels.Shared.dll
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\EmployeesModels.Shared.deps.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\EmployeesModels.Shared.runtimeconfig.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\EmployeesModels.Shared.dll
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\EmployeesModels.Shared.pdb
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.csproj.AssemblyReference.cache
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.GeneratedMSBuildEditorConfig.editorconfig
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.AssemblyInfoInputs.cache
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.AssemblyInfo.cs
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.csproj.CoreCompileInputs.cache
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.sourcelink.json
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.dll
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\refint\EmployeesModels.Shared.dll
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.pdb
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.genruntimeconfig.cache
-A:\Micro-tec Work\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\ref\EmployeesModels.Shared.dll
-Y:\project\mareg\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\EmployeesModels.Shared.deps.json
-Y:\project\mareg\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\EmployeesModels.Shared.runtimeconfig.json
-Y:\project\mareg\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\EmployeesModels.Shared.dll
-Y:\project\mareg\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\EmployeesModels.Shared.pdb
-Y:\project\mareg\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\Domain.dll
-Y:\project\mareg\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\Domain.pdb
-Y:\project\mareg\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.csproj.AssemblyReference.cache
-Y:\project\mareg\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.GeneratedMSBuildEditorConfig.editorconfig
-Y:\project\mareg\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.AssemblyInfoInputs.cache
-Y:\project\mareg\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.AssemblyInfo.cs
-Y:\project\mareg\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.csproj.CoreCompileInputs.cache
-Y:\project\mareg\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.sourcelink.json
-Y:\project\mareg\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\Employee.F027D559.Up2Date
-Y:\project\mareg\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.dll
-Y:\project\mareg\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\refint\EmployeesModels.Shared.dll
-Y:\project\mareg\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.pdb
-Y:\project\mareg\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.genruntimeconfig.cache
-Y:\project\mareg\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\ref\EmployeesModels.Shared.dll
-C:\Github Project\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.csproj.AssemblyReference.cache
-C:\Github Project\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.GeneratedMSBuildEditorConfig.editorconfig
-C:\Github Project\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.AssemblyInfoInputs.cache
-C:\Github Project\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.AssemblyInfo.cs
-C:\Github Project\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.csproj.CoreCompileInputs.cache
-C:\Github Project\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.sourcelink.json
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\EmployeesModels.Shared.deps.json
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\EmployeesModels.Shared.runtimeconfig.json
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\EmployeesModels.Shared.dll
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\EmployeesModels.Shared.pdb
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\Domain.dll
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\Domain.pdb
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.csproj.AssemblyReference.cache
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.GeneratedMSBuildEditorConfig.editorconfig
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.AssemblyInfoInputs.cache
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.AssemblyInfo.cs
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.csproj.CoreCompileInputs.cache
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.sourcelink.json
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\Employee.F027D559.Up2Date
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.dll
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\refint\EmployeesModels.Shared.dll
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.pdb
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.genruntimeconfig.cache
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\ref\EmployeesModels.Shared.dll
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\EmployeesModels.Shared.deps.json
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\EmployeesModels.Shared.runtimeconfig.json
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\EmployeesModels.Shared.dll
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\EmployeesModels.Shared.pdb
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\Domain.dll
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\Domain.pdb
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.csproj.AssemblyReference.cache
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.GeneratedMSBuildEditorConfig.editorconfig
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.AssemblyInfoInputs.cache
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.AssemblyInfo.cs
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.csproj.CoreCompileInputs.cache
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.sourcelink.json
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\Employee.F027D559.Up2Date
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.dll
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\refint\EmployeesModels.Shared.dll
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.pdb
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.genruntimeconfig.cache
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\ref\EmployeesModels.Shared.dll
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\EmployeesModels.Shared.deps.json
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\EmployeesModels.Shared.runtimeconfig.json
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\EmployeesModels.Shared.dll
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\EmployeesModels.Shared.pdb
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\Domain.dll
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\bin\Debug\net8.0\Domain.pdb
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.csproj.AssemblyReference.cache
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.GeneratedMSBuildEditorConfig.editorconfig
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.AssemblyInfoInputs.cache
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.AssemblyInfo.cs
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.csproj.CoreCompileInputs.cache
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.sourcelink.json
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\Employee.F027D559.Up2Date
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.dll
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\refint\EmployeesModels.Shared.dll
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.pdb
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\EmployeesModels.Shared.genruntimeconfig.cache
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Employee.Shared\obj\Debug\net8.0\ref\EmployeesModels.Shared.dll

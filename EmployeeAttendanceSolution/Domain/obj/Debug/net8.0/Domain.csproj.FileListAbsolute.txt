@@ -1,63 +1,13 @@
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Domain\bin\Debug\net8.0\Domain.deps.json
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Domain\bin\Debug\net8.0\Domain.dll
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Domain\bin\Debug\net8.0\Domain.pdb
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.sourcelink.json
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.dll
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\refint\Domain.dll
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.pdb
-Y:\project\AttendanceSystem\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\ref\Domain.dll
-Y:\project\mareg\EmployeeAttendanceSolution\Domain\bin\Debug\net8.0\Domain.deps.json
-Y:\project\mareg\EmployeeAttendanceSolution\Domain\bin\Debug\net8.0\Domain.dll
-Y:\project\mareg\EmployeeAttendanceSolution\Domain\bin\Debug\net8.0\Domain.pdb
-Y:\project\mareg\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
-Y:\project\mareg\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
-Y:\project\mareg\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
-Y:\project\mareg\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
-Y:\project\mareg\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.sourcelink.json
-Y:\project\mareg\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.dll
-Y:\project\mareg\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\refint\Domain.dll
-Y:\project\mareg\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.pdb
-Y:\project\mareg\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\ref\Domain.dll
-C:\Github Project\EmployeeAttendanceSolution\Domain\bin\Debug\net8.0\Domain.deps.json
-C:\Github Project\EmployeeAttendanceSolution\Domain\bin\Debug\net8.0\Domain.dll
-C:\Github Project\EmployeeAttendanceSolution\Domain\bin\Debug\net8.0\Domain.pdb
-C:\Github Project\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.csproj.AssemblyReference.cache
-C:\Github Project\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
-C:\Github Project\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
-C:\Github Project\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
-C:\Github Project\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
-C:\Github Project\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.sourcelink.json
-C:\Github Project\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.dll
-C:\Github Project\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\refint\Domain.dll
-C:\Github Project\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.pdb
-C:\Github Project\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\ref\Domain.dll
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\bin\Debug\net8.0\Domain.deps.json
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\bin\Debug\net8.0\Domain.dll
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\bin\Debug\net8.0\Domain.pdb
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.csproj.AssemblyReference.cache
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.sourcelink.json
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.dll
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\refint\Domain.dll
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.pdb
-A:\please\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\ref\Domain.dll
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\bin\Debug\net8.0\Domain.deps.json
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\bin\Debug\net8.0\Domain.dll
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\bin\Debug\net8.0\Domain.pdb
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.csproj.AssemblyReference.cache
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.sourcelink.json
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.dll
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\refint\Domain.dll
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.pdb
-E:\Microtec\Projects\Training\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\ref\Domain.dll
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\bin\Debug\net8.0\Domain.deps.json
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\bin\Debug\net8.0\Domain.dll
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\bin\Debug\net8.0\Domain.pdb
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.csproj.AssemblyReference.cache
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.sourcelink.json
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.dll
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\refint\Domain.dll
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.pdb
+A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\ref\Domain.dll
