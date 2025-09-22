@@ -1,151 +1,266 @@
-# 🕒 Attendance and Departure System
 
+
+<h1 align="center">📊 Attendance & Departure System</h1>
+<p align="center">
+  <img src="https://img.shields.io/badge/.NET-8.0-blue" alt=".NET Version">
+  <img src="https://img.shields.io/badge/Blazor-WebAssembly-purple" alt="Blazor">
+ <img src="https://img.shields.io/badge/SQL_Server-2019+-CC2927" alt="SQL Server">
+  
+</p>
+
+
+
+![Landing Page](https://github.com/ehabmosalah/DS-Project/blob/main/Attendance_Project/Website.png)
 A full-stack web application to manage employees’ attendance and departure efficiently — perfect for HR teams and business managers. Built using modern .NET technologies and a clean UI experience ✨
 
+---
+
+## 📖 The Story Behind the Project
+
+This project was created to address the common challenges faced by HR departments in accurately tracking employee attendance and managing leave requests.
+
+The goal: **build a robust, secure, and user-friendly system** that automates manual processes, giving HR teams and managers the tools they need to monitor and analyze employee presence data effectively.
+
+---
+
 ## 📚 Table of Contents
-- [🔍 Overview](#overview)
-- [🏛️ System Architecture](#system-architecture)
-- [🚀 Features](#features)
-  - [👨‍💼 Employee Management](#employee-management)
-  - [📅 Attendance Management](#attendance-management)
-  - [🖥️ User Interface](#user-interface)
-- [🛠️ Technology Stack](#technology-stack)
-- [⚙️ Setup & Installation](#setup--installation)
-  - [🗄️ Database Setup](#database-setup)
-  - [🔌 Backend API Setup](#backend-api-setup)
-  - [🎨 Frontend UI Setup](#frontend-ui-setup)
-- [🧭 Usage Guide](#usage-guide)
-  - [🧩 Navigating the UI](#navigating-the-ui)
-  - [👥 Managing Employees](#managing-employees)
-  - [📊 Managing Attendance](#managing-attendance)
-- [📁 Folder Structure](#folder-structure)
-- [📡 API Endpoints](#api-endpoints)
 
+* [🔍 Overview](#overview)
+* [🏛️ System Architecture](#system-architecture)
+* [🚀 Features](#features)
 
+  * [🔐 Authentication & Authorization](#authentication--authorization)
+  * [👨‍💼 Employee Management](#employee-management)
+  * [📅 Attendance Management](#attendance-management)
+  * [🌴 Vacation Request Management](#vacation-request-management)
+  * [🖥️ User Interface](#user-interface)
+* [🛠️ Technology Stack](#technology-stack)
+* [⚙️ Setup & Installation](#setup--installation)
+* [📁 Folder Structure](#folder-structure)
+* [📸 Screenshots](#screenshots)
+* [📊 Views](#views)
+* [🚀 Potential Improvements](#potential-improvements)
+* [📜 License](#license)
+
+---
+<a id="overview"></a>
 ## 🔍 Overview
-**Attendance and Departure System** is a modern web-based HR solution for managing employees and tracking their daily presence. It supports employee CRUD operations, CSV-based attendance importing, and dynamic daily/monthly views for analysis and monitoring.
 
+**Attendance and Departure System** is a modern HR solution for managing employees and tracking daily presence.
+
+✨ Highlights:
+
+* Employee CRUD operations
+* CSV-based attendance importing
+* Daily, Monthly, and Yearly views for monitoring
+* Role-based authentication and authorization
+
+---
+ <a id="system-architecture"></a>
 ## 🏛️ System Architecture
-- **Frontend:** Blazor WebAssembly (Single Page Application)
-- **Backend:** ASP.NET Core Web API (RESTful)
-- **Database:** SQL Server
-- **ORM:** Entity Framework Core
 
+* **Frontend:** Blazor WebAssembly (SPA)
+* **Backend:** ASP.NET Core Web API with MediatR + CQRS
+* **Database:** SQL Server
+* **ORM:** Entity Framework Core
+* **Authentication:** JWT (JSON Web Tokens)
+
+---
+<a id="features"></a>
 ## 🚀 Features
+<a id="authentication--authorization"></a>
+### 🔐 Authentication & Authorization
 
+* User registration & secure JWT login
+* Role-based access (Admin, Employee)
+* Password reset & admin-controlled password management
+<a id="employee-management"></a>
 ### 👨‍💼 Employee Management
-- **Add:** Create new employee profiles with ID, Name, Department, and Role.
-- **Edit:** Modify employee details using a modal form.
-- **Delete:** Remove employees from the system (permanent deletion).
-- **View:** Display employee list with search and sort functionality.
 
+* Full CRUD on employee profiles
+* Admin user account approvals & unlocks
+* Searchable, sortable employee lists
+<a id="attendance-management"></a>
 ### 📅 Attendance Management
-- **CSV Import:** Upload attendance files containing check-in/check-out times.
-- **Daily View:** See attendance status and working hours per employee for a specific day.
-- **Monthly View:** Summarize attendance statistics (presents/absents) for a given month.
-- **Time Records:** Calculate working hours and store optional notes.
 
+* CSV-based bulk attendance import
+* Daily, Monthly, Yearly views
+* Automatic working hours calculation
+<a id="vacation-request-management"></a>
+### 🌴 Vacation Request Management
+
+* Employee request submission
+* Admin approval/rejection workflow
+* Request status tracking
+<a id="user-interface"></a>
 ### 🖥️ User Interface
-- Sidebar navigation for quick page access
-- Responsive layout (desktop and mobile friendly)
-- Notification system for success and error feedback
 
+* Responsive design (desktop & mobile)
+* Sidebar navigation
+* Real-time notifications
+
+---
+<a id="technology-stack"></a>
 ## 🛠️ Technology Stack
-- ASP.NET Core Blazor
-- ASP.NET Core Web API
-- SQL Server
-- Entity Framework Core
-- Bootstrap (styling)
-- CSV Parsing Logic
 
+* ASP.NET Core Blazor
+* ASP.NET Core Web API
+* SQL Server + Entity Framework Core
+* MediatR + AutoMapper
+* Blazored.LocalStorage
+* Bootstrap
+
+---
+<a id="setup--installation"></a>
 ## ⚙️ Setup & Installation
 
-### 🗄️ Database Setup
-1. Create a new SQL Server database.
-2. Run EF Core migrations or use SQL scripts to initialize the following tables:
-   - `Employees`
-   - `AttendanceRecords`
+1. **Clone repository**
 
-### 🔌 Backend API Setup
-1. Navigate to the API project directory:
    ```sh
-   dotnet run --project AttendanceSystem.ImportFile.API
-Make sure the following endpoints are working:
+   git clone https://github.com/YoussefIbrahim13/Attendance-and-departure-system.git
+   cd Attendance-and-departure-system
+   git checkout semi-Merge
+   ```
 
-GET /Attendance/get-all-employees
+2. **Database Setup**
 
-POST /Attendance/add-employee
+   * Create a SQL Server database
+   * Update `appsettings.json` connection string in `AttendanceSystem.Auth.API` & `AttendanceSystem.ImportFile.API`
+   * Run EF Core migrations
 
-PUT /Attendance/update-employee
+3. **Backend Setup**
 
-DELETE /Attendance/delete-employee/{id}
+   * Open solution in Visual Studio / Rider
+   * Build solution (NuGet restore)
+   * Run `EmployeeAttendanceSolution.AppHost`
 
-POST /Attendance/import-attendance
+4. **Frontend Setup**
 
-GET /Attendance/day-view
+   * Blazor UI is served via backend
+   * Access via the provided host URL
 
-GET /Attendance/month-view
+---
+<a id="folder-structure"></a>
+## 📁 Folder Structure
 
-🎨 Frontend UI Setup
-Run the Blazor UI project:
-
-sh
-Copy
-Edit
-dotnet run --project AttendanceSystem.ImportFile.ui/AttendanceSystem.ImportFile.ui.csproj
-Visit http://localhost:5000 in your browser.
-
-🧭 Usage Guide
-🧩 Navigating the UI
-Use the sidebar to switch between:
-
-Day View: Monitor daily attendance.
-
-Month View: View monthly summaries.
-
-Import: Upload attendance CSV files.
-
-Employees: Manage employee records.
-
-👥 Managing Employees
-Add: Fill out the employee form and click "Add Employee".
-
-Edit: Click "Edit", modify details, and save.
-
-Delete: Remove an employee by clicking "Delete".
-
-📊 Managing Attendance
-Import: Use the import page to upload a valid CSV file.
-
-View: Browse attendance stats via Day/Month views.
-
-📁 Folder Structure
-Copy
-Edit
-📦 AttendanceSystem
+```
+📦 EmployeeAttendanceSolution
+├── 📂 Applications (CQRS Features)
+├── 📂 AttendanceSystem.Auth.API
+├── 📂 AttendanceSystem.Auth.Services
 ├── 📂 AttendanceSystem.ImportFile.API
-│   ├── Controllers/
-│   ├── Models/
-│   └── DataContext.cs
-│
 ├── 📂 AttendanceSystem.ImportFile.ui
-│   ├── Pages/
-│   │   └── Employees.razor
-│   └── Services/
-│       └── AttendanceService.cs
-📡 API Endpoints
-Employee Management
-GET /Attendance/get-all-employees
+├── 📂 Domain
+├── 📂 Employee.Shared
+├── 📂 EmployeeAttendanceSolution.AppHost
+├── 📂 EmployeeAttendanceSolution.ServiceDefaults
+└── 📂 Infrastructure
+```
 
-POST /Attendance/add-employee
+---
+<a id="screenshots"></a>
+## 📸 Screenshots
 
-PUT /Attendance/update-employee
+### 🔑 System Overview & Authentication
 
-DELETE /Attendance/delete-employee/{id}
+| Landing Page                                                                                       | Login Interface                                                                           |
+| -------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| ![Landing Page](https://github.com/ehabmosalah/DS-Project/raw/main/Attendance_Project/Website.png) | ![Login](https://github.com/ehabmosalah/DS-Project/raw/main/Attendance_Project/Login.png) |
 
-Attendance Management
-POST /Attendance/import-attendance
+---
 
-GET /Attendance/day-view?date=yyyy-MM-dd
+### 🛠️ Administration & Management
 
-GET /Attendance/month-view?year=yyyy&month=MM
+| User Management                                                                                                | Employee Management                                                                                                  |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| ![User Management](https://github.com/ehabmosalah/DS-Project/raw/main/Attendance_Project/Admin_Mnnagement.png) | ![Employee Management](https://github.com/ehabmosalah/DS-Project/raw/main/Attendance_Project/Employee_Managment.png) |
+
+---
+
+### ⏱️ Attendance Tracking
+
+| Calendar Views                                                                                             | Year View                                                                                    | Month View                                                                                     |
+| ---------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| ![Calendar Views](https://github.com/ehabmosalah/DS-Project/raw/main/Attendance_Project/Calendr_views.png) | ![Year](https://github.com/ehabmosalah/DS-Project/raw/main/Attendance_Project/Year_view.png) | ![Month](https://github.com/ehabmosalah/DS-Project/raw/main/Attendance_Project/Month_view.png) |
+
+| Day View                                                                                   | Attendance Import                                                                                           | Attendance Records                                                                                    |
+| ------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| ![Day](https://github.com/ehabmosalah/DS-Project/raw/main/Attendance_Project/Day_view.png) | ![Import](https://github.com/ehabmosalah/DS-Project/raw/main/Attendance_Project/Import_Attendance_file.png) | ![Records](https://github.com/ehabmosalah/DS-Project/raw/main/Attendance_Project/Attendance_File.png) |
+
+| Attendance Planner                                                                                       |
+| -------------------------------------------------------------------------------------------------------- |
+| ![Planner](https://github.com/ehabmosalah/DS-Project/raw/main/Attendance_Project/Attendance_Planner.png) |
+
+---
+
+### 🌙 Dark Mode
+
+![Dark Mode](https://github.com/ehabmosalah/DS-Project/raw/main/Attendance_Project/Dark_Mode.png)
+
+---
+
+### 🌴 Vacation Management
+
+| Vacation Requests                                                                                                | Admin Vacation Management                                                                                          |
+| ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| ![Vacation Requests](https://github.com/ehabmosalah/DS-Project/raw/main/Attendance_Project/Vacation_Request.png) | ![Admin Vacation](https://github.com/ehabmosalah/DS-Project/raw/main/Attendance_Project/All_Vacation_Requests.png) |
+
+---
+
+### 👤 User Profile
+
+![User Profile](https://github.com/ehabmosalah/DS-Project/raw/main/Attendance_Project/User_Profile.png)
+
+---
+<a id="views"></a>
+## 📊 Views
+
+* **Daily View** – Check-ins, check-outs, hours worked, punctuality status
+* **Monthly View** – Summarized attendance trends per employee
+* **Yearly View** – Long-term overview and trend analysis
+* **Employee Management View** – Full CRUD on employees with search/sort
+* **Vacation Request View** – Employee submission & admin approval workflow
+* **User Management View** – Approvals, role changes, and account unlocks
+
+---
+<a id="potential-improvements"></a>
+## 🚀 Potential Improvements
+
+### Short-Term Goals
+
+* Real-time tracking (face recognition/geofencing)
+* Enhanced notifications (email + in-app)
+* Audit trails for critical actions
+
+### Long-Term Goals
+
+* Advanced analytics & reporting
+* Customizable leave policies
+* Mobile companion app
+* Payroll system integration
+* Multi-language support
+
+---
+<a id="license"></a>
+## 📜 License
+
+Licensed under the **MIT License**. See `LICENSE` for details.
+
+
+---
+<p align="center">
+  <img src="https://img.shields.io/badge/.NET-8.0-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt=".NET Version">
+  <img src="https://img.shields.io/badge/Blazor-WebAssembly-512BD4?style=for-the-badge&logo=blazor&logoColor=white" alt="Blazor">
+  <img src="https://img.shields.io/badge/SQL_Server-2019+-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white" alt="SQL Server">
+  <img src="https://img.shields.io/badge/EF_Core-8.0-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt="EF Core">
+  <br>
+  <img src="https://img.shields.io/badge/Architecture-CQRS-0078D4?style=for-the-badge&logo=azure-devops&logoColor=white" alt="CQRS Architecture">
+  <img src="https://img.shields.io/badge/API-REST-FF6B6B?style=for-the-badge&logo=postman&logoColor=white" alt="REST API">
+  <img src="https://img.shields.io/badge/Auth-JWT-000000?style=for-the-badge&logo=json-web-tokens&logoColor=white" alt="JWT Auth">
+  <br>
+  <img src="https://img.shields.io/github/license/YoussefIbrahim13/Attendance-and-departure-system?style=for-the-badge&color=green" alt="License">
+  <img src="https://img.shields.io/github/stars/YoussefIbrahim13/Attendance-and-departure-system?style=for-the-badge&color=yellow" alt="Stars">
+  <img src="https://img.shields.io/github/forks/YoussefIbrahim13/Attendance-and-departure-system?style=for-the-badge&color=blue" alt="Forks">
+</p>
+
+ 
