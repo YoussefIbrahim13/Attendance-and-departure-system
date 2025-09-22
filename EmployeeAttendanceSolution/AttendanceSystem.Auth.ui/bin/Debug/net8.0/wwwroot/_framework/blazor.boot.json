@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "AttendanceSystem.Auth.ui",
   "resources": {
-    "hash": "sha256-gXMPTPnAIlbP/4csJJK7o9zDQGVTYQ0PV563L11UnCM=",
+    "hash": "sha256-soxkLjMUeUGCJC9gPiQiASMAWvk2Ie67Wu9ekFvoRFs=",
     "jsModuleNative": {
       "dotnet.native.js": "sha256-D0bzod5lwwSzPR43JC8TTCcZKw+3jIHOk8CZFCRj5is="
     },
@@ -253,16 +253,16 @@
       "mscorlib.wasm": "sha256-8qWtIcy8fV43tlcx4DxsF45RlkcfK6588vVoxF7be2E=",
       "netstandard.wasm": "sha256-eOgz2RiO4YaPLOMIGgVLNrcfsQhmLQJzR0N7Pu2teXc=",
       "System.Private.CoreLib.wasm": "sha256-F8T63QCIbMPXPQPqTcuyBAw+oVvZSrWjy88j7fiJQZ4=",
-      "Domain.wasm": "sha256-CVOBTAJBoUWo83HIYv1Vb4gbVLZ0eJz8QUX2uWqUdh4=",
-      "EmployeesModels.Shared.wasm": "sha256-ALYMT21SeIZ5zjTVnp9kdbOP4rBL31jlD0MSRNI4jW8=",
-      "Infrastructure.wasm": "sha256-gZc6FXuJIqsG+hmhh3G/qzlX5OywNFvImUEKMg4u8Yc=",
-      "AttendanceSystem.Auth.ui.wasm": "sha256-+oJMlAZKW5y/gnb8rbPfTSsHv0PG1phIOhqEvdOxCCs="
+      "Domain.wasm": "sha256-DJmeWnEiQwzuKhVQg4asHBlLuPuPU74ZmctJQ3m03yc=",
+      "EmployeesModels.Shared.wasm": "sha256-dZ/g30mhUk2Bgnf9RXAxuBVfaUnXHKypBJ6tugg2sII=",
+      "Infrastructure.wasm": "sha256-LT9ZgavBfgRRhAS/5SC619eJ0ausPPkXBhI5kjviBmU=",
+      "AttendanceSystem.Auth.ui.wasm": "sha256-VWF/pX+Z73E38wzeGTAiLx2lE4OtlGrWSksnp79OLJU="
     },
     "pdb": {
-      "Domain.pdb": "sha256-23/9YQXzDZC1fyBmIHqVx4c9+fqC6A5xG2ayh+xrjcs=",
-      "EmployeesModels.Shared.pdb": "sha256-lqZBRTD9b0p2YZGzz26AVG2345ZoYVv/uiV4vuxFaxM=",
-      "Infrastructure.pdb": "sha256-AQ6ccH81wIEARHAnAeF5+qvBXLiPhU8og2K0BineSgk=",
-      "AttendanceSystem.Auth.ui.pdb": "sha256-Sce/mtNjg5Z9zGX2jKSZkmz5uPhTrp7lFY4uneHhuvI="
+      "Domain.pdb": "sha256-zrzEoqzHAu2lkQ2UJPWhCfF5wmrxo7OduztXX9Rfh+Q=",
+      "EmployeesModels.Shared.pdb": "sha256-JmSSD+HFW38hhjcz+vz/692Da5aGIvc254thtJOhyZI=",
+      "Infrastructure.pdb": "sha256-9/k+PYqBYmAtjhMtzhsQ11wcOZYxMxOdBVAI/G8NqOI=",
+      "AttendanceSystem.Auth.ui.pdb": "sha256-k6Hf85gximExwqJ/iLqEBn8xdxWLSuK7E5iO0eFdqn8="
     }
   },
   "cacheBootResources": true,

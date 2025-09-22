@@ -163,8 +163,9 @@ namespace AttendanceSystem.Auth.API.Services.Services.AuthoServices
                     UserName = user.UserName,
                     Email = user.Email,
                     Name = user.Name,
-                    PhoneNumber = user.PhoneNumber,
+                    PhoneNumber=user.Employee?.Phone,
                     Code = user.Employee?.Code,
+                    ProfileImagePath = user.Employee?.ProfileImagePath,
                     Department = user.Employee?.Department.ToString(),
                     Position = user.Employee?.Position.ToString(),
                     Roles = roles

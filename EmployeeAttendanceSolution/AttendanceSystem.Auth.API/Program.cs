@@ -1,23 +1,24 @@
+using Applications.UpdateAttendanceRecord.Commands;
 using AttendanceSystem.Auth.API.Services.Services.AuthoServices;
+using AttendanceSystem.Auth.Services.Features.Users.Commands.AddUser;
+using AttendanceSystem.Auth.Services.Features.Users.Commands.SendRandomPassword;
+using AttendanceSystem.Auth.Services.Features.Users.Commands.UpdateUser;
+using AttendanceSystem.Auth.Services.Features.VacationRequests.Commands.CreateVacationRequest;
+using AttendanceSystem.Auth.Services.Features.VacationRequests.Queries.GetVacationRequestsByUserId;
+using AutoMapper;
+using Domain.Entities;
+using Domain.Enums;
+using Infrastructure.DBContext;
 using MailKit.Net.Smtp;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Security.Claims;
 using System.Text;
-using Domain.Entities;
-using Infrastructure.DBContext;
-using Domain.Enums;
-using AttendanceSystem.Auth.Services.Features.Users.Commands.UpdateUser;
-using AttendanceSystem.Auth.Services.Features.VacationRequests.Commands.CreateVacationRequest;
-using AttendanceSystem.Auth.Services.Features.VacationRequests.Queries.GetVacationRequestsByUserId;
-using AttendanceSystem.Auth.Services.Features.Users.Commands.AddUser;
-using AttendanceSystem.Auth.Services.Features.Users.Commands.SendRandomPassword;
-using AutoMapper;
-using Applications.UpdateAttendanceRecord.Commands;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -188,6 +189,16 @@ app.UseHttpsRedirection();
 
 // CORS must come before Authentication/Authorization
 app.UseCors("BlazorClient");
+
+
+/// Serve static files from "profile_images" folder
+//app.UseStaticFiles(new StaticFileOptions
+//{
+//    FileProvider = new PhysicalFileProvider(
+//        Path.Combine(builder.Environment.WebRootPath, "profile_images")),
+//    RequestPath = "/profile_images"
+//});
+
 
 app.UseAuthentication();
 app.UseAuthorization();

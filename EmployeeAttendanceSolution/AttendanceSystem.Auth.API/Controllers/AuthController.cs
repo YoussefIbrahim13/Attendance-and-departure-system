@@ -47,6 +47,7 @@ namespace AttendanceSystem.Auth.API.Controllers
             try
             {
                 var userInfo = await _authService.GetCurrentUserAsync(User);
+                Console.WriteLine($" API CurrentUser phone number{userInfo.PhoneNumber}");
 
                 if (userInfo == null)
                 {

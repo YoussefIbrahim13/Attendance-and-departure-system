@@ -17,3 +17,4 @@ wwwroot\profile_images\1_20250901155140_93e45d22-ced0-4aa4-b1f5-e28bc741dd19.jpg
 wwwroot\profile_images\1_20250913013046_afe0772d-36ae-4343-bf55-f11b9f049039.jpg
 wwwroot\profile_images\6_20250901124630_9a6859ea-cedc-4a97-a426-a892fdbd0dca.jpg
 wwwroot\profile_images\7_20250912212737_237f911b-763b-487d-af91-cf9b5df52c89.jpg
+wwwroot\profile_images\7_20250922085449_27c60738-d24d-48be-a38b-85295b6750fb.jpg

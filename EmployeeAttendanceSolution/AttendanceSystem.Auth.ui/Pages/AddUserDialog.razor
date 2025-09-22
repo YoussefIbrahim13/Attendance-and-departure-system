@@ -889,16 +889,16 @@
             //     Snackbar.Add($"Warning: Could not verify existing user: {ex.Message}", Severity.Warning);
             // }
 
-            // ADD TEMPORARY EMAIL LOGIC HERE
-            var emailToUse = !string.IsNullOrWhiteSpace(selectedEmployee.Email)
-                ? selectedEmployee.Email
-                : "ehabmo.salah2005@gmail.com"; // Temporary email
+            // // ADD TEMPORARY EMAIL LOGIC HERE
+            // var emailToUse = !string.IsNullOrWhiteSpace(selectedEmployee.Email)
+            //     ? selectedEmployee.Email
+            //     : "ehabmo.salah2005@gmail.com"; // Temporary email
 
             // Create a fresh DTO with all required values
             var userToCreate = new UserCreateDto
             {
                 Name = selectedEmployee.Name,
-                Email = emailToUse, // Use the processed email
+                Email = selectedEmployee.Email, // Use the processed email
                 EmployeeCode = selectedEmployee.Code
             };
 

@@ -31,6 +31,10 @@ namespace AttendanceSystem.Auth.Services.Features.Employees.Queries.GetAllEmploy
                     Code = e.Code,
                     Name = e.Name,
                     Department = e.Department,
+                    Email = e.Email,
+                    Phone = e.Phone,
+                    ProfileImagePath = e.ProfileImagePath,
+                    Salary = e.Salary,
                     Position = e.Position
                 })
                 .ToListAsync(cancellationToken);

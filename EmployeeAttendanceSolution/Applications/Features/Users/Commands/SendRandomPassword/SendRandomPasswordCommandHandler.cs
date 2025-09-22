@@ -24,6 +24,7 @@ namespace AttendanceSystem.Auth.Services.Features.Users.Commands.SendRandomPassw
             try
             {
                 var randomPassword = GenerateRandomPassword();
+                Console.WriteLine($"The Password is {randomPassword}");
 
                 // Send email using MailKit directly
                 await SendEmailAsync(request.To, randomPassword, cancellationToken);

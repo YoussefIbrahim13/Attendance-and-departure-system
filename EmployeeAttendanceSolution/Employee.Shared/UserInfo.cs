@@ -16,6 +16,7 @@ namespace EmployeesModels.Shared
         public string? PhoneNumber { get; set; }
         public string? Department { get; set; }
         public string? Position { get; set; }
+        public string? ProfileImagePath { get; set; }
         public IList<string>? Roles { get; set; }
         public bool InRole(string role) =>
               Roles?.Contains(role, StringComparer.OrdinalIgnoreCase) ?? false;

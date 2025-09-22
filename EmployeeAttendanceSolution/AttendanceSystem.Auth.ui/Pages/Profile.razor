@@ -2,6 +2,7 @@
 @attribute [Authorize]
 
 @using System.Net.Http.Json
+@* @using AttendanceSystem.ImportFile.ui.Services *@
 @using Domain.Entities
 @using EmployeesModels.Shared
 @inject HttpClient Http
@@ -11,7 +12,7 @@
 @inject AuthService AuthService
 @inject ManagementService ManagementService
 @inject VacationRequestServices VacationRequestService
-@inject CurrentUserService CurrentUserService
+@* @inject CurrentUserService CurrentUserService *@
 
 <MudContainer MaxWidth="MaxWidth.Large" Class="mt-6">
     <!-- Enhanced Header with more information -->
@@ -20,7 +21,7 @@
             <MudItem xs="12" sm="3" Class="text-center">
                 <MudAvatar Size="Size.Large"
                            Class="profile-avatar mb-3"
-                           Src=""
+                           Src=GetImage()
                            Style="width: 140px; height: 140px;" />
                 <MudButton Variant="Variant.Outlined"
                            Color="Color.Inherit"
@@ -30,6 +31,7 @@
                            OnClick="@ChangeProfilePicture">
                     Change Picture
                 </MudButton>
+
             </MudItem>
             <MudItem xs="12" sm="6">
                 <MudText Typo="Typo.h3" Class="fw-bold mb-2 profile-name">@UserProfile.Name</MudText>
@@ -47,7 +49,7 @@
                              Label="true"
                              Color="Color.Inherit"
                              Class="info-chip">
-                        ID: @UserProfile.Id
+                        Code: @UserProfile.Code
                     </MudChip>
                     <MudChip T="String" Icon="@Icons.Material.Filled.Security"
                              Label="true"
@@ -793,6 +795,7 @@
         try
         {
             UserProfile = await AuthService.GetCurrentUser();
+            Console.WriteLine($"User id :{UserProfile.Id},{UserProfile.Name},{UserProfile.Position},{UserProfile.Email},{UserProfile.Department},{UserProfile.PhoneNumber}");
 
             // Initialize sample data for demonstration
             InitializeSampleData();
@@ -903,6 +906,20 @@
     {
         Snackbar.Add("Profile picture change feature coming soon!", Severity.Info);
     }
+
+    // جلب رابط الصورة للعرض
+    private string GetImage()
+    {
+        if (!string.IsNullOrWhiteSpace(UserProfile?.ProfileImagePath))
+        {
+            // Full URL pointing to API project
+            return $"https://localhost:7002{UserProfile.ProfileImagePath}";
+        }
+
+        return "https://via.placeholder.com/220?text=No+Image";
+    }
+
+
 
     public class AttendanceStatsModel
     {
