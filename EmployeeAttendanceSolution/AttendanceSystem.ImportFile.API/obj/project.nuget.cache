@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "HgveL55dbF8=",
+  "dgSpecHash": "xwQPb2E+ANc=",
   "success": true,
-  "projectFilePath": "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj",
+  "projectFilePath": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.API\\AttendanceSystem.ImportFile.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ehabm\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\ehabm\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",

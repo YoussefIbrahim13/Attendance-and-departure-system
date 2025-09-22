@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "UmEMKtKqXrk=",
+  "dgSpecHash": "RUbGANbm6k8=",
   "success": true,
-  "projectFilePath": "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\Domain.csproj",
+  "projectFilePath": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ehabm\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\8.0.0\\microsoft.aspnetcore.cryptography.internal.8.0.0.nupkg.sha512",
     "C:\\Users\\ehabm\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\8.0.0\\microsoft.aspnetcore.cryptography.keyderivation.8.0.0.nupkg.sha512",

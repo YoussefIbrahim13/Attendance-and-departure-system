@@ -16,3 +16,21 @@ A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Applica
 A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\refint\Applications.dll
 A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.pdb
 A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\ref\Applications.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Applications.deps.json
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Applications.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Applications.pdb
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Domain.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Infrastructure.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Domain.pdb
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\bin\Debug\net8.0\Infrastructure.pdb
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.csproj.AssemblyReference.cache
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.GeneratedMSBuildEditorConfig.editorconfig
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.AssemblyInfoInputs.cache
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.AssemblyInfo.cs
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.csproj.CoreCompileInputs.cache
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.sourcelink.json
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applicat.B7D1A39B.Up2Date
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\refint\Applications.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\Applications.pdb
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Applications\obj\Debug\net8.0\ref\Applications.dll

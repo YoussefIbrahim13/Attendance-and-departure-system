@@ -14,3 +14,19 @@ A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrast
 A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\refint\Infrastructure.dll
 A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
 A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\bin\Debug\net8.0\Infrastructure.deps.json
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\bin\Debug\net8.0\Infrastructure.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\bin\Debug\net8.0\Infrastructure.pdb
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\bin\Debug\net8.0\Domain.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\bin\Debug\net8.0\Domain.pdb
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.csproj.AssemblyReference.cache
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfoInputs.cache
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfo.cs
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.csproj.CoreCompileInputs.cache
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.sourcelink.json
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastr.15EFFBFE.Up2Date
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\refint\Infrastructure.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll

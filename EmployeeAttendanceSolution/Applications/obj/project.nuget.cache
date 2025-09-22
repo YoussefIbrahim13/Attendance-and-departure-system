@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KPJSwNL4NoU=",
+  "dgSpecHash": "kf1BCZTbtng=",
   "success": true,
-  "projectFilePath": "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Applications\\Applications.csproj",
+  "projectFilePath": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Applications\\Applications.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ehabm\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\ehabm\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj": {}
+    "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj": {}
   },
   "projects": {
-    "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Applications\\Applications.csproj": {
+    "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Applications\\Applications.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Applications\\Applications.csproj",
+        "projectUniqueName": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Applications\\Applications.csproj",
         "projectName": "Applications",
-        "projectPath": "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Applications\\Applications.csproj",
+        "projectPath": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Applications\\Applications.csproj",
         "packagesPath": "C:\\Users\\ehabm\\.nuget\\packages\\",
-        "outputPath": "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Applications\\obj\\",
+        "outputPath": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Applications\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,11 +32,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\Domain.csproj": {
-                "projectPath": "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\Domain.csproj"
+              "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\Domain.csproj": {
+                "projectPath": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\Domain.csproj"
               },
-              "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Infrastructure\\Infrastructure.csproj"
+              "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -116,14 +116,14 @@
         }
       }
     },
-    "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj": {
+    "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj",
+        "projectUniqueName": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj",
         "projectName": "AttendanceSystem.ImportFile.ui",
-        "projectPath": "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj",
+        "projectPath": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\AttendanceSystem.ImportFile.ui.csproj",
         "packagesPath": "C:\\Users\\ehabm\\.nuget\\packages\\",
-        "outputPath": "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\obj\\",
+        "outputPath": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\AttendanceSystem.ImportFile.ui\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -144,17 +144,17 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Applications\\Applications.csproj": {
-                "projectPath": "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Applications\\Applications.csproj"
+              "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Applications\\Applications.csproj": {
+                "projectPath": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Applications\\Applications.csproj"
               },
-              "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\Domain.csproj": {
-                "projectPath": "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\Domain.csproj"
+              "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\Domain.csproj": {
+                "projectPath": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\Domain.csproj"
               },
-              "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj": {
-                "projectPath": "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj"
+              "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj": {
+                "projectPath": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj"
               },
-              "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Infrastructure\\Infrastructure.csproj"
+              "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -260,14 +260,14 @@
         }
       }
     },
-    "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\Domain.csproj": {
+    "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\Domain.csproj",
+        "projectUniqueName": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\Domain.csproj",
+        "projectPath": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\ehabm\\.nuget\\packages\\",
-        "outputPath": "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\obj\\",
+        "outputPath": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -345,14 +345,14 @@
         }
       }
     },
-    "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj": {
+    "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj",
+        "projectUniqueName": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj",
         "projectName": "EmployeesModels.Shared",
-        "projectPath": "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj",
+        "projectPath": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\EmployeesModels.Shared.csproj",
         "packagesPath": "C:\\Users\\ehabm\\.nuget\\packages\\",
-        "outputPath": "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\obj\\",
+        "outputPath": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee.Shared\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -373,8 +373,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\Domain.csproj": {
-                "projectPath": "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\Domain.csproj"
+              "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\Domain.csproj": {
+                "projectPath": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\Domain.csproj"
               }
             }
           }
@@ -460,14 +460,14 @@
         }
       }
     },
-    "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Infrastructure\\Infrastructure.csproj": {
+    "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\ehabm\\.nuget\\packages\\",
-        "outputPath": "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Infrastructure\\obj\\",
+        "outputPath": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -488,8 +488,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\Domain.csproj": {
-                "projectPath": "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\Domain.csproj"
+              "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\Domain.csproj": {
+                "projectPath": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Domain\\Domain.csproj"
               }
             }
           }

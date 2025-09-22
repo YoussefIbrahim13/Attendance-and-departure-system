@@ -2,7 +2,7 @@
 @attribute [Authorize]
 
 @using System.Net.Http.Json
-@* @using AttendanceSystem.ImportFile.ui.Services *@
+@inject ImageServes ImageService
 @using Domain.Entities
 @using EmployeesModels.Shared
 @inject HttpClient Http
@@ -10,28 +10,44 @@
 @inject IDialogService DialogService
 @inject ISnackbar Snackbar
 @inject AuthService AuthService
+@inject IJSRuntime JS
 @inject ManagementService ManagementService
 @inject VacationRequestServices VacationRequestService
 @* @inject CurrentUserService CurrentUserService *@
+
 
 <MudContainer MaxWidth="MaxWidth.Large" Class="mt-6">
     <!-- Enhanced Header with more information -->
     <div class="profile-header">
         <MudGrid AlignItems="Center" Spacing="3">
             <MudItem xs="12" sm="3" Class="text-center">
-                <MudAvatar Size="Size.Large"
-                           Class="profile-avatar mb-3"
-                           Src=GetImage()
-                           Style="width: 140px; height: 140px;" />
-                <MudButton Variant="Variant.Outlined"
-                           Color="Color.Inherit"
-                           Size="Size.Small"
-                           Class="change-picture-btn"
-                           StartIcon="@Icons.Material.Filled.CameraAlt"
-                           OnClick="@ChangeProfilePicture">
-                    Change Picture
-                </MudButton>
+                <div class="text-center">
+                    
+                        <img src="@GetImage()" alt="User Image"
+                             style="width:140px;height:140px;object-fit:cover;border-radius:50%;display:block;margin:auto;" />
+                    
 
+                    @if (string.IsNullOrWhiteSpace(UserProfile?.ProfileImagePath))
+                    {
+                        <p style="color:black;margin-top:8px;">This User has no photo</p>
+                    }
+
+                    @if (!string.IsNullOrWhiteSpace(imageError))
+                    {
+                        <p style="color:red;margin-top:8px;">@imageError</p>
+                    }
+
+                    <!-- Custom File Input Card -->
+                    <div class="file-input-button">
+                        <InputFile OnChange="UploadProfileImage" accept="image/*"
+                                   class="file-input-hidden" />
+                        <div class="file-input-button-content">
+                            <MudIcon Icon="@Icons.Material.Filled.CameraAlt"
+                                     Class="button-icon" />
+                            <span class="button-text">Change Picture</span>
+                        </div>
+                </div>
+                </div>
             </MudItem>
             <MudItem xs="12" sm="6">
                 <MudText Typo="Typo.h3" Class="fw-bold mb-2 profile-name">@UserProfile.Name</MudText>
@@ -389,6 +405,103 @@
 </MudContainer>
 
 <style>
+
+    /* File Input Button Styles - Matching MudButton Size */
+.file-input-button {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 8px; /* MudButton default border-radius */
+    padding: 6px 16px; /* MudButton default padding */
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 36px; /* MudButton default height */
+    min-width: 64px; /* MudButton default min-width */
+    margin-top: 1rem;
+    color: white;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1);
+    font-weight: 500;
+    text-transform: none;
+}
+
+.file-input-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.8);
+    transform: translateY(-1px);
+}
+
+.file-input-button:active {
+    transform: translateY(0);
+}
+
+.file-input-hidden {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.file-input-button-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.button-icon {
+    font-size: 1.125rem !important;
+    color: inherit;
+}
+
+.button-text {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: inherit;
+}
+
+/* Uploading Overlay */
+.uploading-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1rem;
+    border-radius: 8px;
+    z-index: 10;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Alternative: If you want it to match exactly with your existing button style */
+.change-picture-btn {
+    /* Your existing button styles will be applied */
+    position: relative;
+    overflow: hidden;
+}
+
+.change-picture-btn input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+
     /* Enhanced header with theme colors */
     .profile-header {
         background: linear-gradient(135deg, var(--mud-palette-primary) 0%, var(--mud-palette-secondary) 100%);
@@ -780,6 +893,114 @@
     .mud-table-container {
         overflow-x: visible !important;
     }
+    /* File Input Card Styles */
+    .file-input-card {
+        background: var(--mud-palette-surface);
+        border: 2px dashed var(--mud-palette-primary);
+        border-radius: 16px;
+        padding: 1.5rem;
+        margin-top: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        min-height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+        .file-input-card:hover {
+            background: var(--mud-palette-primary-lighten);
+            border-color: var(--mud-palette-primary-darken);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(66, 165, 245, 0.2);
+        }
+
+        .file-input-card:active {
+            transform: translateY(0);
+        }
+
+    .file-input-hidden {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+        z-index: 2;
+    }
+
+    .file-input-content {
+        text-align: center;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    .upload-icon {
+        font-size: 2.5rem !important;
+        color: var(--mud-palette-primary);
+        margin-bottom: 0.5rem;
+    }
+
+    .upload-title {
+        color: var(--mud-palette-text-primary);
+        font-weight: 600;
+        margin-bottom: 0.25rem !important;
+    }
+
+    .upload-subtitle {
+        color: var(--mud-palette-text-secondary);
+        margin-bottom: 0.5rem !important;
+    }
+
+    .upload-info {
+        color: var(--mud-palette-text-disabled);
+        font-size: 0.7rem !important;
+    }
+
+    /* Uploading Overlay */
+    .uploading-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(255, 255, 255, 0.95);
+        padding: 2rem;
+        border-radius: 16px;
+        z-index: 10;
+        text-align: center;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Drag and Drop States */
+    .file-input-card.drag-over {
+        background: var(--mud-palette-primary-lighten);
+        border-color: var(--mud-palette-primary);
+        border-style: solid;
+    }
+
+        .file-input-card.drag-over .upload-icon {
+            color: var(--mud-palette-primary-darken);
+        }
+
+    /* Responsive Design */
+    @@media (max-width: 600px) {
+        .file-input-card {
+            padding: 1rem;
+            min-height: 100px;
+        }
+
+        .upload-icon {
+            font-size: 2rem !important;
+        }
+
+        .upload-title {
+            font-size: 1rem !important;
+        }
+    }
 
 </style>
 
@@ -789,6 +1010,11 @@
     private AttendanceStatsModel AttendanceStats = new();
     private List<AttendanceRecord> RecentAttendance = new();
     private List<VacationRequest> VacationHistory = new();
+    private bool isEditMode = false;
+    private string? imageError;
+    private bool isUploadingImage = false;
+    private InputFile? inputFile;           // Blazor component instance
+    private ElementReference fileInputRef;  // raw element reference
 
     protected override async Task OnInitializedAsync()
     {
@@ -902,9 +1128,46 @@
         DialogService.Show<ChangePasswordDialog>("Change Password");
     }
 
-    private void ChangeProfilePicture()
+     
+
+
+    // ✅ رفع صورة الموظف باستخدام AttendanceService
+    // Logic to handle file upload
+    private async Task UploadProfileImage(InputFileChangeEventArgs e)
     {
-        Snackbar.Add("Profile picture change feature coming soon!", Severity.Info);
+        isUploadingImage = true;
+        imageError = null;
+        StateHasChanged();
+
+        var file = e.File;
+        if (file == null || UserProfile == null)
+        {
+            imageError = "No file selected or user profile not loaded.";
+            isUploadingImage = false;
+            return;
+        }
+
+        try
+        {
+            var imageUrl = await ImageService.UploadProfileImageAsync(UserProfile.Code, file);
+            if (!string.IsNullOrEmpty(imageUrl))
+            {
+                UserProfile.ProfileImagePath = Path.GetFileName(imageUrl);
+            }
+            else
+            {
+                imageError = "Image upload failed.";
+            }
+        }
+        catch (Exception ex)
+        {
+            imageError = $"Error uploading image: {ex.Message}";
+        }
+        finally
+        {
+            isUploadingImage = false;
+            StateHasChanged();
+        }
     }
 
     // جلب رابط الصورة للعرض
@@ -912,12 +1175,25 @@
     {
         if (!string.IsNullOrWhiteSpace(UserProfile?.ProfileImagePath))
         {
-            // Full URL pointing to API project
-            return $"https://localhost:7002{UserProfile.ProfileImagePath}";
+            var fileName = Path.GetFileName(UserProfile.ProfileImagePath);
+            // Use the Import API base URL (port 7002) for image retrieval
+            return $"https://localhost:7002/profile_images/{fileName}";
         }
 
-        return "https://via.placeholder.com/220?text=No+Image";
+        return "https://via.placeholder.com/220";
     }
+
+    public class ProfileImageResult
+    {
+        public string? ImageUrl { get; set; }   // رابط الصورة بعد رفعها
+        public string? Message { get; set; }
+    }
+
+    // عنوان السيرفر الخاص بالـ API، لازم يكون HTTPS لتجنب Mixed Content
+    private string ImportApiBaseUrl =>
+        Environment.GetEnvironmentVariable("IMPORT_API_BASE_URL")
+        ?? "https://localhost:7002"; // HTTPS بدل HTTP
+
 
 
 

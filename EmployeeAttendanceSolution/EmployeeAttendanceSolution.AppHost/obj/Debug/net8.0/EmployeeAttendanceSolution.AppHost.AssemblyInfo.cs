@@ -18,17 +18,17 @@ using System.Reflection;
     "xt\\")]
 [assembly: System.Reflection.AssemblyMetadata("dcpbinpath", "C:\\Users\\ehabm\\.nuget\\packages\\aspire.hosting.orchestration.win-x64\\9.3.1\\tools\\e" +
     "xt\\bin\\")]
-[assembly: System.Reflection.AssemblyMetadata("apphostprojectpath", "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee" +
+[assembly: System.Reflection.AssemblyMetadata("apphostprojectpath", "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee" +
     "AttendanceSolution.AppHost")]
 [assembly: System.Reflection.AssemblyMetadata("apphostprojectname", "EmployeeAttendanceSolution.AppHost.csproj")]
 [assembly: System.Reflection.AssemblyMetadata("aspiredashboardpath", "C:\\Users\\ehabm\\.nuget\\packages\\aspire.dashboard.sdk.win-x64\\9.3.1\\tools\\Aspire.Da" +
     "shboard.exe")]
-[assembly: System.Reflection.AssemblyMetadataAttribute("apphostprojectbaseintermediateoutputpath", "A:\\New folder\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee" +
+[assembly: System.Reflection.AssemblyMetadataAttribute("apphostprojectbaseintermediateoutputpath", "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\Employee" +
     "AttendanceSolution.AppHost\\obj\\")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("EmployeeAttendanceSolution.AppHost")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a94fed5f7672541932f7526dff52d48608831131")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fe67e8b6c7a54ce9b72fb1a50c6fd5d41c41e000")]
 [assembly: System.Reflection.AssemblyProductAttribute("EmployeeAttendanceSolution.AppHost")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EmployeeAttendanceSolution.AppHost")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -23,3 +23,28 @@ A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\Attenda
 A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\obj\Debug\net8.0\refint\AttendanceSystem.ImportFile.API.Services.dll
 A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.Services.pdb
 A:\New folder\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\obj\Debug\net8.0\ref\AttendanceSystem.ImportFile.API.Services.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\bin\Debug\net8.0\appsettings.json
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\bin\Debug\net8.0\AttendanceSystem.Auth.ui.staticwebassets.runtime.json
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\bin\Debug\net8.0\AttendanceSystem.Auth.ui.staticwebassets.endpoints.json
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\bin\Debug\net8.0\AttendanceSystem.ImportFile.API.Services.deps.json
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\bin\Debug\net8.0\AttendanceSystem.ImportFile.API.Services.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\bin\Debug\net8.0\AttendanceSystem.ImportFile.API.Services.pdb
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\bin\Debug\net8.0\AttendanceSystem.Auth.ui.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\bin\Debug\net8.0\Domain.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\bin\Debug\net8.0\EmployeesModels.Shared.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\bin\Debug\net8.0\Infrastructure.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\bin\Debug\net8.0\AttendanceSystem.Auth.ui.pdb
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\bin\Debug\net8.0\Domain.pdb
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\bin\Debug\net8.0\EmployeesModels.Shared.pdb
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\bin\Debug\net8.0\Infrastructure.pdb
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.Services.csproj.AssemblyReference.cache
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.Services.GeneratedMSBuildEditorConfig.editorconfig
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.Services.AssemblyInfoInputs.cache
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.Services.AssemblyInfo.cs
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.Services.csproj.CoreCompileInputs.cache
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.Services.sourcelink.json
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\obj\Debug\net8.0\Attendan.87D3AE48.Up2Date
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.Services.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\obj\Debug\net8.0\refint\AttendanceSystem.ImportFile.API.Services.dll
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\obj\Debug\net8.0\AttendanceSystem.ImportFile.API.Services.pdb
+A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.ImportFile.API.Services\obj\Debug\net8.0\ref\AttendanceSystem.ImportFile.API.Services.dll
