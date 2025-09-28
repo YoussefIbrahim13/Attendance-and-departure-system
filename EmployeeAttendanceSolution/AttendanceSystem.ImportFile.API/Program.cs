@@ -1,17 +1,54 @@
+using Applications.CSVFile.Querys.UploadCSVFilequery;
+using Applications.Employees.Commands.UpdataEmployeecommand;
+using Applications.Employees.profiles;
+using Applications.Employees.Querys.GetEmployeeByCode;
+using Applications.UpdateAttendanceRecord.Commands;
+using AttendanceSystem.Auth.Services.Features.VacationRequests.Queries.GetVacationRequestsByUserId; // Add this using directive
 using AttendanceSystem.ImportFile.API.Services.AttendanceServices;
+using Domain.Entities;
+using EmployeesModels.Shared;
+using Infrastructure;
+using Infrastructure.DBContext;
+using MediatR;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
+using Microsoft.Extensions.Hosting;
+using System.Reflection;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.AddServiceDefaults();
 
+// Add services to the container.
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<AttendanceSystem.ImportFile.API.AttendanceDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-builder.Services.AddTransient<IAttendanceService, AttendanceService>();
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection")
+    )
+);
+// ✅ Register Identity services
+builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultTokenProviders();
+
+
+// Replace the incorrect AutoMapper registration line with the correct usage.
+// The method 'RegisterServicesFromAssemblies' does not exist on IMapperConfigurationExpression.
+// To scan for profiles in the current assembly, use AddAutoMapper and pass the assembly.
+builder.Services.AddAutoMapper(typeof(UploadCSVFilequery).Assembly);
+builder.Services.AddAutoMapper(typeof(EmployeeProfile).Assembly);
+
+
+//builder.Services.AddTransient<IAttendanceService, AttendanceService>();
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
@@ -19,7 +56,19 @@ builder.Services.AddCors(options =>
         policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
     });
 });
+builder.Services.AddMediatR(cfg =>
+{
+    // The key is to register ALL assemblies that contain MediatR handlers.
+    // The error points to GetVacationRequestsByUserIdHandler, so we must include its assembly.
+    cfg.RegisterServicesFromAssemblies(
+        typeof(UploadCSVFilequery).Assembly,
+        typeof(GetVacationRequestsByUserIdHandler).Assembly // Add this line to scan the correct assembly
+    );
+});
+
 var app = builder.Build();
+
+app.MapDefaultEndpoints();
 
 // Configure the HTTP request pipeline.
 
@@ -29,10 +78,28 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors();
 
+app.UseRouting();
+
+app.UseCors(policy =>
+    policy.AllowAnyOrigin()
+             .AllowAnyHeader()
+             .AllowAnyMethod()
+);
 app.UseHttpsRedirection();
 
+app.UseStaticFiles();
+var profileImagesPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "profile_images");
+if (!Directory.Exists(profileImagesPath))
+{
+    Directory.CreateDirectory(profileImagesPath);
+}
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(profileImagesPath),
+    RequestPath = "/profile_images"
+});
 app.UseAuthorization();
 
 app.MapControllers();

@@ -1,0 +1,91 @@
+@page "/PlanAttendance"
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.Authorization
+@using AttendanceSystem.ImportFile.ui.Pages.nvvm
+@using AttendanceSystem.ImportFile.ui.Services
+@using EmployeesModels.Shared
+@using MudBlazor
+@inject AttendanceSystem.ImportFile.ui.Services.AttendanceService AttendanceService
+@inject ISnackbar Snackbar
+@inject IPlanAttendanceService PlanAttendanceService
+@inject IJSRuntime JS
+@using Domain.Enums;
+
+
+@attribute [Authorize(Roles = "Admin")]
+<AuthorizeView Roles="Admin">
+    <Authorized>
+<MudContainer MaxWidth="MaxWidth.Medium" Class="mt-10 d-flex justify-center align-center" Style="min-height:90vh; max-height:90vh; overflow-y:auto;">
+    <MudPaper Class="pa-10" Elevation="12" Style="border-radius:32px; min-width:440px; background: var(--mud-palette-surface); box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.13), 0 1.5px 8px 0 rgba(25, 118, 210, 0.10);">
+        <MudText Typo="Typo.h3" Align="Align.Center" Class="mb-6 fw-bold" Style="letter-spacing:2.5px; color:#1976d2; text-shadow:0 4px 16px #e3f2fd, 0 1px 0 #fff; font-family:'Segoe UI',Roboto,sans-serif;">
+            <MudIcon Icon="@Icons.Material.Filled.EventAvailable" Size="Size.Large" Class="me-2" Style="vertical-align:middle; color:#90caf9; filter:drop-shadow(0 2px 8px #1976d2aa);" />
+            Attendance Planner
+        </MudText>
+        <MudPaper Class="pa-6 mb-6" Elevation="2" Style="border-radius:18px; background: var(--mud-palette-surface); box-shadow: 0 2px 12px #1976d21a;">
+            <MudStack Row Spacing="6" AlignItems="AlignItems.Start">
+                <MudStack Spacing="2" Style="min-width:220px; max-width:260px;">
+                    <MudText Typo="Typo.subtitle1" Class="mb-1" Style="color:var(--mud-palette-primary); font-weight:600;">Employee</MudText>
+                    <MudAutocomplete T="EmployeeDto" @bind-Value="selectedEmployee" Label="Choose Employee" Variant="Variant.Filled" Dense="true" Style="background:var(--mud-palette-background-grey);"
+                        SearchFunc="@SearchEmployee" ToStringFunc="@((e) => e == null ? string.Empty : $"{e.Name}--{e.Code}")" Clearable="true" ResetValueOnEmptyText="true" CoerceText="true" />
+                </MudStack>
+                <MudStack Spacing="2" Style="min-width:260px; max-width:320px;">
+                    <MudText Typo="Typo.subtitle1" Class="mb-1" Style="color:var(--mud-palette-primary); font-weight:600;">Select Day</MudText>
+                    <MudStack Row Spacing="1" AlignItems="AlignItems.Center">
+                        <MudDatePicker @bind-Date="singleDate" Label="Single Day" Variant="Variant.Outlined" Dense="true" PickerVariant="PickerVariant.Dialog" Style="flex:1;" />
+                        <MudIconButton Icon="@Icons.Material.Filled.Clear" Color="Color.Default" Size="Size.Small" OnClick="@(() => singleDate = null)" ToolTip="Clear" />
+                    </MudStack>
+                    <div style="display:flex; justify-content:flex-start;">
+                        <MudButton Variant="Variant.Outlined" Color="Color.Primary" Size="Size.Small" Style="margin-top:6px; min-width:120px; max-width:140px; height:32px; border-radius:8px;" OnClick="@(() => showRangeOptions = !showRangeOptions)">
+                            Multiple Days
+                        </MudButton>
+                    </div>
+                    @if (showRangeOptions)
+                    {
+                        <MudText Typo="Typo.subtitle2" Class="mb-1 mt-2" Style="color:var(--mud-palette-primary); font-weight:600;">Or Select Range</MudText>
+                        <MudStack Row Spacing="1" AlignItems="AlignItems.Center">
+                            <MudDateRangePicker @bind-DateRange="dateRange" Label="Date Range" Variant="Variant.Outlined" Dense="true" PickerVariant="PickerVariant.Dialog" Style="flex:1;" />
+                            <MudIconButton Icon="@Icons.Material.Filled.Clear" Color="Color.Default" Size="Size.Small" OnClick="@ClearRange" ToolTip="Clear" />
+                        </MudStack>
+                        <MudText Typo="Typo.subtitle2" Class="mb-1 mt-2" Style="color:var(--mud-palette-primary); font-weight:600;">Choose Days of Week</MudText>
+                        <MudStack Row Spacing="2" AlignItems="AlignItems.Center" Style="margin-top:8px;">
+                            <MudSelect T="DayOfWeek" Label="Days of Week" SelectedValues="selectedDays" SelectedValuesChanged="@(v => selectedDays = new HashSet<DayOfWeek>(v))" MultiSelection="true" Dense="true" Style="background:var(--mud-palette-background-grey);">
+                                @foreach (var day in new[] { DayOfWeek.Saturday, DayOfWeek.Sunday, DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Thursday, DayOfWeek.Friday })
+                                {
+                                    <MudSelectItem T="DayOfWeek" Value="day">@day</MudSelectItem>
+                                }
+                            </MudSelect>
+                        </MudStack>
+                    }
+                </MudStack>
+                <MudStack Spacing="2" Style="min-width:220px; max-width:260px;">
+                    <MudText Typo="Typo.subtitle1" Class="mb-1" Style="color:var(--mud-palette-primary); font-weight:600;">Attendance Status</MudText>
+                    <MudSelect T="AttendanceStatus?" @bind-Value="selectedStatus" Label="Status" Variant="Variant.Filled" Dense="true" Style="background:var(--mud-palette-background-grey);">
+                        <MudSelectItem T="AttendanceStatus?" Value="null">-- Choose Status --</MudSelectItem>
+                        @foreach (var status in Enum.GetValues<AttendanceStatus>())
+                        {
+                            <MudSelectItem T="AttendanceStatus?" Value="@status">@status</MudSelectItem>
+                        }
+                    </MudSelect>
+                </MudStack>
+            </MudStack>
+        </MudPaper>
+        <MudStack Row JustifyContent="Justify.Center" Class="mt-4">
+            <MudButton Variant="Variant.Filled" Color="Color.Success" Size="Size.Large" OnClick="SavePlan" Disabled="@(isLoading || selectedEmployee == null || string.IsNullOrEmpty(selectedEmployee?.Code) || selectedStatus == null || (singleDate == null && (dateRange.Start == null || dateRange.End == null)))">
+                @if (isLoading)
+                {
+                    <MudProgressCircular Indeterminate="true" Size="Size.Medium" Class="me-2" />
+                    <span>Saving</span>
+                }
+                else
+                {
+                    <MudIcon Icon="@Icons.Material.Filled.Save" Class="me-2" />
+                    <span>Save Plan</span>
+                }
+            </MudButton>
+        </MudStack>
+        <!-- الرسائل ستظهر عبر Snackbar -->
+    </MudPaper>
+</MudContainer>
+    </Authorized>
+</AuthorizeView>
+

@@ -1,0 +1,209 @@
+﻿@inherits LayoutComponentBase
+@implements IDisposable
+@using MudBlazor
+@inject NavigationManager Navigation
+@inject AuthenticationStateProvider AuthStateProvider
+@inject AuthService AuthService
+@inject ILocalStorageService LocalStorage
+
+<!-- Required Providers -->
+<MudThemeProvider @bind-IsDarkMode="_isDarkMode" Theme="MyCustomTheme" />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout>
+    <!-- Top App Bar -->
+    <MudAppBar Elevation="4" Dense="true" Class="px-4 appbar-gradient">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu"
+                       Color="Color.Inherit"
+                       Edge="Edge.Start"
+                       OnClick="@DrawerToggle" />
+        <MudText Typo="Typo.h6" Class="ml-2">Attendance System</MudText>
+
+        <MudSpacer />
+        @if (_isAuthenticated && !string.IsNullOrEmpty(_currentUser?.Name))
+        {
+            <MudText Typo="Typo.subtitle1" Class="me-3">Hello, @_currentUser.Name 👋</MudText>
+            
+        <MudIconButton Icon="@Icons.Material.Filled.CalendarToday"
+                       Color="Color.Inherit"
+                       OnClick="GoToAttendance"
+                       Title="Attendance Calendar"
+                       Class="mr-2" />
+        }
+        
+        <MudButton Variant="Variant.Outlined"
+                   Color="Color.Inherit"
+                   OnClick="@OnLoginLogoutClick">
+            @(_isAuthenticated ? "Logout" : "Login")
+        </MudButton>
+        <MudToggleIconButton @bind-Toggled="_isDarkMode"
+                             Icon="@Icons.Material.Filled.DarkMode"
+                             ToggledIcon="@Icons.Material.Filled.WbSunny"
+                             Color="Color.Inherit"
+                             ToggledColor="Color.Warning"
+                             Class="mr-2" />
+    </MudAppBar>
+
+    <!-- Side Drawer -->
+    <MudDrawer @bind-Open="@_drawerOpen">
+    <NavMenu />
+    </MudDrawer>
+
+    <!-- Page Content -->
+    <MudMainContent Class="mt-appbar p-4">
+        @Body
+    </MudMainContent>
+</MudLayout>
+
+<style>
+    .appbar-gradient {
+        background: linear-gradient(135deg, var(--mud-palette-primary) 0%, var(--mud-palette-secondary) 100%);
+        color: white;
+    }
+</style>
+
+@code {
+    private bool _drawerOpen = true;
+    private bool _isDarkMode;
+    private bool _isAuthenticated;
+    private UserInfo? _currentUser;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadAuthState();
+        ((JwtAuthenticationStateProvider)AuthStateProvider).AuthenticationStateChanged += OnAuthenticationStateChanged;
+    }
+
+    private async Task LoadAuthState()
+    {
+        try
+        {
+            var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+            _isAuthenticated = authState.User.Identity?.IsAuthenticated ?? false;
+
+            if (_isAuthenticated)
+            {
+                _currentUser = await AuthService.GetCurrentUser();
+            }
+            else
+            {
+                _currentUser = null;
+            }
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading auth state: {ex.Message}");
+        }
+    }
+
+    private async void OnAuthenticationStateChanged(Task<AuthenticationState> task)
+    {
+        await LoadAuthState();
+    }
+
+
+    private void DrawerToggle() => _drawerOpen = !_drawerOpen;
+
+    private async void GoToAttendance()
+    {
+        var token = await LocalStorage.GetItemAsync<string>("authToken");
+        if (!string.IsNullOrEmpty(token))
+        {
+            Navigation.NavigateTo($"https://localhost:7280/?token={token}", true);
+        }
+        else
+        {
+            Navigation.NavigateTo("https://localhost:7280/", true);
+        }
+    }
+
+    [Inject]
+    public IJSRuntime JS { get; set; }
+
+    private async Task OnLoginLogoutClick()
+    {
+        if (_isAuthenticated)
+        {
+            await AuthService.Logout();
+            _isAuthenticated = false;
+            _currentUser = null;
+            // فتح صفحة حذف التوكن في Attendance
+            await JS.InvokeVoidAsync("open", "https://localhost:7280/logout-sync", "_blank", "width=400,height=200");
+            Navigation.NavigateTo("/", forceLoad: true);
+        }
+        else
+        {
+            Navigation.NavigateTo("/Login");
+        }
+    }
+
+    public void Dispose()
+    {
+        ((JwtAuthenticationStateProvider)AuthStateProvider).AuthenticationStateChanged -= OnAuthenticationStateChanged;
+    }
+
+    MudTheme MyCustomTheme = new MudTheme()
+    {
+        PaletteLight = new PaletteLight()
+        {
+            Dark = Colors.Gray.Lighten3,
+            /////////////////////////////
+
+            // Primary = Colors.Blue.Darken2,
+            // Secondary = Colors.Cyan.Accent3,
+            Primary = Colors.Blue.Lighten1,       // Soft, approachable blue
+            Secondary = Colors.Cyan.Lighten2,     // Fresh, airy cyan
+
+            AppbarBackground = "#1565c0",
+            Background = Colors.Gray.Lighten5,
+            LinesDefault = Colors.Gray.Lighten2,
+            Surface = "#ffffff",
+            TextPrimary = "rgba(0,0,0,0.87)",
+            TextSecondary = "rgba(0,0,0,0.6)",
+            ActionDefault = Colors.Blue.Lighten4,
+            Divider = Colors.Gray.Lighten2,
+            DrawerBackground = "#ffffff",
+            OverlayLight = "rgba(255,255,255,0.5)"
+        },
+        PaletteDark = new PaletteDark()
+        {
+            // Primary = Colors.Blue.Lighten1,
+            // Secondary = Colors.Teal.Accent4,
+            ///////////////////////////////
+            // Primary = Colors.Indigo.Darken1,     // Rich indigo base
+            // Secondary = Colors.Cyan.Accent3,      // Vibrant cyan accent
+
+            // Primary = Colors.Indigo.Darken1,     // Rich indigo base
+            // Secondary = Colors.Cyan.Accent3 ,     // Vibrant cyan accent      // Muted teal for sophistication
+
+            // Primary = Colors.DeepPurple.Darken2,
+            // Secondary = Colors.Blue.Accent3,
+
+            // Primary = Colors.Teal.Darken4,
+            // Secondary = Colors.Green.Accent4,
+
+             Primary = Colors.Blue.Darken4,
+             Secondary = Colors.Cyan.Accent3,
+
+            // Primary = Colors.BlueGray.Darken3,
+            // Secondary = Colors.Indigo.Darken1,
+
+            // Primary = Colors.Blue.Darken4,
+            // Secondary = Colors.LightBlue.Accent4,
+            AppbarBackground = "#0d47a1",
+            Background = "#121212",
+            Surface = "#1e1e1e",
+            DrawerBackground = "#1a1a1a",
+            TextPrimary = "rgba(255,255,255,0.87)",
+            TextSecondary = "rgba(255,255,255,0.6)",
+            ActionDefault = Colors.Gray.Darken3,
+            Divider = "rgba(255,255,255,0.12)",
+            OverlayDark = "rgba(0,0,0,0.7)",
+            HoverOpacity = 0.08,
+            GrayDefault = "#757575"
+        }
+    };
+}

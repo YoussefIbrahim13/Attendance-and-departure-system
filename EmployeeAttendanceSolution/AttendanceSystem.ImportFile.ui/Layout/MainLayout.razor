@@ -1,22 +1,166 @@
 ﻿@inherits LayoutComponentBase
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
+@inject Blazored.LocalStorage.ILocalStorageService LocalStorage
+@inject NavigationManager Navigation
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-        </div>
+@using AttendanceSystem.ImportFile.ui.Pages
 
-        <article class="content px-4">
+@* Theme & Providers *@
+<MudThemeProvider Theme="MyCustomTheme" @bind-IsDarkMode="@_isDarkMode" />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout>
+    <MudAppBar>
+        <MudIconButton Icon="@Icons.Material.Filled.Menu"
+                       Color="Color.Inherit"
+                       Edge="Edge.Start"
+                       OnClick="@((e) => DrawerToggle())" />
+        <MudText Typo="Typo.h6" Class="ml-2">Attendance System</MudText>
+
+        <MudSpacer />
+
+        @if (!isLoggedIn)
+        {
+            <MudButton Color="Color.Inherit" Variant="Variant.Outlined"
+                       Class="mr-2"
+                       Style="position:absolute;left:1140px;top:15px;"
+                       OnClick="GoToLogin">
+                Login
+            </MudButton>
+        }
+        @* else
+        {
+            <MudButton Color="Color.Error" Variant="Variant.Outlined"
+                       Class="mr-2"
+                       Style="position:absolute;left:1140px;top:15px;"
+                       OnClick="@(async () => await LogoutAndClearToken())">
+                Logout
+            </MudButton>
+        } *@
+
+        <MudToggleIconButton @bind-Toggled="@_isDarkMode"
+                             Icon="@Icons.Material.Filled.DarkMode"
+                             ToggledIcon="@Icons.Material.Filled.WbSunny"
+                             Color="Color.Inherit"
+                             ToggledColor="Color.Warning"
+                             Class="mr-2" />
+    </MudAppBar>
+
+    <MudDrawer @bind-Open="@_drawerOpen">
+        @if (isLoggedIn)
+        {
+            <NavMenu />
+            @if (IsAdmin)
+            {
+                <MudNavLink Href="https://localhost:7203/"
+                            Icon="@Icons.Material.Filled.Home"
+                            Match="NavLinkMatch.All"
+                            Target="_blank">
+                    <span>Authorization Home</span>
+                </MudNavLink>
+            }
+        }
+    </MudDrawer>
+
+    <MudMainContent Class="m-0 p-0">
+        @if (!isLoggedIn)
+        {
+            <Calendar />
+        }
+        else
+        {
             @Body
-        </article>
-    </main>
-</div>
+        }
+    </MudMainContent>
+</MudLayout>
 
-<div id="blazor-error-ui">
-    An unhandled error has occurred.
-    <a href="" class="reload">Reload</a>
-    <a class="dismiss">🗙</a>
-</div>
+@code {
+    bool _drawerOpen = true;
+    private bool _isDarkMode;
+    private bool isLoggedIn;
+    private bool IsAdmin;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // check token on every page load
+        var uri = Navigation.ToAbsoluteUri(Navigation.Uri);
+        var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
+        var urlToken = query["token"];
+
+        if (!string.IsNullOrEmpty(urlToken))
+        {
+            await LocalStorage.SetItemAsync("authToken", urlToken);
+        }
+
+        var token = await LocalStorage.GetItemAsync<string>("authToken");
+        isLoggedIn = !string.IsNullOrEmpty(token);
+
+        if (isLoggedIn && token != null)
+        {
+            var handler = new System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler();
+            var jwtToken = handler.ReadJwtToken(token);
+            var roleClaim = jwtToken.Claims.FirstOrDefault(c => c.Type == "role" || c.Type == "roles");
+            IsAdmin = roleClaim != null && (roleClaim.Value == "Admin" || roleClaim.Value.Contains("Admin"));
+        }
+        else
+        {
+            isLoggedIn = false;
+            IsAdmin = false;
+        }
+    }
+
+    void DrawerToggle()
+    {
+        _drawerOpen = !_drawerOpen;
+    }
+
+    void GoToLogin()
+    {
+        Navigation.NavigateTo("https://localhost:7203/Login", true);
+    }
+
+    async Task LogoutAndClearToken()
+    {
+        await LocalStorage.RemoveItemAsync("authToken");
+        isLoggedIn = false;
+        IsAdmin = false;
+        Navigation.NavigateTo("/", true);
+    }
+
+    MudTheme MyCustomTheme = new MudTheme()
+    {
+        PaletteLight = new PaletteLight()
+        {
+            Dark = Colors.Gray.Lighten3,
+            Primary = "#1976d2",
+            Secondary = "#388e3c",
+            AppbarBackground = "#1565c0",
+            Background = Colors.Gray.Lighten5,
+            LinesDefault = Colors.Gray.Lighten2,
+            Surface = "#ffffff",
+            TextPrimary = "rgba(0,0,0,0.87)",
+            TextSecondary = "rgba(0,0,0,0.6)",
+            ActionDefault = Colors.Blue.Lighten4,
+            Divider = Colors.Gray.Lighten2,
+            DrawerBackground = "#ffffff",
+            OverlayLight = "rgba(255,255,255,0.5)"
+        },
+        PaletteDark = new PaletteDark()
+        {
+            Primary = Colors.Blue.Lighten1,
+            Secondary = Colors.Teal.Accent4,
+            AppbarBackground = "#0d47a1",
+            Background = "#121212",
+            Surface = "#1e1e1e",
+            DrawerBackground = "#1a1a1a",
+            TextPrimary = "rgba(255,255,255,0.87)",
+            TextSecondary = "rgba(255,255,255,0.6)",
+            ActionDefault = Colors.Gray.Darken3,
+            Divider = "rgba(255,255,255,0.12)",
+            OverlayDark = "rgba(0,0,0,0.7)",
+            HoverOpacity = 0.08,
+            GrayDefault = "#757575"
+        }
+    };
+}

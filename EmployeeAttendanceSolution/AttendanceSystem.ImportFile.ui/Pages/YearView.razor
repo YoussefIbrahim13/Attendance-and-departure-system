@@ -1,288 +1,190 @@
 ﻿@page "/calendar/year"
 @page "/calendar/year/{Year:int}"
-@inject AttendanceSystem.ImportFile.ui.Services.AttendanceService AttendanceService
+@using Microsoft.AspNetCore.Authorization
 @inject NavigationManager Navigation
 @inject AttendanceService AttendanceService
 @using AttendanceSystem.ImportFile.ui.Services
 @using EmployeesModels.Shared
+@inject ISnackbar Snackbar
+@inject IJSRuntime JS
 
-<div class="container-fluid mt-4">
+
+
+@attribute [Authorize(Roles = "Admin,Manager,User,DataEntry")]
+<AuthorizeView Roles="Admin,Manager,User,DataEntry">
+    <Authorized>
+<MudContainer MaxWidth="MaxWidth.False" Class="mt-4">
     <!-- Header & Navigation -->
-    <div class="row mb-4">
-        <div class="col-12">
-            <div class="d-flex justify-content-between align-items-center">
-                <h2 class="mb-0 fw-bold">Year @currentYear</h2>
-                <div class="btn-group">
-                    <button class="btn btn-outline-primary" @onclick="PreviousYear">
-                        <i class="bi bi-chevron-left"></i> @(currentYear - 1)
-                    </button>
-                    <button class="btn btn-outline-primary" @onclick="NextYear">
-                        @(currentYear + 1) <i class="bi bi-chevron-right"></i>
-                    </button>
-                    <button class="btn btn-primary ms-2" @onclick="GoToCurrentMonth">
-                        <i class="bi bi-calendar-month"></i> Current Month
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <MudGrid Class="mb-4">
+        <MudItem xs="12">
+            <MudStack Row Justify="Justify.SpaceBetween" AlignItems="AlignItems.Center">
+                <MudText Typo="Typo.h4" Class="fw-bold">Year @currentYear</MudText>
+                <MudStack Row Spacing="2">
+                    <MudButtonGroup Variant="Variant.Outlined" >
+                        <MudButton StartIcon="@Icons.Material.Filled.ChevronLeft" OnClick="PreviousYear">
+                            @(currentYear - 1)
+                        </MudButton>
+                        <MudButton EndIcon="@Icons.Material.Filled.ChevronRight" OnClick="NextYear">
+                            @(currentYear + 1)
+                        </MudButton>
+                    </MudButtonGroup>
+                    <MudButton Variant="Variant.Filled"
+                               Color="Color.Primary"
+                               StartIcon="@Icons.Material.Filled.CalendarMonth"
+                               OnClick="GoToCurrentMonth">
+                        Current Month
+                    </MudButton>
+                </MudStack>
+            </MudStack>
+        </MudItem>
+    </MudGrid>
 
     @if (isLoading)
     {
-        <div class="text-center">
-            <div class="spinner-border" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-        </div>
+        <MudStack AlignItems="AlignItems.Center" Class="my-8">
+            <MudProgressCircular Indeterminate="true" Size="Size.Large" />
+            <MudText>Loading...</MudText>
+        </MudStack>
     }
     else if (yearData != null)
     {
-        <div class="year-grid">
+        <!-- Year Grid -->
+        <MudGrid Spacing="4" Class="mb-6">
             @foreach (var month in yearData.Months)
             {
-                <div class="month-card @(IsCurrentMonth(month.Month) ? "current-month" : "")"
-                     @onclick="() => GoToMonth(month.Month)">
-                    <div class="month-header">
-                        <h4 class="month-name">@month.MonthName</h4>
-                        <div class="month-number">@month.Month.ToString("00")</div>
-                    </div>
+                <MudItem xs="12" sm="6" md="4" lg="3">
+                    <MudPaper Class="@GetMonthCardClass(month.Month)"
+                              Style="cursor: pointer; transition: all 0.3s ease; padding: 20px; height: 100%;"
+                              @onclick="() => GoToMonth(month.Month)"
+                              Elevation="@(IsCurrentMonth(month.Month) ? 8 : 4)">
 
-                    <div class="month-stats">
-                        <div class="stat-item">
-                            <div class="stat-label">Working Days</div>
-                            <div class="stat-value">@month.TotalWorkingDays</div>
-                        </div>
+                        <!-- Month Header -->
+                        <MudStack Row Justify="Justify.SpaceBetween" AlignItems="AlignItems.Center" Class="mb-3">
+                            <MudText Typo="Typo.h6" Class="fw-bold">@month.MonthName</MudText>
+                            <MudAvatar Color="@(IsCurrentMonth(month.Month) ? Color.Success : Color.Primary)"
+                                       Size="Size.Medium">
+                                @month.Month.ToString("00")
+                            </MudAvatar>
+                        </MudStack>
 
-                        <div class="stat-item">
-                            <div class="stat-label">Avg Attendance</div>
-                            <div class="stat-value">@month.AverageAttendance%</div>
-                        </div>
-                    </div>
+                        <MudDivider Class="mb-3" />
 
-                    <div class="attendance-bar">
-                        <div class="attendance-fill" style="width: @(month.AverageAttendance)%"></div>
-                    </div>
+                        <!-- Month Stats -->
+                        <MudGrid Spacing="2" Class="mb-3">
+                            <MudItem xs="6">
+                                <MudStack AlignItems="AlignItems.Center">
+                                    <MudText Typo="Typo.caption" >Working Days</MudText>
+                                    <MudText Typo="Typo.h6" Color="Color.Primary" Class="fw-bold">@month.TotalWorkingDays</MudText>
+                                </MudStack>
+                            </MudItem>
+                            <MudItem xs="6">
+                                <MudStack AlignItems="AlignItems.Center">
+                                    <MudText Typo="Typo.caption">Avg Attendance</MudText>
+                                    <MudText Typo="Typo.h6" Color="Color.Primary" Class="fw-bold">@month.AverageAttendance%</MudText>
+                                </MudStack>
+                            </MudItem>
+                        </MudGrid>
 
-                    <div class="month-footer">
-                        <small class="text-muted">Click to view month</small>
-                    </div>
-                </div>
+                        <!-- Attendance Progress Bar -->
+                        <MudProgressLinear Color="@GetAttendanceColor(month.AverageAttendance)"
+                                           Value="@month.AverageAttendance"
+                                           Size="Size.Medium"
+                                           Class="mb-3" />
+
+                        <!-- Month Footer -->
+                        <MudStack AlignItems="AlignItems.Center">
+                            <MudText Typo="Typo.caption" >Click to view month</MudText>
+                        </MudStack>
+                    </MudPaper>
+                </MudItem>
             }
-        </div>
+        </MudGrid>
 
         <!-- Year Summary -->
-        <div class="row mt-4">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="mb-0">Year @currentYear Summary</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="summary-stat">
-                                    <div class="summary-value">@GetTotalWorkingDays()</div>
-                                    <div class="summary-label">Total Working Days</div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="summary-stat">
-                                    <div class="summary-value">@GetAverageAttendance()%</div>
-                                    <div class="summary-label">Average Attendance</div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="summary-stat">
-                                    <div class="summary-value">@GetBestMonth()</div>
-                                    <div class="summary-label">Best Month</div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="summary-stat">
-                                    <div class="summary-value">@GetWorstMonth()</div>
-                                    <div class="summary-label">Needs Improvement</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <MudGrid>
+            <MudItem xs="12">
+                <MudCard Class="year-summary-card">
+                    <MudCardHeader>
+                        <CardHeaderContent>
+                            <MudText Typo="Typo.h6">Year @currentYear Summary</MudText>
+                        </CardHeaderContent>
+                    </MudCardHeader>
+                    <MudCardContent>
+                        <MudGrid Spacing="4">
+                            <MudItem xs="12" sm="6" md="3">
+                                <MudPaper Class="pa-4 year-summary-box"  >
+                                    <MudText Typo="Typo.h4" Color="Color.Primary" Class="fw-bold mb-2">@GetTotalWorkingDays()</MudText>
+                                    <MudText Typo="Typo.body2" >Total Working Days</MudText>
+                                </MudPaper>
+                            </MudItem>
+                            <MudItem xs="12" sm="6" md="3">
+                                <MudPaper Class="pa-4 year-summary-box" >
+                                    <MudText Typo="Typo.h4" Color="Color.Primary" Class="fw-bold mb-2">@GetAverageAttendance()%</MudText>
+                                    <MudText Typo="Typo.body2" >Average Attendance</MudText>
+                                </MudPaper>
+                            </MudItem>
+                            <MudItem xs="12" sm="6" md="3">
+                                <MudPaper Class="pa-4 year-summary-box" >
+                                    <MudText Typo="Typo.h4" Color="Color.Primary" Class="fw-bold mb-2">@GetBestMonth()</MudText>
+                                    <MudText Typo="Typo.body2" >Best Month</MudText>
+                                </MudPaper>
+                            </MudItem>
+                            <MudItem xs="12" sm="6" md="3">
+                                <MudPaper Class="pa-4 year-summary-box" >
+                                    <MudText Typo="Typo.h4" Color="Color.Primary" Class="fw-bold mb-2">@GetWorstMonth()</MudText>
+                                    <MudText Typo="Typo.body2" >Needs Improvement</MudText>
+                                </MudPaper>
+                            </MudItem>
+                        </MudGrid>
+                    </MudCardContent>
+                </MudCard>
+            </MudItem>
+        </MudGrid>
     }
-</div>
+</MudContainer>
+</Authorized>
+</AuthorizeView>
+<style>
+    .year-summary-card {
+        background-color: var(--mud-palette-surface);
+        color: var(--mud-palette-text-primary);
+        transition: background-color 0.3s ease;
+    }
+
+        .year-summary-card .mud-text {
+            color: var(--mud-palette-text-primary) !important;
+        }
+
+        .year-summary-card .mud-paper {
+            background-color: var(--mud-palette-background-grey);
+            color: var(--mud-palette-text-primary);
+        }
+
+    .year-summary-box {
+        background-color: var(--mud-palette-surface);
+        color: var(--mud-palette-text-primary);
+        text-align: center;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+    }
+
+        .year-summary-box .mud-text {
+            color: var(--mud-palette-text-primary) !important;
+        }
+ </style>
+
+
 
 <style>
-    .year-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 20px;
-        margin-bottom: 30px;
+    .month-card:hover {
+        transform: translateY(-5px) !important;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
     }
 
-    .month-card {
-        background: white;
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        padding: 20px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        border: 2px solid transparent;
+    .current-month {
+        background: var(--mud-palette-action-default);
+        opacity: 0.9;
     }
-
-        .month-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-            border-color: #007bff;
-        }
-
-        .month-card.current-month {
-            border-color: #28a745;
-            background: linear-gradient(135deg, #f8fff9 0%, #ffffff 100%);
-        }
-
-    .month-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 15px;
-        padding-bottom: 10px;
-        border-bottom: 2px solid #f1f3f4;
-    }
-
-    .month-name {
-        margin: 0;
-        color: #333;
-        font-weight: 600;
-    }
-
-    .month-number {
-        background: #007bff;
-        color: white;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-        font-size: 14px;
-    }
-
-    .current-month .month-number {
-        background: #28a745;
-    }
-
-    .month-stats {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 15px;
-        margin-bottom: 15px;
-    }
-
-    .stat-item {
-        text-align: center;
-    }
-
-    .stat-label {
-        font-size: 12px;
-        color: #6c757d;
-        margin-bottom: 5px;
-        font-weight: 500;
-    }
-
-    .stat-value {
-        font-size: 18px;
-        font-weight: bold;
-        color: #333;
-    }
-
-    .attendance-bar {
-        background: #e9ecef;
-        height: 8px;
-        border-radius: 4px;
-        overflow: hidden;
-        margin-bottom: 15px;
-    }
-
-    .attendance-fill {
-        height: 100%;
-        background: linear-gradient(90deg, #dc3545 0%, #ffc107 50%, #28a745 100%);
-        transition: width 0.3s ease;
-        border-radius: 4px;
-    }
-
-    .month-footer {
-        text-align: center;
-    }
-
-    .summary-stat {
-        text-align: center;
-        padding: 15px;
-        background: #f8f9fa;
-        border-radius: 8px;
-    }
-
-    .summary-value {
-        font-size: 24px;
-        font-weight: bold;
-        color: #007bff;
-        margin-bottom: 5px;
-    }
-
-    .summary-label {
-        font-size: 14px;
-        color: #6c757d;
-        font-weight: 500;
-    }
-
-    
 </style>
 
-@code {
-    [Parameter] public int Year { get; set; }
-
-    private YearViewDto? yearData;
-    private bool isLoading = true;
-    private int currentYear;
-
-    protected override async Task OnInitializedAsync()
-    {
-        currentYear = Year > 0 ? Year : DateTime.Today.Year;
-        await LoadYearData();
-    }
-
-    protected override async Task OnParametersSetAsync()
-    {
-        if (Year > 0) currentYear = Year;
-        await LoadYearData();
-    }
-
-    private async Task LoadYearData()
-    {
-        isLoading = true;
-        try
-        {
-            yearData = await AttendanceService.GetYearViewAsync(currentYear);
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"❌ Error loading year data: {ex.Message}");
-        }
-        finally
-        {
-            isLoading = false;
-        }
-    }
-
-    private void PreviousYear() => Navigation.NavigateTo($"/calendar/year/{--currentYear}");
-    private void NextYear() => Navigation.NavigateTo($"/calendar/year/{++currentYear}");
-    private void GoToCurrentMonth() => Navigation.NavigateTo($"/calendar/month/{DateTime.Today.Year}/{DateTime.Today.Month}");
-    private void GoToMonth(int month) => Navigation.NavigateTo($"/calendar/month/{currentYear}/{month}");
-    private bool IsCurrentMonth(int month) => currentYear == DateTime.Today.Year && month == DateTime.Today.Month;
-
-    private int GetTotalWorkingDays() => yearData?.Months.Sum(m => m.TotalWorkingDays) ?? 0;
-    private double GetAverageAttendance() => yearData?.Months.Any() == true ? Math.Round(yearData.Months.Average(m => m.AverageAttendance), 1) : 0;
-    private string GetBestMonth() => yearData?.Months.Any() == true ? yearData.Months.OrderByDescending(m => m.AverageAttendance).First().MonthName : "N/A";
-    private string GetWorstMonth() => yearData?.Months.Any() == true ? yearData.Months.OrderBy(m => m.AverageAttendance).First().MonthName : "N/A";
-}
 

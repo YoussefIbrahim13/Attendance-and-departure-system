@@ -1,9 +1,13 @@
-﻿namespace EmployeesModels.Shared
+﻿using Domain.Enums;
+
+namespace EmployeesModels.Shared
 {
     public record AttendanceDayStatus(
-       string EmployeeId,
+       string Code,
        DateTime Date,
-       AttendanceStatus Status,
+       AttendanceStatus ActualStatus ,
+       AttendanceStatus? PlannedStatus,
+       ApprovalStatus? ApprovalStatus,
        string? Note
     );
 

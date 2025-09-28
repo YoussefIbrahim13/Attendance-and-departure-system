@@ -5,7 +5,7 @@
     "version": "1.0"
   },
   "paths": {
-    "/Attendance/upload-csv": {
+    "/api/Attendance/upload-csv": {
       "post": {
         "tags": [
           "Attendance"
@@ -16,14 +16,14 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "file": {
+                  "File": {
                     "type": "string",
                     "format": "binary"
                   }
                 }
               },
               "encoding": {
-                "file": {
+                "File": {
                   "style": "form"
                 }
               }
@@ -37,7 +37,7 @@
         }
       }
     },
-    "/Attendance/edit-pending": {
+    "/api/Attendance/edit-pending": {
       "put": {
         "tags": [
           "Attendance"
@@ -46,17 +46,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/EditAttendanceDto"
+                "$ref": "#/components/schemas/EditPendingAttendanceCommand"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/EditAttendanceDto"
+                "$ref": "#/components/schemas/EditPendingAttendanceCommand"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/EditAttendanceDto"
+                "$ref": "#/components/schemas/EditPendingAttendanceCommand"
               }
             }
           }
@@ -68,10 +68,60 @@
         }
       }
     },
-    "/Attendance/save": {
+    "/api/Attendance/save": {
       "post": {
         "tags": [
           "Attendance"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/AttendanceRecord"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/AttendanceRecord"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/AttendanceRecord"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Attendance/employee-by-code/{code}": {
+      "get": {
+        "tags": [
+          "Attendance"
+        ],
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -80,7 +130,29 @@
         }
       }
     },
-    "/Attendance/month-view": {
+    "/api/Attendance/day-view": {
+      "get": {
+        "tags": [
+          "Attendance"
+        ],
+        "parameters": [
+          {
+            "name": "date",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Attendance/month-view": {
       "get": {
         "tags": [
           "Attendance"
@@ -110,29 +182,7 @@
         }
       }
     },
-    "/Attendance/day-view": {
-      "get": {
-        "tags": [
-          "Attendance"
-        ],
-        "parameters": [
-          {
-            "name": "date",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/Attendance/year-view/{year}": {
+    "/api/Attendance/year-view/{year}": {
       "get": {
         "tags": [
           "Attendance"
@@ -155,7 +205,69 @@
         }
       }
     },
-    "/Attendance/employees": {
+    "/api/Attendance/add-employee": {
+      "post": {
+        "tags": [
+          "Attendance"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddEmployeesCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddEmployeesCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddEmployeesCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Attendance/update-employee": {
+      "put": {
+        "tags": [
+          "Attendance"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdataEmployeecommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdataEmployeecommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdataEmployeecommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Attendance/employees": {
       "get": {
         "tags": [
           "Attendance"
@@ -167,14 +279,14 @@
         }
       }
     },
-    "/Attendance/delete-employee/{id}": {
+    "/api/Attendance/delete-employee/{Code}": {
       "delete": {
         "tags": [
           "Attendance"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "code",
             "in": "path",
             "required": true,
             "schema": {
@@ -189,7 +301,7 @@
         }
       }
     },
-    "/Attendance/add-employee": {
+    "/api/Attendance/plan-attendance": {
       "post": {
         "tags": [
           "Attendance"
@@ -198,17 +310,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Employee"
+                "$ref": "#/components/schemas/PlanAttendancecommand"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Employee"
+                "$ref": "#/components/schemas/PlanAttendancecommand"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Employee"
+                "$ref": "#/components/schemas/PlanAttendancecommand"
               }
             }
           }
@@ -220,7 +332,7 @@
         }
       }
     },
-    "/Attendance/update-employee": {
+    "/api/Attendance/update-attendance-record": {
       "put": {
         "tags": [
           "Attendance"
@@ -229,17 +341,59 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Employee"
+                "$ref": "#/components/schemas/UpdateAttendanceRecordcommand"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Employee"
+                "$ref": "#/components/schemas/UpdateAttendanceRecordcommand"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Employee"
+                "$ref": "#/components/schemas/UpdateAttendanceRecordcommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Attendance/upload-profile-image/{employeeCode}": {
+      "post": {
+        "tags": [
+          "Attendance"
+        ],
+        "parameters": [
+          {
+            "name": "employeeCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "File": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "File": {
+                  "style": "form"
+                }
               }
             }
           }
@@ -254,20 +408,54 @@
   },
   "components": {
     "schemas": {
-      "AttendanceStatus": {
+      "AddEmployeesCommand": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "department": {
+            "$ref": "#/components/schemas/DepartmentEnum"
+          },
+          "position": {
+            "$ref": "#/components/schemas/PositionEnum"
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "salary": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ApprovalStatus": {
         "enum": [
           0,
-          1,
-          2,
-          3
+          1
         ],
         "type": "integer",
         "format": "int32"
       },
-      "EditAttendanceDto": {
+      "AttendanceRecord": {
         "type": "object",
         "properties": {
-          "employeeId": {
+          "code": {
             "type": "string",
             "nullable": true
           },
@@ -277,14 +465,20 @@
           },
           "checkIn": {
             "type": "string",
-            "nullable": true
+            "format": "date-span"
           },
           "checkOut": {
             "type": "string",
-            "nullable": true
+            "format": "date-span"
           },
-          "status": {
+          "actualStatus": {
             "$ref": "#/components/schemas/AttendanceStatus"
+          },
+          "plannedStatus": {
+            "$ref": "#/components/schemas/AttendanceStatus"
+          },
+          "approvalStatus": {
+            "$ref": "#/components/schemas/ApprovalStatus"
           },
           "note": {
             "type": "string",
@@ -293,10 +487,116 @@
         },
         "additionalProperties": false
       },
-      "Employee": {
+      "AttendanceStatus": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "DepartmentEnum": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "EditAttendanceRecordDto": {
         "type": "object",
         "properties": {
-          "id": {
+          "checkIn": {
+            "type": "string",
+            "format": "date-span"
+          },
+          "checkOut": {
+            "type": "string",
+            "format": "date-span"
+          },
+          "actualStatus": {
+            "$ref": "#/components/schemas/AttendanceStatus"
+          },
+          "plannedStatus": {
+            "$ref": "#/components/schemas/AttendanceStatus"
+          },
+          "approvalStatus": {
+            "$ref": "#/components/schemas/ApprovalStatus"
+          },
+          "note": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "EditPendingAttendanceCommand": {
+        "type": "object",
+        "properties": {
+          "pendingAttendance": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AttendanceRecord"
+            },
+            "nullable": true
+          },
+          "dto": {
+            "$ref": "#/components/schemas/EditAttendanceRecordDto"
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PlanAttendancecommand": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "dates": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "nullable": true
+          },
+          "plannedStatus": {
+            "$ref": "#/components/schemas/AttendanceStatus"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PositionEnum": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "UpdataEmployeecommand": {
+        "type": "object",
+        "properties": {
+          "code": {
             "type": "string",
             "nullable": true
           },
@@ -305,10 +605,55 @@
             "nullable": true
           },
           "department": {
+            "$ref": "#/components/schemas/DepartmentEnum"
+          },
+          "position": {
+            "$ref": "#/components/schemas/PositionEnum"
+          },
+          "email": {
             "type": "string",
             "nullable": true
           },
-          "position": {
+          "phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "salary": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateAttendanceRecordcommand": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "checkIn": {
+            "type": "string",
+            "format": "date-span"
+          },
+          "checkOut": {
+            "type": "string",
+            "format": "date-span"
+          },
+          "actualStatus": {
+            "$ref": "#/components/schemas/AttendanceStatus"
+          },
+          "plannedStatus": {
+            "$ref": "#/components/schemas/AttendanceStatus"
+          },
+          "approvalStatus": {
+            "$ref": "#/components/schemas/ApprovalStatus"
+          },
+          "note": {
             "type": "string",
             "nullable": true
           }

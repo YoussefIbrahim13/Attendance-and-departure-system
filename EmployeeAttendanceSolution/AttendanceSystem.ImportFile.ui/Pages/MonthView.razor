@@ -1,51 +1,93 @@
-﻿ @page "/calendar/month"
+﻿
+@page "/calendar/month"
 @page "/calendar/month/{Year:int}/{Month:int}"
+@using Microsoft.AspNetCore.Authorization
 @inject AttendanceSystem.ImportFile.ui.Services.AttendanceService AttendanceService
 @inject NavigationManager Navigation
+@inject IDialogService DialogService
+@inject ISnackbar Snackbar
+@inject IJSRuntime JS
 @using AttendanceSystem.ImportFile.ui.Services
+@using Domain.Enums
 @using EmployeesModels.Shared
+@using MudBlazor
 
-<div class="container-fluid mt-4">
-    <div class="row mb-4">
-        <div class="col-12">
-            <div class="d-flex justify-content-between align-items-center">
-                <h2 class="mb-0 fw-bold">@GetMonthYearTitle()</h2>
-                <div class="btn-group">
-                    <button class="btn btn-outline-primary" @onclick="PreviousMonth">
-                        <i class="bi bi-chevron-left"></i> Previous
-                    </button>
-                    <button class="btn btn-outline-primary" @onclick="NextMonth">
-                        Next <i class="bi bi-chevron-right"></i>
-                    </button>
-                    <button class="btn btn-primary ms-2" @onclick="GoToYearView">
-                        <i class="bi bi-calendar3"></i> Year View
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
 
+@attribute [Authorize(Roles = "Admin")]
+<AuthorizeView Roles="Admin">
+    <Authorized>
+<MudContainer MaxWidth="MaxWidth.ExtraExtraLarge" Class="mt-4">
+    <MudStack Row Justify="Justify.SpaceBetween" AlignItems="AlignItems.Center" Class="mb-4">
+        <MudText Typo="Typo.h4" Class="fw-bold">@GetMonthYearTitle()</MudText>
+        <MudStack Row Spacing="2">
+            <MudSelect T="AttendanceStatus?" Label="Filter by status" @bind-Value="selectedStatus" Class="me-4" Clearable="true">
+                <MudSelectItem T="AttendanceStatus?" Value="@(null)">All statuses</MudSelectItem>
+                <MudSelectItem T="AttendanceStatus?" Value="AttendanceStatus.No_status">No Status</MudSelectItem>
+                <MudSelectItem T="AttendanceStatus?" Value="AttendanceStatus.Present">Present</MudSelectItem>
+                <MudSelectItem T="AttendanceStatus?" Value="AttendanceStatus.Absent">Absent</MudSelectItem>
+                <MudSelectItem T="AttendanceStatus?" Value="AttendanceStatus.Vacation">Vacation</MudSelectItem>
+                <MudSelectItem T="AttendanceStatus?" Value="AttendanceStatus.WorkFromHome">Work From Home</MudSelectItem>
+            </MudSelect>
+            <MudAutocomplete T="string"
+                             Label="Search employee"
+                             @bind-Value="selectedEmployeeName"
+                             SearchFunc="SearchEmployees"
+                             ToStringFunc="(x => x)"
+                             Class="me-4"
+                             Clearable="true"
+                             Dense="true"
+                             MinCharacters="1"
+                             ResetValueOnEmptyText="true" />
+            <MudButtonGroup Variant="Variant.Outlined" Color="Color.Primary">
+                <MudButton StartIcon="@Icons.Material.Filled.ChevronLeft" OnClick="PreviousMonth">
+                    Previous
+                </MudButton>
+                <MudButton EndIcon="@Icons.Material.Filled.ChevronRight" OnClick="NextMonth">
+                    Next
+                </MudButton>
+            </MudButtonGroup>
+            <MudButton Variant="Variant.Filled"
+                       Color="Color.Primary"
+                       StartIcon="@Icons.Material.Filled.CalendarMonth"
+                       OnClick="GoToYearView">
+                Year View
+            </MudButton>
+        </MudStack>
+    </MudStack>
     @if (isLoading)
     {
-        <div class="text-center">
-            <div class="spinner-border" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-        </div>
+        <MudStack AlignItems="AlignItems.Center" Class="mt-8">
+            <MudProgressCircular Color="Color.Primary" Indeterminate="true" />
+            <MudText Typo="Typo.body1">Loading...</MudText>
+        </MudStack>
     }
     else if (monthData != null)
     {
-        <div class="calendar-grid">
+        <MudPaper Elevation="2" Class="calendar-container">
             <!-- Calendar Header -->
-            <div class="calendar-header">
-                <div class="calendar-day-header">Sunday</div>
-                <div class="calendar-day-header">Monday</div>
-                <div class="calendar-day-header">Tuesday</div>
-                <div class="calendar-day-header">Wednesday</div>
-                <div class="calendar-day-header">Thursday</div>
-                <div class="calendar-day-header">Friday</div>
-                <div class="calendar-day-header">Saturday</div>
-            </div>
+            <MudStack Row Class="calendar-header">
+                <MudPaper Class="calendar-day-header" Square="true" Elevation="0">
+                    <MudText Typo="Typo.subtitle1" Align="Align.Center" Class="fw-bold">Sunday</MudText>
+                </MudPaper>
+                <MudPaper Class="calendar-day-header" Square="true" Elevation="0">
+                    <MudText Typo="Typo.subtitle1" Align="Align.Center" Class="fw-bold">Monday</MudText>
+                </MudPaper>
+                <MudPaper Class="calendar-day-header" Square="true" Elevation="0">
+                    <MudText Typo="Typo.subtitle1" Align="Align.Center" Class="fw-bold">Tuesday</MudText>
+                </MudPaper>
+                <MudPaper Class="calendar-day-header" Square="true" Elevation="0">
+                    <MudText Typo="Typo.subtitle1" Align="Align.Center" Class="fw-bold">Wednesday</MudText>
+                </MudPaper>
+                <MudPaper Class="calendar-day-header" Square="true" Elevation="0">
+                    <MudText Typo="Typo.subtitle1" Align="Align.Center" Class="fw-bold">Thursday</MudText>
+                </MudPaper>
+                <MudPaper Class="calendar-day-header" Square="true" Elevation="0">
+                    <MudText Typo="Typo.subtitle1" Align="Align.Center" Class="fw-bold">Friday</MudText>
+                </MudPaper>
+                <MudPaper Class="calendar-day-header" Square="true" Elevation="0">
+                    <MudText Typo="Typo.subtitle1" Align="Align.Center" Class="fw-bold">Saturday</MudText>
+                </MudPaper>
+            </MudStack>
 
             <!-- Calendar Body -->
             <div class="calendar-body">
@@ -63,78 +105,108 @@
                     var isCurrentMonth = currentDate.Month == currentMonth;
                     var isToday = currentDate.Date == DateTime.Today;
 
-                    <div class="calendar-day @(isCurrentMonth ? "current-month" : "other-month") @(isToday ? "today" : "")"
-                         @ondblclick="() => { if (isCurrentMonth) GoToDayView(currentDate); }">
+                    <MudPaper Class="@GetCalendarDayClass(isCurrentMonth, isToday)"
+                              Square="true"
+                              Elevation="@(isCurrentMonth ? 1 : 0)"
+                              @ondblclick="() => { if (isCurrentMonth) GoToDayView(currentDate); }">
 
-                        <div class="day-number">@currentDate.Day</div>
+                        <MudStack Justify="Justify.SpaceBetween" Style="height: 100%; min-height: 120px;">
+                            <MudStack Row Justify="Justify.SpaceBetween" AlignItems="AlignItems.Center">
+                                <MudText Typo="Typo.subtitle2" Class="fw-bold">@currentDate.Day</MudText>
+                                @if (isCurrentMonth)
+                                {
+                                    <MudIconButton Icon="@Icons.Material.Filled.Add"
+                                                   Size="Size.Small"
+                                                   Color="Color.Primary"
+                                                   Variant="Variant.Filled"
+                                                   Style="width: 24px; height: 24px;"
+                                                   OnClick="() => OpenAddEmployeeDialog(currentDate)" />
+                                }
+                            </MudStack>
 
-                        @if (dayData != null && isCurrentMonth)
-                        {
-                            <div class="day-content">
-                                <div class="attendance-summary">
-                                    <small class="text-success">Present: @dayData.PresentCount</small>
-                                    <small class="text-danger">Absent: @dayData.AbsentCount</small>
-                                </div>
+                            @if (dayData != null && isCurrentMonth)
+                            {
+                                <MudStack Spacing="1" Class="day-content">
+                                    <MudStack Row Justify="Justify.SpaceBetween" Class="attendance-summary">
+                                        <MudChip T="string" Size="Size.Small" Color="Color.Success" Variant="Variant.Text">
+                                            Present: @dayData.PresentCount
+                                        </MudChip>
+                                        <MudChip T="string" Size="Size.Small" Color="Color.Error" Variant="Variant.Text">
+                                            Absent: @dayData.AbsentCount
+                                        </MudChip>
+                                    </MudStack>
 
-                                <div class="employee-preview">
-                                    @foreach (var emp in dayData.TopEmployees.Take(3))
-                                    {
-                                        <div class="employee-item @GetStatusClass(emp.Status)">
-                                            <span class="employee-name">@emp.EmployeeName</span>
-                                            <span class="status-indicator"></span>
-                                        </div>
-                                    }
-                                    @if (dayData.TotalEmployees > 3)
-                                    {
-                                        <div class="more-employees">
-                                            +@(dayData.TotalEmployees - 3) more
-                                        </div>
-                                    }
-                                </div>
-                            </div>
-                        }
-                    </div>
+                                    <MudStack Spacing="1" Class="employee-preview">
+                                        @if (dayData is not null)
+                                        {
+                                            foreach (var emp in dayData?.GetSelectedEmployee(selectedEmployeeName, selectedStatus, 10))
+                                            {
+                                                <MudPaper Class="@GetEmployeeStatusClass(emp.ActualStatus)" Square="true" Elevation="0">
+                                                    <MudStack Row Justify="Justify.SpaceBetween" AlignItems="AlignItems.Center" Class="pa-1">
+                                                        <MudText Typo="Typo.caption" Class="employee-name">@emp.EmployeeName</MudText>
+                                                        <div class="status-indicator @GetStatusIndicatorClass(emp.ActualStatus)"></div>
+                                                    </MudStack>
+                                                </MudPaper>
+                                            }
+                                        }
+                                        @if (dayData.AllEmployees.Count(e => (!selectedStatus.HasValue || e.ActualStatus == selectedStatus)
+                                                                    && (string.IsNullOrWhiteSpace(selectedEmployeeName) || $"{e.EmployeeName} -- {e.Code}" == selectedEmployeeName)) > 3)
+                                        {
+                                            <MudText Typo="Typo.caption" Align="Align.Center" Class="more-employees">
+                                                +@(dayData.AllEmployees.Count(e => (!selectedStatus.HasValue || e.ActualStatus == selectedStatus)
+                                                                                && (string.IsNullOrWhiteSpace(selectedEmployeeName) || $"{e.EmployeeName} -- {e.Code}" == selectedEmployeeName)) - 3) more
+                                            </MudText>
+                                        }
+                                    </MudStack>
+                                </MudStack>
+                            }
+                        </MudStack>
+                    </MudPaper>
                 }
             </div>
-        </div>
+        </MudPaper>
     }
-</div>
+</MudContainer>
+    </Authorized>
+</AuthorizeView>
+
+
+
+
 
 <style>
-    .calendar-grid {
-        background: white;
+    .calendar-container {
         border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         overflow: hidden;
     }
 
     .calendar-header {
-        display: grid;
-        grid-template-columns: repeat(7, 1fr);
-        background: #f8f9fa;
-        border-bottom: 2px solid #dee2e6;
+        background: var(--mud-palette-surface);
+        border-bottom: 2px solid var(--mud-palette-divider);
+        margin: 0 -8px; /* Counteract container padding */
+        padding: 0 8px; /* Match container padding */
     }
 
     .calendar-day-header {
         padding: 15px 10px;
-        text-align: center;
-        font-weight: bold;
-        color: #495057;
-        border-right: 1px solid #dee2e6;
+        flex: 1;
+        background: var(--mud-palette-surface);
+        border-right: 1px solid var(--mud-palette-divider);
     }
 
-        .calendar-day-header:last-child {
-            border-right: none;
-        }
+    .calendar-day-header:last-child {
+        border-right: none;
+    }
 
     .calendar-body {
         display: grid;
         grid-template-columns: repeat(7, 1fr);
-        grid-template-rows: repeat(6, 120px);
+        grid-template-rows: repeat(6, 180px);
+
     }
 
     .calendar-day {
-        border: 1px solid #dee2e6;
+        border: 1px solid var(--mud-palette-divider);
         padding: 8px;
         cursor: pointer;
         transition: background-color 0.2s;
@@ -142,82 +214,82 @@
         overflow: hidden;
     }
 
-        .calendar-day:hover {
-            background-color: #f8f9fa;
-        }
+    .calendar-day:hover {
+        background-color: var(--mud-palette-action-hover);
+    }
 
-        .calendar-day.current-month {
-            background-color: white;
-        }
+    .calendar-day.current-month {
+        background-color: var(--mud-palette-surface);
+    }
 
-        .calendar-day.other-month {
-            background-color: #f8f9fa;
-            color: #6c757d;
-        }
+    .calendar-day.other-month {
+        background-color: var(--mud-palette-background-grey);
+        color: var(--mud-palette-text-disabled);
+    }
 
         .calendar-day.today {
-            background-color: #e3f2fd;
-            border: 2px solid #2196f3;
+            background-color: var(--mud-palette-action-default);
+            border: 1px solid var(--mud-palette-divider);
         }
-
-    .day-number {
-        font-weight: bold;
-        font-size: 14px;
-        margin-bottom: 5px;
-    }
 
     .day-content {
         font-size: 11px;
     }
 
     .attendance-summary {
-        display: flex;
-        justify-content: space-between;
         margin-bottom: 5px;
     }
 
     .employee-preview {
-        max-height: 70px;
+        max-height: 90px;
         overflow: hidden;
     }
 
     .employee-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 2px 4px;
-        margin-bottom: 2px;
-        border-radius: 3px;
-        font-size: 10px;
+        background-color: var(--mud-palette-Background);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        padding: 0px 2px;
+        margin-bottom: 1px;
+        border-radius: 2px;
+        font-size: 9px;
+        line-height: 1.2; /* Tighter line spacing */
+        border: 1px solid transparent; /* Default transparent border */
     }
 
+           
+        .employee-item.no-statu {
+            color: var(--mud-palette-text-secondary);
+            border-color: var(--mud-palette-divider-lighten);
+        }
+
         .employee-item.present {
-            background-color: #d4edda;
-            color: #155724;
+            color: var(--mud-palette-success-darken);
+            border-color: var(--mud-palette-success-lighten);
         }
 
         .employee-item.absent {
-            background-color: #f8d7da;
-            color: #721c24;
+            color: var(--mud-palette-error-darken);
+            border-color: var(--mud-palette-error-lighten);
         }
 
         .employee-item.vacation {
-            background-color: #fff3cd;
-            color: #856404;
+            color: var(--mud-palette-warning-darken);
+            border-color: var(--mud-palette-warning-lighten);
         }
 
         .employee-item.work-from-home {
-            background-color: #d1ecf1;
-            color: #0c5460;
+            color: var(--mud-palette-info-darken);
+            border-color: var(--mud-palette-info-lighten);
         }
 
         .employee-item.late {
-            background-color: #ffeaa7;
-            color: #6c5ce7;
+            color: var(--mud-palette-secondary-darken);
+            border-color: var(--mud-palette-secondary-lighten);
         }
 
     .employee-name {
         white-space: nowrap;
+        font-size: 9px; /* Match the item font size */
         overflow: hidden;
         text-overflow: ellipsis;
         flex: 1;
@@ -230,130 +302,37 @@
         margin-left: 4px;
     }
 
-    .employee-item.present .status-indicator {
-        background-color: #28a745;
+        .status-indicator.no-status {
+            background-color: var(--mud-palette-text-disabled); 
+        }
+    .status-indicator.present {
+        background-color: var(--mud-palette-success);
     }
 
-    .employee-item.absent .status-indicator {
-        background-color: #dc3545;
+    .status-indicator.absent {
+        background-color: var(--mud-palette-error);
     }
 
-    .employee-item.vacation .status-indicator {
-        background-color: #ffc107;
+    .status-indicator.vacation {
+        background-color: var(--mud-palette-warning);
     }
 
-    .employee-item.work-from-home .status-indicator {
-        background-color: #17a2b8;
+    .status-indicator.work-from-home {
+        background-color: var(--mud-palette-info);
     }
 
-    .employee-item.late .status-indicator {
-        background-color: #fd79a8;
+    .status-indicator.late {
+        background-color: var(--mud-palette-secondary);
     }
 
     .more-employees {
-        text-align: center;
-        color: #6c757d;
+        color: var(--mud-palette-text-secondary);
         font-style: italic;
         margin-top: 3px;
     }
 </style>
 
-@code {
-    [Parameter] public int Year { get; set; }
-    [Parameter] public int Month { get; set; }
 
-    private MonthViewDto? monthData;
-    private bool isLoading = true;
-    private int currentYear;
-    private int currentMonth;
 
-    protected override async Task OnInitializedAsync()
-    {
-        var today = DateTime.Today;
-        currentYear = Year > 0 ? Year : today.Year;
-        currentMonth = Month > 0 ? Month : today.Month;
 
-        await LoadMonthData();
-    }
-
-    protected override async Task OnParametersSetAsync()
-    {
-        if (Year > 0) currentYear = Year;
-        if (Month > 0) currentMonth = Month;
-        await LoadMonthData();
-    }
-
-    private async Task LoadMonthData()
-    {
-        isLoading = true;
-        try
-        {
-            monthData = await AttendanceService.GetMonthViewAsync(currentYear, currentMonth);
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error loading month data: {ex.Message}");
-        }
-        finally
-        {
-            isLoading = false;
-        }
-    }
-
-    private string GetMonthYearTitle()
-    {
-        return new DateTime(currentYear, currentMonth, 1).ToString("MMMM yyyy");
-    }
-
-    private void PreviousMonth()
-    {
-        if (currentMonth == 1)
-        {
-            currentMonth = 12;
-            currentYear--;
-        }
-        else
-        {
-            currentMonth--;
-        }
-        Navigation.NavigateTo($"/calendar/month/{currentYear}/{currentMonth}");
-    }
-
-    private void NextMonth()
-    {
-        if (currentMonth == 12)
-        {
-            currentMonth = 1;
-            currentYear++;
-        }
-        else
-        {
-            currentMonth++;
-        }
-        Navigation.NavigateTo($"/calendar/month/{currentYear}/{currentMonth}");
-    }
-
-    private void GoToYearView()
-    {
-        Navigation.NavigateTo($"/calendar/year/{currentYear}");
-    }
-
-    private void GoToDayView(DateTime date)
-    {
-        Navigation.NavigateTo($"/calendar/day/{date:yyyy-MM-dd}");
-    }
-
-    private string GetStatusClass(AttendanceStatus status)
-    {
-        return status switch
-        {
-            AttendanceStatus.Present => "present",
-            AttendanceStatus.Absent => "absent",
-            AttendanceStatus.Vacation => "vacation",
-            AttendanceStatus.WorkFromHome => "work-from-home",
-           // AttendanceStatus.Late => "late",
-            _ => "absent"
-        };
-    }
-}
 

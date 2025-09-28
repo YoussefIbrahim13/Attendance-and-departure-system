@@ -1,0 +1,11 @@
+@media (prefers-color-scheme: dark) {
+    .custom-glass-card {
+        background: linear-gradient(135deg, rgba(10,12,20,0.99) 60%, rgba(18,20,30,0.99) 100%) !important;
+        box-shadow: 0 20px 60px 0 rgba(0,0,0,0.92), 0 2px 12px 0 rgba(33,150,243,0.10) !important;
+        border: 1.5px solid rgba(33,150,243,0.28) !important;
+    }
+    .custom-glass-card .mud-typography.mb-6.fw-bold {
+        color: #b3e5fc !important;
+        text-shadow: 0 4px 32px #0d47a1, 0 1px 0 #000 !important;
+    }
+}

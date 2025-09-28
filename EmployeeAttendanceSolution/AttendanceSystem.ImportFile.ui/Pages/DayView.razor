@@ -1,127 +1,305 @@
-﻿ @page "/calendar/day"
- @page "/calendar/day/{DateString}"
+﻿@page "/calendar/day"
+@page "/calendar/day/{DateString}"
+@using Microsoft.AspNetCore.Authorization
 @inject AttendanceSystem.ImportFile.ui.Services.AttendanceService AttendanceService
 @inject NavigationManager Navigation
+@inject ISnackbar Snackbar
+@inject IJSRuntime JS
 @using AttendanceSystem.ImportFile.ui.Services
+@using Domain.Enums
 @using EmployeesModels.Shared
 
 
-<div class="container-fluid mt-4">
+@attribute [Authorize(Roles = "Admin")]
+<AuthorizeView Roles="Admin">
+    <Authorized>
+<MudContainer MaxWidth="MaxWidth.ExtraExtraLarge" Class="mt-4">
     <!-- ✅ HEADER -->
-    <div class="row mb-4">
-        <div class="col-12">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <h2 class="mb-0 fw-bold">@GetDateTitle()</h2>
-                    <p class="text-muted mb-0">@GetDayOfWeek()</p>
-                </div>
-                <div class="btn-group">
-                    <button class="btn btn-outline-primary" @onclick="PreviousDay">
-                        <i class="bi bi-chevron-left"></i> Previous Day
-                    </button>
-                    <button class="btn btn-outline-primary" @onclick="NextDay">
-                        Next Day <i class="bi bi-chevron-right"></i>
-                    </button>
-                    <button class="btn btn-primary ms-2" @onclick="GoToMonthView">
-                        <i class="bi bi-calendar3"></i> Month View
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ✅ LOADING -->
+    <MudStack Row Justify="Justify.SpaceBetween" AlignItems="AlignItems.Center" Class="mb-4">
+        <MudText Typo="Typo.h4" Class="fw-bold">@GetDateTitle()</MudText>
+        <MudStack Row Spacing="2">
+            <MudButtonGroup Variant="Variant.Outlined" Color="Color.Primary">
+                <MudButton Variant="Variant.Outlined" Color="Color.Primary" OnClick="PreviousDay" StartIcon="@Icons.Material.Filled.ChevronLeft">
+                    Previous Day
+                </MudButton>
+                <MudButton Variant="Variant.Outlined" Color="Color.Primary" OnClick="NextDay" EndIcon="@Icons.Material.Filled.ChevronRight">
+                    Next Day
+                </MudButton>
+            </MudButtonGroup>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="GoToMonthView" StartIcon="@Icons.Material.Filled.CalendarToday">
+                Month View
+            </MudButton>
+        </MudStack>
+    </MudStack>
     @if (isLoading)
     {
-        <div class="text-center">
-            <div class="spinner-border" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-        </div>
+        <MudStack AlignItems="AlignItems.Center" Class="mt-8">
+            <MudProgressCircular Color="Color.Primary" Indeterminate="true" />
+            <MudText Typo="Typo.body1">Loading...</MudText>
+        </MudStack>
     }
     else if (dayData.Any())
     {
         <!-- ✅ SUMMARY CARDS -->
-        <div class="row mb-4">
-            @SummaryCard("Present", AttendanceStatus.Present, "bi bi-check-circle-fill", "present")
-            @SummaryCard("Absent", AttendanceStatus.Absent, "bi bi-x-circle-fill", "absent")
-            @SummaryCard("Vacation", AttendanceStatus.Vacation, "bi bi-calendar-x-fill", "vacation")
-            @SummaryCard("Work From Home", AttendanceStatus.WorkFromHome, "bi bi-house-fill", "wfh")
-        </div>
+        <MudGrid Class="mb-4" Gutter="3">
+            @SummaryCard("no status", AttendanceStatus.No_status, Icons.Material.Filled.RadioButtonUnchecked, "no status")
+            @SummaryCard("Present", AttendanceStatus.Present, Icons.Material.Filled.CheckCircle, "present")
+            @SummaryCard("Absent", AttendanceStatus.Absent, Icons.Material.Filled.Cancel, "absent")
+            @SummaryCard("Vacation", AttendanceStatus.Vacation, Icons.Material.Filled.CalendarToday, "vacation")
+            @SummaryCard("Work From Home", AttendanceStatus.WorkFromHome, Icons.Material.Filled.Home, "wfh")
+        </MudGrid>
 
         <!-- ✅ FILTERS -->
-        <div class="row mb-3">
-            <div class="col-md-6">
-                <div class="input-group">
-                    <span class="input-group-text"><i class="bi bi-search"></i></span>
-                    <input type="text" class="form-control" placeholder="Search employees..."
-                           @bind="searchTerm" @bind:event="oninput" @bind:after="FilterEmployees">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <select class="form-select" @bind="selectedStatus" @bind:after="FilterEmployees">
-                    <option value="">All Statuses</option>
-                    <option value="Present">Present</option>
-                    <option value="Absent">Absent</option>
-                    <option value="Vacation">Vacation</option>
-                    <option value="WorkFromHome">Work From Home</option>
-                </select>
-            </div>
-        </div>
+        <MudStack Row Spacing="2" Class="mb-4" Style="align-items:center;">
+            <MudTextField @bind-Value="searchTerm"
+                          Immediate="true"
+                          Variant="Variant.Outlined"
+                          Placeholder="Search employees..."
+                          Adornment="Adornment.Start"
+                          AdornmentIcon="@Icons.Material.Filled.Search"
+                          Style="width: 320px; max-width:100%;" 
+                          TextChanged="@(e => { searchTerm = e.ToString(); FilterEmployees(); })" />
+            <MudStack Spacing="1" Style="width: 220px; margin-left:16px;">
+                <MudText Typo="Typo.caption" Class="mb-1" Style="font-weight:500; color:#1976d2;">Filter by Status</MudText>
+                <MudSelect T="string"
+                           @bind-Value="selectedStatusString"
+                           Immediate="true"
+                           Variant="Variant.Outlined"
+                           Style="width: 100%;">
+                    <MudSelectItem Value="string.Empty">All Statuses</MudSelectItem>
+                    @foreach (var status in Enum.GetValues(typeof(AttendanceStatus)))
+                    {
+                        <MudSelectItem Value="@status.ToString()">@status.ToString()</MudSelectItem>
+                    }
+                </MudSelect>
+            </MudStack>
+        </MudStack>
 
-        <!-- ✅ EMPLOYEE TABLE -->
-        <div class="card">
-            <div class="card-header">
-                <h5 class="mb-0">Employee Attendance Details (@filteredEmployees.Count employees)</h5>
+        <!-- ✅ EMPLOYEE TABLE (Editable) -->
+        <MudCard>
+            <MudCardHeader>
+                <MudText Typo="Typo.h5" Class="mb-0">Employee Attendance Details (@filteredEmployees.Count employees)</MudText>
+            </MudCardHeader>
+            <MudCardContent>
+                <MudDataGrid T="DailyAttendanceDto"
+                             Items="@filteredEmployees"
+                             ReadOnly="@_readOnly"
+                             EditMode="@(_isCellEditMode ? DataGridEditMode.Cell : DataGridEditMode.Form)"
+                             StartedEditingItem="@StartedEditingItem"
+                             CanceledEditingItem="@CanceledEditingItem"
+                             CommittedItemChanges="@CommittedItemChanges"
+                             Bordered="true"
+                             Dense="true"
+                             EditTrigger="@(_editTriggerRowClick ? DataGridEditTrigger.OnRowClick : DataGridEditTrigger.Manual)">
+
+                    <Columns>
+
+                        <div class="d-flex align-center" style="height:64px;"> <!-- Match Avatar column height -->
+                        <PropertyColumn Property="x => x.EmployeeName" Title="Employee" Editable="false">
+                            <CellTemplate>
+                                <MudStack Items="Items.Center" Gap="8">
+                                    <MudAvatar Class="employee-avatar">@GetInitials(context.Item.EmployeeName)</MudAvatar>
+                                    <MudStack>
+                                        <MudText Class="employee-name">@context.Item.EmployeeName</MudText>
+                                        <MudText Color="Color.Secondary" Typo="Typo.caption"><code>Code</code>: @context.Item.Code</MudText>
+                                    </MudStack>
+                                </MudStack>
+                            </CellTemplate>
+                        </PropertyColumn>
+
+                        <PropertyColumn Property="x => x.Department" Title="Department" Editable="false" />
+
+                        <PropertyColumn Property="x => x.ActualStatus" Title="Actual Status">
+                            <CellTemplate>
+                                <MudChip T="string" Class="@($"status-badge {GetStatusClass(context.Item.ActualStatus)}")"
+                                         Variant="Variant.Filled" Size="Size.Small">
+                                    @GetStatusIcon(context.Item.ActualStatus) @context.Item.ActualStatus
+                                </MudChip>
+                            </CellTemplate>
+                            <EditTemplate>
+                                 <MudSelect @bind-Value="context.Item.ActualStatus"
+                                           Label="Actual Status"
+                                           Variant="Variant.Outlined"
+                                           Required="true"
+                                           RequiredError="Actual status is required">
+                                        <MudSelectItem Value="@AttendanceStatus.No_status">
+                                            <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                                                <div class="status-indicator status-none"></div>
+                                                <MudText>No status</MudText>
+                                            </MudStack>
+                                        </MudSelectItem>
+                                    <MudSelectItem Value="@AttendanceStatus.Present">
+                                        <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                                            <div class="status-indicator present"></div>
+                                            <MudText>Present</MudText>
+                                        </MudStack>
+                                    </MudSelectItem>
+                                    <MudSelectItem Value="@AttendanceStatus.Absent">
+                                        <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                                            <div class="status-indicator absent"></div>
+                                            <MudText>Absent</MudText>
+                                        </MudStack>
+                                    </MudSelectItem>
+                                    <MudSelectItem Value="@AttendanceStatus.Vacation">
+                                        <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                                            <div class="status-indicator vacation"></div>
+                                            <MudText>Vacation</MudText>
+                                        </MudStack>
+                                    </MudSelectItem>
+                                    <MudSelectItem Value="@AttendanceStatus.WorkFromHome">
+                                        <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                                            <div class="status-indicator work-from-home"></div>
+                                            <MudText>Work From Home</MudText>
+                                        </MudStack>
+                                    </MudSelectItem>
+                                </MudSelect> 
+                            </EditTemplate>
+                        </PropertyColumn>
+
+                        <PropertyColumn Property="x => x.PlannedStatus" Title="Planned Status">
+                            <CellTemplate>
+                                <MudChip T="string" Class="@($"status-badge {GetStatusClass(context.Item.PlannedStatus)}")"
+                                         Variant="Variant.Filled" Size="Size.Small">
+                                    @GetStatusIcon(context.Item.PlannedStatus) @context.Item.PlannedStatus
+                                </MudChip>
+                            </CellTemplate>
+                            <EditTemplate>
+                                 <MudSelect @bind-Value="context.Item.PlannedStatus"
+                                           Label="Planned Status"
+                                           Variant="Variant.Outlined"
+                                           Required="true"
+                                           RequiredError="Planned status is required">
+                                        <MudSelectItem Value="@AttendanceStatus.No_status">
+                                            <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                                                <div class="status-indicator status-none"></div>
+                                                <MudText>No status</MudText>
+                                            </MudStack>
+                                        </MudSelectItem>
+                                    <MudSelectItem Value="@AttendanceStatus.Present">
+                                        <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                                            <div class="status-indicator present"></div>
+                                            <MudText>Present</MudText>
+                                        </MudStack>
+                                    </MudSelectItem>
+                                    <MudSelectItem Value="@AttendanceStatus.Absent">
+                                        <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                                            <div class="status-indicator absent"></div>
+                                            <MudText>Absent</MudText>
+                                        </MudStack>
+                                    </MudSelectItem>
+                                    <MudSelectItem Value="@AttendanceStatus.Vacation">
+                                        <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                                            <div class="status-indicator vacation"></div>
+                                            <MudText>Vacation</MudText>
+                                        </MudStack>
+                                    </MudSelectItem>
+                                    <MudSelectItem Value="@AttendanceStatus.WorkFromHome">
+                                        <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                                            <div class="status-indicator work-from-home"></div>
+                                            <MudText>Work From Home</MudText>
+                                        </MudStack>
+                                    </MudSelectItem>
+                                </MudSelect> 
+                            </EditTemplate>
+                        </PropertyColumn>
+
+                        <PropertyColumn Property="x => x.ApprovalStatus" Title="Approval Status">
+                            <CellTemplate>
+                                            <MudChip T="string" Color="@(context.Item.ApprovalStatus == ApprovalStatus.Approved ? Color.Success : Color.Warning)" Variant="Variant.Filled" Size="Size.Small">
+                                    @context.Item.ApprovalStatus
+                                </MudChip>
+                            </CellTemplate>
+                            <EditTemplate>
+                                <MudSelect @bind-Value="context.Item.ApprovalStatus" Label="Approval Status" Variant="Variant.Outlined" Required="true" RequiredError="Approval status is required">
+                                    <MudSelectItem Value="@ApprovalStatus.Pending">Pending</MudSelectItem>
+                                                <MudSelectItem Value="@ApprovalStatus.Approved">Approved</MudSelectItem>
+                                </MudSelect>
+                            </EditTemplate>
+                        </PropertyColumn>
+
+                            <PropertyColumn Property="x => x.CheckIn" Title="Check In">
+                                <CellTemplate>
+                                    <span>@FormatTimeSpan(context.Item.CheckIn)</span>
+                                </CellTemplate>
+                                <EditTemplate>
+                                    <MudTimePicker Label="Check-in"
+                                                   Time="context.Item.CheckIn"
+                                                   TimeChanged="newTime => OnCheckInChanged(newTime, context.Item)"
+                                                   TimeFormat="HH:mm"
+                                                   Variant="Variant.Outlined"
+                                                   Margin="Margin.Dense"
+                                                   Editable="true"
+                                                   Tooltip="Select check-in time"
+                                                   AnchorOrigin="Origin.TopCenter"
+                                                   TransformOrigin="Origin.BottomCenter" />
+                                </EditTemplate>
+                            </PropertyColumn>
+
+                            <PropertyColumn Property="x => x.CheckOut" Title="Check Out">
+                                <CellTemplate>
+                                    <span>@FormatTimeSpan(context.Item.CheckOut)</span>
+                                </CellTemplate>
+                                <EditTemplate>
+                                    <MudTimePicker Label="Check-out"
+                                                   Time="context.Item.CheckOut"
+                                                   TimeChanged="newTime => OnCheckOutChanged(newTime, context.Item)"
+                                                   TimeFormat="HH:mm"
+                                                   Variant="Variant.Outlined"
+                                                   Margin="Margin.Dense"
+                                                   Editable="true"
+                                                   Tooltip="Select check-out time"
+                                                   AnchorOrigin="Origin.TopCenter"
+                                                   TransformOrigin="Origin.BottomCenter" />
+@code {
+    void OnCheckInChanged(TimeSpan? newTime, DailyAttendanceDto item)
+    {
+        item.CheckIn = newTime ?? TimeSpan.Zero;
+    }
+    void OnCheckOutChanged(TimeSpan? newTime, DailyAttendanceDto item)
+    {
+        item.CheckOut = newTime ?? TimeSpan.Zero;
+    }
+}
+                                </EditTemplate>
+                            </PropertyColumn>
+
+                        <PropertyColumn Property="x => x.Note" Title="Notes">
+                            <EditTemplate>
+                                <MudTextField @bind-Value="context.Item.Note" Margin="Margin.Dense" Label="Note" Placeholder="Enter note..." Variant="Variant.Outlined" />
+                            </EditTemplate>
+                        </PropertyColumn>
+
+                        <TemplateColumn Hidden="@(_isCellEditMode || _readOnly || _editTriggerRowClick)" CellClass="d-flex justify-end">
+                            <CellTemplate>
+                                <MudIconButton Size="Size.Small" Icon="@Icons.Material.Outlined.Edit" OnClick="@context.Actions.StartEditingItemAsync" />
+                            </CellTemplate>
+                        </TemplateColumn>
+                        </div>
+                    </Columns>
+                </MudDataGrid>
+            </MudCardContent>
+        </MudCard>
+
+        <!-- ✅ EDITING CONTROLS -->
+        <div class="d-flex flex-wrap mt-4">
+            <MudSwitch @bind-Value="_readOnly" Color="Color.Primary">Read Only</MudSwitch>
+            <div class="d-flex justify-start align-center ml-4">
+                <p class="mud-typography mud-typography-body1 mud-inherit-text mr-2">Form</p>
+                <MudSwitch @bind-Value="_isCellEditMode" Color="Color.Primary">Cell</MudSwitch>
             </div>
-            <div class="card-body p-0">
-                <div class="table-responsive">
-                    <table class="table table-hover mb-0">
-                        <thead class="table-light">
-                            <tr>
-                                <th>Employee</th>
-                                <th>Department</th>
-                                <th>Status</th>
-                                <th>Check In</th>
-                                <th>Check Out</th>
-                                <th>Working Hours</th>
-                                <th>Notes</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var emp in filteredEmployees)
-                            {
-                                <tr class="employee-row @GetStatusClass(emp.Status)">
-                                    <td>
-                                        <div class="employee-info">
-                                            <div class="employee-avatar">@GetInitials(emp.EmployeeName)</div>
-                                            <div>
-                                                <div class="employee-name">@emp.EmployeeName</div>
-                                                <small class="text-muted">ID: @emp.EmployeeId</small>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>@emp.Department</td>
-                                    <td>
-                                        <span class="status-badge @GetStatusClass(emp.Status)">
-                                            @GetStatusIcon(emp.Status) @emp.Status
-                                        </span>
-                                    </td>
-                                    <td>@(string.IsNullOrEmpty(emp.CheckIn) ? "--" : $"{emp.CheckIn}")</td>
-                                    <td>@(string.IsNullOrEmpty(emp.CheckOut) ? "--" : $"{emp.CheckOut}")</td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            @* <div class="d-flex justify-start align-center ml-4">
+                <p class="mud-typography mud-typography-body1 mud-inherit-text mr-2">Manual</p>
+                <MudSwitch @bind-Value="_editTriggerRowClick" Color="Color.Primary">On Row Click</MudSwitch>
+            </div> *@
         </div>
     }
-</div>
+</MudContainer>
+    </Authorized>
+</AuthorizeView>
 
 <style>
     .summary-card {
-        background: white;
+        background: var(--palette-Background);
         border-radius: 12px;
         padding: 20px;
         box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -131,21 +309,21 @@
         border-left: 4px solid;
     }
 
-    .summary-card.present {
-        border-left-color: #28a745;
-    }
+        .summary-card.present {
+            border-left-color: var(--mud-palette-success);
+        }
 
-    .summary-card.absent {
-        border-left-color: #dc3545;
-    }
+        .summary-card.absent {
+            border-left-color: var(--mud-palette-error);
+        }
 
-    .summary-card.vacation {
-        border-left-color: #ffc107;
-    }
+        .summary-card.vacation {
+            border-left-color: var(--mud-palette-warning);
+        }
 
-    .summary-card.wfh {
-        border-left-color: #17a2b8;
-    }
+        .summary-card.wfh {
+            border-left-color: var(--mud-palette-info);
+        }
 
     .summary-icon {
         font-size: 2.5rem;
@@ -153,19 +331,19 @@
     }
 
     .summary-card.present .summary-icon {
-        color: #28a745;
+        color: var(--mud-palette-success);
     }
 
     .summary-card.absent .summary-icon {
-        color: #dc3545;
+        color: var(--mud-palette-error);
     }
 
     .summary-card.vacation .summary-icon {
-        color: #ffc107;
+        color: var(--mud-palette-warning);
     }
 
     .summary-card.wfh .summary-icon {
-        color: #17a2b8;
+        color: var(--mud-palette-info);
     }
 
     .summary-number {
@@ -175,21 +353,16 @@
     }
 
     .summary-label {
-        color: #6c757d;
+        color: var(--mud-palette-text-secondary);
         font-size: 0.9rem;
         margin-top: 5px;
-    }
-
-    .employee-info {
-        display: flex;
-        align-items: center;
     }
 
     .employee-avatar {
         width: 40px;
         height: 40px;
         border-radius: 50%;
-        background: #007bff;
+        background: var(--mud-palette-primary);
         color: white;
         display: flex;
         align-items: center;
@@ -201,37 +374,27 @@
 
     .employee-name {
         font-weight: 600;
-        color: #333;
-    }
-
-    .status-badge {
-        padding: 6px 12px;
-        border-radius: 20px;
-        font-size: 12px;
-        font-weight: 600;
-        display: inline-flex;
-        align-items: center;
-        gap: 5px;
+        color: var(--mud-palette-text-primary);
     }
 
     .status-badge.present {
-        background: #d4edda;
-        color: #155724;
+        background: var(--mud-palette-success-lighten);
+        color: var(--mud-palette-success-darken);
     }
 
     .status-badge.absent {
-        background: #f8d7da;
-        color: #721c24;
+        background: var(--mud-palette-error-lighten);
+        color: var(--mud-palette-error-darken);
     }
 
     .status-badge.vacation {
-        background: #fff3cd;
-        color: #856404;
+        background: var(--mud-palette-warning-lighten);
+        color: var(--mud-palette-warning-darken);
     }
 
     .status-badge.work-from-home {
-        background: #d1ecf1;
-        color: #0c5460;
+        background: var(--mud-palette-info-lighten);
+        color: var(--mud-palette-info-darken);
     }
 
     .status-badge.late {
@@ -245,7 +408,7 @@
     }
 
     .time-badge {
-        background: #f8f9fa;
+        background: var(--mud-palette-grey-light);
         padding: 4px 8px;
         border-radius: 6px;
         font-family: monospace;
@@ -254,7 +417,7 @@
 
     .working-hours {
         font-weight: 600;
-        color: #28a745;
+        color: var(--mud-palette-success);
     }
 
     .note-text {
@@ -266,145 +429,22 @@
     }
 
     .employee-row.present {
-        background-color: rgba(40, 167, 69, 0.05);
+        background-color: rgba(var(--mud-palette-success-rgb), 0.05);
     }
 
     .employee-row.absent {
-        background-color: rgba(220, 53, 69, 0.05);
+        background-color: rgba(var(--mud-palette-error-rgb), 0.05);
     }
 
     .employee-row.vacation {
-        background-color: rgba(255, 193, 7, 0.05);
+        background-color: rgba(var(--mud-palette-warning-rgb), 0.05);
     }
 
     .employee-row.work-from-home {
-        background-color: rgba(23, 162, 184, 0.05);
+        background-color: rgba(var(--mud-palette-info-rgb), 0.05);
     }
+
+
+
 </style>
 
-@code {
-    [Parameter] public string DateString { get; set; } = string.Empty;
-
-    private List<DailyAttendanceDto> dayData = new();
-    private List<DailyAttendanceDto> filteredEmployees = new();
-    private bool isLoading = true;
-    private DateTime selectedDate;
-    private string searchTerm = string.Empty;
-    private string selectedStatus = string.Empty;
-
-    protected override async Task OnInitializedAsync()
-    {
-        if (!DateTime.TryParse(DateString, out selectedDate))
-            selectedDate = DateTime.Today;
-
-        await LoadDayData();
-    }
-
-    protected override async Task OnParametersSetAsync()
-    {
-        if (DateTime.TryParse(DateString, out selectedDate))
-            await LoadDayData();
-    }
-
-    private async Task LoadDayData()
-    {
-        isLoading = true;
-        try
-        {
-            dayData = await AttendanceService.GetDayViewAsync(selectedDate);
-            filteredEmployees = new List<DailyAttendanceDto>(dayData);
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"❌ Error loading day data: {ex.Message}");
-        }
-        finally
-        {
-            isLoading = false;
-        }
-    }
-
-    private void FilterEmployees()
-    {
-        filteredEmployees = dayData.Where(emp =>
-        {
-            bool matchesSearch = string.IsNullOrEmpty(searchTerm) ||
-                emp.EmployeeName.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
-                emp.Department.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
-                emp.EmployeeId.Contains(searchTerm, StringComparison.OrdinalIgnoreCase);
-
-            bool matchesStatus = string.IsNullOrEmpty(selectedStatus) ||
-                emp.Status.ToString() == selectedStatus;
-
-            return matchesSearch && matchesStatus;
-        }).ToList();
-    }
-
-    // ✅ Navigation Helpers
-    private void PreviousDay() => Navigation.NavigateTo($"/calendar/day/{selectedDate.AddDays(-1):yyyy-MM-dd}");
-    private void NextDay() => Navigation.NavigateTo($"/calendar/day/{selectedDate.AddDays(1):yyyy-MM-dd}");
-    private void GoToMonthView() => Navigation.NavigateTo($"/calendar/month/{selectedDate.Year}/{selectedDate.Month}");
-
-    // ✅ UI Helpers
-    private string GetDateTitle() => selectedDate.ToString("dddd, MMMM dd, yyyy");
-    private string GetDayOfWeek() => selectedDate.ToString("dddd");
-
-    private string GetStatusClass(AttendanceStatus status) => status switch
-    {
-        AttendanceStatus.Present => "present",
-        AttendanceStatus.Absent => "absent",
-        AttendanceStatus.Vacation => "vacation",
-        AttendanceStatus.WorkFromHome => "work-from-home",
-        _ => "absent"
-    };
-
-    private string GetStatusIcon(AttendanceStatus status) => status switch
-    {
-        AttendanceStatus.Present => "✓",
-        AttendanceStatus.Absent => "✗",
-        AttendanceStatus.Vacation => "🏖️",
-        AttendanceStatus.WorkFromHome => "🏠",
-        _ => "?"
-    };
-
-    private string GetInitials(string name)
-    {
-        if (string.IsNullOrEmpty(name)) return "??";
-        var parts = name.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-        return parts.Length >= 2
-            ? $"{parts[0][0]}{parts[1][0]}".ToUpper()
-            : parts[0].Substring(0, Math.Min(2, parts[0].Length)).ToUpper();
-    }
-
-    private string CalculateWorkingHours(string checkIn, string checkOut)
-    {
-        if (TimeSpan.TryParse(checkIn, out var inTime) && TimeSpan.TryParse(checkOut, out var outTime))
-        {
-            var workingTime = outTime - inTime;
-            return workingTime.TotalMinutes > 0
-                ? $"{workingTime.Hours}h {workingTime.Minutes}m"
-                : "--";
-        }
-        return "--";
-    }
-
-    private int GetStatusCount(AttendanceStatus status) => dayData.Count(emp => emp.Status == status);
-
-    // ✅ Summary Card Helper
-    RenderFragment SummaryCard(string label, AttendanceStatus status, string icon, string cssClass) => __builder =>
-    {
-        __builder.OpenElement(0, "div");
-        __builder.AddAttribute(1, "class", "col-md-3");
-        __builder.AddMarkupContent(2, $@"
-            <div class='summary-card {cssClass}'>
-                <div class='summary-icon'>
-                    <i class='{icon}'></i>
-                </div>
-                <div class='summary-content'>
-                    <div class='summary-number'>{GetStatusCount(status)}</div>
-                    <div class='summary-label'>{label}</div>
-                </div>
-            </div>");
-        __builder.CloseElement();
-    };
-}

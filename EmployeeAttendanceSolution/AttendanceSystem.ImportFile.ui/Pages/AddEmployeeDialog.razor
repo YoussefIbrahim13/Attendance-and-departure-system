@@ -1,0 +1,165 @@
+﻿@inject AttendanceSystem.ImportFile.ui.Services.AttendanceService AttendanceService
+@inject ISnackbar Snackbar
+@inject NavigationManager Navigation
+@using AttendanceSystem.ImportFile.ui.Services
+@using Domain.Enums
+@using MudBlazor
+@using EmployeesModels.Shared
+
+<MudDialog>
+    <DialogContent>
+        <MudContainer Style="max-width: 500px; max-height: 60vh; overflow-y: auto; padding-bottom: 80px;">
+            <MudText Typo="Typo.h6" Class="mb-4">Update Employee Attendance Status</MudText>
+
+            <MudForm @ref="form" @bind-IsValid="@isFormValid">
+                <MudStack Spacing="3">
+                    <MudAutocomplete T="AttendanceSystem.ImportFile.ui.Services.EmployeeDto"
+                                     @bind-Value="selectedEmployee"
+                                     Label="Select Employee"
+                                     Variant="Variant.Outlined"
+                                     Required="true"
+                                     RequiredError="Employee is required"
+                                     Dense="true"
+                                     SearchFunc="@SearchEmployees"
+                                     ToStringFunc="@(e => e?.Name ?? string.Empty)"
+                                     ResetValueOnEmptyText="true">
+                        <ItemTemplate>
+                            <MudText>@context.Name</MudText>
+                            <MudText Typo="Typo.caption" Color="Color.Secondary">@context.Code</MudText>
+                        </ItemTemplate>
+                    </MudAutocomplete>
+
+                    <MudDatePicker @bind-Date="dateFrom"
+                                   Label="Date From"
+                                   Variant="Variant.Outlined"
+                                   Required="true"
+                                   RequiredError="Date From is required"
+                                   Editable="true"
+                                   AnchorOrigin="Origin.TopCenter"
+                                   TransformOrigin="Origin.TopCenter" />
+
+                    <MudDatePicker @bind-Date="dateTo"
+                                   Label="Date To"
+                                   Variant="Variant.Outlined"
+                                   Required="true"
+                                   RequiredError="Date To is required"
+                                   Editable="true"
+                                   Direction="Direction.Top"
+                                   AnchorOrigin="Origin.TopCenter"
+                                   TransformOrigin="Origin.TopCenter" />
+
+                    <MudSelect @bind-Value="actualStatus"
+                               Label="Actual Status"
+                               Variant="Variant.Outlined"
+                               Required="true"
+                               RequiredError="Actual status is required">
+                        <MudSelectItem Value="@AttendanceStatus.No_status">
+                            <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                                <div class="status-indicator status-none"></div>
+                                <MudText>No status</MudText>
+                            </MudStack>
+                        </MudSelectItem>
+                        <MudSelectItem Value="@AttendanceStatus.Present">
+                            <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                                <div class="status-indicator present"></div>
+                                <MudText>Present</MudText>
+                            </MudStack>
+                        </MudSelectItem>
+                        <MudSelectItem Value="@AttendanceStatus.Absent">
+                            <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                                <div class="status-indicator absent"></div>
+                                <MudText>Absent</MudText>
+                            </MudStack>
+                        </MudSelectItem>
+                        <MudSelectItem Value="@AttendanceStatus.Vacation">
+                            <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                                <div class="status-indicator vacation"></div>
+                                <MudText>Vacation</MudText>
+                            </MudStack>
+                        </MudSelectItem>
+                        <MudSelectItem Value="@AttendanceStatus.WorkFromHome">
+                            <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                                <div class="status-indicator work-from-home"></div>
+                                <MudText>Work From Home</MudText>
+                            </MudStack>
+                        </MudSelectItem>
+                    </MudSelect>
+
+                    <MudSelect @bind-Value="plannedStatus"
+                               Label="Planned Status"
+                               Variant="Variant.Outlined"
+                               Required="true"
+                               RequiredError="Planned status is required">
+                        <MudSelectItem Value="@AttendanceStatus.No_status">
+                            <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                                <div class="status-indicator status-none"></div>
+                                <MudText>No status</MudText>
+                            </MudStack>
+                        </MudSelectItem>
+                        <MudSelectItem Value="@AttendanceStatus.Present">
+                            <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                                <div class="status-indicator present"></div>
+                                <MudText>Present</MudText>
+                            </MudStack>
+                        </MudSelectItem>
+                        <MudSelectItem Value="@AttendanceStatus.Absent">
+                            <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                                <div class="status-indicator absent"></div>
+                                <MudText>Absent</MudText>
+                            </MudStack>
+                        </MudSelectItem>
+                        <MudSelectItem Value="@AttendanceStatus.Vacation">
+                            <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                                <div class="status-indicator vacation"></div>
+                                <MudText>Vacation</MudText>
+                            </MudStack>
+                        </MudSelectItem>
+                        <MudSelectItem Value="@AttendanceStatus.WorkFromHome">
+                            <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                                <div class="status-indicator work-from-home"></div>
+                                <MudText>Work From Home</MudText>
+                            </MudStack>
+                        </MudSelectItem>
+                    </MudSelect>
+                </MudStack>
+            </MudForm>
+        </MudContainer>
+    </DialogContent>
+
+    <DialogActions>
+        <MudButton OnClick="Cancel" Variant="Variant.Text">Cancel</MudButton>
+        <MudButton Color="Color.Primary"
+                   Variant="Variant.Filled"
+                   OnClick="Submit"
+                   Disabled="@(!isFormValid || isProcessing)"
+                   Loading="@isProcessing">
+            Update Attendance
+        </MudButton>
+    </DialogActions>
+</MudDialog>
+
+<style>
+    .status-indicator {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        display: inline-block;
+    }
+
+        .status-indicator.present {
+            background-color: var(--mud-palette-success);
+        }
+
+        .status-indicator.absent {
+            background-color: var(--mud-palette-error);
+        }
+
+        .status-indicator.vacation {
+            background-color: var(--mud-palette-warning);
+        }
+
+        .status-indicator.work-from-home {
+            background-color: var(--mud-palette-info);
+        }
+</style>
+

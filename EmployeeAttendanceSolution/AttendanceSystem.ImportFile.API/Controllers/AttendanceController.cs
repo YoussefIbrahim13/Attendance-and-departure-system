@@ -1,306 +1,206 @@
-using AttendanceSystem.ImportFile.API.Services.AttendanceServices;
+﻿using Applications.CSVFile.Commandss.EditPendingAttendance;
+using Applications.CSVFile.Commandss.SavePendingAttendanceCommand;
+using Applications.CSVFile.DTOS.AttendanceRecord;
+using Applications.CSVFile.Querys.UploadCSVFilequery;
+using Applications.DailyAttendance.Querys;
+using Applications.Employees.Commands.AddEmployees;
+using Applications.Employees.Commands.DeleteEmployee;
+using Applications.Employees.Commands.UpdataEmployeecommand;
+using Applications.Employees.Commands.UploadProfileImagecommand;
+using Applications.Employees.Querys.GetEmployeeByCode;
+using Applications.Employees.Querys.GetEmployeesquery;
+using Applications.MonthView.Querys.GetMonthViewquery;
+using Applications.PlanAttendance.Command;
+using Applications.UpdateAttendanceRecord.Commands;
+using Applications.YearView.Querys;
+using AutoMapper;
+using Domain.Entities;
 using EmployeesModels.Shared;
+using Infrastructure;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Globalization;
-using System.Text;
+using static MudBlazor.CategoryTypes;
+using AttendanceSystem.ImportFile.API.Controllers.Dto;
+using Infrastructure.DBContext;
 
 namespace AttendanceSystem.ImportFile.API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class AttendanceController : ControllerBase
     {
-        public AttendanceController(IAttendanceService attendanceService)
-        {
-            this.attendanceService = attendanceService;
-        }
-        // تخزين مؤقت للبيانات المرفوعة (في الذاكرة)
-        private static List<AttendanceRecord> _pendingAttendance = new();
-        private readonly IAttendanceService attendanceService;
+        private readonly IMediator _mediator;
+        private readonly ApplicationDbContext _context;
+        private readonly IMapper _mapper;
 
+
+        private static List<AttendanceRecordDto> _pendingAttendance = new();
+
+        public AttendanceController(IMediator mediator , ApplicationDbContext context, IMapper mapper)
+        {
+            _mediator = mediator;
+            _context = context;
+            _mapper = mapper;
+        }
+
+        // ===================== CSV Upload =====================
         [HttpPost("upload-csv")]
-        public async Task<IActionResult> UploadCsv(IFormFile file)
+        [Consumes("multipart/form-data")]
+        public async Task<IActionResult> UploadCsv([FromForm] UploadCsvDto dto)
         {
-            if (file == null || file.Length == 0)
+            if (dto.File == null || dto.File.Length == 0)
                 return BadRequest("No file uploaded.");
-            _pendingAttendance = await attendanceService.UploadCSVFileAsync(file);
 
+            var query = new UploadCSVFilequery(dto.File);
+            var result = await _mediator.Send(query);
 
-            return Ok(_pendingAttendance);
+            _pendingAttendance = result;
+
+            return Ok(result);
         }
 
-        // تعديل سجل في البيانات المؤقتة فقط
         [HttpPut("edit-pending")]
-        public IActionResult EditPendingAttendance([FromBody] EditAttendanceDto dto)
+        public async Task<IActionResult> EditPendingAttendance([FromBody] EditPendingAttendanceCommand command)
         {
-            if (string.IsNullOrWhiteSpace(dto.EmployeeId))
-                return BadRequest("EmployeeId is required.");
+            if (command == null)
+                return BadRequest("Invalid request data.");
 
-            // ✅ dto.Date is already DateTime, so no parsing needed
-            var record = _pendingAttendance
-                .FirstOrDefault(x => x.EmployeeId == dto.EmployeeId && x.Date.Date == dto.Date.Date);
+            var result = await _mediator.Send(command);
 
-            if (record == null)
-                return NotFound("Attendance record not found in pending data.");
-
-            // ✅ Update fields
-            record.CheckIn = dto.CheckIn;
-            record.CheckOut = dto.CheckOut;
-            record.Status = dto.Status;
-            record.Note = dto.Note;
-
-            return Ok("Pending attendance record updated successfully.");
+            return Ok(new { Message = result });
         }
-
-
-        // حفظ البيانات المؤقتة في الداتا بيز بعد موافقة HR
         [HttpPost("save")]
-        public async Task<IActionResult> SaveAttendance([FromServices] AttendanceDbContext db)
+        public async Task<IActionResult> SavePendingAttendance([FromBody] List<AttendanceRecord> pendingAttendance)
         {
-            if (_pendingAttendance.Count == 0)
-                return BadRequest("No pending attendance data to save.");
+            if (pendingAttendance == null || !pendingAttendance.Any())
+                return BadRequest("Pending attendance data is required.");
 
-            foreach (var rec in _pendingAttendance)
-            {
-                var existing = db.AttendanceRecords.FirstOrDefault(x => x.EmployeeId == rec.EmployeeId && x.Date == rec.Date);
-                if (existing != null)
-                {
-                    existing.CheckIn = rec.CheckIn;
-                    existing.CheckOut = rec.CheckOut;
-                    existing.Status = rec.Status;
-                    existing.Note = rec.Note; // Ensure Note is updated as well
-                }
-                else
-                {
-                    db.AttendanceRecords.Add(rec);
-                }
-            }
-            await db.SaveChangesAsync();
-            _pendingAttendance.Clear();
-            return Ok("Attendance data saved successfully.");
-        }
-        // Get month view data
-        [HttpGet("month-view")]
-        public async Task<IActionResult> GetMonthView([FromServices] AttendanceDbContext db, int year, int month)
-        {
-            // 1️⃣ Determine the date range for the month
-            var startDate = new DateTime(year, month, 1);
-            var endDate = startDate.AddMonths(1).AddDays(-1);
+            // 1. تحويل من DTO → Entity
+            var entities = _mapper.Map<List<AttendanceRecord>>(pendingAttendance);
 
-            Console.WriteLine($"📅 Fetching records for {month}/{year} → from {startDate} to {endDate}");
+            // 2. الحفظ في الداتا بيز
+            _context.AttendanceRecords.AddRange(entities);
+            await _context.SaveChangesAsync();
 
-            // 2️⃣ Get attendance records for that month from DB
-            var attendanceData = await db.AttendanceRecords
-                .Where(ar => ar.Date >= startDate && ar.Date <= endDate)
-                .ToListAsync();
-
-            Console.WriteLine($"✅ Retrieved {attendanceData.Count} attendance records for {month}/{year}");
-
-            // 3️⃣ Debugging: print some sample records
-            foreach (var r in attendanceData.Take(5)) // show only first 5
-            {
-                Console.WriteLine($"DB record → EmpID={r.EmployeeId}, Date={r.Date:yyyy-MM-dd}, Status={r.Status}");
-            }
-
-            // 4️⃣ Get all employees
-            var employees = await db.Employees.ToListAsync();
-            Console.WriteLine($"✅ Total Employees: {employees.Count}");
-
-            // 5️⃣ Prepare DTO for UI
-            var monthViewDto = new MonthViewDto
-            {
-                Year = year,
-                Month = month,
-                Days = new List<CalendarDayDto>()
-            };
-
-            // 6️⃣ Loop through each day of the month
-            for (var date = startDate; date <= endDate; date = date.AddDays(1))
-            {
-                // ✅ Filter attendance for the current date
-                var dayAttendance = attendanceData
-                    .Where(ar => ar.Date.Date == date.Date)
-                    .ToList();
-
-                // ✅ Create a list of employee statuses for this day
-                var employeeStatuses = employees.Select(emp =>
-                {
-                    var attendance = dayAttendance.FirstOrDefault(ar => ar.EmployeeId == emp.Id);
-                    return new EmployeeDayStatus
-                    {
-                        EmployeeId = emp.Id,
-                        EmployeeName = emp.Name,
-                        Status = attendance?.Status ?? AttendanceStatus.Absent,
-                        Note = attendance?.Note
-                    };
-                }).ToList();
-
-                // ✅ Count present/absent employees
-                var presentCount = employeeStatuses.Count(es => es.Status == AttendanceStatus.Present);
-                var absentCount = employeeStatuses.Count(es => es.Status == AttendanceStatus.Absent);
-
-                Console.WriteLine($"{date:yyyy-MM-dd} → Present: {presentCount}, Absent: {absentCount}");
-
-                // ✅ Add data for this day to the DTO
-                monthViewDto.Days.Add(new CalendarDayDto
-                {
-                    Date = date,
-                    TopEmployees = employeeStatuses.Take(4).ToList(), // Only top 4 for display in calendar
-                    TotalEmployees = employees.Count,
-                    PresentCount = presentCount,
-                    AbsentCount = absentCount
-                });
-            }
-
-            // ✅ Return to UI
-            return Ok(monthViewDto);
+            return Ok(new { Message = "Saved Successfully" });
         }
 
 
+        // ===================== Employee Queries =====================
+        [HttpGet("employee-by-code/{code}")]
+        public async Task<IActionResult> GetEmployeeByCode(string code)
+        {
+            var result = await _mediator.Send(new GetEmployeeByCodeQuery { Code = code });
+            if (result == null)
+                return NotFound("Employee not found.");
+            return Ok(result);
+        }
 
-        // Get day view data
+        // ===================== Day / Month / Year Views =====================
+
         [HttpGet("day-view")]
-        public async Task<IActionResult> GetDayView([FromServices] AttendanceDbContext db, DateTime date)
+        public async Task<IActionResult> GetDayView([FromQuery] DateTime date)
         {
-            // ✅ Normalize date (ignore time part for safety)
-            var day = date.Date;
+            var query = new GetDayViewquery(date);
+            var result = await _mediator.Send(query);
 
-            // ✅ Load all employees and attendance records for the given day
-            var employees = await db.Employees.ToListAsync();
-            var attendanceData = await db.AttendanceRecords
-                .Where(ar => ar.Date.Date == day)
-                .ToListAsync();
-
-            // ✅ Map to DTO
-            var dailyAttendance = employees.Select(emp =>
-            {
-                var attendance = attendanceData.FirstOrDefault(ar => ar.EmployeeId == emp.Id);
-
-                return new DailyAttendanceDto
-                {
-                    EmployeeId = emp.Id,
-                    EmployeeName = emp.Name,
-                    Department = emp.Department,
-                    Date = day,
-                    CheckIn = attendance?.CheckIn ?? string.Empty,
-                    CheckOut = attendance?.CheckOut ?? string.Empty,
-                    Status = attendance?.Status ?? AttendanceStatus.Absent,
-                    Note = attendance?.Note ?? string.Empty
-                };
-            }).ToList();
-
-            return Ok(dailyAttendance);
+            return Ok(result);
+        }
+        [HttpGet("month-view")]
+        public async Task<IActionResult> GetMonthView(int year, int month)
+        {
+            var query = new GetMonthViewquery(year, month);
+            var result = await _mediator.Send(query);
+            return Ok(result);
         }
 
-        // Get year view data
         [HttpGet("year-view/{year}")]
-        public async Task<IActionResult> GetYearView([FromServices] AttendanceDbContext db, int year)
+        public async Task<IActionResult> GetYearView(int year)
         {
-            var yearViewDto = new YearViewDto
-            {
-                Year = year,
-                Months = new List<MonthSummaryDto>()
-            };
-
-            // ✅ Load all employees ONCE
-            var totalEmployees = await db.Employees.CountAsync();
-
-            for (int month = 1; month <= 12; month++)
-            {
-                var startDate = new DateTime(year, month, 1);
-                var endDate = startDate.AddMonths(1).AddDays(-1);
-
-                // ✅ Fetch attendance for the month
-                var attendanceData = await db.AttendanceRecords
-                    .Where(ar => ar.Date >= startDate && ar.Date <= endDate)
-                    .ToListAsync();
-
-                // ✅ Calculate working days (weekends excluded if needed)
-                int workingDays = attendanceService.GetWorkingDaysInMonth(year, month);
-
-                // ✅ Calculate metrics
-                int totalPossibleAttendance = totalEmployees * workingDays;
-                int actualAttendance = attendanceData.Count(ar => ar.Status == AttendanceStatus.Present);
-
-                double averageAttendance = totalPossibleAttendance > 0
-                    ? (double)actualAttendance / totalPossibleAttendance * 100
-                    : 0;
-
-                // ✅ Add month summary
-                yearViewDto.Months.Add(new MonthSummaryDto
-                {
-                    Month = month,
-                    MonthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month),
-                    TotalWorkingDays = workingDays,
-                    AverageAttendance = Math.Round(averageAttendance, 2)
-                });
-            }
-
-            return Ok(yearViewDto);
+            var query = new GetYearViewquery(year);
+            var result = await _mediator.Send(query);
+            return Ok(result);
         }
 
-        // Get all employees
-        [HttpGet("employees")]
-        public async Task<IActionResult> GetEmployees([FromServices] AttendanceDbContext db)
-        {
-            var employees = await db.Employees.ToListAsync();
-            return Ok(employees);
-        }
-
-        // Delete employee
-        [HttpDelete("delete-employee/{id}")]
-        public async Task<IActionResult> DeleteEmployee([FromServices] AttendanceDbContext db, string id)
-        {
-            if (string.IsNullOrWhiteSpace(id))
-                return BadRequest("Employee ID is required.");
-
-            var employee = await db.Employees.FirstOrDefaultAsync(e => e.Id == id);
-            if (employee == null)
-                return NotFound("Employee not found.");
-
-            db.Employees.Remove(employee);
-            await db.SaveChangesAsync();
-            return Ok("Employee deleted successfully.");
-        }
-
-        // Add new employee
+        // ===================== Employee Commands =====================
         [HttpPost("add-employee")]
-        public async Task<IActionResult> AddEmployee([FromServices] AttendanceDbContext db, [FromBody] Employee employeeDto)
+        public async Task<IActionResult> AddEmployee([FromBody] AddEmployeesCommand command)
         {
-            if (employeeDto == null || string.IsNullOrWhiteSpace(employeeDto.Id) || string.IsNullOrWhiteSpace(employeeDto.Name))
-                return BadRequest("Employee data is required.");
-
-            var exists = await db.Employees.AnyAsync(e => e.Id == employeeDto.Id);
-            if (exists)
-                return BadRequest("Employee with this ID already exists.");
-
-            db.Employees.Add(employeeDto);
-            await db.SaveChangesAsync();
-            return Ok("Employee added successfully.");
+            var result = await _mediator.Send(command);
+            if (!result.Success)
+                return BadRequest(result.Message);
+            return Ok(result.Message);
         }
-
-        // Update employee
         [HttpPut("update-employee")]
-        public async Task<IActionResult> UpdateEmployee([FromServices] AttendanceDbContext db, [FromBody] Employee employeeDto)
+        public async Task<IActionResult> UpdateEmployee([FromBody] UpdataEmployeecommand command)
         {
-            if (employeeDto == null || string.IsNullOrWhiteSpace(employeeDto.Id))
-                return BadRequest("Employee data is required.");
+            if (string.IsNullOrWhiteSpace(command.Code))
+                return BadRequest("Employee Code is required.");
 
-            var employee = await db.Employees.FirstOrDefaultAsync(e => e.Id == employeeDto.Id);
-            if (employee == null)
-                return NotFound("Employee not found.");
+            if (!ModelState.IsValid)
+                return BadRequest("Invalid data.");
 
-            employee.Name = employeeDto.Name;
-            employee.Department = employeeDto.Department;
-            employee.Position = employeeDto.Position;
+            var result = await _mediator.Send(command);
 
-            await db.SaveChangesAsync();
-            return Ok("Employee updated successfully.");
+            if (!result.Success)
+                return BadRequest(result.Message);
+
+            return Ok(result.Message);
         }
+
+
+        [HttpGet("employees")]
+        public async Task<IActionResult> GetEmployees()
+        {
+            var query = new GetEmployeesquerys();
+            var result = await _mediator.Send(query);
+
+            return Ok(result);
+        }
+        [HttpDelete("delete-employee/{Code}")]
+        public async Task<IActionResult> DeleteEmployee(string code)
+        {
+            var result = await _mediator.Send(new DeleteEmployeeCommand { Code = code });
+            if (!result.Success)
+                return NotFound(result.Message);
+
+            return Ok(result.Message);
+        }
+
+        [HttpPost("plan-attendance")]
+        public async Task<IActionResult> PlanAttendance([FromBody] PlanAttendancecommand command)
+        {
+            var result = await _mediator.Send(command);
+            if (!result.Success)
+                return BadRequest(result.Message);
+            return Ok(result.Message);
+        }
+
+        [HttpPut("update-attendance-record")]
+        public async Task<IActionResult> UpdateAttendanceRecord([FromBody] UpdateAttendanceRecordcommand command)
+        {
+            var result = await _mediator.Send(command);
+            if (!result.Success)
+                return BadRequest(result.Message);
+            return Ok(true);
+        }
+        [HttpPost("upload-profile-image/{employeeCode}")]
+        public async Task<IActionResult> UploadProfileImage(string employeeCode, [FromForm] UploadProfileImageDto dto)
+        {
+            var command = new UploadProfileImageCommand
+            {
+                EmployeeCode = employeeCode,
+                File = dto.File,
+                HttpContext = HttpContext
+            };
+            var result = await _mediator.Send(command);
+            if (!result.Success)
+                return BadRequest(new { message = result.Message });
+            return Ok(new { imageUrl = result.ImageUrl, message = result.Message });
+        }
+
 
 
     }
-
-
 }

@@ -1,0 +1,36 @@
+﻿using Applications.Employees.DTO.EmployeeDtos;
+using AutoMapper;
+using Infrastructure;
+using Infrastructure.DBContext;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
+
+namespace Applications.Employees.Querys.GetEmployeeByCode;
+
+public class GetEmployeeByCodeQueryHandler : IRequestHandler<GetEmployeeByCodeQuery, EmployeeeByCodeOutPut>
+{
+    private readonly ApplicationDbContext _db;
+    private readonly IMapper _mapper;
+
+    public GetEmployeeByCodeQueryHandler(ApplicationDbContext db, IMapper mapper)
+    {
+        _db = db;
+        _mapper = mapper;
+    }
+    public async Task<EmployeeeByCodeOutPut> Handle(GetEmployeeByCodeQuery query, CancellationToken cancellationToken)
+    {
+        if (string.IsNullOrWhiteSpace(query.Code))
+            return null;
+
+        var employee = await _db.Employees
+            .FirstOrDefaultAsync(e => e.Code == query.Code, cancellationToken);
+
+        if (employee == null)
+            return null;
+
+        return new EmployeeeByCodeOutPut()
+        {
+            Data = _mapper.Map<EmployeeByCodeDto>(employee)
+        };
+    }
+}

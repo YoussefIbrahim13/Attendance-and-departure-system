@@ -1,0 +1,51 @@
+﻿using Applications.Employees.Commands.AddEmployees.Dtos;
+using AutoMapper;
+using Domain.Entities;
+using Infrastructure;
+using Infrastructure.DBContext;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
+
+namespace Applications.Employees.Commands.AddEmployees;
+
+public class AddEmployeesCommandHandler : IRequestHandler<AddEmployeesCommand, AddEmployeesDto>
+{
+    private readonly ApplicationDbContext _dbcontext;
+    private readonly IMapper _mapper;
+
+
+    public AddEmployeesCommandHandler(ApplicationDbContext dbcontext, IMapper mapper)
+    {
+        _dbcontext = dbcontext;
+        _mapper = mapper;
+    }
+    public async Task<AddEmployeesDto> Handle(AddEmployeesCommand command, CancellationToken cancellationToken)
+    {
+        if (string.IsNullOrWhiteSpace(command.Code) || string.IsNullOrWhiteSpace(command.Name))
+            return new AddEmployeesDto
+            {
+                Message = "",
+                Success = false
+            };
+
+        var exists = await _dbcontext.Employees.AnyAsync(e => e.Code == command.Code, cancellationToken);
+        if (exists)
+            return new AddEmployeesDto
+            {
+                Message = "Employee with this Code already exists.",
+                Success = false
+            };
+
+        var employee = _mapper.Map<Employee>(command);
+        _dbcontext.Employees.Add(employee);
+        await _dbcontext.SaveChangesAsync(cancellationToken);
+        return new AddEmployeesDto
+        {
+            Message = "Employee added successfully.",
+            Success = true
+        };
+
+
+    }
+}
+

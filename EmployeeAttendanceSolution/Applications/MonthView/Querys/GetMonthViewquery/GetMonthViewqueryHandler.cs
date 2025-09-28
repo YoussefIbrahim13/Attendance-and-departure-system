@@ -1,0 +1,76 @@
+﻿using Applications.MonthView.DTOS;
+using Applications.MonthView.Helper.DateHelper;
+using Domain.Enums;
+using Infrastructure;
+using Infrastructure.DBContext;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
+
+namespace Applications.MonthView.Querys.GetMonthViewquery;
+
+public class GetMonthViewqueryHandler : IRequestHandler<GetMonthViewquery, MonthViewDto>
+{
+    private readonly ApplicationDbContext _db;
+
+    public GetMonthViewqueryHandler(ApplicationDbContext db)
+    {
+        _db = db;
+    }
+    public async Task<MonthViewDto> Handle(GetMonthViewquery query, CancellationToken cancellationToken)
+    {
+        var startDate = new DateTime(query.Year, query.Month, 1);
+        var endDate = startDate.AddMonths(1).AddDays(-1);
+
+        var attendanceData = await _db.AttendanceRecords
+            .Where(ar => ar.Date >= startDate && ar.Date <= endDate)
+            .ToListAsync(cancellationToken);
+
+        var employees = await _db.Employees.ToListAsync(cancellationToken);
+
+        var monthViewDto = new MonthViewDto
+        {
+            Year = query.Year,
+            Month = query.Month
+        };
+
+        for (var date = startDate; date <= endDate; date = date.AddDays(1))
+        {
+            if (!DateHelper.IsWorkingDay(date))
+                continue;
+
+            var dayAttendance = attendanceData
+                .Where(ar => ar.Date.Date == date.Date)
+                .ToList();
+
+            var employeeStatuses = employees.Select(emp =>
+            {
+                var attendance = dayAttendance.FirstOrDefault(ar => ar.Code == emp.Code);
+                return new EmployeeDayStatus
+                {
+                    Code = emp.Code,
+                    EmployeeName = emp.Name,
+                    ActualStatus = attendance?.ActualStatus ?? AttendanceStatus.No_status,
+                    Note = attendance?.Note
+                };
+            }).ToList();
+
+            var presentCount = employeeStatuses.Count(es => es.ActualStatus == AttendanceStatus.Present);
+            var absentCount = employeeStatuses.Count(es => es.ActualStatus == AttendanceStatus.Absent);
+
+            monthViewDto.Days.Add(new CalendarDayDto
+            {
+                Date = date,
+                TopEmployees = employeeStatuses.Take(4).ToList(),
+                AllEmployees = employeeStatuses.ToList(),
+                TotalEmployees = employees.Count,
+                PresentCount = presentCount,
+                AbsentCount = absentCount
+            });
+        }
+
+        return monthViewDto;
+
+
+
+    }
+}
