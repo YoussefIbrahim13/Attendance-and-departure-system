@@ -8,5 +8,5 @@ namespace Projects;
 public class EmployeeAttendanceSolution_AppHost
 {
     private EmployeeAttendanceSolution_AppHost() { }
-    public static string ProjectPath => """A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\EmployeeAttendanceSolution.AppHost""";
+    public static string ProjectPath => """A:\Project\Attendance-and-departure-system\EmployeeAttendanceSolution\EmployeeAttendanceSolution.AppHost""";
 }

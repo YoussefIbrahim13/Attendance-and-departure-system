@@ -296,6 +296,28 @@
         }
       }
     },
+    "/api/Management/GetUserAttendanceRecordsByCode/{code}": {
+      "get": {
+        "tags": [
+          "Management"
+        ],
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Management/approve/{userId}": {
       "post": {
         "tags": [

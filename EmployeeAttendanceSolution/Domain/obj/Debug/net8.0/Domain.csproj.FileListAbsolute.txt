@@ -24,3 +24,16 @@ A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\
 A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\refint\Domain.dll
 A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.pdb
 A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\ref\Domain.dll
+A:\Project\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\bin\Debug\net8.0\Domain.deps.json
+A:\Project\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\bin\Debug\net8.0\Domain.dll
+A:\Project\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\bin\Debug\net8.0\Domain.pdb
+A:\Project\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.csproj.AssemblyReference.cache
+A:\Project\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+A:\Project\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+A:\Project\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+A:\Project\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+A:\Project\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.sourcelink.json
+A:\Project\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.dll
+A:\Project\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\refint\Domain.dll
+A:\Project\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\Domain.pdb
+A:\Project\Attendance-and-departure-system\EmployeeAttendanceSolution\Domain\obj\Debug\net8.0\ref\Domain.dll

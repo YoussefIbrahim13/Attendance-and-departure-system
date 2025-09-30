@@ -1,9 +1,11 @@
 ﻿using Blazored.LocalStorage;
 using Domain.Dtos;
+using Domain.Entities;
 using EmployeesModels.Shared;
 using Microsoft.AspNetCore.Identity;
 using System.Net;
 using System.Net.Http.Json;
+using System.Text.Json;
 
 namespace AttendanceSystem.Auth.ui.Services
 {
@@ -127,6 +129,47 @@ namespace AttendanceSystem.Auth.ui.Services
             var client = await GetAuthorizedClient();
             var response = await client.GetAsync("api/Management/GetAllEmployees");
             return await HandleResponse<List<EmployeeResult>>(response)?? new List<EmployeeResult>();
+        }
+
+        public async Task<List<AttendanceRecord>> GetUserAttendanceRecordsByCode(string code)
+        {
+            try
+            {
+                var client = await GetAuthorizedClient();
+                var httpResponse = await client.GetAsync($"api/Management/GetUserAttendanceRecordsByCode/{code}");
+
+                if (httpResponse.IsSuccessStatusCode)
+                {
+                    // First try to read as OperationResult
+                    var operationResult = await httpResponse.Content.ReadFromJsonAsync<OperationResult<List<AttendanceRecord>>>();
+                    if (operationResult?.Success == true)
+                    {
+                        return operationResult.Data ?? new List<AttendanceRecord>();
+                    }
+
+                    // If OperationResult fails, try direct deserialization
+                    try
+                    {
+                        var directResult = await httpResponse.Content.ReadFromJsonAsync<List<AttendanceRecord>>();
+                        return directResult ?? new List<AttendanceRecord>();
+                    }
+                    catch (JsonException)
+                    {
+                        Console.WriteLine("Both OperationResult and direct deserialization failed");
+                        return new List<AttendanceRecord>();
+                    }
+                }
+                else
+                {
+                    Console.WriteLine($"API call failed: {httpResponse.StatusCode}");
+                    return new List<AttendanceRecord>();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in GetUserAttendanceRecordsByCode: {ex.Message}");
+                return new List<AttendanceRecord>();
+            }
         }
 
 

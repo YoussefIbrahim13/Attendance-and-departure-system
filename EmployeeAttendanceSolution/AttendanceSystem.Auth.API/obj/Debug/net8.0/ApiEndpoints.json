@@ -189,6 +189,22 @@
   },
   {
     "ContainingType": "AttendanceSystem.Auth.API.Controllers.ManagementController",
+    "Method": "GetUserAttendanceRecordsByCode",
+    "RelativePath": "api/Management/GetUserAttendanceRecordsByCode/{code}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "code",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AttendanceSystem.Auth.API.Controllers.ManagementController",
     "Method": "GetUserByEmployeeCode",
     "RelativePath": "api/Management/GetUserByEmployeeCode/{employeeCode}",
     "HttpMethod": "GET",

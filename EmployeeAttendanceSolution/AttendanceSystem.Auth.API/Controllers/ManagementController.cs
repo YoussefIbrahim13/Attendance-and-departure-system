@@ -1,4 +1,5 @@
-﻿using AttendanceSystem.Auth.Services.Features.Employees.Queries.GetAllEmployees;
+﻿using Applications.Features.Users.Queries.GetUserAttendanceRecordsByCode;
+using AttendanceSystem.Auth.Services.Features.Employees.Queries.GetAllEmployees;
 using AttendanceSystem.Auth.Services.Features.Roles.Commands.CreateRole;
 using AttendanceSystem.Auth.Services.Features.Roles.Queries.GetAllRoles;
 using AttendanceSystem.Auth.Services.Features.Roles.Queries.GetRoleById;
@@ -122,6 +123,15 @@ namespace AttendanceSystem.Auth.API.Controllers
         {
             var result = await _mediator.Send(new GetAllEmployeesQuery());
             return Ok(result);
+        }
+
+
+        [HttpGet("GetUserAttendanceRecordsByCode/{code}")]
+        [Authorize(Roles = "Manager,Admin,User")]
+        public async Task<IActionResult> GetUserAttendanceRecordsByCode(string code)
+        {
+            var result = await _mediator.Send(new GetUserAttendanceRecordsByCode(code));
+            return result.Success ? Ok(result) : NotFound(result);
         }
 
         [HttpPost("approve/{userId}")]

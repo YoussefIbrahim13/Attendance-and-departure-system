@@ -24,3 +24,16 @@ A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\Employe
 A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\EmployeeAttendanceSolution.ServiceDefaults\obj\Debug\net8.0\refint\EmployeeAttendanceSolution.ServiceDefaults.dll
 A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\EmployeeAttendanceSolution.ServiceDefaults\obj\Debug\net8.0\EmployeeAttendanceSolution.ServiceDefaults.pdb
 A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\EmployeeAttendanceSolution.ServiceDefaults\obj\Debug\net8.0\ref\EmployeeAttendanceSolution.ServiceDefaults.dll
+A:\Project\Attendance-and-departure-system\EmployeeAttendanceSolution\EmployeeAttendanceSolution.ServiceDefaults\bin\Debug\net8.0\EmployeeAttendanceSolution.ServiceDefaults.deps.json
+A:\Project\Attendance-and-departure-system\EmployeeAttendanceSolution\EmployeeAttendanceSolution.ServiceDefaults\bin\Debug\net8.0\EmployeeAttendanceSolution.ServiceDefaults.dll
+A:\Project\Attendance-and-departure-system\EmployeeAttendanceSolution\EmployeeAttendanceSolution.ServiceDefaults\bin\Debug\net8.0\EmployeeAttendanceSolution.ServiceDefaults.pdb
+A:\Project\Attendance-and-departure-system\EmployeeAttendanceSolution\EmployeeAttendanceSolution.ServiceDefaults\obj\Debug\net8.0\EmployeeAttendanceSolution.ServiceDefaults.csproj.AssemblyReference.cache
+A:\Project\Attendance-and-departure-system\EmployeeAttendanceSolution\EmployeeAttendanceSolution.ServiceDefaults\obj\Debug\net8.0\EmployeeAttendanceSolution.ServiceDefaults.GeneratedMSBuildEditorConfig.editorconfig
+A:\Project\Attendance-and-departure-system\EmployeeAttendanceSolution\EmployeeAttendanceSolution.ServiceDefaults\obj\Debug\net8.0\EmployeeAttendanceSolution.ServiceDefaults.AssemblyInfoInputs.cache
+A:\Project\Attendance-and-departure-system\EmployeeAttendanceSolution\EmployeeAttendanceSolution.ServiceDefaults\obj\Debug\net8.0\EmployeeAttendanceSolution.ServiceDefaults.AssemblyInfo.cs
+A:\Project\Attendance-and-departure-system\EmployeeAttendanceSolution\EmployeeAttendanceSolution.ServiceDefaults\obj\Debug\net8.0\EmployeeAttendanceSolution.ServiceDefaults.csproj.CoreCompileInputs.cache
+A:\Project\Attendance-and-departure-system\EmployeeAttendanceSolution\EmployeeAttendanceSolution.ServiceDefaults\obj\Debug\net8.0\EmployeeAttendanceSolution.ServiceDefaults.sourcelink.json
+A:\Project\Attendance-and-departure-system\EmployeeAttendanceSolution\EmployeeAttendanceSolution.ServiceDefaults\obj\Debug\net8.0\EmployeeAttendanceSolution.ServiceDefaults.dll
+A:\Project\Attendance-and-departure-system\EmployeeAttendanceSolution\EmployeeAttendanceSolution.ServiceDefaults\obj\Debug\net8.0\refint\EmployeeAttendanceSolution.ServiceDefaults.dll
+A:\Project\Attendance-and-departure-system\EmployeeAttendanceSolution\EmployeeAttendanceSolution.ServiceDefaults\obj\Debug\net8.0\EmployeeAttendanceSolution.ServiceDefaults.pdb
+A:\Project\Attendance-and-departure-system\EmployeeAttendanceSolution\EmployeeAttendanceSolution.ServiceDefaults\obj\Debug\net8.0\ref\EmployeeAttendanceSolution.ServiceDefaults.dll

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "j9wMi7KJuPY=",
+  "dgSpecHash": "2dmFnmq0M1Y=",
   "success": true,
-  "projectFilePath": "A:\\Micro-Tech\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\EmployeeAttendanceSolution.AppHost\\EmployeeAttendanceSolution.AppHost.csproj",
+  "projectFilePath": "A:\\Project\\Attendance-and-departure-system\\EmployeeAttendanceSolution\\EmployeeAttendanceSolution.AppHost\\EmployeeAttendanceSolution.AppHost.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ehabm\\.nuget\\packages\\aspire.dashboard.sdk.win-x64\\9.3.1\\aspire.dashboard.sdk.win-x64.9.3.1.nupkg.sha512",
     "C:\\Users\\ehabm\\.nuget\\packages\\aspire.hosting\\9.3.1\\aspire.hosting.9.3.1.nupkg.sha512",

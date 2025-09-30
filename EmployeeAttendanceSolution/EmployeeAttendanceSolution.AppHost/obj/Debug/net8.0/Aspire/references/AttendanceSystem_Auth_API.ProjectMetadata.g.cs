@@ -7,5 +7,5 @@ namespace Projects;
 [global::System.Diagnostics.DebuggerDisplay("Type = {GetType().Name,nq}, ProjectPath = {ProjectPath}")]
 public class AttendanceSystem_Auth_API : global::Aspire.Hosting.IProjectMetadata
 {
-    public string ProjectPath => """A:\Micro-Tech\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\AttendanceSystem.Auth.API.csproj""";
+    public string ProjectPath => """A:\Project\Attendance-and-departure-system\EmployeeAttendanceSolution\AttendanceSystem.Auth.API\AttendanceSystem.Auth.API.csproj""";
 }

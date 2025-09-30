@@ -22,10 +22,10 @@
         <MudGrid AlignItems="Center" Spacing="3">
             <MudItem xs="12" sm="3" Class="text-center">
                 <div class="text-center">
-                    
-                        <img src="@GetImage()" alt="User Image"
-                             style="width:140px;height:140px;object-fit:cover;border-radius:50%;display:block;margin:auto;" />
-                    
+
+                    <img src="@GetImage()" alt="User Image"
+                         style="width:140px;height:140px;object-fit:cover;border-radius:50%;display:block;margin:auto;" />
+
 
                     @if (string.IsNullOrWhiteSpace(UserProfile?.ProfileImagePath))
                     {
@@ -46,7 +46,7 @@
                                      Class="button-icon" />
                             <span class="button-text">Change Picture</span>
                         </div>
-                </div>
+                    </div>
                 </div>
             </MudItem>
             <MudItem xs="12" sm="6">
@@ -245,65 +245,105 @@
                 Recent Attendance Records
             </MudText>
 
-            <MudTable Items="@RecentAttendance"
-                      Hover="true"
-                      Striped="true"
-                      Class="attendance-table"
-                      Elevation="3"
-                      FullWidth="true">
-                <HeaderContent>
-                    <MudTh><MudIcon Icon="@Icons.Material.Filled.CalendarToday" Class="mr-2" />Date</MudTh>
-                    <MudTh><MudIcon Icon="@Icons.Material.Filled.Info" Class="mr-2" />Status</MudTh>
-                    <MudTh><MudIcon Icon="@Icons.Material.Filled.Login" Class="mr-2" />Check In</MudTh>
-                    <MudTh><MudIcon Icon="@Icons.Material.Filled.Logout" Class="mr-2" />Check Out</MudTh>
-                    <MudTh><MudIcon Icon="@Icons.Material.Filled.Note" Class="mr-2" />Note</MudTh>
-                </HeaderContent>
+            <!-- Table Container with proper styling -->
+            <div class="table-responsive-container">
+                <MudTable Items="@RecentAttendance"
+                          Hover="true"
+                          Striped="true"
+                          Class="attendance-table-fixed"
+                          Elevation="3"
+                          FixedHeader="true"
+                          Height="500px">
+                    <HeaderContent>
+                        <MudTh Class="col-date">
+                            <MudIcon Icon="@Icons.Material.Filled.CalendarToday" Class="mr-2" />Date
+                        </MudTh>
+                        <MudTh Class="col-checkin">
+                            <MudIcon Icon="@Icons.Material.Filled.Login" Class="mr-2" />Check In
+                        </MudTh>
+                        <MudTh Class="col-checkout">
+                            <MudIcon Icon="@Icons.Material.Filled.Logout" Class="mr-2" />Check Out
+                        </MudTh>
+                        <MudTh Class="col-actual-status">
+                            <MudIcon Icon="@Icons.Material.Filled.FactCheck" Class="mr-2" />Actual Status
+                        </MudTh>
+                        <MudTh Class="col-planned-status">
+                            <MudIcon Icon="@Icons.Material.Filled.Schedule" Class="mr-2" />Planned Status
+                        </MudTh>
+                        <MudTh Class="col-approval-status">
+                            <MudIcon Icon="@Icons.Material.Filled.Verified" Class="mr-2" />Approval Status
+                        </MudTh>
+                        <MudTh Class="col-note">
+                            <MudIcon Icon="@Icons.Material.Filled.Note" Class="mr-2" />Note
+                        </MudTh>
+                    </HeaderContent>
+                    <RowTemplate>
+                        <MudTr>
+                            <MudTd DataLabel="Date" Class="col-date">
+                                <MudText Typo="Typo.body2">@context.Date.ToString("MMM dd, yyyy")</MudText>
+                            </MudTd>
 
-                <RowTemplate>
-                    <MudTr>
-                        <MudTd DataLabel="Date">
-                            <MudText Typo="Typo.body2">@context.Date.ToString("MMM dd, yyyy")</MudText>
-                        </MudTd>
+                            <MudTd DataLabel="Check In" Class="col-checkin">
+                                @if (context.CheckIn != TimeSpan.Zero)
+                                {
+                                    <MudText Typo="Typo.body2">@DateTime.Today.Add(context.CheckIn).ToString("hh:mm tt")</MudText>
+                                }
+                                else
+                                {
+                                    <MudText Typo="Typo.body2" Class="muted-text">--</MudText>
+                                }
+                            </MudTd>
 
-                        <MudTd DataLabel="Status">
-                            <MudChip T="string"
-                                     Class=@($"status-badge {GetStatusClass(context.ApprovalStatus.ToString())}")
-                                     Variant="Variant.Filled"
-                                     Color="@GetStatusColor(context.ApprovalStatus.ToString())">
-                                @context.ApprovalStatus
-                            </MudChip>
-                        </MudTd>
+                            <MudTd DataLabel="Check Out" Class="col-checkout">
+                                @if (context.CheckOut != TimeSpan.Zero)
+                                {
+                                    <MudText Typo="Typo.body2">@DateTime.Today.Add(context.CheckOut).ToString("hh:mm tt")</MudText>
+                                }
+                                else
+                                {
+                                    <MudText Typo="Typo.body2" Class="muted-text">--</MudText>
+                                }
+                            </MudTd>
 
-                        <MudTd DataLabel="Check In">
-                            @if (context.CheckIn != TimeSpan.Zero)
-                            {
-                                <MudText Typo="Typo.body2">@DateTime.Today.Add(context.CheckIn).ToString("hh:mm tt")</MudText>
-                            }
-                            else
-                            {
-                                <MudText Typo="Typo.body2" Class="muted-text">--</MudText>
-                            }
-                        </MudTd>
+                            <MudTd DataLabel="Actual Status" Class="col-actual-status">
+                                <MudChip T="string"
+                                         Class="status-badge"
+                                         Variant="Variant.Filled"
+                                         Size="Size.Small"
+                                         Color="@GetStatusColor(context.ActualStatus.ToString())">
+                                    @FormatStatusDisplay(context.ActualStatus.ToString())
+                                </MudChip>
+                            </MudTd>
 
-                        <MudTd DataLabel="Check Out">
-                            @if (context.CheckOut != TimeSpan.Zero)
-                            {
-                                <MudText Typo="Typo.body2">@DateTime.Today.Add(context.CheckOut).ToString("hh:mm tt")</MudText>
-                            }
-                            else
-                            {
-                                <MudText Typo="Typo.body2" Class="muted-text">--</MudText>
-                            }
-                        </MudTd>
+                            <MudTd DataLabel="Planned Status" Class="col-planned-status">
+                                <MudChip T="string"
+                                         Class="status-badge"
+                                         Variant="Variant.Outlined"
+                                         Size="Size.Small"
+                                         Color="@GetPlannedStatusColor(context.PlannedStatus.ToString())">
+                                    @FormatStatusDisplay(context.PlannedStatus.ToString())
+                                </MudChip>
+                            </MudTd>
 
-                        <MudTd DataLabel="Note">
-                            <MudText Typo="Typo.body2">
-                                @(string.IsNullOrEmpty(context.Note) ? "--" : context.Note)
-                            </MudText>
-                        </MudTd>
-                    </MudTr>
-                </RowTemplate>
-            </MudTable>
+                            <MudTd DataLabel="Approval Status" Class="col-approval-status">
+                                <MudChip T="string"
+                                         Class="status-badge"
+                                         Variant="Variant.Filled"
+                                         Size="Size.Small"
+                                         Color="@GetApprovalStatusColor(context.ApprovalStatus.ToString())">
+                                    @(context.ApprovalStatus.ToString() ?? "Pending")
+                                </MudChip>
+                            </MudTd>
+
+                            <MudTd DataLabel="Note" Class="col-note">
+                                <MudText Typo="Typo.body2" title="@(!string.IsNullOrEmpty(context.Note) ? context.Note : "--")">
+                                    @(!string.IsNullOrEmpty(context.Note) ? context.Note : "--")
+                                </MudText>
+                            </MudTd>
+                        </MudTr>
+                    </RowTemplate>
+                </MudTable>
+            </div>
         </MudTabPanel>
 
         <!-- Vacation Requests Tab -->
@@ -406,100 +446,206 @@
 
 <style>
 
+    /* ATTENDANCE TABLE STYLES */
+    .attendance-table-fixed {
+        width: 100% !important;
+        min-width: 1000px;
+        border-radius: 20px;
+        background: var(--mud-palette-surface);
+    }
+
+        .attendance-table-fixed .mud-table-container {
+            width: 100% !important;
+            border-radius: 20px;
+        }
+
+        .attendance-table-fixed table {
+            width: 100% !important;
+            table-layout: fixed !important;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        .attendance-table-fixed thead th {
+            background-color: var(--mud-palette-primary) !important;
+            color: white !important;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            border-bottom: 2px solid var(--mud-palette-primary-darken);
+            padding: 16px 12px !important;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+        }
+
+        .attendance-table-fixed tbody td {
+            border-bottom: 1px solid var(--mud-palette-divider);
+            vertical-align: middle;
+            padding: 12px 8px !important;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+        }
+
+        .attendance-table-fixed tbody tr:hover {
+            background-color: var(--mud-palette-action-hover) !important;
+        }
+
+        .attendance-table-fixed .mud-table-head {
+            background-color: var(--mud-palette-primary) !important;
+        }
+
+    /* Column-specific styles for attendance table */
+    .col-date {
+        width: 11% !important;
+        min-width: 110px !important;
+        white-space: nowrap !important;
+    }
+
+    .col-checkin, .col-checkout {
+        width: 10% !important;
+        min-width: 95px !important;
+        text-align: center !important;
+        white-space: nowrap !important;
+    }
+
+    .col-actual-status {
+        width: 13% !important;
+        min-width: 115px !important;
+        text-align: center !important;
+        white-space: nowrap !important;
+    }
+
+    .col-planned-status {
+        width: 13% !important;
+        min-width: 115px !important;
+        text-align: center !important;
+        white-space: nowrap !important;
+    }
+
+    .col-approval-status {
+        width: 14% !important;
+        min-width: 120px !important;
+        text-align: center !important;
+        white-space: nowrap !important;
+    }
+
+    .col-note {
+        width: 19% !important;
+        min-width: 150px !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+    }
+
+    /* Status badge styles */
+    .status-badge {
+        font-size: 0.7rem !important;
+        font-weight: 600;
+        border-radius: 12px;
+        padding: 4px 8px;
+        min-width: 80px;
+        text-align: center;
+    }
+
+    .muted-text {
+        opacity: 0.5;
+        font-style: italic;
+    }
     /* File Input Button Styles - Matching MudButton Size */
-.file-input-button {
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    border-radius: 8px; /* MudButton default border-radius */
-    padding: 6px 16px; /* MudButton default padding */
-    cursor: pointer;
-    transition: all 0.2s ease;
-    position: relative;
-    overflow: hidden;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    height: 36px; /* MudButton default height */
-    min-width: 64px; /* MudButton default min-width */
-    margin-top: 1rem;
-    color: white;
-    backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.1);
-    font-weight: 500;
-    text-transform: none;
-}
+    .file-input-button {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        border-radius: 8px; /* MudButton default border-radius */
+        padding: 6px 16px; /* MudButton default padding */
+        cursor: pointer;
+        transition: all 0.2s ease;
+        position: relative;
+        overflow: hidden;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        height: 36px; /* MudButton default height */
+        min-width: 64px; /* MudButton default min-width */
+        margin-top: 1rem;
+        color: white;
+        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.1);
+        font-weight: 500;
+        text-transform: none;
+    }
 
-.file-input-button:hover {
-    background: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.8);
-    transform: translateY(-1px);
-}
+        .file-input-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.8);
+            transform: translateY(-1px);
+        }
 
-.file-input-button:active {
-    transform: translateY(0);
-}
+        .file-input-button:active {
+            transform: translateY(0);
+        }
 
-.file-input-hidden {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    cursor: pointer;
-    z-index: 2;
-}
+    .file-input-hidden {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+        z-index: 2;
+    }
 
-.file-input-button-content {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    pointer-events: none;
-    z-index: 1;
-}
+    .file-input-button-content {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        pointer-events: none;
+        z-index: 1;
+    }
 
-.button-icon {
-    font-size: 1.125rem !important;
-    color: inherit;
-}
+    .button-icon {
+        font-size: 1.125rem !important;
+        color: inherit;
+    }
 
-.button-text {
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: inherit;
-}
+    .button-text {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: inherit;
+    }
 
-/* Uploading Overlay */
-.uploading-overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(255, 255, 255, 0.95);
-    padding: 1rem;
-    border-radius: 8px;
-    z-index: 10;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
+    /* Uploading Overlay */
+    .uploading-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(255, 255, 255, 0.95);
+        padding: 1rem;
+        border-radius: 8px;
+        z-index: 10;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
 
-/* Alternative: If you want it to match exactly with your existing button style */
-.change-picture-btn {
-    /* Your existing button styles will be applied */
-    position: relative;
-    overflow: hidden;
-}
+    /* Alternative: If you want it to match exactly with your existing button style */
+    .change-picture-btn {
+        /* Your existing button styles will be applied */
+        position: relative;
+        overflow: hidden;
+    }
 
-.change-picture-btn input[type="file"] {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    cursor: pointer;
-}
+        .change-picture-btn input[type="file"] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
 
 
     /* Enhanced header with theme colors */
@@ -880,14 +1026,7 @@
         text-overflow: ellipsis !important;
     }
 
-    .status-badge {
-        font-size: 0.75rem !important;
-        font-weight: 600;
-        border-radius: 12px;
-        padding: 4px 8px;
-        min-width: 70px;
-        text-align: center;
-    }
+
 
     /* Fix for MudBlazor table scroll */
     .mud-table-container {
@@ -1001,6 +1140,62 @@
             font-size: 1rem !important;
         }
     }
+    /*
+
+    */
+    /* Force table layout and column widths */
+    .attendance-table-fixed .mud-table-root {
+        width: 100% !important;
+    }
+
+    .attendance-table-fixed .mud-table-head,
+    .attendance-table-fixed .mud-table-body {
+        display: table !important;
+        width: 100% !important;
+        table-layout: fixed !important;
+    }
+
+    .attendance-table-fixed .mud-table-row {
+        display: table-row !important;
+        width: 100% !important;
+    }
+
+    .attendance-table-fixed .mud-table-cell {
+        display: table-cell !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Apply exact widths to cells */
+    .attendance-table-fixed .col-date {
+        width: 15% !important;
+        max-width: 15% !important;
+    }
+
+    .attendance-table-fixed .col-checkin,
+    .attendance-table-fixed .col-checkout {
+        width: 13% !important;
+        max-width: 13% !important;
+    }
+
+    .attendance-table-fixed .col-actual-status {
+        width: 17% !important;
+        max-width: 17% !important;
+    }
+
+    .attendance-table-fixed .col-planned-status {
+        width: 16% !important;
+        max-width: 16% !important;
+    }
+
+    .attendance-table-fixed .col-approval-status {
+        width: 14% !important;
+        max-width: 14% !important;
+    }
+
+    .attendance-table-fixed .col-note {
+        width: 19% !important;
+        max-width: 19% !important;
+    }
 
 </style>
 
@@ -1029,7 +1224,9 @@
             // Uncomment these when your API endpoints are ready
             //AttendanceStats = await Http.GetFromJsonAsync<AttendanceStatsModel>("api/user/attendance/stats") ?? new();
 
-            RecentAttendance = new List<AttendanceRecord>(); // TODO: replace with API
+            RecentAttendance = await ManagementService.GetUserAttendanceRecordsByCode(UserProfile.Code);
+            Console.WriteLine($"Code is {UserProfile.Code}");
+            Console.WriteLine($"Recent attendance records count: {RecentAttendance.Count}");
 
             var vacationResult = await VacationRequestService.GetVacationRequestsByUserIdAsync(UserProfile.Id);
             if (vacationResult.Success)
@@ -1083,17 +1280,7 @@
         };
     }
 
-    private Color GetStatusColor(string status)
-    {
-        return status?.ToLower() switch
-        {
-            "present" => Color.Success,
-            "absent" => Color.Error,
-            "vacation" => Color.Info,
-            "work from home" => Color.Warning,
-            _ => Color.Default
-        };
-    }
+
 
     private Color GetVacationStatusColor(string status)
     {
@@ -1128,7 +1315,7 @@
         DialogService.Show<ChangePasswordDialog>("Change Password");
     }
 
-     
+
 
 
     // ✅ رفع صورة الموظف باستخدام AttendanceService
@@ -1204,6 +1391,60 @@
         public int VacationDaysUsed { get; set; } = 12;
         public int VacationDaysRemaining { get; set; } = 8;
     }
+    private Color GetStatusColor(string status)
+    {
+        return status?.ToLower() switch
+        {
+            "present" => Color.Success,
+            "absent" => Color.Error,
+            "vacation" => Color.Info,
+            "workfromhome" => Color.Warning,
+            "no_status" or "nostatus" => Color.Default,
+            _ => Color.Default
+        };
+    }
 
+
+    private Color GetPlannedStatusColor(string status)
+    {
+        return status?.ToLower() switch
+        {
+            "present" => Color.Success,
+            "absent" => Color.Error,
+            "vacation" => Color.Info,
+            "workfromhome" => Color.Warning,
+            "no_status" or "nostatus" => Color.Default,
+            _ => Color.Default
+        };
+    }
+
+    private Color GetApprovalStatusColor(string status)
+    {
+        // Assuming ApprovalStatus might be a different enum, keeping the original logic
+        return status?.ToLower() switch
+        {
+            "approved" => Color.Success,
+            "rejected" => Color.Error,
+            "pending" => Color.Warning,
+            "underreview" => Color.Info,
+            _ => Color.Warning // default to warning for pending
+        };
+    }
+
+    // Additional helper method to format status display
+    private string FormatStatusDisplay(string status)
+    {
+        if (string.IsNullOrEmpty(status)) return "No Status";
+
+        return status?.ToLower() switch
+        {
+            "no_status" or "nostatus" => "No Status",
+            "present" => "Present",
+            "absent" => "Absent",
+            "vacation" => "Vacation",
+            "workfromhome" => "Work From Home",
+            _ => status
+        };
+    }
 
 }
